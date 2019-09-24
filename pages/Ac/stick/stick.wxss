@@ -1,0 +1,172 @@
+/* pages/demo/calert/calert.wxss */
+/* 遮罩 */
+/* 遮罩样式 */
+.sshade {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* 遮罩颜色 */
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+}
+/* 盒子位置 */
+.sshade_box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 11;
+    min-width: 200rpx;
+    min-height: 200rpx;
+    font-size: 28rpx;
+    box-sizing: border-box;
+    color: #333;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0;
+    word-wrap: break-word;
+ 
+    animation-name:spopup;
+    animation-duration:0.2s;
+    animation-timing-function:linear;
+    animation-delay:0;
+    animation-iteration-count:1;
+    animation-direction:normal;
+}
+ 
+@keyframes spopup
+{
+    from{opacity:0;transform:scale(0.3,0.3);}
+    to 	{opacity:1;transform:scale(1,1);}
+}
+ 
+ 
+/* 当前弹窗样式 */
+.spopup{
+    width: 620rpx;
+    height: 730rpx;
+    background:rgba(255,255,255,1);
+border:4rpx solid rgba(118,212,198,1);
+border-radius:10rpx;
+}
+.spopup .stitle{
+    /* padding: 0 20rpx; */
+    /* border-bottom: #e5e5e5 solid 1px; */
+    /* height: 70rpx;
+    line-height: 70rpx; */
+    /* font-size: 32rpx; */
+    width:80rpx;height:80rpx;
+    border-radius: 50%;
+    background-color: white;
+    /* text-align: center; */
+    margin:0 auto;
+    margin-top:-43rpx;
+    z-index:5555
+}
+.spopup .scontent{
+    /* margin: 100rpx; */
+    margin-top:31rpx;
+    text-align: center;
+    font-size:30rpx;
+}
+/* 提交成功 */
+.st1{
+  font-weight: blod;
+  color:#76D4C6; 
+}
+/* 置顶方式 */
+.sticks{
+  margin:40rpx 104rpx 41rpx 43rpx;
+}
+.right{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+}
+
+/*  */
+.stit{
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+/* 确认按钮 */
+.spopup .smsg{
+    width:120rpx;
+height:64rpx;
+background:rgba(118,212,198,1);
+border-radius:10rpx;
+/* 文字样式 */
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+text-align: center;
+line-height: 64rpx;
+margin:0 auto;
+margin-top:27rpx;
+}
+/* 开始时间 */
+.stick2{
+  margin:0rpx 47rpx 40rpx 43rpx;
+}
+/* 时间分类 */
+
+/* 整体布局 */
+.sectiontime{
+  width:373rpx;
+    /* height:70rpx; */
+    background:rgba(242,242,242,1);
+    border-radius:10rpx;
+   /* margin:20rpx;
+   padding:20rpx */
+   text-align: center;
+   line-height: 70rpx;
+   margin-left:31rpx;
+   font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);}
+/*  */
+.picker{
+  display: flex;
+  justify-content: space-between;
+  /* width:383rpx; */
+height:64rpx;
+background:rgba(242,242,242,1);
+border-radius:10rpx;
+line-height:64rpx;
+}
+.select-text{
+  /* color:red; */
+  font-weight: blod;
+  color:black;
+margin-left:19rpx;
+font-family:PingFang SC;
+}
+/* 下拉箭头 */
+.picker image{
+  width:40rpx;
+  height:30rpx;
+  margin:auto 0;
+  margin-right:19rpx;
+}
+.zd{
+  
+  margin:0rpx 47rpx 40rpx 43rpx;
+
+}
+/* 消耗积分 */
+.int{
+  margin-left:43rpx;
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+}
+

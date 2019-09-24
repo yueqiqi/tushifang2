@@ -1,0 +1,147 @@
+/* pages/Ac/business2/business2.wxss */
+@import "../all.wxss";
+page{
+  background:#fff!important;
+}
+.diver2{
+  margin-left:50rpx;
+}
+.mes{
+  margin-top:51rpx;margin-bottom:0;
+  font-size:40rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+
+/* 上传图片 */
+.img{
+  margin-top:51rpx;
+}
+/* 营业执照 */
+.license{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+}
+.onload{
+  margin-top:19rpx;
+  width:130rpx;
+height:130rpx;
+background:rgba(235,249,247,1);
+border-radius:7rpx;
+/* text-align: center; */
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(72,149,137,1);
+/* 让元素水平垂直居中 */
+display: flex;
+  flex-direction: column;
+  align-items: center;
+   justify-content: center;
+
+}
+/* 图片 */
+.onload image{
+  width:40rpx;height:40rpx;
+  margin-bottom:10rpx;
+}
+/* /法人证明书 */
+.prove{
+  margin-top:41rpx;
+}
+.license text{
+  color:#999999;
+  font-size:24rpx;
+}
+
+
+/* 图片 */
+.img_box{
+  width:91%;
+  position:relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin:0 auto;
+}
+.imgs{
+  width:33.33333333%;
+  display: flex;
+  justify-content: center;
+  margin-bottom:20rpx;
+}
+/* 添加图片的样式 */
+.imgs image{
+  /* width:100%; */
+  width:168rpx;
+  height:168rpx;
+  /* max-height:212rpx; */
+  border:1px solid rgba(214, 212, 212, 0.1);
+  /* box-shadow: 5rpx 5rpx 1rpx 3rpx #e2e0e0; */
+  margin-top:20rpx;
+}
+
+.imgs .images{
+  position:relative;
+}
+.images button{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
+/* 添加图片按钮 */
+.img_box .images{
+  margin-top:20rpx;
+  width:90%;
+	height: 168rpx;
+  border:4px dashed  #E8E8E8;
+  border-radius:4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img_box .images>image{
+  width:60rpx;
+	height:60rpx;
+}
+
+.show-btn {
+margin-top: 100rpx;
+color: #22cc22;
+}
+ 
+.modal-mask {
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+background: #000;
+opacity: 0.5;
+overflow: hidden;
+z-index: 9000;
+ color: #fff;
+}
+/* 按钮 */
+.mybtn{
+  margin-left:-26rpx;
+  margin-top:61rpx;
+  margin-bottom:10rpx;
+}
+/* 上一步 */
+.up,.finish{
+  width:310rpx;
+height:70rpx;
+background:rgba(118,212,198,1);
+border-radius:10rpx;
+text-align: center;
+line-height: 70rpx;
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+}

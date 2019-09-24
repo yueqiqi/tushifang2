@@ -1,0 +1,82 @@
+<!-- 我的名片 -->
+<view class="bgf">
+<view style="padding-top:29rpx;padding-bottom:30rpx;"> 
+  <view class="card">
+    <view class="me d-flex">
+      <view><image class="head" src="{{head}}"></image></view>
+      <view class="right">
+        <view class="name">{{name}}</view>      
+        <view class="me1">暂未填写职位信息</view>      
+        <view class="me1">暂未填写公司信息</view>      
+      </view>
+    </view>
+    <!-- 信息 -->
+    <view style="margin-top:49rpx;margin-left:29rpx;">
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/email.png"></image></view>
+      <view class="me1 mle">暂未填写邮箱</view>
+    </view>
+    <!-- 电话 -->
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/ps.png"></image></view>
+      <view class="me1 mle">暂未填写联系电话</view>
+    </view>
+    <!-- 地址 -->
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/ad.png"></image></view>
+      <view class="me1 mle">暂未填写地址</view>
+    </view>
+    </view>
+    <!--  -->
+  </view>
+  <!-- 按钮 -->
+ <button class="bt" bindtap="btn">完善我的名片</button>
+</view>
+</view>
+
+<!-- 我的名片夹 -->
+<view class="bgf mtt" style="padding-bottom: 93rpx;">
+  <view class="name">我的名片夹</view>
+  <view class="ncard">
+    <view class="d-spb cc">
+    <view class="d-flex c-i">
+      <view><image class="c-img" src="{{head}}"></image></view>
+      <view>
+        <view class="c-name">用户姓名</view>
+        <view class="c-t"><text decode="{{true}}">{{post}}&ensp;&ensp;|&ensp;&ensp;{{com}}</text></view>
+      </view>
+    </view>
+<!-- 时间 -->
+<view class="time">{{time}}</view>
+    </view>
+  </view>
+<!-- 第二个 -->
+  <view class="ncard">
+    <view class="d-spb cc">
+    <view class="d-flex c-i">
+      <view><image class="c-img" src="{{head}}"></image></view>
+      <view>
+        <view class="c-name">用户姓名</view>
+        <view class="c-t"><text decode="{{true}}">{{post}}&ensp;&ensp;|&ensp;&ensp;{{com}}</text></view>
+      </view>
+    </view>
+<!-- 时间 -->
+<view class="time">{{time}}</view>
+    </view>
+  </view>
+  <!-- 第三个 -->
+  <view class="ncard">
+    <view class="d-spb cc">
+    <view class="d-flex c-i">
+      <view><image class="c-img" src="{{head}}"></image></view>
+      <view>
+        <view class="c-name">用户姓名</view>
+        <view class="c-t"><text decode="{{true}}">{{post}}&ensp;&ensp;|&ensp;&ensp;{{com}}</text></view>
+      </view>
+    </view>
+<!-- 时间 -->
+<view class="time">{{time}}</view>
+    </view>
+  </view>
+  <!--  -->
+</view>

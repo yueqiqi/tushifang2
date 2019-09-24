@@ -1,0 +1,45 @@
+<!-- 新增地址 -->
+  <form bindsubmit="formSubmit">
+  <view class="bgf">
+  <view style="margin-left:30rpx;margin-right:30rpx;">
+  <!-- 联系人 -->
+    <view class="peo d-flex">
+      <view class="til">联系人</view>
+      <view>
+        <input  style="margin-left:94rpx;" name="i1" value="{{name}}"></input>
+      </view>
+    </view>
+    <!-- 電話号码 -->
+    <view class="peo d-flex">
+      <view class="til">电话号码</view>
+      <view>
+        <input name="i2" value="{{phone}}"></input>
+      </view>
+    </view>
+    <!-- 所在地区 -->
+    <view class="peo d-spb">
+      <view class="til">所在地区</view>
+      <view class="d-spb">
+        <view>
+          <input name="i3" disabled="true" value="{{add}}"></input>
+        </view>
+        <view style="margin-left:140rpx;">
+        <image style="width:12rpx;height:22rpx;" src="../../images/r2.png"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 祥细地址 -->
+    <view class="til" style="margin-top:29rpx;">详细地址</view>
+    <view style="height:150rpx;">
+      <textarea name="textarea" style="height:150rpx;" value="{{adds}}" maxlength="50"></textarea>
+    </view>
+    
+    <!--  -->
+  </view>
+  </view>
+  <!-- 设置默认 -->
+    <view class="bgf mtt radio"  >
+      <van-checkbox value="{{ checked }}" checked-color="rgba(118,212,198,1);" bind:change="onChange">设置为默认地址</van-checkbox>
+    </view>
+    <button form-type="submit" class="add" bindtap="add">确认添加</button>
+  </form>

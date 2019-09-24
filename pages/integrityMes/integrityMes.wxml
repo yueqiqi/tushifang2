@@ -1,0 +1,92 @@
+<!-- 文章详情页 -->
+<view class="bg">
+  <view class="mesbg">
+  <!-- 失信 -->
+     <view class="mestext ml">重庆市第三批失信名单出炉了</view>
+     <!-- 转载至 -->
+     <view class="from ml d-flex mt">
+        <view class="from-left">转载自人民法院</view>
+        <view class="from-right">
+          <text>2019.02.02</text>
+          <text style="margin-left:10rpx">18:36</text>
+        </view>
+      </view>
+      <!-- 内容 -->
+      <view class="content ml">内容</view>
+  </view>
+
+  <!-- 评论 -->
+  <view class="mesbg mt">
+    <!-- 用户名 -->
+<view class="d-flex ml mt mesuser">
+  <!-- 头像 -->
+  <view class="head"></view>
+  <!-- 用户名、时间 -->
+  <view class="ml">
+    <view class="userName">用户名</view>
+    <view class="times">2019.07.22</view>
+  </view>
+</view>
+<!-- 用户消息 -->
+<view class="msg">
+唯格Viewgres，集设计、研发、生产、全球贸 易于一体的瓷砖企业。为商业建筑和高端住宅 提供优质建材产品与应用解决方案。
+</view>
+<view class="hr"></view>
+<!-- 第二个用户名 -->
+<!-- 用户名 -->
+<view class="d-flex ml mt">
+  <!-- 头像 -->
+  <view class="head"></view>
+  <!-- 用户名、时间 -->
+  <view class="ml">
+    <view class="userName">用户名</view>
+    <view class="times">2019.07.22</view>
+  </view>
+</view>
+<!-- 用户消息 -->
+<view class="msg">
+唯格Viewgres，集设计、研发、生产、全球贸 易于一体的瓷砖企业。为商业建筑和高端住宅 提供优质建材产品与应用解决方案。
+</view>
+
+<!-- 投诉 -->
+<view class="like mt d-flex"  wx:if="{{!showInput}}">
+<!-- 分享 -->
+  <view class="d-flex" style="margin-left:90rpx;" bindtap="share">
+  <image src="../images/share.png"></image>
+  <text>
+  分享
+  </text>
+  </view>
+  <!-- 评论 -->
+  <view class="d-flex"  bindtap="showInput"> 
+  <image src="../images/comment.png"></image>
+  <!--  -->
+  <!-- <text>
+  评论
+  </text> -->
+  <view>
+    <view class="comment" >评论</view> 
+  </view>
+  <!--  -->
+  </view>
+  <!-- 点赞 -->
+  <view class="d-flex" bindtap="like" style="margin-right:89rpx">
+  <image src="../images/unlike.png"></image>
+  <text>
+  {{like}}
+  </text>
+  </view>
+  </view>
+<!-- 键盘 -->
+<view class="input-section" wx:if="{{showInput}}">
+  <input class='input_input' value="{{inputMessage}}" focus="auto" bindinput='bindInputMsg' bindblur="onHideInput" confirm-type="send" bindconfirm="sendTextMsg" adjust-position="true" hold-keyboard="true"/>
+  <view style="height:90rpx;width:140rpx;display:flex; align-items: center;justify-content: center;">
+    <view class="send_btn">
+      <text class="send_btn_text">发送</text>
+    </view>
+  </view>
+</view>
+<!--  -->
+</view>
+<!--  -->
+</view>

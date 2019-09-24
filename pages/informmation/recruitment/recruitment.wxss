@@ -1,0 +1,581 @@
+/* pages/informmation/recruitment/recruitment.wxss */
+@import "../carousel/carousel";
+.nav-class{
+  color:red!important;
+}
+.van-tabs__line{
+  width:0rpx!important;
+}
+.van-hairline--bottom:after,.van-hairline--left:after,.van-hairline--right:after,.van-hairline--surround:after,.van-hairline--top-bottom:after,.van-hairline--top:after,.van-hairline:after{
+  border:0rpx!important;
+}
+
+/* .van-tab--active{
+  color:red!important;
+} */
+/* 未激活时颜色 */
+.van-tab {
+  color:#fff!important;
+}
+/* 激活时状态 */
+/* .van-tab--active{
+  color:red!important;
+} */
+/* 第一个激活 */
+.van-tab--active:nth-child(2){
+  font-weight: 700!important;
+  color:#4E85A4!important;
+}
+/* 第二个激活 */
+.van-tab--active:nth-child(3){
+  color:#8B70B1!important;
+  font-weight:700important;
+}
+/* 第三个激活 */
+.van-tab--active:nth-child(4){
+  font-weight:700!important;
+color:#C56F81!important;
+}
+/* 第四个激活 */
+.van-tab--active:nth-child(5){
+  font-weight:700!important;
+color:rgba(194,154,76,1)!important;
+}
+/* 点击时背景颜色 */
+ .van-tab--active>.van-tab__title:nth-child(1){
+  /* width:300rpx!important; */
+opacity: .9!important;
+font-weight:bold!important;
+} 
+/* 搜索框样式 */
+ .search{  
+      width: 95%;  
+      margin:20rpx 0rpx;z-index:0
+      
+    }  
+    .search_arr {  
+      border: 1px solid #d0d0d0;  
+      border-radius: 10rpx;  
+      margin-left: 20rpx;  background:rgba(242,242,242,1);
+    }  
+    .search_arr input{  
+      margin-left: 60rpx;  
+      height: 60rpx;  
+      border-radius: 5px;  z-index:1
+    }  
+    .bc_text {  
+      line-height: 68rpx;  
+      height: 68rpx;  
+      margin-top: 34rpx;  z-index:1
+    }  
+      .se{
+        margin-left:10rpx;z-index:1
+      }
+    .page_row{  
+      display: flex;  
+      flex-direction: row;  z-index:1
+      
+    }  
+    .searchcion {  
+      margin: 10rpx 10rpx 10rpx 10rpx;  
+      position: absolute;  
+      left:35rpx;  
+      z-index: 1;  
+      width: 20px;  
+      height: 20px;  
+      text-align: center;
+    } 
+    /* 分类选择器 */
+.list-msg {
+    /* padding: 0 20rpx; */
+    width:330rpx;
+    height:70rpx;
+    background:rgba(242,242,242,1);
+    border-radius:10rpx;
+    position: relative;
+}
+
+ /* 选择分类 */
+ /* 分类 */
+.sectionClass{
+  width:330rpx;
+    height:70rpx;
+    background:rgba(242,242,242,1);
+    border-radius:10rpx;
+   /* margin:20rpx;
+   padding:20rpx */
+   text-align: center;
+   line-height: 70rpx;   
+   }
+.picker{
+  display: flex;
+  justify-content: space-between
+}
+.select-text{
+font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);margin-left:19rpx;
+}
+.picker image{
+  width:58rpx;
+  height:40rpx;
+  margin:auto 0;
+  margin-right:19rpx;
+}
+/* 时间分类 */
+.sectiontime{
+  width:330rpx;
+    height:70rpx;
+    background:rgba(242,242,242,1);
+    border-radius:10rpx;
+   /* margin:20rpx;
+   padding:20rpx */
+   text-align: center;
+   line-height: 70rpx;
+   margin-left:31rpx;
+   font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+   }
+   /* 找工作 */
+   /* 未选中 */
+   .tab{float: left; width:50%;text-align: center;padding: 10rpx 0;font-size:36rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1); }
+.topTabSwiper{  zoom: 1;}
+.topTabSwiper:after{content: ""; clear: both;display: block;}
+/* 选中 */
+.tabBorer{border-bottom: 3px solid rgba(118,212,198,1);
+font-size:36rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);}
+.swiper{width: 100%;}
+/* .swiper_con{text-align: center; width: 100%; height: 100%; padding: 80rpx 0;} */
+/* 招聘工作 */
+.searchJob,.people{
+  height:100%
+}
+/* 招聘职位 */
+.post{
+  justify-content: space-between;
+  padding-top:20rpx;background:#fff;
+}
+.postTitle{
+  font-size:36rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin-right:20rpx;
+}
+/* 置顶 */
+.stick{
+  width:70rpx;
+height:36rpx;
+background:linear-gradient(45deg,rgba(218,25,22,1) 0%,rgba(241,82,51,1) 100%);
+border-radius:5rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(255,255,255,1);text-align: center;line-height: 36rpx;margin-right:10rpx;
+margin-top:10rpx;
+}
+/* 推荐 */
+.recommend{
+  width:36rpx;
+height:36rpx;
+background:linear-gradient(-45deg,rgba(0,152,239,1) 0%,rgba(0,218,226,1) 100%);
+border-radius:5rpx;
+text-align: center;line-height: 36rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(255,255,255,1);
+margin-top:10rpx;
+}
+/* 薪资 */
+.money{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(118,212,198,1);margin-top:10rpx;
+}
+.post-right{
+  margin-right:28rpx;
+}
+/* 招聘状态 */
+.state{
+  margin-top:40rpx;
+  justify-content: space-between
+}
+.stateTitle{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:#333
+}
+/* 正在招聘 */
+.stateing{
+  font-size:28rpx;
+font-family:PingFang SC;
+color:#333;
+}
+/* 工作地点 */
+.state-right{
+  margin-right:68rpx;
+}
+.state-site{
+   font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:#333;
+margin-right:20rpx;
+}
+/* 省份 */
+.site-province{
+   font-size:28rpx;
+font-family:PingFang SC;
+color:#333;margin-right:10rpx;
+}
+/* 区域 */
+.site-district{
+font-size:28rpx;
+font-family:PingFang SC;
+color:#333;
+}
+/* 发布时间 */
+.timer{
+  justify-content: space-between
+}
+.timerTitle{
+    font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:#333
+}
+/* 发布日期 */
+.timerdate{
+  font-size:28rpx;
+font-family:PingFang SC;
+color:#333;
+}
+.timer-right{
+  margin-right:180rpx;
+}
+/* 工作年限 */
+.year{
+ font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:#333
+}
+/* 年4 */
+.num{
+  font-size:28rpx;
+font-family:PingFang SC;
+color:#333;margin-left:21.5rpx;
+}
+/* 头像 */
+.user{
+  margin-top:63rpx;
+}
+.head{
+  width:50rpx;
+height:50rpx;
+background:rgba(229,229,229,1);
+border-radius:50%;
+margin-right:20rpx;
+}
+/* 用户名 */
+.userName{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin-right:31rpx;margin-top:7rpx;
+}
+/* 公司名称 */
+.company{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+margin-top:7rpx;
+}
+/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */
+/* 招人才 */
+.header{
+  justify-content: space-between;
+  padding-top:20rpx;
+}
+/* 头像 */
+.peopleHead{
+  width:70rpx;
+height:70rpx;
+background:rgba(229,229,229,1);
+border-radius:50%;
+margin-right:20rpx;
+}
+/* 用户名 */
+.peopleName{
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin-top:16rpx;
+}
+/* 求职 */
+.header-right{
+  margin-right:30rpx;
+}
+.want{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(118,212,198,1);margin-top:16rpx;
+}
+/* 工作 */
+.job{
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);margin-top:16rpx;margin-left:10rpx;
+}
+.Title{
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+.Msg{
+  font-size:28rpx;
+font-family:PingFang SC;
+color:#333;
+}
+/* 求职 */
+.peoplestate{
+  justify-content: space-between;
+  margin-top:40rpx;
+}
+/* 正在找工作 */
+.peoplestateing{
+  margin-right:20rpx;
+}
+.peoplestate-right{
+  margin-right:95rpx; 
+}
+/* 薪资 */
+.p-money{
+  margin-left:20rpx;
+}
+/* 工作年限 */
+.p-timer{
+  justify-content:space-between;
+  margin-top:20rpx;
+}
+.p-timer-right{
+  margin-right:170rpx;
+}
+/* 时间 */
+.p-timer-date{
+  margin-right:20rpx;
+}
+.p-year{
+  margin-right:21rpx;
+  }
+/* ================================================================================================ */
+/* 渣土信息 */
+/* 发布用户名 */
+.musk-user{
+  /* margin-top:30rpx; */
+  padding-top:30rpx;
+}
+.musk-user-l{
+  margin-left: 30rpx;
+}
+/* 头像 */
+.musk-user-l image{
+  width:70rpx;height:70rpx;
+  border-radius:50%;
+}
+/* 用户名 */
+.musk-user-l :nth-child(2){
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+line-height: 70rpx;
+margin-left: 20rpx;
+margin-right: 40rpx;
+}
+/* 十万火急 */
+.musk-user-l :nth-child(3){
+  width:120rpx;
+height:36rpx;
+background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);
+border-radius:5rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(255,255,255,1);text-align: center;line-height: 36rpx;margin-top:18rpx;
+}
+/* 距离 */
+.musk-user-r{
+  margin-right:27rpx;
+  line-height: 70rpx;
+}
+/* 时间 */
+.musk-date{
+  margin-top:21rpx;
+}
+.musk-date-l{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+margin-left: 31rpx;
+}
+/* 定位 */
+.musk-date-r{
+  margin-right: 29rpx;
+}
+/* 定位图片 */
+.musk-date-r image{
+  width:18rpx;
+height:23rpx;
+margin-right:9rpx;
+
+}
+/* 发布者定位 */
+.musk-date-r :nth-child(2){
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+/* line-height:44rpx; */
+margin-top:-6rpx;
+}
+/* 内容 */
+.musk-content{
+  width:661rpx;
+/* height:69rpx; */
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+margin-left:30rpx;
+margin-top:37rpx
+}
+/* 发布图片 */
+.musk-img{
+  margin-left:31rpx;
+  margin-top: 28rpx;
+}
+/* 图片 */
+.muskImg{
+  width:220rpx;height:220rpx;
+  margin-right:15rpx;
+}
+/* 视频 */
+.video video{
+  width:690rpx;height:300rpx;
+  margin-top:15rpx;
+}
+/* 拨打电话 */
+.musk-phone{
+  margin-top:41rpx;border-bottom:2rpx solid rgba(230,230,230,1);
+  
+  margin-left:31rpx;
+margin-right:30rpx; 
+padding-bottom:33rpx;
+}
+.musk-phone-l{
+}
+/* 项目类型 */
+.musk-phone-l :nth-child(1){
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:#76D4C6;
+margin-right:10rpx;
+}
+.musk-phone-l :nth-child(2){
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:#333333;
+
+}
+.musk-phone-r{
+  width:200rpx;
+height:50rpx;
+background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
+border-radius:10px;
+}
+/* 电话图标 */
+.musk-phone-r image{
+  width:26rpx;height:26rpx;
+  margin-top:12rpx;margin-left:25rpx
+}
+.musk-phone-r :nth-child(2){
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+margin-left:14rpx;line-height: 50rpx;
+}
+/* 点赞 */
+.likes{
+  margin-top:28rpx;padding-bottom:24rpx;
+}
+.likes image{
+  width:30rpx;height:30rpx;margin-right:10rpx;
+}
+/* 文字 */
+.share :nth-child(2),.comment :nth-child(2),.like :nth-child(2){
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+line-height:40rpx;
+}
+.share{
+  margin-left:78rpx;
+}
+.like{
+  margin-right:101rpx;
+}
+/* .第二个 */
+.second{
+  margin-top:10rpx;
+}
+.musk-user-s-l{
+  margin-left: 30rpx;
+}
+/* 头像 */
+.musk-user-s-l image{
+  width:70rpx;height:70rpx;
+  border-radius:50%;
+}
+/* 用户名 */
+.musk-user-s-l :nth-child(2){
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+line-height: 70rpx;
+margin-left: 20rpx;
+margin-right: 40rpx;
+}
+.btn-r{
+    width:70rpx;
+height:36rpx;
+background:linear-gradient(45deg,rgba(218,25,22,1) 0%,rgba(241,82,51,1) 100%);
+border-radius:5rpx;font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(255,255,255,1);text-align: center;line-height: 36rpx;margin-top:18rpx;
+}

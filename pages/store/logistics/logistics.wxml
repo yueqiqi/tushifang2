@@ -1,0 +1,26 @@
+<!-- 查看物流 -->
+<view class="bgf">
+  <view class="d-flex ex">
+    <view>
+      <image class="img" src="../../images/carousel/06.jpg"></image>
+    </view>
+    <view class="company">
+      <view class="express">快递公司</view>
+      <view class="num">
+        <view>订单编号 <text>{{num}}</text></view>
+        <view>物流编号 <text>{{list}}</text></view>
+        <view>物流状态 <text>{{state}}</text></view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="steps bgf">
+<view class="order">订单跟踪</view>
+<van-steps
+  steps="{{ steps }}"
+  active="{{ active }}"
+  direction="vertical"
+  active-color="rgba(118,212,198,1);"
+/>
+</view>

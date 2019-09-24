@@ -1,0 +1,66 @@
+<view>
+<!-- 定位信息 -->
+<view>
+  <view style="display:flex;justify-content:left">
+    <image class="position" src="../images/position/position-sm.png"></image>
+    <view bindtap="getLocation" class="position-text">当前定位</view>
+    <image src="../images/position/shape45.png" class="select"></image>
+    <image class="message" src="../images/position/shape48.png"></image>
+  </view>
+</view>
+<view class='page_row' bindtap="search">  
+      <view class="search">  
+        <view class="df search_arr">  
+          <icon class="searchcion" size='20' type='search'></icon>  
+          <input class="" disabled placeholder="搜索..." value="{{searchValue}}"/>  
+        </view>  
+      </view>   
+</view>
+  <!--轮播图  -->
+  <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255,255,255,1)"indicator-active-color="rgba(118,212,198,1)"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item.url}}" class="slide-image"></image>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 轮播图下方小图标 -->
+<view   class="v1">
+<block wx:for="{{icon}}" wx:key="{{index}}">
+<navigator url="{{item.link}}">
+<view style="margin-right:50rpx;">
+<image class="icon-img" src="{{item.url}}"></image>
+<view class="icon-text">{{item.name}}</view>
+</view>
+</navigator>
+</block>
+</view>
+
+<view   class="v1">
+<block wx:for="{{icon02}}" wx:key="{{index}}">
+<navigator url="{{item.link}}">
+<view style="margin-right:50rpx;">
+<image class="icon-img" src="{{item.url}}"></image>
+<view class="icon-text">{{item.name}}</view>
+</view>
+</navigator>
+</block>
+</view>
+<!-- 小图标下方公告 -->
+<view class="gg">
+<view class="gonggao">公告</view>
+<view class="hot">热门</view>
+<view class='scroll_view_border'>
+<view class="srcoll_view" bindtap="hot">9102土石方风向标</view>
+</view>
+<view><image class="right-img" src="../images/right.png"></image></view>
+</view>
+<!-- 小图片下方图片 -->
+<view bindtap="imgLink">
+<image class="img" src="../images/carousel/04.jpg"></image>
+</view>
+<include src="../postMessage/postMessage"/>
+<include src="../title/title"/>
+<include src="../panel/panel"/>
+</view>

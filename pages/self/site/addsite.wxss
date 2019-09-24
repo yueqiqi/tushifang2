@@ -1,0 +1,32 @@
+/* pages/self/site/addsite.wxss */
+.til{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+input{
+  margin-left:66rpx;
+}
+.peo{
+  border-bottom:2rpx solid rgba(230,230,230,1);
+  padding-bottom: 28rpx;
+  padding-top:32rpx;
+}
+/* 设置默认地址 */
+.radio{
+  padding-top:20rpx;padding-left:30rpx;padding-bottom:20rpx;
+}
+/* 添加收货地址 */
+.add{
+  width:690rpx;
+height:70rpx;
+background:rgba(118,212,198,1);
+font-size:36rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+text-align: center;
+line-height:70rpx;
+margin-top:51rpx;
+}

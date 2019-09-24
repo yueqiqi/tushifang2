@@ -1,0 +1,48 @@
+<!-- 弹出框 -->
+<!-- //点击下面这句话出现底部弹框 -->
+<view bindtap="clickme">点击我可以看到底部弹框的出现</view>  
+ 
+<!--屏幕背景变暗的背景  -->
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <!--弹出框  -->
+  <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <!-- 在这里写弹出框里面的布局 -->
+  <view>
+    <!-- 图片和价格 -->
+    <view class="product d-spb">
+    <view class="d-flex">
+      <image class="product-img" src="../../images/carousel/06.jpg"></image>
+      <view class="cart-price">
+        <view>￥{{price}}</view>
+        <view>库存 <text>10000</text> 件</view>
+      </view>
+    </view>
+      <view style="margin-right:30rpx;margin-top:-10rpx;" bindtap="hideModal" wx:if="{{showModalStatus}}"><image style="width:22rpx;height:22rpx;" src="../../images/del.png"></image></view>
+    </view>
+    <view class="color">
+    <!-- 颜色 -->
+      <view class="ml">颜色</view>
+    <!-- 颜色选项 -->
+      <view  class="d-spb color-btn">
+        <block wx:for="{{color}}" wx:key="{{index}}">
+        <!-- <van-button class="color-btn">{{item.color}}</van-button> -->
+          <button bindtap='choose' class='btns{{item.checked?"actives":""}}'  data-index="{{index}}" disabled="{{item.disabled}}">{{item.color}}</button>
+        </block>
+      </view>
+    </view>
+    <!-- 型号 -->
+    <view class="size">
+    <view>型号</view>
+    <!-- 型号选项 -->
+      <view class="d-flex size-btn">
+        <block wx:for="{{size}}" wx:key="{{index}}">
+          <button bindtap="size" class='sizes{{item.checked?"actives":""}}'  data-index="{{index}}" disabled="{{item.disabled}}">{{item.size}}</button>
+        </block>
+      </view>
+    </view>
+    <!-- 步进器 -->
+    <view style="margin-top:229rpx;margin-left:490rpx;">
+      <van-stepper max="10" value="{{ 1 }}" bind:change="onChange"  integer="true"/>
+    </view>
+  </view>
+  </view>

@@ -1,0 +1,108 @@
+<!-- 我是司机2 -->
+<!-- 我是司机1> -->
+<!-- 我是企业 -->
+<view class="diver2">
+<!-- 标题 -->
+<view class="mes">请完善司机信息</view>
+<!-- form表单 -->
+<form bindsubmit="formSubmit">
+<!-- 驾驶执照 -->
+<view class="img">
+  <view>
+    <view class="license">驾驶证件照</view>
+  <view class="d-flex">
+  <!-- 上传图片预览 -->
+  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  </view>
+    <view class="onload" bindtap="upload">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+  </view>
+  </view>
+
+  <!-- 行驶执照 -->
+  <view class="prove">
+    <view class="license">行驶证件照</view>
+    <view class="d-flex">
+    <!-- 上传图片预览 -->
+      <view class="imgs" wx:for="{{tempFilePaths2}}" wx:key="index">
+        <image src='{{item}}' bindlongpress="deleteImage2" bindtap="listenerButtonPreviewImage2" data-index="{{index}}" mode='widthFix'/>
+      </view>
+    <view class="onload" bindtap="upload2">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+    </view>
+  </view>
+</view>
+
+<!-- 车辆四周照 -->
+  <view class="prove">
+    <view class="license">车辆四周照</view>
+    <view class="d-flex">
+    <!-- 上传图片预览 -->
+      <view class="imgs" wx:for="{{tempFilePaths3}}" wx:key="index">
+        <image src='{{item}}' bindlongpress="deleteImage3" bindtap="listenerButtonPreviewImage3" data-index="{{index}}" mode='widthFix'/>
+      </view>
+    <view class="onload" bindtap="upload3">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+    </view>
+  </view>
+
+  <!-- 运营证件照 -->
+  <view class="prove">
+    <view class="license">运营证件照</view>
+    <view class="d-flex">
+    <!-- 上传图片预览 -->
+      <view class="imgs" wx:for="{{tempFilePaths4}}" wx:key="index">
+        <image src='{{item}}' bindlongpress="deleteImage4" bindtap="listenerButtonPreviewImage4" data-index="{{index}}" mode='widthFix'/>
+      </view>
+    <view class="onload" bindtap="upload4">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+    </view>
+  </view>
+
+  <!-- 从业资格证 -->
+  <view class="prove">
+    <view class="license">从业资格证</view>
+    <view class="d-flex">
+    <!-- 上传图片预览 -->
+      <view class="imgs" wx:for="{{tempFilePaths5}}" wx:key="index">
+        <image src='{{item}}' bindlongpress="deleteImage5" bindtap="listenerButtonPreviewImage5" data-index="{{index}}" mode='widthFix'/>
+      </view>
+    <view class="onload" bindtap="upload5">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+    </view>
+  </view>
+
+  <!-- 手持身份证照 -->
+  <view class="prove">
+    <view class="license">手持身份证照 (正反面)</view>
+    <view class="d-flex">
+    <!-- 上传图片预览 -->
+      <view class="imgs" wx:for="{{tempFilePaths6}}" wx:key="index">
+        <image src='{{item}}' bindlongpress="deleteImage6" bindtap="listenerButtonPreviewImage6" data-index="{{index}}" mode='widthFix'/>
+      </view>
+    <view class="onload" bindtap="upload6">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+    </view>
+  </view>
+
+
+<view class="mybtn d-spb">
+<button  class="up" bindtap="up">上一步</button>
+<button form-type="submit" class="finish" bindtap="finish">完成</button>
+</view>
+<include src="../all.wxml"/>
+</form>
+</view>

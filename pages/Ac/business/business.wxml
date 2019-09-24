@@ -1,0 +1,56 @@
+<!-- 我是企业 -->
+<view class="bus">
+<!-- 标题 -->
+<view class="mes">请完善企业信息</view>
+<!-- form表单 -->
+<form bindsubmit="formSubmit">
+<!-- 企业类型 -->
+<view class="form">
+ <view class="section d-spb">
+    <view class="section-title">企业类型</view>
+    <view class="right d-spb"catchtap='selectTap' >
+      <input name="i1" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index]}}"/>
+      <view>
+        <image class="section-img" src="../../images/position/shape45.png"></image>
+      </view>
+    </view>
+    
+ </view>
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*50):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
+<!-- 企业名称 -->
+ <view class="section2 d-spb">
+    <view class="section-title">企业名称</view>
+    <view class="right">
+      <input name="i2"/>
+    </view>
+ </view>
+ <!-- 联系人 -->
+  <view class="section2 d-spb">
+    <view class="section-title">联系人</view>
+    <view class="right">
+      <input name="i3"/>
+    </view>
+ </view>
+ <!-- 联系电话 -->
+  <view class="section2 d-spb">
+    <view class="section-title">联系电话</view>
+    <view class="right d-spb">
+      <input name="i4" maxlength="11" type="number"/>
+      <view class="ch">更换</view>
+    </view>
+ </view>
+
+</view>
+<button form-type="submit" class="next" bindtap="next">下一步</button>
+<include src="../err.wxml"/>
+</form>
+</view>

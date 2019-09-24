@@ -1,0 +1,29 @@
+<!-- ====================== -->
+<!-- 错误提示框 -->
+<view class='shade' hidden='{{popup}}' bindtap='hidePopup'></view>
+<view class='shade_box popup' hidden='{{popup}}'>
+<!-- 成功图片 -->
+    <view class='title'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
+    <!-- 文字 -->
+    <view class='content'>
+      <view class="t1">请完善信息</view>
+    </view>
+    <view class='msg' bindtap='hidePopup'>确定</view>
+</view>
+<!-- ======================= -->
+<!-- ======================= -->
+<!-- 成功提示框 -->
+<view class='sshade' hidden='{{sup}}' bindtap='suhide'></view>
+<view class='sshade_box spopup' hidden='{{sup}}'>
+<!-- 成功图片 -->
+    <view class='stitle'><image style="width:87rpx;height:87rpx;" src="../../images/success.png"></image></view>
+    <!-- 文字 -->
+    <view class='scontent'>
+      <view class="st1">提交成功</view>
+      <view class="st2">小包正在努力为您审核中</view>
+      <view class="st3">预计1-3个工作日完成</view>
+      <view class="st4">请注意消息提醒！</view>
+    </view>
+    <view class='smsg' bindtap='suhide'>确定</view>
+</view>
+<!-- ======================= -->

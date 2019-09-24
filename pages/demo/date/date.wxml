@@ -1,0 +1,9 @@
+<view class="sectiontime">  
+  <picker mode="date" bindchange="bindDateChange">  
+    <view class="picker">  
+      <!-- 日期: {{dates}}   -->
+      <view class="select-text" >{{dates}}</view>
+      <image src="../../images/select.png"></image>
+    </view>  
+  </picker>  
+</view>

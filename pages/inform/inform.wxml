@@ -1,0 +1,24 @@
+<!-- 消息通知 -->
+<view >
+  <view class="inform bg">
+    <view class="date">
+      <text>{{currenTime}}</text>
+    </view>
+    <!-- 消息 -->
+    <view class="mes">
+      <view class="title">消息通知标题</view>
+      <view class="content">您的举报已经通过审核，我们已对被举报用户做出了相应 惩罚，感谢您对包程项的关注与支持！</view>
+    </view>
+    <!-- 第二个信息 -->
+    <view class="date">
+      <text>{{currenTime}}</text>
+    </view>
+    <!-- 消息 -->
+    <view class="mes">
+      <view class="title">消息通知标题</view>
+      <view class="content">您的举报已经通过审核，我们已对被举报用户做出了相应 惩罚，感谢您对包程项的关注与支持！</view>
+    </view>
+
+
+  </view>
+</view>

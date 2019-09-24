@@ -1,0 +1,176 @@
+<!--pages/informmation/global/global.wxml-->
+<!-- <text>pages/informmation/global/global.wxml</text> -->
+<!-- 工地信息 -->
+<!-- 分类 -->
+    <view class="select ml d-flex" style="margin-top:30rpx;">
+<!-- 分类 -->
+<view class="sectionClass" >  
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+    <view class="picker">  
+      <!-- 分类：{{objectArray[index]}}   -->
+      <view class="select-text">请选择分类</view>
+      <image src="../../images/select.png"></image>
+    </view>  
+  </picker>  
+</view>  
+<!-- 时间 -->
+<view class="sectiontime">  
+  <picker mode="date" value="{{date}}" bindchange="bindDateChange">  
+    <view class="picker">  
+      <!-- 日期: {{dates}}   -->
+      <view class="select-text">请选择时间</view>
+      <image src="../../images/select.png"></image>
+    </view>  
+  </picker>  
+</view> 
+</view>
+<view class="bg">
+<!-- 发布 -->
+<view class="bgf">
+<!-- 第一个 -->
+  <view class="musks" style="margin-top:30rpx;">
+    <view class="musk-user d-spb">
+      <view class="musk-user-l d-flex">
+      <!-- 头像 -->
+        <image src="../../images/carousel/03.jpg"></image>
+        <!-- 用户名 -->
+        <view>发布用户名</view>
+        <view>十万火急</view>
+      </view>
+      <view class="musk-user-r">
+        <view>2.3km</view>
+      </view>    
+    </view>
+  <!-- 发布需求 -->
+  <view style="margin-left:31rpx;margin-top:39rpx;font-size:32rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">发布者需求的标题</view>
+<!-- 时间 -->
+<view class="musk-date d-spb">
+  <view class="musk-date-l">{{currenTime}}</view>
+  <view class="musk-date-r d-flex">
+    <image src="../../images/position49.png"></image>
+    <view >发布者定位</view>
+  </view>
+</view>
+<!-- 内容 -->
+<view class="musk-content">翠云万科欢迎32万/28方/22方车24小时随时开自运。要来拉的老板提前联系，结账方式随意。</view>
+<!-- 图片视频 -->
+<view class="musk-img">
+  <view class="">
+    <block wx:for="{{muskImg}}" wx:key="{{index}}">
+      <image class="muskImg" src="{{item.url}}"></image>
+    </block>
+  </view>
+    <view class="video">
+      <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
+    </view>
+</view>
+<!-- 拨打电话-->
+<view class="musk-phone d-spb">
+  <view class="musk-phone-l d-flex">
+    <view class="">项目类型</view>
+    <view class="">渣土信息</view>
+  </view>
+  <view class="musk-phone-r d-flex">
+    <view>
+      <image src="../../images/phone.png"></image>
+    </view>
+    <view>拨打电话</view>
+  </view>
+</view>
+<!-- 分享 -->
+<view class="likes d-spb">
+<!-- 分享 -->
+  <view class="share d-flex" bindtap="share">
+    <view><image src="../../images/share.png"></image></view>
+    <view>分享</view>
+  </view>
+  <!-- 评论 -->
+  <view class="comment d-flex" bindtap="comment">
+    <view><image src="../../images/comment.png"></image></view>
+    <view>评论</view>
+  </view>
+  <!-- 点赞 -->
+  <view class="like d-flex" bindtap="like">
+    <view><image src="../../images/like.png"></image></view>
+    <view>{{like}}</view>
+  </view>
+
+</view>
+  <!--  -->
+  </view>
+</view>
+<!-- 第二个 -->
+<view class="bgf second">
+<view class="musks">
+    <view class="musk-user d-spb">
+      <view class="musk-user-s-l d-flex">
+      <!-- 头像 -->
+        <image src="../../images/carousel/03.jpg"></image>
+        <!-- 用户名 -->
+        <view>发布用户名</view>
+        <view class="btn-r">置顶</view>
+      </view>
+      <view class="musk-user-r">
+        <view>2.3km</view>
+      </view>    
+    </view>
+  <!-- 发布需求 -->
+  <view style="margin-left:31rpx;margin-top:39rpx;font-size:32rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">发布者需求的标题</view>
+<!-- 时间 -->
+<view class="musk-date d-spb">
+  <view class="musk-date-l">{{currenTime}}</view>
+  <view class="musk-date-r d-flex">
+    <image src="../../images/position49.png"></image>
+    <view >发布者定位</view>
+  </view>
+</view>
+<!-- 内容 -->
+<view class="musk-content">翠云万科欢迎32万/28方/22方车24小时随时开自运。要来拉的老板提前联系，结账方式随意。</view>
+<!-- 图片视频 -->
+<view class="musk-img">
+  <view class="">
+    <block wx:for="{{muskImg}}" wx:key="{{index}}">
+      <image class="muskImg" src="{{item.url}}"></image>
+    </block>
+  </view>
+    <!-- <view class="video">
+      <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
+    </view> -->
+</view>
+<!-- 拨打电话-->
+<view class="musk-phone d-spb">
+  <view class="musk-phone-l d-flex">
+    <view class="">项目类型</view>
+    <view class="">渣土信息</view>
+  </view>
+  <view class="musk-phone-r d-flex">
+    <view>
+      <image src="../../images/phone.png"></image>
+    </view>
+    <view>拨打电话</view>
+  </view>
+</view>
+<!-- 分享 -->
+<view class="likes d-spb">
+<!-- 分享 -->
+  <view class="share d-flex" bindtap="share">
+    <view><image src="../../images/share.png"></image></view>
+    <view>分享</view>
+  </view>
+  <!-- 评论 -->
+  <view class="comment d-flex" bindtap="comment">
+    <view><image src="../../images/comment.png"></image></view>
+    <view>评论</view>
+  </view>
+  <!-- 点赞 -->
+  <view class="like d-flex" bindtap="like">
+    <view><image src="../../images/like.png"></image></view>
+    <view>{{like}}</view>
+  </view>
+
+</view>
+  <!--  -->
+  </view>
+</view>
+<!--  -->
+</view>

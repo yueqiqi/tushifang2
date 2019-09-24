@@ -1,0 +1,103 @@
+<!-- 我是个人 -->
+<view class="b2">
+  <!-- 标题 -->
+<view class="mes">请完善个人信息</view>
+<form bindsubmit="formSubmit">
+<!-- 身份选择 -->
+<view class="form">
+ <view class="section d-spb">
+    <view class="section-title">身份选择</view>
+    <view class="right d-spb">
+      <input name="i1" placeholder-class="holder{{err}}" placeholder="请选择身份类型" />
+      <view>
+        <image class="section-img1" src="../../images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+<!--真实姓名 -->
+ <view class="section2 d-spb">
+    <view class="section-title">真实姓名</view>
+    <view class="right">
+      <input name="i2"/>
+    </view>
+ </view>
+ <!-- 联系电话 -->
+  <!-- 联系电话 -->
+  <view class="section2 d-spb">
+    <view class="section-title">联系电话</view>
+    <view class="right d-spb">
+      <input name="i3" maxlength="11" type="number"/>
+      <view class="ch">更换</view>
+    </view>
+ </view>
+ <!-- 所在地区 -->
+<view class="section2 d-spb">
+    <view class="section-title">所在地区</view>
+    <view class="right d-spb">
+      <input name="i4"/>
+      <view>
+        <image class="section-img" src="../../images/right.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- 详细地址 -->
+  <view class="section2 d-spb">
+    <view class="section-title">详细地址</view>
+    <view class="right">
+      <input name="i5"/>
+    </view>
+ </view>
+<!-- 上传照片 -->
+<!-- 身份执照 -->
+<view class="img">
+  <view>
+    <view class="license">手持身份证照（正反面）</view>
+  <view class="d-flex">
+  <!-- 上传图片预览 -->
+  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  </view>
+    <view class="onload" bindtap="upload">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+  </view>
+  </view>
+  
+</view>
+
+</view>
+<view class="mybtn">
+<button form-type="submit" class="next" bindtap="bindsubmit">下一步</button>
+</view>
+<!-- ====================== -->
+<!-- 错误提示框 -->
+<view class='shade' hidden='{{popup}}' bindtap='hidePopup'></view>
+<view class='shade_box popup' hidden='{{popup}}'>
+<!-- 成功图片 -->
+    <view class='title'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
+    <!-- 文字 -->
+    <view class='content'>
+      <view class="t1">请完善信息</view>
+    </view>
+    <view class='msg' bindtap='hidePopup'>确定</view>
+</view>
+<!-- ======================= -->
+<!-- ======================= -->
+<!-- 成功提示框 -->
+<view class='sshade' hidden='{{sup}}' bindtap='suhide'></view>
+<view class='sshade_box spopup' hidden='{{sup}}'>
+<!-- 成功图片 -->
+    <view class='stitle'><image style="width:87rpx;height:87rpx;" src="../../images/success.png"></image></view>
+    <!-- 文字 -->
+    <view class='scontent'>
+      <view class="st1">提交成功</view>
+      <view class="st2">小包正在努力为您审核中</view>
+      <view class="st3">预计1-3个工作日完成</view>
+      <view class="st4">请注意消息提醒！</view>
+    </view>
+    <view class='smsg' bindtap='suhide'>确定</view>
+</view>
+<!-- ======================= -->
+</form>
+</view>

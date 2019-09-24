@@ -1,0 +1,315 @@
+// pages/Ac/business2/business2.js
+Page({
+  formSubmit:function(e){
+    // 打印输入的内容
+    console.log(e.detail.value)
+    var m = e.detail.value
+    console.log(e.detail.value);
+    if (m.i1 == "" || m.i2 == "" || m.i3 == ""  || this.data.tempFilePaths.length == 0) {
+      this.hidePopup(false);
+    } else {
+      this.suhide(false);
+      
+    }
+    console.log(this.data.tempFilePaths.length)
+  },
+
+  /* 隐藏成功弹窗 */
+  suhide(flag = true) {
+      this.setData({
+        "sup": flag
+      });
+    wx.navigateTo({
+      url: '/pages/index/index',
+    })
+     
+  },
+
+  
+  /* 隐藏失败弹窗 */
+  hidePopup(flag = true) {
+    this.setData({
+      "popup": flag
+    });
+  },
+// 上一步
+up:function(){
+wx.navigateBack({
+  
+})
+},
+
+// 法人证明上传图片
+  /**
+     * 预览图片方法
+     */
+  listenerButtonPreviewImages: function (e) {
+    let index = e.target.dataset.index;
+    let that = this;
+    console.log(that.data.tempFilePaths[index]);
+    console.log(that.data.tempFilePaths);
+    wx.previewImage({
+      current: that.data.tempFilePathss[index],
+      urls: that.data.tempFilePathss,
+      //这根本就不走
+      success: function (res) {
+        //console.log(res);
+      },
+      //也根本不走
+      fail: function () {
+        //console.log('fail')
+      }
+    })
+  },
+  /**
+   * 长按删除图片
+   */
+  deleteImages: function (e) {
+    var that = this;
+    var tempFilePaths = that.data.tempFilePathss;
+    var index = e.currentTarget.dataset.index;//获取当前长按图片下标
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除此图片吗？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('点击确定了');
+          tempFilePaths.splice(index, 1);
+        } else if (res.cancel) {
+          console.log('点击取消了');
+          return false;
+        }
+        that.setData({
+          tempFilePathss
+        });
+      }
+    })
+  },
+  uploads: function () {
+    let that = this;
+    wx.chooseImage({
+      count: 2, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: res => {
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 1000
+        })
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        let tempFilePaths = res.tempFilePaths;
+
+        that.setData({
+          tempFilePathss: tempFilePaths
+        })
+        /**
+         * 上传完成后把文件上传到服务器
+         */
+        var count = 0;
+        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+          //上传文件
+          /*  wx.uploadFile({
+              url: HOST + '地址路径',
+              filePath: tempFilePaths[i],
+              name: 'uploadfile_ant',
+              header: {
+                "Content-Type": "multipart/form-data"
+              },
+              success: function (res) {
+                count++;
+                //如果是最后一张,则隐藏等待中  
+                if (count == tempFilePaths.length) {
+                  wx.hideToast();
+                }
+              },
+              fail: function (res) {
+                wx.hideToast();
+                wx.showModal({
+                  title: '错误提示',
+                  content: '上传图片失败',
+                  showCancel: false,
+                  success: function (res) { }
+                })
+              }
+            });*/
+        }
+
+      }
+    })
+  },
+  // /////////////////////////////////////////////////////////////////////////////
+  // 营业执照
+  /**
+     * 上传图片方法
+     */
+  upload: function () {
+    let that = this;
+    wx.chooseImage({
+      count: 2, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: res => {
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 1000
+        })
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        let tempFilePaths = res.tempFilePaths;
+
+        that.setData({
+          tempFilePaths: tempFilePaths
+        })
+        /**
+         * 上传完成后把文件上传到服务器
+         */
+        var count = 0;
+        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+          //上传文件
+          /*  wx.uploadFile({
+              url: HOST + '地址路径',
+              filePath: tempFilePaths[i],
+              name: 'uploadfile_ant',
+              header: {
+                "Content-Type": "multipart/form-data"
+              },
+              success: function (res) {
+                count++;
+                //如果是最后一张,则隐藏等待中  
+                if (count == tempFilePaths.length) {
+                  wx.hideToast();
+                }
+              },
+              fail: function (res) {
+                wx.hideToast();
+                wx.showModal({
+                  title: '错误提示',
+                  content: '上传图片失败',
+                  showCancel: false,
+                  success: function (res) { }
+                })
+              }
+            });*/
+        }
+
+      }
+    })
+  },
+  /**
+   * 预览图片方法
+   */
+  listenerButtonPreviewImage: function (e) {
+    let index = e.target.dataset.index;
+    let that = this;
+    console.log(that.data.tempFilePaths[index]);
+    console.log(that.data.tempFilePaths);
+    wx.previewImage({
+      current: that.data.tempFilePaths[index],
+      urls: that.data.tempFilePaths,
+      //这根本就不走
+      success: function (res) {
+        //console.log(res);
+      },
+      //也根本不走
+      fail: function () {
+        //console.log('fail')
+      }
+    })
+  },
+  /**
+   * 长按删除图片
+   */
+  deleteImage: function (e) {
+    var that = this;
+    var tempFilePaths = that.data.tempFilePaths;
+    var index = e.currentTarget.dataset.index;//获取当前长按图片下标
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除此图片吗？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('点击确定了');
+          tempFilePaths.splice(index, 1);
+        } else if (res.cancel) {
+          console.log('点击取消了');
+          return false;
+        }
+        that.setData({
+          tempFilePaths
+        });
+      }
+    })
+  },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    //成功 提示框
+    sup: true,
+    // 错误提示框
+    popup: true,
+    // 营业执照图片
+    tempFilePaths: [],
+    // 法人证明执照
+    tempFilePathss: []
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

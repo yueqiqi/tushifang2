@@ -1,0 +1,110 @@
+/* pages/store/classify/classify.wxss */
+.mtt{
+  margin-top:10rpx;
+}
+.til{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1)
+}
+.suc{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+}
+
+.con{
+  margin-left:30rpx;margin-right:31rpx;
+}
+/* 订单日期 */
+.tim{
+  border-bottom: 2rpx solid rgba(230,230,230,1);
+  padding-bottom:25rpx;
+  padding-top:28rpx;
+}
+
+.details{
+  margin-top:31rpx;
+  /* margin-left:29rpx; */
+}
+/* 商品图片 */
+.img{
+  width:180rpx;
+height:180rpx;
+}
+/* 商品标题 */
+.detail-title{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+width: 476rpx;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
+/* margin-left:-20rpx; */
+}
+/* 分类 */
+.classify{
+  width:160rpx;
+height:40rpx;
+background:rgba(242,242,242,1);
+border-radius:10rpx;
+margin-top:14rpx;
+/* 文字 */
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+line-height: 40rpx;text-align: center;
+}
+.classify-l{
+  padding-left:21rpx;
+}
+.classify-r{
+  padding-right:21rpx;
+}
+/* 商品数量 */
+.num{
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);margin-top:18rpx;
+}
+/* 商品价钱 */
+.price{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(245,121,0,1);
+margin-left:339rpx;
+margin-top:23rpx;
+}
+.my-btn{
+  width:160rpx;
+height:50rpx;
+background:rgba(242,242,242,1);
+border-radius:10rpx;text-align: center;
+line-height: 50rpx;
+font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+margin-left:30rpx;
+}
+.bt{
+  /* margin-left:200rpx; */
+  justify-content: flex-end!important;
+  margin-right:31rpx;
+  margin-top:29rpx;
+  padding-bottom:28rpx;
+}
+/* .mm1{
+  width:160rpx;
+  height:50rpx;background:rgba(118, 212, 198, 1);
+  border-radius:10rpx;text-align: center
+  ;line-height: 50rpx;font-size: 26rpx;font-family: PingFang SC;font-weight: 400;color:#fff;margin-left: 30rpx;
+} */

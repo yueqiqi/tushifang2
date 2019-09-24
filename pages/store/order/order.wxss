@@ -1,0 +1,187 @@
+/* 订单状态 */
+.order{
+  width:100%;
+height:108rpx;
+background:linear-gradient(-45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
+line-height: 108rpx;
+}
+.state{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(255,255,255,1);
+margin-left:30rpx;
+}
+/* 订单已签收 */
+.cart{
+  width:31rpx;height:31rpx;
+}
+/* 订单签收状态 */
+.van-cell-text{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);margin-left:20rpx;line-height:40rpx;
+}
+/* 時間 */
+.van-cell__label{
+  margin-left:50rpx;
+}
+/* 位置 */
+.location{
+  width:27rpx;height:29rpx;
+}
+/* 姓名 */
+.name{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+margin-left:20rpx;
+margin-top:-2rpx;
+}
+/* 电话号码 */
+.phone{
+  margin-left:20rpx;
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+/* margin-top:4rpx; */
+}
+/* 位置 */
+.loca{
+  width:544rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);line-height: 30rpx;
+margin-left:48rpx;
+}
+/* 商品 */
+.detail{
+  margin-top:10rpx;
+}
+.details{
+  padding-top:42rpx;
+  margin-left:29rpx;
+}
+/* 商品图片 */
+.img{
+  width:180rpx;
+height:180rpx;
+}
+/* 商品标题 */
+.detail-title{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+width: 476rpx;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
+/* margin-left:-20rpx; */
+}
+/* 分类 */
+.classify{
+  width:160rpx;
+height:40rpx;
+background:rgba(242,242,242,1);
+border-radius:10rpx;
+margin-top:14rpx;
+/* 文字 */
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+line-height: 40rpx;text-align: center;
+}
+.classify-l{
+  padding-left:21rpx;
+}
+.classify-r{
+  padding-right:21rpx;
+}
+/* 商品数量 */
+.num{
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);margin-top:18rpx;
+}
+/* 商品价钱 */
+.price{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(245,121,0,1);
+margin-left:339rpx;
+margin-top:23rpx;
+}
+/* 订单编号 */
+.order-nums{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+margin-left:40rpx;
+margin-right:28rpx;
+margin-top:80rpx;
+}
+/* 复制 */
+.copy{
+  width:80rpx;
+height:36rpx;
+background:rgba(242,242,242,1);
+border-radius:10rpx;
+font-size:22rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+text-align: center;
+line-height: 36rpx;
+}
+/* 订单信息 */
+.order-information{
+  margin-top:10rpx;
+  margin-left:39rpx;
+  margin-right:38rpx;
+  padding-top:29rpx;
+  /* height:100%; */
+}
+.mess{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+border-bottom:2rpx solid rgba(230,230,230,1);
+padding-bottom:23rpx;
+}
+/* 商品总价 运费 */
+.t1{
+  margin-top:20rpx;
+}
+.t1,.t2{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+}
+.t3{
+  margin-top:39rpx;
+  padding-bottom:33rpx;
+}
+.t3 :first-child{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+.t3 :last-child{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(245,121,0,1);
+}

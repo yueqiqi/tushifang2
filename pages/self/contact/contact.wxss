@@ -1,0 +1,50 @@
+/* pages/self/contact/contact.wxss */
+/* 个人简介文本框 */
+page{
+  background: #fff!important;
+}
+.texta{
+  width:660rpx;
+height:400rpx;
+border:1px solid rgba(217,217,217,1);
+border-radius:10rpx;
+padding-top:20rpx;padding-left:20rpx;padding-right: 20rpx;
+margin: 0 auto;
+margin-top: 31rpx;
+}
+textarea{
+  width:660rpx;
+height:400rpx;
+}
+/* 确认提交 */
+.next{
+  width:700rpx;
+height:70rpx;
+background:rgba(118,212,198,1);
+border-radius:10rpx;
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+text-align: center;
+line-height: 70rpx;
+margin:0 auto;
+margin-top:30rpx;
+}
+/* 客服 */
+.btn{
+  margin-top:557rpx;
+  margin-left:30rpx;margin-right:30rpx;
+}
+.btnl,.btnr{
+  width:320rpx;
+height:70rpx;
+background:rgba(235,249,247,1);
+border-radius:10rpx;
+text-align: center;
+line-height: 70rpx;
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(72,149,137,1);
+}

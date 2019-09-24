@@ -1,0 +1,105 @@
+/* pages/self/card/card.wxss */
+.card{
+  width:690rpx;
+height:410rpx;
+background:rgba(255,255,255,1);
+box-shadow:0rpx 0rpx 10rpx 0rpx rgba(217,217,217,1);
+border-radius:10rpx;
+margin:0 auto;
+padding-top:31rpx;
+}
+.head{
+  width:140rpx;
+height:140rpx;
+border-radius:50%;
+margin-top:20rpx;
+}
+/* 用户昵称 */
+.me{
+  margin-left:29rpx;
+}
+.right{
+  margin-left:30rpx;
+}
+.name{
+  font-size:36rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+padding-top:30rpx;
+}
+.me1{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+}
+/*  */
+.ico{
+  width:39rpx;height:31rpx;
+}
+.mle{
+  margin-left:19rpx;
+}
+/* 按钮 */
+.bt{
+  width:690rpx;
+height:70rpx;
+background:rgba(118,212,198,1);
+border-radius:10rpx;
+text-align: center;
+line-height: 70rpx;
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+margin-top:21rpx;
+}
+/* 我的名片夹 */
+.names{font-size:36rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+padding-top:30rpx;margin-left:30rpx;}
+.ncard{
+  width:690rpx;
+height:130rpx;
+background:rgba(255,255,255,1);
+border:2rpx solid rgba(118,212,198,1);
+border-radius:10rpx;
+margin:30rpx auto;
+}
+.cc{
+  margin-left:20rpx;margin-right:22rpx;
+}
+.c-i{
+  padding-top:20rpx;
+}
+.c-img{
+  width:90rpx;
+height:90rpx;
+border-radius:50%;
+}
+/* 用户名 */
+.c-name{
+  font-size:32rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+/* 职位 */
+.c-t{
+  font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+margin-top:10rpx;
+}
+/* 时间 */
+.time{
+  font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+padding-top:29rpx;
+}

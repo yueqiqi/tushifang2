@@ -1,0 +1,41 @@
+/* pages/Ac/select/select.wxss */
+/* 下拉选项框 */
+.select_box{
+  width:45%;
+  height:70%;
+  border-radius: 14rpx;
+  position: relative;margin-left:131rpx;z-index:50000;
+  margin-top:10rpx;
+}
+/* 自定义列表 */
+.select_box .option_box{
+  position: absolute;
+  top: calc(100% - 1px);
+  width: 510rpx;
+  /* height:404rpx!important; */
+  box-sizing: border-box;
+  /* height: 0; */
+  overflow-y: auto;
+  background: #fff;
+  transition: height 0.3s;
+  border-left:1px solid #efefef;
+  border-right:1px solid #efefef;
+  background:rgba(242,242,242,1);
+border-radius:20rpx;
+
+}
+/* 自定义列表文字 */
+.select_box .option_box .option{
+  display: block;
+  line-height: 30rpx; 
+  font-size: 30rpx;
+  /* border-top: 1px solid #efefef;*/
+  border-bottom: 2rpx solid rgba(255,255,255,1); 
+  padding: 10rpx;padding-top:28rpx;padding-left:30rpx;
+  color:rgba(51,51,51,1);
+  
+}
+.ac{
+  background:red;
+  font-size:1000rpx;
+}

@@ -1,0 +1,113 @@
+<!-- 我的订单 -->
+<!-- 1 -->
+<view class="bg">
+<!-- 背景 -->
+<view class="bgf">
+<!-- 搜索 -->
+  <view class="se">
+    <view class='page_row' bindtap="search">  
+      <view class="search">  
+        <view class="df search_arr">  
+          <icon class="searchcion" size='20' type='search'></icon>  
+          <input class="" disabled placeholder="搜索..." value="{{searchValue}}"/>  
+        </view>  
+      </view>   
+    </view>
+    </view>
+    <!-- 图片 -->
+  <view class="img"> 
+    <image src="../../images/carousel/02.jpg"></image>
+  </view>
+<!-- 选项卡 -->
+<view class="card">
+<!-- 推荐 -->
+<van-tabs sticky swipe-threshold="5" swipeable="true" line-width="60">
+  <van-tab title="推荐">
+    <view class="bg">
+    <!-- 第一个商品 -->
+      <view class="d-spb">
+        <view class="left">
+        <!-- 商品图片 -->
+          <view class="product">
+            <image src="../../images/carousel/02.jpg"></image>
+          </view>
+        <!-- 标题 -->
+          <view class="titles">日本车载眼镜架多功能创意汽车用眼睛支架</view>
+        <!-- 价格 -->
+          <view class="d-flex price">
+            <view class="price-l">￥99.00</view>
+            <view class="price-r">￥200</view>
+          </view>
+        </view>
+        <!--  -->
+        <view class="right">
+          <!-- 商品图片 -->
+          <view class="product">
+            <image src="../../images/carousel/03.jpg"></image>
+          </view>
+        <!-- 标题 -->
+          <view class="titles">可折叠汽车储物多功能车载拉杆箱整理收纳箱子</view>
+        <!-- 价格 -->
+          <view class="d-flex price">
+            <view class="price-l">￥99.00</view>
+            <view class="price-r">￥200</view>
+          </view>
+        </view>
+      </view>
+<!-- =================================================== -->
+      <!-- 第二个商品 -->
+      <view class="d-spb">
+        <view class="left">
+        <!-- 商品图片 -->
+          <view class="product">
+            <image src="../../images/carousel/04.jpg"></image>
+          </view>
+        <!-- 标题 -->
+          <view class="titles">安全反光贴道路黄黑红白警示桩反光膜</view>
+        <!-- 价格 -->
+          <view class="d-flex price">
+            <view class="price-l">￥99.00</view>
+            <view class="price-r">￥200</view>
+          </view>
+        </view>
+        <!--  -->
+        <view class="right">
+          <!-- 商品图片 -->
+          <view class="product">
+            <image src="../../images/carousel/02.jpg"></image>
+          </view>
+        <!-- 标题 -->
+          <view class="titles">重卡原厂配件德龙x3000外把手外拉手车门</view>
+        <!-- 价格 -->
+          <view class="d-flex price">
+            <view class="price-l">￥99.00</view>
+            <view class="price-r">￥200</view>
+          </view>
+        </view>
+      </view>
+    <!--  -->
+    </view>
+  </van-tab>
+  <!-- ======================================================================================= -->
+  <!-- 汽车用品 -->
+  <van-tab title="汽车用品">
+    <view class="bg"></view>
+  </van-tab>
+  <!-- ======================================================================================= -->
+  <!-- 油卡出售 -->
+  <van-tab title="油卡出售" title-style="margin-left:10rpx;">内容 3</van-tab>
+  <!-- ======================================================================================= -->
+  <!-- 工具 -->
+  <van-tab title="工具">内容 4</van-tab>
+  <!-- ========================================================================================== -->
+  <!-- 生活 -->
+  <van-tab title="生活 " title-style="margin-left:-10rpx;">内容 5</van-tab>
+</van-tabs>
+
+
+
+</view>
+<!-- 背景 -->
+</view>
+<!-- 1 -->
+</view>

@@ -1,0 +1,167 @@
+@import "../postMessage/postMessage.wxss";
+@import "../title/title.wxss";
+@import "../panel/panel.wxss";
+/* pages/body/body.wxss */
+/* 左侧小图标样式 */
+.position{
+  margin:0rpx 20rpx;
+  width:28rpx;height:35rpx;
+  margin-top:10rpx;
+}
+.position-text{
+  width:160rpx;
+height:38rpx;
+font-size:40rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+.select{
+  width:29rpx;height:17rpx;margin-left:26rpx;
+  margin-top:20rpx;
+}
+.message{
+  width:45rpx;height: 41rpx;
+  margin-left:396rpx;
+  margin-top:10rpx;
+}
+/* 搜索框样式 */
+ .search{  
+      width: 95%;  
+      margin:20rpx 0rpx;
+      
+    }  
+    .search_arr {  
+      border: 1px solid #d0d0d0;  
+      border-radius: 10rpx;  
+      margin-left: 20rpx;  background:rgba(242,242,242,1);
+    }  
+    .search_arr input{  
+      margin-left: 60rpx;  
+      height: 60rpx;  
+      border-radius: 5px;  
+    }  
+    .bc_text {  
+      line-height: 68rpx;  
+      height: 68rpx;  
+      margin-top: 34rpx;  
+    }  
+      
+    .page_row{  
+      display: flex;  
+      flex-direction: row  
+    }  
+    .searchcion {  
+      margin: 10rpx 10rpx 10rpx 10rpx;  
+      position: absolute;  
+      left:25rpx;  
+      z-index: 2;  
+      width: 20px;  
+      height: 20px;  
+      text-align: center;  
+    } 
+/* 轮播图样式 */
+/* 去除滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+/* 轮播图图片 */
+.slide-image{
+  width: 690rpx;height:359rpx;
+  margin-left: 22rpx;
+
+}
+/* 轮播图下方小图片样式 */
+.icon{
+  height:194rpx;
+}
+.v1{
+  display:flex;justify-content:left;
+  /* 换行 */
+  flex-wrap: wrap;
+  padding-top:76rpx;
+  margin-left:49rpx;
+}
+.icon-img{
+  width:54rpx;height:57rpx;padding-left:20rpx;
+}
+/* 文字信息 */
+.icon-text{
+  width:88rpx;
+font-size:22rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+text-align:center;
+}
+
+/* 公告 */
+.gg{
+display:flex;
+margin-top:30rpx;
+background:rgba(241,251,249,1);
+width:90%;margin-left:30rpx;
+border-radius: 10rpx;height:80rpx;
+}
+
+/* 公告字体样式 */
+.gonggao{
+  width:100rpx;
+font-size:36rpx;
+font-family:PingFang SC;
+font-weight:bold;
+padding-top: 15rpx;
+padding-left:15rpx;
+color:rgba(118,212,198,1);z-index:2
+}
+/* 热门 */
+.hot{
+  width:70rpx;
+height:36rpx;
+background:rgba(255,174,0,1);
+border-radius:5px;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(255,255,255,1);
+text-align: center;
+margin-top:23rpx;
+margin-left:20rpx;
+}
+/* 滚动字体样式 */
+.srcoll_view{
+/* position: absolute;
+top:0rpx; */
+height: 100rpx;
+font-size: 30rpx;
+white-space: nowrap;
+line-height: 100rpx;
+color: #333;
+animation:myfirst 20s linear infinite;
+}
+@keyframes myfirst
+{
+from {margin-left:450rpx;}
+to {margin-left:-300rpx;}
+}
+.scroll_view_border{
+/* position: relative; */
+width: 90%;
+/* height: 100rpx; */
+overflow: hidden;margin-top:-10rpx;margin-left:20rpx;
+}
+/* 公告栏中的小箭头 */
+.right-img{
+width:17rpx;height:30rpx;margin-top:27rpx;margin-left:10rpx
+}
+/* 公告下方图片 */
+.img{
+  width:690rpx;
+height:200rpx;
+border-radius:10px;
+margin-left:30rpx;
+margin-top:50rpx;
+margin-bottom:50rpx;
+}

@@ -1,0 +1,41 @@
+/* pages/store/logistics/logistics.wxss */
+.ex{
+  margin-left:30rpx;
+}
+.company{
+  margin-left:31rpx;
+  padding-bottom:31rpx;
+}
+/* 快递公司图片 */
+.img{
+  width:140rpx;height:140rpx;
+  border-radius:50%;margin-top:25rpx;
+}
+/* 快递公司 */
+.express{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+/* 编号 */
+.num{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+margin-top:18rpx;
+}
+/* 订单跟踪 */
+.steps{
+  margin-top:10rpx;
+}
+.order{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin-left:30rpx;margin-right:30rpx;
+border-bottom:2rpx solid rgba(230,230,230,1);
+padding-bottom:24rpx;padding-top:27rpx;
+}

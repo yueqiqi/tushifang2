@@ -1,0 +1,24 @@
+<!-- 个人中心 -->
+<!-- 微信信息 -->
+<view class="bgf">
+<view class="ml">
+  <view class="d-flex">
+    <view><image  class="head-img" src="../../images/carousel/04.jpg"></image></view>
+    <view class="head-title">
+      <view>微信昵称</view>
+      <view>当前信誉分\t<text>0</text></view>
+    </view>
+  </view>
+</view>
+</view>
+<!-- 图标 -->
+<view class="bgf mtt d-flex ico">
+  <block wx:for="{{self}}" wx:key="{{index}}">
+    <view class="icos">
+  <navigator url="{{item.link}}">
+      <view><image class="ico-img" src="{{item.img}}"></image></view>
+  </navigator>
+      <view class="til">{{item.til}}</view>
+    </view>
+  </block>
+</view>

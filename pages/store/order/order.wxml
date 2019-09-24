@@ -1,0 +1,82 @@
+<!-- 我的订单 -->
+<view class="order">
+  <view class="state">
+    订单状态 : <text style="margin-left:10rpx;">代发货/待收货/已完成</text>
+  </view>
+</view>
+
+<view class="bgf">  
+  <!-- 订单签收 -->
+  <van-cell value="查看物流信息" label="{{currenTime}}" is-link>
+    <view slot="title">
+      <view class="d-flex">
+        <view><image class="cart" src="../../images/cart.png"></image></view>
+        <view class="van-cell-text">订单已签收</view>
+      </view>
+    </view>
+  </van-cell>
+  <van-cell>
+    <view slot="title">
+      <view class="d-flex">
+        <view><image class="location" src="../../images/position.png"></image></view>
+        <view class="name">某某某</view>
+        <view class="phone">19999999999</view>
+      </view>
+      <view class="loca">{{location}}</view>
+    </view>
+  </van-cell>
+</view>
+<!-- 商品详情 -->
+<!-- 1 -->
+<view class="bgf detail">
+<!-- 2 -->
+  <view class="details d-spb">
+    <view><image class="img" src="../../images/carousel/06.jpg"></image></view>
+    <view style="margin-right:35rpx;">
+      <!-- 标题 -->
+      <view class="detail-title">日本车载眼镜架多功能创意汽车用眼睛支架</view>
+      <view class="d-spb">
+        <view class="d-spb classify">
+          <view class="classify-l">分类</view>
+          <view class="classify-r">型号</view>
+        </view>
+        <view class="num">
+          数量x
+          <text>{{num}}</text>
+        </view>
+      </view>
+<!-- 价钱 -->
+        <view class="price">￥{{price}}</view>
+    </view>
+    <!-- 2 -->
+  </view>
+    <!-- 订单编号 -->
+<view class="order-nums">
+  <view class="order-num d-spb">
+    <view>订单编号： <text>12345678998765</text></view>
+    <view class="copy">复制</view>
+  </view>
+  <view class="order-time">下单时间： <text>{{currenTime}}</text></view>
+  <view class="order-pay">支付方式： <text>微信支付</text></view>
+</view>
+  <!-- 1 -->
+</view>
+<!-- 订单信息 -->
+<view class="bgf">
+<view class="order-information">
+  <view class="mess">订单信息</view>
+  <view class="d-spb t1">
+    <view>商品总价</view>
+    <view>￥{{orderPrice}}</view>
+  </view> 
+  <view class="d-spb t2">
+    <view>运费</view>
+    <view>￥{{freight}}</view>
+  </view> 
+  <view class="d-spb t3">
+    <view>实付金额</view>
+    <view>￥{{money}}</view>
+  </view> 
+ 
+</view>
+</view>

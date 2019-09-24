@@ -1,0 +1,151 @@
+<!-- 完善我的名片 -->
+<view style="padding-top:29rpx;padding-bottom:30rpx;"> 
+  <view class="card">
+    <view class="me d-flex">
+      <view><image class="head" src="{{head}}" ></image></view>
+      <view class="rights">
+        <view class="name">{{name}}</view>      
+        <view class="me1">暂未填写职位信息</view>      
+        <view class="me1">暂未填写公司信息</view>      
+      </view>
+    </view>
+    <!-- 信息 -->
+    <view style="margin-top:49rpx;margin-left:29rpx;">
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/email.png"></image></view>
+      <view class="me1 mle">暂未填写邮箱</view>
+    </view>
+    <!-- 电话 -->
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/ps.png"></image></view>
+      <view class="me1 mle">暂未填写联系电话</view>
+    </view>
+    <!-- 地址 -->
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/ad.png"></image></view>
+      <view class="me1 mle">暂未填写地址</view>
+    </view>
+    </view>
+    <!--  -->
+  </view>
+</view>
+<!-- 分享标题 -->
+<view class="st">分享标题</view>
+<form  bindsubmit="formSubmit">
+<view class="i1 d-spb" catchtap='selectTap'>
+  <input name="i1" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index]}}"/>
+  <image class="sel" src="../../images/position/shape45.png"></image>
+</view>
+<!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*80):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
+</form>
+<!-- 基本信息 -->
+<view style="margin-left:50rpx;margin-top:54rpx;">
+<form bindsubmit="mes">
+<view class="til">基本信息</view>
+<!-- 头像 -->
+ <view class="section d-spb">
+    <view class="section-title">头像</view>
+    <view class="right d-spb" bindtap="choose">
+    <view>
+    <image class="header" src="{{head}}"></image>
+    </view>
+      <!-- <input name="i1"/> -->
+      <view>
+        <image class="section-img" src="../../images/right.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- 姓名 -->
+ <view class="section2 d-spb">
+    <view class="section-title">姓名</view>
+    <view class="right">
+      <input name="i2"/>
+    </view>
+ </view>
+ <!-- 联系电话 -->
+ <view class="section2 d-spb">
+    <view class="section-title">联系电话</view>
+    <view class="right d-spb">
+      <input name="i3" maxlength="11" type="number" value="{{phone}}" focus="{{focus}}" disabled='{{sisDisabled}}'/>
+      <view class="ch" bindtap="ch">更换</view>
+    </view>
+ </view>
+
+ <!-- 公司信息 -->
+ <view style="margin-top:60rpx;">
+ <view class="til">公司信息</view>
+ <!-- 公司名称 -->
+ <view class="s1 d-spb">
+    <view class="section-title">公司名称</view>
+    <view class="right">
+      <input name="i4"/>
+    </view>
+ </view>
+ <!-- 公司职务 -->
+ <!-- 姓名 -->
+ <view class="section2 d-spb">
+    <view class="section-title">公司职务</view>
+    <view class="right">
+      <input name="i5"/>
+    </view>
+ </view>
+ <!--  -->
+ </view>
+ <!-- 其他信息 -->
+ <view style="margin-top:60rpx;">
+ <view class="til">其他信息</view>
+ <!-- 邮箱 -->
+ <view class="s1 d-spb">
+    <view class="section-title">邮箱</view>
+    <view class="right">
+      <input name="i6"/>
+    </view>
+ </view>
+ <!-- 详细地址 -->
+ <view class="section2 d-spb">
+    <view class="section-title">详细地址</view>
+    <view class="right">
+      <input name="i7"/>
+    </view>
+ </view>
+ <!--  -->
+ </view>
+ <!-- 图文介绍 -->
+  <view class="self">
+<view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">图文介绍</view>
+<view class="texta">
+<textarea placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请输入图文介绍，200字以内" maxlength="200" name="textarea"/>
+</view>
+</view>
+<!--  -->
+
+<!-- 上传图片 -->
+<view class="imgss">
+  <view>
+  <view class="d-flex">
+  <!-- 上传图片预览 -->
+  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  </view>
+    <view class="onload" bindtap="upload">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+  </view>
+  </view>
+  </view>
+  <!--  -->
+ <!--  -->
+ <button form-type="submit" class="next">确认保存</button>
+ <include src="../err/err"/>
+</form>
+</view>

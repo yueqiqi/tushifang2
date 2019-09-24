@@ -1,0 +1,39 @@
+<!-- 我的发布 -->
+<view class="bgf">
+<view class='page_row' bindtap="search">  
+      <view class="search">  
+        <view class="df search_arr">  
+          <icon class="searchcion" size='20' type='search'></icon>  
+          <input class="" disabled placeholder="搜索信息..." value="{{searchValue}}"/>  
+        </view>  
+      </view>   
+</view>
+</view>
+<!-- 发布标题内容 -->
+<view class="bgf mtt">
+  <view class="d-spb d1">
+    <view class="til">发布内容标题</view>
+    <view class="ing{{ch}}">{{ing}}</view>
+  </view>
+  <view class="d-flex mybtn">
+    <view class="up">修改</view>
+    <view class="fin">已完成</view>
+    <view class="ref">刷新</view>
+    <view class="stick">申请置顶</view>
+  </view>
+</view>
+<!-- 发布内容标题 -->
+<view class="bgf mtt">
+  <view class="d-spb d1">
+    <view class="til">发布内容标题</view>
+    <view class="ing{{ch}}">{{ing}}</view>
+  </view>
+  <view class="d-flex mybtn">
+    <view class="up">修改</view>
+    <view class="upfin">改为正在进行</view>
+  </view>
+</view>
+<!-- 我要发布 -->
+<view class="pos" bindtap="iss">
+  <image src="../../images/iss.png"></image>
+</view>

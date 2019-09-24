@@ -1,0 +1,13 @@
+<!-- 联系我们 -->
+<form bindsubmit="formSubmit">
+  <!-- 图文介绍 -->
+    <view class="texta">
+      <textarea placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请输入您的宝贵意见...500字以内" maxlength="500" name="textarea"/>
+    </view>
+  <!-- 确认提交 -->
+  <button form-type="submit" class="next">确认提交</button>
+</form>
+<view class="btn d-spb">
+  <view class="btnl">客服电话</view>
+  <view class="btnr">微信客服</view>
+</view>

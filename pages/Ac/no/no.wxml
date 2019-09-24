@@ -1,0 +1,19 @@
+<!-- 成功 -->
+<!-- 成功提示框 -->
+<view class='sshade' hidden='{{sup}}' bindtap='suhide'></view>
+<view class='sshade_box spopup' hidden='{{sup}}'>
+<!-- 成功图片 --> 
+<view class="br">
+    <view class='stitle'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
+    <!-- 文字 -->
+    <view class='scontent'>
+      <view class="st2">请选择开始/结束时间</view>
+      <view class="st4">请选择置顶方式</view>
+    </view>
+    <view class='smsg' bindtap='suhide'>确定</view>
+</view>
+</view>
+ 
+<view  style='margin:20rpx 50rpx;'>
+    <button type='primary' bindtap='sushow'>打开弹窗</button>
+</view>

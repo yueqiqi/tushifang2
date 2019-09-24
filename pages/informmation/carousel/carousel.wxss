@@ -1,0 +1,11 @@
+/* pages/informmation/carousel/carousel.wxss */
+.carousel{
+  width:750rpx;
+}
+.carouselImg{
+  margin-left:30rpx;
+  /* margin: 0rpx auto; */
+}
+.slide-image{
+  width:690rpx;height:300rpx;
+}

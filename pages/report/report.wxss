@@ -1,0 +1,171 @@
+/* pages/report/report.wxss */
+
+
+/* 评论 */
+.conts{
+  width:70%;
+  height: auto;
+  position:relative;
+  padding-bottom:50rpx;
+  margin:0 auto;
+}
+.areas{
+  width:90%;
+  height:400rpx;
+  font-size: 30rpx;
+  text-indent: 28rpx;
+  border: 1rpx solid gainsboro;
+  padding-top: 30rpx;
+  margin: 0 auto;
+  overflow: hidden;   
+  position: relative; 
+  /* margin-left:10rpx;
+  margin-right:10rpx; */
+}
+.currentWordNumber{
+  font-size: 28rpx;
+  color: gray;
+  position: absolute;
+  right:10rpx;
+  bottom:10rpx;
+}
+.hint{
+   font-size: 28rpx;
+   position: absolute;
+   left:20rpx;
+   bottom:10rpx;
+   color: #FF6600;
+}
+/* 图片 */
+.img_box{
+  width:70%;
+  position:relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin:0 auto;
+}
+.imgs{
+  width:33.33333333%;
+  display: flex;
+  justify-content: center;
+  margin-bottom:20rpx;
+}
+/* 添加图片的样式 */
+.imgs image{
+  /* width:100%; */
+  width:168rpx;
+  height:168rpx;
+  /* max-height:212rpx; */
+  border:1px solid rgba(214, 212, 212, 0.1);
+  /* box-shadow: 5rpx 5rpx 1rpx 3rpx #e2e0e0; */
+  margin-top:20rpx;
+}
+.imgs .images{
+  position:relative;
+}
+.images button{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
+/* 添加图片按钮 */
+.img_box .images{
+  margin-top:20rpx;
+  width:100%;
+	height: 168rpx;
+  border:4px dashed  #E8E8E8;
+  border-radius:4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img_box .images>image{
+  width:60rpx;
+	height:60rpx;
+}
+
+.show-btn {
+margin-top: 100rpx;
+color: #22cc22;
+}
+ 
+.modal-mask {
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+background: #000;
+opacity: 0.5;
+overflow: hidden;
+z-index: 9000;
+ color: #fff;
+}
+ 
+.modal-dialog {
+width: 540rpx;
+overflow: hidden;
+position: fixed;
+top: 40%;
+left: 0;
+z-index: 9999;
+background: #fff;
+margin: -180rpx 105rpx;
+border-radius: 36rpx;
+}
+ 
+.modal-title {
+padding-top: 50rpx;
+font-size: 36rpx;
+color: #030303;
+text-align: center;
+}
+.modal-content {
+padding: 50rpx 32rpx;
+}
+.modal-input {
+display: flex;
+background: #fff;
+border-bottom: 2rpx solid #ddd;
+border-radius: 4rpx;
+font-size: 28rpx;
+}
+ 
+.input {
+width: 100%;
+height: 82rpx;
+font-size: 28rpx;
+line-height: 28rpx;
+padding: 0 20rpx;
+box-sizing: border-box;
+color: #333;
+}
+ 
+input-holder {
+color: #666;
+font-size: 28rpx;
+}
+ 
+.modal-footer {
+display: flex;
+flex-direction: row;
+height: 86rpx;
+border-top: 1px solid #dedede;
+font-size: 34rpx;
+line-height: 86rpx;
+}
+ 
+.btn-cancel {
+width: 50%;
+color: #666;
+text-align: center;
+border-right: 1px solid #dedede;
+}
+ 
+.btn-confirm {
+width: 50%;
+color: #ec5300;
+text-align: center;
+}

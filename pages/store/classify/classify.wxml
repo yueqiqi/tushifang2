@@ -1,0 +1,56 @@
+<!-- 订单分类 -->
+<view>
+  <van-tabs sticky>
+  <van-tab title="全部">
+    <!-- 全部内容 -->
+    <block wx:for="{{arr1}}" wx:key="{{index}}">
+    <view class="bgf mtt">
+    <view class="con">
+    <!-- 交易时间 -->
+    <view class="tim d-spb">    
+      <view class="til">订单日期\t{{currenDate}}</view>
+      <view class="suc">{{item.suc}}</view>
+    </view>
+    <!-- 商品详情 -->
+    <!-- 2 -->
+  <view class="details d-spb">
+    <view><image class="img" src="{{item.img}}"></image></view>
+    <view>
+      <!-- 标题 -->
+      <view class="detail-title">{{item.tit}}</view>
+      <view class="d-spb">
+        <view class="d-spb classify">
+          <view class="classify-l">分类</view>
+          <view class="classify-r">型号</view>
+        </view>
+        <view class="num">
+          数量x
+          <text>{{num}}</text>
+        </view>
+      </view>
+<!-- 价钱 -->
+        <view class="price">￥{{price}}</view>
+    </view>
+    <!-- 2 -->
+  </view>
+    <!-- 按钮 -->
+
+  <view class="d-flex bt">
+  <block wx:for="{{item.btn}}" wx:key="{{index}}">
+    <view class="my-btn {{su}}{{index}}">{{item}}</view>
+  </block>
+    <!-- <view class="my-btn">{{item}}</view> -->
+  </view>
+  </view>
+
+
+<!--  -->
+    </view>
+</block>
+  </van-tab>
+  <!-- ======================================================================== -->
+  <van-tab title="待发货">内容 2</van-tab>
+  <van-tab title="待收货">内容 3</van-tab>
+  <van-tab title="已完成">内容 4</van-tab>
+</van-tabs>
+</view>

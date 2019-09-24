@@ -1,0 +1,10 @@
+<!-- 支付成功 -->
+<view class="suc">
+<view class="s">
+<view style="text-align:center;">
+  <image  class="suc-img" src="../../images/success.png"></image>
+</view>
+  <view class="title">付款成功</view>
+  <view class="mes">我们会尽快安排送出您的商品</view>
+</view>
+</view>

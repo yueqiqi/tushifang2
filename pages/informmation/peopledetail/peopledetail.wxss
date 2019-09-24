@@ -1,0 +1,215 @@
+/* pages/informmation/peopledetail/peopledetail.wxss */
+.people{
+  height:100%;
+}
+.Title{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+.Mes{
+  font-size:28rpx;
+font-family:PingFang SC;
+color:rgba(51,51,51,1);
+}
+.sb{
+  height:73rpx;
+}
+/* 头像 */
+.sbl image{
+  width:70rpx;height:70rpx;border-radius: 50%;margin-right:20rpx;
+}
+/* 发布名 */
+.Name{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);line-height: 73rpx;
+}
+/* 求职 */
+.sbr{
+  margin-right: 30rpx;
+}
+.sbr .title-text{
+  line-height: 73rpx;
+}
+/* 渣土司机 */
+.sbr .Name{
+  margin-left:10rpx;
+}
+/* 招聘状态 */
+.state{
+  margin-top:59rpx;
+  margin-bottom:20rpx;
+}
+/* 状态 */
+.states{
+  margin-right:20rpx;
+}
+.stater{
+  margin-right:95rpx;
+}
+.num{
+  margin-left:20rpx;
+}
+/* 发布时间 */
+.timer{
+  margin-bottom:41rpx;
+}
+.timerr{
+  /* margin-right: 180rpx; */
+  /* margin-left: 75rpx; */
+}
+/* 日期 */
+.timerl .Title{
+  margin-right:20rpx;
+}
+/* 工作年限 */
+.timerr .Mes{
+  margin-left:20rpx;
+  margin-right:180rpx;
+}
+/* 个人简介 */
+.intro{
+  margin-right:30rpx;
+  border-top:2rpx solid rgba(230,230,230,1);
+  padding-top:40rpx;
+}
+/* 简介详情 */
+.list{
+  width:669rpx;
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+margin-top:31rpx;
+padding-bottom:35rpx;
+}
+/* 联系人 */
+.linkman1{
+  padding-top:30rpx;
+  margin-top:10rpx;
+}
+.linkman-sb{
+  margin-right:72rpx;
+}
+/* 查看名片 */
+.linkmanr{
+  margin-right:30rpx;
+}
+.linkmanr view{
+  width:140rpx;height:50rpx;
+  background:rgba(235,249,247,1);
+border-radius:10rpx;
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;text-align:center;line-height: 50rpx;
+color:rgba(72,149,137,1);
+}
+/* 分割线 */
+.cut{
+  width:530rpx;
+height:2rpx;
+margin-left:160rpx;
+background:rgba(230,230,230,1);
+margin-top:22rpx;
+margin-bottom:30rpx;
+}
+/* 电话号码 */
+.phone{
+  padding-bottom:15rpx;
+}
+.phonel{
+  margin-top:10rpx;
+}
+.tel{margin-right:44rpx;}
+.phoner{
+  margin-right: 30rpx;
+  width:200rpx;
+  height:50rpx;
+background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
+border-radius:10rpx;
+}
+/* 电话图片 */
+.phoner image{
+  width:26rpx;height: 26rpx;margin-top:10rpx;margin-left:25rpx;
+}
+.phoner text{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);line-height: 50rpx;margin-left:14rpx;
+}
+/* 温馨提示 */
+.notice{
+  width:695rpx;
+height:92rpx;
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:#333;
+padding-bottom:28rpx;
+}
+/* 温馨提示 */
+.notice{
+  margin-top:10rpx;padding-top:30rpx;
+}
+.notice view{
+  color:#999999;
+}
+/* 内容 */
+.notice :nth-child(3){
+  margin-top:9rpx;
+  color:#FF0000;
+}
+/* 广告图 */
+.bottom{
+  margin-top:10rpx;
+  width:100%;height:220rpx;
+}
+.ad{
+  /* margin-top:10rpx; */
+}
+.ad image{
+  margin:20rpx 30rpx 20rpx 30rpx;
+  /* margin:auto auto; */
+  width: 690rpx;height:180rpx;
+}
+/* 分享举报 */
+.likes{
+  display: flex;justify-content: space-between;
+  border-top:2rpx solid rgba(217,217,217,1);
+  padding-top:35rpx;padding-bottom: 35rpx;
+}
+/* 图片 */
+.likes image{
+    width:30rpx;height:30rpx;margin-right: 10rpx;
+}
+.share,.like,.reports{
+  width:98rpx;height:40rpx; display: flex;justify-content: left
+}
+/* 文字 */
+.likes text{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+/* line-height: 40rpx; */
+}
+.share{
+ 
+}
+.share :nth-child(2){
+    font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+}
+
+.share{
+  margin-left:78rpx;
+}
+.reports{
+  margin-right:78rpx;
+}

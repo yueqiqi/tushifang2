@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index"
+  },
+  "navigationBarTitleText": "修改地址"
+}

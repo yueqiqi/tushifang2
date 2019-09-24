@@ -1,0 +1,70 @@
+<!-- 我是企业2 -->
+<view class="b2">
+  <!-- 标题 -->
+<view class="mes">请完善企业信息</view>
+<form bindsubmit="formSubmit">
+<!-- 企业类型 -->
+<view class="form">
+ <view class="section d-spb">
+    <view class="section-title">所在地区</view>
+    <view class="right d-spb">
+      <input name="i1"/>
+      <view>
+        <image class="section-img" src="../../images/right.png"></image>
+      </view>
+    </view>
+ </view>
+<!-- 企业名称 -->
+ <view class="section2 d-spb">
+    <view class="section-title">详细地址</view>
+    <view class="right">
+      <input name="i2"/>
+    </view>
+ </view>
+ <!-- 联系人 -->
+  <view class="section2 d-spb">
+    <view class="section-title">成立时间</view>
+    <view class="right">
+      <input name="i3" placeholder-class="holder{{err}}" placeholder="选填" />
+    </view>
+ </view>
+<!-- 上传照片 -->
+<!-- 营业执照 -->
+<view class="img">
+  <view>
+    <view class="license">营业执照</view>
+  <view class="d-flex">
+  <!-- 上传图片预览 -->
+  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  </view>
+    <view class="onload" bindtap="upload">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+  </view>
+  </view>
+  <!-- 法人证明书 -->
+  <view class="prove">
+    <view class="license">法人证明书  <text>选填</text></view>
+    <view class="d-flex">
+    <!-- 上传图片预览 -->
+      <view class="imgs" wx:for="{{tempFilePathss}}" wx:key="index">
+        <image src='{{item}}' bindlongpress="deleteImages" bindtap="listenerButtonPreviewImages" data-index="{{index}}" mode='widthFix'/>
+      </view>
+    <view class="onload" bindtap="uploads">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+    </view>
+  </view>
+</view>
+
+</view>
+<view class="mybtn d-spb">
+<button  class="up" bindtap="up">上一步</button>
+<button form-type="submit" class="finish" bindtap="finish">完成</button>
+</view>
+<include src="../all.wxml"/>
+</form>
+</view>

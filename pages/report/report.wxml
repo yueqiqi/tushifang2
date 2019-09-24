@@ -1,0 +1,68 @@
+<!-- <view class="conts bgf">
+  <view style="text-align:center;">举报内容填写</view>
+    <textarea class="areas" placeholder='请输入举报内容...' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs"></textarea>
+    <text class="hint">{{texts}}</text>
+    <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
+</view>
+
+<view class="img_box bgf">
+  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix' />
+  </view>
+  <view class="imgs">
+    <view class="images" bindtap="upload">
+      <image src='../images/add.png' mode='widthFix' />
+    </view>
+  </view>
+</view> -->
+
+
+
+<!-- 投诉框 -->
+<button class="show-btn" bindtap="showDialogBtn">弹窗</button>
+ 
+<!--弹窗-->
+ 
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+ 
+<view class="modal-dialog" wx:if="{{showModal}}">
+ 
+<view class="modal-title">举报内容填写</view>
+ 
+<view class="modal-content">
+ 
+<view class="modal-input">
+ 
+<input placeholder-class="input-holder" bindinput="inputChange" class="input" placeholder="请输入举报内容..."></input>
+</view>
+ 
+<view class="modal-input">
+ 
+<input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChange" class="input" placeholder="电话"></input>
+ 
+</view>
+ 
+<view class="modal-input">
+ 
+<input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChange" class="input" placeholder="人数"></input>
+ 
+</view>
+ 
+<view class="modal-input">
+ 
+<input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChange" class="input" placeholder="时间"></input>
+ 
+</view>
+ 
+</view>
+ 
+<view class="modal-footer">
+ 
+<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+ 
+<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+ 
+</view>
+ 
+</view>
+

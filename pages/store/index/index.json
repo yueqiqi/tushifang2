@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
+    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index"
+  },
+  "navigationBarTitleText": "商城"
+}

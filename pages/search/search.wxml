@@ -1,0 +1,27 @@
+<!-- <view class='container'>
+  <view  class='search_input'>
+    <icon type="search" size="15" class='search_icon' />
+    <input  placeholder='请输入关键字' placeholder-class="search_placeholder" value="{{inputValue}}" bindinput="blur"></input>
+    <image src='../public_imgs/del.png' class='cancle_btn' wx:if="{{inputValue}}" bindtap='clean'></image>
+  </view>
+ 
+  <view class='flex space_between align_center search_title'>
+     <view>
+        搜索历史
+     </view>
+     <image src='../public_imgs/delete.png' wx:if="{{list.length!=0}}"  catchtap='remove'></image>
+  </view>
+
+  <view class='list'>
+     <view class="key" wx:if="{{list.length==0}}">暂无搜索记录</view>
+     <view class="key" wx:for="{{list}}" wx:key="" bindtap='searchName' data-value='{{item}}'>{{item}}</view>
+  </view>
+
+   <view  class='search_result' wx:if="{{inputValue}}">
+       <view wx:for="{{resultList}}" wx:key="" bindtap='detail' data-id='{{item.projectCode}}'>
+          {{item.projectName}}
+       </view>
+        <view class='no_more' wx:if="{{resultList.length==0}}">暂无相关内容</view>
+  </view>
+</view> -->
+<include src="../wxSearch/wxSearch.wxml" />

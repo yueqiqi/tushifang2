@@ -1,0 +1,123 @@
+<!-- 我要找人 -->
+<view class="bus">
+<!-- 标题 -->
+<view class="mes">请完善招聘信息</view>
+<!-- form表单 -->
+<form bindsubmit="formSubmit">
+<!-- 工种类型 -->
+<view class="form">
+ <view class="section d-spb">
+    <view class="section-title">选择工种</view>
+    <view class="right d-spb">
+      <input name="i1" placeholder-class="holder{{err}}" placeholder="请选择职位或者双击手动输入" />
+      <view>
+        <image class="section-img" src="../../images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+<!-- 薪资范围 -->
+ <view class="section2 d-spb">
+    <view class="section-title">薪资范围</view>
+    <view class="right d-spb">
+      <input name="i2" placeholder-class="holder{{err}}" placeholder="请选择薪资范围" />
+      <view>
+        <image class="section-img" src="../../images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- 工作地点 -->
+  <view class="section2 d-spb">
+    <view class="section-title">工作地点</view>
+    <view class="right d-spb">
+      <input name="i3" placeholder-class="holder{{err}}" placeholder="" />
+      <view>
+        <image class="section-img" src="../../images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+  <!-- 工作年限 -->
+  <view class="section2 d-spb">
+    <view class="section-title">工作年限</view>
+    <view class="right d-spb">
+      <input name="i4" placeholder-class="holder{{err}}" placeholder="请选择工作年限" />
+      <view>
+        <image class="section-img" src="../../images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- 联系人 -->
+ <view class="section2 d-spb">
+    <view class="section-title">联系人</view>
+    <view class="right d-spb">
+      <input name="i5" maxlength="11" type="number"/>
+    </view>
+ </view>
+ <!-- 联系电话 -->
+  <view class="section2 d-spb">
+    <view class="section-title">联系电话</view>
+    <view class="right d-spb">
+      <input name="i6" maxlength="11" type="number"/>
+      <view class="ch">更换</view>
+    </view>
+ </view>
+ <!-- 公司名称 -->
+ <view class="section2 d-spb">
+    <view class="section-title">公司名称</view>
+    <view class="right d-spb">
+      <input name="i7" placeholder="选填"/>
+    </view>
+ </view>
+ <!-- 详细地址 -->
+ <view class="section2 d-spb">
+    <view class="section-title">详细地址</view>
+    <view class="right d-spb">
+      <input name="i8" placeholder="选填" />
+    </view>
+ </view>
+<!-- 公司图片 -->
+<!-- 公司图片 -->
+<view class="img">
+  <view>
+    <view class="license">公司图片(最多三张)</view>
+  <view class="d-flex">
+  <!-- 上传图片预览 -->
+  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  </view>
+    <view class="onload" bindtap="upload">
+      <image src="../../images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+  </view>
+  </view>
+  </view>
+  <!--  -->
+  <!-- 公司视频 -->
+<view class="img">
+<view class="license">公司视频</view>
+  <view>
+  <view class="d-flex">
+  <!-- 上传图片预览 -->
+  <view class="imgs"hidden="{{tempFilePathss==''}}" >
+    <video style="width:400rpx;height:200rpx;margin-top:20rpx;margin-right:10rpx;" src='{{tempFilePathss}}' bindlongpress="deleteVideo"  bindfullscreenchange="bindVideoScreenChange" data-index="{{index}}"></video>
+  </view>
+    <view class="onload" bindtap="uploads">
+      <image src="../../images/onload.png"></image>
+      <view>上传视频</view>
+    </view>
+  </view>
+  </view>
+  </view>
+<!--  -->
+<!-- 职位详情 -->
+<view class="self">
+<view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">职位详情</view>
+<view class="texta">
+<textarea placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请填写职位详情，200字以内" maxlength="200" name="textarea"/>
+</view>
+</view>
+</view>
+<button form-type="submit" class="next">确认发布</button>
+<include src="../all.wxml"/>
+</form>
+</view>

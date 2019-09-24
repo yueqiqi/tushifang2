@@ -1,0 +1,108 @@
+/* pages/demo/calert/calert.wxss */
+/* 遮罩 */
+/* 遮罩样式 */
+.sshade {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* 遮罩颜色 */
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+}
+/* 盒子位置 */
+.sshade_box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 11;
+    min-width: 200rpx;
+    min-height: 200rpx;
+    font-size: 28rpx;
+    box-sizing: border-box;
+    color: #333;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0;
+    word-wrap: break-word;
+ 
+    animation-name:spopup;
+    animation-duration:0.2s;
+    animation-timing-function:linear;
+    animation-delay:0;
+    animation-iteration-count:1;
+    animation-direction:normal;
+}
+ 
+@keyframes spopup
+{
+    from{opacity:0;transform:scale(0.3,0.3);}
+    to 	{opacity:1;transform:scale(1,1);}
+}
+ 
+ 
+/* 当前弹窗样式 */
+.spopup{
+    width: 478rpx;
+    height: 423rpx;
+    background:rgba(255,255,255,1);
+/* border:2rpx solid rgba(118,212,198,1); */
+border-radius:10rpx;
+}
+/* 成功图片 */
+.spopup .stitle{
+    /* padding: 0 20rpx; */
+    /* border-bottom: #e5e5e5 solid 1px; */
+    /* height: 70rpx;
+    line-height: 70rpx; */
+    /* font-size: 32rpx; */
+    width:80rpx;height:80rpx;
+    border-radius: 50%;
+    background-color: white;
+    /* text-align: center; */
+    margin:0 auto;
+    z-index:5555;
+    margin-top:-49rpx;
+}
+.spopup .scontent{
+    /* margin: 100rpx; */
+    margin-top:31rpx;
+    text-align: center;
+    font-size:30rpx;
+}
+/* 提交成功 */
+.st1{
+  font-weight: blod;
+  color:#76D4C6; 
+}
+/* 下方提示文字 */
+.st2,.st3,.st4{
+  color:#333333;
+}
+/* 确认按钮 */
+.spopup .smsg{
+    width:120rpx;
+height:64rpx;
+background:rgba(118,212,198,1);
+border-radius:10rpx;
+/* 文字样式 */
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+text-align: center;
+line-height: 64rpx;
+margin:0 auto;
+margin-top:31rpx;
+}
+.br{
+  width:400rpx;
+height:275rpx;
+background:rgba(255,255,255,1);
+border:2px solid rgba(118,212,198,1);
+border-radius:10rpx;
+margin:66rpx 36rpx 47rpx 42rpx;
+}

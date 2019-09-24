@@ -1,0 +1,21 @@
+<!-- 兴趣 -->
+<!-- <checkbox-group class="checkbox-group" bindchange="checkboxChange">  
+  <label class="checkbox" wx:for="{{items}}" wx:for-item="i">  
+    <checkbox value="{{i.name}}" checked="{{i.checked}}" />
+    <view class="value">
+    {{i.value}}  
+    </view>
+  </label>  
+</checkbox-group>  
+{{text}} -->
+
+<view class='wrap'>
+  <view class='checkbox-con'>
+    <checkbox-group bindchange="checkboxChange">
+      <label class="{{item.checked?'checkbox checked':'checkbox'}}" wx:for="{{checkboxArr}}" bindtap='checkbox' data-index="{{index}}" wx:key="item.name">
+        <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.name}}
+      </label>
+    </checkbox-group>
+     <button class="confirm" bindtap='confirm'>确认选择</button>
+  </view>
+</view>

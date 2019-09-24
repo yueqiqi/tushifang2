@@ -1,0 +1,150 @@
+<!--pages/postMessage/postMessage.wxml-->
+<!-- <text>pages/postMessage/postMessage.wxml</text> -->
+<!-- 发布者需求 -->
+<view>
+<!-- 发布者信息 -->
+  <view class="postMessage">
+  <!-- 头像 -->
+  <view class="headPortrait"></view>
+  <!-- 用户名 -->
+  <view class="userName">发布用户名</view>
+  <!-- 十万火急 -->
+  <view class="worry">十万火急</view>
+  <!-- 距离 -->
+  <view class="distance">2.3km</view>
+  </view>
+<!-- 发布需求标题 -->
+<view class="userTitle">发布需求的标题</view>
+<view class="timer">
+<!-- 时间 -->
+<view class="time">2019.02.02 18:36</view>
+<!-- 发布者定位 -->
+<view class="userPosition">
+<image src="../images/position49.png"></image>
+<text>发布者定位</text>
+</view>
+</view>
+<!-- 发布内容 -->
+<view class="content">翠云万科欢迎32万/28方/22方车24小时随时开自运。 要来拉的老板提前联系，结账方式随意。</view>
+<!-- 发布图片和视频 -->
+<view class="userImg">
+<!-- 发布图片 -->
+<block wx:for="{{userImg}}" wx:key="{{index}}">
+  <view>
+  <image class="userImg{{index}}" src="{{item.url}}"></image> 
+  </view>
+</block>
+<!-- <view><image src="../images/carousel/05.JPg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/06.jpg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/07.jpg"></image></view> -->
+</view>
+<!-- 发布的视频 -->
+<view >
+ <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
+</view>
+
+<!-- 项目类型 -->
+<view class="project">
+<view class="projectType">项目类型</view>
+<view class="car">车辆出售</view>
+<view class="phone">
+<image src="../images/phone.png"></image>
+<text class="phone-text">拨打电话</text>
+</view>
+</view>
+<!-- 分割线 -->
+<view class="hr"></view>
+<!-- 评论点赞 -->
+<view class="scl">
+<!-- 分享 -->
+<view class="share" bindtap="share">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="comment" bindtap="comment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="like" bindtap="like">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+</view>
+
+<view style="width:100%;height:10rpx;background-color;background:rgba(230,230,230,1);"></view>
+
+<view>
+<!-- 发布者信息 -->
+  <view class="postMessage">
+  <!-- 头像 -->
+  <view class="headPortrait"></view>
+  <!-- 用户名 -->
+  <view class="userName">发布用户名</view>
+  <!-- 十万火急 -->
+  <view class="worry">十万火急</view>
+  <!-- 距离 -->
+  <view class="distance">2.3km</view>
+  </view>
+<!-- 发布需求标题 -->
+<view class="userTitle">发布需求的标题</view>
+<view class="timer">
+<!-- 时间 -->
+<view class="time">2019.02.02 18:36</view>
+<!-- 发布者定位 -->
+<view class="userPosition">
+<image src="../images/position49.png"></image>
+<text>发布者定位</text>
+</view>
+</view>
+<!-- 发布内容 -->
+<view class="content">翠云万科欢迎32万/28方/22方车24小时随时开自运。 要来拉的老板提前联系，结账方式随意。</view>
+<!-- 发布图片和视频 -->
+<view class="userImg">
+<!-- 发布图片 -->
+<block wx:for="{{userImg2}}" wx:key="{{index}}">
+  <view>
+  <image class="userImg2{{index}}" src="{{item.url}}"></image> 
+  </view>
+</block>
+<!-- <view><image src="../images/carousel/05.JPg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/06.jpg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/07.jpg"></image></view> -->
+</view>
+<!-- 发布的视频 -->
+<view >
+ <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
+</view>
+
+<!-- 项目类型 -->
+<view class="project">
+<view class="projectType">项目类型</view>
+<view class="car">车辆出售</view>
+<view class="phone">
+<image src="../images/phone.png"></image>
+<text class="phone-text">拨打电话</text>
+</view>
+</view>
+<!-- 分割线 -->
+<view class="hr"></view>
+<!-- 评论点赞 -->
+<view class="scl">
+<!-- 分享 -->
+<view class="share" bindtap="share">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="comment" bindtap="comment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="like" bindtap="like">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+</view>

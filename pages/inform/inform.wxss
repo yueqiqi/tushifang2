@@ -1,0 +1,45 @@
+/* pages/inform/inform.wxss */
+.inform{
+  width:100%;
+  height: 100%
+}
+/* 时间日期 */
+.date{
+  margin-left:33%;
+}
+.date text{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(153,153,153,1);
+}
+/* 消息 */
+.mes{
+  margin-left:20rpx;
+  width:710rpx;
+  /* height: 170rpx; */
+  background: #fff;
+  border-radius: 20rpx;
+  margin-bottom:51rpx;
+  margin-top:29rpx;
+}
+/* 标题 */
+.title{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+margin-left:30rpx;
+padding-top:29rpx
+}
+/* 信息内容 */
+.content{
+  width:652rpx;
+  font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+margin-left:30rpx;
+margin-top:20rpx;
+padding-bottom:31rpx;
+}

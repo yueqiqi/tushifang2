@@ -1,0 +1,53 @@
+/* pages/Ac/index/inex.wxss */
+page{
+  background: #fff!important;
+}
+.title{
+  margin:71rpx 97rpx 85rpx 97rpx;
+}
+/*  */
+.img{
+  text-align:center;font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+}
+.img image{
+  width:86rpx;height:86rpx;
+}
+/* 企业入驻 */
+.ent{
+  font-size:36rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(118,212,198,1);
+margin-left:30rpx;
+}
+/* 图片 */
+.ent-img{
+  width:100%;flex-wrap: wrap;
+  margin-top:28rpx;
+}
+
+.ent-img image{
+  width:201rpx;
+height:82rpx;
+margin:15rpx 9rpx 13rpx 7rpx
+
+}
+.i1{
+text-align: center;
+    width:206rpx;
+height:100rpx;
+margin-right:15rpx;
+}
+/* 小灰块 */
+.ad{
+  margin:15rpx 30rpx 0 30rpx
+}
+.ads{
+  width:220rpx;
+height:100rpx;
+background:rgba(238,238,238,1);
+border-radius:10rpx;
+}

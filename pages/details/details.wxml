@@ -1,0 +1,143 @@
+<!-- 信息详情 -->
+<view>
+<!-- 项目信息 -->
+<!-- 项目标题 -->
+<view class="d-flex ml">
+  <view class="title-text">项目标题</view>
+  <view class="text d-text">二手车触手，电话联系</view>
+</view>
+  <!-- 下划线 -->
+  <view class="uline"></view>
+<!-- 项目类型 -->
+<view class="d-flex ml d-mt">
+  <view class="title-text">项目类型</view>
+  <view class="text d-text">车辆出售</view>
+</view>
+  <!-- 下划线 -->
+<view class="uline"></view>
+<!-- 发布时间 -->
+<view class="d-flex ml d-mt">
+  <view class="title-text">发布时间</view>
+  <view class="time d-text">2019.05.20 12:30</view>
+</view>
+<view class="d-mt ml">
+  <view class="title-text">项目介绍</view>
+  <view class="content">帮朋友急招一个能长期开的老渣娃，主要在渝北江北地 区跑，住在渝北两路熟悉渝北路线的优先，杰斯430.22 方，工资7000保底三万开始提10%每月工资兑现，新手 和找车练手的就不要打扰了。</view>
+</view>
+<!-- 分割线 -->
+<view class="line"></view>
+<!-- 联系人 -->
+<view class="d-flex ml mt">
+  <view class="title-text">联系人</view>
+  <view class="text d-name">张三</view>
+</view>
+<!-- 联系电话 -->
+<view class="d-flex ml">
+  <view class="title-text">联系电话</view>
+  <view class="text d-text">13500000000</view>
+  <!-- 电话样式 -->
+<view class="phone">
+  <image src="../images/phone.png"></image>
+  <text class="phone-text">一键拨号</text>
+</view>
+</view>
+<view class="line"></view>
+<!-- 图片视频 -->
+<view class="video mt">
+  <view class="title-text ml">图片/视频</view>
+  <view class="userImg">
+<!-- 发布图片 -->
+<block wx:for="{{userImg}}" wx:key="{{index}}">
+  <view>
+  <image class="userImg{{index}}" src="{{item.url}}"></image> 
+  </view>
+</block>
+<!-- <view><image src="../images/carousel/05.JPg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/06.jpg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/07.jpg"></image></view> -->
+</view>
+<!-- 发布的视频 -->
+<view class="mb">
+ <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
+</view>
+</view>
+<!-- 分割线 -->
+<view class="line"></view>
+<!-- 温馨提示 -->
+<view class="mt ml">
+<view>温馨提示</view>
+<view class="hint-mes">此信息由包程项用户提供，但联系时任需注意识别信息真假，如果 发现此信息不真实，请
+<text class="report" bindtap="report">立即举报</text>
+<text class="hint-mes" style="margin-left:10rpx;">。</text>
+</view>
+</view>
+<!-- 分割线 -->
+<view class="line"></view>
+<!-- 广告图 -->
+<view class="ad ml mt">
+  广告图
+</view>
+<!-- 分割线 -->
+<view class="line"></view>
+<!-- 用户名 -->
+<view class="d-flex ml mt">
+  <!-- 头像 -->
+  <view class="head"></view>
+  <!-- 用户名、时间 -->
+  <view class="ml">
+    <view class="userName">用户名</view>
+    <view class="times">2019.07.22</view>
+  </view>
+</view>
+<!-- 用户消息 -->
+<view class="msg">
+唯格Viewgres，集设计、研发、生产、全球贸 易于一体的瓷砖企业。为商业建筑和高端住宅 提供优质建材产品与应用解决方案。
+</view>
+<view class="hr"></view>
+<!-- 第二个用户名 -->
+<!-- 用户名 -->
+<view class="d-flex ml mt">
+  <!-- 头像 -->
+  <view class="head"></view>
+  <!-- 用户名、时间 -->
+  <view class="ml">
+    <view class="userName">用户名</view>
+    <view class="times">2019.07.22</view>
+  </view>
+</view>
+<!-- 用户消息 -->
+<view class="msg">
+唯格Viewgres，集设计、研发、生产、全球贸 易于一体的瓷砖企业。为商业建筑和高端住宅 提供优质建材产品与应用解决方案。
+</view>
+<!-- 投诉 -->
+<view class="like mt d-flex">
+<!-- 分享 -->
+  <view class="d-flex" style="margin-left:46rpx;" bindtap="share">
+  <image src="../images/share.png"></image>
+  <text>
+  分享
+  </text>
+  </view>
+  <!-- 评论 -->
+  <view class="d-flex" bindtap="comment"> 
+  <image src="../images/comment.png"></image>
+  <text>
+  评论
+  </text>
+  </view>
+  <!-- 点赞 -->
+  <view class="d-flex" bindtap="like">
+  <image src="../images/unlike.png"></image>
+  <text>
+  {{like}}
+  </text>
+  </view>
+  <!-- 投诉 -->
+  <view style="margin-right:46rpx;" class="d-flex" bindtap="complaint">
+  <image src="../images/complaint.png"></image>
+  <text>
+  投诉
+  </text>
+  </view>
+</view>
+</view>

@@ -1,0 +1,60 @@
+/* pages/interest/interest.wxss */
+.wrap{
+  width: 750rpx;
+  margin: 50rpx auto;
+  margin-left:20rpx;
+
+}
+ 
+.checkbox-con{
+  margin-top: 40rpx;
+  text-align: center
+}
+/* 选择框 */
+.checkbox{
+  width: 180rpx;
+  height: 180rpx;
+  line-height: 180rpx;
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(118,212,198,1);
+  border: 1rpx solid #CECECE;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 40rpx 50rpx 0;
+  position: relative;
+}
+.checked{
+  
+color:rgba(255,255,255,1);
+  background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
+  /* color: #1A92EC;
+  background: rgba(49,165,253,0.08);
+  border: 1rpx solid #31A5FD; */
+}
+.checkbox checkbox{
+  display: none
+}
+.checked-img{
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  top: 0;
+  right: 0
+}
+/* 确认选择 */
+.confirm{
+width:670rpx;
+height:70rpx;
+background:rgba(118,212,198,1);
+border-radius:10rpx;
+line-height: 70rpx;
+/* 字体颜色 */
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(255,255,255,1);
+margin-top:177rpx;
+margin-right:60rpx;
+}

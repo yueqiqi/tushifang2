@@ -1,0 +1,168 @@
+<!-- 工地信息 -->
+<!-- 轮播图 -->
+<swiper class="ml mt" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 分类选择器 -->
+
+<view class="select mt ml d-flex">
+<!-- 分类 -->
+<view class="sectionClass" >  
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+    <view class="picker">  
+      <!-- 分类：{{objectArray[index]}}   -->
+      <view class="select-text">请选择分类</view>
+      <image src="../images/select.png"></image>
+    </view>  
+  </picker>  
+</view>  
+<!-- 时间 -->
+<view class="sectiontime">  
+  <picker mode="date" value="{{date}}" bindchange="bindDateChange">  
+    <view class="picker">  
+      <!-- 日期: {{dates}}   -->
+      <view class="select-text">请选择时间</view>
+      <image src="../images/select.png"></image>
+    </view>  
+  </picker>  
+</view> 
+</view>
+
+<!-- 发布者信息 -->
+  <view class="postMessage mt">
+  <!-- 头像 -->
+  <view class="headPortrait"></view>
+  <!-- 用户名 -->
+  <view class="userName">发布用户名</view>
+  <!-- 十万火急 -->
+  <view class="worry">十万火急</view>
+  <!-- 距离 -->
+  <view class="distance">2.3km</view>
+  </view>
+<!-- 发布需求标题 -->
+<view class="userTitle">发布需求的标题</view>
+<view class="timer">
+<!-- 时间 -->
+<view class="time">2019.02.02 18:36</view>
+<!-- 发布者定位 -->
+<view class="userPosition">
+<image src="../images/position49.png"></image>
+<text>发布者定位</text>
+</view>
+</view>
+<!-- 发布内容 -->
+<view class="content">翠云万科欢迎32万/28方/22方车24小时随时开自运。 要来拉的老板提前联系，结账方式随意。</view>
+<!-- 发布图片和视频 -->
+<view class="userImg">
+<!-- 发布图片 -->
+<block wx:for="{{userImg}}" wx:key="{{index}}">
+  <view>
+  <image class="userImg{{index}}" src="{{item.url}}"></image> 
+  </view>
+</block>
+<!-- <view><image src="../images/carousel/05.JPg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/06.jpg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/07.jpg"></image></view> -->
+</view>
+<!-- 发布的视频 -->
+<view >
+ <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
+</view>
+
+<!-- 项目类型 -->
+<view class="project">
+<view class="projectType">项目类型</view>
+<view class="car">车辆出售</view>
+<view class="phone">
+<image src="../images/phone.png"></image>
+<text class="phone-text">拨打电话</text>
+</view>
+</view>
+<!-- 分割线 -->
+<view class="hr"></view>
+<!-- 评论点赞 -->
+<view class="scl">
+<!-- 分享 -->
+<view class="share" bindtap="share">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="comment" bindtap="comment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="like" bindtap="like">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+<view class="line"></view>
+<!-- 第二个发布者信息 -->
+<view class="tab-new">
+      <!-- 发布者头像 -->
+      <view class="tab-head"></view>
+      <!-- 发布者用户名 -->
+      <view class="tab-userName">发布用户名</view>
+      <!-- 置顶 -->
+      <view class="stick">置顶</view>
+      <!-- 距离 -->
+      <view class="tab-distance">2.3km</view>
+     </view>
+     <!-- 发布需求标题 -->
+    <view class="tab-userTitle">发布需求的标题</view>
+    <view class="tab-timer">
+    <!-- 时间 -->
+    <view class="tab-time">2019.02.02 18:36</view>
+    <!-- 发布者定位 -->
+    <view class="tab-userPosition">
+    <image src="../images/position49.png"></image>
+    <text>发布者定位</text>
+    </view>
+    </view>
+    <!-- 发布信息 -->
+    <view class="tab-content">翠云万科 肖家河万科 欢迎来22 28 32 45的来自运， 附近有渣场的也可以合作。结账方式随意！</view>
+    <!-- 图片 -->
+    <view class="tabUserImg{{mm}}">
+    <block wx:for="{{stabUserImg}}" wx:key="{{index}}">
+      <image src="{{item.src}}"></image>
+    </block>
+    </view>
+    <!-- 项目类型 -->
+    <view class="tab-project">
+     <view class="tab-projectType">项目类型</view>
+     <view class="tab-car">车辆出售</view>
+     <view class="tab-phone" bindtap="callPhone">
+     <image src="../images/phone.png"></image>
+     <text class="tab-phone-text">拨打电话</text>
+     </view>
+    </view>
+    <!-- 分割线 -->
+    <view class="hr"></view>
+    <!-- 评论点赞 -->
+<view class="tab-scl">
+<!-- 分享 -->
+<view class="tab-share" bindtap="tabShare">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="tab-comment" bindtap="tabComment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="tab-like" bindtap="tabLike">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+
+
+

@@ -1,0 +1,131 @@
+/* pages/Ac/business/business.wxss */
+@import "../all.wxss";
+page{
+  background:#fff!important;
+}
+.bus{
+  margin-left:50rpx;
+}
+/* 请完善企业信息 */
+.mes{
+  margin-top:51rpx;margin-bottom:0;
+  font-size:40rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+/* 企业类型 */
+.form{
+  margin-top:69rpx;
+}
+/* 占位符样式 */
+.holder{
+  margin-left:10rpx;
+  font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+padding-top:4rpx;
+
+}
+.holdererr{
+  color:red;
+  }
+.section{
+  /* font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1); */
+}
+.section-title{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+}
+.right{
+  margin-right:60rpx;
+  width:510rpx;
+}
+/* 下拉图片 */
+.section-img{
+  width:29rpx;height:17rpx;
+}
+.right{
+  border-bottom:2rpx solid rgba(217,217,217,1);
+  /* padding-bottom:17rpx; */
+}
+/* 企业名称 */
+.section2{
+  margin-top:73rpx;
+}
+/* 更换 */
+.ch{
+  width:100rpx;
+height:50rpx;
+background:rgba(235,249,247,1);
+border-radius:10rpx;
+text-align: center;
+line-height: 50rpx;
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(72,149,137,1);
+margin-bottom:20rpx;
+}
+.next{
+  width:650rpx;
+height:70rpx;
+background:rgba(118,212,198,1);
+border-radius:10rpx;
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+text-align: center;
+line-height: 70rpx;
+margin:0 auto;
+margin-top:61rpx;
+margin-left:-2rpx;
+}
+
+/* 下拉选项框 */
+.select_box{
+  width:45%;
+  height:70%;
+  border-radius: 14rpx;
+  position: relative;margin-left:131rpx;z-index:50000;
+  margin-top:10rpx;
+}
+/* 自定义列表 */
+.select_box .option_box{
+  position: absolute;
+  top: calc(100% - 1px);
+  width: 510rpx;
+  /* height:404rpx!important; */
+  box-sizing: border-box;
+  /* height: 0; */
+  overflow-y: auto;
+  background: #fff;
+  transition: height 0.3s;
+  border-left:1px solid #efefef;
+  border-right:1px solid #efefef;
+  background:rgba(242,242,242,1);
+border-radius:20rpx;
+
+}
+/* 自定义列表文字 */
+.select_box .option_box .option{
+  display: block;
+  line-height: 30rpx; 
+  font-size: 30rpx;
+  /* border-top: 1px solid #efefef;*/
+  border-bottom: 2rpx solid rgba(255,255,255,1); 
+  padding: 10rpx;padding-top:28rpx;padding-left:30rpx;
+  color:rgba(51,51,51,1);
+  
+}
+.ac{
+  background:red;
+  font-size:1000rpx;
+}

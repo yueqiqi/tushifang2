@@ -1,0 +1,263 @@
+<!--pages/panel/panel.wxml-->
+<!-- <text>pages/panel/panel.wxml</text> -->
+<view style="margin-top:40rpx;">
+<!-- 选项卡 -->
+  <van-tabs sticky>
+  <van-tab title="最新发布">
+     <view class="tab-new">
+      <!-- 发布者头像 -->
+      <view class="tab-head"></view>
+      <!-- 发布者用户名 -->
+      <view class="tab-userName">发布用户名</view>
+      <!-- 置顶 -->
+      <view class="stick">置顶</view>
+      <!-- 距离 -->
+      <view class="tab-distance">2.3km</view>
+     </view>
+     <!-- 发布需求标题 -->
+    <view class="tab-userTitle">发布需求的标题</view>
+    <view class="tab-timer">
+    <!-- 时间 -->
+    <view class="tab-time">2019.02.02 18:36</view>
+    <!-- 发布者定位 -->
+    <view class="tab-userPosition">
+    <image src="../images/position49.png"></image>
+    <text>发布者定位</text>
+    </view>
+    </view>
+    <!-- 发布信息 -->
+    <view class="tab-content">招28方430杰师渣车，熟悉南岸. 江北.渝北的老渣娃2名， 新手勿扰，工资7000 三万提+安全奖 电话17774973668</view>
+    <!-- 图片 -->
+    <view class="tabUserImg">
+    <block wx:for="{{tabUserImg}}" wx:key="{{index}}">
+      <image class="tabimg{{index}}" src="{{item.src}}"></image>
+    </block>
+    </view>
+    <!-- 项目类型 -->
+    <view class="tab-project">
+     <view class="tab-projectType">项目类型</view>
+     <view class="tab-car">车辆出售</view>
+     <view class="tab-phone"  bindtap="callPhone">
+     <image src="../images/phone.png"></image>
+     <text class="tab-phone-text">拨打电话</text>
+     </view>
+    </view>
+    <!-- 分割线 -->
+    <view class="hr"></view>
+    <!-- 评论点赞 -->
+<view class="tab-scl">
+<!-- 分享 -->
+<view class="tab-share" bindtap="tabShare">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="tab-comment" bindtap="tabComment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="tab-like" bindtap="tabLike">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+<!-- 第二个发布信息 -->
+<view style="width:100%;height:10rpx;background:rgba(230,230,230,1);"></view>
+
+<view>
+  
+<view class="tab-new">
+      <!-- 发布者头像 -->
+      <view class="tab-head"></view>
+      <!-- 发布者用户名 -->
+      <view class="tab-userName">发布用户名</view>
+      <!-- 置顶 -->
+      <view class="stick">置顶</view>
+      <!-- 距离 -->
+      <view class="tab-distance">2.3km</view>
+     </view>
+     <!-- 发布需求标题 -->
+    <view class="tab-userTitle">发布需求的标题</view>
+    <view class="tab-timer">
+    <!-- 时间 -->
+    <view class="tab-time">2019.02.02 18:36</view>
+    <!-- 发布者定位 -->
+    <view class="tab-userPosition">
+    <image src="../images/position49.png"></image>
+    <text>发布者定位</text>
+    </view>
+    </view>
+<!-- 发布内容 -->
+<view class="tab-content">
+晚鱼村28方今晚装成12点，想装细料装细料，想装页岩 装页岩，想装自运装自运，随意，自运1200.提供南山渣 票，车子750电密18580515020……同时今晚鹅公岩桥 头有5车料1300现在切得到的报名，没夜间。 同时关音桥建渣现金1500.通宵联系电话153 1086 6666 同时内转需要6个车，能跑一个月固定车车跑电密 15922709164 另外我朋友要30台18方内转车 要切的电密182 2325 7564
+</view>
+<!-- 发布图片 -->
+<view class="stabUserImg">
+ <block wx:for="{{stabUserImg}}" wx:key="{{index}}">
+      <image class="tabimg{{index}}" src="{{item.src}}"></image>
+ </block>
+</view>
+<!-- 项目类型 -->
+    <view class="tab-project">
+     <view class="tab-projectType">项目类型</view>
+     <view class="tab-car">车辆出售</view>
+     <view class="tab-phone" bindtap="callPhone">
+     <image src="../images/phone.png"></image>
+     <text class="tab-phone-text">拨打电话</text>
+     </view>
+    </view>
+ <!-- 分割线 -->
+    <view class="hr"></view>
+    <!-- 评论点赞 -->
+<view class="tab-scl">
+<!-- 分享 -->
+<view class="tab-share" bindtap="tabShare">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="tab-comment" bindtap="tabComment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="tab-like" bindtap="tabLike">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+
+<view style="width:100%;height:10rpx;background-color;background:rgba(230,230,230,1);"></view>
+<!-- 第三个发布者信息 -->
+<view class="tab-new">
+      <!-- 发布者头像 -->
+      <view class="tab-head"></view>
+      <!-- 发布者用户名 -->
+      <view class="tab-userName">发布用户名</view>
+      <!-- 置顶 -->
+      <view class="stick">置顶</view>
+      <!-- 距离 -->
+      <view class="tab-distance">2.3km</view>
+     </view>
+     <!-- 发布需求标题 -->
+    <view class="tab-userTitle">发布需求的标题</view>
+    <view class="tab-timer">
+    <!-- 时间 -->
+    <view class="tab-time">2019.02.02 18:36</view>
+    <!-- 发布者定位 -->
+    <view class="tab-userPosition">
+    <image src="../images/position49.png"></image>
+    <text>发布者定位</text>
+    </view>
+    </view>
+    <!-- 发布信息 -->
+    <view class="tab-content">翠云万科 肖家河万科 欢迎来22 28 32 45的来自运， 附近有渣场的也可以合作。结账方式随意！</view>
+    <!-- 图片 -->
+    <view class="tabUserImg">
+    <block wx:for="{{ttabUserImg}}" wx:key="{{index}}">
+      <image class="tabimg{{index}}" src="{{item.src}}"></image>
+    </block>
+    </view>
+    <!-- 项目类型 -->
+    <view class="tab-project">
+     <view class="tab-projectType">项目类型</view>
+     <view class="tab-car">车辆出售</view>
+     <view class="tab-phone" bindtap="callPhone">
+     <image src="../images/phone.png"></image>
+     <text class="tab-phone-text">拨打电话</text>
+     </view>
+    </view>
+    <!-- 分割线 -->
+    <view class="hr"></view>
+    <!-- 评论点赞 -->
+<view class="tab-scl">
+<!-- 分享 -->
+<view class="tab-share" bindtap="tabShare">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="tab-comment" bindtap="tabComment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="tab-like" bindtap="tabLike">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+<!--  -->
+<view style="width:100%;height:10rpx;background-color;background:rgba(230,230,230,1);"></view>
+<!-- 第四个发布者信息 -->
+<view class="tab-new">
+      <!-- 发布者头像 -->
+      <view class="tab-head"></view>
+      <!-- 发布者用户名 -->
+      <view class="tab-userName">发布用户名</view>
+      <!-- 置顶 -->
+      <view class="stick">置顶</view>
+      <!-- 距离 -->
+      <view class="tab-distance">2.3km</view>
+     </view>
+     <!-- 发布需求标题 -->
+    <view class="tab-userTitle">发布需求的标题</view>
+    <view class="tab-timer">
+    <!-- 时间 -->
+    <view class="tab-time">2019.02.02 18:36</view>
+    <!-- 发布者定位 -->
+    <view class="tab-userPosition">
+    <image src="../images/position49.png"></image>
+    <text>发布者定位</text>
+    </view>
+    </view>
+    <!-- 发布信息 -->
+    <view class="tab-content">翠云万科 肖家河万科 欢迎来22 28 32 45的来自运， 附近有渣场的也可以合作。结账方式随意！</view>
+    <!-- 图片 -->
+    <view class="tabUserImg{{mm}}">
+    <block wx:for="{{ftabUserImg}}" wx:key="{{index}}">
+      <image src="{{item.src}}"></image>
+    </block>
+    </view>
+    <!-- 项目类型 -->
+    <view class="tab-project">
+     <view class="tab-projectType">项目类型</view>
+     <view class="tab-car">车辆出售</view>
+     <view class="tab-phone" bindtap="callPhone">
+     <image src="../images/phone.png"></image>
+     <text class="tab-phone-text">拨打电话</text>
+     </view>
+    </view>
+    <!-- 分割线 -->
+    <view class="hr"></view>
+    <!-- 评论点赞 -->
+<view class="tab-scl">
+<!-- 分享 -->
+<view class="tab-share" bindtap="tabShare">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="tab-comment" bindtap="tabComment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="tab-like" bindtap="tabLike">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+<!-- <view style="color:red;font-size:20px;text-align:center;margin:0 auto;">
+{{mm}}
+</view> -->
+</view>
+  </van-tab>
+  <van-tab title="优质推荐">
+    <view>
+
+    </view> 
+  </van-tab>
+</van-tabs>
+</view>

@@ -1,0 +1,66 @@
+<!-- 我是司机1> -->
+<!-- 我是企业 -->
+<view class="bus">
+<!-- 标题 -->
+<view class="mes">请完善司机信息</view>
+<!-- form表单 -->
+<form bindsubmit="formSubmit">
+<!-- 司机类型 -->
+<view class="form">
+ <view class="section d-spb">
+    <view class="section-title">司机类型</view>
+    <view class="right d-spb" catchtap='selectTap'>
+      <input name="input" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index]}}" />
+      <view>
+        <image class="section-img" src="../../images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- ===================================== -->
+ <!-- 下拉选项框 -->
+ <include src="../select/select.wxml"/>
+ <!-- ===================================== -->
+<!-- 真实姓名 -->
+ <view class="section2 d-spb">
+    <view class="section-title">真实姓名</view>
+    <view class="right">
+      <input name="i2"/>
+    </view>
+ </view>
+ <!-- 联系电话 -->
+  <view class="section2 d-spb">
+    <view class="section-title">联系电话</view>
+    <view class="right d-spb">
+      <input name="i3" maxlength="11" type="number"/>
+      <view class="ch">更换</view>
+    </view>
+ </view>
+ <!-- 车辆ID -->
+  <view class="section2 d-spb">
+    <view class="section-title">车辆ID</view>
+    <view class="right">
+      <input name="i4" type="number"/>
+    </view>
+ </view>
+<!-- 车牌号 -->
+<view class="section2">
+  <view class="section-title">车牌号</view>
+  <view class="car d-flex">
+    <input maxlength="1" bindinput="o1" focus="{{fo1}}" name="c1" type=""></input>
+    <input maxlength="1" bindinput="o2" focus="{{fo2}}" name="c2" type=""></input>
+    <view style="width:50rpx;height:50rpx;">
+    <view style="width:11rpx;height:11rpx;background:rgba(204,204,204,1);border-radius:50%;text-align:center;margin-top:19.5rpx;"></view>
+    </view>
+    <input maxlength="1" bindinput="o3" focus="{{fo3}}" name="c3" type=""></input>
+    <input maxlength="1" bindinput="o4" focus="{{fo4}}" name="c4" type=""></input>
+    <input maxlength="1" bindinput="o5" focus="{{fo5}}" name="c5" type=""></input>
+    <input maxlength="1" bindinput="o6" focus="{{fo6}}" name="c6" type=""></input>
+    <input maxlength="1" bindinput="mm" focus="{{fo7}}" name="c7" type=""></input>
+    <input maxlength="1" focus="{{fo8}}" name="c8" type=""></input>
+  </view>
+</view>
+</view>
+<button form-type="submit" class="next">下一步</button>
+<include src="../err.wxml"/>
+</form>
+</view>

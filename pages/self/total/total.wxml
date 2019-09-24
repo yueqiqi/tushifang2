@@ -1,0 +1,73 @@
+<!-- 我的信誉分 -->
+<view class="bgf">
+<view style="padding-top:31rpx;">
+<!-- 分数框 -->
+  <view class="bor">
+    <!-- 我的积分 -->
+    <view>我的积分</view>
+    <!-- 分数 -->
+    <view>{{score}}</view>
+  </view>
+  <!-- 邀请好友得积分 -->
+  <view style="margin-left:29rpx;margin-right:30rpx;margin-top:81rpx;">
+  <view class="d-spb">
+  <!-- 邀请好友 -->
+    <view class="">
+      <view class="tit">邀请好友获取积分</view>
+      <view class="i2">每成功邀请一位好友进入，可获得2-18信誉分哦！</view>
+    </view>
+    <!-- 去邀请 -->
+    <view class="ginv" bindtap="ginv">去邀请</view>
+  </view>
+
+  <!-- 充值 -->
+  <view style="margin-top:47rpx;"> 
+  <view class="d-spb">
+  <!-- 邀请好友 -->
+    <view class="inv">
+      <view class="tit">充值获取积分</view>
+      <view class="i3">充值付费购买积分！</view>
+    </view>
+    <!-- 去邀请 -->
+    <view class="ginv" bindtap="gup">去充值</view>
+  </view>
+  <!--  -->
+  <view class="d-spb" style="padding-bottom:51rpx;">
+  <!-- 扫码 -->
+    <view class="">
+      <view class="tit">扫码交换积分</view>
+      <view class="i2">可通过扫码进行用户之间互相转取积分！</view>
+    </view>
+    <!-- 去邀请 -->
+    <view>
+    <view class="ginv" catchtap='selectTap'>
+        {{selectData[index]}}
+      <!-- <view  class="{{img}}" style="margin-right:20rpx;">
+        <image style="width:29rpx;height:17rpx;" src="../../images/position/shape45.png"></image>
+      </view> -->
+    </view>
+    <!-- ==================================== -->
+    <view class='select_box'>
+    <!-- 列表项布局 -->
+    <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*71.999):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
+    </view>
+</view>
+    <!-- ==================================== -->
+    </view>
+    
+  </view>
+  <!--  -->
+  </view>
+  </view>
+<!--  -->
+</view>
+</view>
+<!-- 温馨提示 -->
+<view class="bgf mtt">
+<view style="width:702rpx;margin:0 auto;padding-bottom:31rpx;">
+  <view style="color:#999999;font-size:24rpx;padding-top:30rpx;">温馨提示:</view>
+  <view style="color:#333333;font-size:24rpx;">积分可用于发布消息、置顶消息等,积分可通过邀请好友、充值以及好友扫码转取进行获取！</view>
+</view>
+</view>

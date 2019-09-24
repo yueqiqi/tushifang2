@@ -1,0 +1,137 @@
+/* pages/store/product/product.wxss */
+@import "../alert/alert.wxss";
+page{
+  background:rgba(242,242,242,1)!important;
+}
+/* 轮播图 */
+swiper{
+  height:750rpx!important;
+}
+.slide-image{
+  width:750rpx;height:750rpx!important;
+}
+/* 价格 */
+.price{
+  padding-top:30rpx;padding-left:30rpx;
+}
+.price-l{
+font-size:40rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(245,121,0,1);
+margin-right:29rpx;
+}
+/* 原价 */
+.price-r{
+font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+text-decoration:line-through;
+color:rgba(153,153,153,1);
+line-height:66rpx;
+}
+/* 商品详情 */
+.detail{
+  margin:0 auto;
+  width:702rpx;
+height:98rpx;
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+/* 超出换行 */
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
+}
+/* 快递 */
+.express{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:#999999;
+margin-left:26rpx;
+margin-top:46rpx;
+padding-bottom:28rpx;
+}
+/*  */
+.express-l,.express-c{
+  margin-right:29rpx;
+  padding-right: 29rpx;
+  border-right:2rpx solid #999999;
+}
+/* 配送区域 */
+.dcs{
+  margin-top:10rpx;
+}
+.dc-l{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(153,153,153,1);
+}
+.dc-r{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin-left:32rpx;
+}
+/* 规格 */
+.spec-l{
+
+}
+.spec-r{
+  margin-left:32rpx;
+}
+.mybtn{
+  width:100rpx;
+height:50rpx;
+background:rgba(242,242,242,1);
+border-radius:10rpx;
+text-align: center;
+line-height: 50rpx;
+margin-right:10rpx;
+}
+/* 商品详情 */
+.details{
+margin-top:10rpx;
+}
+.details-title{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(52,52,52,1);
+text-align: center;
+padding-top:27rpx;
+}
+/* 商品图片 */
+.details-img{
+  width:100%;
+height:738rpx;
+margin-top:25rpx;
+}
+.details-img image{
+  width:100%;
+height:738rpx;
+}
+/* 立即购买 */
+.pay{
+  width:100%;
+height:98rpx;
+background:rgba(118,212,198,1);
+/* 文字 */
+font-size:36rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+text-align: center;
+line-height: 98rpx;
+/* 固定 */
+position:fixed;
+/* top:0px;
+left:0px; */
+bottom:0;
+z-index:8888;
+}

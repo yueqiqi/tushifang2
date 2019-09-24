@@ -1,0 +1,119 @@
+<!-- 找人详情 -->
+<!-- 1 -->
+<view class="bg people">
+<!-- 2 -->
+<view class="bgf  pt">
+<!-- 3 -->
+  <view class="d-spb sb">
+    <view class="sbl ml d-flex">
+      <image src="../../images/carousel/02.jpg"></image>
+      <view class="Name">发布用户名</view>
+    </view>
+    <view class="sbr d-flex">
+      <view class="title-text">求职</view>
+      <view class="Name">渣车司机</view>
+    </view>
+    <!-- 3 -->
+  </view>
+  <!-- 状态 -->
+    <view class="state bgf d-spb ml">
+      <view class="statel d-flex">
+        <view class="Title states">招聘状态</view>
+        <view class="Mes job">正在找工作</view>
+      </view>
+      <view class="stater d-flex">
+        <view class="money Title">理想薪资</view>
+        <view class="Mes num">3000-5000</view>
+      </view>
+    </view>
+    <!-- 时间 -->
+    <view class="timer ml d-spb">
+      <view class="timerl d-flex">
+        <view class="Title">发布时间</view>
+        <view class="Mes">2019.08.20</view>
+      </view>
+      <view class="timerr d-flex">
+        <view class="Title">工作年限</view>
+        <view class="Mes">10年</view>
+      </view>
+    </view>
+    <!-- 个人简介 -->
+    <view class="ml intro">
+      <view class="title-text ">个人简介</view>
+      <view class="list">
+        <view class="l1">从业10年，经验丰富</view>
+        <view class="l2">参加的工作项目有中央公园建设、金科小区施工、龙湖 商场施工。</view>
+        <view class="l3"> 吃苦耐劳，开朗热情好相处，找我没错嘻嘻。</view>
+      </view>
+    </view>
+<!-- 2 -->
+</view>
+<view class="bgf">
+  <view class="linkman ml">
+  <!-- 联系人 -->
+    <view class=" linkman1 d-spb">
+      <view class="linkmanl d-flex">
+        <view class="linkman-sb title-text">联系人</view>
+        <view class="linkmanName Title">张三</view>
+      </view>
+      <view class="linkmanr">
+        <view bindtap="card">查看名片</view>
+      </view>
+    </view>
+    <view class="cut"></view>
+  <!-- 联系电话 -->
+  <view class="phone d-spb">
+    <view class="phonel d-flex">
+      <view class="tel title-text">联系电话</view>
+      <view class="tel-num Title">13500000000</view>
+    </view>
+    <view class="phoner d-flex">
+      <image src="../../images/phone.png"></image>
+      <text>一键拨号</text>
+    </view>
+  </view>
+  </view>
+</view>
+<!-- 温馨提示 -->
+<view class="bgf">
+  <view class="notice ml">
+    <view>温馨提示</view>
+    <text>此信息由包程项用户提供，但联系时任需注意识别信息真假，如果发现此信息不真实，请</text>
+    <text bindtap="report">立即举报</text>。
+  </view>
+</view>
+<!-- 广告图 -->
+<view class="bgf bottom">
+  <view class="ad">
+    <image src="../../images/carousel/03.jpg"></image>
+  </view>
+</view>
+<!-- 分享 -->
+  <view class="bgf">
+    <view class="likes">
+    <!-- 分享 -->
+      <view class="share" bindtap="share">
+      <view>
+        <image src="../../images/share.png"></image>
+      </view>
+        <view>分享</view>
+      </view>
+      <!-- 点赞 -->
+      <view class="like" bindtap="like">
+        <view>
+          <image src="../../images/like.png"></image>
+        </view>
+        <text>{{like}}</text>
+      </view>
+      <!-- 举报 -->
+      <view class="reports" bindtap="report">
+        <view>
+          <image src="../../images/complaint.png"></image>
+        </view>
+        <text>举报</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 1 -->
+</view>

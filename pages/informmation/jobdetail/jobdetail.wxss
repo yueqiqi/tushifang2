@@ -1,0 +1,231 @@
+.job{
+  height:100%
+}
+.Title{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+.Mes{
+ font-size:28rpx;
+font-family:PingFang SC;
+color:#333;
+}
+/* 招聘职位 */
+.postName{
+  font-size:36rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+}
+/* 招聘人数 */
+.num{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+margin-right:30rpx;
+}
+/* 薪资范围 */
+.money{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(118,212,198,1);
+}
+.money01{
+  margin-right:10rpx;
+}
+/* 招聘状态 */
+.states{
+margin-top:48rpx;
+}
+.state{
+  margin-right:20rpx;
+}
+.stateright{
+  margin-right:69rpx;
+}
+/* 区域 */
+.district {
+  margin-left:10rpx;
+}
+/* 省份 */
+.province{
+  margin-left:20rpx;
+}
+/* 发布时间 */
+.dates{
+  margin-top:19rpx;
+}
+.issue{
+  margin-right:20rpx;
+}
+.dateright{
+  margin-right:182rpx;
+}
+.year{
+  margin-left:20rpx;
+  margin-bottom:40rpx;
+}
+/* 分割线 */
+.hr{
+  width:690rpx;
+height:2rpx;
+background:rgba(230,230,230,1);
+}
+/* 职位详情 */
+.duty{
+  margin-top:40rpx;
+  padding-bottom:37rpx
+}
+/* 职位详情 */
+.detail{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(118,212,198,1);
+}
+/* 详情 */
+.details{
+  width:673rpx;
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+}
+/* 联系人 */
+.linkman{
+  margin-top:10rpx;
+}
+.names{
+  padding-top:30rpx;
+}
+.name{
+  margin-right:72rpx;
+}
+/* 分割线 */
+.cut{
+  width:530rpx;
+height:2rpx;
+margin-left:190rpx;
+background:rgba(230,230,230,1);
+margin-top:22rpx;
+margin-bottom:30rpx;
+}
+/* 拨打电话 */
+.ph-right{
+  width:200rpx;
+height:50rpx;
+background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
+border-radius:10rpx;
+margin-right:30rpx;
+}
+.pnum{
+  margin-left:44rpx;
+}
+/* 电话图标 */
+.ph-right image{
+  width:25rpx;height:26rpx;
+  margin-top:12rpx;margin-left:25rpx;
+}
+/* 一键拨号 */
+.dial{
+  margin-left:14rpx;line-height: 50rpx;
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+}
+/* 查看名片 */
+.company-right{
+  width:140rpx;
+height:50rpx;
+background:rgba(235,249,247,1);
+border-radius:10rpx;
+margin-right: 30rpx;
+}
+.card{
+margin:0 auto;
+line-height: 50rpx;
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(72,149,137,1);
+}
+/* 公司地址 */
+.add{
+  padding-bottom:31rpx;
+}
+/* 公司详细地址 */
+.location{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+margin-left:42rpx;
+}
+/* 公司图片 */
+.images{  margin-top:10rpx;}
+.img{
+  padding-top:30rpx;
+}
+.images image{
+   margin-top:41rpx;
+margin-right:15rpx;
+  width:220rpx;height:220rpx; overflow: hidden
+}
+/* 视频 */
+video{
+  width:690rpx;height:300rpx;margin-top:15rpx;
+}
+/* 温馨提示 */
+.notice{
+  margin-top:10rpx;
+}
+/* 标题 */
+.noticetitle{
+  color:#999999;
+  font-size:24rpx;
+  padding-top:30rpx;
+}
+/* 详情 */
+.noticedetail{
+  width:695rpx;
+  color:#333333;
+  font-size: 24rpx;
+}
+/* 立即举报 */
+.report{
+  color:#ff0000;
+  padding-bottom:28rpx;
+}
+/* 广告图 */
+.adv{
+  margin-top:10rpx;
+}
+/* 图片 */
+.ad image{
+  margin-top:20rpx;margin-bottom:20rpx;
+  width:690rpx;height:180rpx;
+}
+/* 点赞 */
+.likes{
+  display: flex;
+  justify-content: space-between;
+  margin-left:78rpx;margin-right:78rpx;
+  padding-bottom:35rpx;margin-top:2rpx;padding-top:35rpx;
+}
+/* 图片 */
+.likes image{
+  width:30rpx;height:30rpx;
+  margin-right:10rpx;
+}
+/*  */
+.likes text{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+}

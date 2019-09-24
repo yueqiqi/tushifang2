@@ -1,0 +1,43 @@
+/* 时间分类 */
+page{
+  background:#fff!important;
+}
+/* 整体布局 */
+.sectiontime{
+  width:330rpx;
+    /* height:70rpx; */
+    background:rgba(242,242,242,1);
+    border-radius:10rpx;
+   /* margin:20rpx;
+   padding:20rpx */
+   text-align: center;
+   line-height: 70rpx;
+   margin-left:31rpx;
+   font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);}
+/*  */
+.picker{
+  display: flex;
+  justify-content: space-between;
+  /* width:383rpx; */
+height:64rpx;
+background:rgba(242,242,242,1);
+border-radius:10rpx;
+line-height:64rpx;
+}
+.select-text{
+  /* color:red; */
+  font-weight: blod;
+  color:black;
+margin-left:19rpx;
+font-family:PingFang SC;
+}
+/* 下拉箭头 */
+.picker image{
+  width:40rpx;
+  height:30rpx;
+  margin:auto 0;
+  margin-right:19rpx;
+}

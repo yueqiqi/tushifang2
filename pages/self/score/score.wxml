@@ -1,0 +1,46 @@
+<!-- 我的信誉分 -->
+<view class="bgf">
+<view style="padding-top:31rpx;">
+<!-- 分数框 -->
+  <view class="bor">
+    <!-- 我的信誉分 -->
+    <view>我的信誉分</view>
+    <!-- 分数 -->
+    <view>{{score}}</view>
+  </view>
+  <!-- 邀请好友得积分 -->
+  <view style="margin-left:29rpx;margin-right:30rpx;margin-top:81rpx;">
+  <view class="d-spb">
+  <!-- 邀请好友 -->
+    <view class="">
+      <view class="tit">邀请好友获取积分</view>
+      <view class="i2">每成功邀请一位好友进入，可获得1-3信誉分哦！</view>
+    </view>
+    <!-- 去邀请 -->
+    <view class="ginv" bindtap="ginv">去邀请</view>
+  </view>
+
+  <!-- 充值 -->
+  <view style="margin-top:67rpx;"> 
+  <view class="d-spb">
+  <!-- 邀请好友 -->
+    <view class="inv">
+      <view class="tit">充值获取信誉分</view>
+      <view class="i3">充值付费可获得少量信誉分（我们不推荐付费购买，希望用户遵守平台规则，为搭建包程项和平社区共同努力！）</view>
+    </view>
+    <!-- 去邀请 -->
+    <view class="ginv" bindtap="gup">去充值</view>
+  </view>
+  <!--  -->
+  </view>
+  </view>
+<!--  -->
+</view>
+</view>
+<!-- 温馨提示 -->
+<view class="bgf mtt">
+<view style="width:702rpx;margin:0 auto;padding-bottom:31rpx;">
+  <view style="color:#999999;font-size:24rpx;padding-top:30rpx;">温馨提示:</view>
+  <view style="color:#333333;font-size:24rpx;">信誉分是获取推荐的重要途径，信誉分越高，小包会优先选择推荐，信誉分可以通过充值、邀请好友以及发布信息被点赞等进行获取，相反，被举报成功会扣除相应信誉分，希望大家遵守平台规则，为共同搭建包程项工程联盟平台努力！</view>
+</view>
+</view>

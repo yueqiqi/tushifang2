@@ -1,0 +1,61 @@
+<!-- 商品详情 -->
+<view class="bg">
+  <!-- 轮播图 -->
+  <view class="bgf">
+    <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}" interval="{{interval}}"duration="{{duration}}" indicator-dots="true" indicator-color="" indicator-active-color="" circular="true">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item.url}}" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 商品详情 -->
+  <view class="bgf">
+  <!-- 价格 -->
+    <view class="price d-flex">
+      <view class="price-l">￥199</view>
+      <view class="price-r">原价<text>￥550</text></view>
+    </view>
+    <!-- 详情 -->
+    <view class="detail">304不锈钢石油设备堵盖快速接头DC型快速接头汽车配件DN15-DN200</view>
+    <!-- 库存 -->
+    <view class="d-flex express">
+      <view class="express-l">快递<text style="color:#333;margin-left:10rpx;">￥10.00</text></view>
+      <view class="express-c">库存<text style="color:#333;margin-left:10rpx;">1000</text></view>
+      <view class="express-r">销量<text style="color:#333;margin-left:10rpx;">1000</text></view>
+    </view>
+  </view>
+  <!-- 配送 -->
+  <view class="dcs">
+  <!-- 配送区域 -->
+   <van-cell is-link>
+     <view slot="title" class="d-flex dc">
+      <view class="dc-l">配送区域</view>
+      <view class="dc-r">请选择配送区域</view>
+     </view>
+   </van-cell>
+  <!-- 规格 -->
+   <van-cell is-link>
+     <view slot="title" class="d-flex spec">
+      <view class="dc-l">规格选择</view>
+      <view class="spec-r d-flex">
+        <view class="mybtn">规格</view>
+        <view class="mybtn">型号</view>
+      </view>
+     </view>
+   </van-cell>
+  </view>
+  <!-- 商品详情 -->
+  <view class="details bgf">
+    <view class="details-title">商品详情</view>
+    <view class="details-img"><image src="../../images/carousel/03.jpg"></image></view>
+  </view>
+  <!-- 购买 -->
+  <view class="pay" bindtap="pay" >立即购买</view>
+  <!-- 购买 -->
+  <view>
+    <include src="../alert/alert.wxml"/>
+  </view>
+  <!--  -->
+</view>

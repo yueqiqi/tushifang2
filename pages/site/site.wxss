@@ -1,0 +1,270 @@
+@import "../panel/panel.wxss";
+/* pages/site/site.wxss */
+/* 轮播图 */
+/* 去除滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+/* 轮播图片 */
+.slide-image{
+  width:690rpx;height:300rpx;
+}
+/* 分类选择器 */
+.list-msg {
+    /* padding: 0 20rpx; */
+    width:330rpx;
+    height:70rpx;
+    background:rgba(242,242,242,1);
+    border-radius:10rpx;
+    position: relative;
+}
+
+ /* 选择分类 */
+ /* 分类 */
+.sectionClass{
+  width:330rpx;
+    height:70rpx;
+    background:rgba(242,242,242,1);
+    border-radius:10rpx;
+   /* margin:20rpx;
+   padding:20rpx */
+   text-align: center;
+   line-height: 70rpx;   
+   }
+.picker{
+  display: flex;
+  justify-content: space-between
+}
+.select-text{
+font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);margin-left:19rpx;
+}
+.picker image{
+  width:58rpx;
+  height:40rpx;
+  margin:auto 0;
+  margin-right:19rpx;
+}
+/* 时间分类 */
+.sectiontime{
+  width:330rpx;
+    height:70rpx;
+    background:rgba(242,242,242,1);
+    border-radius:10rpx;
+   /* margin:20rpx;
+   padding:20rpx */
+   text-align: center;
+   line-height: 70rpx;
+   margin-left:31rpx;
+   font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+   }
+ 
+.postMessage{
+  display:flex;justify-content: left;
+  height:120rpx;
+}
+/* 头像框 */
+.headPortrait{
+  width:70rpx;
+height:70rpx;
+background-color:rgba(229,229,229,1);
+border-radius:50%;
+margin:auto 0;
+margin-left:30rpx;
+}
+/* 用户名 */
+.userName{
+/* width:146rpx;
+height:29rpx; */
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin:auto 0;
+margin-left:20rpx;
+}
+/* 十万火急 */
+.worry{
+  margin:auto 0;
+  width:120rpx;
+height:36rpx;
+background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);
+border-radius:5px;
+/* 字体颜色 */
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(255,255,255,1);
+text-align: center;
+margin-left:30rpx;
+}
+/* 距离  */
+.distance{
+  margin:auto 0;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(102,102,102,1);
+margin-left:244rpx;
+}
+/* 发布者需求的标题 */
+.userTitle{
+font-size:32rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin-left:30rpx;
+}
+/* 时间位置样式 */
+.timer{
+  display:flex;justify-content: space-between;margin-left:30rpx;margin-top: 19rpx;
+}
+/* 时间 */
+.time{
+  width:197rpx;
+height:19rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+line-height:40rpx;
+}
+/* 定位图片 */
+.userPosition image{
+  width:18rpx;height: 23rpx;margin-right:10rpx;margin-top:13rpx;
+}
+/* 发布者定位 */
+.userPosition text{
+  width:119rpx;
+height:23rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+/* line-height:40rpx; */
+margin-right: 30rpx;
+}
+/* 发布内容 */
+.content{
+  width:661rpx;
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+line-height:40rpx;
+margin-left:30rpx;
+margin-top:35rpx;
+}
+/* 发布图片 */
+.userImg{display: flex;justify-content:left;margin-left: 31rpx;
+margin-top:28rpx;
+width: 700rpx;}
+.userImg image{
+  width:220rpx;height:220rpx;
+}
+.userImg1,.userImg2{margin-left:15rpx;}
+.userImg21,.userImg22{margin-left:15rpx;}
+/* 发布视频 */
+video{
+  width:690rpx;
+height:300rpx;
+background:rgba(0,0,0,1);
+margin-left:30rpx;
+margin-top:15rpx;
+}
+/* 项目类型 */
+.project{
+  display: flex;
+  justify-content: left;
+  margin-left:31rpx;
+  margin-top:41rpx;
+}
+/* 项目类型 */
+.projectType{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(118,212,198,1);
+}
+/* 类型 */
+.car{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+  color:#333;
+  margin-left:10rpx;
+}
+/* 电话 */
+.phone{
+  margin-left:258rpx;
+  width:200rpx;
+height:50rpx;
+background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
+border-radius:10px;
+text-align: center;
+}
+/* 电话小图标 */
+.phone image{
+  width:26rpx;height:26rpx;
+}
+/* 拨打电话 */
+.phone-text{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+line-height: 50rpx;
+margin-left:14rpx;
+}
+/* 分割线 */
+.hr{
+  width:690rpx;
+height:2rpx;
+background:rgba(230,230,230,1);margin:0 auto;
+margin-top:33rpx;
+}
+/* 分享评论 */
+.scl{
+  display: flex;justify-content: left;
+  margin-top:28rpx;margin-bottom:23rpx;
+}
+.scl image{
+  width:30rpx;height:30rpx;
+}
+/* 分享 */
+.share{margin-left:78rpx;}
+.share text{
+  margin-left:10rpx;
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+}
+/* 评论 */
+.comment{margin-left:156rpx;}
+.comment text{
+  margin-left:10rpx;
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+}
+/* 点赞 */
+.like{margin-left:157rpx;}
+.like text{
+  margin-left:10rpx;
+ font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(118,212,198,1);
+}
+
+
+

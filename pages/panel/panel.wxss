@@ -1,0 +1,255 @@
+
+/* pages/panel/panel.wxss */
+/* 选项卡 */
+.van-tabs__line{
+  width:400rpx!important;
+  margin-left:-94rpx;
+  background:rgba(118,212,198,1)!important;
+}
+.van-tab__title{
+  font-size:36rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+}
+/* 最新发布 */
+.tab-new{
+  /* width:100%; */
+  display:flex;justify-content: left;height:120rpx;margin-top:15rpx;
+}
+/* 头像 */
+.tab-head{
+  width:70rpx;
+height:70rpx;
+background:rgba(229,229,229,1);
+border-radius:50%;
+margin:auto 0;
+margin-left:30rpx;
+}
+/* 用户名 */
+.tab-userName{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin:auto 0;
+margin-left:20rpx;
+}
+/* 置顶 */
+.stick{
+  width:70rpx;
+height:36rpx;
+background:linear-gradient(45deg,rgba(218,25,22,1) 0%,rgba(241,82,51,1) 100%);
+border-radius:5rpx;
+/* 字体样式 */
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(255,255,255,1);text-align: center;line-height: 36rpx;
+margin:auto 0;margin-left:30rpx;
+}
+/* 距离 */
+.tab-distance{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(102,102,102,1);
+margin:auto 0;
+margin-left:279rpx;
+}
+
+/* 发布者需求的标题 */
+.tab-userTitle{
+font-size:32rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(51,51,51,1);
+margin-left:30rpx;
+}
+/* 时间位置样式 */
+.tab-timer{
+  display:flex;justify-content: space-between;margin-left:30rpx;margin-top: 19rpx;
+}
+/* 时间 */
+.tab-time{
+  width:197rpx;
+height:19rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+line-height:40rpx;
+}
+/* 定位图片 */
+.tab-userPosition image{
+  width:18rpx;height: 23rpx;margin-right:10rpx;margin-top:13rpx;
+}
+/* 发布者定位 */
+.tab-userPosition text{
+  width:119rpx;
+height:23rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+/* line-height:40rpx; */
+margin-right: 30rpx;
+}
+/* 发布内容 */
+.tab-content{
+ width:692rpx;
+/* height:137rpx; */
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(51,51,51,1);
+line-height:40rpx;
+margin-left:30rpx;
+margin-top:35rpx;
+}
+/* 发布图片 */
+.tabUserImg{
+  width:780rpx;
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;flex-wrap: wrap;
+}
+.tabUserImg image{
+  width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
+}
+/* 项目类型 */
+.tab-project{
+  display: flex;
+  justify-content: left;
+  margin-left:31rpx;
+  margin-top:41rpx;
+}
+/* 项目类型 */
+.tab-projectType{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(118,212,198,1);
+}
+/* 类型 */
+.tab-car{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+  color:#333;
+  margin-left:10rpx;
+}
+/* 电话 */
+.tab-phone{
+  margin-left:258rpx;
+  width:200rpx;
+height:50rpx;
+background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
+border-radius:10px;
+text-align: center;
+}
+/* 电话小图标 */
+.tab-phone image{
+  width:26rpx;height:26rpx;
+}
+/* 拨打电话 */
+.tab-phone-text{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+line-height: 50rpx;
+margin-left:14rpx;
+}
+/* 分割线 */
+.hr{
+ width:690rpx;
+height:3rpx;
+background:rgba(230,230,230,1);
+/* background:green; */
+margin:0 auto;
+margin-top:33rpx;
+}
+/* 分享评论 */
+.tab-scl{
+  display: flex;justify-content: left;
+  margin-top:28rpx;margin-bottom:23rpx;
+}
+.tab-scl image{
+  width:30rpx;height:30rpx;
+}
+/* 分享 */
+.tab-share{margin-left:78rpx;}
+.tab-share text{
+  margin-left:10rpx;
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+}
+/* 评论 */
+.tab-comment{margin-left:156rpx;}
+.tab-comment text{
+  margin-left:10rpx;
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+}
+/* 点赞 */
+.tab-like{margin-left:157rpx;}
+.tab-like text{
+  margin-left:10rpx;
+ font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(118,212,198,1);
+}
+/* 第二个发布者图片 */
+.stabUserImg image{
+  /* 发布图片 */
+  width:690rpx;
+  height:300rpx;
+  margin-left:30rpx;
+  margin-top:30rpx;
+}
+
+
+/* 第四个 */
+/* 四张以上图片的样式 */
+.tabUserImga{
+  width:780rpx;
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;
+  flex-wrap: wrap;
+}
+.tabUserImga image{
+    width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
+}
+
+/* 一张图的样式 */
+.tabUserImgb{
+  width:780rpx;
+  display:flex;
+  justify-content: left;
+  /* margin-left:30rpx; */
+  flex-wrap: wrap;
+}
+.tabUserImgb image{
+ width:690rpx;
+height:300rpx;
+ margin-left:30rpx;
+  margin-top:30rpx;
+}
+/* 4张图样式 */
+.tabUserImgc{
+  width:500rpx;
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;
+  flex-wrap: wrap;
+}
+.tabUserImgc image{
+   width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
+}

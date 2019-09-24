@@ -1,0 +1,154 @@
+<!-- 诚信榜 -->
+<!-- 诚信榜红榜 -->
+<view>
+<van-tabs sticky swipeable="true" line-width="123" dot="true">
+<!-- 诚信红榜 -->
+  <van-tab title="诚信红榜">
+    <view class="red">
+      <!-- 第一个 -->
+      <view class="d-flex user">
+        <view class="left d-flex">
+          <view class="head"></view>
+          <view class="userName">发布者用户名</view>
+        </view>
+        <view class="right d-flex">
+          <view class="credit">用户信誉分</view>
+          <view class="score">200</view>
+        </view>
+      </view>
+      <!-- 第二个 -->
+      <view class="d-flex user">
+        <view class="left d-flex">
+          <view class="head"></view>
+          <view class="userName">发布者用户名</view>
+        </view>
+        <view class="right d-flex">
+          <view class="credit">用户信誉分</view>
+          <view class="score">200</view>
+        </view>
+      </view>
+      <!-- 第三个 -->
+      <view class="d-flex user">
+        <view class="left d-flex">
+          <view class="head"></view>
+          <view class="userName">发布者用户名</view>
+        </view>
+        <view class="right d-flex">
+          <view class="credit">用户信誉分</view>
+          <view class="score">200</view>
+        </view>
+      </view>
+      <!-- 第四个 -->
+      <view class="d-flex user">
+        <view class="left d-flex">
+          <view class="head"></view>
+          <view class="userName">发布者用户名</view>
+        </view>
+        <view class="right d-flex">
+          <view class="credit">用户信誉分</view>
+          <view class="score">200</view>
+        </view>
+      </view>
+
+    </view>
+  </van-tab>
+  <!-- 诚信灰榜 -->
+  <van-tab title="诚信灰榜">内容 2</van-tab>
+  <!-- 失信名单 -->
+  <van-tab title="失信名单">
+    <view class="break">
+      <!-- 温馨提示 -->
+      <!-- <view class="notice">
+        <van-notice-bar mode="closeable"text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"/>
+      </view> -->
+    <view class="gg">
+<view class="gonggao ml">温馨提示</view>
+<view class='scroll_view_border'>
+<view class="srcoll_view" bindtap="hot">温馨提示您请收好自己的财物</view>
+</view>
+
+</view>
+      <!-- 名单出炉 -->
+    <view class="bg "> 
+    <view  bindtap="Mes">
+      <view class="breakText ml">重庆市第三批失信名单出炉了</view>
+      <!-- 图片 -->
+      <block wx:for="{{breakImg}}" wx:key="{{index}}">
+        <image src="{{item.url}}" class="breakImg ml"></image>
+      </block>
+      <!-- 转自 -->
+      <view class="from ml d-flex mt">
+        <view class="from-left">转载自人民法院</view>
+        <view class="from-right">
+          <text>2019.02.02</text>
+          <text style="margin-left:10rpx">18:36</text>
+        </view>
+      </view>
+    </view>
+      <!--  -->
+<!-- 分割线 -->
+<view class="hr"></view>
+<!-- 评论点赞 -->
+<view class="scl">
+<!-- 分享 -->
+<view class="share" bindtap="share">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="comment" bindtap="comment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="like" bindtap="like">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+    </view>
+    <!-- 第二个 -->
+    
+<!--  -->
+  <!-- 名单出炉 -->
+    <view class="bg ">
+      <view class="breakText ml">重庆市第三批失信名单出炉了</view>
+      <!-- 图片 -->
+      <block wx:for="{{breakImg}}" wx:key="{{index}}">
+        <image src="{{item.url}}" class="breakImg ml"></image>
+      </block>
+      <!-- 转自 -->
+      <view class="from ml d-flex mt">
+        <view class="from-left">转载自人民法院</view>
+        <view class="from-right">
+          <text>2019.02.02</text>
+          <text style="margin-left:10rpx">18:36</text>
+        </view>
+      </view>
+      <!--  -->
+<!-- 分割线 -->
+<view class="hr"></view>
+<!-- 评论点赞 -->
+<view class="scl">
+<!-- 分享 -->
+<view class="share" bindtap="share">
+<image src="../images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="comment" bindtap="comment">
+<image src="../images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="like" bindtap="like">
+<image src="../images/like.png"></image>
+<text>{{index+1}}</text>
+</view>
+</view>
+    </view>
+    <!--  -->
+    </view>
+  </van-tab>
+</van-tabs>
+</view> 

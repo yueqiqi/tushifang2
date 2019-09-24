@@ -1,0 +1,65 @@
+<!-- 确认订单 -->
+<view class="position bgf">
+  <van-cell is-link link-type="navigateTo"url="/pages/index/index" center="true">
+  <view slot="title">
+    <view class="d-flex">
+      <image class="img" src="../../images/position/position-sm.png"></image>
+      <view>
+      <!-- 用户名 -->
+        <view class="d-flex user">
+          <view>用户名</view>
+          <view>13222222222</view>
+        </view>
+        <!-- 地址 -->
+        <view class="site">重庆市 渝北区 多少路 80号 什么大厦几楼几杠几</view>
+      </view>
+    </view>
+  </view>
+</van-cell>
+</view>
+<!-- 商品信息 -->
+<view class="bgf">
+<view class="bgf detail">
+  <!-- 时间 -->
+  <view class="date">{{date}}</view>
+  <view class="d-spb details">
+    <view><image class="detail-img" src="../../images/carousel/05.jpg"></image></view>
+    <view>
+      <!-- 商品标题 -->
+      <view class="detail-title">日本车载眼镜架多功能创意汽车用眼睛支架</view>
+      <!-- 分类型号 -->
+      <view class="d-spb model">
+        <view>分类</view>
+        <view>型号</view>
+      </view> 
+      <!-- 价格 -->
+      <view class="d-spb pr">
+        <view class="price">￥{{price}}.00</view>
+        <view class="num">x{{num}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 运费 -->
+<view style="margin:40rpx 30rpx 0rpx 30rpx;padding-bottom:39rpx;">
+<!-- 、运费 -->
+  <view class="d-spb money">
+    <view>运费</view>
+    <view>￥{{money}}.00</view>
+  </view>
+  <!-- 支付方式 -->
+  <view class="d-spb pay">
+    <view>支付方式</view>
+    <view class="cat d-flex">
+      <view><image  src="../../images/cat.png"></image></view>
+      <view>微信支付</view>
+    </view>
+  </view>
+  <!-- 商品总额 -->
+  <view class="allmoney d-spb">
+    <view>商品总额</view>
+    <view>￥{{all}}.00</view>
+  </view>
+</view>
+</view>
+<view class="close" bindtap="close">结算</view>
