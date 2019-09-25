@@ -1,0 +1,11 @@
+<!-- 弹出二维码 -->
+<view class='shade' hidden='{{popup}}' bindtap='hidePopup'></view>
+<view class='shade_box popup' hidden='{{popup}}'>
+<!-- 成功图片 -->
+    <!-- 文字 -->
+    <view class='content'>
+      <view class="t1"><image src="../../images/carousel/03.jpg"></image></view>
+    </view>
+    <view class='msg' bindtap='hidePopup'>确定</view>
+</view>
+<button bindtap="show">二维码</button>

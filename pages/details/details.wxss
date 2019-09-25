@@ -1,10 +1,12 @@
 /* pages/details/details.wxss */
+@import "../reports/reports.wxss";
 .d-text{
   margin-left:42rpx;
   margin-bottom:20rpx;
 }
 .d-mt{
   margin-top:29rpx;
+  /* padding-bottom:30rpx; */
 }
 /* 下划线 */
 .uline{
@@ -21,13 +23,12 @@
 font-family:PingFang SC;
 font-weight:400;
 color:rgba(51,51,51,1);
-/* line-height:40px; */
-margin-bottom:30rpx;
+padding-bottom:30rpx;
 }
 /* 姓名 */
 .d-name{
   margin-left:74rpx;
-  margin-bottom:20rpx;
+  padding-bottom:20rpx;
 }
 .phone{
   margin-left:134rpx;
@@ -36,7 +37,7 @@ height:50rpx;
 background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
 border-radius:10px;
 text-align: center;
-margin-bottom:15rpx;
+/* padding-bottom:15rpx; */
 }
 /* 电话小图标 */
 .phone image{
@@ -93,21 +94,15 @@ color:rgba(153,153,153,1);
 font-family:PingFang SC;
 font-weight:400;
 color:rgba(153,153,153,1);
-margin-bottom:28rpx;
 }
 /* 广告图 */
 .ad{
   width:690rpx;
 height:180rpx;
-background:rgba(229,229,229,1);
 border-radius:10rpx;
-text-align: center;
-line-height: 180rpx;
-font-size:30rpx;
 font-family:PingFang SC;
 font-weight:bold;
 color:rgba(102,102,102,1);
-margin-bottom:20rpx;
 }
 /* 用户名 */
 /* 头像 */

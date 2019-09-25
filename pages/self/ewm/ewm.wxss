@@ -1,0 +1,45 @@
+/* pages/self/ewm/ewm.wxss */
+page{
+  background: #fff!important;
+  width:100%;text-align: center
+}
+/* 二维码边框 */
+.img{
+  width:400rpx;
+height:400rpx;
+background:rgba(235,249,247,1);
+border-radius:10rpx;
+margin:auto;
+margin-top:30%;
+/* 图片垂直水平居中 */
+display: flex;
+justify-content: center; 
+align-items: center;
+}
+/* 二维码图片 */
+image{
+  width:370rpx;
+height:370rpx;
+}
+/* 文字 */
+.top{margin-top:59rpx;}
+.text{
+  font-size:30rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(72,149,137,1);
+}
+/* 分享按钮 */
+.share{
+  width:690rpx;
+height:70rpx;
+background:rgba(118,212,198,1);
+border-radius:10rpx;
+text-align: center;
+line-height: 70rpx;
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+margin-top:30%;
+}

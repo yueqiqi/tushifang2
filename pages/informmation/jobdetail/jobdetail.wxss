@@ -1,3 +1,5 @@
+/*  */
+@import  "../../reports/reports.wxss";
 .job{
   height:100%
 }
@@ -167,11 +169,13 @@ color:rgba(51,51,51,1);
 margin-left:42rpx;
 }
 /* 公司图片 */
-.images{  margin-top:10rpx;}
-.img{
+.iimages{  
+  margin-top:10rpx;
+}
+.iimg{
   padding-top:30rpx;
 }
-.images image{
+.iimages image{
    margin-top:41rpx;
 margin-right:15rpx;
   width:220rpx;height:220rpx; overflow: hidden
@@ -182,7 +186,7 @@ video{
 }
 /* 温馨提示 */
 .notice{
-  margin-top:10rpx;
+  margin-top:10rpx;padding-bottom:28rpx;
 }
 /* 标题 */
 .noticetitle{
@@ -199,7 +203,6 @@ video{
 /* 立即举报 */
 .report{
   color:#ff0000;
-  padding-bottom:28rpx;
 }
 /* 广告图 */
 .adv{

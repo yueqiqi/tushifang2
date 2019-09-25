@@ -4,6 +4,7 @@
 <button class="show-btn" bindtap="showDialogBtn">弹窗</button>
  
 <!--弹窗-->
+<form bindsubmit="formSubmit">
  <!--  -->
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
  <!--  -->
@@ -14,7 +15,7 @@
     <view class="">
      <view class="conts bgf">
   <view style="text-align:center;margin-bottom:20rpx;">举报内容填写</view>
-    <textarea class="areas" bindinput="inputChange" placeholder='请输入举报内容...' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" bindblur="inputBlur"></textarea>
+    <textarea name="textarea" class="areas" bindinput="inputChange" placeholder='请输入举报内容...' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs"></textarea>
     <text class="hint">{{texts}}</text>
     <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
 </view>
@@ -35,8 +36,9 @@
  
 <view class="modal-footer">
   <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-  <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+  <view class="btn-confirm" bindtap="onConfirm" form-type="submit" data-status="confirm">确定</view>
 </view>
  
 </view>
+</form>
 

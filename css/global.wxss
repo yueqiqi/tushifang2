@@ -66,6 +66,12 @@ font-family:PingFang SC;
 font-weight:400;
 color:rgba(51,51,51,1);
 }
+.ptt{
+  padding-top:30rpx;
+}
+.pbb{
+  padding-bottom:30rpx;
+}
 .bg{
   background:rgba(242,242,242,1);
 }
@@ -74,4 +80,18 @@ color:rgba(51,51,51,1);
 }
 .pt{
   padding-top:30rpx;
+}
+/* 发布信息单独样式 */
+.v2 :nth-child(2)>view{
+  /* 动画名称 动画时间 运动曲线 何时开始 播放次数 是否反方向; */
+  /* animation: rotate 5s linear 0s infinite alternate; */
+  animation: go 0.5s linear 0s 14;
+}
+@keyframes go{
+   from {   /*0%*/
+        transform: translateY(0rpx);
+    }
+    to {    /*100%*/
+        transform: translateY(-10rpx);
+    }
 }

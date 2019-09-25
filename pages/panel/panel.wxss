@@ -14,7 +14,7 @@ color:rgba(51,51,51,1);
 }
 /* 最新发布 */
 .tab-new{
-  /* width:100%; */
+  width:100%;
   display:flex;justify-content: left;height:120rpx;margin-top:15rpx;
 }
 /* 头像 */
@@ -109,7 +109,7 @@ margin-top:35rpx;
 }
 /* 发布图片 */
 .tabUserImg{
-  width:780rpx;
+  /* width:780rpx; */
   display:flex;
   justify-content: left;
   margin-left:30rpx;flex-wrap: wrap;
@@ -150,7 +150,7 @@ text-align: center;
 }
 /* 电话小图标 */
 .tab-phone image{
-  width:26rpx;height:26rpx;
+  width:26rpx;height:26rpx;margin-left:24rpx;
 }
 /* 拨打电话 */
 .tab-phone-text{
@@ -173,7 +173,7 @@ margin-top:33rpx;
 /* 分享评论 */
 .tab-scl{
   display: flex;justify-content: left;
-  margin-top:28rpx;margin-bottom:23rpx;
+  margin-top:28rpx;padding-bottom:24rpx;
 }
 .tab-scl image{
   width:30rpx;height:30rpx;
@@ -218,7 +218,7 @@ color:rgba(118,212,198,1);
 /* 第四个 */
 /* 四张以上图片的样式 */
 .tabUserImga{
-  width:780rpx;
+  width:100%;
   display:flex;
   justify-content: left;
   margin-left:30rpx;
@@ -230,14 +230,14 @@ color:rgba(118,212,198,1);
 
 /* 一张图的样式 */
 .tabUserImgb{
-  width:780rpx;
+  width:100%;
   display:flex;
   justify-content: left;
   /* margin-left:30rpx; */
   flex-wrap: wrap;
 }
 .tabUserImgb image{
- width:690rpx;
+ width:92%;
 height:300rpx;
  margin-left:30rpx;
   margin-top:30rpx;
@@ -251,5 +251,7 @@ height:300rpx;
   flex-wrap: wrap;
 }
 .tabUserImgc image{
-   width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
+   width:220rpx;height:220rpx;
+   margin-right:15rpx;
+     margin-top:15rpx;
 }

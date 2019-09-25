@@ -89,9 +89,9 @@
     <!-- 3 -->
     </view>
     <!-- 4 -->
-    <view class="images bgf">
+    <view class="iimages bgf">
     <!-- 公司图片 -->
-    <view class="detail ml img">公司图片/视频</view>
+    <view class="detail ml iimg">公司图片/视频</view>
     <!-- 图片 -->
       <view class="d-flex ml">
         <image src="../../images/carousel/05.jpg"></image>
@@ -109,7 +109,7 @@
       <view class="noticetitle">温馨提示</view>
       <view class="noticedetail">
         <text>此信息由包程项用户提供，但联系时任需注意识别信息真假，如果 发现此信息不真实，请</text>
-        <text class="report">立即举报</text>。
+        <text class="report" bindtap="showDialogBtn">立即举报</text>。
       </view>
     </view>
     <!-- 5 -->
@@ -135,7 +135,7 @@
         <text>{{like}}</text>
       </view>
     <!-- 投诉 -->
-      <view class="" bindtap="complaint">
+      <view class="" bindtap="showDialogBtn">
         <image src="../../images/complaint.png"></image>
         <text>投诉</text>
       </view>
@@ -144,3 +144,5 @@
     </view>
   <!-- 1 -->
 </view>
+<!-- 举报 -->
+<include src="../../reports/reports"/>

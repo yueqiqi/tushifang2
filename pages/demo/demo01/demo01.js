@@ -1,22 +1,11 @@
 // pages/report/report.js
 Page({
-
+formSubmit:function(e){
+  console.log(e.detail.value)
+},
   /**
    * 字数限制
    */
-  inputBlur:function(e){
-    // 获取输入框的内容
-    var value = e.detail.value;
-    // 获取输入框内容的长度
-    var len = parseInt(value.length);
-    if (len < this.data.min) {
-      wx.showModal({
-        title: '提示',
-        content: '建议内容要5-500个字哟~~~',
-        showCancel:false,
-      })
-    }
-  },
   inputs: function (e) {
 
     // 获取输入框的内容
@@ -201,7 +190,7 @@ Page({
   */
 
   onConfirm: function () {
-      
+      console.log(this.data.texts)
         wx.showModal({
       title: '提交成功',
       content: "提交成功，我们会在1-3个工作日内进行审核，如果举报属实，会对该用户做出相应惩罚，审核消息会在第一时间发送至您的消息中心，请注意查收。",

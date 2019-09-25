@@ -1,0 +1,58 @@
+<!-- 名片信息 -->
+<view class="card">
+  <view class="d-flex heads">
+  <!-- 头像 -->
+    <view><image class="head" src="{{head}}"></image></view>
+    <!-- 用户昵称 -->
+    <view class="right">
+    <!-- 昵称 -->
+      <view class="til">{{name}}</view>
+      <!-- 职位 -->
+      <view class="mes">{{post}}</view>
+      <!-- 公司名字 -->
+      <view class="mes">{{company}}</view>
+    </view>
+    <!--  -->
+  </view>
+  <!-- 信息 -->
+  <view style="margin-top:49rpx;margin-left:29rpx;">
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/email.png"></image></view>
+      <view class="mes mle">{{email}}</view>
+    </view>
+    <!-- 电话 -->
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/ps.png"></image></view>
+      <view class="mes mle">{{phone}}</view>
+    </view>
+    <!-- 地址 -->
+    <view class="d-flex">
+      <view><image class="ico" src="../../images/ad.png"></image></view>
+      <view class="mes mle">{{add}}</view>
+    </view>
+    </view>
+  <!--  -->
+</view>
+
+<!-- 图文介绍 -->
+<view class="ml" style="margin-top:50rpx;">
+  <view class="title-text" style="margin-bottom:30rpx;">图文介绍</view>
+  <view class="mes">{{title}}</view>
+  <view class="mes text">{{titleText}}</view>
+  <!-- 图片 -->
+  <view class="d-flex it">
+  <block wx:for="{{img}}" wx:key="{{index}}">
+    <view class="img-text">
+      <image class="" src="{{item}}"></image>
+    </view>
+  </block>
+  </view>
+  <!--  -->
+</view>
+<!-- 下方按钮 -->
+<view class="d-flex btns">
+  <button class="mybtn" bindtap="addPhone">存入通讯录</button>
+  <button class="mybtn" open-type="share">分享名片</button>
+  <button class="mybtn" bindtap="back">回递名片</button>
+</view>
+<include src="../err/err"/>

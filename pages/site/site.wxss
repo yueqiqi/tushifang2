@@ -8,6 +8,10 @@
   color: transparent;
 }
 /* 轮播图片 */
+.si{
+  width:690rpx;height:300rpx;
+  margin:0 auto;
+}
 .slide-image{
   width:690rpx;height:300rpx;
 }
@@ -233,7 +237,7 @@ margin-top:33rpx;
 /* 分享评论 */
 .scl{
   display: flex;justify-content: left;
-  margin-top:28rpx;margin-bottom:23rpx;
+  margin-top:28rpx;padding-bottom:23rpx;
 }
 .scl image{
   width:30rpx;height:30rpx;

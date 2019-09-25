@@ -1,0 +1,11 @@
+头像：header
+用户名：name
+十万火急/置顶：type
+距离：distance
+发布者需求标题：demand
+时间：time
+发布者定位：location
+内容：title
+图片：userimg
+视频：video
+项目类型：project

@@ -2,9 +2,10 @@
 <view>
 <!-- 项目信息 -->
 <!-- 项目标题 -->
+<view class="bgf " style="padding-top:30rpx;">
 <view class="d-flex ml">
   <view class="title-text">项目标题</view>
-  <view class="text d-text">二手车触手，电话联系</view>
+  <view class="text d-text">二手车出售，电话联系</view>
 </view>
   <!-- 下划线 -->
   <view class="uline"></view>
@@ -24,10 +25,12 @@
   <view class="title-text">项目介绍</view>
   <view class="content">帮朋友急招一个能长期开的老渣娃，主要在渝北江北地 区跑，住在渝北两路熟悉渝北路线的优先，杰斯430.22 方，工资7000保底三万开始提10%每月工资兑现，新手 和找车练手的就不要打扰了。</view>
 </view>
-<!-- 分割线 -->
-<view class="line"></view>
+</view>
+
+
 <!-- 联系人 -->
-<view class="d-flex ml mt">
+<view class="bgf mtt"> 
+<view class="d-flex ml" style="padding-top:30rpx;">
   <view class="title-text">联系人</view>
   <view class="text d-name">张三</view>
 </view>
@@ -41,9 +44,11 @@
   <text class="phone-text">一键拨号</text>
 </view>
 </view>
-<view class="line"></view>
+</view>
+
+<view class="bgf mtt">
 <!-- 图片视频 -->
-<view class="video mt">
+<view class="video" style="padding-top:30rpx;">
   <view class="title-text ml">图片/视频</view>
   <view class="userImg">
 <!-- 发布图片 -->
@@ -57,30 +62,39 @@
 <view><image style="margin-left:15rpx;" src="../images/carousel/07.jpg"></image></view> -->
 </view>
 <!-- 发布的视频 -->
-<view class="mb">
+<view class="pbb">
  <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
 </view>
 </view>
-<!-- 分割线 -->
-<view class="line"></view>
+</view>
+
+
+
+
+
 <!-- 温馨提示 -->
-<view class="mt ml">
+<view class="bgf mtt ptt">
+<view class="ml">
 <view>温馨提示</view>
-<view class="hint-mes">此信息由包程项用户提供，但联系时任需注意识别信息真假，如果 发现此信息不真实，请
-<text class="report" bindtap="report">立即举报</text>
+<view class="hint-mes pbb">此信息由包程项用户提供，但联系时任需注意识别信息真假，如果 发现此信息不真实，请
+<text class="report" bindtap="showDialogBtn">立即举报</text>
 <text class="hint-mes" style="margin-left:10rpx;">。</text>
 </view>
 </view>
-<!-- 分割线 -->
-<view class="line"></view>
-<!-- 广告图 -->
-<view class="ad ml mt">
-  广告图
 </view>
-<!-- 分割线 -->
-<view class="line"></view>
+
+
+<!-- 广告图 -->
+<view class="bgf mtt ptt">
+<view class="ml mtt pbb">
+<image class="ad" src="../images/carousel/02.jpg"></image>
+</view>
+</view>
+
+
 <!-- 用户名 -->
-<view class="d-flex ml mt">
+<view class="bgf mtt ptt">
+<view class="d-flex ml">
   <!-- 头像 -->
   <view class="head"></view>
   <!-- 用户名、时间 -->
@@ -133,7 +147,7 @@
   </text>
   </view>
   <!-- 投诉 -->
-  <view style="margin-right:46rpx;" class="d-flex" bindtap="complaint">
+  <view style="margin-right:46rpx;" class="d-flex" bindtap="showDialogBtn">
   <image src="../images/complaint.png"></image>
   <text>
   投诉
@@ -141,3 +155,5 @@
   </view>
 </view>
 </view>
+</view>
+<include src="../reports/reports"/>

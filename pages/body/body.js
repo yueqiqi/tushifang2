@@ -2,6 +2,21 @@
 // import postMessage from '../postMessage/postMessage.js';
 // var app = getApp()
 Page({
+  // 消息跳转
+  message:function(){
+    wx.navigateTo({
+      url: '/pages/inform/inform',
+    })
+  },
+  // ///////////////////////////////////////////
+  // 十万火急
+  // 跳转
+  goto: function () {
+    wx.navigateTo({
+      url: '/pages/details/details',
+    })
+  },
+  ////////////////////////////////////////////////
   // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 面板
   // 拨打电话
@@ -77,12 +92,6 @@ Page({
       url: '/pages/search/search',
     })
   },
-// 信息跳转
-message:function(){
-  wx.navigateTo({
-    url: "/pages/index/index",
-  })
-},
 
   data: {
     // 面板
@@ -164,27 +173,27 @@ message:function(){
       ],
       icon:[
         {
-          link:"../index/index",
+          link:"/pages/site/site",
           url:"../images/icon/icon1.png",
           name:"工地找车"
         },
         {
-          link: "../index/index",
+          link: "/pages/site/site",
           url: "../images/icon/icon2.png",
           name:"车找工地"
         },
         {
-          link: "../index/index",
+          link: "/pages/site/site",
           url: "../images/icon/icon3.png",
           name:"工地除渣"
         },
         {
-          link: "../index/index",
+          link: "/pages/site/site",
           url: "../images/icon/icon4.png",
           name:"求职招聘"
         },
         {
-          link: "../index/index",
+          link: "/pages/site/site",
           url: "../images/icon/icon5.png",
           name:"二手设备"
         },
@@ -211,7 +220,7 @@ message:function(){
           name:"我的名片"
         },
         {
-          link: "../details/details",
+          link: "/pages/integrity/integrity",
           url: "../images/icon/icon10.png",
           name:"诚信榜"
         }

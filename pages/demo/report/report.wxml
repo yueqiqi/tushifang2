@@ -1,0 +1,44 @@
+<!-- 举报框 -->
+<!-- 弹出框 -->
+<!-- 投诉框 -->
+<button class="show-btn" bindtap="showDialogBtn">弹窗</button>
+<!--弹窗-->
+<form bindsubmit="formSubmit">
+ <!--  -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+ <!--  -->
+<view class="modal-dialog" wx:if="{{showModal}}">
+     <!--  -->
+  <view class="modal-content">
+    <view class="">
+     <view class="conts bgf">
+  <view style="text-align:center;margin-bottom:20rpx;">举报内容填写</view>
+    <textarea name="textarea" class="areas" placeholder='请输入举报内容...' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs"></textarea>
+    <text class="hint">{{texts}}</text>
+    <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
+</view>
+<view class="img_box bgf">
+  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix' />
+  </view>
+  <view class="imgs">
+    <view class="images" bindtap="upload">
+      <image src='../../images/add.png' mode='widthFix' />
+    </view>
+  </view>
+</view>
+    </view>
+</view>
+
+
+<!-- <view class="modal-footer"> -->
+  <!-- <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view> -->
+  <button class="btn-confirm" bindtap="onConfirm" form-type="submit" data-status="confirm">提交举报</button>
+<!-- </view> -->
+<view class="close" bindtap="onCancel" data-status="cancel">
+  <image class="closes"  src="../../images/close.png"></image>
+</view>
+</view>
+</form>
+
+

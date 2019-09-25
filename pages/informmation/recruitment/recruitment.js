@@ -2,7 +2,24 @@
 // 调用时间
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
 Page({
-  
+  //  点击日期组件确定事件  
+  bindDateChange: function (e) {
+    var e = e.detail.value
+    console.log(e)
+    this.setData({
+      dates: e
+    })
+  },
+  // 分类组件
+  bindPickerChange: function (e) {
+    var e = e.detail.value
+    console.log(e)
+    console.log(this.data.objectArray[e])
+    this.setData({
+      index: e,
+      class: this.data.objectArray[e]
+    })
+  },
   // 分享
   share:function(){
     console.log("分享")
@@ -82,7 +99,9 @@ Page({
     currentData: 0,
     // 分类
     index:0,
-    dates: '2019-9-10',
+    // 分类
+    class:"请选择分类",
+    dates: '请选择时间',
     objectArray: ['重庆', '成都', '上海', '浙江', '深圳'],
     // 轮播图片
     imgUrls: [

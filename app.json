@@ -1,5 +1,24 @@
 {
   "pages": [
+    "pages/informmation/jobdetail/jobdetail",
+    "pages/informmation/recruitment/recruitment",
+    "pages/informmation/peopledetail/peopledetail",
+    "pages/informmation/global/global",
+    "pages/informmation/carousel/carousel",
+    "pages/body/body",
+    "pages/site/site",
+    "pages/integrity/integrity",
+    "pages/integrityMes/integrityMes",
+    "pages/inform/inform",
+    "pages/postMessage/postMessage",
+    "pages/details/details",
+    "pages/panel/panel",
+    "pages/title/title",
+    "pages/tab/tab",
+    "pages/tabar/tabar",
+    "pages/self/ewm2/ewm2",
+    "pages/self/ewm/ewm",
+    "pages/self/mycard/mycard",
     "pages/demo/zhuanfa/zhuanfa",
     "pages/self/site/modsite",
     "pages/self/site/addsite",
@@ -20,7 +39,6 @@
     "pages/Ac/no/no",
     "pages/Ac/hiring/hiring",
     "pages/search/search",
-    "pages/body/body",
     "pages/self/data/data",
     "pages/self/index/index",
     "pages/store/classify/classify",
@@ -30,11 +48,6 @@
     "pages/store/product/product",
     "pages/store/index/index",
     "pages/store/success/success",
-    "pages/inform/inform",
-    "pages/informmation/muck/muck",
-    "pages/informmation/peopledetail/peopledetail",
-    "pages/informmation/jobdetail/jobdetail",
-    "pages/informmation/recruitment/recruitment",
     "pages/Ac/post/post",
     "pages/interest/interest",
     "pages/Ac/issue/issue",
@@ -47,22 +60,14 @@
     "pages/Ac/business2/business2",
     "pages/demo/success/success",
     "pages/demo/err/err",
-    "pages/demo/demo01/demo01",
     "pages/demo/demo",
-    "pages/report/report",
     "pages/Ac/index/inex",
     "pages/demo/alert/alert",
-    "pages/informmation/global/global",
-    "pages/integrity/integrity",
-    "pages/postMessage/postMessage",
-    "pages/panel/panel",
-    "pages/informmation/carousel/carousel",
-    "pages/details/details",
-    "pages/site/site",
-    "pages/title/title",
-    "pages/integrityMes/integrityMes",
-    "pages/tabar/tabar",
     "pages/index/index",
+    "pages/reports/reports",
+    "pages/demo/report/report",
+    "pages/demo/demo01/demo01",
+    "pages/report/report",
     "pages/logs/logs"
   ],
   "window": {
@@ -71,5 +76,47 @@
     "navigationBarTitleText": "土石方首页",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "white",
+    "borderStyle": "white",
+    "backgroundColor": "white",
+    "list": [
+     {
+      "pagePath": "pages/body/body",
+      "text": "首页",
+      "iconPath": "/pages/images/home1.png",
+      "selectedIconPath": "/pages/images/home2.png",
+      "auth": 0
+    },
+    {
+      "pagePath": "pages/Ac/issue/issue",
+      "text": "行业社区",
+      "iconPath": "/pages/images/mes1.png",
+      "selectedIconPath": "/pages/images/mes2.png",
+      "auth": 0
+    },
+    {
+      "pagePath": "pages/interest/interest",
+      "text": "发现",
+      "iconPath": "/pages/images/add1.png",
+      "selectedIconPath": "/pages/images/add2.png",
+      "auth": 0
+    },
+    {
+      "pagePath": "pages/store/logistics/logistics",
+      "text": "项目对接",
+      "iconPath": "/pages/images/store1.png",
+      "selectedIconPath": "/pages/images/store2.png",
+      "auth": 0
+    },
+    {
+      "pagePath": "pages/body/body",
+      "text": "我的",
+      "iconPath": "/pages/images/self1.png",
+      "selectedIconPath": "/pages/images/self2.png",
+      "auth": 0
+    }
+    ]
+  }
 }

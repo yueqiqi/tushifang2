@@ -1,6 +1,12 @@
 // pages/postMessage/postMessage.js
 // var app = getApp()
 Page({
+  // 跳转
+  goto:function(){
+    wx.navigateTo({
+      url: '/pages/details/details',
+    })
+  },
   // 分享
   share:function(){
     console.log("分享")
@@ -24,6 +30,46 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // =============================
+    user:[
+      {
+        // 用户头像
+        header: "../../images/carousel/02.jpg",
+        // 用户名
+        name:"发布者用户名",
+        // 十万火急
+        type:"十万火急",
+        // 发布者需求标题
+        title:"发布者需求标题",
+        // 时间
+        time:"2019.02.02 18:36",
+        // 发布者定位
+        lcation:"发布者定位",
+        // 内容
+        title: "翠云万科欢迎32万/28方/22方车24小时随时开自运。要来拉的老板提前联系，结账方式随意。",
+        // 图片
+        userimg: [
+          {
+            url: "../images/carousel/05.JPg",
+          },
+          {
+            url: "../images/carousel/06.JPg",
+          },
+          {
+            url: "../images/carousel/07.JPg"
+          }
+        ],
+        // 视屏
+        video:"http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400",
+        // 项目类型
+        project:"车辆出售",
+        // 拨打电话
+        callphone:"",
+      }
+    ],
+    
+    // =============================
+
       index:0,
       // 第二个发布者信息
       userImg2:[

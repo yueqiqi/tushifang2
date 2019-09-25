@@ -6,7 +6,7 @@
 .position{
   margin:0rpx 20rpx;
   width:28rpx;height:35rpx;
-  margin-top:10rpx;
+  margin-top:15rpx;
 }
 .position-text{
   width:160rpx;
@@ -18,23 +18,23 @@ color:rgba(51,51,51,1);
 }
 .select{
   width:29rpx;height:17rpx;margin-left:26rpx;
-  margin-top:20rpx;
+  margin-top:30rpx;
 }
 .message{
   width:45rpx;height: 41rpx;
-  margin-left:396rpx;
+  margin-right:30rpx;
   margin-top:10rpx;
 }
 /* 搜索框样式 */
  .search{  
       width: 95%;  
-      margin:20rpx 0rpx;
+      margin:20rpx auto;
       
     }  
     .search_arr {  
       border: 1px solid #d0d0d0;  
       border-radius: 10rpx;  
-      margin-left: 20rpx;  background:rgba(242,242,242,1);
+       background:rgba(242,242,242,1);
     }  
     .search_arr input{  
       margin-left: 60rpx;  
@@ -54,7 +54,8 @@ color:rgba(51,51,51,1);
     .searchcion {  
       margin: 10rpx 10rpx 10rpx 10rpx;  
       position: absolute;  
-      left:25rpx;  
+      left:20rpx;  
+
       z-index: 2;  
       width: 20px;  
       height: 20px;  
@@ -70,7 +71,7 @@ color:rgba(51,51,51,1);
 /* 轮播图图片 */
 .slide-image{
   width: 690rpx;height:359rpx;
-  margin-left: 22rpx;
+  /* margin-left: 22rpx; */
 
 }
 /* 轮播图下方小图片样式 */
@@ -81,8 +82,11 @@ color:rgba(51,51,51,1);
   display:flex;justify-content:left;
   /* 换行 */
   flex-wrap: wrap;
-  padding-top:76rpx;
+  /* padding-top:76rpx; */
   margin-left:49rpx;
+}
+.v2{
+  margin-top:76rpx;
 }
 .icon-img{
   width:54rpx;height:57rpx;padding-left:20rpx;
@@ -118,7 +122,7 @@ color:rgba(118,212,198,1);z-index:2
 }
 /* 热门 */
 .hot{
-  width:70rpx;
+  width:80rpx;
 height:36rpx;
 background:rgba(255,174,0,1);
 border-radius:5px;

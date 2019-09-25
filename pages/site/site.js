@@ -15,7 +15,8 @@ console.log("1008611")
   // 点赞
   tabLike: function () {
     var that = this
-    this.setData({ index: that.data.index + 1 });
+    var index = that.data.index 
+    this.setData({ index:index++ });
     console.log("点赞"); return
   },
   // 分享
@@ -39,25 +40,31 @@ console.log("1008611")
   },
   //  点击城市组件确定事件  
   bindPickerChange: function (e) {
-    console.log(e.detail.value)
+    var e = e.detail.value
+    console.log(e)
+    console.log(this.data.objectArray[e])
     this.setData({
-      index: e.detail.value
+      index: e,
+      class:this.data.objectArray[e]
     })
   },
   //  点击日期组件确定事件  
   bindDateChange: function (e) {
-    console.log(e.detail.value)
+    var e = e.detail.value
+    console.log(e)
     this.setData({
-      dates: e.detail.value
+      dates: e
     })
   },
   /**
    * 页面的初始数据
    */
   data: {
+    // 地点分类
+    class:"请选择分类",
     mm:"a",
     index:0,
-    dates: '2019-9-10',
+    dates: '请选择时间',
     objectArray: ['重庆', '成都', '上海','浙江','深圳'],
     // 第二个发布者信息
     stabUserImg: [

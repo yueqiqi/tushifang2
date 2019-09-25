@@ -3,7 +3,9 @@
 /* 分割线 */
 
 .title{
-  display:flex;justify-content: left
+  display:flex;justify-content: left;
+  padding-bottom:30rpx;
+  padding-top:50rpx;
 }
 .title-left-top{
 width:340rpx;
@@ -68,11 +70,11 @@ margin:20rpx 20rpx 8rpx 20rpx;
 font-family:PingFang SC;
 font-weight:400;
 color:rgba(102,102,102,1);
-margin-left:20rpx;margin-bottom:55rpx;
+margin-left:20rpx;
 }
 /* 右侧图片 */
 .title-img3{
   width:296rpx;
 height:150rpx;
-margin:0rpx 20rpx 25rpx 24rpx;opacity: 0.4
+margin:25rpx 20rpx 25rpx 24rpx;opacity: 0.4
 }
