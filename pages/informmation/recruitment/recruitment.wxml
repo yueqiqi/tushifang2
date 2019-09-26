@@ -511,3 +511,4 @@
 </van-tabs>
 
 </view>
+<tabbar activeIdx="{{activeIdx}}"></tabbar>

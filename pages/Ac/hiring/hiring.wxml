@@ -9,22 +9,42 @@
  <view class="section d-spb">
     <view class="section-title">选择工种</view>
     <view class="right d-spb">
-      <input name="i1" placeholder-class="holder{{err}}" placeholder="请选择职位或者双击手动输入" />
-      <view>
+      <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位或者双击手动输入" value="{{selectData[index]}}"  data-time="{{lastTapTime}}" bindtap="doubleClick" />
+      <view catchtap='selectTap'>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
     </view>
  </view>
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
 <!-- 薪资范围 -->
  <view class="section2 d-spb">
     <view class="section-title">薪资范围</view>
-    <view class="right d-spb">
-      <input name="i2" placeholder-class="holder{{err}}" placeholder="请选择薪资范围" />
+    <view class="right d-spb mon" catchtap='selectTap2'>
+      <input name="i2" disabled='true' value="{{selectData2[indexs]}}"/>
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
     </view>
  </view>
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow2?(selectData2.length>5?325:selectData2.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData2}}' wx:key='this' data-index='{{index}}' catchtap='optionTap2' >{{item}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
  <!-- 工作地点 -->
   <view class="section2 d-spb">
     <view class="section-title">工作地点</view>
@@ -38,13 +58,23 @@
   <!-- 工作年限 -->
   <view class="section2 d-spb">
     <view class="section-title">工作年限</view>
-    <view class="right d-spb">
-      <input name="i4" placeholder-class="holder{{err}}" placeholder="请选择工作年限" />
+    <view class="right d-spb mon" catchtap='selectTap3'>
+      <input name="i4" disabled="true" value="{{selectData3[index3]}}" />
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
     </view>
  </view>
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow3?(selectData3.length>5?325:selectData3.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData3}}' wx:key='this' data-index='{{index}}' catchtap='optionTap3' >{{item}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
  <!-- 联系人 -->
  <view class="section2 d-spb">
     <view class="section-title">联系人</view>
@@ -118,6 +148,6 @@
 </view>
 </view>
 <button form-type="submit" class="next">确认发布</button>
-<include src="../all.wxml"/>
+<include src="/pages/Ac/isu/isu.wxml"/>
 </form>
 </view>

@@ -1,5 +1,9 @@
 // pages/store/product/product.js
 Page({
+  now:function(){
+    console.log(this.data.ec)
+    console.log(this.data.es)
+  },
   // 价格变化
   onChange: function (e) {
     // 获取输入框的值
@@ -15,42 +19,78 @@ Page({
   },
   // 型号
   size(e) {
-    let index = e.currentTarget.dataset.index
-    var bool = this.data.size[index].checked
-    var f = this.data.size[index].disabled
+
+    
+    // let index = e.currentTarget.dataset.index
+    // var bool = this.data.size[index].checked
+    // var f = this.data.size[index].disabled
+    // this.setData({
+    //   ['size[' + index + '].checked']: !bool,
+    //   // ['color[11].disabled']:true
+    // })
+    // // if(){
+    // //   console.log(123)
+    // // }
+    // console.log(index, bool, ['size[' + index + '].checked'], f)
+    for (var i in this.data.size) {
+  
+      if (e.currentTarget.dataset.index == i) {
+        this.data.size[i].checked = true
+      }
+      else {
+        this.data.size[i].checked = false
+      }
+    }
+    this.setData(this.data)
+    var np = this.data.size[e.currentTarget.dataset.index]
     this.setData({
-      ['size[' + index + '].checked']: !bool,
-      // ['color[11].disabled']:true
+      es:np
     })
-    // if(){
-    //   console.log(123)
-    // }
-    console.log(index, bool, ['size[' + index + '].checked'], f)
   },
   // 颜色
   choose(e) {
-    let index = e.currentTarget.dataset.index
-    var bool = this.data.color[index].checked
-    var f = this.data.color[index].disabled
+    // console.log(index)
+    // let index = e.currentTarget.dataset.index
+    // var bool = this.data.color[index].checked
+    // var f = this.data.color[index].disabled
+    // this.setData({
+    //   ['color[' + index + '].checked']: !bool,
+    //   // ['color[11].disabled']:true
+    // })
+    // // if(){
+    // //   console.log(123)
+    // // }
+    // console.log(index, bool, ['color[' + index + '].checked'], f)
+    for (var m in this.data.color) {
+      if (e.currentTarget.dataset.index == m) {
+        this.data.color[m].checked = true
+      }
+      else {
+        this.data.color[m].checked = false
+      }
+    }
+    this.setData(this.data)
+      // console.log(this.data.color[m])
+    // console.log(e.currentTarget.dataset.index)
+    console.log()
+    var img = this.data.color[e.currentTarget.dataset.index].img
+    var np = this.data.color[e.currentTarget.dataset.index]
+    console.log(img)
     this.setData({
-      ['color[' + index + '].checked']: !bool,
-      // ['color[11].disabled']:true
+      img:img,
+      ec:np
     })
-    // if(){
-    //   console.log(123)
-    // }
-    console.log(index, bool, ['color[' + index + '].checked'], f)
   },
 
   //点击我显示底部弹出框
   // pay: function () {
   //   this.showModal();
   // },
-pay:function(){
-  this.showModal()
-},
+// pay:function(){
+//   this.showModal()
+// },
   //显示对话框
-  showModal: function () {
+  pay: function () {
     // 显示遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -96,6 +136,12 @@ pay:function(){
    * 页面的初始数据
    */
   data: {
+    // 用于保存用户选择的尺寸
+    es:"",
+    // 用于保存用户选择的颜色
+    ec:"",
+    // 图片
+    img:"../../images/carousel/06.jpg",
     // 价格
     price: 199,
     // 型号
@@ -103,7 +149,7 @@ pay:function(){
       {
         size: "sm",
         disabled: false,
-        checked: false
+        checked: true
       },
       {
         size: "s",
@@ -130,18 +176,21 @@ pay:function(){
     color: [
       {
         color: "红色",
-        checked: false,
-        disabled: false
+        checked: true,
+        disabled: false,
+        img:"../../images/carousel/06.jpg"
       },
       {
         color: "黄色",
         checked: false,
-        disabled: false
+        disabled: false,
+        img: "../../images/carousel/05.jpg"
       },
       {
         color: "白色",
         checked: false,
-        disabled: false
+        disabled: false,
+        img: "../../images/carousel/02.jpg"
       },
       {
         color: "绿色",
@@ -213,7 +262,10 @@ pay:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      ec:this.data.color[0],
+      es:this.data.size[0]
+    })
   },
 
   /**

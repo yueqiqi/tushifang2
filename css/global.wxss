@@ -85,7 +85,7 @@ color:rgba(51,51,51,1);
 .v2 :nth-child(2)>view{
   /* 动画名称 动画时间 运动曲线 何时开始 播放次数 是否反方向; */
   /* animation: rotate 5s linear 0s infinite alternate; */
-  animation: go 0.5s linear 0s 14;
+  animation: go 0.5s linear 0s infinite;
 }
 @keyframes go{
    from {   /*0%*/
@@ -94,4 +94,7 @@ color:rgba(51,51,51,1);
     to {    /*100%*/
         transform: translateY(-10rpx);
     }
+}
+navigator{
+  background: #fff!important;
 }

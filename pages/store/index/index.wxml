@@ -91,7 +91,30 @@
   <!-- ======================================================================================= -->
   <!-- 汽车用品 -->
   <van-tab title="汽车用品">
-    <view class="bg"></view>
+    <view class="bg">
+        <view class=" pp">
+      <block wx:for="{{product}}" wx:key="{{index}}">
+      <view class="pz">
+      <navigator url="{{item.link}}">
+        <view class="left2">
+        <!-- 商品图片 -->
+          <view class="product2">
+            <image src="{{item.img}}"></image>
+          </view>
+        <!-- 标题 -->
+          <view class="titles2">日本车载眼镜架多功能创意汽车用眼睛支架</view>
+        <!-- 价格 -->
+          <view class="d-flex price2">
+            <view class="price-l2">￥{{item.price}}</view>
+            <view class="price-r2">￥{{item.bef}}</view>
+          </view>
+        </view>
+      </navigator>
+      </view>
+      </block>
+       </view>
+      <!--  -->
+    </view>
   </van-tab>
   <!-- ======================================================================================= -->
   <!-- 油卡出售 -->

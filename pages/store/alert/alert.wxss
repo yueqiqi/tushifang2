@@ -19,9 +19,9 @@
   width: 100%;
   overflow: hidden;
   position: fixed;
-  bottom: 98rpx;
+  bottom: 0;
   left: 0;
-  z-index: 2000;
+  z-index: 90000000;
   background: #fff;
   padding-top: 29rpx;
 }

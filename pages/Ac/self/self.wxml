@@ -5,15 +5,16 @@
 <form bindsubmit="formSubmit">
 <!-- 身份选择 -->
 <view class="form">
- <view class="section d-spb">
+ <view class="section d-spb" catchtap='selectTap'>
     <view class="section-title">身份选择</view>
     <view class="right d-spb">
-      <input name="i1" placeholder-class="holder{{err}}" placeholder="请选择身份类型" />
+      <input name="i1" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index]}}" />
       <view>
         <image class="section-img1" src="../../images/position/shape45.png"></image>
       </view>
     </view>
  </view>
+      <include src="/pages/Ac/select/select"/>
 <!--真实姓名 -->
  <view class="section2 d-spb">
     <view class="section-title">真实姓名</view>

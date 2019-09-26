@@ -200,12 +200,12 @@ Page({
       ],
       icon02:[
         {
-          link: "../index/index",
+          link: "/pages/Ac/index/inex",
           url: "../images/icon/icon6.png",
-          name:"认证免费"
+          name:"免费认证"
         },
         {
-          link: "../index/index",
+          link: "/pages/Ac/post/post",
           url: "../images/icon/icon7.png",
           name:"发布信息"
         },

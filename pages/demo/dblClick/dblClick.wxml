@@ -1,0 +1,2 @@
+<!-- 双击 -->
+<view data-time="{{lastTapTime}}" data-title="标题" bindtap="doubleClick">双击</view>

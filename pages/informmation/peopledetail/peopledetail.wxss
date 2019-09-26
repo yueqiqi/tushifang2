@@ -1,4 +1,5 @@
 /* pages/informmation/peopledetail/peopledetail.wxss */
+@import  "../../reports/reports.wxss";
 .people{
   height:100%;
 }

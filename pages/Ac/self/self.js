@@ -1,5 +1,29 @@
 // pages/Ac/self/self.js
 Page({
+  // 下拉选项框
+  selectTap(e) {
+    this.setData({
+      selectShow: !this.data.selectShow
+    });
+    // console.log(e)
+  },
+  // 点击下拉列表
+  optionTap(e) {
+    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
+    console.log(Index)
+    // console.log(e)
+    this.setData({
+      index: Index,
+      selectShow: !this.data.selectShow,
+    });
+    if (Index == 4) {
+      this.setData({
+        isDisabled: false
+      })
+    } return
+    console.log(this.data.isDisabled)
+  }, 
+  // 表单提交
   formSubmit: function (e){
     var m=e.detail.value
     console.log(e.detail.value);
@@ -132,6 +156,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 自定义编辑
+    isDisabled: true,
+    selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
+    selectData: ['请选择类型', '身份类型', '身份类型', "身份类型", "自定义编辑"],//下拉列表的数据
+    index: 0,//选择的下拉列表下标
     //成功 提示框
     sup: true,
     // 错误提示框

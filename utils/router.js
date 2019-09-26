@@ -7,7 +7,7 @@ module.exports = [
     "auth": 0
   },
   {
-    "pagePath": "pages/Ac/issue/issue",
+    "pagePath": "pages/informmation/recruitment/recruitment",
     "text": "信息中心",
     "iconPath": "/pages/images/mes1.png",
     "selectedIconPath": "/pages/images/mes2.png",
@@ -15,13 +15,13 @@ module.exports = [
   },
   {
     "pagePath": "pages/interest/interest",
-    "text": "",
+    "text": " ",
     "iconPath": "/pages/images/add2.png",
     "selectedIconPath": "/pages/images/add2.png",
     "auth": 0
   },
   {
-    "pagePath": "pages/store/logistics/logistics",
+    "pagePath": "/pages/store/index/index",
     "text": "商城",
     "iconPath": "/pages/images/store1.png",
     "selectedIconPath": "/pages/images/store2.png",

@@ -31,7 +31,7 @@ Page({
   formSubmit: function (e) {
     var m = e.detail.value
     console.log(e.detail.value);
-    if (m.i1 == "" || m.i2 == "" || m.i3 == "" || this.data.tempFilePaths.length ==0|| this.data.tempFilePathss == "" || m.textarea.length == 0) {
+    if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.textarea.length == 0) {
       this.hidePopup(false);
     } else {
       this.suhide(false);

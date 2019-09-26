@@ -35,17 +35,17 @@ Page({
     title:[
       {
         url:"../../images/ent.png",
-        link:"/pages/index/index",
+        link:"/pages/Ac/business/business",
         name:"我是企业",
       },
       {
         url: "../../images/car.png",
-        link: "/pages/index/index",
+        link: "/pages/Ac/diver/diver",
         name:"我是司机",
       },
       {
         url: "../../images/self.png",
-        link: "/pages/index/index",
+        link: "/pages/Ac/self/self",
         name:"我是个人",
       },
     ]

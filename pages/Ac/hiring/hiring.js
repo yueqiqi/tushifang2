@@ -1,5 +1,85 @@
 // pages/Ac/hiring/hiring.js
 Page({
+  
+  // ======================================================
+  // 求职状态
+  // 下拉选项框
+  selectTap3(e) {
+    this.setData({
+      selectShow3: !this.data.selectShow3
+    });
+    // console.log(e)
+  },
+  // 点击下拉列表
+  optionTap3(e) {
+
+    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
+    console.log(Index)
+    // console.log(e)
+    this.setData({
+      index3: Index,
+      selectShow3: !this.data.selectShow3,
+    });
+  },
+  // ======================================================
+  // ======================================================
+  // 薪资待遇
+  // 下拉选项框
+  selectTap2(e) {
+    this.setData({
+      selectShow2: !this.data.selectShow2
+    });
+    // console.log(e)
+  },
+  // 点击下拉列表
+  optionTap2(e) {
+    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
+    console.log(Index)
+    // console.log(e)
+    this.setData({
+      indexs: Index,
+      selectShow2: !this.data.selectShow2,
+    });
+  },
+  // ======================================================
+  // =========================================================
+  // 双击
+  doubleClick: function (e) {
+    var curTime = e.timeStamp
+    var lastTime = e.currentTarget.dataset.time  // 通过e.currentTarget.dataset.time 访问到绑定到该组件的自定义数据
+    console.log(e)
+    if (curTime - lastTime > 0) {
+      if (curTime - lastTime < 500) {
+        this.setData({
+          isDisabled: false
+        })
+      }
+    }
+    this.setData({
+      lastTapTime: curTime
+    })
+  },
+
+  // 下拉选项框
+  selectTap(e) {
+    this.setData({
+      selectShow: !this.data.selectShow
+    });
+    // console.log(e)
+  },
+  // 点击下拉列表
+  optionTap(e) {
+    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
+    // console.log(Index)
+    // console.log(e)
+    this.setData({
+      index: Index,
+      selectShow: !this.data.selectShow,
+    });
+
+    console.log(this.data.isDisabled)
+  },
+  // =========================================================
   // 改变全局窗口
   bindVideoScreenChange: function (e) {
     var status = e.detail.fullScreen;
@@ -17,7 +97,7 @@ Page({
   formSubmit: function (e) {
     var m = e.detail.value
     console.log(e.detail.value);
-    if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.i4 == "" || m.i5 == "" || m.i5 == "" || m.i6 == "" || m.i7 == "" || m.i8 == "" || this.data.tempFilePaths.length < 2 || this.data.tempFilePathss == "" || m.textarea.length==0) {
+    if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.i4 == "" || m.i5 == "" || m.i5 == "" || m.i6 == "" || m.i7 == "" || m.i8 == "" || this.data.tempFilePaths.length ==0 || this.data.tempFilePathss == "" || m.textarea.length==0) {
       this.hidePopup(false);
     } else {
       this.suhide(false);
@@ -244,6 +324,22 @@ Page({
    * 页面的初始数据
    */
   data: {
+
+    // 求职状态
+    selectData3: ['请选择求职状态', "离职随时到岗", "在职-月内到岗", "在职-考虑机会", "在职-暂不考虑"],//下拉列表的数据
+    selectShow3: false,//控制下拉列表的显示隐藏，false隐藏、true显示
+    index3: 0,//选择的下拉列表下标
+    // 薪资待遇
+    selectData2: ['请选择薪资待遇', '1000~3000', '3000~5000', "5000~7000", "7000~9000", "9000元及以上"],//下拉列表的数据
+    selectShow2: false,//控制下拉列表的显示隐藏，false隐藏、true显示
+    indexs: 0,//选择的下拉列表下标
+    // 双击事件
+    lastTapTime: 0,
+    // 自定义编辑
+    isDisabled: true,
+    selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
+    selectData: ['', '职位', '职位', "职位", "职位"],//下拉列表的数据
+    index: 0,//选择的下拉列表下标
     //成功 提示框
     sup: true,
     // 错误提示框

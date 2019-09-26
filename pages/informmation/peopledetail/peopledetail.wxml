@@ -79,7 +79,7 @@
   <view class="notice ml">
     <view>温馨提示</view>
     <text>此信息由包程项用户提供，但联系时任需注意识别信息真假，如果发现此信息不真实，请</text>
-    <text bindtap="report">立即举报</text>。
+    <text bindtap="showDialogBtn">立即举报</text>。
   </view>
 </view>
 <!-- 广告图 -->
@@ -106,7 +106,7 @@
         <text>{{like}}</text>
       </view>
       <!-- 举报 -->
-      <view class="reports" bindtap="report">
+      <view class="reports" bindtap="showDialogBtn">
         <view>
           <image src="../../images/complaint.png"></image>
         </view>
@@ -117,3 +117,5 @@
 
   <!-- 1 -->
 </view>
+<!-- 举报 -->
+<include src="../../reports/reports"/>

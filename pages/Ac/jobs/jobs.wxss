@@ -1,5 +1,7 @@
 /* pages/Ac/business/business.wxss */
-@import "../all.wxss";
+@import "/pages/Ac/select/select.wxss";
+@import "/pages/Ac/isu/isu.wxss";
+@import "/pages/Ac/all.wxss";
 page{
   background:#fff!important;
 }
@@ -105,4 +107,18 @@ padding-top:20rpx;padding-left:20rpx;
 textarea{
   width:650rpx;
 height:228rpx;
+}
+.select_box .option_box :nth-child(1){
+  display: none;
+  line-height: 30rpx; 
+  font-size: 30rpx;
+  /* border-top: 1px solid #efefef;*/
+  border-bottom: 2rpx solid rgba(255,255,255,1); 
+  padding: 10rpx;padding-top:28rpx;padding-left:30rpx;
+  margin-top:-20rpx;
+  
+}
+/* 理想薪资 */
+.mon :first-child{
+ font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1); 
 }

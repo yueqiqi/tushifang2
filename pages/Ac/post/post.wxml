@@ -1,14 +1,18 @@
-<!-- 发布信息 -->
 <!-- 求职招聘 -->
+<!-- 发布信息 -->
 <view class="bgf mgt" style="margin-top:0">
 <view class="left">
   <view class="title">求职招聘</view>
   <!-- 内容 -->
   <view class="d-flex ms">
   <block wx:for="{{arr1}}" wx:key="{{index}}">
+  <view class="bgf">
     <navigator url="{{item.link}}">
+  <view class="bgf">
      <view class="border">{{item.name}}</view>
+  </view>
     </navigator>
+  </view>
   </block>
   </view>
 </view>
@@ -21,9 +25,13 @@
   <!-- 内容 -->
   <view class="d-flex ms">
     <block wx:for="{{arr2}}" wx:key="{{index}}">
+    <view class="bgf">
     <navigator url="{{item.link}}">
+    <view class="bgf">
      <view class="border">{{item.name}}</view>
+    </view>
     </navigator>
+    </view>
   </block>
   </view>
 </view>

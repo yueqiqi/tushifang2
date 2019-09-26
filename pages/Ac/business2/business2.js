@@ -247,6 +247,8 @@ wx.navigateBack({
    * 页面的初始数据
    */
   data: {
+    // 地址
+    location:"",
     //成功 提示框
     sup: true,
     // 错误提示框

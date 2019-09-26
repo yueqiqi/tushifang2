@@ -17,15 +17,19 @@ Page({
     }
     
   },
-  /* 隐藏成功弹窗 */
-  suhide(flag = true) {
-    this.setData({
-      "sup": flag
-    });
+  nn:function(){
     wx.navigateTo({
       url: '/pages/index/index',
     })
-
+  },
+  /* 隐藏成功弹窗 */
+  suhide(flag = true) {
+    var that=this
+    that.setData({
+      "sup": flag
+    });
+    that.nn()
+   
   },
 
 
