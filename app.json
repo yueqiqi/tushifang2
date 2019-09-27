@@ -1,7 +1,12 @@
 {
   "pages": [
-    "pages/interest/interest",   
+    "pages/demo/getlocation2/getlocation2",   
+    "pages/demo/getlocation3/getlocation3",   
     "pages/body/body",
+    "pages/demo/getlocation/getlocation",   
+    "pages/demo/like2/like2",   
+    "pages/demo/like/like",   
+    "pages/interest/interest",   
     "pages/self/ewm/ewm",
     "pages/self/site/site",
     "pages/self/total/total",
@@ -93,6 +98,11 @@
     "pages/report/report",
     "pages/logs/logs"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

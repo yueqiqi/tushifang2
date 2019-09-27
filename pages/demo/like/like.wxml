@@ -1,0 +1,3 @@
+<!-- 评论点赞功能 -->
+<view bindtap="update_zan">点赞</view>
+<view>{{message}}</view>

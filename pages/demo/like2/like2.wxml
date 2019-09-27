@@ -1,0 +1,7 @@
+<!-- 点赞 -->
+<view class='btn_01'>
+    <!-- <image src="{{favor_img}}" bindtap="dianzan"  wx:if="{{liked==1}}" mode="widthFix"></image>
+    <image src="{{favor_img2}}" bindtap="dianzan"  wx:else mode="widthFix"></image> -->
+    <button bindtap="dianzan">点赞</button>
+    <view class='title'>{{liked_num}}</view>
+</view>

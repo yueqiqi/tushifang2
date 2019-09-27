@@ -12,7 +12,7 @@
   width:160rpx;
 height:38rpx;
 font-size:40rpx;
-font-family:PingFang SC;
+font-family: "微软雅黑", -apple-system-font, "Helvetica Neue", sans-serif;
 font-weight:bold;
 color:rgba(51,51,51,1);
 }
@@ -95,7 +95,7 @@ color:rgba(51,51,51,1);
 .icon-text{
   width:88rpx;
 font-size:22rpx;
-font-family:PingFang SC;
+font-family: "微软雅黑", -apple-system-font, "Helvetica Neue", sans-serif;
 font-weight:400;
 color:rgba(51,51,51,1);
 text-align:center;
@@ -114,7 +114,7 @@ border-radius: 10rpx;height:80rpx;
 .gonggao{
   width:100rpx;
 font-size:36rpx;
-font-family:PingFang SC;
+font-family: "微软雅黑", -apple-system-font, "Helvetica Neue", sans-serif;
 font-weight:bold;
 padding-top: 15rpx;
 padding-left:15rpx;
@@ -127,7 +127,7 @@ height:36rpx;
 background:rgba(255,174,0,1);
 border-radius:5px;
 font-size:24rpx;
-font-family:PingFang SC;
+font-family: "微软雅黑", -apple-system-font, "Helvetica Neue", sans-serif;
 font-weight:400;
 color:rgba(255,255,255,1);
 text-align: center;
