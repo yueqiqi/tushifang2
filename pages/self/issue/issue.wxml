@@ -13,7 +13,7 @@
 <view class="bgf mtt">
   <view class="d-spb d1">
     <view class="til">发布内容标题</view>
-    <view class="ing{{ch}}">{{ing}}</view>
+    <view class="ing">{{ing}}</view>
   </view>
   <view class="d-flex mybtn">
     <view class="up">修改</view>
@@ -26,11 +26,11 @@
 <view class="bgf mtt">
   <view class="d-spb d1">
     <view class="til">发布内容标题</view>
-    <view class="ing{{ch}}">{{ing}}</view>
+    <view class="ing" style="{{ch}}">{{ing2}}</view>
   </view>
   <view class="d-flex mybtn">
-    <view class="up">修改</view>
-    <view class="upfin">改为正在进行</view>
+    <view class="up" bindtap="up">修改</view>
+    <view class="upfin" bindtap="upfin">{{btn}}</view>
   </view>
 </view>
 <!-- 我要发布 -->

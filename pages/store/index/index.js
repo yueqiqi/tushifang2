@@ -15,6 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    activeIdx: 3,
     product:[
       {
      //  商品图片

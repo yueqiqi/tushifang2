@@ -1,6 +1,14 @@
 
 //app.js
 App({
+  onLoad:function(){
+    // 隐藏原生的tabbar
+    wx.hideTabBar();
+  },
+  onReady:function(){
+    // 隐藏原生的tabbar
+    wx.hideTabBar();
+  },
   onLaunch: function () {
     // 隐藏原生的tabbar
     wx.hideTabBar();

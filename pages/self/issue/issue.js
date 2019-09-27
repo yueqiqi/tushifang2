@@ -1,5 +1,20 @@
 // pages/self/issue/issue.js
 Page({
+  up:function(){
+    
+  },
+  // 改为正在进行
+  upfin:function(){
+    this.setData({
+      ing2:"已完成",
+      btn:"已完成"
+    })
+    if(this.data.btn=="已完成"){
+      this.setData({
+        ch:"font-size:28rpx;font-family: PingFang SC;font-weight: 500;color: rgba(245, 121, 0, 1);"
+      })
+    }
+  },
   // 我要发布跳转
   iss:function(){
     wx.navigateTo({
@@ -16,10 +31,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 改为正在进行
+    btn:"改为已完成",
     // 正在进行
     ing:"正在进行",
+    ing2:"正在进行",
     // 样式
-    ch:"",
+    ch: "",
   },
 
   /**

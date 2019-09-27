@@ -3,6 +3,9 @@ Page({
   now:function(){
     console.log(this.data.ec)
     console.log(this.data.es)
+    wx.navigateTo({
+      url: '/pages/store/affirm/affirm',
+    })
   },
   // 价格变化
   onChange: function (e) {

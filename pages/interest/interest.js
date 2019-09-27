@@ -1,6 +1,8 @@
 // pages/interest/interest.js
 Page({
   data: {
+    // 按钮是否禁用
+    disabled:true,
     checkboxArr: [{
       name: '兴趣',
       checked: false
@@ -50,13 +52,25 @@ Page({
     });
   },
   checkboxChange: function (e) {
+    console.log(e.detail.value.length)
+    // 判断用户是否选择兴趣
+    if (e.detail.value.length>0){
+      this.setData({
+        disabled:false
+      })
+    }
     var checkValue = e.detail.value;
     this.setData({
       checkValue: checkValue
     });
   },
   confirm: function () {// 提交
+  wx.switchTab({
+    url: '/pages/body/body',
+  })
     console.log(this.data.checkValue)//所有选中的项的value
+    console.log("跳转")
+   
   },
   // data: {
   //   text: "请选择",

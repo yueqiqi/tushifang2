@@ -1,9 +1,17 @@
 // pages/store/site/site.js
 Page({
+  // 编辑收货地址
+  modsite:function(){
+    wx.navigateTo({
+      url: '/pages/self/site/modsite',
+    })
+  },
+  // 添加收货地址
   add:function(){
     console.log("添加收货地址")
-    
-
+    wx.navigateTo({
+      url: '/pages/self/site/addsite',
+    })
   },
   mm: function (e) {
     var zz = e.currentTarget.dataset.index
@@ -21,6 +29,7 @@ Page({
         phone:13333333333,
         def:"默认",
         sit:"重庆市 渝北区 多少路 80号 什么大厦几楼几杠几",
+        // 是否默认
         nom:"aa"
       },
       {
@@ -48,7 +57,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+  console.log(options)
   },
 
   /**

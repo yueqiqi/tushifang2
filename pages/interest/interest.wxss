@@ -55,6 +55,9 @@ font-size:30rpx;
 font-family:PingFang SC;
 font-weight:bold;
 color:rgba(255,255,255,1);
-margin-top:177rpx;
-margin-right:60rpx;
+margin:0 auto;
+margin-top:10%;
+}
+.confirm{
+  
 }

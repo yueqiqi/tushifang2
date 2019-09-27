@@ -1,0 +1,4 @@
+<!-- btns循环绑定事件 -->
+<block wx:for="{{btns}}" wx:key="{{index}}">
+  <button bindtap="{{item.bind}}">{{item.btn}}</button>
+</block>

@@ -36,8 +36,11 @@
 
 <!-- 我的名片夹 -->
 <view class="bgf mtt" style="padding-bottom: 93rpx;">
-  <view class="name">我的名片夹</view>
-  <view class="ncard">
+  <view class="name ml">我的名片夹</view>
+  <!-- ========================================================= -->
+  <!-- <block> -->
+  <!-- ========================================================= -->
+  <view class="ncard" bindtap="mycard">
     <view class="d-spb cc">
     <view class="d-flex c-i">
       <view><image class="c-img" src="{{head}}"></image></view>

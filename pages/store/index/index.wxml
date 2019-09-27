@@ -134,3 +134,4 @@
 </view>
 <!-- 1 -->
 </view>
+<tabbar activeIdx="{{activeIdx}}"></tabbar>

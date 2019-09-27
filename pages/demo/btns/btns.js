@@ -1,31 +1,32 @@
-// pages/self/card/card.js
+// pages/demo/btns/btns.js
 Page({
-  // 查看名片夹
-  mycard:function(){
-    wx.navigateTo({
-      url: '/pages/self/mycard/mycard',
-    })
-  },
-  // 完善我的名片
-btn:function(){
-  wx.navigateTo({
-    url: '/pages/self/card/perfect',
-  })
+look:function(){
+  console.log("查看物流")
+},
+remind:function(){
+  console.log("提醒发货")
+},
+sure:function(){
+  console.log("确认收货")
 },
   /**
    * 页面的初始数据
    */
   data: {
-    // 时间
-    time:"2019.08.26",
-    // 公司名称
-    com:"公司名称",
-    // 职位
-    post:"职位",
-    // 头像
-    head:"../../images/carousel/03.jpg",
-    // 用户昵称
-    name:"用户昵称",
+    btns:[
+      {
+        btn:"查看物流",
+        bind:"look",
+      },
+      {
+        btn: "提醒发货",
+        bind: "remind",
+      },
+      {
+        btn: "确认收货",
+        bind: "sure",
+      },
+    ]
   },
 
   /**

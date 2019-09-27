@@ -94,6 +94,7 @@ Page({
   },
 
   data: {
+    activeIdx:0,
     // 面板
     mm: "a",
     // 点赞个数
@@ -252,6 +253,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    // 隐藏原生的tabbar
+    wx.hideTabBar();
     var zz = this.data.ftabUserImg.length
     var mm = this.data.mm
     // var that=this

@@ -2,7 +2,44 @@
 // 调用时间
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
 Page({
+  // 查看订单详情
+  detail:function(){
+    // 商品详情
+    wx.navigateTo({
+      url: '/pages/store/order/order',
+    })
+  },
+  // 确认收货
+  affirm:function(){
+    console.log("确认收货")
+  },
+  // 取消订单
+  cancel:function(){
+    console.log("取消订单");
+  },
+  // 提醒发货
+  remind:function(){
+    console.log("提醒发货")
+  },
+  // 查看物流
+  look:function(){
+    wx.navigateTo({
+      url: '/pages/store/logistics/logistics?id=1',
+    })
+  },
+// 删除订单
+  del: function (e) {
+    var e = e.target.dataset.num
 
+    console.log(e)
+    console.log(this.data.arr1[e])
+    var del = this.data.arr1
+    del.splice(e, 1)
+    this.setData({
+      arr1: del
+    })
+
+  },
   /**
    * 页面的初始数据
    */
@@ -12,20 +49,52 @@ Page({
         suc:"交易成功",
         tit:"日本车载眼镜架多功能创意汽车用眼睛支架",
         img:"../../images/carousel/06.jpg",
-        btn: ["删除订单", "查看物流"]
+        btns: [
+          {
+            btn:"删除订单",
+            bind:"del",
+          },
+          {
+            btn: "查看物流",
+            bind:"look",
+          }           
+        ]
       },
 
       {
         suc: "待发货",
         tit: "日本车载眼镜架多功能创意汽车用眼睛支架",
         img: "../../images/carousel/06.jpg",
-        btn: ["提醒发货", "查看物流","取消订单"]
+
+        btns: [
+          {
+            btn: "提醒发货",
+            bind: "remind",
+          },
+          {
+            btn: "查看物流",
+            bind: "look",
+          },
+          {
+            btn:"取消订单",
+            bind:"cancel"
+          }
+        ]  
       },
       {
         suc: "待收货",
         tit: "日本车载眼镜架多功能创意汽车用眼睛支架",
         img: "../../images/carousel/06.jpg",
-        btn: [ "查看物流", "确认收货"]
+        btns: [
+          {
+            btn: "查看物流",
+            bind: "look",
+          },
+          {
+            btn: "确认收货",
+            bind: "affirm",
+          }
+        ]
       }
     ],
     su: "mm",

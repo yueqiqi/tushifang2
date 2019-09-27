@@ -40,6 +40,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 接收我的订单发来的参数
+    console.log(options,options.id)
     // 向数组中添加数据
     // var self = this;
     // var obj = { text: "4", desc: "four" }

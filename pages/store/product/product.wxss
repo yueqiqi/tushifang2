@@ -110,7 +110,7 @@ padding-top:27rpx;
 .details-img{
   width:100%;
 height:738rpx;
-margin-top:25rpx;
+margin-top:25rpx;margin-bottom:99rpx;
 }
 .details-img image{
   width:100%;

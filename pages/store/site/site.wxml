@@ -11,7 +11,7 @@
           <view>{{item.name}}</view>
           <view>{{item.phone}}</view>
         </view>
-        <view class="right">编辑</view>
+        <view class="right" bindtap="modsite">编辑</view>
       </view>
       <!-- 地址 -->
       <view class="d-flex sit" style="">

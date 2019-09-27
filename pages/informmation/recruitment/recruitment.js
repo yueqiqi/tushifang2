@@ -79,6 +79,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    activeIdx: 1,
     // 点赞
     like:20,
     // 发布图片

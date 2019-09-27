@@ -16,6 +16,6 @@
         <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.name}}
       </label>
     </checkbox-group>
-     <button class="confirm" bindtap='confirm'>确认选择</button>
   </view>
 </view>
+     <button class="confirm" bindtap='confirm' disabled='{{disabled}}'>确认选择</button>

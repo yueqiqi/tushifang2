@@ -2,7 +2,11 @@
 // 调用时间
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
 Page({
-
+look:function(){
+  wx.navigateTo({
+    url: '/pages/store/logistics/logistics?id=1',
+  })
+},
   /**
    * 页面的初始数据
    */

@@ -1,20 +1,45 @@
 {
   "pages": [
+    "pages/interest/interest",   
+    "pages/body/body",
+    "pages/self/ewm/ewm",
+    "pages/self/site/site",
+    "pages/self/total/total",
+    "pages/self/issue/issue",
+    "pages/self/card/perfect",
+    "pages/self/card/card",
+    "pages/self/mycard/mycard",
+    "pages/self/fincard/fincard",
+    "pages/self/contact/contact",
+    "pages/self/goup/goup",
+    "pages/self/score/score",
+    "pages/self/data/data",
+    "pages/self/site/modsite",
+    "pages/self/site/addsite",
+    "pages/self/err/err",
+    "pages/search/search",
+    "pages/tabar/tabar",
+    "pages/self/ewm2/ewm2",
+    "pages/self/index/index",
+
     "pages/store/classify/classify",
+    "pages/store/order/order",
+
+    "pages/store/logistics/logistics",
+    "pages/store/site/site",
+    "pages/store/affirm/affirm",
+    "pages/store/product/product",
+    "pages/demo/btns/btns",
+
+
+
     
     "pages/demo/changeimg/changeimg",
     "pages/demo/radio/radio",
-    
 
-    "pages/store/product/product",
     "pages/store/index/index",
-    "pages/store/site/site",
-    "pages/store/logistics/logistics",
-    "pages/store/order/order",
-    "pages/store/affirm/affirm",
     "pages/store/success/success",
 
-    "pages/body/body",
     
     "pages/Ac/issue/issue",
     "pages/Ac/hiring/hiring",
@@ -49,32 +74,12 @@
     "pages/panel/panel",
     "pages/title/title",
     "pages/tab/tab",
-    "pages/tabar/tabar",
-    "pages/self/ewm2/ewm2",
-    "pages/self/ewm/ewm",
-    "pages/self/mycard/mycard",
+
     "pages/demo/zhuanfa/zhuanfa",
     "pages/demo/dblClick/dblClick",
-    "pages/self/site/modsite",
-    "pages/self/site/addsite",
-    "pages/self/total/total",
+
     "pages/demo/select/select",
-    "pages/self/score/score",
-    
-    "pages/self/site/site",
-    "pages/self/goup/goup",
-    "pages/self/contact/contact",
-    "pages/self/fincard/fincard",
-    "pages/self/card/card",
-    "pages/self/card/perfect",
-    "pages/self/err/err",
-    "pages/self/issue/issue",
-    
-    "pages/search/search",
-    "pages/self/data/data",
-    "pages/self/index/index",
-    
-    "pages/interest/interest",
+
     
     "pages/demo/success/success",
     "pages/demo/err/err",
@@ -115,21 +120,21 @@
       "auth": 0
     },
     {
-      "pagePath": "pages/interest/interest",
+      "pagePath": "pages/index/index",
       "text": "发现",
       "iconPath": "/pages/images/add1.png",
       "selectedIconPath": "/pages/images/add2.png",
       "auth": 0
     },
     {
-      "pagePath": "pages/store/logistics/logistics",
+      "pagePath": "pages/store/index/index",
       "text": "项目对接",
       "iconPath": "/pages/images/store1.png",
       "selectedIconPath": "/pages/images/store2.png",
       "auth": 0
     },
     {
-      "pagePath": "pages/body/body",
+      "pagePath": "pages/self/index/index",
       "text": "我的",
       "iconPath": "/pages/images/self1.png",
       "selectedIconPath": "/pages/images/self2.png",

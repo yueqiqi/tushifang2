@@ -14,21 +14,21 @@ module.exports = [
     "auth": 0
   },
   {
-    "pagePath": "pages/interest/interest",
+    "pagePath": "pages/index/index",
     "text": " ",
     "iconPath": "/pages/images/add2.png",
     "selectedIconPath": "/pages/images/add2.png",
     "auth": 0
   },
   {
-    "pagePath": "/pages/store/index/index",
+    "pagePath": "pages/store/index/index",
     "text": "商城",
     "iconPath": "/pages/images/store1.png",
     "selectedIconPath": "/pages/images/store2.png",
     "auth": 0
   },
   {
-    "pagePath": "pages/store/logistics/logistics",
+    "pagePath": "pages/self/index/index",
     "text": "会员中心",
     "iconPath": "/pages/images/self1.png",
     "selectedIconPath": "/pages/images/self2.png",

@@ -1,17 +1,17 @@
 <!-- 确认订单 -->
 <view class="position bgf">
-  <van-cell is-link link-type="navigateTo"url="/pages/index/index" center="true">
+  <van-cell is-link link-type="navigateTo"url="/pages/store/site/site?id=1" center="true">
   <view slot="title">
     <view class="d-flex">
       <image class="img" src="../../images/position/position-sm.png"></image>
       <view>
       <!-- 用户名 -->
         <view class="d-flex user">
-          <view>用户名</view>
-          <view>13222222222</view>
+          <view>{{name}}</view>
+          <view>{{phone}}</view>
         </view>
         <!-- 地址 -->
-        <view class="site">重庆市 渝北区 多少路 80号 什么大厦几楼几杠几</view>
+        <view class="site">{{ad}}</view>
       </view>
     </view>
   </view>
@@ -26,7 +26,7 @@
     <view><image class="detail-img" src="../../images/carousel/05.jpg"></image></view>
     <view>
       <!-- 商品标题 -->
-      <view class="detail-title">日本车载眼镜架多功能创意汽车用眼睛支架</view>
+      <view class="detail-title">{{title}}</view>
       <!-- 分类型号 -->
       <view class="d-spb model">
         <view>分类</view>

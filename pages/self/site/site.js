@@ -3,7 +3,7 @@ Page({
   // 修改
   mod:function(){
     wx.navigateTo({
-      url: './modesite.wxml',
+      url: '/pages/self/site/modsite',
     })
   },
   // 删除
@@ -23,7 +23,9 @@ Page({
 
   add: function () {
     console.log("添加收货地址")
-
+wx.navigateTo({
+  url: '/pages/self/site/addsite',
+})
 
   },
   mm: function (e) {
