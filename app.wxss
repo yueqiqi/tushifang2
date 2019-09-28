@@ -14,3 +14,7 @@ page{
   background:rgb(248, 248, 248);
   font-family: "微软雅黑", -apple-system-font, "Helvetica Neue", sans-serif;
 }
+.imgs image{
+  width:100%!important;
+  margin-right:10rpx;
+}

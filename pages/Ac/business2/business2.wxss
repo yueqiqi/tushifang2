@@ -46,6 +46,9 @@ color:rgba(51,51,51,1);
   margin-right:60rpx;
   width:510rpx;
 }
+.right input{
+  width:100%;
+}
 /* 下拉图片 */
 .section-img{
   width:17rpx;height:29rpx;
@@ -147,13 +150,14 @@ display: flex;
 }
 /* 添加图片的样式 */
 .imgs image{
-  /* width:100%; */
-  width:168rpx;
+  width:100%;
+  /* width:168rpx; */
   height:168rpx;
   /* max-height:212rpx; */
   border:1px solid rgba(214, 212, 212, 0.1);
   /* box-shadow: 5rpx 5rpx 1rpx 3rpx #e2e0e0; */
   margin-top:20rpx;
+  margin-right:10rpx;
 }
 
 .imgs .images{

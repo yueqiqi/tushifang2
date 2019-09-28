@@ -7,7 +7,7 @@
 <view class="form">
  <view class="section d-spb">
     <view class="section-title">所在地区</view>
-    <view class="right d-spb">
+    <view class="right d-spb" bindtap="getlocation">
       <input name="i1" disabled="true" value="{{location}}"/>
       <view>
         <image class="section-img" src="../../images/right.png"></image>

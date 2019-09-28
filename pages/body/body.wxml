@@ -1,14 +1,14 @@
 <!-- 定位信息 -->
 <view class="bgf">
 <view>
-  <view class="d-spb">
+  <view class="d-spb ll">
   <view class="d-flex">
   <view>
     <image class="position" src="../images/position/position-sm.png"></image>
   </view>
-    <view bindtap="getLocation" class="position-text">当前定位</view>
-    <view>
-      <image src="../images/position/shape45.png" class="select"></image>
+    <view bindtap="getLocation" class="position-text">{{location}}</view>
+    <view bindtap="getlocation" class="select">
+      <image src="../images/position/shape45.png"></image>
     </view>
   </view>
     <view  bindtap="message">
@@ -19,7 +19,9 @@
 <view class='page_row' bindtap="search">  
       <view class="search">  
         <view class="df search_arr">  
-          <icon class="searchcion" size='20' type='search'></icon>  
+          <view class="searchcion">
+            <image src="/pages/images/search.png"></image>
+          </view>  
           <input class="" disabled placeholder="搜索..." value="{{searchValue}}"/>  
         </view>  
       </view>   
@@ -62,7 +64,19 @@
 <view class="gonggao">公告</view>
 <view class="hot">热门</view>
 <view class='scroll_view_border'>
-<view class="srcoll_view" bindtap="hot">9102土石方风向标</view>
+<view class="srcoll_view">
+  <!-- 上下滚动通知栏 -->
+<swiper class="srcoll_view" vertical="true" autoplay="true" circular="true" interval="2000">
+<block wx:for="{{msgList}}" wx:key="{{index}}">
+<navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+<swiper-item>
+<view class="swiper_item">{{item.title}}</view>
+</swiper-item>
+</navigator>
+</block>
+</swiper>
+<!--  -->
+</view>
 </view>
 <view><image class="right-img" src="../images/right.png"></image></view>
 </view>

@@ -51,7 +51,8 @@ Page({
     if (curTime - lastTime > 0) {
       if (curTime - lastTime < 500) {
         this.setData({
-          isDisabled: false
+          isDisabled: false,
+          hidden:true
         })
       }
     }
@@ -324,9 +325,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    // 是否显示下拉图片
+    hidden:false,
     // 求职状态
-    selectData3: ['请选择求职状态', "离职随时到岗", "在职-月内到岗", "在职-考虑机会", "在职-暂不考虑"],//下拉列表的数据
+    selectData3: ['请选择工作年限', "1年以下", "1~3年", "3~5年", "5年以上"],//下拉列表的数据
     selectShow3: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     index3: 0,//选择的下拉列表下标
     // 薪资待遇

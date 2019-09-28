@@ -3,7 +3,9 @@
   width: 750rpx;
   margin: 50rpx auto;
   margin-left:20rpx;
-
+}
+page{
+  background:rgb(255,255,255)
 }
  
 .checkbox-con{
@@ -19,11 +21,11 @@
 font-family:PingFang SC;
 font-weight:bold;
 color:rgba(118,212,198,1);
-  border: 1rpx solid #CECECE;
   border-radius: 50%;
   display: inline-block;
   margin: 0 40rpx 50rpx 0;
   position: relative;
+  background:rgba(245,252,251,1);
 }
 .checked{
   
@@ -58,6 +60,6 @@ color:rgba(255,255,255,1);
 margin:0 auto;
 margin-top:10%;
 }
-.confirm{
-  
+button::after{
+  border:0!important;
 }

@@ -41,13 +41,88 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 9,
+			"list": [
+				{
+					"id": 0,
+					"name": "我是企业1",
+					"pathName": "pages/Ac/business/business",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我是企业2",
+					"pathName": "pages/Ac/business2/business2",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我是个人",
+					"pathName": "pages/Ac/self/self",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我要找工作",
+					"pathName": "pages/Ac/jobs/jobs",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我要找人",
+					"pathName": "pages/Ac/hiring/hiring",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "其他发布",
+					"pathName": "pages/Ac/issue/issue",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "置顶弹框",
+					"pathName": "pages/Ac/stick/stick",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "置顶信息填写不完整",
+					"pathName": "pages/Ac/no/no",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/body/body",
+					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "兴趣",
+					"pathName": "pages/interest/interest",
+					"query": "name=我是企业",
+					"scene": null
+				}
+			]
 		}
 	}
 }

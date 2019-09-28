@@ -1,7 +1,21 @@
-// pages/body/body.js
-// import postMessage from '../postMessage/postMessage.js';
-// var app = getApp()
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
+// 实例化API核心类
+var demo = new QQMapWX({
+  key: 'E7PBZ-USVKO-3BYWB-SR4NY-TA7Z3-S4BTR'
+});
 Page({
+  // /获取地理位置
+  getlocation: function () {
+    let that = this
+    wx.chooseLocation({
+      success: function (res) {
+        console.log(res.address)
+        that.setData({
+          location: res.address
+        })
+      },
+    })
+  },
   // 消息跳转
   message:function(){
     wx.navigateTo({
@@ -94,6 +108,9 @@ Page({
   },
 
   data: {
+    // 定位位置
+    location:"",
+    // 
     activeIdx:0,
     // 面板
     mm: "a",
@@ -253,6 +270,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    let that = this;
+    // 调用接口
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude = res.latitude//纬度
+        var longitude = res.longitude//经度
+        demo.reverseGeocoder({
+          location: {
+            latitude: latitude,
+            longitude: longitude
+          },
+          success: function (res) {
+            console.log(res);
+            let province = res.result.address_component.province;//省份
+            let city = res.result.address_component.city;//城市
+            let address = res.result.address
+            that.setData({
+              location: address
+            })
+          },
+          fail: function (res) {
+            console.log(res);
+          }
+        });
+      }
+    })
     // 隐藏原生的tabbar
     wx.hideTabBar();
     var zz = this.data.ftabUserImg.length
@@ -290,8 +334,14 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (e) {
+    this.setData({
+      msgList: [
+        { url: "url", title: "平台公告" },
+        { url: "url", title: "2019土石方风向标" },
+        { url: "url", title: "土石方红黑榜" },
+        { url: "url", title: "如何在土石方平台找到好工作" }]
+    });
   },
 
   /**

@@ -18,9 +18,12 @@ Page({
       index: Index,
       selectShow: !this.data.selectShow,
     });
+    // 隐藏文字
     if (Index == 4) {
       this.setData({
-        isDisabled: false
+        isDisabled: false,
+        selectData:"",
+        hidden:true
       })
     } return
     console.log(this.data.isDisabled)
@@ -66,6 +69,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // /是否隐藏下拉图片
+    hidden:false,
     // 自定义编辑
     isDisabled: true,
     selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示

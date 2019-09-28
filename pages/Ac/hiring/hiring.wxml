@@ -11,7 +11,7 @@
     <view class="right d-spb">
       <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位或者双击手动输入" value="{{selectData[index]}}"  data-time="{{lastTapTime}}" bindtap="doubleClick" />
       <view catchtap='selectTap'>
-        <image class="section-img" src="../../images/position/shape45.png"></image>
+        <image class="section-img" hidden="{{hidden}}" src="../../images/position/shape45.png"></image>
       </view>
     </view>
  </view>

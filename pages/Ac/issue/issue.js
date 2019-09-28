@@ -1,12 +1,88 @@
 // pages/Ac/issue/issue.js
 Page({
-  // 第二个单选
-  eonChange(e) {
+
+// ////////////////////////////////////////////////////////////////////
+  // /////////////////////////////////////////////////////////////////////
+  /* 隐藏弹窗 */
+  nsuhide(flag = true) {
     this.setData({
-      eradio: e.detail
+      "nsup": flag
+    });
+  },
+  /* 显示弹窗 */
+  nsushow() {
+    this.nsuhide(false);
+  },
+  // /////////////////////////////////////////////////////////////////////
+  // 时间分类
+  // 结束
+  ebindDateChange: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      edates: e.detail.value
+    })
+  },
+  // 开始
+  bindDateChange: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      dates: e.detail.value
+    })
+  },
+  // 第二个单选
+  seonChange(e) {
+    var that=this
+    this.setData({
+      seradio: e.detail
+    });
+    console.log(e.detail, "置顶类型")
+    if(e.detail==1){
+      that.setData({
+        int:200
+      })
+    }else if(e.detail==2){
+      that.setData({
+        int:100
+      })
+    }
+  },
+  // 单选框
+  sonChange(e) {
+    this.setData({
+      sradio: e.detail
     });
     console.log(e.detail)
   },
+  /* 隐藏弹窗 */
+  sssuhide() {
+    this.setData({
+      "sssup": true
+    });
+    console.log("隐藏弹框")
+    var zzz = this.data
+    console.log(zzz.sradio,zzz.seradio,zzz.dates,zzz.edates)
+    if (zzz.sradio == 0, zzz.dates == "请选择开始时间", zzz.edates == "请选择结束时间") {
+      this.nsushow()
+    }
+  },
+  /* 显示弹窗 */
+  ssushow() {
+    console.log("显示弹框")
+    this.setData({
+      "sssup": false
+    })
+
+  },
+// ////////////////////////////////////////////////////////////////////
+
+
+  // 选择是弹出框
+  yes:function(){
+this.ssushow()
+  },
+ 
+  // /////////////////////////////////////////////////////////////////////////////
+
   // 单选框
   onChange(e) {
     this.setData({
@@ -257,9 +333,22 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 错误提示
+    nsup: true,
+    // 消耗积分
+    int: 0,
+    // 时间分类
+    index: 0,
+    dates: '请选择开始时间',
+    edates: '请选择结束时间',
+    sssup: true,
     // 单选框
-    radio: '1',
-    eradio: '1',
+    sradio: '0',
+    seradio: '0',
+  
+    // 单选框
+    radio: '0',
+    eradio: '0',
     //成功 提示框
     sup: true,
     // 错误提示框

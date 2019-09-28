@@ -1,7 +1,7 @@
 /* pages/demo/calert/calert.wxss */
 /* 遮罩 */
 /* 遮罩样式 */
-.sshade {
+.nsshade {
     position: fixed;
     top: 0;
     right: 0;
@@ -12,7 +12,7 @@
     z-index: 10;
 }
 /* 盒子位置 */
-.sshade_box {
+.nsshade_box {
     position: fixed;
     top: 0;
     right: 0;
@@ -29,7 +29,7 @@
     letter-spacing: 0;
     word-wrap: break-word;
  
-    animation-name:spopup;
+    animation-name:nspopup;
     animation-duration:0.2s;
     animation-timing-function:linear;
     animation-delay:0;
@@ -37,7 +37,7 @@
     animation-direction:normal;
 }
  
-@keyframes spopup
+@keyframes nspopup
 {
     from{opacity:0;transform:scale(0.3,0.3);}
     to 	{opacity:1;transform:scale(1,1);}
@@ -45,7 +45,7 @@
  
  
 /* 当前弹窗样式 */
-.spopup{
+.nspopup{
     width: 478rpx;
     height: 423rpx;
     background:rgba(255,255,255,1);
@@ -53,12 +53,7 @@
 border-radius:10rpx;
 }
 /* 成功图片 */
-.spopup .stitle{
-    /* padding: 0 20rpx; */
-    /* border-bottom: #e5e5e5 solid 1px; */
-    /* height: 70rpx;
-    line-height: 70rpx; */
-    /* font-size: 32rpx; */
+.nspopup .nstitle{
     width:80rpx;height:80rpx;
     border-radius: 50%;
     background-color: white;
@@ -67,23 +62,23 @@ border-radius:10rpx;
     z-index:5555;
     margin-top:-49rpx;
 }
-.spopup .scontent{
+.nspopup .nscontent{
     /* margin: 100rpx; */
     margin-top:31rpx;
     text-align: center;
     font-size:30rpx;
 }
 /* 提交成功 */
-.st1{
+.nst1{
   font-weight: blod;
   color:#76D4C6; 
 }
 /* 下方提示文字 */
-.st2,.st3,.st4{
+.nst2,.nst3,.nst4{
   color:#333333;
 }
 /* 确认按钮 */
-.spopup .smsg{
+.nspopup .nsmsg{
     width:120rpx;
 height:64rpx;
 background:rgba(118,212,198,1);
@@ -98,7 +93,7 @@ line-height: 64rpx;
 margin:0 auto;
 margin-top:31rpx;
 }
-.br{
+.nbr{
   width:400rpx;
 height:275rpx;
 background:rgba(255,255,255,1);

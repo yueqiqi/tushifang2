@@ -1,5 +1,17 @@
 // pages/demo/calert/calert.js
 Page({
+  // /////////////////////////////////////////////////////////////////////
+  /* 隐藏弹窗 */
+  nsuhide(flag = true) {
+    this.setData({
+      "nsup": flag
+    });
+  },
+  /* 显示弹窗 */
+  nsushow() {
+    this.nsuhide(false);
+  },
+  // /////////////////////////////////////////////////////////////////////
   // 时间分类
   // 结束
   ebindDateChange: function (e) {
@@ -16,44 +28,56 @@ Page({
     })
   },
   // 第二个单选
-  eonChange(e) {
+  seonChange(e) {
     this.setData({
-      eradio: e.detail
+     seradio: e.detail
     });
     console.log(e.detail)
   },
   // 单选框
-  onChange(e) {
+  sonChange(e) {
     this.setData({
-      radio: e.detail
+      sradio: e.detail
     });
     console.log(e.detail)
   },
   /* 隐藏弹窗 */
-  suhide(flag = true) {
+  sssuhide() {
     this.setData({
-      "sup": flag
+      "sssup": true
     });
+    console.log("隐藏弹框")
+    var zzz=this.data
+    // console.log(zzz.sradio,zzz.seradio,zzz.dates,zzz.edates)
+    if (zzz.sradio == 0, zzz.dates=="请选择开始时间",zzz.edates=="请选择结束时间"){
+      this.nsushow()
+    }
   },
   /* 显示弹窗 */
-  sushow() {
-    this.suhide(false);
+  ssushow() {
+   console.log("显示弹框")
+    this.setData({
+      "sssup":false
+    })
+    
   },
 
   /**
    * 页面的初始数据
    */
   data: {
+    // 错误提示
+    nsup: true,
     // 消耗积分
     int:100,
     // 时间分类
     index: 0,
     dates: '请选择开始时间',
     edates: '请选择结束时间',
-    sup: true,
+    sssup: true,
     // 单选框
-    radio: '1',
-    eradio: '1'
+    sradio: '0',
+    seradio: '1'
   },
 
   /**

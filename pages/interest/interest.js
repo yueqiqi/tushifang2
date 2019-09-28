@@ -58,12 +58,17 @@ Page({
       this.setData({
         disabled:false
       })
+    } else if (e.detail.value.length == 0){
+      this.setData({
+        disabled:true
+      })
     }
     var checkValue = e.detail.value;
     this.setData({
       checkValue: checkValue
     });
   },
+
   confirm: function () {// 提交
   wx.switchTab({
     url: '/pages/body/body',
@@ -157,7 +162,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

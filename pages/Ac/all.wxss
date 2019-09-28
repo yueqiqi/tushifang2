@@ -47,7 +47,7 @@
     width: 400rpx;
     height: 242rpx;
     background:rgba(255,255,255,1);
-border:2rpx solid rgba(118,212,198,1);
+/* border:2rpx solid rgba(118,212,198,1); */
 border-radius:10rpx;
 }
 .popup .title{

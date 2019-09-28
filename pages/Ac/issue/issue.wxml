@@ -42,7 +42,7 @@
 <!-- 公司图片 -->
 <view class="img">
   <view>
-    <view class="license">公司图片(最多三张)</view>
+    <view class="license">图片(最多三张)</view>
   <view class="d-flex">
   <!-- 上传图片预览 -->
   <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
@@ -58,7 +58,7 @@
   <!--  -->
   <!-- 公司视频 -->
 <view class="img">
-<view class="license">公司视频</view>
+<view class="license">视频</view>
   <view>
   <view class="d-flex">
   <!-- 上传图片预览 -->
@@ -85,7 +85,7 @@
 <view class="stick">是否置顶</view>
 <view>
 <van-radio-group value="{{ radio }}" bind:change="onChange"  class="d-flex" style="margin-top:40rpx;">
-            <van-radio checked-color="#76D4C6" name="1">是</van-radio>
+            <van-radio checked-color="#76D4C6" name="1" bindtap="yes">是</van-radio>
             <van-radio checked-color="#76D4C6" style="margin-left:100rpx;" name="2">否</van-radio>
           </van-radio-group>
 </view>
@@ -129,5 +129,6 @@
 </view>
 </view>
 <!-- ======================= -->
+<include src="../stick/stick" />
 </form>
 </view>

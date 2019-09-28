@@ -10,7 +10,7 @@
     <view class="right d-spb">
       <input name="i1" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index]}}" />
       <view>
-        <image class="section-img1" src="../../images/position/shape45.png"></image>
+        <image class="section-img1" hidden="{{hidden}}" src="../../images/position/shape45.png"></image>
       </view>
     </view>
  </view>
@@ -34,15 +34,20 @@
  <!-- 所在地区 -->
 <view class="section2 d-spb">
     <view class="section-title">所在地区</view>
-    <view class="right d-spb">
-      <input name="i4"/>
+    <view class="right d-spb" bindtap="translate">
+      <!-- <input class="i4" name="i4" disabled="true" value="{{location}}"/> -->
+      <!--  -->
+     <import src="../../../model/model"/>
+      <view class="infoText">{{province}} {{city}} {{county}}</view>
+      <template is="areaData" data="{{...item}}"/>
+<!--  -->
       <view>
         <image class="section-img" src="../../images/right.png"></image>
       </view>
     </view>
  </view>
  <!-- 详细地址 -->
-  <view class="section2 d-spb">
+  <view class="section2 d-spb" bindtap="onClose">
     <view class="section-title">详细地址</view>
     <view class="right">
       <input name="i5"/>
@@ -69,7 +74,7 @@
 
 </view>
 <view class="mybtn">
-<button form-type="submit" class="next" bindtap="bindsubmit">下一步</button>
+<button form-type="submit" class="next" bindtap="bindsubmit">完成</button>
 </view>
 <!-- ====================== -->
 <!-- 错误提示框 -->

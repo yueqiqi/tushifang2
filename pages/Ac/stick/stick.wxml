@@ -1,28 +1,28 @@
-<view class='sshade' hidden='{{sup}}' bindtap='suhide'></view>
-<view class='sshade_box spopup' hidden='{{sup}}'>
+<view class='ssshade' hidden='{{sssup}}'bindtap='sssuhide' ></view>
+<view class='ssshade_box sspopup' hidden='{{sssup}}'>
 <!-- 成功图片 -->
-    <view class='stitle'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
+    <view class='sstitle'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
     <!-- 文字 -->
-    <view class='scontent'>
-      <view class="st1">置顶提醒</view>
+    <view class='sscontent'>
+      <view class="sst1">置顶提醒</view>
      <!-- 置顶方式 -->
-      <view class="d-spb sticks">
-        <view class="stit">置顶方式</view>
-        <view class="right">
-          <van-radio-group value="{{ radio }}" bind:change="onChange"  class="d-flex">
+      <view class="d-spb ssticks">
+        <view class="sstit">置顶方式</view>
+        <view class="sright">
+          <van-radio-group value="{{ sradio }}" bind:change="sonChange"  class="d-flex">
             <van-radio checked-color="#76D4C6" name="1">十万火急</van-radio>
             <van-radio checked-color="#76D4C6" style="margin-left:20rpx;" name="2">置顶</van-radio>
           </van-radio-group>
         </view>
       </view>
 <!-- 开始时间 -->
-      <view class="d-spb stick2">
-        <view class="stit">开始时间</view>
-        <view class="r2">
-          <view class="sectiontime">  
+      <view class="d-spb sstick2">
+        <view class="sstit">开始时间</view>
+        <view class="sr2">
+          <view class="ssectiontime">  
             <picker mode="date" bindchange="bindDateChange">  
-             <view class="picker">  
-              <view class="select-text" >{{dates}}</view>
+             <view class="spicker">  
+              <view class="sselect-text" >{{dates}}</view>
               <image src="../../images/select.png"></image>
              </view>  
              </picker>  
@@ -30,13 +30,13 @@
         </view>
       </view>
       <!-- 结束时间 -->
-      <view class="d-spb stick2">
-        <view class="stit">开始时间</view>
-        <view class="r2">
-          <view class="sectiontime">  
+      <view class="d-spb sstick2">
+        <view class="sstit">结束时间</view>
+        <view class="sr2">
+          <view class="ssectiontime">  
             <picker mode="date" bindchange="ebindDateChange">  
-             <view class="picker">  
-              <view class="select-text" >{{edates}}</view>
+             <view class="spicker">  
+              <view class="sselect-text" >{{edates}}</view>
               <image src="../../images/select.png"></image>
              </view>  
              </picker>  
@@ -45,10 +45,10 @@
       </view>
 <!-- 置顶类型 -->
      <!-- 置顶方式 -->
-      <view class="d-spb zd">
-        <view class="stit">置顶类型</view>
-        <view class="right">
-          <van-radio-group value="{{ eradio }}" bind:change="eonChange"  class="d-flex">
+      <view class="d-spb szd">
+        <view class="sstit">置顶类型</view>
+        <view class="sright">
+          <van-radio-group value="{{ seradio }}" bind:change="seonChange"  class="d-flex">
             <van-radio checked-color="#76D4C6" name="1">首页置顶</van-radio>
             <van-radio checked-color="#76D4C6" style="margin-left:20rpx;" name="2">内页置顶</van-radio>
           </van-radio-group>
@@ -57,11 +57,11 @@
       <!--  -->
     </view>
 <!-- 消耗积分 -->
-<view class="int">消耗积分 <text style="color:#F57900">{{int}}</text></view>
-    <view class='smsg' bindtap='suhide'>确定</view>
+<view class="sint">消耗积分 <text style="color:#F57900">{{int}}</text></view>
+    <view class='ssmsg' bindtap='sssuhide'>确定</view>
 </view>
- 
-<view  style='margin:20rpx 50rpx;'>
-    <button type='primary' bindtap='sushow'>打开弹窗</button>
-</view>
+ <include src="/pages/Ac/no/no"/>
+<!-- <view  style='margin:20rpx 50rpx;'>
+    <button type='primary' bindtap='ssushow'>打开弹窗</button>
+</view> -->
 
