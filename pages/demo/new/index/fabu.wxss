@@ -1,0 +1,82 @@
+/* pages/demo/new/new.wxss */
+/* pages/self/index/index.wxss */
+/* 个人中心我的发布 */
+@import "/pages/body/body.wxss";
+.n1{
+  /* margin-top:-20rpx; */
+  width:100%;height:100%;
+  background: rgba(3,0,0,0.36);
+  z-index:9998999;
+  position: absolute;  
+  top:0;
+  }
+  /* 我的积分高亮 */
+  .n1-1{
+    width:115rpx;height:115rpx;
+    background: #fff;
+    position:absolute;
+    bottom:389rpx;left:171rpx;
+    text-align: center;
+    border-radius: 10rpx;
+  }
+  .border{
+    position: absolute;bottom:367rpx;left:163rpx;
+  }
+ /* 小× */
+ .x{
+   position: absolute;
+   top:30rpx;right:60rpx;
+   /* z-index:9999999999999999999999999; */
+ }
+ /* 灯 */
+ .light{
+   position: absolute;bottom:389rpx;left:286rpx;
+ }
+ /* 指示线 */
+ .lines{
+   position: absolute;
+   bottom:500rpx;left:210rpx;
+ }
+ /* 文字信息 */
+ .font{
+   font-size:28rpx;
+font-weight:bold;
+color:rgba(118,212,198,1);
+position:absolute;
+top:427rpx;left:354rpx;
+ }
+ .font-ti{
+   position:relative;
+   top:105rpx;left:20rpx;
+ }
+  /* 上一步 */
+ .up{
+   font-size:30rpx;
+font-weight:bold;
+color:rgba(255,255,255,1);
+position:absolute;
+bottom:80rpx;left:50rpx;
+ }
+ /* 上一步文字 */
+ .up>view{
+   position: relative;
+   top:65rpx;left:97rpx;
+ }
+ /* 下一步 */
+ .next{
+   font-size:30rpx;
+font-weight:bold;
+color:rgba(255,255,255,1);
+position:absolute;
+bottom:80rpx;right:50rpx;
+ }
+ /* 下一步文字 */
+ .next>view{
+   position: relative;
+   top:65rpx;left:97rpx;
+ }
+ .v2 :nth-child(2)>view{
+  /* 动画名称 动画时间 运动曲线 何时开始 播放次数 是否反方向; */
+  /* animation: rotate 5s linear 0s infinite alternate; */
+  animation: go 0s linear 0s infinite;
+}

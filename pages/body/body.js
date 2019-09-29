@@ -192,54 +192,54 @@ Page({
       icon:[
         {
           link:"/pages/site/site",
-          url:"../images/icon/icon1.png",
+          url:"/pages/images/icon/icon1.png",
           name:"工地找车"
         },
         {
           link: "/pages/site/site",
-          url: "../images/icon/icon2.png",
+          url: "/pages/images/icon/icon2.png",
           name:"车找工地"
         },
         {
           link: "/pages/site/site",
-          url: "../images/icon/icon3.png",
+          url: "/pages/images/icon/icon3.png",
           name:"工地除渣"
         },
         {
           link: "/pages/site/site",
-          url: "../images/icon/icon4.png",
+          url: "/pages/images/icon/icon4.png",
           name:"求职招聘"
         },
         {
           link: "/pages/site/site",
-          url: "../images/icon/icon5.png",
+          url: "/pages/images/icon/icon5.png",
           name:"二手设备"
         },
       ],
       icon02:[
         {
           link: "/pages/Ac/index/inex",
-          url: "../images/icon/icon6.png",
+          url: "/pages/images/icon/icon6.png",
           name:"免费认证"
         },
         {
           link: "/pages/Ac/post/post",
-          url: "../images/icon/icon7.png",
+          url: "/pages/images/icon/icon7.png",
           name:"发布信息"
         },
         {
           link: "../index/index",
-          url: "../images/icon/icon8.png",
+          url: "/pages/images/icon/icon8.png",
           name:"渣场信息"
         },
         {
           link: "../index/index",
-          url: "../images/icon/icon9.png",
+          url: "/pages/images/icon/icon9.png",
           name:"我的名片"
         },
         {
           link: "/pages/integrity/integrity",
-          url: "../images/icon/icon10.png",
+          url: "/pages/images/icon/icon10.png",
           name:"诚信榜"
         }
         ],

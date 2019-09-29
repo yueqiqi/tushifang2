@@ -1,7 +1,20 @@
 {
   "pages": [
-    "pages/interest/interest",   
+    "pages/informmation/recruitment/recruitment",
+    "pages/demo/new/mes/search",
+    "pages/demo/new/index/cehngxin",
+    "pages/demo/new/index/card",
+    "pages/demo/new/index/fabu",
+    "pages/demo/new/index/phone",
     "pages/body/body",
+    "pages/demo/new/index/renzhen",
+    "pages/demo/new/xinyufen",
+    "pages/demo/new/xinqu",
+    "pages/demo/new/jifen",
+    "pages/demo/new/new",   
+    "pages/self/index/index",
+
+    "pages/interest/interest",   
     "pages/Ac/no/no",
     "pages/Ac/stick/stick",
     "pages/Ac/issue/issue",
@@ -34,7 +47,6 @@
     "pages/search/search",
     "pages/tabar/tabar",
     "pages/self/ewm2/ewm2",
-    "pages/self/index/index",
 
     "pages/store/classify/classify",
     "pages/store/order/order",
@@ -65,7 +77,6 @@
     "pages/Ac/select/select",
 
 
-    "pages/informmation/recruitment/recruitment",
     "pages/informmation/peopledetail/peopledetail",
     "pages/informmation/jobdetail/jobdetail",
     "pages/informmation/global/global",

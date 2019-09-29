@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 22,
 			"list": [
 				{
 					"id": 0,
@@ -120,6 +120,97 @@
 					"name": "兴趣",
 					"pathName": "pages/interest/interest",
 					"query": "name=我是企业",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员中心首页",
+					"pathName": "pages/self/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人指引",
+					"pathName": "pages/demo/new/new",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新手指引-我的积分",
+					"pathName": "pages/demo/new/jifen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新手指引-我的信誉分",
+					"pathName": "pages/demo/new/xinyufen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新手指引-我的信誉分",
+					"pathName": "pages/demo/new/xinyufen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新手指引-我的兴趣",
+					"pathName": "pages/demo/new/xinqu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人指引-免费认证",
+					"pathName": "pages/demo/new/index/renzhen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "新人指引-拨打电话",
+					"pathName": "pages/demo/new/index/phone",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人指引-发布信息",
+					"pathName": "pages/demo/new/index/fabu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新手指引-我的名片",
+					"pathName": "pages/demo/new/index/card",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 20,
+					"name": "新人指引-诚信榜",
+					"pathName": "pages/demo/new/index/cehngxin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人指引-搜索框",
+					"pathName": "pages/demo/new/mes/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "信息中心",
+					"pathName": "pages/informmation/recruitment/recruitment",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -1,0 +1,129 @@
+<!-- ================== -->
+<!-- 遮罩层 -->
+<view class="n1">
+<!-- 灯 -->
+<view class="light">
+  <image style="width:68rpx;height:75rpx;" src="/pages/images/self/!.png"></image>
+</view>
+<!-- 高亮图片文字 -->
+  <view class="n1-1">
+    <view class="phone ppp d-flex">
+  <view>
+    <image src="/pages/images/phone.png"></image>
+  </view>
+  <view>
+    <text class="phone-text">拨打电话</text>
+  </view>
+</view>
+  </view>
+    <view class="border"><image style="width:244rpx;height:92rpx;" src="/pages/images/self/n2.png"></image></view>
+  <!-- 小× -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+  <!-- 虚线 -->
+  <view class="lines">
+    <image style="width:153rpx;height:122rpx;" src="/pages/images/self/br.png"></image>
+  </view>
+  <!-- 文字 -->
+  <view class="font">
+  <view class="font-ti">
+    <view>一键拨号，可以直接拨打</view>
+    <view>发布信息的用户电话</view>
+  </view>
+    <image style="width:375rpx;height:130rpx" src="/pages/images/self/border-2.png"></image>
+  </view>
+  <!-- 上一步 -->
+  <view class="up" bindtap="up">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步 -->
+  <view class="next" bindtap="next">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+</view>
+<!-- ================== -->
+<view class="bgf mtt" bindtap="goto" style="margin-top:-100rpx;">
+<!-- 发布者信息 -->
+  <view class="postMessage">
+  <!-- 头像 -->
+  <view class="ml mt" style="width:70rpx;height:70rpx;background:rgba(229,229,229,1);border-radius:50%;">
+    
+  </view>
+  <!-- 用户名 -->
+  <view class="userName">发布用户名</view>
+  <!-- 十万火急 -->
+  <view class="worry">十万火急</view>
+  <!-- 距离 -->
+  <view class="distance">2.3km</view>
+  </view>
+<!-- 发布需求标题 -->
+<view class="userTitle">发布需求的标题</view>
+<view class="timer">
+<!-- 时间 -->
+<view class="time">2019.02.02 18:36</view>
+<!-- 发布者定位 -->
+<view class="userPosition d-flex">
+<view>
+  <image src="/pages/images/position49.png"></image>
+</view>
+<view>
+<text>发布者定位</text>
+</view>
+</view>
+</view>
+<!-- 发布内容 -->
+<view class="content">翠云万科欢迎32万/28方/22方车24小时随时开自运。 要来拉的老板提前联系，结账方式随意。</view>
+<!-- 发布图片和视频 -->
+<view class="userImg">
+<!-- 发布图片 -->
+<block wx:for="{{userImg}}" wx:key="{{index}}">
+  <view>
+  <image class="userImg{{index}}" src="{{item.url}}"></image> 
+  </view>
+</block>
+<!-- <view><image src="../images/carousel/05.JPg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/06.jpg"></image></view>
+<view><image style="margin-left:15rpx;" src="../images/carousel/07.jpg"></image></view> -->
+</view>
+<!-- 发布的视频 -->
+<view >
+ <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
+</view>
+
+<!-- 项目类型 -->
+<view class="project">
+<view class="projectType">项目类型</view>
+<view class="car">车辆出售</view>
+<view class="phone d-flex">
+  <view>
+    <image src="/pages/images/phone.png"></image>
+  </view>
+  <view>
+    <text class="phone-text">拨打电话</text>
+  </view>
+</view>
+</view>
+<!-- 分割线 -->
+<view class="hr"></view>
+<!-- 评论点赞 -->
+<view class="scl">
+<!-- 分享 -->
+<view class="share" bindtap="share">
+<image src="/pages/images/share.png"></image>
+<text>分享</text>
+</view>
+<!-- 评论 -->
+<view class="comment" bindtap="comment">
+<image src="/pages/images/comment.png"></image>
+<text>评论</text>
+</view>
+<!-- 点赞 -->
+<view class="like" bindtap="like">
+<image src="/pages/images/like.png"></image>
+<text>20</text>
+</view>
+</view>
+</view>
