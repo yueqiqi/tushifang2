@@ -14,8 +14,8 @@ Page({
   },
   // 下一步
   next: function () {
-    wx.navigateTo({
-      url: '/pages/demo/new/mes/class1',
+    wx.switchTab({
+      url: '/pages/body/body',
     })
   },
   /**
@@ -46,5 +46,5 @@ Page({
     activeIdx: 1,
   },
 
- 
+
 })

@@ -9,7 +9,7 @@
     <view class="se">
     <view class='page_row' bindtap="search">  
       <view class="search">  
-        <view class="df search_arr">  
+        <view class="df search_arr"  style="border:0rpx;">  
           <icon class="searchcion" size='20' type='search'></icon>  
           <input class="" disabled placeholder="找活儿、找工作" value="{{searchValue}}"/>  
         </view>  

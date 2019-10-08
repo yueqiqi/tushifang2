@@ -6,19 +6,15 @@
   <image style="width:68rpx;height:75rpx;" src="/pages/images/self/!.png"></image>
 </view>
 <!-- 高亮图片文字 -->
-  <view class="n1-1">
-    <view class="se zzz" style="width:100%;">
-    <view class='page_row' style="border:0;" bindtap="search" style="width:98%;">  
-      <view class="searchs" style="border:0;" style="width:98%;">  
-        <view class="df search_arr">  
-          <icon class="searchcion" size='20' type='search'></icon>  
-          <input style="border:0;" class="" disabled placeholder="找活儿、找工作" value="{{searchValue}}"/>  
-        </view>  
-      </view>   
-    </view>
-    </view>
+<view style="width:359rpx;height:106rpx;background:#fff;border-radius:10rpx;" class="c">
+<view class="sectionClass cc" >  
+  <view class="picker">  
+      <view class="select-text">请选择时间</view>
+      <image src="/pages/images/select.png"></image>
+    </view> 
   </view>
-    <view class="border"><image style="width:750rpx;height:116rpx;" src="/pages/images/self/bb.png"></image></view>
+</view>
+    <view class="border"><image style="width:377rpx;height:124rpx;" src="/pages/images/self/class.png"></image></view>
   <!-- 小× -->
   <view class="x" bindtap="close">
     <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
@@ -30,8 +26,8 @@
   <!-- 文字 -->
   <view class="font">
   <view class="font-ti">
-    <view>求职者和招聘人都可以</view>
-    <view>搜索工作相关关键字查询</view>
+    <view>点击可以选择发布时间，</view>
+    <view>方便查看最新信息</view>
   </view>
     <image style="width:375rpx;height:130rpx" src="/pages/images/self/border-2.png"></image>
   </view>
@@ -60,12 +56,12 @@
 </view>
 
     <!-- 搜索 -->
-    <view class="se"  style="width:50rpx;margin-left:20%;">
-    <view class='page_row' style="border:0;" bindtap="search" style="width:50rpx;">  
-      <view class="search" style="border:0;"  style="width:50rpx;">  
-        <view class="df search_arr">  
+   <view class="se">
+    <view class='page_row' bindtap="search" >  
+      <view class="search">  
+        <view class="df search_arr"  style="border:0rpx;">  
           <icon class="searchcion" size='20' type='search'></icon>  
-          <input style="border:0;" class="" disabled placeholder="找活儿、找工作" value="{{searchValue}}"/>  
+          <input class="" disabled placeholder="找活儿、找工作" value="{{searchValue}}"/>  
         </view>  
       </view>   
     </view>

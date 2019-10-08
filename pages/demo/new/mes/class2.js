@@ -15,7 +15,7 @@ Page({
   // 下一步
   next: function () {
     wx.navigateTo({
-      url: '/pages/demo/new/mes/class1',
+      url: '/pages/demo/new/mes/find1',
     })
   },
   /**
@@ -46,5 +46,5 @@ Page({
     activeIdx: 1,
   },
 
- 
+
 })

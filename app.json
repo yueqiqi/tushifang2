@@ -1,5 +1,11 @@
 {
   "pages": [
+    "pages/panel/panel",
+    "pages/postMessage/postMessage",
+    "pages/demo/new/mes/find1",
+    "pages/demo/new/mes/find2",
+    "pages/demo/new/mes/class2",
+    "pages/demo/new/mes/class1",
     "pages/informmation/recruitment/recruitment",
     "pages/demo/new/mes/search",
     "pages/demo/new/index/cehngxin",
@@ -86,9 +92,7 @@
     "pages/integrity/integrity",
     "pages/integrityMes/integrityMes",
     "pages/inform/inform",
-    "pages/postMessage/postMessage",
     "pages/details/details",
-    "pages/panel/panel",
     "pages/title/title",
     "pages/tab/tab",
 

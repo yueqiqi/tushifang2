@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 22,
+			"current": 26,
 			"list": [
 				{
 					"id": 0,
@@ -210,6 +210,34 @@
 					"id": -1,
 					"name": "信息中心",
 					"pathName": "pages/informmation/recruitment/recruitment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人指引-分类",
+					"pathName": "pages/demo/new/mes/class1",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人指引-时间分类",
+					"pathName": "pages/demo/new/mes/class2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人指引-找工作",
+					"pathName": "pages/demo/new/mes/find1",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 26,
+					"name": "新人指引-招人才",
+					"pathName": "pages/demo/new/mes/find2",
 					"query": "",
 					"scene": null
 				}

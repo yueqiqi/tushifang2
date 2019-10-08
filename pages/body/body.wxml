@@ -28,10 +28,10 @@
 </view>
   <!--轮播图  -->
   <view style="width:690rpx;height:359rpx;margin:auto;">
-  <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255,255,255,1)"indicator-active-color="rgba(118,212,198,1)"
+  <swiper style="height:350rpx;" indicator-dots="{{indicatorDots}}" indicator-color="rgba(255,255,255,1)"indicator-active-color="rgba(118,212,198,1)"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
   <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-    <swiper-item>
+    <swiper-item style="height:350rpx;">
       <image src="{{item.url}}" class="slide-image"></image>
     </swiper-item>
   </block>
@@ -85,7 +85,7 @@
 <image class="img" src="../images/carousel/04.jpg"></image>
 </view>
 </view>
-<include src="../postMessage/postMessage"/>
+<include src="/pages/postMessage/postMessage"/>
 <include src="../title/title"/>
-<include src="../panel/panel"/>
+<include src="/pages/panel/panel"/>
 <tabbar activeIdx="{{activeIdx}}"></tabbar>

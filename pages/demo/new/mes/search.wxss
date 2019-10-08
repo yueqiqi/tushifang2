@@ -41,12 +41,12 @@
  }
  /* 灯 */
  .light{
-   position: absolute;top:106rpx;left:602rpx;
+   position: absolute;top:300rpx;left:340rpx;
  }
  /* 指示线 */
  .lines{
    position: absolute;
-   top:516rpx;right:277rpx;
+   top:519rpx;right:384rpx;
  }
  /* 文字信息 */
  .font{
@@ -54,7 +54,7 @@
 font-weight:bold;
 color:rgba(118,212,198,1);
 position:absolute;
-bottom:533rpx;right:32rpx;
+bottom:417rpx;right:204rpx;
  }
  .font-ti{
    position:relative;

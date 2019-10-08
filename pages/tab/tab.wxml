@@ -1,4 +1,5 @@
 <!-- 底部导航条 -->
+<view style="height:100rpx;">
 <view class='tabbar'>
   <view wx:if='{{_auth >= item.auth}}' class='tabbar-item' wx:for='{{tabbarList}}' wx:key='{{item.pagePath}}' bindtap='handleItemTap' data-path='{{item.pagePath}}' data-idx='{{index}}'>
     <view class='tabbar-item-icon'>
@@ -6,4 +7,5 @@
     </view>
     <view class='tabbar-item-text {{activeIdx === index ? "active" : ""}}'>{{item.text}}</view>
   </view>
+</view>
 </view>

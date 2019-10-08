@@ -89,10 +89,13 @@ line-height:45rpx;
 }
 /* 轮播图图片 */
 .slide-image{
-  width: 690rpx;height:359rpx;
+  width: 690rpx;height:350rpx;
   /* margin-left: 22rpx; */
   border-radius: 10rpx;
-
+  border-bottom-left-radius:10rpx!important; 
+}
+swiper{
+  border-radius:10rpx!important;
 }
 /* 轮播图下方小图片样式 */
 .icon{
@@ -104,6 +107,7 @@ line-height:45rpx;
   flex-wrap: wrap;
   /* padding-top:76rpx; */
   margin-left:49rpx;
+  margin-top:60rpx;
 }
 .v2{
   margin-top:76rpx;
