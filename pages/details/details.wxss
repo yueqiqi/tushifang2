@@ -1,5 +1,6 @@
 /* pages/details/details.wxss */
-@import "../reports/reports.wxss";
+@import "/pages/reports/reports.wxss";
+@import "/pages/comment/comment.wxss";
 .d-text{
   margin-left:42rpx;
   margin-bottom:20rpx;
@@ -133,6 +134,7 @@ font-family:PingFang SC;
 font-weight:400;
 color:rgba(102,102,102,1);
 margin-top:37rpx;
+padding-bottom:8rpx;
 }
 .hr{
   width:580rpx;
@@ -147,13 +149,27 @@ margin-top:33rpx;margin-bottom:20rpx;
 }
 .like image{
   width:30rpx;height:30rpx;
-  margin-top:35rpx;
 }
-.like text{
+.sclr{
+  line-height: 100rpx;
   margin-left:10rpx;
-  margin-top:-10rpx;
   font-size:28rpx;
-font-family:PingFang SC;
 font-weight:400;
 color:rgba(102,102,102,1);
+}
+.like button{
+  font-size:28rpx;
+ background: #fff;
+ border-radius:0;
+font-weight:400;
+color:rgba(102,102,102,1);
+width:56rpx;height:27rpx;
+margin:auto 0;
+padding-left:0!important;
+padding-right:0!important;
+line-height:21rpx!important;
+overflow:visible!important;margin-left:10rpx;
+}
+.like button::after {
+  border: none;
 }

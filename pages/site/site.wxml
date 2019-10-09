@@ -112,13 +112,15 @@
 
 <!-- 第二个发布者信息 -->
 <view class="bgf">
-<view class="tab-new">
+<view class="tab-new d-spb">
       <!-- 发布者头像 -->
+      <view class="d-flex">
       <view class="tab-head"></view>
       <!-- 发布者用户名 -->
       <view class="tab-userName">发布用户名</view>
       <!-- 置顶 -->
       <view class="stick">置顶</view>
+      </view>
       <!-- 距离 -->
       <view class="tab-distance">2.3km</view>
      </view>

@@ -8,16 +8,29 @@ Page({
   },
   // 删除
   del:function(e){
-    var e = e.target.dataset.num
+var that=this
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除吗？',
+      success: function (sm) {
+        console.log(sm)
+        if (sm.confirm) {
+          asd.splice(e, 1)
+          that.setData({
+            defa: asd
+          })
 
+          // 用户点击了确定 可以调用删除方法了
+        } else if (sm.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+    var e = e.target.dataset.num
     console.log(e)
     console.log(this.data.defa[e])
     var asd=this.data.defa
-    asd.splice(e, 1)
-    this.setData({
-      defa:asd
-    })
-
+    
   },
 
 

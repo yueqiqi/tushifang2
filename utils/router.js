@@ -14,7 +14,7 @@ module.exports = [
     "auth": 0
   },
   {
-    "pagePath": "pages/index/index",
+    "pagePath": "pages/kindex/kindex",
     "text": " ",
     "iconPath": "/pages/images/add2.png",
     "selectedIconPath": "/pages/images/add2.png",

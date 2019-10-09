@@ -14,7 +14,7 @@ Page({
       },
       {
         img: "../../images/ico/i2.png",
-        link: "/pages/index/index",
+        link: "/pages/self/issue/issue",
         til: "我的发布"
       },
       {

@@ -3,7 +3,7 @@
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
 Page({
   // 查看订单详情
-  detail:function(){
+  detail:function(e){
     // 商品详情
     wx.navigateTo({
       url: '/pages/store/order/order',
@@ -11,7 +11,10 @@ Page({
   },
   // 确认收货
   affirm:function(){
-    console.log("确认收货")
+    console.log("确认收货");
+    wx.navigateTo({
+      url: '/pages/store/logistics/logistics?id=1',
+    })
   },
   // 取消订单
   cancel:function(){
@@ -30,71 +33,48 @@ Page({
 // 删除订单
   del: function (e) {
     var e = e.target.dataset.num
-
     console.log(e)
     console.log(this.data.arr1[e])
     var del = this.data.arr1
-    del.splice(e, 1)
-    this.setData({
-      arr1: del
-    })
+   var that=this
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除吗？',
+      success: function (sm) {
+        console.log(sm)
+        if (sm.confirm) {
+          del.splice(e, 1)
+          that.setData({
+            arr1: del
+          })
 
+          // 用户点击了确定 可以调用删除方法了
+        } else if (sm.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   },
   /**
    * 页面的初始数据
    */
   data: {
     arr1:[
-      {
+      { id:0,
         suc:"交易成功",
         tit:"日本车载眼镜架多功能创意汽车用眼睛支架",
         img:"../../images/carousel/06.jpg",
-        btns: [
-          {
-            btn:"删除订单",
-            bind:"del",
-          },
-          {
-            btn: "查看物流",
-            bind:"look",
-          }           
-        ]
       },
 
-      {
+      { id:1,
         suc: "待发货",
         tit: "日本车载眼镜架多功能创意汽车用眼睛支架",
         img: "../../images/carousel/06.jpg",
-
-        btns: [
-          {
-            btn: "提醒发货",
-            bind: "remind",
-          },
-          {
-            btn: "查看物流",
-            bind: "look",
-          },
-          {
-            btn:"取消订单",
-            bind:"cancel"
-          }
-        ]  
       },
-      {
+      { id:2,
         suc: "待收货",
         tit: "日本车载眼镜架多功能创意汽车用眼睛支架",
         img: "../../images/carousel/06.jpg",
-        btns: [
-          {
-            btn: "查看物流",
-            bind: "look",
-          },
-          {
-            btn: "确认收货",
-            bind: "affirm",
-          }
-        ]
       }
     ],
     su: "mm",

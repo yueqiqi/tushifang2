@@ -1,0 +1,2 @@
+<include hidden="{{hidden}}" src="/pages/Ac/post/post"/>
+<tabbar activeIdx="{{activeIdx}}"></tabbar>

@@ -269,6 +269,7 @@ Page({
       ec:this.data.color[0],
       es:this.data.size[0]
     })
+    console.log(options)
   },
 
   /**

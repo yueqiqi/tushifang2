@@ -1,5 +1,12 @@
 // pages/self/card/perfect.js
 Page({
+  name:function(e){
+    console.log(e.detail.value)
+    var value = e.detail.value
+    this.setData({
+      name:value
+    })
+  },
   // 
   /* 失败函数隐藏弹窗 */
   hidePopup(flag = true) {
@@ -177,15 +184,21 @@ Page({
     });
     if (Index == 2) {
       this.setData({
-        isDisabled: false
+        isDisabled: false,
+        hidden:true,
+        selectData:"",
+        focus:true
       })
-    } return
+    }
     console.log(this.data.isDisabled)
   }, 
   /**
    * 页面的初始数据
    */
   data: {
+    hidden:false,
+    // 用户名
+    name:"用户昵称",
     // 错误提示框
     popup: true,
     // 图片保存
@@ -202,6 +215,8 @@ Page({
     index: 0,//选择的下拉列表下标
     // 头像
     head: "../../images/carousel/02.jpg",
+    // 
+    focus:false
   },
 
   /**

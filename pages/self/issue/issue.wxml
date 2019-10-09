@@ -1,38 +1,23 @@
 <!-- 我的发布 -->
-<view class="bgf">
-<view class='page_row' bindtap="search">  
-      <view class="search">  
-        <view class="df search_arr">  
-          <icon class="searchcion" size='20' type='search'></icon>  
-          <input class="" disabled placeholder="搜索信息..." value="{{searchValue}}"/>  
-        </view>  
-      </view>   
-</view>
-</view>
-<!-- 发布标题内容 -->
+
+<!-- ==================================================== -->
 <view class="bgf mtt">
-  <view class="d-spb d1">
-    <view class="til">发布内容标题</view>
-    <view class="ing">{{ing}}</view>
+<block wx:for="{{usermes}}" wx:key="{{index}}">
+<!-- 发布内容标题和正在进行 -->
+  <view class="d-spb d1" bindtap="goto"  data-id="{{item.id}}">
+    <view class="til">{{item.til}}</view>
+    <view class="ing" style="color:{{item.type=='已完成'?'#F57900':'#76D4C6'}}">{{item.type}}</view>
   </view>
-  <view class="d-flex mybtn">
-    <view class="up">修改</view>
-    <view class="fin">已完成</view>
-    <view class="ref">刷新</view>
-    <view class="stick">申请置顶</view>
+   <view class="d-flex mybtn">
+    <view class="up" bindtap="up" data-id="{{item.id}}">修改</view>
+    <view class="fin"  style="width:{{item.type=='已完成'?240:140}}rpx" bindtap="change" data-id="{{item.id}}">{{fin}}</view>
+    <view class="ref" hidden="{{item.type=='已完成'?true:false}}">刷新</view>
+    <view class="stick" hidden="{{item.type=='已完成'?true:false}}" bindtap="ssushow">申请置顶</view>
   </view>
+<include src="/pages/Ac/stick/stick"/>
+</block>
 </view>
-<!-- 发布内容标题 -->
-<view class="bgf mtt">
-  <view class="d-spb d1">
-    <view class="til">发布内容标题</view>
-    <view class="ing" style="{{ch}}">{{ing2}}</view>
-  </view>
-  <view class="d-flex mybtn">
-    <view class="up" bindtap="up">修改</view>
-    <view class="upfin" bindtap="upfin">{{btn}}</view>
-  </view>
-</view>
+<!-- ==================================================== -->
 <!-- 我要发布 -->
 <view class="pos" bindtap="iss">
   <image src="../../images/iss.png"></image>

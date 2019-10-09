@@ -4,7 +4,8 @@
   <van-tab title="全部">
     <!-- 全部内容 -->
     <block wx:for="{{arr1}}" wx:key="{{index}}">
-    <view class="bgf mtt" bindtap="detail">
+    <view class="bgf mtt">
+    <view  bindtap="detail" data-id="{{item.id}}">
     <view class="con">
     <!-- 交易时间 -->
     <view class="tim d-spb">    
@@ -33,16 +34,18 @@
     </view>
     <!-- 2 -->
   </view>
+    </view>
     <!-- 按钮 -->
 
   <view class="d-flex bt">
-  <block wx:for="{{item.btns}}" wx:key="{{index}}">
+  <!-- <block wx:for="{{item.btns}}" wx:key="{{index}}">
     <view class="my-btn {{su}}{{index}}" data-num="{{index}}" bindtap="{{item.bind}}">{{item.btn}}</view>
-  </block>
-  <!-- <view class="my-btn">{{item.remind}}</view>
-  <view class="my-btn">{{item.remind}}</view>
-  <view class="my-btn">{{item.remind}}</view> -->
-    <!-- <view class="my-btn">{{item}}</view> -->
+  </block> -->
+  <view class="my-btn" hidden="{{item.suc=='待收货'||item.suc=='交易成功'?true:false}}" catchtap="remind">提醒发货</view>
+  <view class="my-btn" hidden="{{item.suc=='待发货'||item.suc=='待收货'?true:false}}" catchtap="del">删除订单</view>
+  <view class="my-btn" hidden="{{item.suc==''?true:false}}" catchtap="look">查看物流</view>
+  <view class="my-btn" hidden="{{item.suc=='交易成功'||item.suc=='待收货'?true:false}}" catchtap="cancel">取消订单</view>
+  <view class="my-btn" hidden="{{item.suc=='待发货'||item.suc=='交易成功'?true:false}}" style="background:rgba(118,212,198,1);color:#fff;" catchtap="affirm">确认收货</view>
   </view>
   </view>
 

@@ -34,8 +34,9 @@ Page({
     var like = that.data.tabuser[id].index
     var index = "tabuser[" + id + "].index";
     that.setData({
-      [index]: like + 1
+      [index]: like +1
     })
+   
     // }
     console.log("这是点赞后的点赞数" + like)
   },

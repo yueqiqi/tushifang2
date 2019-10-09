@@ -48,8 +48,8 @@ font-weight:400;
 color:rgba(153,153,153,1);margin-left:19rpx;
 }
 .picker image{
-  width:58rpx;
-  height:40rpx;
+ width:29rpx;
+  height:17rpx;
   margin:auto 0;
   margin-right:19rpx;
 }

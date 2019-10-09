@@ -19,15 +19,16 @@
     <!-- 所在地区 -->
     <view class="peo d-spb">
       <view class="til">所在地区</view>
-      <view class="d-spb">
-        <view>
-          <input name="i3" value="{{add}}"></input>
-        </view>
+      <view class="d-spb" bindtap="translate">
+        <import src="../../../model/model"/>
+      <view class="infoText">{{province}} {{city}} {{county}}</view>
+      <template is="areaData" data="{{...item}}"/>
         <view style="margin-left:140rpx;">
         <image style="width:12rpx;height:22rpx;" src="../../images/r2.png"></image>
         </view>
       </view>
     </view>
+    
     <!-- 祥细地址 -->
     <view class="til" style="margin-top:29rpx;">详细地址</view>
     <view style="height:150rpx;">

@@ -1,12 +1,26 @@
 {
   "pages": [
+    "pages/self/card/perfect",
+    "pages/kindex/kindex",
+    "pages/demo/x",
+    "pages/demo/new/new",   
+    "pages/search/search",
+    "pages/informmation/recruitment/recruitment",
+    "pages/store/classify/classify",
+    "pages/self/site/addsite",
+    "pages/self/site/site",
+    "pages/self/issue/issue",
+    "pages/Ac/issue/issue",
+    "pages/store/index/index",
+    "pages/comment/comment",
+    "pages/integrityMes/integrityMes",
+    "pages/details/details",
     "pages/panel/panel",
     "pages/postMessage/postMessage",
     "pages/demo/new/mes/find1",
     "pages/demo/new/mes/find2",
     "pages/demo/new/mes/class2",
     "pages/demo/new/mes/class1",
-    "pages/informmation/recruitment/recruitment",
     "pages/demo/new/mes/search",
     "pages/demo/new/index/cehngxin",
     "pages/demo/new/index/card",
@@ -17,13 +31,11 @@
     "pages/demo/new/xinyufen",
     "pages/demo/new/xinqu",
     "pages/demo/new/jifen",
-    "pages/demo/new/new",   
     "pages/self/index/index",
 
     "pages/interest/interest",   
     "pages/Ac/no/no",
     "pages/Ac/stick/stick",
-    "pages/Ac/issue/issue",
     "pages/Ac/hiring/hiring",
     "pages/Ac/post/post",
     "pages/Ac/self/self",
@@ -36,10 +48,7 @@
     "pages/demo/like2/like2",   
     "pages/demo/like/like",   
     "pages/self/ewm/ewm",
-    "pages/self/site/site",
     "pages/self/total/total",
-    "pages/self/issue/issue",
-    "pages/self/card/perfect",
     "pages/self/card/card",
     "pages/self/mycard/mycard",
     "pages/self/fincard/fincard",
@@ -48,13 +57,10 @@
     "pages/self/score/score",
     "pages/self/data/data",
     "pages/self/site/modsite",
-    "pages/self/site/addsite",
     "pages/self/err/err",
-    "pages/search/search",
     "pages/tabar/tabar",
     "pages/self/ewm2/ewm2",
 
-    "pages/store/classify/classify",
     "pages/store/order/order",
 
     "pages/store/logistics/logistics",
@@ -69,7 +75,6 @@
     "pages/demo/changeimg/changeimg",
     "pages/demo/radio/radio",
 
-    "pages/store/index/index",
     "pages/store/success/success",
 
     
@@ -90,9 +95,7 @@
   
     "pages/site/site",
     "pages/integrity/integrity",
-    "pages/integrityMes/integrityMes",
     "pages/inform/inform",
-    "pages/details/details",
     "pages/title/title",
     "pages/tab/tab",
 
@@ -146,7 +149,7 @@
       "auth": 0
     },
     {
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/kindex/kindex",
       "text": "发现",
       "iconPath": "/pages/images/add1.png",
       "selectedIconPath": "/pages/images/add2.png",

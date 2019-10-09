@@ -1,5 +1,27 @@
 // pages/details/details.js
 Page({
+  // 评论
+  //点击出现输入框
+  showInput: function () {
+    this.setData({
+      showInput: true
+    })
+    console.log('show+++++++++++')
+  },
+  //隐藏输入框
+  onHideInput: function () {
+    this.setData({
+      showInput: false
+    })
+    console.log('hide+++++++++++')
+  },
+
+  //拨打电话 
+  callphone:function(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.phone,
+    })
+  },
   formSubmit: function (e) {
     var e = e.detail.value
     if (e.textarea.length < 5) {
@@ -201,10 +223,26 @@ Page({
    * 页面的初始数据
    */
   data: {
+    statusBarHeight: getApp().globalData.statusBarHeight,
+    showInput: false, //控制输入栏
+    // 项目标题
+    title:"二手车出售，电话联系",
+    // 项目类型
+    type:"车辆出售",
+    // 发布时间
+    time:"2019.05.20 12:30",
+    // 项目介绍
+    rec: "帮朋友急招一个能长期开的老渣娃，主要在渝北江北地区跑，住在渝北两路熟悉渝北路线的优先，杰斯430.22方，工资7000保底三万开始提10% 每月工资兑现，新手和找车练手的就不要打扰了。",
+    // 联系人
+    linkman:"张三",
+    // 联系电话
+    phone:"13500000000",
+
     min: 5,//最少字数
     max: 100, //最多字数 (根据自己需求改变)
     tempFilePaths: [],
     like:20,
+    // 图片
     userImg: [
       {
         url: "../images/carousel/05.JPg",
@@ -215,7 +253,32 @@ Page({
       {
         url: "../images/carousel/07.JPg"
       }, 
-    ]
+    ],
+    // 视频
+    video:"http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400",
+  /////////////////////////////////////////
+    // 评论
+    // 头像
+    user:[
+      {
+        head:"",
+    // 用户名
+    username:"用户名",
+    // 时间
+    usertime:"2019.07.22",
+    // 内容
+    usercontent: "唯格Viewgres，集设计、研发、生产、全球贸易于一体的瓷砖企业。为商业建筑和高端住宅提供优质建材产品与应用解决方案。",
+      },
+       {
+        head: "",
+        // 用户名
+        username: "用户名",
+        // 时间
+        usertime: "2019.07.22",
+        // 内容
+        usercontent: "唯格Viewgres，集设计、研发、生产、全球贸易于一体的瓷砖企业。为商业建筑和高端住宅提供优质建材产品与应用解决方案。",
+      }
+    ],
   },
 
   /**
@@ -271,6 +334,12 @@ console.log(options)
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+      title: '转发',//弹出分享时显示的分享标题
+      path: '/pages/index/index',//'/page/user?id=123' // 路径，传递参数到指定页面。
+      desc: '分享页面的内容',
+      success: function (res) { }
 
+    }
   }
 })

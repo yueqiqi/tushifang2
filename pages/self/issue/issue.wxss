@@ -1,4 +1,5 @@
 /* pages/self/issue/issue.wxss */
+@import "/pages/Ac/stick/stick";
 /* 搜索框样式 */
  .search{  
       width: 95%;  
@@ -57,7 +58,6 @@ color:rgba(118,212,198,1);
 }
 .mybtn{
   font-size:30rpx;
-font-family:PingFang SC;
 font-weight:500;
 color:rgba(255,255,255,1);
 margin-top: 30rpx;

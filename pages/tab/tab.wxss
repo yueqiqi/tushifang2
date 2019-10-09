@@ -1,4 +1,4 @@
-/* pages/tab/tab.wxss */
+
 .tabbar {
   z-index:99999;
   position: fixed;

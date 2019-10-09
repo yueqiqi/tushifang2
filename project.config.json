@@ -24,7 +24,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.2",
-	"appid": "wx6134a030d42c2a7f",
+	"appid": "wxa1a006970fb14ab6",
 	"projectname": "tushifang",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 26,
+			"current": 28,
 			"list": [
 				{
 					"id": 0,
@@ -238,6 +238,20 @@
 					"id": 26,
 					"name": "新人指引-招人才",
 					"pathName": "pages/demo/new/mes/find2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "信息详情",
+					"pathName": "pages/details/details",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "诚信榜信息详情",
+					"pathName": "pages/integrityMes/integrityMes",
 					"query": "",
 					"scene": null
 				}
