@@ -1,9 +1,11 @@
 // pages/self/card/card.js
 Page({
   // 查看名片夹
-  mycard:function(){
+  mycard:function(e){
+    console.log(e)
+    var id=e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/self/mycard/mycard',
+      url: '/pages/self/mycard/mycard?id='+id,
     })
   },
   // 完善我的名片
@@ -16,6 +18,22 @@ btn:function(){
    * 页面的初始数据
    */
   data: {
+    // 名片夹
+    mycard:[
+      {
+       id:0,
+        // 头像
+        head: "/pages/images/carousel/03.jpg",
+       // 姓名
+        cardname:"用户姓名",
+      // 职位
+      post:"职位",
+      // 公司名称
+      com:"公司名称",
+      // 时间
+      time:"2019.08.25"
+      }
+    ],
     // 时间
     time:"2019.08.26",
     // 公司名称
@@ -32,7 +50,7 @@ btn:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+console.log(options)
   },
 
   /**

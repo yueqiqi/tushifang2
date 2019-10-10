@@ -4,26 +4,26 @@
     <view class="me d-flex">
       <view><image class="head" src="{{head}}" ></image></view>
       <view class="rights">
-        <view class="name">{{name}}</view>      
-        <view class="me1">暂未填写职位信息</view>      
-        <view class="me1">暂未填写公司信息</view>      
+        <view class="name">{{name==''?"用户昵称":name}}</view>      
+        <view class="me1">{{post==''?"暂未填写职位信息":post}}</view>      
+        <view class="me1">{{com==''?"暂未填写公司信息":com}}</view>      
       </view>
     </view>
     <!-- 信息 -->
     <view style="margin-top:49rpx;margin-left:29rpx;">
     <view class="d-flex">
       <view><image class="ico" src="../../images/email.png"></image></view>
-      <view class="me1 mle">暂未填写邮箱</view>
+      <view class="me1 mle">{{email==''?"暂未填写邮箱":email}}</view>
     </view>
     <!-- 电话 -->
     <view class="d-flex">
       <view><image class="ico" src="../../images/ps.png"></image></view>
-      <view class="me1 mle">暂未填写联系电话</view>
+      <view class="me1 mle">{{phone}}</view>
     </view>
     <!-- 地址 -->
     <view class="d-flex">
       <view><image class="ico" src="../../images/ad.png"></image></view>
-      <view class="me1 mle">暂未填写地址</view>
+      <view class="me1 mle">{{address==''?"暂未填写地址":address}}</view>
     </view>
     </view>
     <!--  -->
@@ -68,14 +68,14 @@
  <view class="section2 d-spb">
     <view class="section-title">姓名</view>
     <view class="right">
-      <input name="i2" bindconfirm="name"/>
+      <input name="i2" bindblur="name"/>
     </view>
  </view>
  <!-- 联系电话 -->
  <view class="section2 d-spb">
     <view class="section-title">联系电话</view>
     <view class="right d-spb">
-      <input name="i3" maxlength="11" type="number" value="{{phone}}" focus="{{focus}}" disabled='{{sisDisabled}}'/>
+      <input name="i3" maxlength="11" type="number" value="{{phone}}" focus="{{focus}}" bindblur="phone" disabled='{{sisDisabled}}'/>
       <view class="ch" bindtap="ch">更换</view>
     </view>
  </view>
@@ -87,7 +87,7 @@
  <view class="s1 d-spb">
     <view class="section-title">公司名称</view>
     <view class="right">
-      <input name="i4"/>
+      <input name="i4" bindblur="com"/>
     </view>
  </view>
  <!-- 公司职务 -->
@@ -95,7 +95,7 @@
  <view class="section2 d-spb">
     <view class="section-title">公司职务</view>
     <view class="right">
-      <input name="i5"/>
+      <input name="i5" bindblur="post"/>
     </view>
  </view>
  <!--  -->
@@ -107,14 +107,14 @@
  <view class="s1 d-spb">
     <view class="section-title">邮箱</view>
     <view class="right">
-      <input name="i6"/>
+      <input name="i6" bindblur="email"/>
     </view>
  </view>
  <!-- 详细地址 -->
  <view class="section2 d-spb">
     <view class="section-title">详细地址</view>
     <view class="right">
-      <input name="i7"/>
+      <input name="i7" bindblur="address"/>
     </view>
  </view>
  <!--  -->
@@ -145,7 +145,7 @@
   </view>
   <!--  -->
  <!--  -->
- <button form-type="submit" class="next">确认保存</button>
+ <button form-type="submit" catchtap="comfirm" class="next">确认保存</button>
  <include src="../err/err"/>
 </form>
 </view>

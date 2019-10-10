@@ -1,5 +1,42 @@
 // pages/self/card/perfect.js
 Page({
+  // 地址
+  address: function (e) {
+    var value = e.detail.value
+    console.log(value)
+    this.setData({
+      address: value
+    })
+  },
+  // 邮箱
+  email: function (e) {
+    var value = e.detail.value
+    this.setData({
+      email: value
+    })
+  },
+  // 职位信息
+  post:function(e){
+    var value = e.detail.value
+    this.setData({
+      post: value
+    })
+  },
+  // 公司名称
+  com:function(e){
+    var value = e.detail.value
+    this.setData({
+      com: value
+    })
+  },
+  // 电话更改
+  phone:function(e){
+    var value = e.detail.value
+    this.setData({
+      phone: value
+    })
+  },
+  // 名字更改
   name:function(e){
     console.log(e.detail.value)
     var value = e.detail.value
@@ -147,7 +184,37 @@ Page({
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
     }else{
-      console.log("提交成功");
+    var that=this
+    var head=that.data.head
+    var name=e.i2
+    var phone=e.i3
+    var com=e.i4
+    var post=e.i5
+    var email=e.i6
+    var address=e.i7
+    var textarea=e.textarea
+    var img= this.data.tempFilePaths
+    var imgs=img.join('-')
+    // var img1=this.data.tempFilePaths[0]
+    // var img2=this.data.tempFilePaths[1]
+    // var img3=this.data.tempFilePaths[2]
+      wx.showModal({
+        title: '是否保存',
+        content: '确认保存该名片吗？',
+        success: function (res) {
+          if (res.confirm) {
+            wx.redirectTo({
+              url: '/pages/self/mycard/mycard?name='+name+"&phone="+phone+"&com="+com+"&post="+post+"&email="+email+"&address="+address+"&textarea="+textarea+"&imgs="+imgs+"&head="+head,
+            })
+          } else {
+          //  that.onShow();
+           console.log("用户点击了取消")
+
+            getCurrentPages()[getCurrentPages().length - 1].route.onLoad
+
+          }
+        }
+      })
     }
   },
   // 选择头像
@@ -196,9 +263,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 公司信息
+    com:"",
+    // 职位信息
+    post:"",
+    // 邮箱
+    email:"",
+    // 地址
+    address:"",
     hidden:false,
     // 用户名
-    name:"用户昵称",
+    name:"",
     // 错误提示框
     popup: true,
     // 图片保存
@@ -214,7 +289,7 @@ Page({
     selectData: ['您好，这是我的电子名片，望惠存', '这是我的电子名片，一键保存', "自定义编辑"],//下拉列表的数据
     index: 0,//选择的下拉列表下标
     // 头像
-    head: "../../images/carousel/02.jpg",
+    head: "/pages/images/carousel/02.jpg",
     // 
     focus:false
   },
@@ -223,7 +298,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -237,7 +312,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(this.data.tempFilePaths)
   },
 
   /**
@@ -251,7 +326,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var that=this
+    var e=that.data
+    console.log("用户昵称："+e.name,"职位信息："+e.post,"公司信息："+e.com,"邮箱："+e.email,"电话号码："+e.phone,"地址："+e.address)
   },
 
   /**

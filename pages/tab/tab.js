@@ -21,6 +21,73 @@ Component({
    * 组件的初始数据
    */
   data: {
+    // //////////////////////
+    rotez:{},
+    // 求职招聘
+    arr1: [
+      {
+        name: "我要找工作",
+        link: "/pages/Ac/jobs/jobs"
+      },
+      {
+        name: "我要招人",
+        link: "/pages/Ac/hiring/hiring"
+      },
+    ],
+    // 工地信息
+    arr2: [
+      {
+        name: "劳务分包",
+        link: "/pages/Ac/issue/issue"
+      },
+      {
+        name: "劳务输出",
+        link: "/pages/Ac/issue/issue"
+      },
+      {
+        name: "工地找车",
+        link: "/pages/Ac/issue/issue"
+      },
+      {
+        name: "我要出渣",
+        link: "/pages/Ac/issue/issue"
+      },
+    ],
+    // 渣场信息
+    arr3: [
+      {
+        name: "政府收渣",
+        link: "/pages/Ac/issue/issue"
+      },
+      {
+        name: "园林收渣",
+        link: "/pages/Ac/issue/issue"
+      },
+      {
+        name: "房建收渣",
+        link: "/pages/Ac/issue/issue"
+      },
+      {
+        name: "工地收渣",
+        link: "/pages/Ac/issue/issue"
+      },
+    ],
+    // 买卖信息
+    arr4: [
+      {
+        name: "二手租货",
+        link: "/pages/Ac/issue/issue"
+      },
+      {
+        name: "渣车出售",
+        link: "/pages/Ac/issue/issue"
+      },
+    ],
+    // ani:{},
+    // zz: "mm",
+    // xx: "cc",
+    hidden:true,
+    // //////////////////////
     tabbarList: tabbarList,
     _auth: 0
   },
@@ -29,6 +96,44 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // ///////////////////////////////////////
+    // 禁止穿透滚动
+    stopMove:function() {
+      return;
+    },
+    x: function () {
+      // 获取页面url
+      // var pages = getCurrentPages();
+      // var curPages = pages[pages.length - 1].route
+      // var prevPage = pages[pages.length - 2]
+      // console.log(pages, curPages, prevPage)
+      // wx.navigateBack({
+      //   success: function () {
+      //     beforePage.onLoad(); // 执行前一个页面的onLoad方法
+      //   }
+      // })
+      var animation = wx.createAnimation({
+        duration: 400,
+        timingFunction: "linear",
+        delay: 0
+      })
+      this.animation = animation
+      animation.translateY(600).step()
+      this.setData({
+        animationData: animation.export(),
+      })
+      setTimeout(function () {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation.export(),
+          showModalStatus: false,
+          hidden: true
+        })
+      }.bind(this), 200)
+      this.setData({
+        
+      })},
+    // ///////////////////////////////////////
     handleItemTap(e) {
       const {
         idx,
@@ -39,6 +144,58 @@ Component({
         this.trigger('refresh')
         return
       }
+      // ///////////////////////////////////////////////////////////
+      // console.log(e.currentTarget.dataset.idx)
+      // if (e.currentTarget.dataset.idx==2){
+      //   console.log(tabbarList[2].selectedIconPath)
+      //   this.setData({
+      //     zz:"q"
+      //   })
+      //   console.log(this.data.zz)
+      //   var animation=wx.createAnimation({
+      //     duration:400,
+      //     timingFunction: 'ease',
+      //     delay: 1000
+      //   })
+      //   animation.rotate(45).step()
+      //   this.setData({
+      //     ani: animation.export()
+      //   })
+      // }
+      if(idx==2){
+        var animation = wx.createAnimation({
+          duration: 400,
+          timingFunction: "linear",
+          delay: 0
+        })
+        animation.translateY(600).step()
+        this.setData({
+          animationData: animation.export(),
+          showModalStatus: true
+        })
+        var that=this
+        var rote = wx.createAnimation({
+          duration: 1400,
+          timingFunction: "linear",
+          transformOrigin: "50% 50%",
+          
+        })
+        rote.rotate(-45).step()
+        that.setData({
+          rotez: rote.export(),
+        })
+        // 设置定时器规定几秒后自动清除动画
+        setTimeout(function () {
+          animation.translateY(0).step()
+          this.setData({
+            animationData: animation.export()
+          })
+        }.bind(this), 200)
+        this.setData({
+          hidden:false,
+        })
+      }
+      // //////////////////////////////////////////////////////////////////////////////////
       wx.switchTab({
         url: `/${path}`,
       })

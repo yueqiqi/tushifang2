@@ -1,0 +1,4 @@
+<!-- 点击选旋转 -->
+<view animation="{{rotez}}" bindtap="rote" style="width:90rpx;height:90rpx;position:fixed;top:45%;left:45%;">
+  <image style="width:90rpx;height:90rpx;" src="/pages/images/add2.png"></image>
+</view>

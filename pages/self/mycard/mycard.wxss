@@ -34,7 +34,6 @@ color:rgba(51,51,51,1);
 /* 字体 */
 .mes{
   font-size:28rpx;
-font-family:PingFang SC;
 font-weight:400;
 color:rgba(51,51,51,1);
 }
@@ -48,7 +47,7 @@ color:rgba(51,51,51,1);
 }
 .text{
   width:673rpx;
-height:148rpx;
+  margin-bottom:30rpx;
 }
 /* 图文 */
 .it{
@@ -57,10 +56,11 @@ height:148rpx;
   flex-wrap:wrap;
 }
 .img-text{
-  flex:1
+
 }
 .img-text image{
   width:220rpx;height:220rpx;
+  margin-right:15rpx;
 }
 /* 三个按钮 */
 .mybtn{

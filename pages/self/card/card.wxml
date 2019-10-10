@@ -38,7 +38,21 @@
 <view class="bgf mtt" style="padding-bottom: 93rpx;">
   <view class="name ml">我的名片夹</view>
   <!-- ========================================================= -->
-  <!-- <block> -->
+  <block wx:for="{{mycard}}" wx:key="{{index}}">
+      <view class="ncard" bindtap="mycard" data-id="{{item.id}}">
+      <view class="d-spb cc">
+      <view class="d-flex c-i">
+        <view><image class="c-img" src="{{item.head}}"></image></view>
+        <view style="margin-left:15rpx;">
+          <view class="c-name">{{item.cardname}}</view>
+          <view class="c-t"><text decode="{{true}}">{{item.post}}&ensp;&ensp;|&ensp;&ensp;{{item.com}}</text></view>
+        </view>
+      </view>
+  <!-- 时间 -->
+  <view class="time">{{time}}</view>
+      </view>
+    </view>
+  </block>
   <!-- ========================================================= -->
   <view class="ncard" bindtap="mycard">
     <view class="d-spb cc">

@@ -10,7 +10,7 @@
       <!-- 职位 -->
       <view class="mes">{{post}}</view>
       <!-- 公司名字 -->
-      <view class="mes">{{company}}</view>
+      <view class="mes">{{com}}</view>
     </view>
     <!--  -->
   </view>
@@ -28,7 +28,7 @@
     <!-- 地址 -->
     <view class="d-flex">
       <view><image class="ico" src="../../images/ad.png"></image></view>
-      <view class="mes mle">{{add}}</view>
+      <view class="mes mle">{{address}}</view>
     </view>
     </view>
   <!--  -->
@@ -37,8 +37,8 @@
 <!-- 图文介绍 -->
 <view class="ml" style="margin-top:50rpx;">
   <view class="title-text" style="margin-bottom:30rpx;">图文介绍</view>
-  <view class="mes">{{title}}</view>
-  <view class="mes text">{{titleText}}</view>
+  <!-- <view class="mes">{{title}}</view> -->
+  <view class="mes text">{{textarea}}</view>
   <!-- 图片 -->
   <view class="d-flex it">
   <block wx:for="{{img}}" wx:key="{{index}}">

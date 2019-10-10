@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 30,
 			"list": [
 				{
 					"id": 0,
@@ -253,6 +253,19 @@
 					"name": "诚信榜信息详情",
 					"pathName": "pages/integrityMes/integrityMes",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心-我的名片",
+					"pathName": "pages/self/card/card",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的名片-完善我的名片",
+					"pathName": "pages/self/card/perfect",
 					"scene": null
 				}
 			]

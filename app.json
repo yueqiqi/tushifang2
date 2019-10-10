@@ -1,6 +1,9 @@
 {
   "pages": [
+    "pages/self/mycard/mycard",
     "pages/self/card/perfect",
+    "pages/self/card/card",
+    "pages/demo/rote/rote",
     "pages/kindex/kindex",
     "pages/demo/x",
     "pages/demo/new/new",   
@@ -49,8 +52,6 @@
     "pages/demo/like/like",   
     "pages/self/ewm/ewm",
     "pages/self/total/total",
-    "pages/self/card/card",
-    "pages/self/mycard/mycard",
     "pages/self/fincard/fincard",
     "pages/self/contact/contact",
     "pages/self/goup/goup",
@@ -149,7 +150,7 @@
       "auth": 0
     },
     {
-      "pagePath": "pages/kindex/kindex",
+      "pagePath": "pages/index/index",
       "text": "发现",
       "iconPath": "/pages/images/add1.png",
       "selectedIconPath": "/pages/images/add2.png",

@@ -49,30 +49,24 @@ Page({
     // 错误提示框
     popup: true,
     // 图片
-    img:[
-      "../../images/carousel/05.jpg",
-      "../../images/carousel/06.jpg",
-      "../../images/carousel/07.jpg",
-      // "../../images/carousel/07.jpg",
-    ],
+    img:[],
     // 图文介绍信息
-    titleText: "主要在渝北江北地区跑，住在渝北两路熟悉渝北路线的优先，杰斯430.22方，工资7000保底三万开提10%，每月工资兑现，新手和找车练手的就不要打扰了。",
-    // 图文介绍标题
-    title:"招聘渣车司机10名",
+    textarea: "",
+
     // 地址
-    add:"重庆市 渝北区",
+    address:"",
     // 电话
-    phone:"13500000000",
+    phone:"",
     // 邮箱
-    email:"123456789@163.com",
+    email:"",
     // 公司名字
-    company:"重庆立诚达科技有限公司",
+    com:"",
     // 职位
-    post:"设计师",
+    post:"",
     // 昵称
-    name:"用户昵称",
+    name:"",
     // 头像
-    head:"../../images/carousel/03.jpg",
+    head:"",
   },
 
   /**
@@ -80,9 +74,27 @@ Page({
    */
   onLoad: function (options) {
     let that=this
-    console.log("options",options)
-    let id=options.jsonStr
-    console.log("id",id)
+    // console.log("options",options)
+    // let id=options.jsonStr
+    // console.log("id",id)
+    console.log(options)
+    var head=options.head
+    var name=options.name
+    var post=options.post
+    var com=options.com
+    var email=options.email
+    var phone=options.phone
+    var address=options.address
+    var textarea=options.textarea
+    var img=options.imgs
+    var imgs=img.split('-')
+    console.log(img)
+    that.setData({
+      head,
+      name,
+      post,
+      com,email,phone,address,textarea,img:imgs
+    })
   },
 
   /**

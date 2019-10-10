@@ -1,0 +1,9 @@
+/* pages/demo/rote/rote.wxss */
+.mm{
+   transition: All 0.4s ease; 
+  -webkit-transition: All 0.4s ease;
+}
+.rote{
+
+  transform: rotate(45deg); /* //180°旋转图片 */
+}

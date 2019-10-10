@@ -1,6 +1,6 @@
-
+@import "/pages/kindex/kindex.wxss";
 .tabbar {
-  z-index:99999;
+  z-index:999;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -26,26 +26,25 @@
   height:150rpx;
   flex: 0.7;
 }
-
+/* 中间加号 */
 .tabbar-item:nth-child(3) .tabbar-item-icon{
   height: 100rpx;
   background: #fff;
   border-radius: 50%;
-  border-top: solid 1px gray;
+  /* border-top: solid 1px gray; */
 }
-
+/* 中间加号图片 */
 .tabbar-item:nth-child(3) .tabbar-item-icon image{
   width: 90rpx;
   height: 90rpx;
   padding-top: 0rpx;
+  border-radius:50%
+}
+.tabbar-item:nth-child(3) .tabbar-item-icon cc{
+  transform: rotate(45deg)!important; 
+  /* //180°旋转图片 */
 }
 
-.tabbar-item:nth-child(3) .tabbar-item-text{
-  line-height: 0;
-  font-size: 28rpx;
-  margin-top: 8px;
-  color: #808080;
-}
 
 .tabbar-item-icon {
   margin-bottom: 6rpx;

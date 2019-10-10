@@ -1,27 +1,64 @@
-<view>
-<view>asdfsdg</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
-<view>asdivbasjkdcbxcvn zx</view>
+
+<view hidden="{{hidden}}" style="background:rgba(248, 248, 248,1);z-index:9998;width:100%;height:100%;position: fixed;top: 0;left: 0;" catchtouchmove="stopMove" animation="{{animationData}}"></view>
+<view hidden="{{hidden}}" catchtouchmove="stopMove"  style="z-index:9999;width:100%;height:100%;position:fixed;top:0;left:0">
+<view animation="{{animationData}}">
+<view class="bgf mgt" style="margin-top:0;">
+<view class="left">
+  <view class="title">求职招聘</view>
+  <!-- 内容 -->
+  <view class="d-flex ms">
+  <block wx:for="{{arr1}}" wx:key="{{index}}">
+  <view class="bgf">
+    <navigator url="{{item.link}}">
+  <view class="bgf">
+     <view class="border">{{item.name}}</view>
+  </view>
+    </navigator>
+  </view>
+  </block>
+  </view>
 </view>
+</view>
+
+<!-- 工地信息 -->
+<view class="bgf mgt">
+<view class="left">
+  <view class="title">工地信息</view>
+  <!-- 内容 -->
+  <view class="d-flex ms">
+    <block wx:for="{{arr2}}" wx:key="{{index}}">
+    <view class="bgf">
+    <navigator url="{{item.link}}">
+    <view class="bgf">
+     <view class="border">{{item.name}}</view>
+    </view>
+    </navigator>
+    </view>
+  </block>
+  </view>
+</view>
+</view>
+<!-- 渣场信息 -->
+<view class="bgf mgt">
+<view class="left">
+  <view class="title">渣场信息</view>
+  <!-- 内容 -->
+  <view class="d-flex ms">
+    <block wx:for="{{arr3}}" wx:key="{{index}}">
+    <navigator url="{{item.link}}">
+     <view class="border">{{item.name}}</view>
+    </navigator>
+  </block>
+  </view>
+</view>
+</view>
+</view>
+
+
+<view catchtap="x"animation="{{rotez}}"  style="z-index:999999;width:90rpx;height:90rpx;position:absolute;bottom:52rpx;left:0;right:0;margin-left:auto;margin-right:auto;box-sizing: border-box;">
+<image style="width:90rpx;height:90rpx;" src="/pages/images/add2.png"></image>
+</view>
+</view>
+
+
 <tabbar activeIdx="{{activeIdx}}"></tabbar>
