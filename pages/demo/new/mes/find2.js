@@ -14,8 +14,8 @@ Page({
   },
   // 下一步
   next: function () {
-    wx.switchTab({
-      url: '/pages/body/body',
+    wx.navigateTo({
+      url: '/pages/demo/new/new',
     })
   },
   /**
@@ -42,7 +42,7 @@ Page({
     }
   },
   data: {
-    currentData: 0,
+    currentData: 1,
     activeIdx: 1,
   },
 

@@ -14,12 +14,12 @@
   .n1-1{
     width:180rpx;height:180rpx;
     background: #fff;
-    position:absolute;
-    bottom:214rpx;left:290rpx;
+    position:relative;
+    top:720rpx;left:290rpx;
     text-align: center;
   }
   .border{
-    position: absolute;bottom:187rpx;left:275rpx;
+    position: relative;top:526rpx;left:275rpx;
   }
  /* 小× */
  .x{
@@ -29,20 +29,20 @@
  }
  /* 灯 */
  .light{
-   position: absolute;bottom:269rpx;right:197rpx;
+   position: relative;top:850rpx;left:197rpx;
  }
  /* 指示线 */
  .lines{
-   position: absolute;
-   bottom:417rpx;right:230rpx;
+   position: relative;
+  top:173rpx;left:360rpx;
  }
  /* 文字信息 */
  .font{
    font-size:28rpx;
 font-weight:bold;
 color:rgba(118,212,198,1);
-position:absolute;
-top:427rpx;left:215rpx;
+position:relative;
+top:-188rpx;left:215rpx;
  }
  .font-ti{
    position:relative;

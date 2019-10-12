@@ -47,7 +47,7 @@
  /* 指示线 */
  .lines{
    position: absolute;
-   bottom:457rpx;right:190rpx;
+   top:597rpx;right:190rpx;
  }
  /* 文字信息 */
  .font{
@@ -55,7 +55,7 @@
 font-weight:bold;
 color:rgba(118,212,198,1);
 position:absolute;
-bottom:320rpx;right:20rpx;
+top:640rpx;right:20rpx;
  }
  .font-ti{
    position:relative;

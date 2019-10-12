@@ -40,10 +40,6 @@
   padding-top: 0rpx;
   border-radius:50%
 }
-.tabbar-item:nth-child(3) .tabbar-item-icon cc{
-  transform: rotate(45deg)!important; 
-  /* //180°旋转图片 */
-}
 
 
 .tabbar-item-icon {

@@ -1,0 +1,17 @@
+<!-- 同步异步储存在本地 -->
+<form bindsubmit="suc">
+ 姓名： <input name="name"></input>
+ 年龄： <input name="age"></input>
+ 职务： <input name="post"></input>
+  <button form-type="submit">提交</button>
+</form>
+<block wx:for="{{namezxc}}" wx:key="{{index}}">
+<text>姓名:</text><text>{{item.name}}</text>
+<view></view>
+<text>年龄:</text><text>{{item.age}}</text>
+<view></view>
+<text>职务:</text><text>{{item.post}}</text>
+</block>
+<button bindtap="rem">清除缓存</button>
+<button bindtap="res">刷新页面</button>
+<button bindtap="next">下一页</button>

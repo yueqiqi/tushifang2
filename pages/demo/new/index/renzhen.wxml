@@ -33,11 +33,6 @@
   </view>
     <image style="width:375rpx;height:130rpx" src="/pages/images/self/border-2.png"></image>
   </view>
-  <!-- 上一步 -->
-  <view class="up" bindtap="up">
-    <view>上一步</view>
-      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
-  </view>
   <!-- 下一步 -->
   <view class="next" bindtap="next">
     <view>下一步</view>

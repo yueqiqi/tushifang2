@@ -413,27 +413,27 @@ Page({
       ],
       icon:[
         {
-          link:"/pages/site/site",
+          link:"/pages/Ac/index/inex",
           url:"/pages/images/icon/icon1.png",
           name:"工地找车"
         },
         {
-          link: "/pages/site/site",
+          link: "/pages/Ac/index/inex",
           url: "/pages/images/icon/icon2.png",
           name:"车找工地"
         },
         {
-          link: "/pages/site/site",
+          link: "/pages/Ac/index/inex",
           url: "/pages/images/icon/icon3.png",
           name:"工地除渣"
         },
         {
-          link: "/pages/site/site",
+          link: "/pages/Ac/index/inex",
           url: "/pages/images/icon/icon4.png",
           name:"求职招聘"
         },
         {
-          link: "/pages/site/site",
+          link: "/pages/Ac/index/inex",
           url: "/pages/images/icon/icon5.png",
           name:"二手设备"
         },
@@ -450,7 +450,7 @@ Page({
           name:"发布信息"
         },
         {
-          link: "../index/index",
+          link: "/pages/site/site",
           url: "/pages/images/icon/icon8.png",
           name:"渣场信息"
         },

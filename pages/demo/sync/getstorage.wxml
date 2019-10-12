@@ -1,0 +1,6 @@
+<!-- 获取异步缓存方法 -->
+<block wx:for="{{namezxc}}" wx:key="{{index}}">
+姓名<view>{{item.name}}</view>
+年龄<view>{{item.age}}</view>
+职务<view>{{item.post}}</view>
+</block>

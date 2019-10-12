@@ -1,12 +1,15 @@
 {
   "pages": [
-    "pages/self/mycard/mycard",
-    "pages/self/card/perfect",
     "pages/self/card/card",
+    "pages/demo/sync/sync",
+    "pages/self/mycard/mycard",
+    "pages/demo/sync/getstorage",
+    "pages/demo/new/new",   
+    "pages/site/site",
+    "pages/self/card/perfect",
     "pages/demo/rote/rote",
     "pages/kindex/kindex",
     "pages/demo/x",
-    "pages/demo/new/new",   
     "pages/search/search",
     "pages/informmation/recruitment/recruitment",
     "pages/store/classify/classify",
@@ -94,7 +97,6 @@
     "pages/informmation/global/global",
     "pages/informmation/carousel/carousel",
   
-    "pages/site/site",
     "pages/integrity/integrity",
     "pages/inform/inform",
     "pages/title/title",

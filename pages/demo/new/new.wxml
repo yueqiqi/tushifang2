@@ -6,9 +6,9 @@
 <!-- 微信信息 -->
 <!-- ================== -->
 <!-- 遮罩层 -->
-<view class="n1">
+<view class="n1" catchtouchmove="stopMove">
 <!-- 高亮图片文字 -->
-  <view class="n1-1">
+  <view class="n1-1" catchtouchmove="stopMove">
     <image style="width:110rpx;height:110rpx;margin-top:15rpx;" src="/pages/images/ico/i2.png"></image>
     <view style="font-size:26rpx;font-weight:400;color:rgba(51,51,51,1);">我的发布</view>
   </view>
@@ -28,6 +28,11 @@
     <view>工地信息/设备信息等消息</view>
   </view>
     <image style="width:375rpx;height:130rpx" src="/pages/images/self/border-2.png"></image>
+  </view>
+    <!-- 上一步 -->
+  <view class="up" bindtap="up">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
   </view>
   <!-- 下一步 -->
   <view class="next" bindtap="next">

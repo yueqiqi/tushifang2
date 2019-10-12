@@ -11,8 +11,8 @@
   }
   /* 我的积分高亮 */
  .c{
-   position: absolute;
-   bottom:533rpx;
+   position: relative;
+   top:497rpx;
    left:45rpx;
  }
  .cc{
@@ -26,36 +26,36 @@
   .n1-1{
     width:720rpx;height:80rpx;
     background: #fff;
-    position:absolute;
+    position:relative;
     top:410rpx;left:14rpx;
     text-align: center;
     border-radius: 10rpx;
   }
   .border{
-    position: absolute;bottom:506rpx;left:31rpx;
+    position: relative;top:406rpx;left:31rpx;
   }
  /* 小× */
  .x{
-   position: absolute;
+   position:absolute;
    top:30rpx;right:60rpx;
    /* z-index:9999999999999999999999999; */
  }
  /* 灯 */
  .light{
-   position: absolute;top:494rpx;left:150rpx;
+   position: relative;top:494rpx;left:150rpx;
  }
  /* 指示线 */
  .lines{
-   position: absolute;
-   bottom:369rpx;left:54rpx;
+   position:relative;
+   top:399rpx;left:54rpx;
  }
  /* 文字信息 */
  .font{
    font-size:28rpx;
 font-weight:bold;
 color:rgba(118,212,198,1);
-position:absolute;
-bottom:267rpx;left:20rpx;
+position:relative;
+top:357rpx;left:20rpx;
  }
  .font-ti{
    position:relative;

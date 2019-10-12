@@ -32,7 +32,7 @@
   </view>
   <!-- 下一步 -->
   <view class="next" bindtap="next">
-    <view>我知道了</view>
+    <view>下一步</view>
     <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
   </view>
 </view>
@@ -147,7 +147,110 @@
 </view>
   </swiper-item> 
   <swiper-item>
-   
+     <view class='searchJob bg'>
+    <!--  -->
+    <!-- 第一个招聘职位 -->
+    <!-- 招聘职位 -->
+    <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;" bindtap="goto">
+      <view class="post d-flex"> 
+        <view class="post-left ml d-flex">
+          <view class="postTitle">招聘职位</view>
+          <view class="stick">置顶</view>
+          <view class="recommend">荐</view>
+        </view>  
+      <!-- 薪资 -->
+        <view class="post-right">
+          <view class="money">薪资 3000-5000</view>
+        </view>
+      </view>
+      <!-- 招聘状态 -->
+        <view class="d-flex state ml">
+        <!-- 招聘状态左边 -->
+          <view class="state-left d-flex">
+            <view class="stateTitle">招聘状态</view>
+            <view class="stateing ml">正在招聘</view>
+          </view>
+        <!-- 招聘状态右边 -->
+          <view class="state-right d-flex">
+            <view class="state-site">工作地点</view>
+            <view class="site-province">重庆市</view>
+            <view class="site-district">江北区</view>
+          </view>
+        </view>
+        <!-- 发布时间 -->
+        <view class="d-flex timer ml mt">
+          <view class="timer-left d-flex">
+            <view class="timerTitle">发布时间</view>
+            <view class="timerdate ml">2019.08.20</view>
+          </view>
+          <view class="timer-right d-flex">
+            <view class="year">工作年限</view>
+            <view class="num">10年</view>
+          </view>
+        </view>
+        <!-- 发布者 -->
+        <view class="d-flex user ml"style="margin-bottom:0">
+          <view class="head"></view>
+          <view class="userName">发布用户名</view>
+          <view class="company">发布者公司的名称</view>
+        </view>
+      <!--  -->
+     </view>
+     <!--  -->
+<!-- 第二个招聘职位 -->
+</view>
+  <view class='searchJob bg'>
+    <!--  -->
+    <!-- 第一个招聘职位 -->
+    <!-- 招聘职位 -->
+    <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;" bindtap="goto">
+      <view class="post d-flex"> 
+        <view class="post-left ml d-flex">
+          <view class="postTitle">招聘职位</view>
+          <view class="stick">置顶</view>
+          <view class="recommend">荐</view>
+        </view>  
+      <!-- 薪资 -->
+        <view class="post-right">
+          <view class="money">薪资 3000-5000</view>
+        </view>
+      </view>
+      <!-- 招聘状态 -->
+        <view class="d-flex state ml">
+        <!-- 招聘状态左边 -->
+          <view class="state-left d-flex">
+            <view class="stateTitle">招聘状态</view>
+            <view class="stateing ml">正在招聘</view>
+          </view>
+        <!-- 招聘状态右边 -->
+          <view class="state-right d-flex">
+            <view class="state-site">工作地点</view>
+            <view class="site-province">重庆市</view>
+            <view class="site-district">江北区</view>
+          </view>
+        </view>
+        <!-- 发布时间 -->
+        <view class="d-flex timer ml mt">
+          <view class="timer-left d-flex">
+            <view class="timerTitle">发布时间</view>
+            <view class="timerdate ml">2019.08.20</view>
+          </view>
+          <view class="timer-right d-flex">
+            <view class="year">工作年限</view>
+            <view class="num">10年</view>
+          </view>
+        </view>
+        <!-- 发布者 -->
+        <view class="d-flex user ml"style="margin-bottom:0">
+          <view class="head"></view>
+          <view class="userName">发布用户名</view>
+          <view class="company">发布者公司的名称</view>
+        </view>
+      <!--  -->
+     </view>
+     <!--  -->
+<!-- 第二个招聘职位 -->
+</view>
   </swiper-item>
   <!-- <swiper-item><view class='swiper_con'>welcome come to 关注</view></swiper-item>   -->
 </swiper>

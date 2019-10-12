@@ -14,8 +14,8 @@ Page({
   },
   // 下一步
   next: function () {
-    wx.navigateTo({
-      url: '/pages/demo/new/index/renzhen',
+    wx.switchTab({
+      url: '/pages/body/body',
     })
   },
   /**

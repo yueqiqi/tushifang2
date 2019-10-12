@@ -40,7 +40,7 @@
   </view>
   <!-- 下一步 -->
   <view class="next" bindtap="next">
-    <view>下一步</view>
+    <view>我知道了</view>
     <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
   </view>
 </view>

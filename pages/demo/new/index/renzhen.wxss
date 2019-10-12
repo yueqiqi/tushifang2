@@ -14,36 +14,36 @@
   .n1-1{
     width:115rpx;height:115rpx;
     background: #fff;
-    position:absolute;
-    bottom:389rpx;left:32rpx;
+    position:relative;
+    top:647rpx;left:32rpx;
     text-align: center;
     border-radius: 10rpx;
   }
   .border{
-    position: absolute;bottom:367rpx;left:24rpx;
+    position: relative;top:525rpx;left:24rpx;
   }
  /* 小× */
  .x{
-   position: absolute;
+   position:absolute;
    top:30rpx;right:60rpx;
    /* z-index:9999999999999999999999999; */
  }
  /* 灯 */
  .light{
-   position: absolute;bottom:389rpx;left:147rpx;
+   position: relative;top:749rpx;left:160rpx;
  }
  /* 指示线 */
  .lines{
-   position: absolute;
-   bottom:500rpx;left:71rpx;
+   position: relative;
+   top:250rpx;left:71rpx;
  }
  /* 文字信息 */
  .font{
    font-size:28rpx;
 font-weight:bold;
 color:rgba(118,212,198,1);
-position:absolute;
-top:427rpx;left:215rpx;
+position:relative;
+top:-107rpx;left:155rpx;
  }
  .font-ti{
    position:relative;

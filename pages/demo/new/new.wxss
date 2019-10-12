@@ -2,6 +2,18 @@
 /* pages/self/index/index.wxss */
 /* 个人中心我的发布 */
 @import "/pages/self/index/index.wxss";
+ .up{
+   font-size:30rpx;
+font-weight:bold;
+color:rgba(255,255,255,1);
+position:absolute;
+bottom:80rpx;left:50rpx;
+ }
+ /* 上一步文字 */
+ .up>view{
+   position: relative;
+   top:65rpx;left:97rpx;
+ }
 .n1{
   /* margin-top:-20rpx; */
   width:100%;height:100%;
@@ -49,8 +61,8 @@ top:-141rpx;left:150rpx;
    font-size:30rpx;
 font-weight:bold;
 color:rgba(255,255,255,1);
-position:relative;
-top:148rpx;left:409rpx;
+position:absolute;
+bottom:80rpx;left:409rpx;
  }
  /* 下一步文字 */
  .next>view{

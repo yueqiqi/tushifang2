@@ -70,8 +70,8 @@ Page({
   },
 
   confirm: function () {// 提交
-  wx.switchTab({
-    url: '/pages/body/body',
+  wx.navigateTo({
+    url: '/pages/demo/new/index/renzhen',
   })
     console.log(this.data.checkValue)//所有选中的项的value
     console.log("跳转")

@@ -41,8 +41,8 @@
    font-size:28rpx;
 font-weight:bold;
 color:rgba(118,212,198,1);
-position:absolute;
-bottom:338rpx;left:41rpx;
+position:relative;
+top:663rpx;left:150rpx;
  }
  .font-ti{
    position:relative;

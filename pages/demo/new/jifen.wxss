@@ -14,17 +14,17 @@
   .n1-1{
     width:180rpx;height:180rpx;
     background: #fff;
-    position:absolute;
+    position:relative;
     top:207rpx;left:541rpx;
     text-align: center;
   }
   .border{
-    position: absolute;top:193rpx;right:17rpx;
+    position: relative;top:11rpx;left:524rpx;
   }
  /* 小× */
  .x{
-   position: absolute;
-   top:30rpx;right:60rpx;
+  position: relative;
+   top:-359rpx;left:621rpx;
    /* z-index:9999999999999999999999999; */
  }
  /* 灯 */
@@ -33,16 +33,16 @@
  }
  /* 指示线 */
  .lines{
-   position: absolute;
-   top:422rpx;right:115rpx;
+    position: relative;
+   top:-58rpx;left:500rpx;
  }
  /* 文字信息 */
  .font{
    font-size:28rpx;
 font-weight:bold;
 color:rgba(118,212,198,1);
-position:absolute;
-bottom:533rpx;right:32rpx;
+position:relative;
+top:-141rpx;left:360rpx;
  }
  .font-ti{
    position:relative;

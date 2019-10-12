@@ -5,26 +5,26 @@
     <view class="me d-flex">
       <view><image class="head" src="{{head}}"></image></view>
       <view class="right">
-        <view class="name">{{name}}</view>      
-        <view class="me1">暂未填写职位信息</view>      
-        <view class="me1">暂未填写公司信息</view>      
+        <view class="name">{{name==''?"用户昵称":name}}</view>      
+        <view class="me1">{{post==''?"暂未填写职位信息":post}}</view>      
+        <view class="me1">{{com==''?"暂未填写公司信息":com}}</view>      
       </view>
     </view>
     <!-- 信息 -->
     <view style="margin-top:49rpx;margin-left:29rpx;">
     <view class="d-flex">
       <view><image class="ico" src="../../images/email.png"></image></view>
-      <view class="me1 mle">暂未填写邮箱</view>
+      <view class="me1 mle">{{email==''?"暂未填写邮箱":email}}</view>
     </view>
     <!-- 电话 -->
     <view class="d-flex">
       <view><image class="ico" src="../../images/ps.png"></image></view>
-      <view class="me1 mle">暂未填写联系电话</view>
+      <view class="me1 mle">{{phone==''?"暂未填写联系电话":phone}}</view>
     </view>
     <!-- 地址 -->
     <view class="d-flex">
       <view><image class="ico" src="../../images/ad.png"></image></view>
-      <view class="me1 mle">暂未填写地址</view>
+      <view class="me1 mle">{{address==''?"暂未填写地址":address}}</view>
     </view>
     </view>
     <!--  -->
@@ -49,51 +49,10 @@
         </view>
       </view>
   <!-- 时间 -->
-  <view class="time">{{time}}</view>
+  <view class="time">{{item.time}}</view>
       </view>
     </view>
   </block>
   <!-- ========================================================= -->
-  <view class="ncard" bindtap="mycard">
-    <view class="d-spb cc">
-    <view class="d-flex c-i">
-      <view><image class="c-img" src="{{head}}"></image></view>
-      <view>
-        <view class="c-name">用户姓名</view>
-        <view class="c-t"><text decode="{{true}}">{{post}}&ensp;&ensp;|&ensp;&ensp;{{com}}</text></view>
-      </view>
-    </view>
-<!-- 时间 -->
-<view class="time">{{time}}</view>
-    </view>
-  </view>
-<!-- 第二个 -->
-  <view class="ncard">
-    <view class="d-spb cc">
-    <view class="d-flex c-i">
-      <view><image class="c-img" src="{{head}}"></image></view>
-      <view>
-        <view class="c-name">用户姓名</view>
-        <view class="c-t"><text decode="{{true}}">{{post}}&ensp;&ensp;|&ensp;&ensp;{{com}}</text></view>
-      </view>
-    </view>
-<!-- 时间 -->
-<view class="time">{{time}}</view>
-    </view>
-  </view>
-  <!-- 第三个 -->
-  <view class="ncard">
-    <view class="d-spb cc">
-    <view class="d-flex c-i">
-      <view><image class="c-img" src="{{head}}"></image></view>
-      <view>
-        <view class="c-name">用户姓名</view>
-        <view class="c-t"><text decode="{{true}}">{{post}}&ensp;&ensp;|&ensp;&ensp;{{com}}</text></view>
-      </view>
-    </view>
-<!-- 时间 -->
-<view class="time">{{time}}</view>
-    </view>
-  </view>
-  <!--  -->
+ 
 </view>

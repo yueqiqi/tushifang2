@@ -54,7 +54,7 @@
 font-weight:bold;
 color:rgba(118,212,198,1);
 position:absolute;
-bottom:417rpx;right:204rpx;
+top:567rpx;left:144rpx;
  }
  .font-ti{
    position:relative;

@@ -18,6 +18,7 @@ btn:function(){
    * 页面的初始数据
    */
   data: {
+    userinfo:[],
     // 名片夹
     mycard:[
       {
@@ -34,23 +35,49 @@ btn:function(){
       time:"2019.08.25"
       }
     ],
-    // 时间
-    time:"2019.08.26",
+    // //////////////////////////////////////////////////////////////
+    // 顶部名片
+  
+    // 地址
+    address:"",
+    // 联系电话
+    phone:"",
+    // 邮箱
+    email:"",
     // 公司名称
-    com:"公司名称",
+    com:"自行车",
     // 职位
-    post:"职位",
+    post:"",
     // 头像
     head:"../../images/carousel/03.jpg",
     // 用户昵称
-    name:"用户昵称",
+    name:"",
+    // //////////////////////////////////////////////////////////////
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("------------------------------------------")
 console.log(options)
+    var that = this
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          userinfo: res.data,
+          name: res.data.name,
+          post: res.data.post,
+          email: res.data.email,
+          phone: res.data.phone,
+          com: res.data.com,
+          address: res.data.address,
+        })
+      }
+    })
+    console.log("这是名片界面"+that.data.userinfo)
   },
 
   /**

@@ -179,7 +179,7 @@ Page({
   mes:function(e){
     var e=e.detail.value
     console.log(e)
-    if (e.i2 == "" || e.i3 == "" || e.i4 == "" || e.i5 == "" || e.i6 == "" || e.i7 == "" || e.textarea == "" || this.data.tempFilePaths.length==0){
+    if (e.name == "" || e.phone == "" || e.com == "" || e.post == "" || e.email == "" || e.address == "" || e.textarea == "" || this.data.tempFilePaths.length==0){
       console.log("有空")
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
@@ -198,14 +198,30 @@ Page({
     // var img1=this.data.tempFilePaths[0]
     // var img2=this.data.tempFilePaths[1]
     // var img3=this.data.tempFilePaths[2]
+
+    // ////////////////////////////////////////////////////
+        
+      var updata = that.data.userinfo
+      that.data.userinfo.push(e);
+      // console.log(updata)
+    // ////////////////////////////////////////////////////
+
       wx.showModal({
         title: '是否保存',
         content: '确认保存该名片吗？',
         success: function (res) {
           if (res.confirm) {
             wx.redirectTo({
-              url: '/pages/self/mycard/mycard?name='+name+"&phone="+phone+"&com="+com+"&post="+post+"&email="+email+"&address="+address+"&textarea="+textarea+"&imgs="+imgs+"&head="+head,
+              // url: '/pages/self/mycard/mycard?name='+name+"&phone="+phone+"&com="+com+"&post="+post+"&email="+email+"&address="+address+"&textarea="+textarea+"&imgs="+imgs+"&head="+head,
+              url:'/pages/self/card/card'
             })
+              // /////////////////////////////////////////////////////////////////////////////////////////
+              // 本地储存名片
+                wx.setStorage({
+                key: 'userinfo',
+                data: updata,
+              })
+              // /////////////////////////////////////////////////////////////////////////////////////////
           } else {
           //  that.onShow();
            console.log("用户点击了取消")
@@ -263,6 +279,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userinfo:[],
     // 公司信息
     com:"",
     // 职位信息
@@ -329,6 +346,8 @@ Page({
     var that=this
     var e=that.data
     console.log("用户昵称："+e.name,"职位信息："+e.post,"公司信息："+e.com,"邮箱："+e.email,"电话号码："+e.phone,"地址："+e.address)
+    var that=this
+    console.log("这是储存数据"+that.data.userinfo)
   },
 
   /**

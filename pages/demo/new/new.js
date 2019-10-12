@@ -1,5 +1,13 @@
 // pages/self/index/index.js
 Page({
+  up:function(){
+    wx.navigateBack({
+      
+    })
+  },
+  stopMove: function () {
+    return;
+  },
   //下一步
   next:function(){
     wx.navigateTo({

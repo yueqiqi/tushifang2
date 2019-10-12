@@ -45,10 +45,11 @@
   </view>
 </view>
 <!-- ================== -->
-<view class="bgf mtt" bindtap="goto" style="margin-top:-100rpx;">
+<view class="bgf mtt" bindtap="goto" style="">
 <!-- 发布者信息 -->
-  <view class="postMessage">
+  <view class="postMessage d-spb">
   <!-- 头像 -->
+  <view class="d-flex">
   <view class="ml mt" style="width:70rpx;height:70rpx;background:rgba(229,229,229,1);border-radius:50%;">
     
   </view>
@@ -56,6 +57,7 @@
   <view class="userName">发布用户名</view>
   <!-- 十万火急 -->
   <view class="worry">十万火急</view>
+  </view>
   <!-- 距离 -->
   <view class="distance">2.3km</view>
   </view>

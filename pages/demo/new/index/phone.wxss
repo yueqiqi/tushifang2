@@ -1,4 +1,4 @@
-@import "/pages/postMessage/postMessage.wxss"
+@import "/pages/postMessage/postMessage.wxss";
 .n1{
   /* margin-top:-20rpx; */
   width:100%;height:100%;
@@ -9,20 +9,20 @@
   }
   /* 我的积分高亮 */
   .n1-1{
-    width: 210rpx;
-height: 61rpx;
+    width: 220rpx;
+height: 71rpx;
     background: #fff;
-    position:absolute;
-    bottom:275rpx;right:23rpx;
+    position:relative;
+    top:888rpx;left:510rpx;
     text-align: center;
     border-radius: 20rpx;
   }
   .ppp{
     position:relative;
-    left:-251rpx;top:5rpx
+    left:-247rpx;top:10rpx
   }
   .border{
-    position: absolute;bottom:247rpx;right:7rpx;
+    position: relative;top:806rpx;left:497rpx;
   }
  /* 小× */
  .x{
@@ -32,20 +32,20 @@ height: 61rpx;
  }
  /* 灯 */
  .light{
-   position: absolute;bottom:268rpx;right:257rpx;
+   position: relative;top:960rpx;left:417rpx;
  }
  /* 指示线 */
  .lines{
-   position: absolute;
-   bottom:342rpx;right:111rpx;
+   position: relative;
+   top:582rpx;left:481rpx;
  }
  /* 文字信息 */
  .font{
    font-size:28rpx;
 font-weight:bold;
 color:rgba(118,212,198,1);
-position:absolute;
-bottom:471rpx;left:215rpx;
+position:relative;
+top:234rpx;left:215rpx;
  }
  .font-ti{
    position:relative;
@@ -57,7 +57,7 @@ bottom:471rpx;left:215rpx;
 font-weight:bold;
 color:rgba(255,255,255,1);
 position:absolute;
-bottom:80rpx;left:50rpx;
+bottom:40rpx;left:50rpx;
  }
  /* 上一步文字 */
  .up>view{
@@ -70,7 +70,7 @@ bottom:80rpx;left:50rpx;
 font-weight:bold;
 color:rgba(255,255,255,1);
 position:absolute;
-bottom:80rpx;right:50rpx;
+bottom:40rpx;right:50rpx;
  }
  /* 下一步文字 */
  .next>view{

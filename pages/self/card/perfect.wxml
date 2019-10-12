@@ -68,14 +68,14 @@
  <view class="section2 d-spb">
     <view class="section-title">姓名</view>
     <view class="right">
-      <input name="i2" bindblur="name"/>
+      <input name="name" bindblur="name"/>
     </view>
  </view>
  <!-- 联系电话 -->
  <view class="section2 d-spb">
     <view class="section-title">联系电话</view>
     <view class="right d-spb">
-      <input name="i3" maxlength="11" type="number" value="{{phone}}" focus="{{focus}}" bindblur="phone" disabled='{{sisDisabled}}'/>
+      <input name="phone" maxlength="11" type="number" value="{{phone}}" focus="{{focus}}" bindblur="phone" disabled='{{sisDisabled}}'/>
       <view class="ch" bindtap="ch">更换</view>
     </view>
  </view>
@@ -87,7 +87,7 @@
  <view class="s1 d-spb">
     <view class="section-title">公司名称</view>
     <view class="right">
-      <input name="i4" bindblur="com"/>
+      <input name="com" bindblur="com"/>
     </view>
  </view>
  <!-- 公司职务 -->
@@ -95,7 +95,7 @@
  <view class="section2 d-spb">
     <view class="section-title">公司职务</view>
     <view class="right">
-      <input name="i5" bindblur="post"/>
+      <input name="post" bindblur="post"/>
     </view>
  </view>
  <!--  -->
@@ -107,14 +107,14 @@
  <view class="s1 d-spb">
     <view class="section-title">邮箱</view>
     <view class="right">
-      <input name="i6" bindblur="email"/>
+      <input name="email" bindblur="email"/>
     </view>
  </view>
  <!-- 详细地址 -->
  <view class="section2 d-spb">
     <view class="section-title">详细地址</view>
     <view class="right">
-      <input name="i7" bindblur="address"/>
+      <input name="address" bindblur="address"/>
     </view>
  </view>
  <!--  -->
