@@ -1,5 +1,5 @@
 <!-- 消息通知 -->
-<view >
+<view class="bg">
   <view class="inform bg">
     <view class="date">
       <text>{{currenTime}}</text>

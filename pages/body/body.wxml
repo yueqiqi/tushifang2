@@ -32,7 +32,7 @@
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
   <block wx:for="{{imgUrls}}" wx:key="{{index}}">
     <swiper-item style="height:350rpx;">
-      <image src="{{item.url}}" class="slide-image"></image>
+      <image src="{{item.img_url}}" class="slide-image"></image>
     </swiper-item>
   </block>
 </swiper>
@@ -78,11 +78,11 @@
 <!--  -->
 </view>
 </view>
-<view><image class="right-img" src="../images/right.png"></image></view>
+<view><image class="right-img" src="../images/right.png"/></view>
 </view>
 <!-- 小图片下方图片 -->
 <view bindtap="imgLink">
-<image class="img" src="../images/carousel/04.jpg"></image>
+<image class="img" src="{{advert}}"></image>
 </view>
 </view>
 <include src="/pages/postMessage/postMessage"/>

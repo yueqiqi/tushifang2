@@ -150,6 +150,10 @@ Page({
   },
 
   data: {
+    // 首页公告
+    msgList:[],
+    // 首页广告图
+    advert:"",
     mm: "a",
     // 点赞个数
     index: 0,
@@ -393,24 +397,8 @@ Page({
     ],
     // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // 轮播图图片路径
-      imgUrls: [
-        {
-          // 轮播图跳转路径
-        link: '../activity/washCar1/index/index',
-        // 图片路径
-        url:'../images/carousel/02.jpg'
-        },
-        {
-          link: '../activity/washCar1/index/index',
-          url: '../images/carousel/03.jpg'
-        },
-        {
-          link: '../activity/washCar1/index/index',
-          url: '../images/carousel/04.jpg'
-        },
-        // 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-        // 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-      ],
+      imgUrls: [],
+      // 图标跳转
       icon:[
         {
           link:"/pages/Ac/index/inex",
@@ -492,33 +480,76 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    let that = this;
-    // 调用接口
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        var latitude = res.latitude//纬度
-        var longitude = res.longitude//经度
-        demo.reverseGeocoder({
-          location: {
-            latitude: latitude,
-            longitude: longitude
-          },
+        var that=this
+  //  获取用户信息
+  // ************************************************************************************************************************
+
+    //1、调用微信登录接口，获取code
+    wx.login({
+      success: function (r) {
+
+        wx.getLocation({
+          type: 'wgs84',
           success: function (res) {
-            console.log(res);
-            let province = res.result.address_component.province;//省份
-            let city = res.result.address_component.city;//城市
-            let address = res.result.address
-            that.setData({
-              location: address
-            })
-          },
-          fail: function (res) {
-            console.log(res);
+            var latitude = res.latitude//纬度
+            var longitude = res.longitude//经度
+            demo.reverseGeocoder({
+              location: {
+                latitude: latitude,
+                longitude: longitude
+              },
+              success: function (res) {
+                console.log(res);
+                let province = res.result.address_component.province;//省份
+                let city = res.result.address_component.city;//城市
+                let address = res.result.address
+                that.setData({
+                  location: address
+                })
+                
+                var code = r.code;//登录凭证
+                if (code) {
+                  //2、调用获取用户信息接口
+                  //...
+                  wx.request({
+                    url: 'http://tsf.com/home/index/do_getLocation',
+                    data: {
+                      uid:code,
+                      city,
+                      longitude,
+                      latitude,
+                    },
+                    method: 'POST',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                      console.log("地址加id",res)
+                    },
+                    fail: function () {
+                      console.log("调用失败")
+                    }
+                  })
+                } 
+
+              },
+              fail: function (res) {
+                console.log(res);
+              }
+            });
           }
-        });
+        })
+
+        
+      },
+      fail: function () {
+        callback(false)
       }
     })
+
+  // ************************************************************************************************************************
+    // 调用接口
+    
     // 隐藏原生的tabbar
     wx.hideTabBar();
     var zz = this.data.ftabUserImg.length
@@ -543,6 +574,68 @@ Page({
     console.log(this.data.ftabUserImg.length)
     console.log(mm)
     // })
+    // *******************************************************************************************************************//
+    console.log("body调用后台接口--onLoad")
+    wx.request({
+      url: 'http://tsf.com/home/index/do_banner',
+      data: {
+        type: 0
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        // that.setData({ goodslist: res.data.data });
+        console.log("访问成功")
+        console.log(res, 1111111);
+        // 轮播图片
+        console.log(res.data.data)
+        var res = res.data.data
+        that.setData({
+          imgUrls: res
+        })
+        console.log("图片"+that.data.imgUrls)
+      },
+      fail: function () {
+        console.log("调用失败")
+      }
+    })
+      // console.log(data)
+    // *******************************************************************************************************************//
+    // 首页公告+首页十万火急+首页广告位
+    wx.request({
+      url: 'http://tsf.com/home/index/do_info',
+      data:{
+        uid:1
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        console.log("调用首页成功")
+        console.log("1---------------")
+        // 首页广告-advert[0]
+        var advert=res.data.data.advert[0].img_url
+        that.setData({
+          advert:advert
+        })
+        console.log("高高图"+that.data.advert)
+        // 首页公告
+        that.setData({
+          msgList:res.data.data.notice
+        })
+        // 首页发布者信息
+        console.log("公告",that.data.msgList)
+        console.log(res)
+        console.log("2---------------")
+      },fail:function(){
+        console.log("调用失败")
+      }
+    })
+    // *******************************************************************************************************************//
+    // *******************************************************************************************************************//
   },
 
 
@@ -558,11 +651,7 @@ Page({
    */
   onShow: function (e) {
     this.setData({
-      msgList: [
-        { url: "url", title: "平台公告" },
-        { url: "url", title: "2019土石方风向标" },
-        { url: "url", title: "土石方红黑榜" },
-        { url: "url", title: "如何在土石方平台找到好工作" }]
+
     });
   },
 

@@ -239,7 +239,7 @@ color:rgba(118,212,198,1);
 /* 第四个 */
 /* 四张以上图片的样式 */
 .tabUserImga{
-  width:100%;
+  /* width:100%; */
   display:flex;
   justify-content: left;
   margin-left:30rpx;

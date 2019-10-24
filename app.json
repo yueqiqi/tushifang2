@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/body/body",
     "pages/self/card/card",
     "pages/demo/sync/sync",
     "pages/self/mycard/mycard",
@@ -32,7 +33,6 @@
     "pages/demo/new/index/card",
     "pages/demo/new/index/fabu",
     "pages/demo/new/index/phone",
-    "pages/body/body",
     "pages/demo/new/index/renzhen",
     "pages/demo/new/xinyufen",
     "pages/demo/new/xinqu",
