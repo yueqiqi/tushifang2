@@ -5,73 +5,140 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 求职招聘
-    arr1:[
-      {
-        name:"我要找工作",
-        link:"/pages/Ac/jobs/jobs"
-      },
-      {
-        name: "我要招人",
-        link: "/pages/Ac/hiring/hiring"
-      },
-    ],
-    // 工地信息
-    arr2: [
-      {
-        name: "劳务分包",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "劳务输出",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "工地找车",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "我要出渣",
-        link: "/pages/Ac/issue/issue"
-      },
-    ],
-    // 渣场信息
-    arr3: [
-      {
-        name: "政府收渣",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "园林收渣",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "房建收渣",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "工地收渣",
-        link: "/pages/Ac/issue/issue"
-      },
-    ],
-  // 买卖信息
-    arr4: [
-      {
-        name: "二手租货",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "渣车出售",
-        link: "/pages/Ac/issue/issue"
-      },
-    ],
+    info2:[],
+    info:[],
+  //   arr1:[
+  //     {
+  //       name:"我要找工作",
+  //       link:"/pages/Ac/jobs/jobs?id=1"
+  //     },
+  //     {
+  //       name: "我要招人",
+  //       link: "/pages/Ac/hiring/hiring?id=1"
+  //     },
+  //   ],
+  //   // 工地信息
+  //   arr2: [
+  //     {
+  //       name: "劳务分包",
+  //       link: "/pages/Ac/issue/issue?id=3"
+  //     },
+  //     {
+  //       name: "劳务输出",
+  //       link: "/pages/Ac/issue/issue?id=3"
+  //     },
+  //     {
+  //       name: "工地找车",
+  //       link: "/pages/Ac/issue/issue?id=3"
+  //     },
+  //     {
+  //       name: "我要出渣",
+  //       link: "/pages/Ac/issue/issue?id=3"
+  //     },
+  //   ],
+  //   // 渣场信息
+  //   arr3: [
+  //     {
+  //       name: "政府收渣",
+  //       link: "/pages/Ac/issue/issue?id=2"
+  //     },
+  //     {
+  //       name: "园林收渣",
+  //       link: "/pages/Ac/issue/issue?id=2"
+  //     },
+  //     {
+  //       name: "房建收渣",
+  //       link: "/pages/Ac/issue/issue?id=2"
+  //     },
+  //     {
+  //       name: "工地收渣",
+  //       link: "/pages/Ac/issue/issue?id=2"
+  //     },
+  //   ],
+  // // 买卖信息
+  //   arr4: [
+  //     {
+  //       name: "二手租货",
+  //       link: "/pages/Ac/issue/issue?id=4"
+  //     },
+  //     {
+  //       name: "渣车出售",
+  //       link: "/pages/Ac/issue/issue?id=4"
+  //     },
+  //   ],
   },
-
+cha:function(){
+  var that=this
+  console.log("打印",that.data.info2)
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
+    
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
+
+
+
+    var that=this
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_one_two",
+      data:{
+        code:"",
+        msg:"",
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        console.log("获取菜单列表",res)
+        // for(var q in that.data.info){}
+        that.setData({
+          info:res.data.data
+        })
+
+
+// //////////////////////////////////////////////
+// 获取二级id
+// for( var z in that.data.info){
+  // wx.request({
+  //   url:"http://tsf.suipk.cn/home/Info/do_twoclass_list",
+  //   data:{
+  //     one_class_id:1,
+  //   },
+  //   method: 'POST',
+  //   header: {
+  //     'content-type': 'application/x-www-form-urlencoded'
+  //   },
+  //   success:function(res){
+  //     console.log("调用二级菜单",res)
+  //    that.setData({
+  //      info2:res.data.data
+  //    })
+  //    console.log("索引数组",that.data.info2)
+  //   },fail:function(){
+  //     console.log("调用失败")
+  //   }
+  // })
+// }
+// //////////////////////////////////////////////
+
+},fail:function(){
+        console.log("调用失败")
+      }
+    })
+    
+    
+
+    
   },
 
   /**

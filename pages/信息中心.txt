@@ -1,0 +1,169 @@
+ <!-- 招聘职位 -->
+    <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;">
+      <view class="post d-flex"> 
+        <view class="post-left ml d-flex">
+          <view class="postTitle">招聘职位</view>
+          <view class="stick">置顶</view>
+          <!-- <view class="recommend">荐</view> -->
+        </view>  
+      <!-- 薪资 -->
+        <view class="post-right">
+          <view class="money">薪资 3000-5000</view>
+        </view>
+      </view>
+      <!-- 招聘状态 -->
+        <view class="d-flex state ml">
+        <!-- 招聘状态左边 -->
+          <view class="state-left d-flex">
+            <view class="stateTitle">招聘状态</view>
+            <view class="stateing ml">正在招聘</view>
+          </view>
+        <!-- 招聘状态右边 -->
+          <view class="state-right d-flex">
+            <view class="state-site">工作地点</view>
+            <view class="site-province">重庆市</view>
+            <view class="site-district">江北区</view>
+          </view>
+        </view>
+        <!-- 发布时间 -->
+        <view class="d-flex timer ml mt">
+          <view class="timer-left d-flex">
+            <view class="timerTitle">发布时间</view>
+            <view class="timerdate ml">2019.08.20</view>
+          </view>
+          <view class="timer-right d-flex">
+            <view class="year">工作年限</view>
+            <view class="num">10年</view>
+          </view>
+        </view>
+        <!-- 发布者 -->
+        <view class="d-flex user ml">
+          <view class="head"></view>
+          <view class="userName">发布用户名</view>
+          <view class="company">发布者公司的名称</view>
+        </view>
+      <!--  -->
+     </view>
+<!-- 第三个招聘职位 -->
+ <!-- 招聘职位 -->
+    <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;">
+      <view class="post d-flex"> 
+        <view class="post-left ml d-flex">
+          <view class="postTitle">招聘职位</view>
+          <!-- <view class="stick">置顶</view>
+          <view class="recommend">荐</view> -->
+        </view>  
+      <!-- 薪资 -->
+        <view class="post-right">
+          <view class="money">薪资 3000-5000</view>
+        </view>
+      </view>
+      <!-- 招聘状态 -->
+        <view class="d-flex state ml">
+        <!-- 招聘状态左边 -->
+          <view class="state-left d-flex">
+            <view class="stateTitle">招聘状态</view>
+            <view class="stateing ml">正在招聘</view>
+          </view>
+        <!-- 招聘状态右边 -->
+          <view class="state-right d-flex">
+            <view class="state-site">工作地点</view>
+            <view class="site-province">重庆市</view>
+            <view class="site-district">江北区</view>
+          </view>
+        </view>
+        <!-- 发布时间 -->
+        <view class="d-flex timer ml mt">
+          <view class="timer-left d-flex">
+            <view class="timerTitle">发布时间</view>
+            <view class="timerdate ml">2019.08.20</view>
+          </view>
+          <view class="timer-right d-flex">
+            <view class="year">工作年限</view>
+            <view class="num">10年</view>
+          </view>
+        </view>
+        <!-- 发布者 -->
+        <view class="d-flex user ml">
+          <view class="head"></view>
+          <view class="userName">发布用户名</view>
+          <view class="company">发布者公司的名称</view>
+        </view>
+       </view> 
+
+
+       =============================找人才=================================
+       <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;">
+      <view class="header d-flex ml">
+      <!-- 发布用户名 -->
+        <view class="header-left d-flex">
+          <view class="peopleHead"></view>
+          <view class="peopleName">发布用户名</view>
+        </view>
+        <view class="header-right d-flex">
+          <view class="want">求职</view>
+          <view class="job">渣土司机</view>
+        </view>
+      </view>
+      <!-- 求职状态 -->
+      <view class="peoplestate d-flex ml">
+      <view class="peoplestate-left d-flex">
+        <view class="peoplestateing Title">求职状态</view>
+        <view class="Msg">正在找工作</view>
+      </view>
+      <view class="peoplestate-right d-flex ">
+        <view class="p-want Title">理想薪资</view>
+        <view class="p-money Msg">3000-5000</view>
+      </view>
+      </view>
+      <!-- 发布时间 -->
+      <view class="p-timer d-flex ml">
+        <view class="p-timer-left d-flex">
+          <view class="p-timer-date Title">发布时间</view>
+          <view class="Msg">2019.08.20</view>
+        </view>
+        <view class="p-timer-right d-flex">
+          <view class="p-year Title">工作年限</view>
+          <view class="p-num Msg">10年</view>        
+        </view>
+      </view>
+      <!--  -->
+    </view>
+<!-- 第三个求职 -->
+     <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;">
+      <view class="header d-flex ml">
+      <!-- 发布用户名 -->
+        <view class="header-left d-flex">
+          <view class="peopleHead"></view>
+          <view class="peopleName">发布用户名</view>
+        </view>
+        <view class="header-right d-flex">
+          <view class="want">求职</view>
+          <view class="job">渣土司机</view>
+        </view>
+      </view>
+      <!-- 求职状态 -->
+      <view class="peoplestate d-flex ml">
+      <view class="peoplestate-left d-flex">
+        <view class="peoplestateing Title">求职状态</view>
+        <view class="Msg">正在找工作</view>
+      </view>
+      <view class="peoplestate-right d-flex ">
+        <view class="p-want Title">理想薪资</view>
+        <view class="p-money Msg">3000-5000</view>
+      </view>
+      </view>
+      <!-- 发布时间 -->
+      <view class="p-timer d-flex ml">
+        <view class="p-timer-left d-flex">
+          <view class="p-timer-date Title">发布时间</view>
+          <view class="Msg">2019.08.20</view>
+        </view>
+        <view class="p-timer-right d-flex">
+          <view class="p-year Title">工作年限</view>
+          <view class="p-num Msg">10年</view>        
+        </view>
+      </view>
+      <!--  -->
+      </view>
+  

@@ -3,6 +3,25 @@
 @import "../panel/panel.wxss";
 /* pages/body/body.wxss */
 /* 左侧小图标样式 */
+/* / */
+/* 未读消息 */
+.iconsm{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  color:#fff;
+  font-size:15rpx;
+  background:#ff0000;
+  margin-right:30rpx;
+  font-weight:bold;
+  /* margin-left:10rpx; */
+  position:relative;
+  left:-5rpx;
+  display:block;
+  text-align: center;
+  line-height: 20rpx;
+}
+/*  */
 .ll{
   height:45rpx;
 }
@@ -38,7 +57,6 @@ line-height:45rpx;
 .message{
   width:45rpx;height: 41rpx;
   margin:auto 0;
-  margin-right:30rpx;
 
 }
 /* 搜索框样式 */

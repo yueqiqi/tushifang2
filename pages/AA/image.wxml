@@ -1,0 +1,1 @@
+<button bindtap="img">获取图片</button>

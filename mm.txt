@@ -3,3 +3,20 @@
 微信公众号：yueqiqi1216@163.com  密码：cxl000321
 微信小程序ID：wx6134a030d42c2a7f
 蓝湖：https://lanhuapp.com/url/A8HhZ-wDYoZ
+文档：https://www.eolinker.com/#/home/ams/project/inside/api/list?groupID=-1&projectName=%E5%9C%9F%E7%9F%B3%E6%96%B9&projectHashKey=Y2kQ7M2c31cb73d2793307f57b0e722c0a93a187adb6cf8&spaceKey=nJ26fD85f4394657cb6aa37a6f3e3c9f3c027a25c16828d
+上传视频：http://tsf.suipk.cn/home/info/do_video   video_url
+上传图片：http://tsf.suipk.cn/home/Personal/do_uplod_img   image
+ // 十万火急+置顶
+    if(that.data.radio==1){
+      if(that.data.sradio==1){
+        var lable=1
+      }else if(that.data.sradio==2){
+        if(that.data.seradio==1){
+          var lable=2
+        }else(that.data.seradio==2){
+          var lable=3
+        }
+      }
+      }else if(that.data.radio==0||that.data.radio==2){
+      var lable=0
+    }

@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 30,
+			"current": 46,
 			"list": [
 				{
 					"id": 0,
@@ -266,6 +266,118 @@
 					"id": -1,
 					"name": "我的名片-完善我的名片",
 					"pathName": "pages/self/card/perfect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页详情页",
+					"pathName": "pages/details/details",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布信息一级菜单",
+					"pathName": "pages/Ac/post/post",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "其他发布",
+					"pathName": "pages/Ac/issue/issue",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品信息详情",
+					"pathName": "pages/details/details",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商城",
+					"pathName": "pages/store/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员中心",
+					"pathName": "pages/self/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "免费认证",
+					"pathName": "pages/Ac/index/inex",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人认证",
+					"pathName": "pages/Ac/self/self",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "司机认证1",
+					"pathName": "pages/Ac/diver/diver",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "司机认证2",
+					"pathName": "pages/Ac/diver2/diver2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员中心-我的资料",
+					"pathName": "pages/self/data/data",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员中心-我的发布",
+					"pathName": "pages/self/issue/issue",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "一级列表与二级列表t",
+					"pathName": "pages/Ac/post/post",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的积分",
+					"pathName": "pages/self/total/total",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的信誉分",
+					"pathName": "pages/self/score/score",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "信息中心",
+					"pathName": "pages/informmation/recruitment/recruitment",
 					"scene": null
 				}
 			]

@@ -1,4 +1,5 @@
 // pages/Ac/diver/diver.js
+import request from "../../login.js"
 Page({
 
   // ==================================================
@@ -11,8 +12,12 @@ Page({
   },
   // 点击下拉列表
   optionTap(e) {
+    var that=this
     let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
-    console.log(Index)
+    console.log("下拉选项的东西",that.data.selectData[Index])
+    that.setData({
+      type:that.data.selectData[Index].title
+    })
     // console.log(e)
     this.setData({
       index: Index,
@@ -79,7 +84,7 @@ o1:function(e){
       })
     }
   },
-  mm: function (e) {
+  o7: function (e) {
     if (e.detail.value.length == 1) {
       this.setData({
         fo8: "true"
@@ -87,16 +92,31 @@ o1:function(e){
     }
   },
   formSubmit: function (e) {
+    var that=this
     var a=e.detail.value
     console.log(e)
     console.log(e.detail.value)
     console.log(e.detail.value.i2)
-    if (a.i1 == "" || a.i2 == "" || a.i3 == "" || a.i4 == "" || a.c1 == "" || a.c2 == "" || a.c3 == "" || a.c4 == "" || a.c5 == "" || a.c6 == "" || a.c7 == "" || a.c8 == ""){
+    /**
+     * 后台提交
+     */
+    // 司机类型
+    var identity_selection=a.input
+    // 真实姓名
+    var real_name=a.i2
+    // 联系电话
+    var tel =a.i3
+    // 车辆id
+    var vehicle_id=a.i4
+    // 车牌号
+    var car_number=a.c1+a.c2+a.c3+a.c4+a.c5+a.c6+a.c7+a.c8
+    // 
+    if (a.input == "" || a.i2 == "" || a.i3 == "" || a.i4 == "" || a.c1 == "" || a.c2 == "" || a.c3 == "" || a.c4 == "" || a.c5 == "" || a.c6 == "" || a.c7 == ""){
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
     }else{
       wx.navigateTo({
-        url: '/pages/Ac/diver2/diver2',
+        url: '/pages/Ac/diver2/diver2?identity_selection='+identity_selection+"&real_name="+real_name+"&tel="+tel+"&vehicle_id="+vehicle_id+"&car_number="+car_number,
       })
     }
   },
@@ -134,7 +154,19 @@ o1:function(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    request({
+      url:'http://tsf.suipk.cn/home/Personal/do_id_type',
+      data:{
+        type:3
+      }
+      }).then(res=>{
+      console.log('调用司机类型成功',res)
+      this.setData({
+        selectData:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

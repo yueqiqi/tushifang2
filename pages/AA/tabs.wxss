@@ -1,0 +1,19 @@
+/* pages/AA/tabs.wxss */
+ .tab{float: left; width:33.3333333%;text-align: center;padding: 10rpx 0;font-size:36rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1); }
+.topTabSwiper{  zoom: 1;}
+.topTabSwiper:after{content: ""; clear: both;display: block;}
+/* 选中 */
+.tabBorer{border-bottom: 3px solid rgba(118,212,198,1);
+font-size:36rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);}
+.swiper{width: 100%;}
+/* .swiper_con{text-align: center; width: 100%; height: 100%; padding: 80rpx 0;} */
+/* 招聘工作 */
+.searchJob,.people{
+  height:100%
+}

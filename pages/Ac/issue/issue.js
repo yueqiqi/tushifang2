@@ -1,7 +1,14 @@
 // pages/Ac/issue/issue.js
+import request from "../../login.js";
+// var that =this
+var dateTimePicker = require('./date.js');
 Page({
-
-// ////////////////////////////////////////////////////////////////////
+chp:function(){
+  this.setData({
+    mz:false
+  })
+},
+  // ////////////////////////////////////////////////////////////////////
   // /////////////////////////////////////////////////////////////////////
   /* 隐藏弹窗 */
   nsuhide(flag = true) {
@@ -31,23 +38,66 @@ Page({
   },
   // 第二个单选
   seonChange(e) {
-    var that=this
+    var that = this
+     
     this.setData({
       seradio: e.detail
     });
     console.log(e.detail, "置顶类型")
-    if(e.detail==1){
-      that.setData({
-        int:200
-      })
-    }else if(e.detail==2){
-      that.setData({
-        int:100
-      })
+    if (e.detail == 1) {
+     //  消耗积分
+  var start_time=this.data.stime
+  var ending_time=this.data.etime
+  wx.request({
+    url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
+    data: {
+      lable:2,
+      start_time,
+      ending_time,
+    },
+    method: 'POST',
+    header: {
+    'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+    console.log('调用十万火急成功', res.data.data)
+    that.setData({
+      int:res.data.data
+    })
+    }, fail: function () {
+    console.log('调用失败')
+    }
+    })
+
+    } else if (e.detail == 2) {
+      var start_time=this.data.stime
+      var ending_time=this.data.etime
+      wx.request({
+        url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
+        data: {
+          lable:3,
+          start_time,
+          ending_time,
+        },
+        method: 'POST',
+        header: {
+        'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+        console.log('调用十万火急成功', res.data.data)
+        that.setData({
+          int:res.data.data
+        })
+        }, fail: function () {
+        console.log('调用失败')
+        }
+        })
+    
     }
   },
   // 单选框
   sonChange(e) {
+    var that=this
     this.setData({
       sradio: e.detail
     });
@@ -60,8 +110,9 @@ Page({
     });
     console.log("隐藏弹框")
     var zzz = this.data
-    console.log(zzz.sradio,zzz.seradio,zzz.dates,zzz.edates)
-    if (zzz.sradio == 0, zzz.dates == "请选择开始时间", zzz.edates == "请选择结束时间") {
+    console.log("开始借宿花四溅"+zzz.stime,zzz.etime,zzz.int)
+    console.log(zzz.sradio, zzz.seradio)
+    if (zzz.sradio == 0, zzz.stime == "", zzz.etime == "") {
       this.nsushow()
     }
   },
@@ -73,14 +124,14 @@ Page({
     })
 
   },
-// ////////////////////////////////////////////////////////////////////
+  // ////////////////////////////////////////////////////////////////////
 
 
   // 选择是弹出框
-  yes:function(){
-this.ssushow()
+  yes: function () {
+    this.ssushow()
   },
- 
+
   // /////////////////////////////////////////////////////////////////////////////
 
   // 单选框
@@ -106,11 +157,106 @@ this.ssushow()
   // 判断form表单中的东西
   formSubmit: function (e) {
     var m = e.detail.value
-    console.log(e.detail.value);
+    var that=this
+    // 发布标题
+    var title=m.i1
+    // 联系人
+    var contacts=m.i2
+    // 联系电话
+    var tel=m.i3
+    // 上传图片
+    // 评论内容
+    var info=m.textarea
+    var p=that.data.img_url_arr
+    console.log(that.data.img_url_arr)
+    var z=p.join('|')
+    var img_url_arr=z
+    console.log(z)
+    // 公司视频
+    var video=that.data.video_url
+    // 一级id
+    var one_class_id=that.data.one_class
+    // 二级id
+    var two_class_id=that.data.two_class
+    var uid=wx.getStorageSync("uid");
+    // 十万火急+置顶
+    if(that.data.radio==1){
+      if(that.data.sradio==1){
+        var lable=1
+      }else if(that.data.sradio==2){
+        if(that.data.seradio==1){
+          var lable=2
+        }else if(that.data.seradio==2){
+          var lable=3
+        }
+      }
+      }else if(that.data.radio==0||that.data.radio==2){
+      var lable=0
+    }
+    // 开始时间
+    var start_time=that.data.stime
+    // 结束时间
+    var ending_time=that.data.etime
+    console.log("最后开始结束时间+",start_time,ending_time,lable)
+    if(that.data.issu==false){
     if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.textarea.length == 0) {
       this.hidePopup(false);
     } else {
-      this.suhide(false);
+      
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      wx.request({
+        url: "http://tsf.suipk.cn/home/info/do_addinfo",
+        data: {
+          uid,
+          title,
+          contacts,
+          tel,
+          img_url_arr,
+          video,
+          one_class_id,
+          two_class_id,
+          info,
+          start_time,
+          ending_time,
+          lable
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          that.suhide(false);
+          console.log("其他发布调用成功", res)
+        }, fail: function () {
+          console.log("其他发布调用失败")
+        }
+      })
+    }
+      // +++++++++++个人中心重新发布++++++++++++++++++++++++++++++++
+      if(that.data.issu==true){
+        request({
+          url:'http://tsf.suipk.cn/home/Personal/do_modify_info',
+          data:{
+            form:3,
+            info_id:that.data.info_id,
+            title,
+            contacts,
+            tel,
+            img_url_arr,
+            video,
+            info,
+            imgh_url,
+          }
+          }).then(res=>{
+          console.log('调用成功',res)
+          this.setData({
+          
+          })
+          }).catch(err=>{
+          console.log('调用失败')
+        })
+      }
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
     console.log(this.data.tempFilePaths.length)
   },
@@ -154,35 +300,40 @@ this.ssushow()
         /**
          * 上传完成后把文件上传到服务器
          */
-        var count = 0;
-        // for (var i = 0, h = tempFilePath; i < h; i++) {
-        //上传文件
-        /*  wx.uploadFile({
-            url: HOST + '地址路径',
-            filePath: tempFilePaths[i],
-            name: 'uploadfile_ant',
-            header: {
-              "Content-Type": "multipart/form-data"
-            },
-            success: function (res) {
-              count++;
-              //如果是最后一张,则隐藏等待中  
-              if (count == tempFilePaths.length) {
-                wx.hideToast();
-              }
-            },
-            fail: function (res) {
-              wx.hideToast();
-              wx.showModal({
-                title: '错误提示',
-                content: '上传图片失败',
-                showCancel: false,
-                success: function (res) { }
-              })
-            }
-          });*/
-        // }
-
+        wx.uploadFile({
+          url: 'http://tsf.suipk.cn/home/info/do_video',
+          filePath:tempFilePath,
+          name: 'video_url',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            // count++;
+            var res=res.data
+            var resl=JSON.parse(res)
+            console.log("视屏保存成功",res)
+            var video_url=resl.data
+            that.setData({
+              video_url,
+            })
+            //如果是最后一张,则隐藏等待中  
+            console.log("检测是否成功",res)
+            // if (count == tempFilePath.length) {
+            //   wx.hideToast();
+            // }
+          },
+          fail: function (res) {
+            console.log("删除更换失败",res)
+            wx.hideToast();
+            wx.showModal({
+              title: '错误提示',
+              content: '上传图片失败',
+              showCancel: false,
+              success: function (res) { }
+            })
+          }
+        });
       }
     })
   },
@@ -253,32 +404,43 @@ this.ssushow()
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
+        var a =[]
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePaths[i],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                img_url_arr:a
+              })
+              //如果是最后一张,则隐藏等待中  
+              if (count == tempFilePaths.length) {
                 wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
               }
-            });*/
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          });
         }
 
       }
@@ -333,22 +495,25 @@ this.ssushow()
    * 页面的初始数据
    */
   data: {
+    // 一级列表
+    one_class:"",
+    // 二级列表
+    two_class:"",
     // 错误提示
     nsup: true,
     // 消耗积分
     int: 0,
     // 时间分类
     index: 0,
-    dates: '请选择开始时间',
-    edates: '请选择结束时间',
     sssup: true,
     // 单选框
     sradio: '0',
-    seradio: '0',
-  
+    seradio: '1',
+    // 置顶方式
+    lable:"",
     // 单选框
     radio: '0',
-    eradio: '0',
+    // eradio: '0',
     //成功 提示框
     sup: true,
     // 错误提示框
@@ -356,15 +521,251 @@ this.ssushow()
     // 图片路径
     tempFilePaths: [],
     tempFilePathss: "",
+    // +++++++++++++++++++++
+    // date: '2018-10-01',
+    // time: '12:00',
+    dateTimeArray: null,
+    dateTime: null,
+    dateTimeArray1: null,
+    dateTime1: null,
+    startYear: 2019,
+    endYear: 2020,
+    // 
+    dateTimeArray2: null,
+    dateTime2: null,
+    dateTimeArray12: null,
+    dateTime12: null,
+    startYear2: 2019,
+    endYear2: 2020,
+    // +++++++++++++++++++++
+    // 开始时间
+    stime:"",
+    // 结束时间
+    etime:"",
+    // 调用个人中心
+    h:false,
+    h2:false,
+    h3:false,
+    h4:false,
+    issu:false,
+    mz:true
   },
+  
+  // onInput(event) {
+  //   this.setData({
+  //     currentDate: event.detail,
+  //   });
+  //   console.log("选择的开始时间",this.data.currentDate)
+  // },
+  // showPopupms() {
+  //   this.setData({ show: true });
+  // },
 
+  // onClosems() {
+  //   this.setData({ show: false });
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
+    var phone=wx.getStorageSync("userphone")
+    that.setData({
+      phone,
+    })
+    console.log("信息id1",options)
+    // +++++++++++++++++++个人中心跳转发布+++++++++++++++++++++++++++++
+    if(options.pid!=undefined){
+      request({
+        url:'http://tsf.suipk.cn/home/Personal/do_modify_details',
+        data:{
+          info_id:options.pid,
+          form:options.form
+        }
+        }).then(res=>{
+        console.log('调用个人中心跳转其他发布成功',res)
+        this.setData({
+          info_id:options.id,
+          h:true,
+          h2:true,
+          h3:true,
+          h4:true,
+          issu:true,
+          hr:res.data.data.title,
+          hr2:res.data.data.contacts,
+          hr3:res.data.data.tel,
+          hr4:res.data.data.info,
+          tempFilePaths:res.data.data.img_url_arr,
+          tempFilePathss:res.data.data.video,
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+    }
+    // +++++++++++++++++++个人中心跳转发布+++++++++++++++++++++++++++++
+    // ++++++++++++++++++++++++++++++++
+    // 获取完整的年月日 时分秒，以及默认显示的数组
+    var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+    var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+    // 精确到分的处理，将数组的秒去掉
+    var lastArray = obj1.dateTimeArray.pop();
+    var lastTime = obj1.dateTime.pop();
+
+    this.setData({
+      dateTime: obj.dateTime,
+      dateTimeArray: obj.dateTimeArray,
+      dateTimeArray1: obj1.dateTimeArray,
+      dateTime1: obj1.dateTime,
+      // 
+      dateTime2: obj.dateTime,
+      dateTimeArray2: obj.dateTimeArray,
+      dateTimeArray12: obj1.dateTimeArray,
+      dateTime12: obj1.dateTime
+    });
+    // ++++++++++++++++++++++++++++++++
+    // /获取二级列表
+    console.log("获取一级列表",options.id)
+    console.log("获取二级列表",options.idtwo)
+    that.setData({
+        one_class:options.id,
+        two_class:options.idtwo,
+   })
+  },
+  // changeDate(e) {
+  //   this.setData({ date: e.detail.value });
+  // },
+  // changeTime(e) {
+  //   this.setData({ time: e.detail.value });
+  // },
+  changeDateTime(e) {
+    this.setData({ dateTime: e.detail.value });
+    console.log("触发1",e)
+    // console.log("触发1",e)
 
   },
+  // 确定函数
+  changeDateTime1(e) {
+    var that=this
+    this.setData({ dateTime1: e.detail.value });
+    console.log("确定触发函数",this.data.dateTime1)
+    var time=this.data.dateTime1
+    console.log("确定函数触发1-年份",this.data.dateTimeArray1[0][time[0]])
+    console.log("确定函数触发2-月份",this.data.dateTimeArray1[1][time[1]])
+    console.log("确定函数触发3-日期",this.data.dateTimeArray1[2][time[2]])
+    console.log("确定函数触发4-小时",this.data.dateTimeArray1[3][time[3]])
+    var em="00:00"
+    var s1=new Array(this.data.dateTimeArray[0][time[0]],this.data.dateTimeArray[1][time[1]],this.data.dateTimeArray[2][time[2]])
+    var s2 =new Array(
+      this.data.dateTimeArray[3][time[3]],em
+    )
+    var  p1=s1.join('-')
+    var p2=s2.join(':')
+    var  pList=p1+''+p2
+    console.log("最后结果"+pList)
+    that.setData({
+      stime:pList
+    })
+  },
+  changeDateTimeColumn(e) {
+    var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;
+    
+    arr[e.detail.column] = e.detail.value;
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+    
+    this.setData({
+      dateTimeArray: dateArr,
+      dateTime: arr
+    });
+  },
+  changeDateTimeColumn1(e) {
+    var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
+    
+    arr[e.detail.column] = e.detail.value;
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+    
+    this.setData({
+      dateTimeArray1: dateArr,
+      dateTime1: arr
+    });
+  },
+  // 
+  changeDateTime2(e) {
+    this.setData({ dateTime2: e.detail.value });
+  },
+  changeDateTime12(e) {
+    var that=this
+    this.setData({ dateTime12: e.detail.value });
+    var time=this.data.dateTime12
+    console.log("确定函数触发1-年份",this.data.dateTimeArray2[0][time[0]])
+    console.log("确定函数触发2-月份",this.data.dateTimeArray2[1][time[1]])
+    console.log("确定函数触发3-日期",this.data.dateTimeArray2[2][time[2]])
+    console.log("确定函数触发4-小时",this.data.dateTimeArray2[3][time[3]])
+    var em="00:00"
+      var end1=new Array(this.data.dateTimeArray2[0][time[0]],this.data.dateTimeArray2[1][time[1]],this.data.dateTimeArray2[2][time[2]])
+      var end2 =new Array(
+        this.data.dateTimeArray2[3][time[3]],em
+      )
+      var  p1=end1.join('-')
+      var p2=end2.join(':')
+      var  pList2=p1+''+p2
+      console.log("选择的最后时间",pList2)
+      console.log("最后结果"+pList2)
+      that.setData({
+        etime:pList2
+      })
+    // 
+    var start_time=this.data.stime
+    var ending_time=this.data.etime
+  if (this.data.sradio == 1) {
+      //  消耗积分
+   wx.request({
+     url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
+     data: {
+       lable:1,
+       start_time,
+       ending_time,
+     },
+     method: 'POST',
+     header: {
+     'content-type': 'application/x-www-form-urlencoded'
+     },
+     success: function (res) {
+     console.log('调用十万火急成功', res.data.data)
+     that.setData({
+       int:res.data.data
+     })
+     }, fail: function () {
+     console.log('调用失败')
+     }
+     })
+ 
+     } 
+  },
+  changeDateTimeColumn2(e) {
+    var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;
 
+    arr[e.detail.column] = e.detail.value;
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+
+    this.setData({
+      dateTimeArray2: dateArr,
+      dateTime2: arr
+    });
+  },
+  changeDateTimeColumn12(e) {
+    var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
+
+    arr[e.detail.column] = e.detail.value;
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+
+    this.setData({
+      dateTimeArray12: dateArr,
+      dateTime12: arr
+    });
+
+
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -376,7 +777,7 @@ this.ssushow()
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log("时间1",this.data.dateTime1)
   },
 
   /**

@@ -1,4 +1,5 @@
 // pages/self/score/score.js
+import request from '../../login.js';
 Page({
   // 去充值
 gup:function(){
@@ -22,7 +23,22 @@ ginv:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    var uid=wx.getStorageSync("uid");
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_mypoints',
+      data:{
+        type:2,
+        uid
+      }
+      }).then(res=>{
+      console.log('调用我的信誉分成功',res)
+      this.setData({
+        credit:res.data.data.credit
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

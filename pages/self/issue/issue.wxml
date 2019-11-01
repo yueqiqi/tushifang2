@@ -5,17 +5,104 @@
 <block wx:for="{{usermes}}" wx:key="{{index}}">
 <!-- 发布内容标题和正在进行 -->
   <view class="d-spb d1" bindtap="goto"  data-id="{{item.id}}">
-    <view class="til">{{item.til}}</view>
+    <view class="til">{{item.title}}</view>
     <view class="ing" style="color:{{item.type=='已完成'?'#F57900':'#76D4C6'}}">{{item.type}}</view>
   </view>
+
    <view class="d-flex mybtn">
-    <view class="up" bindtap="up" data-id="{{item.id}}">修改</view>
-    <view class="fin"  style="width:{{item.type=='已完成'?240:140}}rpx" bindtap="change" data-id="{{item.id}}">{{fin}}</view>
-    <view class="ref" hidden="{{item.type=='已完成'?true:false}}">刷新</view>
-    <view class="stick" hidden="{{item.type=='已完成'?true:false}}" bindtap="ssushow">申请置顶</view>
+    <view class="up" bindtap="up" data-form="{{item.form}}" data-id="{{item.id}}">修改</view>
+    <view class="fin"  style="width:{{item.type=='已完成'?240:120}}rpx" bindtap="change" data-id="{{item.id}}" data-index="{{index}}">{{item.type=="已完成"?'改为正在进行':'已完成'}}</view>
+    <view class="ref" data-id="{{item.id}}" bindtap="ref" hidden="{{item.type=='已完成'?true:false}}">刷新</view>
+    <view class="stick" data-id="{{item.id}}" hidden="{{item.type=='已完成'?true:false}}" bindtap="ssushow">申请置顶</view>
   </view>
-<include src="/pages/Ac/stick/stick"/>
+
+
+
 </block>
+</view>
+
+
+
+<view class='ssshade' hidden='{{sssup}}'bindtap='sssuhide' ></view>
+<view class='ssshade_box sspopup' hidden='{{sssup}}'>
+<!-- 成功图片 -->
+    <view class='sstitle'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
+    <!-- 文字 -->
+    <view class='sscontent'>
+      <view class="sst1">置顶提醒</view>
+     <!-- 置顶方式 -->
+      <view class="d-spb ssticks">
+        <view class="sstit">置顶方式</view>
+        <view class="sright">
+          <van-radio-group value="{{ sradio }}" bind:change="sonChange"  class="d-flex">
+            <van-radio checked-color="#76D4C6" name="1">十万火急</van-radio>
+            <van-radio checked-color="#76D4C6" style="margin-left:20rpx;" name="2">置顶</van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+<!-- 开始时间 -->
+      <view class="d-spb sstick2">
+        <view class="sstit">开始时间</view>
+        <view class="sr2">
+          <view class="ssectiontime">  
+            <!-- <picker mode="multiSelector" bindchange="bindDateChange">  
+             <view class="spicker">  
+              <view class="sselect-text" >{{dates}}</view>
+              <image src="../../images/select.png"></image>
+             </view>  
+             </picker>   -->
+             <!-- +++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+              <view class="tui-picker-detail">{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+              </view>
+              </picker>
+             <!-- +++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <!-- ===== -->
+             <!-- <van-popup z-index="99999999"
+  show="{{ show }}" position="bottom" custom-style="height: 50%;" bind:close="onClosems">
+        <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm="onInput"/>
+      </van-popup> -->
+             <!-- ===== -->
+          </view>
+        </view>
+      </view>
+      <!-- 结束时间 -->
+      <view class="d-spb sstick2">
+        <view class="sstit">结束时间</view>
+        <view class="sr2">
+          <view class="ssectiontime">  
+            <!-- <picker mode="date" bindchange="ebindDateChange">  
+             <view class="spicker">  
+              <view class="sselect-text" >{{edates}}</view>
+              <image src="../../images/select.png"></image>
+             </view>  
+             </picker>   -->
+             <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <picker mode="multiSelector" value="{{dateTime12}}" bindchange="changeDateTime12" bindcolumnchange="changeDateTimeColumn12" range="{{dateTimeArray12}}">
+              <view class="tui-picker-detail">{{dateTimeArray12[0][dateTime12[0]]}}-{{dateTimeArray12[1][dateTime12[1]]}}-{{dateTimeArray12[2][dateTime12[2]]}} {{dateTimeArray12[3][dateTime12[3]]}}:{{dateTimeArray12[4][dateTime12[4]]}}
+              </view>
+              </picker>
+             <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+          </view>
+        </view>
+      </view>
+<!-- 置顶类型 -->
+     <!-- 置顶方式 -->
+      <view class="d-spb szd" hidden="{{sradio==1||sradio==0?true:false}}">
+        <view class="sstit">置顶类型</view>
+        <view class="sright">
+          <van-radio-group value="{{ seradio }}" bind:change="seonChange"  class="d-flex">
+            <van-radio checked-color="#76D4C6" name="1">首页置顶</van-radio>
+            <van-radio checked-color="#76D4C6" style="margin-left:20rpx;" name="2">内页置顶</van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+      <!--  -->
+<view class="mm" style="font-size:30rpx;">{{yearss}}</view>
+    </view>
+<!-- 消耗积分 -->
+<view class="sint">消耗积分 <text style="color:#F57900">{{int}}</text></view>
+    <view class='ssmsg' bindtap='sssuhide'>确定</view>
 </view>
 <!-- ==================================================== -->
 <!-- 我要发布 -->

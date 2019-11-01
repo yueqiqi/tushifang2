@@ -22,8 +22,12 @@ Page({
       phoneNumber: this.data.phone,
     })
   },
+
   formSubmit: function (e) {
     var e = e.detail.value
+    var info_id=this.data.lid
+    var img_url_arr=this.data.tempFilePaths
+    var content=e.textarea
     if (e.textarea.length < 5) {
       wx.showToast({
         title: '字数在5~100字哟~~~',
@@ -45,6 +49,27 @@ Page({
           }
         }
       })
+      // **************************
+      // 举报
+      wx.request({
+        url:"http://tsf.suipk.cn/home/info/do_report",
+        data:{
+          uid:1,
+          info_id,
+          content,
+          img_url_arr
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:function(res){
+          console.log("举报调用成功",res)
+        },fail:function(){
+          console.log("调用举报失败",res)
+        }
+      })
+      // **************************
     }
     this.hideModal();
   },
@@ -218,6 +243,7 @@ Page({
   // 投诉
   complaint:function(){
     console.log("投诉")
+    
   },
   /**
    * 页面的初始数据
@@ -279,13 +305,33 @@ Page({
         usercontent: "唯格Viewgres，集设计、研发、生产、全球贸易于一体的瓷砖企业。为商业建筑和高端住宅提供优质建材产品与应用解决方案。",
       }
     ],
+    // 接收并保存首页传来的id值
+    lid:"",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-console.log(options)
+    console.log("首页传来的id="+options.id)
+    this.setData({
+      lid:options.id
+    })
+
+    // wx.request({
+    //   url: 'http://tsf.suipk.cn',
+    //   data: {
+    //   },
+    //   method: 'POST',
+    //   header: {
+    //   'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success: function (res) {
+    //   console.log('调用成功', res.data.data)
+    //   }, fail: function () {
+    //   console.log('调用失败')
+    //   }
+    // })
   },
 
   /**

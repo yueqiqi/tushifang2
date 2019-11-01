@@ -209,7 +209,8 @@ color:rgba(118,212,198,1);margin-top:10rpx;
 /* 招聘状态 */
 .state{
   margin-top:40rpx;
-  justify-content: space-between
+  justify-content: space-between;
+  margin-right:68rpx;
 }
 .stateTitle{
   font-size:28rpx;
@@ -220,16 +221,21 @@ color:#333
 /* 正在招聘 */
 .stateing{
   font-size:28rpx;
-font-family:PingFang SC;
 color:#333;
+width:115rpx;
 }
 /* 工作地点 */
 .state-right{
-  margin-right:68rpx;
+  width:306rpx;
+  /* //超出一行文字自动隐藏 */
+  overflow:hidden; 
+  /* //文字隐藏后添加省略号 */
+text-overflow:ellipsis;
+/* //强制不换行 */
+white-space:nowrap; 
 }
 .state-site{
    font-size:28rpx;
-font-family:PingFang SC;
 font-weight:bold;
 color:#333;
 margin-right:20rpx;
@@ -237,7 +243,6 @@ margin-right:20rpx;
 /* 省份 */
 .site-province{
    font-size:28rpx;
-font-family:PingFang SC;
 color:#333;margin-right:10rpx;
 }
 /* 区域 */
@@ -248,7 +253,8 @@ color:#333;
 }
 /* 发布时间 */
 .timer{
-  justify-content: space-between
+  justify-content: space-between;
+  margin-right:68rpx;
 }
 .timerTitle{
     font-size:28rpx;
@@ -263,7 +269,14 @@ font-family:PingFang SC;
 color:#333;
 }
 .timer-right{
-  margin-right:180rpx;
+  /* margin-right:180rpx; */
+  width:306rpx;
+  /* //超出一行文字自动隐藏 */
+  overflow:hidden; 
+  /* //文字隐藏后添加省略号 */
+text-overflow:ellipsis;
+/* //强制不换行 */
+white-space:nowrap;
 }
 /* 工作年限 */
 .year{
@@ -285,7 +298,7 @@ color:#333;margin-left:21.5rpx;
 .head{
   width:50rpx;
 height:50rpx;
-background:rgba(229,229,229,1);
+/* background:rgba(229,229,229,1); */
 border-radius:50%;
 margin-right:20rpx;
 }
@@ -315,7 +328,6 @@ margin-top:7rpx;
 .peopleHead{
   width:70rpx;
 height:70rpx;
-background:rgba(229,229,229,1);
 border-radius:50%;
 margin-right:20rpx;
 }
@@ -352,20 +364,25 @@ color:rgba(51,51,51,1);
 }
 .Msg{
   font-size:28rpx;
-font-family:PingFang SC;
 color:#333;
 }
 /* 求职 */
 .peoplestate{
   justify-content: space-between;
   margin-top:40rpx;
+  margin-right:65rpx; 
 }
 /* 正在找工作 */
 .peoplestateing{
   margin-right:20rpx;
 }
-.peoplestate-right{
-  margin-right:95rpx; 
+.peoplestate-right{ 
+  width:306rpx;
+  overflow:hidden; 
+  /* //文字隐藏后添加省略号 */
+text-overflow:ellipsis;
+/* //强制不换行 */
+white-space:nowrap;
 }
 /* 薪资 */
 .p-money{
@@ -375,9 +392,16 @@ color:#333;
 .p-timer{
   justify-content:space-between;
   margin-top:20rpx;
+  margin-right:65rpx;
 }
 .p-timer-right{
-  margin-right:170rpx;
+  /* margin-right:170rpx; */
+  width:306rpx;
+  overflow:hidden; 
+  /* //文字隐藏后添加省略号 */
+text-overflow:ellipsis;
+/* //强制不换行 */
+white-space:nowrap;
 }
 /* 时间 */
 .p-timer-date{

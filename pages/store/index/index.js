@@ -112,13 +112,34 @@ Page({
         gef: "200",
       },
     ],
+    // 一级分类
+    one_class:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    wx.request({
+      url: 'http://tsf.suipk.cn/home/Goods/do_shopping_mall',
+      data: {
+        code:"",
+        msg:"",
+      },
+      method: 'POST',
+      header: {
+      'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+      console.log('调用商城信息成功', res.data.data)
+        that.setData({
+          one_class:res.data.data
+        })
+      }, fail: function () {
+      console.log('调用失败')
+      }
+    })
   },
 
   /**

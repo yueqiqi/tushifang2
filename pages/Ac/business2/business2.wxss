@@ -142,22 +142,27 @@ display: flex;
   flex-wrap: wrap;
   margin:0 auto;
 }
-.imgs{
-  width:33.33333333%;
+.imgsz{
+  /* width:33.33333333%; */
+  width:100rpx;
+  /* background-size: cover;
+  height:100rpx;width:100rpx; */
   display: flex;
   justify-content: center;
   margin-bottom:20rpx;
+  object-fit:cover
 }
 /* 添加图片的样式 */
-.imgs image{
+.imgsz .im{
+  /* width:100%; */
   width:100%;
-  /* width:168rpx; */
-  height:168rpx;
+  height:100%;
+  object-fit:cover;
+  /* height:168rpx; */
   /* max-height:212rpx; */
   border:1px solid rgba(214, 212, 212, 0.1);
   /* box-shadow: 5rpx 5rpx 1rpx 3rpx #e2e0e0; */
   margin-top:20rpx;
-  margin-right:10rpx;
 }
 
 .imgs .images{

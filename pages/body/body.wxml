@@ -12,7 +12,11 @@
     </view>
   </view>
     <view  bindtap="message">
-    <image class="message" src="../images/position/shape48.png"></image>
+      <view class="d-flex">
+
+        <image class="message" src="../images/position/shape48.png"></image>
+    <text  class="iconsm" hidden="{{icons==0?true:false}}">{{icons}}</text>
+      </view>
     </view>
   </view>
 </view>

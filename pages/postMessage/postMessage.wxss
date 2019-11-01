@@ -69,7 +69,6 @@ margin-left:30rpx;
 }
 /* 时间 */
 .time{
-  width:197rpx;
 height:19rpx;
 font-size:24rpx;
 font-family:PingFang SC;
@@ -77,13 +76,16 @@ font-weight:400;
 color:rgba(153,153,153,1);
 line-height:40rpx;
 }
+.userPosition{
+  vertical-align:middle;
+}
 /* 定位图片 */
 .userPosition image{
   width:18rpx;height: 23rpx;margin-right:10rpx;
 }
 /* 发布者定位 */
 .userPosition text{
-  width:119rpx;
+  /* width:119rpx; */
 height:23rpx;
 font-size:24rpx;
 font-family:PingFang SC;
@@ -123,9 +125,10 @@ margin-top:15rpx;
 /* 项目类型 */
 .project{
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   margin-left:31rpx;
   margin-top:41rpx;
+  margin-right:30rpx;
 }
 /* 项目类型 */
 .projectType{
@@ -144,7 +147,6 @@ font-weight:500;
 }
 /* 电话 */
 .phone{
-  margin-left:258rpx;
   width:200rpx;
 height:50rpx;
 background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);

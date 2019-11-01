@@ -1,3 +1,60 @@
+/* ++++++++++++++++++手机号弹窗++++++++++++++++++++++++++ */
+.zan-dialog__mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  /* //设置阴影半透明背景如： background: rgba(0, 0, 0, 0.4); */
+  background: rgba(0, 0, 0, 0);
+  display: none;
+}
+
+.zan-dialog__container {
+  position: fixed;
+  bottom: 400rpx;
+  /* //弹窗布局宽 */
+  width: 650rpx;
+  /* //弹窗布局高，与下面弹出距离transform有关 */
+  height: 350rpx;
+  margin-left: 35rpx;
+  background: #f8f8f8;
+  /* //弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */
+  transform: translateY(300%);
+  transition: all 0.4s ease;
+  z-index: 12;
+  border-radius: 20rpx;
+  /* //弹框的悬浮阴影效果，如不需要可注释该行 */
+  box-shadow: 0px 3px 3px 2px gainsboro;
+}
+
+.zan-dialog--show .zan-dialog__container {
+  transform: translateY(0);
+}
+
+.zan-dialog--show .zan-dialog__mask {
+  display: block;
+}
+/* ++++++++++++++++++手机号弹窗++++++++++++++++++++++++++ */
+.login{
+  /* margin-left:-30rpx!important; */
+  /* margin-bottom:51rpx; */
+  /* line-height: 90rpx; */
+  margin-left:30rpx;
+  /* width:200rpx;height:100rpx; */
+  font-size:30rpx;
+  border:0!important;
+  background:#fff;
+}
+.l1{
+  display:flex;
+  justify-content: left;
+  /* margin-left:-30rpx!important; */
+  width:100%;
+  align-items: center;
+  height:90rpx;
+}
 /* pages/self/index/index.wxss */
 /* 微信头像 */
 .head-img{
@@ -13,13 +70,11 @@ border-radius:50%;
 /* 微信昵称 */
 .head-title :first-child{
   font-size:32rpx;
-font-family:PingFang SC;
 font-weight:bold;
 color:rgba(51,51,51,1);
 }
 .head-title :last-child{
   font-size:26rpx;
-font-family:PingFang SC;
 font-weight:400;
 color:rgba(153,153,153,1);
 margin-top:10rpx;

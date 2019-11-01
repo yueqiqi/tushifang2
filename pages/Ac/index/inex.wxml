@@ -19,7 +19,7 @@
     <block wx:for="{{ent}}" wx:key="{{index}}">
       <navigator url="{{item.link}}">
       <view class="i1">
-        <image src="{{item.url}}"></image>
+        <image src="{{item.img_url}}"></image>
       </view>
       </navigator>
     </block>

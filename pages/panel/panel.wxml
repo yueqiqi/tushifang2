@@ -1,92 +1,177 @@
 <!--pages/panel/panel.wxml-->
 <!-- <text>pages/panel/panel.wxml</text> -->
 <view>
-<!-- 选项卡 -->
+  <!-- 选项卡 -->
   <van-tabs sticky>
-  <van-tab title="最新发布">
+    <van-tab title="最新发布">
 
-<!-- ====================================================================== -->
-<block wx:for="{{tabuser}}" wx:key="{{index}}">
-<view class="bgf mtt">
-<!-- 第四个发布者信息 -->
-<view bindtap="tabgoto"  data-id="{{item.id}}">
-<view class="tab-new d-spb">
-<view class="d-flex">
-      <!-- 发布者头像 -->
-      <view class="tab-head"></view>
-      <!-- 发布者用户名 -->
-      <view class="tab-userName">{{item.name}}</view>
-      <!-- 置顶 -->
-      <view class="stick">{{item.type}}</view>
-      <view class="rec" hidden="{{item.rec=='荐'?false:true}}">{{item.rec}}</view>
-</view>
-      <!-- 距离 -->
-      <view class="tab-distance">{{item.dis}}km</view>
-    </view>
-     <!-- 发布需求标题 -->
-    <view class="tab-userTitle">{{item.title}}</view>
-    <view class="tab-timer">
-    <!-- 时间 -->
-    <view class="tab-time">{{item.time}}</view>
-    <!-- 发布者定位 -->
-    <view class="tab-userPosition d-flex">
-    <view style="margin-top:-8rpx;">
-    <image src="/pages/images/position49.png"></image>
-    </view>
-    <text>{{item.location}}</text>
-    </view>
-    </view>
-    <!-- 发布信息 -->
-    <view class="tab-content">{{item.content}}</view>
-    <!-- 图片 -->
-    <view class="tabUserImg{{item.img.length==1?'b':(item.img.length==4?'c':(item.img.length>5||item.img.length>1&&item.img.length<4?'a':'0')) }}">
-    <block wx:for="{{item.img}}" wx:key="{{index}}">
-      <image src="{{item.src}}"></image>
-    </block>
-    </view>
-    <!-- 项目类型 -->
-    <view class="tab-project">
-     <view class="tab-projectType">项目类型</view>
-     <view class="tab-car">{{item.project}}</view>
-     <view class="tab-phone" bindtap="callPhone" data-id="{{item.id}}">
-     <image src="/pages/images/phone.png"></image>
-     <text class="tab-phone-text">拨打电话</text>
-     </view>
-    </view>
-</view>
-    <!-- 分割线 -->
-    <view class="hr"></view>
-    <!-- 评论点赞 -->
-<view class="tab-scl">
-<!-- 分享 -->
-<view class="tab-share d-flex" bindtap="tabShare" data-id="{{item.id}}">
-<view>
-<image src="../images/share.png"></image>
-</view>
-<button open-type="share">分享</button>
-</view>
-<!-- 评论 -->
-<view class="tab-comment d-flex" bindtap="tabComment" data-id="{{item.id}}">
-<view>
-<image src="../images/comment.png"></image>
-</view>
-<text>评论</text>
-</view>
-<!-- 点赞 -->
-<view class="tab-like d-flex" bindtap="tabLike" data-id="{{item.id}}">
-<view>
-<image src="../images/like.png"></image>
-</view>
-<text>{{item.index}}</text>
-</view>
-</view>
-</view>
-</block>
-  </van-tab>
-  <van-tab title="优质推荐">
-    <view>
+      <!-- ====================================================================== -->
+      <block wx:for="{{tabuser}}" wx:key="{{index}}">
+        <view class="bgf">
 
-    </view> 
-  </van-tab>
-</van-tabs>
+          <view class="bgf mtt">
+            <view bindtap="tabgoto" data-id="{{item.id}}">
+              <view class="tab-new d-spb">
+                <view class="d-flex">
+                  <!-- 发布者头像 -->
+                  <view style="width:70rpx;height:70rpx;margin:auto 0;">
+                    <image class="tab-head" src="{{item.head}}"></image>
+                  </view>
+                  <!-- 发布者用户名 -->
+                  <view class="tab-userName">{{item.nickname}}</view>
+                  <!-- 置顶 -->
+                  <view class="stick">{{item.px}}</view>
+                  <view class="rec" hidden="{{item.rec=='荐'?false:true}}">{{item.rec}}</view>
+                </view>
+                <!-- 距离 -->
+                <view class="tab-distance">{{item.distance}}km</view>
+              </view>
+              <!-- 发布需求标题 -->
+              <view class="tab-userTitle">{{item.title}}</view>
+              <view class="tab-timer">
+                <!-- 时间 -->
+                <view class="tab-time">{{item.create_time}}</view>
+                <!-- 发布者定位 -->
+                <view class="tab-userPosition d-flex">
+                  <view style="margin-top:-8rpx;">
+                    <image src="/pages/images/position49.png"></image>
+                  </view>
+                  <text>{{item.location}}</text>
+                </view>
+              </view>
+              <!-- 发布信息 -->
+              <view class="tab-content">{{item.content}}</view>
+            </view>
+            <!-- 图片 -->
+            <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+              <block wx:for="{{item.img_url_arr}}" wx:key="{{index}}">
+                <image src="{{item}}"></image>
+              </block>
+            </view>
+            <!-- 项目类型 -->
+            <view class="tab-project">
+              <view class="d-flex">
+                <view class="tab-projectType">项目类型</view>
+                <view class="tab-car">{{item.two_class_title}}</view>
+              </view>
+              <view class="tab-phone" bindtap="callphonenew" data-id="{{index}}">
+                <image src="/pages/images/phone.png"></image>
+                <text class="tab-phone-text">拨打电话</text>
+              </view>
+            </view>
+          </view>
+          <!-- 分割线 -->
+          <view class="hr"></view>
+          <!-- 评论点赞 -->
+          <view class="tab-scl">
+            <!-- 分享 -->
+            <view class="tab-share d-flex" bindtap="tabShare" data-id="{{index}}">
+              <view>
+                <image src="../images/share.png"></image>
+              </view>
+              <button open-type="share">分享</button>
+            </view>
+            <!-- 评论 -->
+            <view class="tab-comment d-flex" bindtap="tabComment" data-id="{{index}}">
+              <view>
+                <image src="../images/comment.png"></image>
+              </view>
+              <text>评论</text>
+            </view>
+            <!-- 点赞 -->
+            <view class="tab-like d-flex" bindtap="tabLike" data-id="{{index}}">
+              <view>
+                <image src="../images/like.png"></image>
+              </view>
+              <text>{{item.point_ratio}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </van-tab>
+    <van-tab title="优质推荐">
+      <block wx:for="{{tabuserjian}}" wx:key="{{index}}">
+        <view class="bgf">
+
+          <view class="bgf mtt">
+            <view bindtap="tabgoto" data-id="{{item.id}}">
+              <view class="tab-new d-spb">
+                <view class="d-flex">
+                  <!-- 发布者头像 -->
+                  <view style="width:70rpx;height:70rpx;margin:auto 0;">
+                    <image class="tab-head" src="{{item.head}}"></image>
+                  </view>
+                  <!-- 发布者用户名 -->
+                  <view class="tab-userName">{{item.nickname}}</view>
+                  <!-- 置顶 -->
+                  <view class="stick">{{item.px}}</view>
+                  <view class="rec" hidden="{{item.rec=='荐'?false:true}}">{{item.rec}}</view>
+                </view>
+                <!-- 距离 -->
+                <view class="tab-distance">{{item.distance}}km</view>
+              </view>
+              <!-- 发布需求标题 -->
+              <view class="tab-userTitle">{{item.title}}</view>
+              <view class="tab-timer">
+                <!-- 时间 -->
+                <view class="tab-time">{{item.create_time}}</view>
+                <!-- 发布者定位 -->
+                <view class="tab-userPosition d-flex">
+                  <view style="margin-top:-8rpx;">
+                    <image src="/pages/images/position49.png"></image>
+                  </view>
+                  <text>{{item.location}}</text>
+                </view>
+              </view>
+              <!-- 发布信息 -->
+              <view class="tab-content">{{item.content}}</view>
+            </view>
+            <!-- 图片 -->
+            <view class="tabUserImg{{item.img.length==1?'b':(item.img.length==4?'c':(item.img.length>5||item.img.length>1&&item.img.length<4?'a':'0')) }}">
+              <block wx:for="{{item.img_url_arr}}" wx:key="{{index}}">
+                <image src="{{item}}"></image>
+              </block>
+            </view>
+            <!-- 项目类型 -->
+            <view class="tab-project">
+              <view class="d-flex">
+                <view class="tab-projectType">项目类型</view>
+                <view class="tab-car">{{item.two_class_title}}</view>
+              </view>
+              <view class="tab-phone" bindtap="callphonejian" data-id="{{index}}">
+                <image src="/pages/images/phone.png"></image>
+                <text class="tab-phone-text">拨打电话</text>
+              </view>
+            </view>
+          </view>
+          <!-- 分割线 -->
+          <view class="hr"></view>
+          <!-- 评论点赞 -->
+          <view class="tab-scl">
+            <!-- 分享 -->
+            <view class="tab-share d-flex" bindtap="tabSharejian" data-id="{{index}}">
+              <view>
+                <image src="../images/share.png"></image>
+              </view>
+              <button open-type="share">分享</button>
+            </view>
+            <!-- 评论 -->
+            <view class="tab-comment d-flex" bindtap="tabCommentjian" data-id="{{index}}">
+              <view>
+                <image src="../images/comment.png"></image>
+              </view>
+              <text>评论</text>
+            </view>
+            <!-- 点赞 -->
+            <view class="tab-like d-flex" bindtap="tabLikejian" data-id="{{index}}">
+              <view>
+                <image src="../images/like.png"></image>
+              </view>
+              <text>{{item.point_ratio}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </van-tab>
+  </van-tabs>
 </view>

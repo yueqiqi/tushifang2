@@ -1,4 +1,5 @@
 // pages/self/score/score.js
+import request from '../../login.js'
 Page({
   // 下拉
   // 点击下拉显示框
@@ -61,7 +62,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    var uid=wx.getStorageSync("uid");
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_mypoints',
+      data:{
+        type:1,
+        uid
+      }
+      }).then(res=>{
+      console.log('调用我的积分成功',res)
+      this.setData({
+        integral:res.data.data.integral
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

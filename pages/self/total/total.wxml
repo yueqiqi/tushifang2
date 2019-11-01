@@ -6,7 +6,7 @@
     <!-- 我的积分 -->
     <view>我的积分</view>
     <!-- 分数 -->
-    <view>{{score}}</view>
+    <view>{{integral}}</view>
   </view>
   <!-- 邀请好友得积分 -->
   <view style="margin-left:29rpx;margin-right:30rpx;margin-top:81rpx;">

@@ -9,7 +9,7 @@
  <view class="section d-spb">
     <view class="section-title">企业类型</view>
     <view class="right d-spb"catchtap='selectTap' >
-      <input name="i1" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index]}}"/>
+      <input name="i1" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index].title}}"/>
       <view>
         <image class="section-img" hidden="{{hidden}}" src="../../images/position/shape45.png"></image>
       </view>
@@ -22,7 +22,7 @@
       <view class='select_box'>
     <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*50):0}}rpx;'>
     <!-- 选择的列表项 -->
-        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item.title}}</text>
     </view>
     </view>
       <!-- ================================ -->
@@ -44,8 +44,8 @@
   <view class="section2 d-spb">
     <view class="section-title">联系电话</view>
     <view class="right d-spb">
-      <input name="i4" maxlength="11" type="number"/>
-      <view class="ch">更换</view>
+      <input name="i4" disabled="{{mz}}" value="{{phone}}" maxlength="11" type="number"/>
+      <view class="ch" bindtap="chp">更换</view>
     </view>
  </view>
 

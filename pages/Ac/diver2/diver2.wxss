@@ -67,10 +67,11 @@ display: flex;
   margin:0 auto;
 }
 .imgs{
-  width:33.33333333%;
+  width:168rpx;
   display: flex;
   justify-content: center;
   margin-bottom:20rpx;
+  height:168rpx;
 }
 /* 添加图片的样式 */
 .imgs image{

@@ -25,9 +25,11 @@ Page({
   // ///////////////////////////////////////////
   // 十万火急
   // 跳转
-  goto: function () {
+  goto: function (e) {
+    console.log("十万火急跳转",e.currentTarget.dataset.id)
+    var id=e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/details/details',
+      url: '/pages/details/details?id='+id,
     })
   },
   ////////////////////////////////////////////////
@@ -43,8 +45,14 @@ Page({
     })
   },
   // 拨打电话
-  callPhone: function (e) {
-
+  callphone: function (e) {
+    var e=e.currentTarget.dataset.id
+    var that=this
+    var tel=that.data.user[e].tel
+    wx.makePhoneCall({
+      phoneNumber: tel
+    })
+    console.log("第几个带年华",e)
   },
   // 分享
   tabShare: function (e) {
@@ -64,8 +72,8 @@ Page({
     var id = e.currentTarget.dataset.id
     console.log("这是第" + id + "个")
     // for(var i in this.data.user){
-    var like = that.data.tabuser[id].index
-    var index = "tabuser[" + id + "].index";
+    var like = that.data.tabuser[id].point_ratio
+    var index = "tabuser[" + id + "].point_ratio";
     that.setData({
       [index]: like + 1
     })
@@ -88,11 +96,11 @@ Page({
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 十万火急
   // 跳转
-  goto: function () {
-    wx.navigateTo({
-      url: '/pages/details/details',
-    })
-  },
+  // goto: function () {
+  //   wx.navigateTo({
+  //     url: '/pages/details/details',
+  //   })
+  // },
 
   // 分享
   share: function (e) {
@@ -135,7 +143,7 @@ Page({
       url: '/pages/index/index',
     })
       console.log(e)
-  },
+    },
   // 公告
   hot:function(){
     wx.navigateTo({
@@ -148,192 +156,26 @@ Page({
       url: '/pages/search/search',
     })
   },
-
+  
   data: {
+    // 未读消息
+    icons:"0",
     // 首页公告
+    imgUrls: [],
     msgList:[],
     // 首页广告图
     advert:"",
     mm: "a",
     // 点赞个数
     index: 0,
-    // 第四个发布者信息 
-    tabuser: [
-      {
-        id: 0,
-        name: "发布者用户名",
-        type: "置顶",
-        dis: 2.3,
-        title: "发布者标题",
-        time: "2019.02.02 18:36",
-        location: "发布者定位",
-        content: "招28方430杰师渣车，熟悉南岸. 江北.渝北的老渣娃2名，新手勿扰，工资7000 三万提 + 安全奖电话17774973668",
-        img: [
-          { src: "../images/carousel/05.jpg" },
-          { src: "../images/carousel/06.jpg" },
-          { src: "../images/carousel/07.jpg" },
-        ],
-        project: "车辆出售",
-        index: 1,
-      },
-      {
-        id: 1,
-        name: "发布者用户名",
-        type: "置顶",
-        dis: 2.3,
-        title: "发布者标题",
-        time: "2019.02.02 18:36",
-        location: "发布者定位",
-        content: "晚鱼村28方今晚装成12点，想装细料装细料，想装页岩装页岩，想装自运装自运，随意，自运1200.提供南山渣票，车子750电密18580515020……同时今晚鹅公岩桥头有5车料1300现在切得到的报名，没夜间。同时关音桥建渣现金1500.通宵联系电话153 1086 6666同时内转需要6个车，能跑一个月固定车车跑电密15922709164另外我朋友要30台18方内转车要切的电密182 2325 7564",
-        img: [
-          { src: "../images/carousel/05.jpg" },
-
-        ],
-        project: "车辆出售",
-        index: 1,
-      },
-      {
-        id: 2,
-        name: "发布者用户名",
-        type: "置顶",
-        dis: 2.3,
-        title: "发布者标题",
-        time: "2019.02.02 18:36",
-        location: "发布者定位",
-        content: "翠云万科 肖家河万科 欢迎来22 28 32 45的来自运， 附近有渣场的也可以合作。结账方式随意！",
-        img: [
-          { src: "../images/carousel/05.jpg" },
-          { src: "../images/carousel/06.jpg" },
-          { src: "../images/carousel/07.jpg" },
-          { src: "../images/carousel/05.jpg" },
-          { src: "../images/carousel/06.jpg" },
-          { src: "../images/carousel/07.jpg" },
-          { src: "../images/carousel/05.jpg" },
-          { src: "../images/carousel/06.jpg" },
-          { src: "../images/carousel/07.jpg" },
-        ],
-        project: "车辆出售",
-        index: 1,
-      },
-      {
-        id: 3,
-        name: "发布者用户名",
-        type: "置顶",
-        dis: 2.3,
-        title: "发布者标题",
-        time: "2019.02.02 18:36",
-        location: "发布者定位",
-        content: "卡特320..323DL，324D，326.329D，336D，等，中介好操作，直接与老板谈价，如需要请联系 最新挖机信息在朋友圈，如有打扰多多原谅",
-        rec: "荐",
-        img: [
-        ],
-        project: "车辆出售",
-        index: 1,
-      },
-      {
-        id: 4,
-        name: "发布者用户名",
-        type: "置顶",
-        dis: 2.3,
-        title: "发布者标题",
-        time: "2019.02.02 18:36",
-        location: "发布者定位",
-        content: "翠云万科 肖家河万科 欢迎来22 28 32 45的来自运， 附近有渣场的也可以合作。结账方式随意！",
-        img: [
-          { src: "../images/carousel/05.jpg" },
-          { src: "../images/carousel/06.jpg" },
-          { src: "../images/carousel/07.jpg" },
-          { src: "../images/carousel/05.jpg" },
-        ],
-        project: "车辆出售",
-        index: 1,
-      }
-    ],
+    // 最新发布信息 
+    // 优质推荐信息
+    tabuserjian:[], 
+    tabuser: [],
     // 推荐是否隐藏
     hidden: true,
     // =============================
-    user: [
-      {
-        // id
-        id: 0,
-        // 用户头像
-        header: "/pages/images/carousel/02.jpg",
-        // 用户名
-        name: "发布者用户名",
-        // 十万火急
-        type: "十万火急",
-        // 距离
-        dis: 2.3,
-        // 发布者需求标题
-        title: "发布者需求标题",
-        // 时间
-        time: "2019.02.02 18:36",
-        // 发布者定位
-        location: "发布者定位",
-        // 内容
-        content: "翠云万科欢迎32万/28方/22方车24小时随时开自运。要来拉的老板提前联系，结账方式随意。",
-        // 图片
-        userimg: [
-          {
-            url: "/pages/images/carousel/05.jpg",
-          },
-          {
-            url: "/pages/images/carousel/06.jpg",
-          },
-          {
-            url: "/pages/images/carousel/07.jpg"
-          }
-        ],
-        // 视屏
-        video: "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400",
-        // 项目类型
-        project: "车辆出售",
-        // 拨打电话
-        callphone: "",
-        // 点赞数
-        index: 1,
-      },
-      {
-        // id
-        id: 1,
-        // 用户头像
-        header: "/pages/images/carousel/02.jpg",
-        // 用户名
-        name: "发布者用户名",
-        // 十万火急
-        type: "十万火急",
-        // 距离
-        dis: 2.3,
-        // 发布者需求标题
-        title: "发布者需求标题",
-        // 时间
-        time: "2019.02.02 18:36",
-        // 发布者定位
-        location: "发布者定位",
-        // 内容
-        content: "翠云万科欢迎32万/28方/22方车24小时随时开自运。要来拉的老板提前联系，结账方式随意。",
-        // 图片
-        userimg: [
-          {
-            url: "/pages/images/carousel/05.jpg",
-          },
-          {
-            url: "/pages/images/carousel/06.jpg",
-          },
-          {
-            url: "/pages/images/carousel/07.jpg"
-          }
-        ],
-        // 视屏
-        video: "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400",
-        // 项目类型
-        project: "车辆出售",
-        // 拨打电话
-        callphone: "",
-        // 点赞数
-        index: 1,
-      }
-    ],
+    user: [],
     // 定位位置
     location:"",
     // 
@@ -397,7 +239,6 @@ Page({
     ],
     // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // 轮播图图片路径
-      imgUrls: [],
       // 图标跳转
       icon:[
         {
@@ -475,15 +316,67 @@ Page({
       }
     　})
   },
+  /**
+   * 最新发布打电话
+   */
+   callphonenew:function(e){
+    var e=e.currentTarget.dataset.id
+    var that=this
+    var tel=that.data.tabuser[e].tel
+    wx.makePhoneCall({
+      phoneNumber: tel
+    })
+    console.log("最新发布第几个带年华",e)
+   },
+   callphonejian:function(e){
+    var e=e.currentTarget.dataset.id
+    var that=this
+    var tel=that.data.tabuserjian[e].tel
+    wx.makePhoneCall({
+      phoneNumber: tel
+    })
+    console.log("最新发布第几个带年华",e)
+   },
+   // 分享
+  tabSharejian: function (e) {
+    // wx.showShareMenu({
 
+    // })
+    console.log("分享")
+  },
+  // 评论
+  tabCommentjian: function (e) {
+    console.log("评论")
+  },
+  // 点赞
+  tabLikejian: function (e) {
+    var that = this
+    console.log(e)
+    var id = e.currentTarget.dataset.id
+    console.log("这是第" + id + "个")
+    // for(var i in this.data.user){
+    var like = that.data.tabuser[id].point_ratio
+    var index = "tabuser[" + id + "].point_ratio";
+    that.setData({
+      [index]: like + 1
+    })
+
+    // }
+    console.log("这是点赞后的点赞数" + like)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
         var that=this
+        
   //  获取用户信息
   // ************************************************************************************************************************
-
+  
+  var uid=wx.getStorageSync("uid");
+  that.setData({
+    uid
+  })
     //1、调用微信登录接口，获取code
     wx.login({
       success: function (r) {
@@ -512,9 +405,9 @@ Page({
                   //2、调用获取用户信息接口
                   //...
                   wx.request({
-                    url: 'http://tsf.com/home/index/do_getLocation',
+                    url: 'http://tsf.suipk.cn/home/index/do_getLocation',
                     data: {
-                      uid:code,
+                      uid,
                       city,
                       longitude,
                       latitude,
@@ -575,9 +468,10 @@ Page({
     console.log(mm)
     // })
     // *******************************************************************************************************************//
+    // 轮播图
     console.log("body调用后台接口--onLoad")
     wx.request({
-      url: 'http://tsf.com/home/index/do_banner',
+      url: 'http://tsf.suipk.cn/home/index/do_banner',
       data: {
         type: 0
       },
@@ -592,6 +486,7 @@ Page({
         // 轮播图片
         console.log(res.data.data)
         var res = res.data.data
+        console.log("轮播图",res)
         that.setData({
           imgUrls: res
         })
@@ -605,9 +500,9 @@ Page({
     // *******************************************************************************************************************//
     // 首页公告+首页十万火急+首页广告位
     wx.request({
-      url: 'http://tsf.com/home/index/do_info',
+      url: 'http://tsf.suipk.cn/home/index/do_info',
       data:{
-        uid:1
+        uid
       },
       method: 'POST',
       header: {
@@ -616,18 +511,21 @@ Page({
       success:function(res){
         console.log("调用首页成功")
         console.log("1---------------")
+        console.log("发布十万火急",res)
         // 首页广告-advert[0]
         var advert=res.data.data.advert[0].img_url
         that.setData({
-          advert:advert
+          // 广告
+          advert:advert,
+          // 公告
+          msgList:res.data.data.notice,
+          // 首页发布者信息
+          user:res.data.data.info
         })
-        console.log("高高图"+that.data.advert)
-        // 首页公告
-        that.setData({
-          msgList:res.data.data.notice
-        })
-        // 首页发布者信息
+        console.log("广告图"+that.data.advert)
         console.log("公告",that.data.msgList)
+        console.log("发布者信息",that.data.user)
+        console.log("发布十万火急",res.data.data.info)
         console.log(res)
         console.log("2---------------")
       },fail:function(){
@@ -635,7 +533,68 @@ Page({
       }
     })
     // *******************************************************************************************************************//
+    // 三个标题下的优质发布和最新推荐
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_Recommend",
+      data:{
+        type:1,
+        uid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        console.log("最新发布调用成功")
+        console.log("最新发布调用成功",res)
+        that.setData({
+          tabuser:res.data.data
+        })
+      }
+
+    })
+    // 优质推荐
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_Recommend",
+      data:{
+        type:2,
+        // uid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        console.log("优质推荐调用成功")
+        console.log("优质推荐调用成功",res)
+        that.setData({
+          tabuserjian:res.data.data
+        })
+      }
+
+    })
+    /**
+     * 未读消息
+     */
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_is_news",
+      data:{
+        uid,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        console.log("未读消息",res)
+        that.setData({
+          icons:res.data.data
+        })
+      }
+    })
     // *******************************************************************************************************************//
+    // var that=this
+    
   },
 
 
@@ -643,16 +602,39 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that=this
+    console.log("#########")
+    console.log("最新发布数组",that.data.tabuser)
+    console.log("#########")
+    for(var i in this.data.tabuser){
+      console.log("最新发布数组",that.data.tabuser[i].px)
+      if(that.data.tabuser[i].px==1){
+        // var like = that.data.tabuser[i].px
+        var index = "tabuser[" + i + "].px";
+        that.setData({
+          [index]:"置顶"
+        })
+        continue
+      }
+    }
+    console.log("十万火急",that.data.user)
+    for(var m in that.data.user){
+      if(that.data.user[m].lable=1){
+        var index = "user[" + m + "].lable";
+        that.setData({
+          [index]:"十万火急"
+        })
+        console.log("十万火急，啊")
+        continue
+      }
+    }
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function (e) {
-    this.setData({
-
-    });
+    
   },
 
   /**

@@ -9,7 +9,7 @@
  <view class="section d-spb">
     <view class="section-title">选择工种</view>
     <view class="right d-spb">
-      <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位或者双击手动输入" value="{{selectData[index]}}"  data-time="{{lastTapTime}}" bindtap="doubleClick" />
+      <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位或者双击手动输入" value="{{h==false?selectData[index].title:hr}}"  data-time="{{lastTapTime}}"  />
       <view catchtap='selectTap'>
         <image class="section-img" hidden="{{hidden}}" src="../../images/position/shape45.png"></image>
       </view>
@@ -18,10 +18,10 @@
  <!-- ================================ -->
       <!-- 下拉选项框 -->
       <!-- 列表项布局 -->
-      <view class='select_box'>
-    <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*60):0}}rpx;'>
+      <view class='select_box gz'>
+    <view class='option_box mm' style='height:{{selectShow?(selectData.length>5?325:selectData.length*60):0}}rpx;'>
     <!-- 选择的列表项 -->
-        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' data-id='{{item.id}}' catchtap='optionTap' >{{item.title}}</text>
     </view>
     </view>
       <!-- ================================ -->
@@ -29,7 +29,7 @@
  <view class="section2 d-spb">
     <view class="section-title">薪资范围</view>
     <view class="right d-spb mon" catchtap='selectTap2'>
-      <input name="i2" disabled='true' value="{{selectData2[indexs]}}"/>
+      <input name="i2" disabled='true' placeholder="请选择薪资范围" value="{{h2==false?selectData2[indexs].salary:hr2}}"/>
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -41,25 +41,37 @@
       <view class='select_box'>
     <view class='option_box' style='height:{{selectShow2?(selectData2.length>5?325:selectData2.length*60):0}}rpx;'>
     <!-- 选择的列表项 -->
-        <text class='option' wx:for='{{selectData2}}' wx:key='this' data-index='{{index}}' catchtap='optionTap2' >{{item}}</text>
+        <text class='option' wx:for='{{selectData2}}' wx:key='this' data-index='{{index}}' catchtap='optionTap2' >{{item.salary}}</text>
     </view>
     </view>
       <!-- ================================ -->
  <!-- 工作地点 -->
   <view class="section2 d-spb">
     <view class="section-title">工作地点</view>
-    <view class="right d-spb">
+    <!-- <view class="right d-spb">
       <input name="i3" placeholder-class="holder{{err}}" placeholder="" />
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
+    </view> -->
+    <view class="right d-spb" bindtap="translate">
+          <!-- <input class="i4" name="i4" disabled="true" value="{{location}}"/> -->
+          <!--  -->
+          <import src="../../../model/model" />
+          <view class="infoText">{{province}} {{city}} {{county}}</view>
+          <view class="infoText" wx-if="{{h3==true}}">{{hr3}}</view>
+          <template is="areaData" data="{{...item}}" />
+          <!--  -->
+          <view>
+            <image class="section-img" style="width:17rpx;height:29rpx;" src="../../images/right.png"></image>
+          </view>
     </view>
  </view>
   <!-- 工作年限 -->
   <view class="section2 d-spb">
     <view class="section-title">工作年限</view>
     <view class="right d-spb mon" catchtap='selectTap3'>
-      <input name="i4" disabled="true" value="{{selectData3[index3]}}" />
+      <input name="i4" disabled="true" placeholder="请选择工作年限" value="{{h4==false?selectData3[index3].salary:hr4}}" />
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -71,7 +83,7 @@
       <view class='select_box'>
     <view class='option_box' style='height:{{selectShow3?(selectData3.length>5?325:selectData3.length*60):0}}rpx;'>
     <!-- 选择的列表项 -->
-        <text class='option' wx:for='{{selectData3}}' wx:key='this' data-index='{{index}}' catchtap='optionTap3' >{{item}}</text>
+        <text class='option' wx:for='{{selectData3}}' wx:key='this' data-index='{{index}}' catchtap='optionTap3' >{{item.salary}}</text>
     </view>
     </view>
       <!-- ================================ -->
@@ -79,29 +91,29 @@
  <view class="section2 d-spb">
     <view class="section-title">联系人</view>
     <view class="right d-spb">
-      <input name="i5" maxlength="11" type="number"/>
+      <input name="i5" value="{{h5==false?'':hr5}}" maxlength="11"/>
     </view>
  </view>
  <!-- 联系电话 -->
   <view class="section2 d-spb">
     <view class="section-title">联系电话</view>
     <view class="right d-spb">
-      <input name="i6" maxlength="11" type="number"/>
-      <view class="ch">更换</view>
+      <input name="i6" disabled="{{mz}}" value="{{h6==false?phone:hr6}}" maxlength="11" type="number"/>
+      <view class="ch" bindtap="chp">更换</view>
     </view>
  </view>
  <!-- 公司名称 -->
  <view class="section2 d-spb">
     <view class="section-title">公司名称</view>
     <view class="right d-spb">
-      <input name="i7" placeholder="选填"/>
+      <input value="{{h7==false?'':hr7}}" name="i7" placeholder="选填"/>
     </view>
  </view>
  <!-- 详细地址 -->
  <view class="section2 d-spb">
     <view class="section-title">详细地址</view>
     <view class="right d-spb">
-      <input name="i8" placeholder="选填" />
+      <input value="{{h8==false?'':hr8}}" name="i8" placeholder="选填" />
     </view>
  </view>
 <!-- 公司图片 -->
@@ -111,8 +123,9 @@
     <view class="license">公司图片(最多三张)</view>
   <view class="d-flex">
   <!-- 上传图片预览 -->
-  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
-    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload">
       <image src="../../images/onload.png"></image>
@@ -143,11 +156,106 @@
 <view class="self">
 <view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">职位详情</view>
 <view class="texta">
-<textarea placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请填写职位详情，200字以内" maxlength="200" name="textarea"/>
+<textarea placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" value="{{h9==false?'':hr9}}" placeholder="请填写职位详情，200字以内" maxlength="200" name="textarea"/>
 </view>
 </view>
 </view>
+<!-- ================================ -->
+ <view>
+        <view class="stick">是否置顶</view>
+        <view>
+          <van-radio-group value="{{ radio }}" bind:change="onChange" class="d-flex" style="margin-top:40rpx;">
+            <van-radio checked-color="#76D4C6" name="1" bindtap="yes">是</van-radio>
+            <van-radio checked-color="#76D4C6" style="margin-left:100rpx;" name="2">否</van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+<!-- ================================ -->
 <button form-type="submit" class="next">确认发布</button>
 <include src="/pages/Ac/isu/isu.wxml"/>
 </form>
 </view>
+<view class='ssshade' hidden='{{sssup}}'bindtap='sssuhide' ></view>
+<view class='ssshade_box sspopup' hidden='{{sssup}}'>
+<!-- 成功图片 -->
+    <view class='sstitle'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
+    <!-- 文字 -->
+    <view class='sscontent'>
+      <view class="sst1">置顶提醒</view>
+     <!-- 置顶方式 -->
+      <view class="d-spb ssticks">
+        <view class="sstit">置顶方式</view>
+        <view class="sright">
+          <van-radio-group value="{{ sradio }}" bind:change="sonChange"  class="d-flex">
+            <van-radio checked-color="#76D4C6" name="1">十万火急</van-radio>
+            <van-radio checked-color="#76D4C6" style="margin-left:20rpx;" name="2">置顶</van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+<!-- 开始时间 -->
+      <view class="d-spb sstick2">
+        <view class="sstit">开始时间</view>
+        <view class="sr2">
+          <view class="ssectiontime">  
+            <!-- <picker mode="multiSelector" bindchange="bindDateChange">  
+             <view class="spicker">  
+              <view class="sselect-text" >{{dates}}</view>
+              <image src="../../images/select.png"></image>
+             </view>  
+             </picker>   -->
+             <!-- +++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+              <view class="tui-picker-detail">{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+              </view>
+              </picker>
+             <!-- +++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <!-- ===== -->
+             <!-- <van-popup z-index="99999999"
+  show="{{ show }}" position="bottom" custom-style="height: 50%;" bind:close="onClosems">
+        <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm="onInput"/>
+      </van-popup> -->
+             <!-- ===== -->
+          </view>
+        </view>
+      </view>
+      <!-- 结束时间 -->
+      <view class="d-spb sstick2">
+        <view class="sstit">结束时间</view>
+        <view class="sr2">
+          <view class="ssectiontime">  
+            <!-- <picker mode="date" bindchange="ebindDateChange">  
+             <view class="spicker">  
+              <view class="sselect-text" >{{edates}}</view>
+              <image src="../../images/select.png"></image>
+             </view>  
+             </picker>   -->
+             <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <picker mode="multiSelector" value="{{dateTime12}}" bindchange="changeDateTime12" bindcolumnchange="changeDateTimeColumn12" range="{{dateTimeArray12}}">
+              <view class="tui-picker-detail">{{dateTimeArray12[0][dateTime12[0]]}}-{{dateTimeArray12[1][dateTime12[1]]}}-{{dateTimeArray12[2][dateTime12[2]]}} {{dateTimeArray12[3][dateTime12[3]]}}:{{dateTimeArray12[4][dateTime12[4]]}}
+              </view>
+              </picker>
+             <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+          </view>
+        </view>
+      </view>
+<!-- 置顶类型 -->
+     <!-- 置顶方式 -->
+      <view class="d-spb szd" hidden="{{sradio==1||sradio==0?true:false}}">
+        <view class="sstit">置顶类型</view>
+        <view class="sright">
+          <van-radio-group value="{{ seradio }}" bind:change="seonChange"  class="d-flex">
+            <van-radio checked-color="#76D4C6" name="1">首页置顶</van-radio>
+            <van-radio checked-color="#76D4C6" style="margin-left:20rpx;" name="2">内页置顶</van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+      <!--  -->
+<view class="mm" style="font-size:30rpx;">{{yearss}}</view>
+    </view>
+<!-- 消耗积分 -->
+<view class="sint">消耗积分 <text style="color:#F57900">{{int}}</text></view>
+    <view class='ssmsg' bindtap='sssuhide'>确定</view>
+</view>
+ <!-- <include src="/pages/Ac/no/no"/> -->
+ <include src="/pages/Ac/no/no"/>
+

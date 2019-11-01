@@ -20,12 +20,24 @@
         <view class="sstit">开始时间</view>
         <view class="sr2">
           <view class="ssectiontime">  
-            <picker mode="date" bindchange="bindDateChange">  
+            <!-- <picker mode="multiSelector" bindchange="bindDateChange">  
              <view class="spicker">  
               <view class="sselect-text" >{{dates}}</view>
               <image src="../../images/select.png"></image>
              </view>  
-             </picker>  
+             </picker>   -->
+             <!-- +++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+              <view class="tui-picker-detail">{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+              </view>
+              </picker>
+             <!-- +++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <!-- ===== -->
+             <!-- <van-popup z-index="99999999"
+  show="{{ show }}" position="bottom" custom-style="height: 50%;" bind:close="onClosems">
+        <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm="onInput"/>
+      </van-popup> -->
+             <!-- ===== -->
           </view>
         </view>
       </view>
@@ -34,18 +46,24 @@
         <view class="sstit">结束时间</view>
         <view class="sr2">
           <view class="ssectiontime">  
-            <picker mode="date" bindchange="ebindDateChange">  
+            <!-- <picker mode="date" bindchange="ebindDateChange">  
              <view class="spicker">  
               <view class="sselect-text" >{{edates}}</view>
               <image src="../../images/select.png"></image>
              </view>  
-             </picker>  
+             </picker>   -->
+             <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+             <picker mode="multiSelector" value="{{dateTime12}}" bindchange="changeDateTime12" bindcolumnchange="changeDateTimeColumn12" range="{{dateTimeArray12}}">
+              <view class="tui-picker-detail">{{dateTimeArray12[0][dateTime12[0]]}}-{{dateTimeArray12[1][dateTime12[1]]}}-{{dateTimeArray12[2][dateTime12[2]]}} {{dateTimeArray12[3][dateTime12[3]]}}:{{dateTimeArray12[4][dateTime12[4]]}}
+              </view>
+              </picker>
+             <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
           </view>
         </view>
       </view>
 <!-- 置顶类型 -->
      <!-- 置顶方式 -->
-      <view class="d-spb szd">
+      <view class="d-spb szd" hidden="{{sradio==1||sradio==0?true:false}}">
         <view class="sstit">置顶类型</view>
         <view class="sright">
           <van-radio-group value="{{ seradio }}" bind:change="seonChange"  class="d-flex">
@@ -55,6 +73,7 @@
         </view>
       </view>
       <!--  -->
+<view class="mm" style="font-size:30rpx;">{{yearss}}</view>
     </view>
 <!-- 消耗积分 -->
 <view class="sint">消耗积分 <text style="color:#F57900">{{int}}</text></view>

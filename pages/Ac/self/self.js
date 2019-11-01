@@ -6,10 +6,15 @@ var demo = new QQMapWX({
   key: 'E7PBZ-USVKO-3BYWB-SR4NY-TA7Z3-S4BTR'
 });
 var model = require('../../../model/model.js')
-
+import request from "../../login.js"
 var ashow = false;
 var item = {};
 Page({
+  chp:function(){
+    this.setData({
+      mz:false
+    })
+  },
   showPopup() {
     this.setData({ show: true });
   },
@@ -61,11 +66,51 @@ Page({
   formSubmit: function (e){
     var that=this
     var m=e.detail.value
+    /**
+     * 提交后台
+     */
+    // 身份选择
+    var identity_selection=m.i1
+    // 真实信命
+    var real_name=m.i2
+    // 联系电话
+    var tel=m.i3
+    // 所在区域
+    var province=that.data.province
+    var city=that.data.city
+    var county=that.data.county
+    var region=province+city+county
+    // 详细地址
+    var detailed_address=m.i5
+    // 身份证照片
+    var p=that.data.identity_card
+    console.log(that.data.identity_card)
+    var z=p.join('|')
+    var identity_card=z
     console.log(e.detail.value, that.data.province);
-    if (m.i1 == "请选择类型"||m.i1=="" || m.i2 == "" || m.i3 == "" || m.i4 == "" || m.i5 == "" || this.data.tempFilePaths.length<2||this.data.province==""){
+    if (m.i1=="" || m.i2 == "" || m.i3 == "" || m.i5 == "" || this.data.tempFilePaths.length<2||this.data.province==""){
       this.hidePopup(false);
     }else{
       this.suhide(false);
+      request({
+      url:'http://tsf.suipk.cn/home/personal/do_persona',
+      data:{
+        uid:1,
+        identity_selection,
+        real_name,
+        tel,
+        region,
+        detailed_address,
+        identity_card
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
+      this.setData({
+      
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+      })
     }
     console.log(this.data.tempFilePaths.length)
   },
@@ -111,32 +156,43 @@ Page({
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
+        var a =[]
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePaths[i],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                identity_card:a
+              })
+              //如果是最后一张,则隐藏等待中  
+              if (count == tempFilePaths.length) {
                 wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
               }
-            });*/
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          });
         }
 
       }
@@ -194,6 +250,7 @@ Page({
     console.log(e)
   },
   data: {
+    mz:true,
     province:"",
     // ///////////////////////////////////////
     item: {
@@ -208,7 +265,11 @@ Page({
     // 自定义编辑
     isDisabled: true,
     selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
-    selectData: ['请选择类型', '身份类型', '身份类型', "身份类型", "自定义编辑"],//下拉列表的数据
+    selectData: [
+      {id:1,title:"重庆"},
+      {id:2,title:"成都"},
+      {id:3,title:"北京"}
+    ],//下拉列表的数据
     index: 0,//选择的下拉列表下标
     //成功 提示框
     sup: true,
@@ -249,14 +310,32 @@ Page({
       city: item.citys[item.value[1]].name,
       county: item.countys[item.value[2]].name
     });
-    console.log(this.data.province,this.data.city,this.data.county);
+    console.log("最后选择的",this.data.province,this.data.city,this.data.county);
   }
   ,
   onReachBottom: function () {
   },
   nono: function () { },
   onLoad: function (options) {
-   
+    
+    var that=this
+    var phone=wx.getStorageSync('userphone');
+    that.setData({
+      phone
+    })
+    // request({
+    //   url:'http://tsf.suipk.cn/home/Personal/do_id_type',
+    //   data:{
+    //   type:2,
+    //   }
+    //   }).then(res=>{
+    //   console.log('调用身份选择成功',res)
+    //   that.setData({
+    //     selectData:res.data.data
+    //   })
+    //   }).catch(err=>{
+    //   console.log('调用失败')
+    //   })
   },
 
   /**

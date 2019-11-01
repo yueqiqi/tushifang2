@@ -1,4 +1,5 @@
 // pages/self/data/data.js
+import request from "../../login.js"
 Page({
 
   /**
@@ -19,7 +20,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    request({
+    url:'http://tsf.suipk.cn/home/Personal/do_my_information',
+    data:{
+      uid:1,
+    }
+    }).then(res=>{
+    console.log('调用我的资料成功',res)
+    if(res.data.data.role==1){
+      res.data.data.role="企业"
+    }else if(res.data.data.role==2){
+      res.data.data.role="司机"
+    }else{
+      res.data.data.role="个人"
+    }
+    this.setData({
+      img:res.data.data.head,
+      name:res.data.data.nickName,
+      phone:res.data.data.phone,
+      pos:res.data.data.role
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+    })
   },
 
   /**

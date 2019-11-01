@@ -2,7 +2,7 @@
   <view class='checkbox-con'>
     <checkbox-group bindchange="checkboxChange">
       <label class="{{item.checked?'checkbox checked':'checkbox'}}" wx:for="{{checkboxArr}}" bindtap='checkbox' data-index="{{index}}" wx:key="item.name">
-        <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.name}}
+        <checkbox value="{{item.title}}" checked="{{item.checked}}"/>{{item.title}}
       </label>
     </checkbox-group>
   </view>

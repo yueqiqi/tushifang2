@@ -1,3 +1,5 @@
+import request from "../../login.js"
+
 // pages/Ac/index/inex.js
 Page({
 
@@ -32,6 +34,7 @@ Page({
         link: "/pages/index/index"
       },
     ],
+
     title:[
       {
         url:"../../images/ent.png",
@@ -55,8 +58,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
+    var that=this
+    request({
+      url:"http://tsf.suipk.cn/home/personal/do_check_in",
+      data:{
+        code:"",
+        msg:"",
+      }
+      }).then(res=>{
+        console.log("调用个人免费成功",res)
+        that.setData({
+          ent:res.data.data
+        })
+        }).catch(err=>{
+          console.log("调用失败")
+        })
+  },  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

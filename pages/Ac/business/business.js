@@ -1,6 +1,11 @@
 // pages/Ac/business/business.js
+import request from "../../login.js" 
 Page({
-
+chp:function(){
+  this.setData({
+    mz:false
+  })
+},
 // ==================================================
 // 下拉选项框
   selectTap(e) {
@@ -19,7 +24,7 @@ Page({
       selectShow: !this.data.selectShow,
     });
     // 隐藏文字
-    if (Index == 4) {
+    if (Index == 5) {
       this.setData({
         isDisabled: false,
         selectData:"",
@@ -37,13 +42,17 @@ Page({
   formSubmit:function(e){
     var m = e.detail.value
     console.log(e.detail.value);
+    var identity_selection=m.i1
+    var business_name=m.i2
+    var contacts=m.i3
+    var tel=m.i4
     // 获取输入框的值
     if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.i4 == "") {
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
     } else {
     wx.navigateTo({
-      url: '/pages/Ac/business2/business2',
+      url: '/pages/Ac/business2/business2?identity_selection='+identity_selection+"&business_name="+business_name+"&contacts="+contacts+"&tel="+tel,
     })
      
     }
@@ -74,9 +83,9 @@ Page({
     // 自定义编辑
     isDisabled: true,
     selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
-    selectData: ['请选择类型', '身份类型', '身份类型', "身份类型", "自定义编辑"],//下拉列表的数据
+    selectData: [],//下拉列表的数据
     index: 0,//选择的下拉列表下标
-
+    mz:true,
     // 错误提示框
     popup: true,
     // 输入内容为空
@@ -88,7 +97,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    var phone=wx.getStorageSync('userphone');
+    that.setData({
+      phone,
+    })
+    request({
+      url:'http://tsf.suipk.cn/home/Personal/do_id_type',
+      data:{
+        type:4
+      }
+      }).then(res=>{
+      console.log('调用企业类型成功',res)
+      this.setData({
+        selectData:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

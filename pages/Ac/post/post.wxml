@@ -1,68 +1,21 @@
-<!-- 求职招聘 -->
-<!-- 发布信息 -->
-<view class="bgf mgt" style="margin-top:0">
-<view class="left">
-  <view class="title">求职招聘</view>
-  <!-- 内容 -->
-  <view class="d-flex ms">
-  <block wx:for="{{arr1}}" wx:key="{{index}}">
-  <view class="bgf">
-    <navigator url="{{item.link}}">
-  <view class="bgf">
-     <view class="border">{{item.name}}</view>
-  </view>
-    </navigator>
-  </view>
-  </block>
-  </view>
-</view>
-</view>
 
-<!-- 工地信息 -->
+
+
+  <block wx:for="{{info}}" wx:key="{{index}}"> 
 <view class="bgf mgt">
-<view class="left">
-  <view class="title">工地信息</view>
-  <!-- 内容 -->
-  <view class="d-flex ms">
-    <block wx:for="{{arr2}}" wx:key="{{index}}">
-    <view class="bgf">
-    <navigator url="{{item.link}}">
-    <view class="bgf">
-     <view class="border">{{item.name}}</view>
+    <view class="left">
+      <view class="title">{{item.title}}</view>
+          <view class="d-flex ms">
+            <block wx:for="{{item.twoclass}}" wx:for-item="two" wx:key="{{index}}">
+              <view class="bgf">
+                <navigator url="{{two.title=='我要找工作'?'/pages/Ac/jobs/jobs?id='+item.id+'&idtwo='+two.id:(two.title=='我要招人'?'/pages/Ac/hiring/hiring?id='+item.id+'&idtwo='+two.id:'/pages/Ac/issue/issue?id='+item.id+'&idtwo='+two.id)}}">
+                  <view class="bgf">
+                    <view class="border">{{two.title}}</view>
+                </view>
+                </navigator>
+              </view>
+            </block>
+          </view>
+        </view>
     </view>
-    </navigator>
-    </view>
-  </block>
-  </view>
-</view>
-</view>
-
-<!-- 渣场信息 -->
-<view class="bgf mgt">
-<view class="left">
-  <view class="title">渣场信息</view>
-  <!-- 内容 -->
-  <view class="d-flex ms">
-    <block wx:for="{{arr3}}" wx:key="{{index}}">
-    <navigator url="{{item.link}}">
-     <view class="border">{{item.name}}</view>
-    </navigator>
-  </block>
-  </view>
-</view>
-</view>
-
-<!-- 买卖信息 -->
-<view class="bgf mgt">
-<view class="left">
-  <view class="title">买卖信息</view>
-  <!-- 内容 -->
-  <view class="d-flex ms">
-    <block wx:for="{{arr4}}" wx:key="{{index}}">
-    <navigator url="{{item.link}}">
-     <view class="border">{{item.name}}</view>
-    </navigator>
-  </block>
-  </view>
-</view>
-</view>
+      </block>  

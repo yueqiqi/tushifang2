@@ -1,4 +1,5 @@
 // pages/interest/interest.js
+import request from '../login.js' 
 Page({
   data: {
     // 按钮是否禁用
@@ -148,7 +149,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var uid=wx.getStorageSync('uid');
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_my_Interest',
+      data:{
+        uid
+      }
+      }).then(res=>{
+      console.log('调用我的兴趣成功',res)
+      this.setData({
+        checkboxArr:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

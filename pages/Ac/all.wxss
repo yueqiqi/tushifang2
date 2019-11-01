@@ -142,7 +142,7 @@ margin-top:31rpx;
     width: 500rpx;
     height: 450rpx;
     background:rgba(255,255,255,1);
-border:2rpx solid rgba(118,212,198,1);
+/* border:2rpx solid rgba(118,212,198,1); */
 border-radius:10rpx;
 }
 .spopup .stitle{

@@ -4,7 +4,7 @@
       <view class='select_box'>
     <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*70):0}}rpx;'>
     <!-- 选择的列表项 -->
-        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' data-id="{{item.id}}" catchtap='optionTap' >{{item.title}}</text>
     </view>
     </view>
       <!-- ================================ -->

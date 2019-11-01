@@ -4,60 +4,66 @@
 
 <!-- ======================================================== =====================================================-->
 <block wx:for="{{user}}" wx:key="{{index}}">
-<view class="bgf mtt">
-<view  bindtap="goto">
-<!-- 发布者信息 -->
+  <view class="bgf">
+
+    <view class="bgf mtt">
+      <view data-id="{{item.id}}" bindtap="goto">
+        <!-- 发布者信息 -->
   <view class="postMessage d-spb">
   <view class="d-flex">
     <!-- 头像 -->
     <view class="headPortrait">
-      <image class="headPortrait2" src="{{item.header}}"></image>
+      <image class="headPortrait2" src="{{item.head}}"></image>
     </view>
     <!-- 用户名 -->
-    <view class="userName">{{item.name}}</view>
+    <view class="userName">{{item.nickname}}</view>
     <!-- 十万火急 -->
-    <view class="worry">{{item.type}}</view>
+    <view class="worry">{{item.lable}}</view>
     </view>
     <!-- 距离 -->
-    <view class="distance">{{item.dis}}km</view>
+    <view class="distance">{{item.distance}}km</view>
   </view>
 <!-- 发布需求标题 -->
 <view class="userTitle">{{item.title}}</view>
 <view class="timer">
-<!-- 时间 -->
-<view class="time">{{item.time}}</view>
+  <!-- 时间 -->
+<view class="time">{{item.create_time}}</view>
 <!-- 发布者定位 -->
 <view class="userPosition d-flex">
-<view>
-  <image src="../images/position49.png"></image>
+  <view>
+    <image src="../images/position49.png"></image>
 </view>
 <view>
-<text>{{item.location}}</text>
+  <text>{{item.location}}</text>
 </view>
 </view>
 </view>
 <!-- 发布内容 -->
 <view class="content">{{item.content}}</view>
+  </view>
 <!-- 发布图片和视频 -->
 <view class="userImg">
 <!-- 发布图片 -->
-<block wx:for="{{item.userimg}}" wx:key="{{index}}">
+<block wx:for="{{item.img_url_arr}}" wx:key="{{index}}">
   <view>
-  <image class="userImg{{index}}" src="{{item.url}}"></image> 
+  <image class="userImg{{index}}" src="{{item}}"></image> 
   </view>
 </block>
 
 </view>
 <!-- 发布的视频 -->
 <view >
- <video src="{{item.video}}" binderror="videoErrorCallback"></video>
+ <video src="{{item.img_url}}" binderror="videoErrorCallback"></video>
 </view>
 
 <!-- 项目类型 -->
 <view class="project">
-<view class="projectType">项目类型</view>
-<view class="car">{{item.project}}</view>
-<view class="phone d-flex">
+  <view class="d-flex">
+    
+    <view class="projectType">项目类型</view>
+<view class="car">{{item.two_class_title}}</view>
+  </view>
+<view class="phone d-flex" data-id="{{index}}" bindtap="callphone">
   <view>
     <image src="../images/phone.png"></image>
   </view>
@@ -73,26 +79,26 @@
 <view class="scl">
 <!-- 分享 -->
 <view class="share d-flex" bindtap="share" data-id="{{item.id}}">
-<view>
+  <view>
 <image src="../images/share.png"></image>
 </view>
 <text>分享</text>
 </view>
 <!-- 评论 -->
 <view class="comment d-flex" bindtap="comment" data-id="{{item.id}}">
-<view>
+  <view>
 <image src="../images/comment.png"></image>
 </view>
 <text>评论</text>
 </view>
 <!-- 点赞 -->
 <view class="like d-flex" bindtap="like" data-id="{{item.id}}">
-<view>
-<image src="../images/like.png"></image>
+  <view>
+    <image src="../images/like.png"></image>
 </view>
-<text>{{item.index}}</text>
+<text>{{item.point_ratio}}</text>
 </view>
 </view>
-</view>
+  </view>
 
 </block>

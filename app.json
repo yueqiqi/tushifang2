@@ -1,6 +1,13 @@
 {
   "pages": [
+    "pages/AA/image",
+    "pages/AA/Phone",
+    "pages/AA/getphone",
+    "pages/AA/login",
+    "pages/AA/tabs",
+    "pages/aatime/aatime",
     "pages/body/body",
+    "pages/Ac/issue/issue",
     "pages/self/card/card",
     "pages/demo/sync/sync",
     "pages/self/mycard/mycard",
@@ -17,7 +24,6 @@
     "pages/self/site/addsite",
     "pages/self/site/site",
     "pages/self/issue/issue",
-    "pages/Ac/issue/issue",
     "pages/store/index/index",
     "pages/comment/comment",
     "pages/integrityMes/integrityMes",

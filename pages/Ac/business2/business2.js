@@ -1,4 +1,5 @@
 // pages/Ac/business2/business2.js
+import request from "../../login.js"
 var QQMapWX = require('../../../utils/qqmap-wx-jssdk.js');
 // 实例化API核心类
 var demo = new QQMapWX({
@@ -18,14 +19,68 @@ Page({
   },
   formSubmit:function(e){
     // 打印输入的内容
+    var that=this
     console.log(e.detail.value)
     var m = e.detail.value
+    /**
+     * 请求提交
+     */
+    // 公司类型
+    var identity_selection=that.data.identity_selection
+    // 企业名称
+    var business_name=that.data.business_name
+    // 联系人
+    var contacts=that.data.contacts
+    // 联系电话
+    var tel =that.data.tel
+    // 所在地区
+    var region=m.i1
+    // 详细地址
+    var detailed_address=m.i2
+    // 成立时间
+    var established_time=m.i3
+    var p=that.data.img_url_license
+    console.log(that.data.img_url_license)
+    var z=p.join('|')
+    var img_url_license=z
+    console.log(z)
+    // 营业执照
+    // var img_url_license=that.data.img_url_license
+    var q=that.data.img_url_certificate
+    console.log(that.data.img_url_license)
+    var w=q.join('|')
+    var img_url_certificate=w
+    console.log(z)
+    // 法人证明书
+    // var img_url_certificate=that.data.img_url_certificate
+    console.log("营业执照和证明书",img_url_license,img_url_certificate)
     console.log(e.detail.value);
     if (m.i1 == "" || m.i2 == "" || m.i3 == ""  || this.data.tempFilePaths.length == 0) {
       this.hidePopup(false);
     } else {
       this.suhide(false);
-      
+      request({
+        url:'http://tsf.suipk.cn/home/Personal/do_enterprise',
+        data:{
+          uid:1,
+          identity_selection,
+          business_name,
+          contacts,
+          tel,
+          region,
+          detailed_address,
+          established_time,
+          img_url_license,
+          img_url_certificate,
+        }
+        }).then(res=>{
+        console.log('调用企业信息成功',res)
+        this.setData({
+        
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
     }
     console.log(this.data.tempFilePaths.length)
   },
@@ -115,41 +170,52 @@ wx.navigateBack({
           duration: 1000
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        let tempFilePaths = res.tempFilePaths;
+        let tempFilePathss = res.tempFilePaths;
 
         that.setData({
-          tempFilePathss: tempFilePaths
+          tempFilePathss: tempFilePathss
         })
         /**
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+        var a =[]
+        for (var i = 0, h = tempFilePathss.length; i < h; i++) {
           //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePathss[i],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                img_url_certificate:a
+              })
+              //如果是最后一张,则隐藏等待中  
+              if (count == tempFilePathss.length) {
                 wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
               }
-            });*/
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          });
         }
 
       }
@@ -160,10 +226,11 @@ wx.navigateBack({
   /**
      * 上传图片方法
      */
+
   upload: function () {
     let that = this;
     wx.chooseImage({
-      count: 2, // 默认9
+      count: 4, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -183,32 +250,43 @@ wx.navigateBack({
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
+        var a =[]
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePaths[i],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                img_url_license:a
+              })
+              //如果是最后一张,则隐藏等待中  
+              if (count == tempFilePaths.length) {
                 wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
               }
-            });*/
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          });
         }
 
       }
@@ -279,7 +357,14 @@ wx.navigateBack({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
+    var that=this
+    console.log("接受我是企业1的参数",options)
+    that.setData({
+      tel:options.tel,
+      identity_selection:options.identity_selection,
+      business_name:options.business_name,
+      contacts:options.contacts
+    })
     // 调用接口
     wx.getLocation({
       type: 'wgs84',
@@ -312,7 +397,7 @@ wx.navigateBack({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

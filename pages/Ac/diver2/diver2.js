@@ -3,17 +3,56 @@
 
 // 修改后缀共8处
 
-
+import request from "../../login.js"
 Page({
   // 完成
   formSubmit:function(){
     // 打印输入的内容
-
+var that=this
     if (this.data.tempFilePaths.length == 0 || this.data.tempFilePaths2.length == 0 || this.data.tempFilePaths3.length == 0 || this.data.tempFilePaths4.length == 0 || this.data.tempFilePaths5.length == 0 || this.data.tempFilePaths6.length <2) {
       this.hidePopup(false);
     } else {
       this.suhide(false);
-
+      var identity_selection=that.data.identity_selection
+      var real_name=that.data.real_name
+      var tel=that.data.tel
+      var vehicle_id=that.data.vehicle_id
+      var car_number=that.data.car_number
+      // 驾驶证件照
+      var img_url_driving=that.data.tempFilePaths
+      // 行驶证件照
+      var img_url_certificate=that.data.tempFilePaths2
+      // 车辆四周照片
+      var img_url_surroundings=that.data.tempFilePaths3
+      // 运营证件照
+      var img_url_operating=that.data.tempFilePaths4
+      // 从业资格证
+      var img_url_qualification=that.data.tempFilePaths5
+      // 手持身份照
+      var img_url_qualification=that.data.tempFilePaths6
+      request({
+        url:'http://tsf.suipk.cn/home/Personal/do_driver',
+        data:{
+          identity_selection,
+          real_name,
+          tel,
+          vehicle_id,
+          car_number,
+          img_url_driving,
+          img_url_certificate,
+          img_url_surroundings,
+          img_url_operating,
+          img_url_qualification,
+          img_url_card,
+        }
+        }).then(res=>{
+        console.log('调用我是司机成功',res)
+        this.setData({
+        
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
     }
     
   },
@@ -55,9 +94,10 @@ up:function(){
     let that = this;
     wx.chooseImage({
       count: 2, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: res => {
+      type: 'image',
+      // sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      // sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: (res) => {
         wx.showToast({
           title: '正在上传...',
           icon: 'loading',
@@ -65,16 +105,17 @@ up:function(){
           duration: 1000
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        let tempFilePaths = res.tempFilePaths;
-
+        console.log("图片路径",res)
+        let tempFilePaths = res.tempFiles;
+        let image=res.tempFiles.path
         that.setData({
           tempFilePaths6: tempFilePaths
         })
         /**
          * 上传完成后把文件上传到服务器
          */
-        var count = 0;
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+        // var count = 0;
+        // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
           /*  wx.uploadFile({
               url: HOST + '地址路径',
@@ -100,8 +141,35 @@ up:function(){
                 })
               }
             });*/
-        }
 
+            // wx.cloud.uploadFile({
+            //   cloudPath: 'example.png',
+            //   filePath: '', // 文件路径
+            // }).then(res => {
+            //   // get resource ID
+            //   console.log("扇窗",res)
+            //   console.log(res.fileID)
+            // }).catch(error => {
+            //   // handle error
+            // })
+
+
+
+
+            // request({
+            // url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            // data:{
+            //   image,
+            // }
+            // }).then(res=>{
+            // console.log('调用第六个图片信息成功',res)
+            // this.setData({
+            
+            // })
+            // }).catch(err=>{
+            // console.log('调用失败')
+            // })
+        // }
       }
     })
   },
@@ -177,34 +245,47 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
-        var count = 0;
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-          //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
-                wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
-              }
-            });*/
-        }
+        // request({
+        //   url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+        //   data:{
+        //     image:tempFilePaths
+        //   }
+        //   }).then(res=>{
+        //   console.log('调用成功',res)
+        //   this.setData({
+          
+        //   })
+        //   }).catch(err=>{
+        //   console.log('调用失败')
+        //   })
+        // var count = 0;
+        // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+        //   //上传文件
+        //   /*  wx.uploadFile({
+        //       url: HOST + '地址路径',
+        //       filePath: tempFilePaths[i],
+        //       name: 'uploadfile_ant',
+        //       header: {
+        //         "Content-Type": "multipart/form-data"
+        //       },
+        //       success: function (res) {
+        //         count++;
+        //         //如果是最后一张,则隐藏等待中  
+        //         if (count == tempFilePaths.length) {
+        //           wx.hideToast();
+        //         }
+        //       },
+        //       fail: function (res) {
+        //         wx.hideToast();
+        //         wx.showModal({
+        //           title: '错误提示',
+        //           content: '上传图片失败',
+        //           showCancel: false,
+        //           success: function (res) { }
+        //         })
+        //       }
+        //     });*/
+        // }
 
       }
     })
@@ -281,6 +362,19 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
+        request({
+          url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+          data:{
+            image:tempFilePaths
+          }
+          }).then(res=>{
+          console.log('调用成功',res)
+          this.setData({
+          
+          })
+          }).catch(err=>{
+          console.log('调用失败')
+          })
         var count = 0;
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
@@ -366,7 +460,7 @@ up:function(){
   upload3: function () {
     let that = this;
     wx.chooseImage({
-      count: 2, // 默认9
+      count: 4, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -385,6 +479,19 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
+        request({
+          url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+          data:{
+            image:tempFilePaths
+          }
+          }).then(res=>{
+          console.log('调用成功',res)
+          this.setData({
+          
+          })
+          }).catch(err=>{
+          console.log('调用失败')
+          })
         var count = 0;
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
@@ -489,6 +596,19 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
+        request({
+          url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+          data:{
+            image:tempFilePaths
+          }
+          }).then(res=>{
+          console.log('调用成功',res)
+          this.setData({
+          
+          })
+          }).catch(err=>{
+          console.log('调用失败')
+          })
         var count = 0;
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
@@ -593,6 +713,19 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
+         request({
+            url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            data:{
+              image:tempFilePaths
+            }
+            }).then(res=>{
+            console.log('调用成功',res)
+            this.setData({
+            
+            })
+            }).catch(err=>{
+            console.log('调用失败')
+            })
         var count = 0;
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
@@ -691,7 +824,14 @@ up:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log("接受我是司机1传来的参数",options)
+    this.setData({
+      identity_selection:options.identity_selection,
+      real_name:options.real_name,
+      tel:options.tel,
+      vehicle_id:options.vehicle_id,
+      car_number:options.car_number
+    })
   },
 
   /**

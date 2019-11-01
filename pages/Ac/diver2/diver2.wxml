@@ -41,10 +41,10 @@
 <!-- 车辆四周照 -->
   <view class="prove">
     <view class="license">车辆四周照</view>
-    <view class="d-flex">
+    <view class="d-flex" style="width:100%;flex-wrap: wrap;">
     <!-- 上传图片预览 -->
       <view class="imgs" wx:for="{{tempFilePaths3}}" wx:key="index">
-        <image src='{{item}}' bindlongpress="deleteImage3" bindtap="listenerButtonPreviewImage3" data-index="{{index}}" mode='widthFix'/>
+        <image style="width:100rpx;height:100rpx;" src='{{item}}' bindlongpress="deleteImage3" bindtap="listenerButtonPreviewImage3" data-index="{{index}}" mode='widthFix'/>
       </view>
     <view class="onload" bindtap="upload3">
       <image src="../../images/onload.png"></image>
@@ -89,7 +89,7 @@
     <view class="d-flex">
     <!-- 上传图片预览 -->
       <view class="imgs" wx:for="{{tempFilePaths6}}" wx:key="index">
-        <image src='{{item}}' bindlongpress="deleteImage6" bindtap="listenerButtonPreviewImage6" data-index="{{index}}" mode='widthFix'/>
+        <image src='{{item.path}}' bindlongpress="deleteImage6" bindtap="listenerButtonPreviewImage6" data-index="{{index}}" mode='widthFix'/>
       </view>
     <view class="onload" bindtap="upload6">
       <image src="../../images/onload.png"></image>

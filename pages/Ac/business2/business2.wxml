@@ -35,8 +35,10 @@
     <view class="license">营业执照</view>
   <view class="d-flex">
   <!-- 上传图片预览 -->
-  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
-    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  <!-- 上传图片预览 -->
+  <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload">
       <image src="../../images/onload.png"></image>
@@ -49,9 +51,11 @@
     <view class="license">法人证明书  <text>选填</text></view>
     <view class="d-flex">
     <!-- 上传图片预览 -->
-      <view class="imgs" wx:for="{{tempFilePathss}}" wx:key="index">
-        <image src='{{item}}' bindlongpress="deleteImages" bindtap="listenerButtonPreviewImages" data-index="{{index}}" mode='widthFix'/>
-      </view>
+
+      <view class="imgsz" wx:for="{{tempFilePathss}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImages" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImages" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+  </view>
     <view class="onload" bindtap="uploads">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
