@@ -51,7 +51,6 @@
     <view class="license">法人证明书  <text>选填</text></view>
     <view class="d-flex">
     <!-- 上传图片预览 -->
-
       <view class="imgsz" wx:for="{{tempFilePathss}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImages" data-index="{{index}}" mode=''/>
     <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImages" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>

@@ -7,7 +7,7 @@
   <!-- 我的昵称 -->
   <view class="d-spb data">
     <view class="til">我的昵称</view>
-    <view class="me">{{name}}</view>
+    <view class="me">{{nickname}}</view>
   </view>
   <!-- 我的电话 -->
   <view class="d-spb data">

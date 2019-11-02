@@ -1,7 +1,11 @@
 // pages/Ac/diver/diver.js
 import request from "../../login.js"
 Page({
-
+chp:function(){
+  this.setData({
+    mz:fasle
+  })
+},
   // ==================================================
   // 下拉选项框
   selectTap(e) {
@@ -148,12 +152,18 @@ o1:function(e){
     fo6: "false",
     fo7: "false",
     fo8: "false",
+    mz:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
+    var phone=wx.getStorageSync('userphone');
+    that.setData({
+      phone,
+    })
     request({
       url:'http://tsf.suipk.cn/home/Personal/do_id_type',
       data:{

@@ -2,8 +2,8 @@
 <!-- <text>pages/panel/panel.wxml</text> -->
 <view>
   <!-- 选项卡 -->
-  <van-tabs sticky>
-    <van-tab title="最新发布">
+  <van-tabs sticky bindclick="yz">
+    <van-tab name="0" title="最新发布">
 
       <!-- ====================================================================== -->
       <block wx:for="{{tabuser}}" wx:key="{{index}}">
@@ -20,7 +20,7 @@
                   <!-- 发布者用户名 -->
                   <view class="tab-userName">{{item.nickname}}</view>
                   <!-- 置顶 -->
-                  <view class="stick">{{item.px}}</view>
+                  <view class="stick" wx-if="{{item.px!=1}}">{{item.px}}</view>
                   <view class="rec" hidden="{{item.rec=='荐'?false:true}}">{{item.rec}}</view>
                 </view>
                 <!-- 距离 -->
@@ -45,8 +45,11 @@
             <!-- 图片 -->
             <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:key="{{index}}">
-                <image src="{{item}}"></image>
+                <image bindtap="listener" data-index="{{index}}" data-ids="{{item}}" src="{{item}}"></image>
               </block>
+            </view>
+            <view wx-if="{{item.video!=''}}">
+              <video src="{{item.video}}" binderror="videoErrorCallback"></video>
             </view>
             <!-- 项目类型 -->
             <view class="tab-project">
@@ -89,7 +92,8 @@
         </view>
       </block>
     </van-tab>
-    <van-tab title="优质推荐">
+
+    <van-tab name='1' title="优质推荐" >
       <block wx:for="{{tabuserjian}}" wx:key="{{index}}">
         <view class="bgf">
 
@@ -104,7 +108,7 @@
                   <!-- 发布者用户名 -->
                   <view class="tab-userName">{{item.nickname}}</view>
                   <!-- 置顶 -->
-                  <view class="stick">{{item.px}}</view>
+                  <view class="stick" wx-if='{{item.px!=1}}'>{{item.px}}</view>
                   <view class="rec" hidden="{{item.rec=='荐'?false:true}}">{{item.rec}}</view>
                 </view>
                 <!-- 距离 -->
@@ -127,10 +131,13 @@
               <view class="tab-content">{{item.content}}</view>
             </view>
             <!-- 图片 -->
-            <view class="tabUserImg{{item.img.length==1?'b':(item.img.length==4?'c':(item.img.length>5||item.img.length>1&&item.img.length<4?'a':'0')) }}">
+            <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:key="{{index}}">
                 <image src="{{item}}"></image>
               </block>
+            </view>
+            <view wx-if="{{item.video!=''}}">
+              <video src="{{item.video}}" binderror="videoErrorCallbacks"></video>
             </view>
             <!-- 项目类型 -->
             <view class="tab-project">

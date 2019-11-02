@@ -320,6 +320,8 @@ this.ssushow()
     var uid=wx.getStorageSync("uid");
     // 十万火急+置顶
     if(that.data.radio==1){
+      var start_time=that.data.stime
+      var ending_time=that.data.etime
       if(that.data.sradio==1){
         var lable=1
       }else if(that.data.sradio==2){
@@ -331,11 +333,11 @@ this.ssushow()
       }
       }else if(that.data.radio==0||that.data.radio==2){
       var lable=0
+      var start_time=""
+      var ending_time=""
     }
     // 开始时间
-    var start_time=that.data.stime
     // 结束时间
-    var ending_time=that.data.etime
     console.log("最后开始结束时间+",start_time,ending_time,lable)
     // 置顶类型
     // that.data.seradio
@@ -883,9 +885,10 @@ if(that.data.issu==true){
       var s2 =new Array(
         this.data.dateTimeArray[3][time[3]],em
       )
+      var k=' '
       var  p1=s1.join('-')
       var p2=s2.join(':')
-      var  pList=p1+''+p2
+      var  pList=p1+k+p2
       console.log("最后结果"+pList)
       that.setData({
         stime:pList
@@ -932,7 +935,8 @@ if(that.data.issu==true){
       )
       var  p1=end1.join('-')
       var p2=end2.join(':')
-      var  pList2=p1+''+p2
+      var k=' '
+      var  pList2=p1+k+p2
       console.log("选择的最后时间",pList2)
       console.log("最后结果"+pList2)
       that.setData({

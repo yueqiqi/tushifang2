@@ -12,7 +12,7 @@
         <view class="title-text2">专题副标题</view>
       </view>
       <view>
-        <image class="title-img1" src="../images/carousel/08.jpg"></image>
+        <image class="title-img1" src="{{advert[0].img_url}}"></image>
       </view>
     </view>
     <!-- 左侧右下角小标题 -->
@@ -22,7 +22,7 @@
         <view class="title-text2">专题副标题</view>
       </view>
       <view>
-        <image class="title-img1" src="../images/carousel/09.jpg"></image>
+        <image class="title-img1" src="{{advert[1].img_url}}"></image>
       </view>
     </view>
     
@@ -31,7 +31,7 @@
   <view class="title-right" bindtap="titleRight">
     <view class="title-text3">专题标题</view>
     <view class="title-text4">专题副标题</view>
-    <image class="title-img3" src="../images/carousel/10.jpg"></image>
+    <image class="title-img3" src="{{advert[2].img_url}}"></image>
   </view>
 </view>
 </view>

@@ -52,8 +52,8 @@
 
 </view>
 <!-- 发布的视频 -->
-<view >
- <video src="{{item.img_url}}" binderror="videoErrorCallback"></video>
+<view wx-if="{{item.video!=''}}">
+ <video src="{{item.video}}" binderror="videoErrorCallback"></video>
 </view>
 
 <!-- 项目类型 -->

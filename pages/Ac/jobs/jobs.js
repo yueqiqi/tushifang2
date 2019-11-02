@@ -1,6 +1,11 @@
 // pages/Ac/jobs/jobs.js
 import request from "../../login.js"
 Page({
+  chp:function(){
+    this.setData({
+      mz:false
+    })
+  },
   //  // ======================================================
   // 工作年限
   // 下拉选项框
@@ -158,11 +163,12 @@ Page({
         this.hidePopup(false);
     } else {
       this.suhide(false);
+      var uid=wx.getStorageSync('uid');
       wx.request({
         url:"http://tsf.suipk.cn/home/info/do_addjob",
         data:{
           // 用户名
-          uid:1,
+          uid,
           // 一级分类
           one_class_id,
           // 二级分类
@@ -249,6 +255,7 @@ Page({
     myjob2:false,
     myjob3:false,
     myjob4:false,
+    mz:true,
     /**
      * 
      */
@@ -292,6 +299,8 @@ Page({
    */
   onLoad: function (options) {
     var that=this
+    var tel=wx.getStorageSync('userphone');
+    
     // /获取二级列表
     console.log("获取一级列表",options.id)
     console.log("获取二级列表",options.idtwo)
@@ -299,6 +308,7 @@ Page({
     that.setData({
         one_class:options.id,
         two_class:options.idtwo,
+        tel,
    })
      /**
     * 获取工种类型

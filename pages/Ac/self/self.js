@@ -93,7 +93,7 @@ Page({
     }else{
       this.suhide(false);
       request({
-      url:'http://tsf.suipk.cn/home/personal/do_persona',
+      url:'http://tsf.suipk.cn/home/personal/do_personal',
       data:{
         uid:1,
         identity_selection,

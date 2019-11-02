@@ -12,9 +12,15 @@
     <view class="license">驾驶证件照</view>
   <view class="d-flex">
   <!-- 上传图片预览 -->
-  <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
-    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
+
+
+  <!-- <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix'/>
+  </view> -->
     <view class="onload" bindtap="upload">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
@@ -27,9 +33,14 @@
     <view class="license">行驶证件照</view>
     <view class="d-flex">
     <!-- 上传图片预览 -->
+  <view class="imgsz" wx:for="{{tempFilePaths2}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage2" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage2" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+  </view>
+<!-- 
       <view class="imgs" wx:for="{{tempFilePaths2}}" wx:key="index">
         <image src='{{item}}' bindlongpress="deleteImage2" bindtap="listenerButtonPreviewImage2" data-index="{{index}}" mode='widthFix'/>
-      </view>
+      </view> -->
     <view class="onload" bindtap="upload2">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
@@ -43,9 +54,13 @@
     <view class="license">车辆四周照</view>
     <view class="d-flex" style="width:100%;flex-wrap: wrap;">
     <!-- 上传图片预览 -->
-      <view class="imgs" wx:for="{{tempFilePaths3}}" wx:key="index">
+  <view class="imgsz" wx:for="{{tempFilePaths3}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage3" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage3" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+  </view>
+      <!-- <view class="imgs" wx:for="{{tempFilePaths3}}" wx:key="index">
         <image style="width:100rpx;height:100rpx;" src='{{item}}' bindlongpress="deleteImage3" bindtap="listenerButtonPreviewImage3" data-index="{{index}}" mode='widthFix'/>
-      </view>
+      </view> -->
     <view class="onload" bindtap="upload3">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
@@ -58,9 +73,14 @@
     <view class="license">运营证件照</view>
     <view class="d-flex">
     <!-- 上传图片预览 -->
-      <view class="imgs" wx:for="{{tempFilePaths4}}" wx:key="index">
+  <view class="imgsz" wx:for="{{tempFilePaths4}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage4" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage4" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+  </view>
+
+      <!-- <view class="imgs" wx:for="{{tempFilePaths4}}" wx:key="index">
         <image src='{{item}}' bindlongpress="deleteImage4" bindtap="listenerButtonPreviewImage4" data-index="{{index}}" mode='widthFix'/>
-      </view>
+      </view> -->
     <view class="onload" bindtap="upload4">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
@@ -73,9 +93,13 @@
     <view class="license">从业资格证</view>
     <view class="d-flex">
     <!-- 上传图片预览 -->
-      <view class="imgs" wx:for="{{tempFilePaths5}}" wx:key="index">
+  <view class="imgsz" wx:for="{{tempFilePaths5}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage5" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage5" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+  </view>
+      <!-- <view class="imgs" wx:for="{{tempFilePaths5}}" wx:key="index">
         <image src='{{item}}' bindlongpress="deleteImage5" bindtap="listenerButtonPreviewImage5" data-index="{{index}}" mode='widthFix'/>
-      </view>
+      </view> -->
     <view class="onload" bindtap="upload5">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
@@ -88,9 +112,13 @@
     <view class="license">手持身份证照 (正反面)</view>
     <view class="d-flex">
     <!-- 上传图片预览 -->
-      <view class="imgs" wx:for="{{tempFilePaths6}}" wx:key="index">
+  <view class="imgsz" wx:for="{{tempFilePaths6}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage6" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage6" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+  </view>
+      <!-- <view class="imgs" wx:for="{{tempFilePaths6}}" wx:key="index">
         <image src='{{item.path}}' bindlongpress="deleteImage6" bindtap="listenerButtonPreviewImage6" data-index="{{index}}" mode='widthFix'/>
-      </view>
+      </view> -->
     <view class="onload" bindtap="upload6">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
@@ -101,7 +129,7 @@
 
 <view class="mybtn d-spb">
 <button  class="up" bindtap="up">上一步</button>
-<button form-type="submit" class="finish" bindtap="finish">完成</button>
+<button form-type="submit" class="finish">完成</button>
 </view>
 <include src="../all.wxml"/>
 </form>

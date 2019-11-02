@@ -166,14 +166,19 @@ chp:function(){
     var tel=m.i3
     // 上传图片
     // 评论内容
-    var info=m.textarea
-    var p=that.data.img_url_arr
-    console.log(that.data.img_url_arr)
-    var z=p.join('|')
-    var img_url_arr=z
-    console.log(z)
-    // 公司视频
-    var video=that.data.video_url
+    if(m.textarea.length==0||that.data.img_url_arr==''||that.data.video_url==''){
+      var img_url_arr=''
+      var video=''
+    }else{
+      var info=m.textarea
+      var p=that.data.img_url_arr
+      console.log(that.data.img_url_arr)
+      var z=p.join('|')
+      var img_url_arr=z
+      console.log(z)
+      // 公司视频
+      var video=that.data.video_url
+    }
     // 一级id
     var one_class_id=that.data.one_class
     // 二级id
@@ -199,7 +204,7 @@ chp:function(){
     var ending_time=that.data.etime
     console.log("最后开始结束时间+",start_time,ending_time,lable)
     if(that.data.issu==false){
-    if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.textarea.length == 0) {
+    if (m.i1 == "" || m.i2 == "" || m.i3 == "") {
       this.hidePopup(false);
     } else {
       
@@ -574,6 +579,10 @@ chp:function(){
       phone,
     })
     console.log("信息id1",options)
+    var title=options.title
+    that.setData({
+      title
+    })
     // +++++++++++++++++++个人中心跳转发布+++++++++++++++++++++++++++++
     if(options.pid!=undefined){
       request({

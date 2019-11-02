@@ -51,6 +51,7 @@ Page({
     var w=q.join('|')
     var img_url_certificate=w
     console.log(z)
+    var uid=wx.getStorageSync('uid');
     // 法人证明书
     // var img_url_certificate=that.data.img_url_certificate
     console.log("营业执照和证明书",img_url_license,img_url_certificate)
@@ -62,7 +63,7 @@ Page({
       request({
         url:'http://tsf.suipk.cn/home/Personal/do_enterprise',
         data:{
-          uid:1,
+          uid,
           identity_selection,
           business_name,
           contacts,
@@ -137,7 +138,7 @@ wx.navigateBack({
    */
   deleteImages: function (e) {
     var that = this;
-    var tempFilePaths = that.data.tempFilePathss;
+    var tempFilePathss = that.data.tempFilePathss;
     var index = e.currentTarget.dataset.index;//获取当前长按图片下标
     wx.showModal({
       title: '提示',
@@ -145,7 +146,7 @@ wx.navigateBack({
       success: function (res) {
         if (res.confirm) {
           console.log('点击确定了');
-          tempFilePaths.splice(index, 1);
+          tempFilePathss.splice(index, 1);
         } else if (res.cancel) {
           console.log('点击取消了');
           return false;
@@ -159,7 +160,7 @@ wx.navigateBack({
   uploads: function () {
     let that = this;
     wx.chooseImage({
-      count: 2, // 默认9
+      count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -180,11 +181,11 @@ wx.navigateBack({
          */
         var count = 0;
         var a =[]
-        for (var i = 0, h = tempFilePathss.length; i < h; i++) {
+        // for (var i = 0, h = tempFilePathss.length; i < h; i++) {
           //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-            filePath: tempFilePathss[i],
+            filePath: tempFilePathss[0],
             name: 'image',
             method: 'POST',
           header: {
@@ -216,7 +217,7 @@ wx.navigateBack({
               })
             }
           });
-        }
+        // }
 
       }
     })
@@ -230,7 +231,7 @@ wx.navigateBack({
   upload: function () {
     let that = this;
     wx.chooseImage({
-      count: 4, // 默认9
+      count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -251,11 +252,11 @@ wx.navigateBack({
          */
         var count = 0;
         var a =[]
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+        // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-            filePath: tempFilePaths[i],
+            filePath: tempFilePaths[0],
             name: 'image',
             method: 'POST',
           header: {
@@ -287,7 +288,7 @@ wx.navigateBack({
               })
             }
           });
-        }
+        // }
 
       }
     })

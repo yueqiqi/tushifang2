@@ -17,11 +17,14 @@ chp:function(){
   // 点击下拉列表
   optionTap(e) {
     let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
+    // let compid = e.currentTarget.dataset.id;//获取点击的下拉列表选项的下标
+    console.log("选择的id",compid)
     console.log(Index)
     // console.log(e)
     this.setData({
       index: Index,
       selectShow: !this.data.selectShow,
+      // compid
     });
     // 隐藏文字
     if (Index == 5) {
@@ -41,6 +44,7 @@ chp:function(){
   // 获取form表单的数据
   formSubmit:function(e){
     var m = e.detail.value
+    var that=this
     console.log(e.detail.value);
     var identity_selection=m.i1
     var business_name=m.i2

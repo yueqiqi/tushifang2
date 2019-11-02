@@ -19,20 +19,34 @@ var that=this
       var vehicle_id=that.data.vehicle_id
       var car_number=that.data.car_number
       // 驾驶证件照
-      var img_url_driving=that.data.tempFilePaths
+      var p=that.data.img_url_driving
+      var z=p.join('|')
+      var img_url_driving=z
       // 行驶证件照
-      var img_url_certificate=that.data.tempFilePaths2
+      var p1=that.data.img_url_certificate
+      var z1=p1.join('|')
+      var img_url_certificate=z1
       // 车辆四周照片
-      var img_url_surroundings=that.data.tempFilePaths3
+      var p2=that.data.img_url_surroundings
+      var z2=p2.join('|')
+      var img_url_surroundings=z2
       // 运营证件照
-      var img_url_operating=that.data.tempFilePaths4
+      var p3=that.data.img_url_operating
+      var z3=p3.join('|')
+      var img_url_operating=z3
       // 从业资格证
-      var img_url_qualification=that.data.tempFilePaths5
+      var p4=that.data.img_url_qualification
+      var z4=p4.join('|')
+      var img_url_qualification=z4
       // 手持身份照
-      var img_url_qualification=that.data.tempFilePaths6
+      var p5=that.data.img_url_card
+      var z5=p5.join('|')
+      var img_url_card=z5
+      var uid=wx.getStorageSync('uid');
       request({
         url:'http://tsf.suipk.cn/home/Personal/do_driver',
         data:{
+          uid,
           identity_selection,
           real_name,
           tel,
@@ -106,8 +120,8 @@ up:function(){
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         console.log("图片路径",res)
-        let tempFilePaths = res.tempFiles;
-        let image=res.tempFiles.path
+        let tempFilePaths = res.tempFilePaths;
+        // let image=res.tempFiles.path
         that.setData({
           tempFilePaths6: tempFilePaths
         })
@@ -115,43 +129,46 @@ up:function(){
          * 上传完成后把文件上传到服务器
          */
         // var count = 0;
-        // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+        var count = 0;
+        var a =[]
+        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePaths[i],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                img_url_card:a
+              })
+              //如果是最后一张,则隐藏等待中  
+              if (count == tempFilePaths.length) {
                 wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
               }
-            });*/
-
-            // wx.cloud.uploadFile({
-            //   cloudPath: 'example.png',
-            //   filePath: '', // 文件路径
-            // }).then(res => {
-            //   // get resource ID
-            //   console.log("扇窗",res)
-            //   console.log(res.fileID)
-            // }).catch(error => {
-            //   // handle error
-            // })
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          });
+          console.log("最后的",a)
+        }
 
 
 
@@ -226,7 +243,7 @@ up:function(){
   upload5: function () {
     let that = this;
     wx.chooseImage({
-      count: 2, // 默认9
+      count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -245,49 +262,48 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
-        // request({
-        //   url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-        //   data:{
-        //     image:tempFilePaths
-        //   }
-        //   }).then(res=>{
-        //   console.log('调用成功',res)
-        //   this.setData({
-          
-        //   })
-        //   }).catch(err=>{
-        //   console.log('调用失败')
-        //   })
-        // var count = 0;
-        // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-        //   //上传文件
-        //   /*  wx.uploadFile({
-        //       url: HOST + '地址路径',
-        //       filePath: tempFilePaths[i],
-        //       name: 'uploadfile_ant',
-        //       header: {
-        //         "Content-Type": "multipart/form-data"
-        //       },
-        //       success: function (res) {
-        //         count++;
-        //         //如果是最后一张,则隐藏等待中  
-        //         if (count == tempFilePaths.length) {
-        //           wx.hideToast();
-        //         }
-        //       },
-        //       fail: function (res) {
-        //         wx.hideToast();
-        //         wx.showModal({
-        //           title: '错误提示',
-        //           content: '上传图片失败',
-        //           showCancel: false,
-        //           success: function (res) { }
-        //         })
-        //       }
-        //     });*/
-        // }
+        var count = 0;
+          var a =[]
+          // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+            //上传文件
+            wx.uploadFile({
+              url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+              filePath: tempFilePaths[0],
+              name: 'image',
+              method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+              success: function (res) {
+                // console.log(that.data.tempFilePaths[1])
+                console.log("检验图片上传",res)
+                count++;
+                var qwe=res.data
+                var resl=JSON.parse(qwe)
+                a.push(resl.data)
+                console.log("返回值",resl,a)
+                that.setData({
+                  img_url_qualification:a
+                })
+                //如果是最后一张,则隐藏等待中  
+                if (count == tempFilePaths.length) {
+                  wx.hideToast();
+                }
+              },
+              fail: function (res) {
+                wx.hideToast();
+                wx.showModal({
+                  title: '错误提示',
+                  content: '上传图片失败',
+                  showCancel: false,
+                  success: function (res) { }
+                })
+              }
+            });
+            console.log("最后的",a)
+          }
 
-      }
+      // }
     })
   },
   /**
@@ -343,7 +359,7 @@ up:function(){
   upload4: function () {
     let that = this;
     wx.chooseImage({
-      count: 2, // 默认9
+      count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -375,18 +391,29 @@ up:function(){
           }).catch(err=>{
           console.log('调用失败')
           })
-        var count = 0;
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-          //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
+          var count = 0;
+          var a =[]
+          // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+            //上传文件
+            wx.uploadFile({
+              url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+              filePath: tempFilePaths[0],
+              name: 'image',
+              method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
               success: function (res) {
+                // console.log(that.data.tempFilePaths[1])
+                console.log("检验图片上传",res)
                 count++;
+                var qwe=res.data
+                var resl=JSON.parse(qwe)
+                a.push(resl.data)
+                console.log("返回值",resl,a)
+                that.setData({
+                  img_url_operating:a
+                })
                 //如果是最后一张,则隐藏等待中  
                 if (count == tempFilePaths.length) {
                   wx.hideToast();
@@ -401,8 +428,9 @@ up:function(){
                   success: function (res) { }
                 })
               }
-            });*/
-        }
+            });
+            console.log("最后的",a)
+          // }
 
       }
     })
@@ -460,7 +488,7 @@ up:function(){
   upload3: function () {
     let that = this;
     wx.chooseImage({
-      count: 4, // 默认9
+      count: 8, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -492,18 +520,29 @@ up:function(){
           }).catch(err=>{
           console.log('调用失败')
           })
-        var count = 0;
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-          //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
+          var count = 0;
+          var a =[]
+          for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+            //上传文件
+            wx.uploadFile({
+              url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
               filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
+              name: 'image',
+              method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
               success: function (res) {
+                // console.log(that.data.tempFilePaths[1])
+                console.log("检验图片上传",res)
                 count++;
+                var qwe=res.data
+                var resl=JSON.parse(qwe)
+                a.push(resl.data)
+                console.log("返回值",resl,a)
+                that.setData({
+                  img_url_surroundings:a
+                })
                 //如果是最后一张,则隐藏等待中  
                 if (count == tempFilePaths.length) {
                   wx.hideToast();
@@ -518,9 +557,9 @@ up:function(){
                   success: function (res) { }
                 })
               }
-            });*/
-        }
-
+            });
+            console.log("最后的",a)
+          }
       }
     })
   },
@@ -577,7 +616,7 @@ up:function(){
   upload2: function () {
     let that = this;
     wx.chooseImage({
-      count: 2, // 默认9
+      count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -609,18 +648,29 @@ up:function(){
           }).catch(err=>{
           console.log('调用失败')
           })
-        var count = 0;
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-          //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
+          var count = 0;
+          var a =[]
+          // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+            //上传文件
+            wx.uploadFile({
+              url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+              filePath: tempFilePaths[0],
+              name: 'image',
+              method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
               success: function (res) {
+                // console.log(that.data.tempFilePaths[1])
+                console.log("检验图片上传",res)
                 count++;
+                var qwe=res.data
+                var resl=JSON.parse(qwe)
+                a.push(resl.data)
+                console.log("返回值",resl,a)
+                that.setData({
+                  img_url_certificate:a
+                })
                 //如果是最后一张,则隐藏等待中  
                 if (count == tempFilePaths.length) {
                   wx.hideToast();
@@ -635,8 +685,10 @@ up:function(){
                   success: function (res) { }
                 })
               }
-            });*/
-        }
+            });
+            console.log("最后的",a)
+          // }
+  
 
       }
     })
@@ -694,7 +746,7 @@ up:function(){
   upload: function () {
     let that = this;
     wx.chooseImage({
-      count: 2, // 默认9
+      count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -726,34 +778,47 @@ up:function(){
             }).catch(err=>{
             console.log('调用失败')
             })
-        var count = 0;
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-          //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
+            var count = 0;
+            var a =[]
+            // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+              //上传文件
+              wx.uploadFile({
+                url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+                filePath: tempFilePaths[0],
+                name: 'image',
+                method: 'POST',
               header: {
-                "Content-Type": "multipart/form-data"
+                'content-type': 'application/x-www-form-urlencoded'
               },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
+                success: function (res) {
+                  // console.log(that.data.tempFilePaths[1])
+                  console.log("检验图片上传",res)
+                  count++;
+                  var qwe=res.data
+                  var resl=JSON.parse(qwe)
+                  a.push(resl.data)
+                  console.log("返回值",resl,a)
+                  that.setData({
+                    img_url_driving:a
+                  })
+                  //如果是最后一张,则隐藏等待中  
+                  if (count == tempFilePaths.length) {
+                    wx.hideToast();
+                  }
+                },
+                fail: function (res) {
                   wx.hideToast();
+                  wx.showModal({
+                    title: '错误提示',
+                    content: '上传图片失败',
+                    showCancel: false,
+                    success: function (res) { }
+                  })
                 }
-              },
-              fail: function (res) {
-                wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
-              }
-            });*/
-        }
+              });
+              console.log("最后的",a)
+            // }
+    
 
       }
     })
