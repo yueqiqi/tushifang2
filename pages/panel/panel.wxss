@@ -177,14 +177,14 @@ margin-top:33rpx;
 }
 /* 分享评论 */
 .tab-scl{
-  display: flex;justify-content: left;
-  margin-top:28rpx;padding-bottom:24rpx;
+  display: flex;justify-content:space-between;
+  margin-top:28rpx;padding-bottom:24rpx;margin-right:80rpx;
+  margin-left:78rpx;
 }
 .tab-scl image{
   width:30rpx;height:30rpx;
 }
 /* 分享 */
-.tab-share{margin-left:78rpx;}
 .tab-share button{
   font-size:28rpx;
  background: #fff;
@@ -203,7 +203,6 @@ button::after {
 }
 
 /* 评论 */
-.tab-comment{margin-left:156rpx;}
 .tab-comment text{
   margin-left:10rpx;
   font-size:28rpx;
@@ -212,8 +211,10 @@ button::after {
 font-weight:400;
 color:rgba(102,102,102,1);
 }
+.tab-like{
+  
+}
 /* 点赞 */
-.tab-like{margin-left:157rpx;}
 .tab-like text{
   margin:auto;
   margin-left:10rpx;

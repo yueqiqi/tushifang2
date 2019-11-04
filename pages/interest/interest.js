@@ -4,7 +4,8 @@ Page({
   data: {
     // 按钮是否禁用
     disabled:true,
-    checkboxArr: [{
+    checkboxArr: [
+      {
       name: '兴趣',
       checked: false
     }, {
@@ -41,7 +42,8 @@ Page({
     }, {
       name: '兴趣',
       checked: false
-    }, ],
+    }, 
+  ],
   },
   checkbox: function (e) {
     var index = e.currentTarget.dataset.index;//获取当前点击的下标

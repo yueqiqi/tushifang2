@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/body/body",
     "pages/AA/image",
     "pages/AA/Phone",
     "pages/AA/getphone",
     "pages/AA/login",
     "pages/AA/tabs",
     "pages/aatime/aatime",
-    "pages/body/body",
     "pages/Ac/issue/issue",
     "pages/self/card/card",
     "pages/demo/sync/sync",

@@ -1,154 +1,118 @@
 <!-- 诚信榜 -->
 <!-- 诚信榜红榜 -->
 <view>
-<van-tabs sticky swipeable="true" line-width="123" dot="true">
-<!-- 诚信红榜 -->
-  <van-tab title="诚信红榜">
-    <view class="red">
-      <!-- 第一个 -->
-      <view class="d-flex user">
-        <view class="left d-flex">
-          <view class="head"></view>
-          <view class="userName">发布者用户名</view>
-        </view>
-        <view class="right d-flex">
-          <view class="credit">用户信誉分</view>
-          <view class="score">200</view>
-        </view>
+  <van-tabs sticky line-width="123" dot="true">
+    <!-- 诚信红榜 -->
+    <van-tab title="诚信红榜">
+      <view class="red">
+        <block wx:for="{{integrity}}" wx:key="{{index}}">
+          <view class="d-flex user">
+            <view class="left d-flex">
+              <view class="head">
+                <image style="width:70rpx;height:70rpx;border-radius:50%;" src="{{item.head}}"></image>
+              </view>
+              <view class="userName">{{item.nickname}}</view>
+            </view>
+            <view class="right d-flex">
+              <view class="credit">用户信誉分</view>
+              <view class="score">{{item.credit}}</view>
+            </view>
+          </view>
+        </block>
       </view>
-      <!-- 第二个 -->
-      <view class="d-flex user">
-        <view class="left d-flex">
-          <view class="head"></view>
-          <view class="userName">发布者用户名</view>
-        </view>
-        <view class="right d-flex">
-          <view class="credit">用户信誉分</view>
-          <view class="score">200</view>
-        </view>
+    </van-tab>
+    <!-- 诚信灰榜 -->
+    <van-tab title="诚信灰榜">
+      <view class="red">
+        <block wx:for="{{integritys}}" wx:key="{{index}}">
+          <view class="d-flex user">
+            <view class="left d-flex">
+              <view class="head">
+                <image style="width:70rpx;height:70rpx;border-radius:50%;" src="{{item.head}}"></image>
+              </view>
+              <view class="userName">{{item.nickname}}</view>
+            </view>
+            <view class="right d-flex">
+              <view class="credit">用户信誉分</view>
+              <view class="score">{{item.credit}}</view>
+            </view>
+          </view>
+        </block>
       </view>
-      <!-- 第三个 -->
-      <view class="d-flex user">
-        <view class="left d-flex">
-          <view class="head"></view>
-          <view class="userName">发布者用户名</view>
-        </view>
-        <view class="right d-flex">
-          <view class="credit">用户信誉分</view>
-          <view class="score">200</view>
-        </view>
-      </view>
-      <!-- 第四个 -->
-      <view class="d-flex user">
-        <view class="left d-flex">
-          <view class="head"></view>
-          <view class="userName">发布者用户名</view>
-        </view>
-        <view class="right d-flex">
-          <view class="credit">用户信誉分</view>
-          <view class="score">200</view>
-        </view>
-      </view>
-
-    </view>
-  </van-tab>
-  <!-- 诚信灰榜 -->
-  <van-tab title="诚信灰榜">内容 2</van-tab>
-  <!-- 失信名单 -->
-  <van-tab title="失信名单">
-    <view class="break">
-      <!-- 温馨提示 -->
-      <!-- <view class="notice">
+    </van-tab>
+    <!-- 失信名单 -->
+    <van-tab title="失信名单">
+      <view class="break">
+        <!-- 温馨提示 -->
+        <!-- <view class="notice">
         <van-notice-bar mode="closeable"text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"/>
       </view> -->
-    <view class="gg">
-<view class="gonggao ml">温馨提示</view>
-<view class='scroll_view_border'>
-<view class="srcoll_view" bindtap="hot">温馨提示您请收好自己的财物</view>
-</view>
+        <view class="gg">
+          <view class="gonggao ml">温馨提示</view>
+          <view class='scroll_view_border'>
+            <view class="srcoll_view" bindtap="hot">温馨提示您请收好自己的财物</view>
+          </view>
+        </view>
+        <!-- 失信名单 -->
+        <block wx:for="{{break}}" wx:key="{{index}}">
+           <view bindtap="Mes" data-id="{{item.id}}">
+            <view class="breakText ml">{{item.title}}</view>
+            <!-- 图片 -->
+            <!-- <block wx:for="{{breakImg}}" wx:key="{{index}}"> -->
+              <image src="{{item.img_url}}" class="breakImg ml"></image>
+            <!-- </block> -->
+            <!-- 转自 -->
+            <view class="from ml d-flex mt">
+              <view class="from-left">转载自 <text>{{item.reprint}}</text></view>
+              <view class="from-right">
+                <text>{{item.create_time}}</text>
+                <!-- <text style="margin-left:10rpx">18:36</text> -->
+              </view>
+            </view>
+          </view>
+          <!--  -->
+          <!-- 分割线 -->
+          <view class="hr"></view>
+          <!-- 评论点赞 -->
+          <view class="scl">
+            <!-- 分享 -->
+            <view class="share d-flex" bindtap="share">
+             <view class="tab-share d-flex" bindtap="tabShare" data-id="{{index}}">
+              <view>
+                <image src="../images/share.png"></image>
+              </view>
+              <button open-type="share">分享</button>
+            </view>
+            </view>
+            <!-- 评论 -->
+            <view class="comment d-flex" bindtap="comment">
+              <view class="z">
+                <image src="../images/comment.png"></image>
+              </view>
+              <view class="z">
+                <text>评论</text>
+              </view>
+            </view>
+            <!-- 点赞 -->
+            <view class="like d-flex" bindtap="like" data-id="{{item.id}}">
+              <view class="z">
+                <image src="{{item.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
+              </view>
+              <view class="z">
+                <text  style="{{item.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{item.point_ratio}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
 
-</view>
-      <!-- 名单出炉 -->
-    <view class="bgf "> 
-    <view  bindtap="Mes">
-      <view class="breakText ml">重庆市第三批失信名单出炉了</view>
-      <!-- 图片 -->
-      <block wx:for="{{breakImg}}" wx:key="{{index}}">
-        <image src="{{item.url}}" class="breakImg ml"></image>
-      </block>
-      <!-- 转自 -->
-      <view class="from ml d-flex mt">
-        <view class="from-left">转载自人民法院</view>
-        <view class="from-right">
-          <text>2019.02.02</text>
-          <text style="margin-left:10rpx">18:36</text>
+
+        <!-- 名单出炉 -->
+        <view class="bgf ">
+         
         </view>
+      
+        <!--  -->
       </view>
-    </view>
-      <!--  -->
-<!-- 分割线 -->
-<view class="hr"></view>
-<!-- 评论点赞 -->
-<view class="scl">
-<!-- 分享 -->
-<view class="share" bindtap="share">
-<image src="../images/share.png"></image>
-<text>分享</text>
+    </van-tab>
+  </van-tabs>
 </view>
-<!-- 评论 -->
-<view class="comment" bindtap="comment">
-<image src="../images/comment.png"></image>
-<text>评论</text>
-</view>
-<!-- 点赞 -->
-<view class="like" bindtap="like">
-<image src="../images/like.png"></image>
-<text>{{index+1}}</text>
-</view>
-</view>
-    </view>
-    <!-- 第二个 -->
-    
-<!--  -->
-  <!-- 名单出炉 -->
-    <view class="bgf">
-      <view class="breakText ml">重庆市第三批失信名单出炉了</view>
-      <!-- 图片 -->
-      <block wx:for="{{breakImg}}" wx:key="{{index}}">
-        <image src="{{item.url}}" class="breakImg ml"></image>
-      </block>
-      <!-- 转自 -->
-      <view class="from ml d-flex mt">
-        <view class="from-left">转载自人民法院</view>
-        <view class="from-right">
-          <text>2019.02.02</text>
-          <text style="margin-left:10 rpx">18:36</text>
-        </view>
-      </view>
-      <!--  -->
-<!-- 分割线 -->
-<view class="hr"></view>
-<!-- 评论点赞 -->
-<view class="scl">
-<!-- 分享 -->
-<view class="share" bindtap="share">
-<image src="../images/share.png"></image>
-<text>分享</text>
-</view>
-<!-- 评论 -->
-<view class="comment" bindtap="comment">
-<image src="../images/comment.png"></image>
-<text>评论</text>
-</view>
-<!-- 点赞 -->
-<view class="like" bindtap="like">
-<image src="../images/like.png"></image>
-<text>{{index+1}}</text>
-</view>
-</view>
-    </view>
-    <!--  -->
-    </view>
-  </van-tab>
-</van-tabs>
-</view> 

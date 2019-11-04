@@ -1,5 +1,4 @@
-<!--pages/panel/panel.wxml-->
-<!-- <text>pages/panel/panel.wxml</text> -->
+<!-- 最新发布和优质推荐 -->
 <view>
   <!-- 选项卡 -->
   <van-tabs sticky bindclick="yz">
@@ -10,7 +9,7 @@
         <view class="bgf">
 
           <view class="bgf mtt">
-            <view bindtap="tabgoto" data-id="{{item.id}}">
+            <view bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}">
               <view class="tab-new d-spb">
                 <view class="d-flex">
                   <!-- 发布者头像 -->
@@ -66,27 +65,31 @@
           <!-- 分割线 -->
           <view class="hr"></view>
           <!-- 评论点赞 -->
-          <view class="tab-scl">
+          <view class="tab-scl d-spb">
             <!-- 分享 -->
             <view class="tab-share d-flex" bindtap="tabShare" data-id="{{index}}">
               <view>
-                <image src="../images/share.png"></image>
+                <image src="/pages/images/share.png"></image>
               </view>
               <button open-type="share">分享</button>
             </view>
             <!-- 评论 -->
             <view class="tab-comment d-flex" bindtap="tabComment" data-id="{{index}}">
               <view>
-                <image src="../images/comment.png"></image>
+                <image src="/pages/images/comment.png"></image>
               </view>
               <text>评论</text>
             </view>
             <!-- 点赞 -->
-            <view class="tab-like d-flex" bindtap="tabLike" data-id="{{index}}">
-              <view>
-                <image src="../images/like.png"></image>
+            <view class="tab-like d-flex" bindtap="tabLike" data-id="{{item.id}}">
+               <view class="tlike d-flex">
+              <view class="z">
+                <image src="{{item.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
               </view>
-              <text>{{item.point_ratio}}</text>
+              <view class="z">
+                <text  style="{{item.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{item.point_ratio}}</text>
+              </view>
+            </view>
             </view>
           </view>
         </view>
@@ -108,7 +111,7 @@
                   <!-- 发布者用户名 -->
                   <view class="tab-userName">{{item.nickname}}</view>
                   <!-- 置顶 -->
-                  <view class="stick" wx-if='{{item.px!=1}}'>{{item.px}}</view>
+                  <!-- <view class="stick" wx-if='{{item.px!=1}}'>{{item.px}}</view> -->
                   <view class="rec" hidden="{{item.rec=='荐'?false:true}}">{{item.rec}}</view>
                 </view>
                 <!-- 距离 -->
@@ -170,11 +173,15 @@
               <text>评论</text>
             </view>
             <!-- 点赞 -->
-            <view class="tab-like d-flex" bindtap="tabLikejian" data-id="{{index}}">
-              <view>
-                <image src="../images/like.png"></image>
+            <view class="tab-like d-flex" bindtap="tabLikejian" data-id="{{item.id}}">
+               <view class="tlike d-flex">
+              <view class="z">
+                <image src="{{item.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
               </view>
-              <text>{{item.point_ratio}}</text>
+              <view class="z">
+                <text  style="{{item.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{item.point_ratio}}</text>
+              </view>
+            </view>
             </view>
           </view>
         </view>

@@ -1,37 +1,49 @@
 // pages/self/goup/goup.js
+import request from '../../login.js';
 Page({
-  changeOil: function (e) {
+  changetotal:function(e){
+    console.log('绑定',e)
     var that=this
-    // console.log(e);
     var zz = e.currentTarget.dataset.num;
+    var s=that.data.userscore
     that.setData({
-      num: e.currentTarget.dataset.num,
+      num: zz,
+      money:s[zz].money,
+      up:s[zz].integral
     })
-    if(zz==1){
-      that.setData({
-        money: 10,
-        up: 10,
-      })
-    }else if(zz==2){
-      that.setData({
-        money: 29,
-        up: 30,
-      })
-    }else if(zz==3){
-      that.setData({
-        money: 50,
-        up: 60,
-      })
-    }else if(zz==4){
-      that.setData({
-        money: 100,
-        up: 150,
-      })
-    }else{
-      console.log("请选择")
-    }
-    console.log(e.currentTarget.dataset.num)
   },
+  // changeOil: function (e) {
+  //   var that=this
+  //   // console.log(e);
+  //   var zz = e.currentTarget.dataset.num;
+  //   that.setData({
+  //     num: e.currentTarget.dataset.num,
+  //   })
+  //   if(zz==1){
+  //     that.setData({
+  //       money: 10,
+  //       up: 10,
+  //     })
+  //   }else if(zz==2){
+  //     that.setData({
+  //       money: 29,
+  //       up: 30,
+  //     })
+  //   }else if(zz==3){
+  //     that.setData({
+  //       money: 50,
+  //       up: 60,
+  //     })
+  //   }else if(zz==4){
+  //     that.setData({
+  //       money: 100,
+  //       up: 150,
+  //     })
+  //   }else{
+  //     console.log("请选择")
+  //   }
+  //   console.log(e.currentTarget.dataset.num)
+  // },
   // 充值
   next:function(){
     console.log(this.data.money+"元",this.data.up+"积分")
@@ -49,13 +61,63 @@ Page({
     money:10,
     // 剩余积分
     score:0,
+
+
+    userscore:[
+      {
+        money:400.00,
+        integral:60,
+      },
+      {
+        money:300.00,
+        integral:40,
+      },
+      {
+        money:100.00,
+        integral:20,
+      },
+      {
+        money:50.00,
+        integral:10,
+      }
+    ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 剩余积分
+    var uid=wx.getStorageSync('uid');
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_mypoints',
+      data:{
+        type:1,
+        uid,
+      }
+      }).then(res=>{
+      console.log('调用剩余积分成功',res)
+      this.setData({
+        score:res.data.data.integral
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // 充值积分
+    request({
+      url:'http://tsf.suipk.cn/home/pay/do_recharge_list',
+      data:{
+        type:1,
+      }
+      }).then(res=>{
+      console.log('调用充值积分成功',res)
+      this.setData({
+        userscore:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

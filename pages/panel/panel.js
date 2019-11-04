@@ -1,4 +1,4 @@
-// pages/panel/panel.js
+// 优质推荐
 Page({
   tabgoto:function(e){
     var that = this

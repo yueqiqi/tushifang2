@@ -1,6 +1,7 @@
 // pages/inform/inform.js
 // 调用时间
 var util = require('../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
+import request from '../login.js';
 Page({
 
   /**
@@ -12,19 +13,36 @@ Page({
     // times:"15:30"
     // 调用until中的时间
     currenTime:"",
+    message:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
     // 调用函数时，传入new Date()参数，返回值是日期和时间
     var currenTime = util.formatTime(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据
     this.setData({
       currenTime: currenTime
     });
-  
+    var uid=wx.getStorageSync('uid');
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_news_list',
+      data:{
+        uid,
+        page:1,
+        limit:4,
+      }
+      }).then(res=>{
+      console.log('调用信息列表成功',res)
+      that.setData({
+        message:res.data.list
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

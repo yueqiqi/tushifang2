@@ -16,8 +16,7 @@ Page({
     var encryptedData = e.detail.encryptedData
     var iv = e.detail.iv
     console.log(iv,encryptedData)
-    // this.onLoad()
-    this.onShow()
+    // this.onShow()
           that.setData({
             showDialog:false,
             iv,
@@ -29,6 +28,9 @@ Page({
   getUserInfo:function(e){
     // console.log(e)
     var that=this
+    // this.setData({
+    //   showDialog: !this.data.showDialog
+    // });
     // var encryptedData=e.detail.encryptedData
     // var iv=e.detail.iv
     // console.log(iv,encryptedData)

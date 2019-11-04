@@ -1,54 +1,77 @@
 <!-- 个人中心 -->
 <!-- 微信信息 -->
 <view class="bgf">
-<view class="ml" style="padding-bottom:30rpx;">
-
-<view wx-if="{{sh==true}}">
-  <view class="d-flex" style="padding-top:40rpx;">
-    <view><image  class="head-img" src="{{header}}"></image></view>
-    <view class="head-title">
-      <view>{{wxName}}</view>
-      <view>当前信誉分\t<text>{{score}}</text></view>
+  <view class="ml" style="padding-bottom:30rpx;">
+    <view wx-if="{{sh==true}}">
+      <view class="d-flex" style="padding-top:40rpx;">
+        <view>
+          <image class="head-img" src="{{header}}"></image>
+        </view>
+        <view class="head-title">
+          <view>{{wxName}}</view>
+          <view>
+            当前信誉分\t
+            <text>{{score}}</text>
+          </view>
+        </view>
+      </view>
     </view>
+    <view wx-if="{{sh==false}}">
+      <!-- <button open-type="getUserInfo" open-type="getPhoneNumber" class="login" bindtap="login" >登录</button> -->
+      <!-- <button open-type="getUserInfo" open-type="getPhoneNumber" class="login"  bindtap="get">注册</button> -->
+      <view class="l1" style="padding-top:40rpx;">
+        <view class="d-flex">
+          <view class="lp">
+            <image class="" style="width:90rpx;height:90rpx;" src="/pages/images/self/login.png"></image>
+          </view>
+          <view style="line-height:90rpx;margin-left:20rpx;font-size:32rpx;font-weight:bold;color:#333">
+            登录查看更多信息
+          </view>
+        </view>
+        <view>
+          <!-- <button open-type="getUserInfo" class="login" bindgetuserinfo="getUserInfo">立即登录</button> -->
+          <button open-type="getPhoneNumber"  class="login" bindgetphonenumber="getPhoneNumber">立即登录</button>
+        </view>
+      </view>
+    </view>
+    <!-- +++++++++++++++++++++++++++++++++手机号弹窗++++++++++++++++++++++++++++++++++ -->
+    <!-- <button bindtap="toggleDialog">打开弹窗</button> -->
+    <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+      <view class="zan-dialog__mask" />
+      <view class="zan-dialog__container">
+        <view style="display:flex;justify-content: center;"><image style="width:87rpx;height:87rpx;position:relative;top:-43rpx" class="" src="/pages/images/err.png" ></image></view>
+        <view style="font-size:30rpx;color:#333;text-align:center">是否允许小程序获取手机号码</view>
+        <view class="d-flex">
+          <button style="height:64rpx;line-height:64rpx;color:#489589;background:#EBF9F7;font-size:30rpx;" bindtap="toggleDialog">拒绝</button>
+          <!-- <button style="height:64rpx;line-height:64rpx;color:#fff;background:#76D4C6;font-size:30rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">允许</button> -->
+          <button style="height:64rpx;line-height:64rpx;color:#fff;background:#76D4C6;font-size:30rpx;" bindtap="getUserInfo" open-type="getUserInfo"  >允许</button>
+        </view>
+        <!-- <view style="font-size:40rpx;font-weight:blod;text-align:center;padding-top:100rpx;">
+          是否允许小程序获取手机号码
+        </view> -->
+        <!-- <view class="d-spb" style="margin-top:100rpx;"> -->
+          <!-- <view style="width:50%;border-top:0rpx;border:0rpx;border-radius:0rpx;">
+            <button bindtap="toggleDialog">拒绝</button>
+          </view> -->
+          <!-- <view style="width:50%;border-top:0rpx;border:0rpx;border-radius:0rpx;">
+            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">允许</button>
+          </view> -->
+        <!-- </view> -->
+      </view>
+    </view>
+    <!-- +++++++++++++++++++++++++++++++++手机号弹窗++++++++++++++++++++++++++++++++++ -->
+    <!-- </view> -->
   </view>
-</view>
-
-<view wx-if="{{sh==false}}">
-  <!-- <button open-type="getUserInfo" open-type="getPhoneNumber" class="login" bindtap="login" >登录</button> -->
-  <!-- <button open-type="getUserInfo" open-type="getPhoneNumber" class="login"  bindtap="get">注册</button> -->
-  <view class="l1" style="padding-top:40rpx;">
-    <view class="lp">
-      <image class=""style="width:90rpx;height:90rpx;" src="/pages/images/self/login.png" ></image>
-    </view>
-    <view>
-      <button open-type="getUserInfo" class="login"  bindgetuserinfo="getUserInfo">登录</button>
-    </view>
-  </view>
-</view>
-  <!-- +++++++++++++++++++++++++++++++++手机号弹窗++++++++++++++++++++++++++++++++++ -->
-  <!-- <button bindtap="toggleDialog">打开弹窗</button> -->
- <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
-  <view class="zan-dialog__mask"/>
-  <view class="zan-dialog__container">
-    <view style="font-size:40rpx;font-weight:blod;text-align:center;padding-top:100rpx;">是否允许小程序获取手机号码</view>
-    <view class="d-spb" style="margin-top:100rpx;">
-      <view style="width:50%;border-top:0rpx;border:0rpx;border-radius:0rpx;"><button bindtap="toggleDialog">拒绝</button></view>
-      <view style="width:50%;border-top:0rpx;border:0rpx;border-radius:0rpx;"><button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">允许</button></view>
-    </view>
-  </view>
-</view>
-  <!-- +++++++++++++++++++++++++++++++++手机号弹窗++++++++++++++++++++++++++++++++++ -->
-<!-- </view> -->
-
-</view>
 </view>
 <!-- 图标 -->
 <view class="bgf mtt d-flex ico">
   <block wx:for="{{self}}" wx:key="{{index}}">
     <view class="icos">
-  <navigator url="{{item.link}}">
-      <view><image class="ico-img" src="{{item.img}}"></image></view>
-  </navigator>
+      <navigator url="{{item.link}}">
+        <view>
+          <image class="ico-img" src="{{item.img}}"></image>
+        </view>
+      </navigator>
       <view class="til">{{item.til}}</view>
     </view>
   </block>

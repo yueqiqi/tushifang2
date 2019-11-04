@@ -7,26 +7,28 @@
   bottom: 0;
   z-index: 10;
   /* //设置阴影半透明背景如： background: rgba(0, 0, 0, 0.4); */
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.3);
+  z-index:9999;
   display: none;
 }
 
 .zan-dialog__container {
   position: fixed;
-  bottom: 400rpx;
+  z-index:99999;
+  bottom: 366rpx;
   /* //弹窗布局宽 */
-  width: 650rpx;
+  width: 460rpx;
   /* //弹窗布局高，与下面弹出距离transform有关 */
-  height: 350rpx;
-  margin-left: 35rpx;
-  background: #f8f8f8;
+  height: 220rpx;
+  margin-left: 145rpx;
+  background: #fff;
   /* //弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */
   transform: translateY(300%);
   transition: all 0.4s ease;
-  z-index: 12;
+  /* z-index: 12; */
   border-radius: 20rpx;
   /* //弹框的悬浮阴影效果，如不需要可注释该行 */
-  box-shadow: 0px 3px 3px 2px gainsboro;
+  /* box-shadow: 0px 3px 3px 2px gainsboro; */
 }
 
 .zan-dialog--show .zan-dialog__container {
@@ -38,18 +40,21 @@
 }
 /* ++++++++++++++++++手机号弹窗++++++++++++++++++++++++++ */
 .login{
-  /* margin-left:-30rpx!important; */
-  /* margin-bottom:51rpx; */
-  /* line-height: 90rpx; */
-  margin-left:30rpx;
-  /* width:200rpx;height:100rpx; */
-  font-size:30rpx;
+  /* width:170rpx; */
+height:64rpx;
+background:rgba(235,249,247,1);
+border-radius:10rpx;
+font-size:30rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(72,149,137,1);
+  margin-right:30rpx;
   border:0!important;
-  background:#fff;
+  line-height: 64rpx;
 }
 .l1{
   display:flex;
-  justify-content: left;
+  justify-content: space-between;
   /* margin-left:-30rpx!important; */
   width:100%;
   align-items: center;

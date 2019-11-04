@@ -1,5 +1,6 @@
 // pages/comment/comment.js
 Page({
+  // 发布评论
   //点击出现输入框
   showInput: function () {
     this.setData({

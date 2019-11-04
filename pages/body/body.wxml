@@ -13,7 +13,6 @@
   </view>
     <view  bindtap="message">
       <view class="d-flex">
-
         <image class="message" src="../images/position/shape48.png"></image>
     <text  class="iconsm" hidden="{{icons==0?true:false}}">{{icons}}</text>
       </view>
@@ -55,12 +54,12 @@
 
 <view   class="v1 v2">
 <block wx:for="{{icon02}}" wx:key="{{index}}">
-<navigator url="{{item.link}}">
-<view style="margin-right:50rpx;">
+<!-- <navigator url="{{item.link}}"> -->
+<view bindtap="nav" style="margin-right:50rpx;" data-index="{{index}}">
 <image class="icon-img" src="{{item.url}}"></image>
 <view class="icon-text">{{item.name}}</view>
 </view>
-</navigator>
+<!-- </navigator> -->
 </block>
 </view>
 <!-- 小图标下方公告 -->

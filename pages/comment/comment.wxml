@@ -1,10 +1,10 @@
 
-<!--  -->
+<!-- bindblur="onHideInput" -->
 <view class="input-section" wx:if="{{showInput}}">
-  <input class='input_input' value="{{inputMessage}}" focus="auto" bindinput='bindInputMsg' bindblur="onHideInput" confirm-type="send" bindconfirm="sendTextMsg" adjust-position="true" hold-keyboard="true"/>
-  <view style="height:90rpx;width:140rpx;display:flex; align-items: center;justify-content: center;">
-    <view class="send_btn">
-      <text class="send_btn_text">发送</text>
+  <form action="" bindsubmit="send_btn">  
+    <view class='d-flex'>
+      <input class='input_input' name="inputMessage" focus="auto" bindinput='bindInputMsg' bindconfirm="sendTextMsg" adjust-position="true" hold-keyboard="true"/>
+      <button class="send_btn" form-type="submit">发送</button>
     </view>
-  </view>
+    </form>
 </view>

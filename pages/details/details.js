@@ -1,4 +1,5 @@
-// pages/details/details.js
+// 信息详情
+import request from '../login.js'
 Page({
   // 评论
   //点击出现输入框
@@ -26,8 +27,10 @@ Page({
   formSubmit: function (e) {
     var e = e.detail.value
     var info_id=this.data.lid
-    var img_url_arr=this.data.tempFilePaths
+    var img_url_arr=this.data.img_url_arr
     var content=e.textarea
+    var uid=wx.getStorageSync('uid');
+    // var info_id=that.data.info_id
     if (e.textarea.length < 5) {
       wx.showToast({
         title: '字数在5~100字哟~~~',
@@ -35,6 +38,7 @@ Page({
         duration: 2000
       })
     } else {
+
       wx.showModal({
         title: '提交成功',
         content: "提交成功，我们会在1-3个工作日内进行审核，如果举报属实，会对该用户做出相应惩罚，审核消息会在第一时间发送至您的消息中心，请注意查收。",
@@ -54,7 +58,7 @@ Page({
       wx.request({
         url:"http://tsf.suipk.cn/home/info/do_report",
         data:{
-          uid:1,
+          uid,
           info_id,
           content,
           img_url_arr
@@ -110,7 +114,7 @@ Page({
   upload: function () {
     let that = this;
     wx.chooseImage({
-      count: 2, // 默认9
+      count: 3, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -130,32 +134,44 @@ Page({
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
+        var a =[]
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePaths[i],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                img_url_arr:a
+              })
+              //如果是最后一张,则隐藏等待中  
+              if (count == tempFilePaths.length) {
                 wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
               }
-            });*/
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          });
+          console.log("最后的",a)
         }
       }
     })
@@ -269,19 +285,9 @@ Page({
     tempFilePaths: [],
     like:20,
     // 图片
-    userImg: [
-      {
-        url: "../images/carousel/05.JPg",
-      },
-      {
-        url: "../images/carousel/06.JPg",
-      },
-      {
-        url: "../images/carousel/07.JPg"
-      }, 
-    ],
+    userImg: [],
     // 视频
-    video:"http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400",
+    video:"",
   /////////////////////////////////////////
     // 评论
     // 头像
@@ -307,33 +313,118 @@ Page({
     ],
     // 接收并保存首页传来的id值
     lid:"",
+    // 评论信息
+    // inputMessage:'',
   },
+  // 发布评论
+  send_btn:function(e){
+    this.setData({
+      showInput: false
+    })
+    console.log('发布',e)
+  var uid=wx.getStorageSync('uid');
+  var m = e.detail.value
+  var that=this
+  var content=m.inputMessage
+  console.log('发布的评论',content)
+  // ++++++++++++发布评论++++++++++++++++++++++
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_addcommemt',
+        data:{
+          type:that.data.types,
+          info_id:that.data.lid,
+          uid,
+          content,
+        }
+        }).then(res=>{
+        console.log('调用发布评论成功',res)
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+      // ++++++++++++发布评论++++++++++++++++++++++
+},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log("首页传来的id="+options.id)
+    console.log("首页传来的form="+options.form)
+    console.log('首页传来的type',options.type)
+    console.log(options.from,'传来的信息')
     this.setData({
-      lid:options.id
+      lid:options.id,
+      form:options.form,
+      types:options.type
     })
+    var uid=wx.getStorageSync('uid');
 
-    // wx.request({
-    //   url: 'http://tsf.suipk.cn',
-    //   data: {
-    //   },
-    //   method: 'POST',
-    //   header: {
-    //   'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success: function (res) {
-    //   console.log('调用成功', res.data.data)
-    //   }, fail: function () {
-    //   console.log('调用失败')
-    //   }
-    // })
-  },
+    // 首页跳转信息列表
+    if(options.from=='首页'){
+      // 请求信息详情
+      request({
+        url:'http://tsf.suipk.cn/home/info/do_info_content',
+        data:{
+        uid,
+        type:options.form,
+        info_id:options.id
+      }
+      }).then(res=>{
+      console.log('调用信息详情成功',res)
+      this.setData({
+        title:res.data.data.title,
+        type:res.data.data.type_work,
+        time:res.data.data.create_time,
+        rec:res.data.data.info,
+        linkman:res.data.data.contacts,
+        phone:res.data.data.tel,
+        userImg:res.data.data.img_url_arr,
+        video:res.data.data.video,
+        info_id:res.data.data.id
+      })
+      }).catch(err=>{
+        console.log('调用失败')
+      })
+      // +++++++++++++++点赞+++++++++++++++++++++
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_point',
+        data:{
+          uid,
+          type:options.type,
+          info_id:options.id
+        }
+        }).then(res=>{
+        console.log('调用点赞成功',res)
+        this.setData({
+        
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+      // +++++++++++++++点赞+++++++++++++++++++++
+      // // 评论列表
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_comment_list',
+        data:{
+         type:options.type,
+         info_id:options.id,
+         page:1,
+         limit:10,
+        }
+      }).then(res=>{
+        console.log('调用评论列表成功',res)
+        this.setData({
+          user:res.data.list
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+    }else if(options.from==''){
 
+    }
+
+    },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

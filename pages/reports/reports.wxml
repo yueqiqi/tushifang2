@@ -19,11 +19,11 @@
 </view>
 <view class="img_box bgf">
   <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
-    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix' />
+    <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" style="width:168rpx;height:168rpx;" />
   </view>
   <view class="imgs">
     <view class="images" bindtap="upload">
-      <image src='/pages/images/add.png' mode='widthFix' />
+      <image src='/pages/images/add.png' />
     </view>
   </view>
 </view>

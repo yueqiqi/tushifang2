@@ -1,9 +1,11 @@
 // pages/integrity/integrity.js
+import request from '../login.js'
 Page({
   // 跳转详情页
-  Mes:function(){
+  Mes:function(e){
+    var info_id=e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/integrityMes/integrityMes',
+      url: '/pages/integrityMes/integrityMes?info_id='+info_id,
     })
     console.log("跳转至详情页")
   },
@@ -16,9 +18,29 @@ Page({
     console.log("评论")
   },
   // 点赞
-  like: function () {
+  like: function (e) {
+    console.log(e)
     var that = this
-    this.setData({ index: that.data.index + 1 });
+    var uid=wx.getStorageSync('uid');
+    var info_id=e.currentTarget.dataset.id
+    // +++++++++++++点赞功能++++++++++++++++++++
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_point',
+      data:{
+        uid,
+        type:2,
+        info_id
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
+      that.onLoad()//重点   重新执行下onLoad去获取当前的数据
+      this.setData({
+      
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // +++++++++++++点赞功能++++++++++++++++++++
     console.log("点赞"); return
   },
   /**
@@ -39,7 +61,62 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var uid=wx.getStorageSync('uid');
+    // +++++++++++++诚信红榜请求++++++++++++++++++++++
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_Honesty_list',
+        data:{
+          uid,
+          type:1,
+          page:1,
+          limit:10,
+        }
+        }).then(res=>{
+        console.log('调用诚信红榜成功',res)
+        this.setData({
+          integrity:res.data.list,
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+    // +++++++++++++诚信红榜请求++++++++++++++++++++++
+    // +++++++++++++诚信灰榜请求++++++++++++++++++++++
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_Honesty_list',
+      data:{
+        uid,
+        type:2,
+        page:1,
+        limit:10,
+      }
+      }).then(res=>{
+      console.log('调用诚信灰榜成功',res)
+      this.setData({
+        integritys:res.data.list,
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // +++++++++++++诚信灰榜请求++++++++++++++++++++++
+    // +++++++++++++诚信失信名单请求++++++++++++++++++++++
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_Honesty_list',
+      data:{
+        uid,
+        type:3,
+        page:1,
+        limit:10,
+      }
+      }).then(res=>{
+      console.log('调用失信名单成功',res)
+      this.setData({
+        break:res.data.list,
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // +++++++++++++诚信失信名单请求++++++++++++++++++++++
+   
   },
 
   /**

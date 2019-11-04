@@ -4,6 +4,7 @@ var demo = new QQMapWX({
   key: 'E7PBZ-USVKO-3BYWB-SR4NY-TA7Z3-S4BTR'
 });
 import request from '../login.js'
+import like from '../like.js'
 Page({
 
 
@@ -93,9 +94,13 @@ Page({
     var that = this
     //console.log(e)
     var id = e.currentTarget.dataset.id
+    var form=e.currentTarget.dataset.type
+    var type=1
+    var from='首页'
+    console.log(e,form)
     // var id=that.data.tabuser.id
     wx.navigateTo({
-      url: '/pages/details/details?id=' + id
+      url: '/pages/details/details?id=' + id+'&form='+form+'&type='+type+'&from='+from
     })
   },
   // 拨打电话
@@ -124,14 +129,23 @@ Page({
     var that = this
     //console.log(e)
     var id = e.currentTarget.dataset.id
-    //console.log("这是第" + id + "个")
-    // for(var i in this.data.user){
-    var like = that.data.tabuser[id].point_ratio
-    var index = "tabuser[" + id + "].point_ratio";
-    that.setData({
-      [index]: like + 1
+    console.log('点赞',id)
+    var uid=wx.getStorageSync('uid');
+    like({
+    data:{
+      uid,
+      type:1,
+      info_id:id
+    }
+    }).then(res=>{
+    console.log('调用点赞成功',res)
+    that.onLoad();
+    this.setData({
+    
     })
-
+    }).catch(err=>{
+    console.log('调用失败')
+    })
     // }
     //console.log("这是点赞后的点赞数" + like)
   },//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -213,7 +227,7 @@ Page({
   
   data: {
     // 未读消息
-    icons:"0",
+    icons:0,
     // 首页公告
     imgUrls: [],
     msgList:[],
@@ -407,16 +421,60 @@ Page({
     var that = this
     //console.log(e)
     var id = e.currentTarget.dataset.id
-    //console.log("这是第" + id + "个")
-    // for(var i in this.data.user){
-    var like = that.data.tabuser[id].point_ratio
-    var index = "tabuser[" + id + "].point_ratio";
-    that.setData({
-      [index]: like + 1
+    console.log('点赞',id)
+    var uid=wx.getStorageSync('uid');
+    like({
+    data:{
+      uid,
+      type:1,
+      info_id:id
+    }
+    }).then(res=>{
+    console.log('调用优质推荐点赞成功',res)
+    that.onLoad();
+    
+    this.setData({
+    
     })
-
+    }).catch(err=>{
+    console.log('调用失败')
+    })
     // }
     //console.log("这是点赞后的点赞数" + like)
+  },
+  nav:function(e){
+    var that=this
+    console.log(e.currentTarget.dataset.index)
+    var index=e.currentTarget.dataset.index
+    // console.log(that.data)
+    var uid=wx.getStorageSync('uid');
+    if(uid!=''){
+      wx.navigateTo({
+        url:that.data.icon02[index].link
+      })
+    }else if(uid==''){
+      wx.switchTab({
+        url: '/pages/self/index/index',
+        success:function(){
+          wx.showModal({
+            title: '登录中心',
+            content: '请登录',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if(result.confirm){
+                
+              }
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
+        }
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -424,10 +482,13 @@ Page({
   onLoad: function () {
         var that=this
         
+        // 禁止跳转
+        // 免费认证
+        var uid=wx.getStorageSync("uid");
+        
   //  获取用户信息
   // ************************************************************************************************************************
   
-  var uid=wx.getStorageSync("uid");
   that.setData({
     uid
   })
@@ -603,7 +664,7 @@ Page({
       },
       success:function(res){
         //console.log("最新发布调用成功")
-        //console.log("最新发布调用成功",res)
+        console.log("最新发布调用成功",res)
         that.setData({
           tabuser:res.data.data
         })
@@ -623,7 +684,7 @@ Page({
       },
       success:function(res){
         //console.log("优质推荐调用成功")
-        //console.log("优质推荐调用成功",res)
+        console.log("优质推荐调用成功",res)
         that.setData({
           tabuserjian:res.data.data
         })
@@ -643,7 +704,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success:function(res){
-        //console.log("未读消息",res)
+        console.log("未读消息",res)
         that.setData({
           icons:res.data.data
         })

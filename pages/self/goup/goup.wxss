@@ -64,3 +64,6 @@ bottom:0;
 .active :last-child{
     color:#fff;
 }
+.in{
+  flex-wrap: wrap;
+}

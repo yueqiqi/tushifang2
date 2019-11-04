@@ -15,6 +15,22 @@ background:rgba(242,242,242,1);
   justify-content: space-between;
   margin-top:11rpx;
 }
+.share button{
+  font-size:28rpx;
+ background: #fff;
+ border-radius:0;
+font-weight:400;
+color:rgba(102,102,102,1);
+width:56rpx;height:27rpx;
+margin:auto 0;
+padding-left:0!important;
+padding-right:0!important;
+/* line-height:21rpx!important; */
+overflow:visible!important;margin-left:10rpx;
+}
+button::after {
+  border: none;
+}
 .left{
   margin-left:30rpx;
 
@@ -132,21 +148,31 @@ margin-top:33rpx;
 }
 /* 分享评论 */
 .scl{
-  display: flex;justify-content: left;
+  display: flex;justify-content: space-between;
   margin-top:28rpx;margin-bottom:23rpx;
   padding-bottom: 30rpx;
+  margin-left:78rpx;margin-right:82rpx;
 }
 .scl image{
   width:30rpx;height:30rpx;
 }
 /* 分享 */
-.share{margin-left:78rpx;}
-.share text{
-  margin-left:10rpx;
+.tab-share button{
   font-size:28rpx;
-font-family:PingFang SC;
+  
+ background: #fff;
+ border-radius:0;
 font-weight:400;
 color:rgba(102,102,102,1);
+width:56rpx;height:27rpx;
+margin:auto 0;
+padding-left:0!important;
+padding-right:0!important;
+line-height:21rpx!important;
+overflow:visible!important;margin-left:10rpx;
+}
+button::after {
+  border: none;
 }
 /* 评论 */
 .comment{margin-left:156rpx;}
@@ -162,8 +188,7 @@ color:rgba(102,102,102,1);
 .like text{
   margin-left:10rpx;
  font-size:28rpx;
-font-family:PingFang SC;
 font-weight:400;
-color:rgba(118,212,198,1);
+
 }
 /*  */

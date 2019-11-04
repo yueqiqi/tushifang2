@@ -47,7 +47,7 @@
 </view>
 </view>
 
-<view class="bgf mtt">
+<view class="bgf mtt" wx-if="{{userImg==''&&video==''?false:true}}">
 <!-- 图片视频 -->
 <view class="video" style="padding-top:30rpx;">
   <view class="title-text ml">图片/视频</view>
@@ -55,12 +55,12 @@
 <!-- 发布图片 -->
 <block wx:for="{{userImg}}" wx:key="{{index}}">
   <view>
-  <image class="userImg{{index}}" src="{{item.url}}"></image> 
+  <image class="userImg{{index}}" src="{{item}}"></image> 
   </view>
 </block>
 </view>
 <!-- 发布的视频 -->
-<view class="pbb">
+<view class="pbb" wx-if="{{video!=''}}">
  <video src="{{video}}" binderror="videoErrorCallback"></video>
 </view>
 </view>
@@ -93,16 +93,18 @@
 <block wx:for="{{user}}" wx:key="{{index}}">
 <view class="d-flex ml">
   <!-- 头像 -->
-  <view class="head"></view>
+  <view class="head">
+    <image style="width:80rpx;height:80rpx;border-radius:50%;" src="{{item.head}}"></image>
+  </view>
   <!-- 用户名、时间 -->
   <view class="ml">
-    <view class="userName">{{item.username}}</view>
-    <view class="times">{{item.usertime}}</view>
+    <view class="userName">{{item.nickname}}</view>
+    <view class="times">{{item.create_time}}</view>
   </view>
 </view>
 <!-- 用户消息 -->
 <view class="msg">
-{{item.usercontent}}
+{{item.content}}
 </view>
 <view class="hr" hidden="{{user.length>1?false:true}}"></view>
 </block>
