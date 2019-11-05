@@ -21,8 +21,8 @@
   <view class="title-text">发布时间</view>
   <view class="time d-text">{{time}}</view>
 </view>
-  <view class="uline"></view>
-<view class="d-mt ml">
+  <view class="uline"  wx-if="{{rec==undefined}}"></view>
+<view class="d-mt ml" wx-if="{{rec==undefined}}">
   <view class="title-text">项目介绍</view>
   <view class="content">{{rec}}</view>
 </view>
@@ -55,7 +55,7 @@
 <!-- 发布图片 -->
 <block wx:for="{{userImg}}" wx:key="{{index}}">
   <view>
-  <image class="userImg{{index}}" src="{{item}}"></image> 
+  <image bindtap="listenerButtonPreviewImage" data-index='{{index}}' class="userImg{{index}}" src="{{item}}"></image> 
   </view>
 </block>
 </view>
@@ -133,13 +133,14 @@
   </view>
   </view>
   <!-- 点赞 -->
-  <view class="d-flex" bindtap="like">
-  <view style="margin:auto 0;">
-  <image src="../images/unlike.png"></image>
-  </view>
-  <view class="sclr">
-  {{like}}
-  </view>
+  <view class="likes d-flex" bindtap="like" data-id="{{mid}}">
+  <view class="z" style="margin:auto">
+                <image src="{{is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
+              </view>
+              <view class="z">
+                <text  style="{{is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{point_ratio}}</text>
+              </view>
+              <!-- </view> -->
   </view>
   <!-- 投诉 -->
   <view style="margin-right:46rpx;" class="d-flex" bindtap="showDialogBtn">

@@ -8,7 +8,7 @@
           <view class="d-flex ms">
             <block wx:for="{{item.twoclass}}" wx:for-item="two" wx:key="{{index}}">
               <view class="bgf">
-                <navigator url="{{two.title=='我要找工作'?'/pages/Ac/jobs/jobs?id='+item.id+'&idtwo='+two.id:(two.title=='我要招人'?'/pages/Ac/hiring/hiring?id='+item.id+'&idtwo='+two.id:'/pages/Ac/issue/issue?id='+item.id+'&idtwo='+two.id+'&title='+two.title)}}">
+                <navigator url="{{two.title=='求职信息'?'/pages/Ac/jobs/jobs?id='+item.id+'&idtwo='+two.id:(two.title=='招聘信息'?'/pages/Ac/hiring/hiring?id='+item.id+'&idtwo='+two.id:'/pages/Ac/issue/issue?id='+item.id+'&idtwo='+two.id+'&title='+two.title)}}">
                   <view class="bgf">
                     <view class="border">{{two.title}}</view>
                 </view>

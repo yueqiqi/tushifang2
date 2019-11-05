@@ -1,6 +1,7 @@
 /* pages/Ac/issue/issue.wxss */
 /* pages/Ac/business2/business2.wxss */
 @import "/pages/Ac/stick/stick.wxss";
+@import "../err/err.wxss";
 page{
   background:#fff!important;
 }

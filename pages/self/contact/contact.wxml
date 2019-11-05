@@ -8,6 +8,6 @@
   <button form-type="submit" class="next">确认提交</button>
 </form>
 <view class="btn d-spb">
-  <view class="btnl">客服电话</view>
+  <view class="btnl" bindtap='call'>客服电话</view>
   <view class="btnr">微信客服</view>
 </view>

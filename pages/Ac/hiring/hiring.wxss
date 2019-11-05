@@ -5,6 +5,7 @@
 @import "/pages/Ac/select/select.wxss";
 @import "/pages/Ac/isu/isu.wxss";
 @import "/pages/Ac/all.wxss";
+@import "../err/err.wxss";
 @import "/pages/Ac/stick/stick.wxss";
 page{
   background:#fff!important;

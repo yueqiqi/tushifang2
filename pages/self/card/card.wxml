@@ -35,7 +35,7 @@
 </view>
 
 <!-- 我的名片夹 -->
-<view class="bgf mtt" style="padding-bottom: 93rpx;">
+<view class="bgf mtt" style="padding-bottom: 93rpx;" wx-if="{{mycard!=''}}">
   <view class="name ml">我的名片夹</view>
   <!-- ========================================================= -->
   <block wx:for="{{mycard}}" wx:key="{{index}}">
@@ -44,12 +44,12 @@
       <view class="d-flex c-i">
         <view><image class="c-img" src="{{item.head}}"></image></view>
         <view style="margin-left:15rpx;">
-          <view class="c-name">{{item.cardname}}</view>
-          <view class="c-t"><text decode="{{true}}">{{item.post}}&ensp;&ensp;|&ensp;&ensp;{{item.com}}</text></view>
+          <view class="c-name">{{item.nickname}}</view>
+          <view class="c-t"><text decode="{{true}}">{{item.company_position}}&ensp;&ensp;|&ensp;&ensp;{{item.corporate_name}}</text></view>
         </view>
       </view>
   <!-- 时间 -->
-  <view class="time">{{item.time}}</view>
+  <view class="time">{{item.create_time}}</view>
       </view>
     </view>
   </block>

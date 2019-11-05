@@ -1,6 +1,6 @@
 /**app.wxss**/
 @import "css/global.wxss";
-@import "miniprogram_npm/weui.wxss";
+/* @import "miniprogram_npm/weui.wxss"; */
 .container {
   height: 100%;
   display: flex;

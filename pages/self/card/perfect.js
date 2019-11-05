@@ -1,4 +1,5 @@
 // pages/self/card/perfect.js
+import request from '../../login.js'
 Page({
   // 地址
   address: function (e) {
@@ -77,32 +78,42 @@ Page({
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
+        var a =[]
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-          //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePaths[i],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                img_url_arr:a
+              })
+              //如果是最后一张,则隐藏等待中  
+              if (count == tempFilePaths.length) {
                 wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
               }
-            });*/
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          });
         }
 
       }
@@ -185,24 +196,50 @@ Page({
       this.hidePopup(false);
     }else{
     var that=this
-    var head=that.data.head
-    var name=e.i2
-    var phone=e.i3
-    var com=e.i4
-    var post=e.i5
-    var email=e.i6
-    var address=e.i7
-    var textarea=e.textarea
-    var img= this.data.tempFilePaths
-    var imgs=img.join('-')
-    // var img1=this.data.tempFilePaths[0]
-    // var img2=this.data.tempFilePaths[1]
-    // var img3=this.data.tempFilePaths[2]
-
+    var heads=that.data.head
+    // ？+++++++++++上传头像+++++++++++++++++++++++++++++
+    var head
+    wx.uploadFile({
+      url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+      filePath: heads,
+      name: 'image',
+      method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+      success: function (res) {
+        console.log("检验头像图片上传",res)
+         head=res.data
+      },
+      fail: function (res) {
+        wx.hideToast();
+        wx.showModal({
+          title: '错误提示',
+          content: '上传图片失败',
+          showCancel: false,
+          success: function (res) { }
+        })
+      }
+    });
+    // ？+++++++++++上传头像+++++++++++++++++++++++++++++
+    var nickname=e.name
+    var phone=e.phone
+    var corporate_name=e.com
+    var company_position=e.post
+    var email=e.email
+    var detailed_address=e.address
+    var info=e.textarea
+    
+    var p=that.data.img_url_arr
+    console.log(that.data.img_url_arr)
+    var z=p.join('|')
+    var img_url_arr=z
+    console.log(z)
+    var share_id=1
     // ////////////////////////////////////////////////////
-        
       var updata = that.data.userinfo
       that.data.userinfo.push(e);
+      var uid=wx.getStorageSync('uid');
       // console.log(updata)
     // ////////////////////////////////////////////////////
 
@@ -211,6 +248,29 @@ Page({
         content: '确认保存该名片吗？',
         success: function (res) {
           if (res.confirm) {
+            // ===================完善名片++++++++++++++++++++++++++++
+            request({
+              url:'http://tsf.suipk.cn/home/personal/do_add_perfect',
+              data:{
+                uid,
+                share_id,
+                head,
+                nickname,
+                phone,
+                corporate_name,
+                company_position,
+                email,
+                detailed_address,
+                info,
+                img_url_arr
+              }
+              }).then(res=>{
+              console.log('调用完善名片成功',res)
+              }).catch(err=>{
+              console.log('调用失败')
+            })
+            // ===================完善名片++++++++++++++++++++++++++++
+
             wx.redirectTo({
               // url: '/pages/self/mycard/mycard?name='+name+"&phone="+phone+"&com="+com+"&post="+post+"&email="+email+"&address="+address+"&textarea="+textarea+"&imgs="+imgs+"&head="+head,
               url:'/pages/self/card/card'
@@ -315,7 +375,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // ++++++++++++++++++完善我的名片++++++++++++++++++++++++++
+    var phone=wx.getStorageSync('userphone')
+    this.setData({
+      phone,
+    })
+    // ++++++++++++++++++完善我的名片++++++++++++++++++++++++++
   },
 
   /**

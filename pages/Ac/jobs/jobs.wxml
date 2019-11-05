@@ -89,8 +89,8 @@
   <view class="section2 d-spb">
     <view class="section-title">联系电话 <text style="color:red">*</text></view>
     <view class="right d-spb">
-      <input disabled="{{mz}}" value="{{tel}}" name="i6" maxlength="11" type="number"/>
-      <view class="ch" bindtap="chp">更换</view>
+      <input value="{{tel}}" name="i6" maxlength="11" type="number"/>
+      <!-- <view class="ch" bindtap="chp">更换</view> -->
     </view>
  </view>
 <!-- 个人简介 -->

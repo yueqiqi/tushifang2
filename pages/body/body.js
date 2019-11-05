@@ -9,30 +9,67 @@ Page({
 
 
 
-  // 点击浏览图片
-  listener: function (e) {
+  // 点击浏览图片-最新发布
+  listenerButtonPreviewImage: function (e) {
     let index = e.currentTarget.dataset.index;
     var url=e.currentTarget.dataset.ids
+    var id = e.currentTarget.dataset.id
     let that = this;
-    console.log(e,url,index)
+    console.log('浏览的图片',)
+    console.log(e,index)
           // tabuser:res.data.data
     // console.log('图片下标',index,that.data.tabuser.img_url_arr[index])
     // console.log(that.data.tempFilePaths[index]);
     // console.log(that.data.tempFilePaths);
-    // for(var tb in that.data.tabuser){
-      wx.previewImage({
-        current: url, //当前图片地址
-        urls: that.data.tabuser,//所有要预览的图片的地址集合 数组形式
-        //这根本就不走
-        success: function (res) {
-          //console.log(res);
-        },
-        //也根本不走
-        fail: function () {
-          //console.log('fail')
-        }
-      })
-    // }
+    for(var tb in that.data.tabuser){
+     if(id==that.data.tabuser[tb].id){
+     var previewImgArr = that.data.tabuser[tb].img_url_arr
+     }
+    }
+    console.log(id)
+    wx.previewImage({
+      current: url, //当前图片地址
+      urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
+      //这根本就不走
+      success: function (res) {
+        //console.log(res);
+      },
+      //也根本不走
+      fail: function () {
+        //console.log('fail')
+      }
+    })
+  },
+  // 点击浏览图片-优质推荐
+  listenerButtonPreviewImagej: function (e) {
+    let index = e.currentTarget.dataset.index;
+    var url=e.currentTarget.dataset.ids
+    var id = e.currentTarget.dataset.id
+    let that = this;
+    console.log('浏览的图片',)
+    console.log(e,index)
+          // tabuser:res.data.data
+    // console.log('图片下标',index,that.data.tabuser.img_url_arr[index])
+    // console.log(that.data.tempFilePaths[index]);
+    // console.log(that.data.tempFilePaths);
+    for(var tb in that.data.tabuserjian){
+     if(id==that.data.tabuserjian[tb].id){
+     var previewImgArr = that.data.tabuserjian[tb].img_url_arr
+     }
+    }
+    console.log(id)
+    wx.previewImage({
+      current: url, //当前图片地址
+      urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
+      //这根本就不走
+      success: function (res) {
+        //console.log(res);
+      },
+      //也根本不走
+      fail: function () {
+        //console.log('fail')
+      }
+    })
   },
 
 
@@ -624,7 +661,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success:function(res){
-        //console.log("调用首页成功",res)
+        console.log("调用首页成功",res)
         //console.log("1---------------")
         //console.log("发布十万火急",res)
         // 首页广告-advert[0]
@@ -640,7 +677,7 @@ Page({
           
         })
         //console.log()
-        //console.log("广告图"+that.data.advert)
+        console.log("大广告图"+that.data.advertd)
         //console.log("公告",that.data.msgList)
         //console.log("发布者信息",that.data.user)
         //console.log("发布十万火急",res.data.data.info)
@@ -773,8 +810,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.onLoad()
+    this.onReady()
+    setTimeout(function () {    
+    wx.hideNavigationBarLoading() //完成停止加载
+    wx.stopPullDownRefresh() //停止下拉刷新
+    }, 1500);},
 
   /**
    * 页面上拉触底事件的处理函数
@@ -786,12 +828,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (ops) {
     return {
-      title: '转发',//弹出分享时显示的分享标题
-      path: '/pages/index/index',//'/page/user?id=123' // 路径，传递参数到指定页面。
-      desc: '分享页面的内容',
-      success: function (res) { }
+      title: '包程项',//弹出分享时显示的分享标题
+      path: '/pages/body/body',//'/page/user?id=123' // 路径，传递参数到指定页面。
+      desc: '土石方首页',
+      success: function (res) {
+        console.log('分享成功',ops)
+       }
 
     }
   }

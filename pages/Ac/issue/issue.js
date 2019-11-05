@@ -166,19 +166,29 @@ chp:function(){
     var tel=m.i3
     // 上传图片
     // 评论内容
-    if(m.textarea.length==0||that.data.img_url_arr==''||that.data.video_url==''){
-      var img_url_arr=''
-      var video=''
+    if(m.textarea==''){
+      var info=''
     }else{
       var info=m.textarea
+    }
+    // &&that.data.img_url_arr==''&&that.data.video_url==''
+    if(that.data.tempFilePaths==''){
+      var img_url_arr=''
+    }else{
       var p=that.data.img_url_arr
-      console.log(that.data.img_url_arr)
+      console.log('文件',that.data.img_url_arr)
       var z=p.join('|')
       var img_url_arr=z
       console.log(z)
+    }
+    if(that.data.tempFilePathss==''){
+      var video=''
+    }else{
       // 公司视频
       var video=that.data.video_url
     }
+    console.log('打印左最后值',img_url_arr,video)
+    
     // 一级id
     var one_class_id=that.data.one_class
     // 二级id
@@ -206,6 +216,9 @@ chp:function(){
     if(that.data.issu==false){
     if (m.i1 == "" || m.i2 == "" || m.i3 == "") {
       this.hidePopup(false);
+      that.setData({
+        sq:true
+      })
     } else {
       
       // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -230,7 +243,18 @@ chp:function(){
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          that.suhide(false);
+          if(res.data.code==0){
+            that.suhide(false);
+            that.setData({
+              sq:true
+            })
+          }
+          if(res.data.code==101){
+            that.setData({
+              pm:false,
+              sq:true
+            })
+          }
           console.log("其他发布调用成功", res)
         }, fail: function () {
           console.log("其他发布调用失败")
@@ -268,13 +292,20 @@ chp:function(){
   /* 隐藏成功弹窗 */
   suhide(flag = true) {
     this.setData({
-      "sup": flag
+      "sup": flag,sq:false
+    });
+    console.log('点击的',this.data.sup)
+  },
+  con:function(){
+    wx.navigateBack({
+      delta: 1
     });
   },
   /* 隐藏失败弹窗 */
   hidePopup(flag = true) {
     this.setData({
-      "popup": flag
+      "popup": flag,
+      sq:false
     });
   },
   next: function () {
@@ -408,10 +439,12 @@ chp:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
-        var count = 0;
-        var a =[]
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-          //上传文件
+        // if(){
+
+          var count = 0;
+          var a =[]
+          for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+            //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
             filePath: tempFilePaths[i],
@@ -431,6 +464,7 @@ chp:function(){
               that.setData({
                 img_url_arr:a
               })
+              console.log('最后a',that.data.a)
               //如果是最后一张,则隐藏等待中  
               if (count == tempFilePaths.length) {
                 wx.hideToast();
@@ -446,6 +480,7 @@ chp:function(){
               })
             }
           });
+        // }//if
         }
 
       }
@@ -496,10 +531,25 @@ chp:function(){
       }
     })
   },
+  hp(){
+    this.setData({
+      pm:true,
+      sq:false
+    })
+    wx.navigateTo({
+      url: '/pages/self/goup/goup',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   /**
    * 页面的初始数据
    */
   data: {
+    pm:true,
     // 一级列表
     one_class:"",
     // 二级列表
@@ -580,6 +630,9 @@ chp:function(){
     })
     console.log("信息id1",options)
     var title=options.title
+    wx.setNavigationBarTitle({
+      title: title
+    })
     that.setData({
       title
     })

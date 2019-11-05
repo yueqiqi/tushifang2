@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/body/body",
+    "pages/demo/err/err",
     "pages/AA/image",
     "pages/AA/Phone",
     "pages/AA/getphone",
@@ -115,7 +116,6 @@
 
     
     "pages/demo/success/success",
-    "pages/demo/err/err",
     "pages/demo/demo",
     
     "pages/demo/alert/alert",

@@ -43,8 +43,8 @@
             </view>
             <!-- 图片 -->
             <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
-              <block wx:for="{{item.img_url_arr}}" wx:key="{{index}}">
-                <image bindtap="listener" data-index="{{index}}" data-ids="{{item}}" src="{{item}}"></image>
+              <block wx:for="{{item.img_url_arr}}" wx:for-item='asd' wx:key="{{index}}">
+                <image bindtap="listenerButtonPreviewImage" data-index="{{index}}" data-ids="{{asd}}" data-id='{{item.id}}' src="{{asd}}"></image>
               </block>
             </view>
             <view wx-if="{{item.video!=''}}">
@@ -135,8 +135,8 @@
             </view>
             <!-- 图片 -->
             <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
-              <block wx:for="{{item.img_url_arr}}" wx:key="{{index}}">
-                <image src="{{item}}"></image>
+              <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
+                <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
               </block>
             </view>
             <view wx-if="{{item.video!=''}}">

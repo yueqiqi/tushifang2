@@ -1,8 +1,43 @@
 // pages/self/contact/contact.js
+import request from '../../login.js'
 Page({
   formSubmit:function(e){
     var e=e.detail.value
     console.log(e.textarea)
+    var uid=wx.getStorageSync('uid');
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_contact_us',
+      data:{
+        uid,
+      }
+      }).then(res=>{
+      console.log('调用联系我们成功',res)
+      this.setData({
+      
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+  },
+  call:function(){
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_service_tel',
+      data:{
+      
+      }
+      }).then(res=>{
+      console.log('调用客服联系电话成功',res)
+      wx.makePhoneCall({
+        phoneNumber: res.data.data.value,
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
   /**
    * 页面的初始数据

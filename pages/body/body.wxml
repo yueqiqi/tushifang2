@@ -12,9 +12,9 @@
     </view>
   </view>
     <view  bindtap="message">
-      <view class="d-flex">
-        <image class="message" src="../images/position/shape48.png"></image>
-    <text  class="iconsm" hidden="{{icons==0?true:false}}">{{icons}}</text>
+      <view class="d-flex" >
+        <image class="message" style="{{icons==0?'margin-right:30rpx;':''}}" src="../images/position/shape48.png"></image>
+    <text  class="iconsm" wx-if="{{icons!=0}}">{{icons}}</text>
       </view>
     </view>
   </view>
@@ -85,7 +85,7 @@
 </view>
 <!-- 小图片下方图片 -->
 <view bindtap="imgLink">
-<image class="img" src="{{advert}}"></image>
+<image class="img" src="{{advertd}}"></image>
 </view>
 </view>
 <include src="/pages/postMessage/postMessage"/>

@@ -1,9 +1,11 @@
 // pages/store/site/site.js
+import request from '../../login.js'
 Page({
   // 修改
-  mod:function(){
+  mod:function(e){
+    var id=e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/self/site/modsite',
+      url: '/pages/self/site/modsite?id='+id,
     })
   },
   // 删除
@@ -84,7 +86,23 @@ wx.navigateTo({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var uid=wx.getStorageSync('uid');
+    // +++++++++++++++++++收货地址列表+++++++++++++++++++++++
+    request({
+    url:'http://tsf.suipk.cn/home/personal/do_my_addres',
+    data:{
+      uid,
+      page:1,
+    }
+    }).then(res=>{
+    console.log('调用收货列表成功',res)
+    this.setData({
+      defa:res.data.list
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+    })
+    // +++++++++++++++++++收货地址列表+++++++++++++++++++++++
   },
 
   /**

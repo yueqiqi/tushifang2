@@ -1,4 +1,5 @@
 // pages/self/card/card.js
+import request from '../../login.js'
 Page({
   // 查看名片夹
   mycard:function(e){
@@ -78,6 +79,41 @@ console.log(options)
       }
     })
     console.log("这是名片界面"+that.data.userinfo)
+    // 我的名片
+    var uid=wx.getStorageSync('uid');
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_mynamecard',
+      data:{
+        uid,
+      }
+      }).then(res=>{
+      console.log('调用我的名片成功',res)
+      that.setData({
+        name:res.data.data.nickname,
+        com:res.data.data.company_position,
+        post:res.data.data.company_position,
+        email:res.data.data.email,
+        phone:res.data.data.phone,
+        address:res.data.data.detailed_address
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // +++++++++++++++++我的名片夹+++++++++++++++++++++++++++++++
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_my_nameCardHolder',
+      data:{
+        uid,
+        page:1,
+      }
+      }).then(res=>{
+      console.log('调用我的名片夹成功',res)
+      that.setData({
+        mycard:res.data.list
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

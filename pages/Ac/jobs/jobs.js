@@ -238,6 +238,11 @@ Page({
       "sup": flag
     });
   },
+  con:function(){
+    wx.navigateBack({
+      delta: 1
+    });
+  },
   /* 隐藏失败弹窗 */
   hidePopup(flag = true) {
     this.setData({

@@ -1,8 +1,8 @@
 <!-- 信息中心招聘信息 -->
 <view class="bgf">
-<van-tabs stick>
+<van-tabs stick bindclick='vm'> 
 <!-- 招聘信息 -->
-  <van-tab title-style-="width:165rpx;height:70rpx;background:linear-gradient(45deg,rgba(0,152,239,1) 0%,rgba(119,213,244,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:400;line-height:70rpx;z-index:9"  bindtap="activetab1" title="{{one_class_id[0].title}}">
+  <van-tab title-style-="width:165rpx;height:70rpx;background:linear-gradient(45deg,rgba(0,152,239,1) 0%,rgba(119,213,244,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:400;line-height:70rpx;z-index:9"  bindtap="activetab1" name="{{one_class_id[0].id}}" title="{{one_class_id[0].title}}">
   <!-- 轮播图 -->
     <include src="../carousel/carousel"/>
     <!-- 搜索 -->
@@ -58,13 +58,13 @@
     <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;" bindtap="goto">
       <view class="post d-flex"> 
         <view class="post-left ml d-flex">
-          <view class="postTitle">{{item.title}}</view>
-          <view class="stick">{{item.stick}}</view>
-          <view class="recommend" hidden="{{item.rec==''?true:false}}">{{item.rec}}</view>
+          <view class="postTitle">{{item.type_work}}</view>
+          <view class="stick" style="{{item.px==3?'background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);width:120rpx;height:36rpx;':''}}" wx-if="{{item.px!=1}}">{{item.px}}</view>
+          <!-- <view class="recommend" hidden="{{item.rec==''?true:false}}">{{item.rec}}</view> -->
         </view>  
       <!-- 薪资 -->
         <view class="post-right">
-          <view class="money">薪资 {{item.money}}</view>
+          <view class="money">薪资 {{item.salary_range}}</view>
         </view>
       </view>
       <!-- 招聘状态 -->
@@ -72,14 +72,14 @@
         <!-- 招聘状态左边 -->
           <view class="state-left d-flex">
             <view class="stateTitle">招聘状态</view>
-            <view class="stateing ml">{{item.statu}}</view>
+            <view class="stateing ml">{{item.working_condition}}</view>
           </view>
         <!-- 招聘状态右边 -->
           <view class="state-right d-flex">
             <view class="state-site">工作地点</view>
             <!-- <view style="width:200rpx;"> -->
-              <view class="site-province">{{item.province}}</view>
-              <view class="site-district">{{item.dist}}</view>
+              <view class="site-province">{{item.work}}</view>
+              <!-- <view class="site-district">{{item.dist}}</view> -->
             <!-- </view> -->
           </view>
         </view>
@@ -87,18 +87,18 @@
         <view class="d-spb timer ml mt">
           <view class="timer-left d-flex" style="">
             <view class="timerTitle">发布时间</view>
-            <view class="timerdate ml">{{item.time}}</view>
+            <view class="timerdate ml">{{item.create_time}}</view>
           </view>
           <view class="timer-right d-flex" style="">
             <view class="year">工作年限</view>
-            <view class="num">{{item.num}}年</view>
+            <view class="num">{{item.working_years}}</view>
           </view>
         </view>
         <!-- 发布者 -->
         <view class="d-flex user ml">
-          <view class="head"><img class="head" src="{{item.img}}" alt=""/></view>
-          <view class="userName">{{item.username}}</view>
-          <view class="company">{{item.comp}}</view>
+          <view class="head"><img class="head" src="{{item.head}}" alt=""/></view>
+          <view class="userName">{{item.nickname}}</view>
+          <view class="company">{{item.corporate_name}}</view>
         </view>
       <!--  -->
      </view>
@@ -119,40 +119,39 @@
           <view class="header d-flex ml">
       <!-- 发布用户名 -->
         <view class="header-left d-flex">
-          <view class="peopleHead"><img class="peopleHead" src="{{item.header}}" alt=""/></view>
-          <view class="peopleName">{{item.name}}</view>
+          <view class="peopleHead"><img class="peopleHead" src="{{item.head}}" alt=""/></view>
+          <view class="peopleName">{{item.nickname}}</view>
         </view>
         <view class="header-right d-flex">
           <view class="want">求职</view>
-          <view class="job">{{item.job}}</view>
+          <view class="job">{{item.type_work}}</view>
         </view>
       </view>
       <!-- 求职状态 -->
       <view class="peoplestate d-spb ml">
         <view class="peoplestate-left d-flex">
         <view class="peoplestateing Title">求职状态</view>
-        <view class="Msg">{{item.statu}}</view>
+        <view class="Msg">{{item.working_condition}}</view>
       </view>
       <view class="peoplestate-right d-flex ">
         <view class="p-want Title">理想薪资</view>
-        <view class="p-money Msg">{{item.money}}</view>
+        <view class="p-money Msg">{{item.salary_range}}</view>
       </view>
       </view>
       <!-- 发布时间 -->
       <view class="p-timer d-flex ml">
         <view class="p-timer-left d-flex">
           <view class="p-timer-date Title">发布时间</view>
-          <view class="Msg">{{item.time}}</view>
+          <view class="Msg">{{item.create_time}}</view>
         </view>
         <view class="p-timer-right d-flex">
           <view class="p-year Title">工作年限</view>
-          <view class="p-num Msg">{{item.num}}年</view>        
+          <view class="p-num Msg">{{item.working_years}}</view>        
         </view>
       </view>
       <!--  -->
     </view>
 <!-- 第二个求职 -->
- 
       <!--  -->
 
 
@@ -165,9 +164,22 @@
 
   </van-tab>
   <!-- -------------------------------------------------------------------------------------------------- -->
-  <van-tab class="zz" title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(168,139,242,1) 0%,rgba(149,85,236,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" bindtap="activetab2" title="{{one_class_id[1].title}}">
-    <include src="../carousel/carousel"/>
- 
+  <van-tab class="zz" title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(168,139,242,1) 0%,rgba(149,85,236,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" bindtap="activetab2" name="{{one_class_id[1].id}}" title="{{one_class_id[1].title}}">
+    <!-- <include src="../carousel/carousel"/> -->
+ <!-- 轮播图 -->
+<view class="carousel ">
+<view class="carouselImg">
+  <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255,255,255,1)"indicator-active-color="rgba(118,212,198,1)" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <block wx:for="{{imgUrls2}}" wx:key="{{index}}">
+  <navigator url="{{item.link}}">
+    <swiper-item>
+      <image src="{{item.img_url}}" class="slide-image" />
+    </swiper-item>
+  </navigator>
+  </block>
+</swiper>
+</view>
+</view>
   
     <!-- 分类 -->
     <view class="select ml d-flex" style="margin-top:30rpx;">
@@ -194,51 +206,57 @@
 </view>
 <view class="bg">
 <!-- 发布 -->
-<view class="bgf">
-<!-- 第一个 -->
-  <view class="musks" style="margin-top:30rpx;">
+
+
+<!-- ++++++++++++++++++++渣场信息++++++++++++++++++++++++++++++++++++ -->
+
+<block wx:for="{{slag}}" wx:key="{{index}}">
+  
+  <view class="bgf slag" style="">
+  <view class="musks" style="margin-top:10rpx;">
     <view class="musk-user d-spb">
       <view class="musk-user-l d-flex">
       <!-- 头像 -->
-        <image src="../../images/carousel/03.jpg"></image>
+        <image src="{{item.head}}"></image>
         <!-- 用户名 -->
         <view>发布用户名</view>
-        <view>十万火急</view>
+        <view wx-if="{{item.px==1?false:true}}" class="{{item.px=='置顶'?'zd':(item.px=='十万火急'?'hj':'')}}">{{item.px}}</view>
       </view>
       <view class="musk-user-r">
-        <view>2.3km</view>
+        <view>{{item.distance}}</view>
       </view>    
     </view>
   <!-- 发布需求 -->
-  <view style="margin-left:31rpx;margin-top:39rpx;font-size:32rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">发布者需求的标题</view>
+  <view style="margin-left:31rpx;margin-top:39rpx;font-size:32rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">{{item.title}}</view>
 <!-- 时间 -->
 <view class="musk-date d-spb">
-  <view class="musk-date-l">{{currenTime}}</view>
+  <view class="musk-date-l">{{item.create_time}}</view>
   <view class="musk-date-r d-flex">
     <image src="../../images/position49.png"></image>
-    <view >发布者定位</view>
+    <view >{{item.location}}</view>
   </view>
 </view>
 <!-- 内容 -->
-<view class="musk-content">翠云万科欢迎32万/28方/22方车24小时随时开自运。要来拉的老板提前联系，结账方式随意。</view>
+<view class="musk-content">{{item.info}}</view>
 <!-- 图片视频 -->
-<view class="musk-img">
-  <view class="">
-    <block wx:for="{{muskImg}}" wx:key="{{index}}">
-      <image class="muskImg" src="{{item.url}}"></image>
-    </block>
+<!-- <view class="musk-img"> -->
+ 
+  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+              <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
+                <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
+              </block>
+            </view>
+  <view wx-if="{{item.video!=''}}">
+    <video src="{{item.video}}" binderror="videoErrorCallbacks"></video>
   </view>
-    <view class="video">
-      <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
-    </view>
-</view>
+<!-- </view> -->
 <!-- 拨打电话-->
 <view class="musk-phone d-spb">
   <view class="musk-phone-l d-flex">
     <view class="">项目类型</view>
     <view class="">渣土信息</view>
   </view>
-  <view class="musk-phone-r d-flex">
+  <view class="musk-phone-r d-flex" bindtap="scall" data-tel="{{item.tel}}">
     <view>
       <image src="../../images/phone.png"></image>
     </view>
@@ -250,7 +268,7 @@
 <!-- 分享 -->
   <view class="share d-flex" bindtap="share">
     <view><image src="../../images/share.png"></image></view>
-    <view>分享</view>
+    <button open-type="share" class="bbb">分享</button>
   </view>
   <!-- 评论 -->
   <view class="comment d-flex" bindtap="comment">
@@ -258,101 +276,223 @@
     <view>评论</view>
   </view>
   <!-- 点赞 -->
-  <view class="like d-flex" bindtap="like">
-    <view><image src="../../images/like.png"></image></view>
-    <view>{{like}}</view>
+  <view class="like d-flex" bindtap="slike" data-id="{{item.id}}">
+              <view class="z">
+                <image src="{{item.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
+              </view>
+              <view class="z">
+                <text  style="{{item.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{item.point_ratio}}</text>
+              </view>
   </view>
+  </view>
+  </view>
+  </view>
+</block>
+  
 
-</view>
   <!--  -->
-  </view>
-</view>
-<!-- 第二个 -->
-<view class="bgf second">
-<view class="musks">
-    <view class="musk-user d-spb">
-      <view class="musk-user-s-l d-flex">
-      <!-- 头像 -->
-        <image src="../../images/carousel/03.jpg"></image>
-        <!-- 用户名 -->
-        <view>发布用户名</view>
-        <view class="btn-r">置顶</view>
-      </view>
-      <view class="musk-user-r">
-        <view>2.3km</view>
-      </view>    
-    </view>
-  <!-- 发布需求 -->
-  <view style="margin-left:31rpx;margin-top:39rpx;font-size:32rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">发布者需求的标题</view>
-<!-- 时间 -->
-<view class="musk-date d-spb">
-  <view class="musk-date-l">{{currenTime}}</view>
-  <view class="musk-date-r d-flex">
-    <image src="../../images/position49.png"></image>
-    <view >发布者定位</view>
-  </view>
-</view>
-<!-- 内容 -->
-<view class="musk-content">翠云万科欢迎32万/28方/22方车24小时随时开自运。要来拉的老板提前联系，结账方式随意。</view>
-<!-- 图片视频 -->
-<view class="musk-img">
-  <view class="">
-    <block wx:for="{{muskImg}}" wx:key="{{index}}">
-      <image class="muskImg" src="{{item.url}}"></image>
-    </block>
-  </view>
-    <!-- <view class="video">
-      <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback"></video>
-    </view> -->
-</view>
-<!-- 拨打电话-->
-<view class="musk-phone d-spb">
-  <view class="musk-phone-l d-flex">
-    <view class="">项目类型</view>
-    <view class="">渣土信息</view>
-  </view>
-  <view class="musk-phone-r d-flex">
-    <view>
-      <image src="../../images/phone.png"></image>
-    </view>
-    <view>拨打电话</view>
-  </view>
-</view>
-<!-- 分享 -->
-<view class="likes d-spb">
-<!-- 分享 -->
-  <view class="share d-flex" bindtap="share">
-    <view><image src="../../images/share.png"></image></view>
-    <view>分享</view>
-  </view>
-  <!-- 评论 -->
-  <view class="comment d-flex" bindtap="comment">
-    <view><image src="../../images/comment.png"></image></view>
-    <view>评论</view>
-  </view>
-  <!-- 点赞 -->
-  <view class="like d-flex" bindtap="like">
-    <view><image src="../../images/like.png"></image></view>
-    <view>{{like}}</view>
-  </view>
+  <!-- </view> -->
+<!-- </view> -->
 
-</view>
-  <!--  -->
-  </view>
-</view>
 <!--  -->
 </view>
   </van-tab>
   <!-- ================================================================================================= -->
-  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(45deg,rgba(255,57,99,1) 0%,rgba(255,129,153,1) 100%);border-radius:10rpx;font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" bindtap="activetab3" title="{{one_class_id[2].title}}">
-    <include src="../carousel/carousel"/>
-    <include src="../global/global"/>
+  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(45deg,rgba(255,57,99,1) 0%,rgba(255,129,153,1) 100%);border-radius:10rpx;font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" bindtap="activetab3" name="{{one_class_id[2].id}}" title="{{one_class_id[2].title}}">
+    <!-- 轮播图 -->
+<view class="carousel ">
+<view class="carouselImg">
+  <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255,255,255,1)"indicator-active-color="rgba(118,212,198,1)" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <block wx:for="{{imgUrls3}}" wx:key="{{index}}">
+  <navigator url="{{item.link}}">
+    <swiper-item>
+      <image src="{{item.img_url}}" class="slide-image" />
+    </swiper-item>
+  </navigator>
+  </block>
+</swiper>
+</view>
+</view>
+<view class="bg">
+
+  <block wx:for="{{meeting}}" wx:key="{{index}}">
+    
+  <view class="bgf slag" style="">
+    <view class="musks" style="margin-top:10rpx;">
+    <view class="musk-user d-spb">
+      <view class="musk-user-l d-flex">
+      <!-- 头像 -->
+        <image src="{{item.head}}"></image>
+        <!-- 用户名 -->
+        <view>发布用户名</view>
+        <view wx-if="{{item.px==1?false:true}}" class="{{item.px=='置顶'?'zd':(item.px=='十万火急'?'hj':'')}}">{{item.px}}</view>
+      </view>
+      <view class="musk-user-r">
+        <view>{{item.distance}}</view>
+      </view>    
+    </view>
+  <!-- 发布需求 -->
+  <view style="margin-left:31rpx;margin-top:39rpx;font-size:32rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">{{item.title}}</view>
+<!-- 时间 -->
+<view class="musk-date d-spb">
+  <view class="musk-date-l">{{item.create_time}}</view>
+  <view class="musk-date-r d-flex">
+    <image src="../../images/position49.png"></image>
+    <view >{{item.location}}</view>
+  </view>
+</view>
+<!-- 内容 -->
+<view class="musk-content">{{item.info}}</view>
+<!-- 图片视频 -->
+<!-- <view class="musk-img"> -->
+ 
+  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+              <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
+                <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
+              </block>
+            </view>
+  <view wx-if="{{item.video!=''}}">
+    <video src="{{item.video}}" binderror="videoErrorCallbacks"></video>
+  </view>
+<!-- </view> -->
+<!-- 拨打电话-->
+<view class="musk-phone d-spb">
+  <view class="musk-phone-l d-flex">
+    <view class="">项目类型</view>
+    <view class="">渣土信息</view>
+  </view>
+  <view class="musk-phone-r d-flex" bindtap="scall" data-tel="{{item.tel}}">
+    <view>
+      <image src="../../images/phone.png"></image>
+    </view>
+    <view>拨打电话</view>
+  </view>
+</view>
+<!-- 分享 -->
+<view class="likes d-spb">
+<!-- 分享 -->
+  <view class="share d-flex" bindtap="share">
+    <view><image src="../../images/share.png"></image></view>
+    <button open-type="share" class="bbb">分享</button>
+  </view>
+  <!-- 评论 -->
+  <view class="comment d-flex" bindtap="comment">
+    <view><image src="../../images/comment.png"></image></view>
+    <view>评论</view>
+  </view>
+  <!-- 点赞 -->
+  <view class="like d-flex" bindtap="mlike" data-id="{{item.id}}">
+              <view class="z">
+                <image src="{{item.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
+              </view>
+              <view class="z">
+                <text  style="{{item.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{item.point_ratio}}</text>
+              </view>
+  </view>
+  </view>
+  </view>
+  </view>
+</block>
+    </view>
 
   </van-tab>
   <!-- =================================================================================================== -->
-  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);border-radius:10rpx;font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" title="{{one_class_id[3].title}}" bindtap="activetab4" tab-active-class="zzz">
-    <include src="../carousel/carousel"/>
-    <include src="../global/global"/>
+  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);border-radius:10rpx;font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" title="{{one_class_id[3].title}}" name="{{one_class_id[3].id}}" bindtap="activetab4" tab-active-class="zzz">
+<!-- 轮播图 -->
+<view class="carousel ">
+  <view class="carouselImg">
+  <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255,255,255,1)"indicator-active-color="rgba(118,212,198,1)" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <block wx:for="{{imgUrls4}}" wx:key="{{index}}">
+    <navigator url="{{item.link}}">
+    <swiper-item>
+      <image src="{{item.img_url}}" class="slide-image" />
+    </swiper-item>
+  </navigator>
+  </block>
+</swiper>
+</view>
+</view>
+<view class="bg">
+  
+  <block wx:for="{{deal}}" wx:key="{{index}}">
+    
+    <view class="bgf slag" style="">
+      <view class="musks" style="margin-top:10rpx;">
+    <view class="musk-user d-spb">
+      <view class="musk-user-l d-flex">
+        <!-- 头像 -->
+        <image src="{{item.head}}"></image>
+        <!-- 用户名 -->
+        <view>发布用户名</view>
+        <view wx-if="{{item.px==1?false:true}}" class="{{item.px=='置顶'?'zd':(item.px=='十万火急'?'hj':'')}}">{{item.px}}</view>
+      </view>
+      <view class="musk-user-r">
+        <view>{{item.distance}}</view>
+      </view>    
+    </view>
+  <!-- 发布需求 -->
+  <view style="margin-left:31rpx;margin-top:39rpx;font-size:32rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">{{item.title}}</view>
+<!-- 时间 -->
+<view class="musk-date d-spb">
+  <view class="musk-date-l">{{item.create_time}}</view>
+  <view class="musk-date-r d-flex">
+    <image src="../../images/position49.png"></image>
+    <view >{{item.location}}</view>
+  </view>
+</view>
+<!-- 内容 -->
+<view class="musk-content">{{item.info}}</view>
+<!-- 图片视频 -->
+<!-- <view class="musk-img"> -->
+ 
+  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+              <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
+                <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
+              </block>
+            </view>
+  <view wx-if="{{item.video!=''}}">
+    <video src="{{item.video}}" binderror="videoErrorCallbacks"></video>
+  </view>
+<!-- </view> -->
+<!-- 拨打电话-->
+<view class="musk-phone d-spb">
+  <view class="musk-phone-l d-flex">
+    <view class="">项目类型</view>
+    <view class="">渣土信息</view>
+  </view>
+  <view class="musk-phone-r d-flex" bindtap="scall" data-tel="{{item.tel}}">
+    <view>
+      <image src="../../images/phone.png"></image>
+    </view>
+    <view>拨打电话</view>
+  </view>
+</view>
+<!-- 分享 -->
+<view class="likes d-spb">
+<!-- 分享 -->
+  <view class="share d-flex" bindtap="share">
+    <view><image src="../../images/share.png"></image></view>
+    <button open-type="share" class="bbb">分享</button>
+  </view>
+  <!-- 评论 -->
+  <view class="comment d-flex" bindtap="comment">
+    <view><image src="../../images/comment.png"></image></view>
+    <view>评论</view>
+  </view>
+  <!-- 点赞 -->
+  <view class="like d-flex" bindtap="dlike" data-id="{{item.id}}">
+    <view class="z">
+                <image src="{{item.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
+              </view>
+              <view class="z">
+                <text  style="{{item.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{item.point_ratio}}</text>
+              </view>
+  </view>
+  </view>
+  </view>
+  </view>
+</block>
+    </view>
   </van-tab>
 <!-- ===================================================================================================================== -->
 </van-tabs>

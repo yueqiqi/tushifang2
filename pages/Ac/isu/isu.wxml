@@ -25,6 +25,6 @@
       <view class="st2">小包正在努力为您审核中</view>
       <view class="st4">请注意消息提醒！</view>
     </view>
-    <view class='smsg' bindtap='suhide'>确定</view>
+    <view class='smsg' bindtap='suhide' catchtap="con">确定</view>
 </view>
 </view>

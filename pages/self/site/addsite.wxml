@@ -13,13 +13,13 @@
     <view class="peo d-flex">
       <view class="til">电话号码</view>
       <view>
-        <input name="i2"></input>
+        <input name="i2" type="number"></input>
       </view>
     </view>
     <!-- 所在地区 -->
     <view class="peo d-spb">
       <view class="til">所在地区</view>
-      <view class="d-spb" bindtap="translate">
+      <view class="d-spb" bindtap="translate"  style="width:500rpx;">
         <import src="../../../model/model"/>
       <view class="infoText">{{province}} {{city}} {{county}}</view>
       <template is="areaData" data="{{...item}}"/>

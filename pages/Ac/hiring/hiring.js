@@ -291,7 +291,8 @@ this.ssushow()
     // 薪资范围
     var salary_range=m.i2
     // 工作地点
-    var work=m.i3
+    var work=that.data.province+that.data.city+that.data.county
+    
     // 工作年限
     var working_years=m.i4
     // 联系人
@@ -342,12 +343,14 @@ this.ssushow()
     // 置顶类型
     // that.data.seradio
     if(that.data.issu==false){
-
       // 置顶类型
-      if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.i4 == "" || m.i5 == "" || m.i5 == "" || m.i6 == "" || m.i7 == "" || m.i8 == "" || this.data.tempFilePaths.length ==0 || this.data.tempFilePathss == "" || m.textarea.length==0) {
+      if (m.i1 == "" || m.i2 == "" || that.data.city == "" || m.i4 == "" || m.i5 == "" || m.i6 == "" || this.data.tempFilePaths.length ==0 || this.data.tempFilePathss == "" || m.textarea.length==0) {
         this.hidePopup(false);
+        that.setData({
+          sq:true
+        })
     } else {
-      
+      console.log('工作地点',work)
       wx.request({
         url:"http://tsf.suipk.cn/home/info/do_addrecruit",
         data:{
@@ -375,8 +378,21 @@ this.ssushow()
        'content-type': 'application/x-www-form-urlencoded'
      },
      success:function(res){
+       if(res.data.code==0){
+         that.suhide(false)
+         that.setData({
+           sq:true
+         })
+       }
        console.log("调用找人成功",res)
-       that.suhide(false)
+       if(res.data.code==101){
+         console.log('积分是否',res.mes)
+         that.setData({
+           pm:false,
+           sq:true,
+         })
+       }
+       
       },fail:function(){
        console.log("调用失败")
       }
@@ -416,16 +432,36 @@ if(that.data.issu==true){
 
     console.log(this.data.tempFilePaths.length)
   },
+  hp(){
+    this.setData({
+      pm:true,sq:false
+    })
+    wx.navigateTo({
+      url: '/pages/self/goup/goup',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   /* 隐藏成功弹窗 */
   suhide(flag = true) {
     this.setData({
-      "sup": flag
+      "sup": flag,
+      sq:false,
+    });
+  },
+  
+  con:function(){
+    wx.navigateBack({
+      delta: 1
     });
   },
   /* 隐藏失败弹窗 */
   hidePopup(flag = true) {
     this.setData({
-      "popup": flag
+      "popup": flag,sq:false,
     });
   },
   next: function () {
@@ -658,6 +694,7 @@ if(that.data.issu==true){
    * 页面的初始数据
    */
   data: {
+    pm:true,
     item: {
       ashow: ashow
     },

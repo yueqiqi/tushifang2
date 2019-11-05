@@ -1,8 +1,8 @@
 <view class='wrap'>
   <view class='checkbox-con'>
     <checkbox-group bindchange="checkboxChange">
-      <label class="{{item.checked?'checkbox checked':'checkbox'}}" wx:for="{{checkboxArr}}" bindtap='checkbox' data-index="{{index}}" wx:key="item.name">
-        <checkbox value="{{item.title}}" checked="{{item.checked}}"/>{{item.title}}
+      <label class="{{item.checked?'checkbox checked':'checkbox'}}" wx:for="{{checkboxArr}}" data-ids='{{item.id}}' bindtap='checkbox' data-index="{{index}}" wx:key="item.name">
+        <checkbox value="{{item.id}}"  checked="{{item.checked}}"/>{{item.title}}
       </label>
     </checkbox-group>
   </view>

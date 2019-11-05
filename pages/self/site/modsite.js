@@ -1,5 +1,48 @@
 // pages/self/site/addsite.js
+var QQMapWX = require('../../../utils/qqmap-wx-jssdk.js');
+// 实例化API核心类
+var demo = new QQMapWX({
+  key: 'E7PBZ-USVKO-3BYWB-SR4NY-TA7Z3-S4BTR'
+});
+var model = require('../../../model/model.js')
+
+var ashow = false;
+var item = {};
+import request from '../../login.js'
 Page({
+  //点击选择城市按钮显示picker-view
+  translate: function (e) {
+    model.animationEvents(this, 0, true, 400);
+  },
+  //隐藏picker-view
+  hiddenFloatView: function (e) {
+    console.log("id = " + e.target.dataset.id)
+    model.animationEvents(this, 200, false, 400);
+    //点击确定按钮更新数据(id=444是背后透明蒙版 id=555是取消按钮)
+    if (e.target.dataset.id == 666) {
+      this.updateShowData()
+    }
+  },
+  //滑动事件
+  bindChange: function (e) {
+    model.updateAreaData(this, 1, e);
+    //如果想滑动的时候不实时更新，只点确定的时候更新，注释掉下面这行代码即可。
+    this.updateShowData()
+
+  },
+  //更新顶部展示的数据
+  updateShowData: function (e) {
+    item = this.data.item;
+    var province_and_city=item.provinces[item.value[0]].name+item.citys[item.value[1]].name+item.countys[item.value[2]].name
+    this.setData({
+      province_and_city
+    });
+    console.log(this.data.province, this.data.city, this.data.county);
+  }
+  ,
+  onReachBottom: function () {
+  },
+  nono: function () { },
   formSubmit: function (e) {
     console.log(e.detail.value)
     console.log(this.data.checked)
@@ -31,14 +74,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // +++++++++++++++++修改地址+++++++++++++++++++++++
+    console.log('接受地址兑换来的',options.id)
+    var that=this
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_modify_addressinfo',
+      data:{
+        id:options.id
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
+      var checked
+      if(res.data.data.is_default==1){
+        checked=true
+      }else{
+        checked=false
+      }
+      this.setData({
+        name:res.data.data.username,
+        phone:res.data.data.phone,
+        province_and_city:res.data.data.province_and_city,
+        adds:res.data.data.info,
+        checked,
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // +++++++++++++++++修改地址+++++++++++++++++++++++
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  onReady: function (e) {
+    var that = this;
+    //请求数据
+    model.updateAreaData(that, 0, e);
   },
 
   /**

@@ -55,7 +55,7 @@ margin-left:20rpx;
   border-bottom: 2rpx solid rgba(230,230,230,1);
   padding-bottom:31rpx;
 }
-.defaultaa{
+.default{
   width:80rpx;
 height:36rpx;
 background:rgba(235,249,247,1);
@@ -66,21 +66,11 @@ font-weight:500;
 color:rgba(72,149,137,1);
 line-height:36rpx;
 text-align: center;
+margin-right:19rpx;
 }
-.default{
-  display:none;
-}
-.locationaa{
-  width:545rpx;
-  font-size:28rpx;
-font-family:PingFang SC;
-font-weight:400;
-color:rgba(153,153,153,1);
-margin-left:19rpx;
-}
+
 .location{
    font-size:28rpx;
-font-family:PingFang SC;
 font-weight:400;
 color:rgba(153,153,153,1);
   width:600rpx;

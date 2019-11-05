@@ -8,6 +8,7 @@ var model = require('../../../model/model.js')
 
 var ashow = false;
 var item = {};
+import request from '../../login.js'
 Page({
   // /获取地理位置
   getlocation: function () {
@@ -35,7 +36,70 @@ Page({
   //////
   formSubmit:function(e){
     console.log(e.detail.value)
+    var that=this
+    var e=e.detail.value
     console.log(this.data.checked)
+    // ++++++++++++++添加地址++++++++++++++++++++++++++
+    var uid=wx.getStorageSync('uid');
+    var username=e.i1
+    var phone=e.i2
+    var province_and_city=that.data.province+that.data.city+that.data.county
+    var info=e.textarea
+    var is_default
+    if(that.data.checked==true){
+      is_default=1
+    }else{
+      is_default=0
+    }
+    // if(username==''&&phone==''&&province_and_city==''&&)
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_add_address',
+      data:{
+        uid,
+        username,
+        phone,
+        province_and_city,
+        info,
+        is_default
+      }
+      }).then(res=>{
+      console.log('调用添加地址成功',res)
+      if(res.data.code==0){
+        wx.showToast({
+          title: '添加成功',
+          icon: 'success',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result)=>{
+            wx.navigateBack({
+              delta: 1
+            });
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
+      }else if(res.data.code==101){
+        wx.showToast({
+          title: '手机号不正确',
+          icon: 'err',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result)=>{
+            
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
+      }
+      this.setData({
+      
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // ++++++++++++++添加地址++++++++++++++++++++++++++
   },
   // 是否设置默认
   onChange(event) {

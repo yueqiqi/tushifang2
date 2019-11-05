@@ -50,12 +50,14 @@ Page({
     var checkboxArr = this.data.checkboxArr;//选项集合
     checkboxArr[index].checked = !checkboxArr[index].checked;//改变当前选中的checked值
     var checkValue = e.detail.value;
+    console.log('获取去下标id',e)
     this.setData({
       checkboxArr: checkboxArr
     });
   },
   checkboxChange: function (e) {
     console.log(e.detail.value.length)
+    console.log('选择的id',e)
     // 判断用户是否选择兴趣
     if (e.detail.value.length>0){
       this.setData({
@@ -73,12 +75,17 @@ Page({
   },
 
   confirm: function () {// 提交
-  wx.navigateTo({
-    url: '/pages/demo/new/index/renzhen',
-  })
-    console.log(this.data.checkValue)//所有选中的项的value
-    console.log("跳转")
+    wx.setStorageSync('int', this.data.checkValue)
+    // ++++++++++++++++++++++选择兴趣接口+++++++++++++++++++++
+    
+      wx.navigateTo({
+        url: '/pages/demo/new/index/renzhen',
+      })
    
+    // ++++++++++++++++++++++选择兴趣接口+++++++++++++++++++++
+ 
+  console.log(this.data.checkValue)//所有选中的项的value
+    console.log("跳转")
   },
   // data: {
   //   text: "请选择",
@@ -153,9 +160,9 @@ Page({
   onLoad: function (options) {
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_my_Interest',
+      url:'http://tsf.suipk.cn/home/Info/do_twoclass_list',
       data:{
-        uid
+        one_class_id:'',
       }
       }).then(res=>{
       console.log('调用我的兴趣成功',res)

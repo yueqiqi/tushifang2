@@ -44,8 +44,8 @@
   <view class="section2 d-spb">
     <view class="section-title">联系电话</view>
     <view class="right d-spb">
-      <input name="i4" disabled="{{mz}}" value="{{phone}}" maxlength="11" type="number"/>
-      <view class="ch" bindtap="chp">更换</view>
+      <input name="i4" value="{{phone}}" maxlength="11" type="number"/>
+      <!-- <view class="ch" bindtap="chp">更换</view>  disabled="{{mz}}"-->
     </view>
  </view>
 

@@ -239,7 +239,8 @@ display: flex;
   margin:0 auto;
 }
 .imgs{
-  width:33.33333333%;
+  /* width:33.33333333%; */
+  width:130rpx;
   display: flex;
   justify-content: center;
   margin-bottom:20rpx;
@@ -247,8 +248,8 @@ display: flex;
 /* 添加图片的样式 */
 .imgs image{
   /* width:100%; */
-  width:168rpx;
-  height:168rpx;
+  width:130rpx;
+  height:130rpx;
   /* max-height:212rpx; */
   border:1px solid rgba(214, 212, 212, 0.1);
   /* box-shadow: 5rpx 5rpx 1rpx 3rpx #e2e0e0; */

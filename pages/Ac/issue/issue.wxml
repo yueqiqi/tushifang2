@@ -32,8 +32,8 @@
     <view class="section2 d-spb">
       <view class="section-title">联系电话<text style="color:#f00">*</text></view>
       <view class="right d-spb">
-        <input disabled="{{mz}}" value="{{h3==false?phone:hr3}}" name="i3" maxlength="11" type="number" />
-        <view class="ch" bindtap="chp">更换</view>
+        <input value="{{h3==false?phone:hr3}}" name="i3" maxlength="11" type="number" />
+        <!-- <view class="ch" bindtap="chp">更换</view>  disabled="{{mz}}" -->
       </view>
     </view>
 
@@ -77,7 +77,7 @@
       <view class="self">
         <view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">项目介绍</view>
         <view class="texta">
-          <textarea value="{{h4==false?'':hr4}}" placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请您输入更多介绍详情，越详细越好，这样有助于您更快的完成寻找需求哦~" maxlength="200" name="textarea" />
+          <textarea wx-if="{{sq==true?false:true}}" value="{{h4==false?'':hr4}}" placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请您输入更多介绍详情，越详细越好，这样有助于您更快的完成寻找需求哦~" maxlength="200" name="textarea" />
         </view>
       </view>
       <!--  -->
@@ -130,10 +130,15 @@
           <view class="st2">小包正在努力为您审核中</view>
           <view class="st4">请注意消息提醒！</view>
         </view>
-        <view class='smsg' bindtap='suhide'>确定</view>
+        <view class='smsg' bindtap='suhide' catchtap="con">确定</view>
       </view>
     </view>
     <!-- ======================= -->
+    <!-- <cover-view class="" style="z-index:999999999"> -->
     <include src="../stick/stick" />
+    <!-- </cover-view> -->
   </form>
 </view>
+<!-- <cover-view style="z-index:999999"> -->
+    <include src="../err/err" />
+<!-- </cover-view> -->

@@ -43,7 +43,7 @@
   <view class="d-flex it">
   <block wx:for="{{img}}" wx:key="{{index}}">
     <view class="img-text">
-      <image class="" src="{{item}}"></image>
+      <image class="" src="{{item}}" bindtap="look" data-index="{{item}}"></image>
     </view>
   </block>
   </view>

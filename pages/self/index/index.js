@@ -17,6 +17,26 @@ Page({
     var iv = e.detail.iv
     console.log(iv,encryptedData)
     // this.onShow()
+    // var openid=wx.getStorageSync('openid');
+      // +++++++++++++++++++++++++获取手机号+++++++++++++++++++++++++
+      // request({
+      //   url:'http://tsf.suipk.cn/home/Loginwx/getWechatUserPhone',
+      //   data:{
+      //     encryptedData,
+      //     iv,
+      //     openid
+      //   }
+      //   }).then(res=>{
+      //   console.log('调用手机号成功',res)
+      //   wx.setStorageSync('userphone', res.data.data.phoneNumber);
+      //   this.setData({
+        
+      //   })
+      //   }).catch(err=>{
+      //   console.log('调用失败')
+      // })
+      // +++++++++++++++++++++++++获取手机号+++++++++++++++++++++++++
+    
           that.setData({
             showDialog:false,
             iv,
@@ -51,7 +71,9 @@ Page({
         var addr=province+city
         var nickname = userInfo.nickName
         var sex = userInfo.gender //性别 0：未知、1：男、2：女
-        console.log("iv +enc",iv,encryptedData)
+        var phone=wx.getStorageSync('userphone');
+        console.log('这是手机号',phone)
+        // console.log("iv +enc",iv,encryptedData)
         // +++++++++++++++请求祖册+++++++++++++++++++++++++
         request({
           url:'http://tsf.suipk.cn/home/Loginwx/register',
@@ -64,11 +86,34 @@ Page({
             nickname,
             encryptedData,
             iv,
+            // phone,
           }
           }).then(res=>{
           console.log('调用用户所有信息成功',res)
           wx.setStorageSync("uid",res.data.data.id)
           wx.setStorageSync("userphone",res.data.data.phone)
+
+            // ++++++++++++++++++++++
+            // var uid=wx.getStorageSync('uid');
+            // request({
+            //   url:'http://tsf.suipk.cn/home/personal/do_personal_center',
+            //     data:{
+            //       uid,
+            //     }
+            //     }).then(res=>{
+            //     console.log('调用储存用户成功',res)
+            //     this.setData({
+            //       header:res.data.data.head,
+            //       wxName:res.data.data.nickname,
+            //       score:res.data.data.credit
+            //     })
+            //     }).catch(err=>{
+            //     console.log('调用失败')
+            //   })
+            // ++++++++++++++++++++++
+
+
+
           that.setData({
             sh:!that.data.sh,
             header:res.data.data.head,
@@ -81,7 +126,6 @@ Page({
       }
     })
     console.log("电话号码调用结束")
-
         that.setData({
           showDialog: true//!that.data.showDialog
         });

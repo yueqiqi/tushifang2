@@ -1,18 +1,18 @@
 <!-- 错误提示框 -->
-<view class='shade' hidden='{{popup}}' bindtap='hidePopup'></view>
-<view class='shade_box popup' hidden='{{popup}}'>
+<view class='shade' hidden='{{pm}}'></view>
+<view class='shade_box popup' hidden='{{pm}}'>
 <!-- 成功图片 -->
     <view class='title'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
     <!-- 文字 -->
     <view class='content'>
-      <view class="t1">请完善信息</view>
+      <view class="t1">积分不足请充值！</view>
     </view>
-    <view class='msg' bindtap='hidePopup'>确定</view>
+    <view class='msg' bindtap='hp'>确定</view>
 </view>
  
-<view  style='margin:20rpx 50rpx;'>
+<!-- <view  style='margin:20rpx 50rpx;'>
     <button type='primary' bindtap='showPopup'>打开弹窗</button>
-</view>
+</view> -->
 
 <!-- <integral statu="{{ret}}"/> -->
 

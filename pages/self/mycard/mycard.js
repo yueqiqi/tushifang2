@@ -1,6 +1,19 @@
 // pages/self/mycard/mycard.js
+import request from '../../login.js'
 Page({
   /* 失败函数隐藏弹窗 */
+  // 浏览图片
+  look:function(e){
+    var that=this
+    var index=e.currentTarget.dataset.index
+    console.log(index)
+    var imgList=that.data.img
+    console.log(e)
+    wx.previewImage({
+      current: index,//当前点击的图片链接
+      urls: imgList//图片数组
+    })
+  },
   hidePopup(flag = true) {
     this.setData({
       "popup": flag
@@ -77,24 +90,48 @@ Page({
     // console.log("options",options)
     // let id=options.jsonStr
     // console.log("id",id)
-    console.log(options)
-    var head=options.head
-    var name=options.name
-    var post=options.post
-    var com=options.com
-    var email=options.email
-    var phone=options.phone
-    var address=options.address
-    var textarea=options.textarea
-    var img=options.imgs
-    var imgs=img.split('-')
-    console.log(img)
-    that.setData({
-      head,
-      name,
-      post,
-      com,email,phone,address,textarea,img:imgs
+    // console.log(options)
+    // var head=options.head
+    // var name=options.name
+    // var post=options.post
+    // var com=options.com
+    // var email=options.email
+    // var phone=options.phone
+    // var address=options.address
+    // var textarea=options.textarea
+    // var img=options.imgs
+    // var imgs=img.split('-')
+    // console.log(img)
+    // that.setData({
+    //   head,
+    //   name,
+    //   post,
+    //   com,email,phone,address,textarea,img:imgs
+    // })
+    // ++++++++++++++++++++++调用名片详情+++++++++++++++++++++++++++++++
+    var uid=wx.getStorageSync('uid');
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_card_info',
+      data:{
+       uid 
+      }
+      }).then(res=>{
+      console.log('调用名片详情成功',res)
+      this.setData({
+        head:res.data.data.head,
+        name:res.data.data.nickname,
+        post:res.data.data.company_position,
+        com:res.data.data.corporate_name,
+        email:res.data.data.email,
+        phone:res.data.data.phone,
+        address:res.data.data.detailed_address,
+        textarea:res.data.data.info,
+        img:res.data.data.img_url_arr,  
+      })
+      }).catch(err=>{
+      console.log('调用失败')
     })
+    // ++++++++++++++++++++++调用名片详情+++++++++++++++++++++++++++++++
   },
 
   /**

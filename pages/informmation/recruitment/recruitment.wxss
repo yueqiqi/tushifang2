@@ -428,7 +428,7 @@ white-space:nowrap;
 /* 用户名 */
 .musk-user-l :nth-child(2){
   font-size:30rpx;
-font-family:PingFang SC;
+/* font-family:PingFang SC; */
 font-weight:bold;
 color:rgba(51,51,51,1);
 line-height: 70rpx;
@@ -436,16 +436,13 @@ margin-left: 20rpx;
 margin-right: 40rpx;
 }
 /* 十万火急 */
-.musk-user-l :nth-child(3){
-  width:120rpx;
-height:36rpx;
-background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);
-border-radius:5rpx;
-font-size:24rpx;
-font-family:PingFang SC;
-font-weight:400;
-color:rgba(255,255,255,1);text-align: center;line-height: 36rpx;margin-top:18rpx;
+.zd{
+  width:70rpx!important;height:36rpx!important;background:linear-gradient(45deg,rgba(218,25,22,1) 0%,rgba(241,82,51,1) 100%);border-radius:10rpx!important;font-size:24rpx!important;font-weight:400!important;color:rgba(255,255,255,1)!important;text-align: center;line-height: 36rpx;margin:auto 0
 }
+.hj{
+  text-align:center!important;line-height:36rpx!important;background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%)!important;width:120rpx;height:36rpx!important;font-size:24rpx;border-radius: 10rpx;color:#fff;margin:auto 0;
+}
+
 /* 距离 */
 .musk-user-r{
   margin-right:27rpx;
@@ -493,20 +490,70 @@ color:rgba(51,51,51,1);
 margin-left:30rpx;
 margin-top:37rpx
 }
+
 /* 发布图片 */
 .musk-img{
   margin-left:31rpx;
   margin-top: 28rpx;
 }
-/* 图片 */
-.muskImg{
-  width:220rpx;height:220rpx;
-  margin-right:15rpx;
+.tabUserImga{
+  /* width:100%; */
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;
+  flex-wrap: wrap;
+}
+.tabUserImga image{
+    width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
+}
+
+/* 一张图的样式 */
+.tabUserImgb{
+  width:100%;
+  display:flex;
+  justify-content: left;
+  /* margin-left:30rpx; */
+  flex-wrap: wrap;
+}
+.tabUserImgb image{
+ width:92%;
+height:300rpx;
+ margin-left:30rpx;
+  margin-top:30rpx;
+}
+/* 4张图样式 */
+.tabUserImgc{
+  width:500rpx;
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;
+  flex-wrap: wrap;
+}
+.tabUserImgc image{
+   width:220rpx;height:220rpx;
+   margin-right:15rpx;
+     margin-top:15rpx;
+}
+.tabUserImg{
+  /* width:780rpx; */
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;flex-wrap: wrap;
+}
+.tabUserImg{
+  /* width:780rpx; */
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;flex-wrap: wrap;
+}
+.tabUserImg image{
+  width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
 }
 /* 视频 */
-.video video{
+ video{
   width:690rpx;height:300rpx;
   margin-top:15rpx;
+  margin-left:30rpx;
 }
 /* 拨打电话 */
 .musk-phone{
@@ -602,4 +649,21 @@ border-radius:5rpx;font-size:24rpx;
 font-family:PingFang SC;
 font-weight:400;
 color:rgba(255,255,255,1);text-align: center;line-height: 36rpx;margin-top:18rpx;
+}
+/* 分享按钮 */
+.bbb{
+  font-size: 28rpx;
+background: #fff;
+border-radius: 0;
+font-weight: 400;
+color: rgba(102,102,102,1);
+width: 56rpx;
+height: 27rpx;
+margin: auto 0;
+padding-left: 0!important;
+padding-right: 0!important;
+line-height: 21rpx!important;
+overflow: visible!important;
+margin-left: 10rpx;
+
 }

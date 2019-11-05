@@ -9,18 +9,18 @@
     <!-- 用户名 -->
       <view class="d-spb mes">
         <view class="left d-flex">
-          <view>{{item.name}}</view>
+          <view>{{item.username}}</view>
           <view>{{item.phone}}</view>
         </view>
         <view class="right d-flex">
           <view data-num="{{index}}" catchtap="del">删除</view>
-          <view bindtap="mod">编辑</view>
+          <view bindtap="mod" data-id="{{item.id}}">编辑</view>
         </view>
       </view>
       <!-- 地址 -->
       <view class="d-flex sit" style="">
-        <view class="default{{item.nom}}">{{item.def}}</view>
-        <view class="location{{item.nom}}">{{item.sit}}</view>
+        <view wx-if="{{item.is_default==1}}" class="default">默认</view>
+        <view class="location">{{item.province_and_city}} {{item.info}}</view>
       </view>
     </van-panel>
 </block>

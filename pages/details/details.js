@@ -1,5 +1,7 @@
 // 信息详情
 import request from '../login.js'
+import like from '../like.js'
+
 Page({
   // 评论
   //点击出现输入框
@@ -254,12 +256,76 @@ Page({
   },
   // 点赞
   like:function(){
+    var uid=wx.getStorageSync('uid');
+    var that=this
     console.log("点赞")
+    var info_id=that.data.lid
+    console.log('info_id',info_id)
+    like({
+      data:{
+        uid,
+        type:1,
+        info_id,
+      }
+      }).then(res=>{
+      console.log('调用点赞成功',res)
+        // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
+        var uid=wx.getStorageSync('uid');
+        request({
+          url:'http://tsf.suipk.cn/home/info/do_info_content',
+          data:{
+          uid,
+          type:that.data.form,
+          info_id:that.data.lid
+        }
+        }).then(res=>{
+        console.log('调用信息详情成功',res)
+        this.setData({
+          title:res.data.data.title,
+          type:res.data.data.type_work,
+          time:res.data.data.create_time,
+          rec:res.data.data.info,
+          linkman:res.data.data.contacts,
+          phone:res.data.data.tel,
+          userImg:res.data.data.img_url_arr,
+          video:res.data.data.video,
+          info_id:res.data.data.id,
+          point_ratio:res.data.data.point_ratio,
+          is_point:res.data.data.is_point,
+          mid:res.data.data.id
+        })
+        }).catch(err=>{
+          console.log('调用失败')
+        })
+        // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
+
+
+      }).catch(err=>{
+      console.log('调用失败')
+      })
   },
   // 投诉
   complaint:function(){
     console.log("投诉")
     
+  },
+  // 浏览图片的方法
+  listenerButtonPreviewImage:function(e){
+    var that=this
+    console.log('浏览图片的下标',e.currentTarget.dataset.index)
+    var index=e.currentTarget.dataset.index
+    wx.previewImage({
+      current: that.data.userImg[index],
+      urls: that.data.userImg,
+      //这根本就不走
+      success: function (res) {
+        //console.log(res);
+      },
+      //也根本不走
+      fail: function () {
+        //console.log('fail')
+      }
+    })
   },
   /**
    * 页面的初始数据
@@ -357,17 +423,19 @@ Page({
       form:options.form,
       types:options.type
     })
-    var uid=wx.getStorageSync('uid');
+    // 分享跳转
+    
 
-    // 首页跳转信息列表
-    if(options.from=='首页'){
-      // 请求信息详情
+    
+    if(options.share==1){
+      var uid=options.uid
+      
       request({
         url:'http://tsf.suipk.cn/home/info/do_info_content',
         data:{
         uid,
-        type:options.form,
-        info_id:options.id
+        type:options.type,
+        info_id:options.info_id
       }
       }).then(res=>{
       console.log('调用信息详情成功',res)
@@ -380,11 +448,80 @@ Page({
         phone:res.data.data.tel,
         userImg:res.data.data.img_url_arr,
         video:res.data.data.video,
-        info_id:res.data.data.id
+        info_id:res.data.data.id,
+        point_ratio:res.data.data.point_ratio,
+        is_point:res.data.data.is_point,
+        mid:res.data.data.id
       })
+    }).catch(err=>{
+      console.log('调用失败')
+    })
+      // +++++++++++++++点赞+++++++++++++++++++++
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_point',
+        data:{
+          uid,
+          type:options.type,
+          info_id:options.info_id
+        }
+      }).then(res=>{
+        console.log('调用点赞成功',res)
+        this.setData({
+          
+        })
       }).catch(err=>{
         console.log('调用失败')
+        })
+      // +++++++++++++++点赞+++++++++++++++++++++
+      // // 评论列表
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_comment_list',
+        data:{
+         type:options.type,
+         info_id:options.info_id,
+         page:1,
+         limit:10,
+        }
+      }).then(res=>{
+        console.log('调用评论列表成功',res)
+        this.setData({
+          user:res.data.list
+        })
+        }).catch(err=>{
+          console.log('调用失败')
       })
+    }else{
+
+      // 首页跳转信息列表
+      var uid=wx.getStorageSync('uid');
+      if(options.from=='首页'){
+        // 请求信息详情
+        request({
+        url:'http://tsf.suipk.cn/home/info/do_info_content',
+        data:{
+        uid,
+        type:options.form,
+        info_id:options.id
+      }
+      }).then(res=>{
+        console.log('调用信息详情成功',res)
+      this.setData({
+        title:res.data.data.title,
+        type:res.data.data.type_work,
+        time:res.data.data.create_time,
+        rec:res.data.data.info,
+        linkman:res.data.data.contacts,
+        phone:res.data.data.tel,
+        userImg:res.data.data.img_url_arr,
+        video:res.data.data.video,
+        info_id:res.data.data.id,
+        point_ratio:res.data.data.point_ratio,
+        is_point:res.data.data.is_point,
+        mid:res.data.data.id
+      })
+    }).catch(err=>{
+      console.log('调用失败')
+    })
       // +++++++++++++++点赞+++++++++++++++++++++
       request({
         url:'http://tsf.suipk.cn/home/index/do_point',
@@ -393,14 +530,14 @@ Page({
           type:options.type,
           info_id:options.id
         }
-        }).then(res=>{
+      }).then(res=>{
         console.log('调用点赞成功',res)
         this.setData({
         
         })
         }).catch(err=>{
-        console.log('调用失败')
-      })
+          console.log('调用失败')
+        })
       // +++++++++++++++点赞+++++++++++++++++++++
       // // 评论列表
       request({
@@ -417,21 +554,22 @@ Page({
           user:res.data.list
         })
         }).catch(err=>{
-        console.log('调用失败')
+          console.log('调用失败')
       })
     }else if(options.from==''){
 
     }
+  }
 
     },
-  
+    
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
-
+  
   /**
    * 生命周期函数--监听页面显示
    */
@@ -470,12 +608,26 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (ops) {
+
+   
+    var uid=wx.getStorageSync('uid');
+    var that=this
+    var info_id=that.data.lid
+    var form=that.data.form
+    // var type=1
+    // var 
     return {
-      title: '转发',//弹出分享时显示的分享标题
-      path: '/pages/index/index',//'/page/user?id=123' // 路径，传递参数到指定页面。
+      title: '包程项',//弹出分享时显示的分享标题
+      path: '/pages/details/details?from=首页&info_id='+info_id+'&type=1&form='+form+'&uid='+uid+'&share=1',
+      //'/page/user?id=123' // 路径，传递参数到指定页面。
       desc: '分享页面的内容',
-      success: function (res) { }
+      success: function (res) { 
+        console.log('分享成功',res)
+      },
+      fail:function(err){
+        console.log('分享失败',err)
+      }
 
     }
   }

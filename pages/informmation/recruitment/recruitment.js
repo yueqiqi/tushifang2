@@ -1,7 +1,175 @@
 // pages/informmation/recruitment/recruitment.js
 // 调用时间
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
+import request from '../../login.js'
+import like from '../../like.js'
 Page({
+  scall:function(e){
+    console.log('拨打电话')
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.tel,
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
+  // 渣场信息
+  slike:function(e){
+    var uid=wx.getStorageSync('uid');
+    var that = this
+    //console.log(e)
+    var id = e.currentTarget.dataset.id
+    console.log('点赞',id)
+    var uid=wx.getStorageSync('uid');
+
+    like({
+    data:{
+      uid,
+      type:1,
+      info_id:id
+    }
+    }).then(res=>{
+    console.log('调用点赞成功',res)
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_info_list',
+      data:{
+        one_class_id:that.data.one_class_id[1].id,
+        page:1,
+        uid
+      }
+      }).then(res=>{
+      console.log('调用渣场信息成功',res)
+      this.setData({
+        slag:res.data.data
+      })
+      for(var q in that.data.slag){
+        var spxs='slag['+q+'].px'
+        if(that.data.slag[q].px==2){
+          that.setData({
+            [spxs]:'置顶'
+          })
+        }else if(that.data.slag[q].px==3){
+          that.setData({
+            [spxs]:'十万火急'
+          })
+        }
+      }
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    this.setData({
+    
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+    })
+  },
+  // 工地信息
+  mlike:function(e){
+    var uid=wx.getStorageSync('uid');
+    var that = this
+    //console.log(e)
+    var id = e.currentTarget.dataset.id
+    console.log('点赞',id)
+    var uid=wx.getStorageSync('uid');
+    like({
+    data:{
+      uid,
+      type:1,
+      info_id:id
+    }
+    }).then(res=>{
+    console.log('调用工地信息点赞成功',res)
+
+      
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_info_list',
+      data:{
+        one_class_id:that.data.one_class_id[2].id,
+        page:1,
+        uid
+      }
+      }).then(res=>{
+      console.log('调用工地信息成功',res)
+      // that.vm()
+      this.setData({
+        meeting:res.data.data
+      })
+      for(var v in that.data.meeting){
+        var spxs='meeting['+v+'].px'
+        if(that.data.meeting[v].px==2){
+          that.setData({
+            [spxs]:'置顶'
+          })
+        }else if(that.data.meeting[v].px==3){
+          that.setData({
+            [spxs]:'十万火急'
+          })
+        }
+      }
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    this.setData({
+    
+    })
+    
+    }).catch(err=>{
+    console.log('调用失败')
+    })
+  },
+  // 买卖信息
+  dlike:function(e){
+    var uid=wx.getStorageSync('uid');
+    var that = this
+    //console.log(e)
+    var id = e.currentTarget.dataset.id
+    console.log('点赞',id)
+    var uid=wx.getStorageSync('uid');
+    like({
+    data:{
+      uid,
+      type:1,
+      info_id:id
+    }
+    }).then(res=>{
+    console.log('调用买卖信息点赞成功',res)
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_info_list',
+      data:{
+        one_class_id:that.data.one_class_id[3].id,
+        page:1,
+        uid
+      }
+      }).then(res=>{
+      console.log('调用买卖信息成功',res)
+      this.setData({
+        deal:res.data.data
+      })
+      for(var r in that.data.deal){
+        var spxs='deal['+r+'].px'
+        if(that.data.deal[r].px==2){
+          that.setData({
+            [spxs]:'置顶'
+          })
+        }else if(that.data.deal[r].px==3){
+          that.setData({
+            [spxs]:'十万火急'
+          })
+        }
+      }
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    this.setData({
+    
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+    })
+  },
   // 顶部导航条跳转
   // ++++++++++++++++++++++++++++++++++++++
   activetab1(){
@@ -322,17 +490,161 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  vm:function(e){
+    var that=this
+    var uid=wx.getStorageSync('uid');
+    console.log('选择的标题',e)
+    var index=e.detail.index
+    if(index==1){
+    // +++++++++++++++++渣场-轮播图++++++++++++++++++++++++
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_banner',
+      data:{
+        type:that.data.one_class_id[index].id
+      }
+      }).then(res=>{
+      console.log('调用信息中心渣场中心banner成功',res)
+      this.setData({
+        imgUrls2:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+  // +++++++++++++++++轮播图++++++++++++++++++++++++
+  // +++++++++++++++++渣场信息+++++++++++++++++++++
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_info_list',
+      data:{
+        one_class_id:that.data.one_class_id[1].id,
+        page:1,
+        uid
+      }
+      }).then(res=>{
+      console.log('调用渣场信息成功',res)
+      
+      this.setData({
+        slag:res.data.data
+      })
+      for(var q in that.data.slag){
+        var spxs='slag['+q+'].px'
+        if(that.data.slag[q].px==2){
+          that.setData({
+            [spxs]:'置顶'
+          })
+        }else if(that.data.slag[q].px==3){
+          that.setData({
+            [spxs]:'十万火急'
+          })
+        }
+      }
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+  // +++++++++++++++++渣场信息+++++++++++++++++++++
+    }else if(index==2){
+      // +++++++++++++++++工地轮播图++++++++++++++++++++++++
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_banner',
+      data:{
+        type:that.data.one_class_id[index].id
+      }
+      }).then(res=>{
+      console.log('调用信息中心工地中心banner成功',res)
+      this.setData({
+        imgUrls3:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+  // +++++++++++++++++轮播图++++++++++++++++++++++++
+  // +++++++++++++++++工地信息++++++++++++++++++++++++
+  request({
+    url:'http://tsf.suipk.cn/home/info/do_info_list',
+    data:{
+      one_class_id:that.data.one_class_id[2].id,
+      page:1,
+      uid
+    }
+    }).then(res=>{
+    console.log('调用工地信息成功',res)
+    
+    this.setData({
+      meeting:res.data.data
+    })
+    for(var v in that.data.meeting){
+      var spxs='meeting['+v+'].px'
+      if(that.data.meeting[v].px==2){
+        that.setData({
+          [spxs]:'置顶'
+        })
+      }else if(that.data.meeting[v].px==3){
+        that.setData({
+          [spxs]:'十万火急'
+        })
+      }
+    }
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+  // +++++++++++++++++工地信息++++++++++++++++++++++++
+    }else if(index==3){
+      // +++++++++++++++++轮播图++++++++++++++++++++++++
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_banner',
+      data:{
+        type:that.data.one_class_id[index].id
+      }
+      }).then(res=>{
+      console.log('调用信息中心买卖中心banner成功',res)
+      this.setData({
+        imgUrls4:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+  // +++++++++++++++++轮播图++++++++++++++++++++++++
+  // +++++++++++++++++买卖信息++++++++++++++++++++++++
+  request({
+    url:'http://tsf.suipk.cn/home/info/do_info_list',
+    data:{
+      one_class_id:that.data.one_class_id[3].id,
+      page:1,
+      uid
+    }
+    }).then(res=>{
+    console.log('调用买卖信息成功',res)
+    
+    this.setData({
+      deal:res.data.data
+    })
+    for(var r in that.data.deal){
+      var spxs='deal['+r+'].px'
+      if(that.data.deal[r].px==2){
+        that.setData({
+          [spxs]:'置顶'
+        })
+      }else if(that.data.deal[r].px==3){
+        that.setData({
+          [spxs]:'十万火急'
+        })
+      }
+    }
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+  // +++++++++++++++++买卖信息++++++++++++++++++++++++
+    }
+  },
+
   onLoad: function (options) {
     // 调用函数时，传入new Date()参数，返回值是日期和时间
     var that=this
     var currenTime = util.formatTime(new Date());
+    var uid=wx.getStorageSync('uid');
     // 再通过setData更改Page()里面的data，动态更新页面的数据
     this.setData({
       currenTime: currenTime
     });
-
-
-
     // ++++++++++++++++++++++++++++++++++++
     wx.request({
     url: 'http://tsf.suipk.cn/home/info/do_oneclass_list',
@@ -346,6 +658,54 @@ Page({
       },
       success: function (res) {
       console.log('调用信息中心导航条成功', res.data.data)
+      // ++++++++++++招聘列表++++++++++++++++++++++
+      request({
+        url:'http://tsf.suipk.cn/home/info/do_info_list',
+        data:{
+          one_class_id:res.data.data[0].id,
+          page:1,
+          uid,
+          two_class_id:2,
+        }
+            }).then(res=>{
+              console.log('调用招聘信息-找工作成功',res)
+              that.setData({
+                userlists:res.data.data
+            })
+            }).catch(err=>{
+            console.log('调用失败')
+          })
+          // +++++++++++++++++++++获取去信息中心的列表-招聘信息-招人才+++++++++++++++++++++
+          request({
+            url:'http://tsf.suipk.cn/home/index/do_banner',
+            data:{
+              type:1
+            }
+            }).then(res=>{
+            console.log('调用信息中心招聘banner成功',res)
+            that.setData({
+              imgUrls:res.data.data
+            })
+            }).catch(err=>{
+            console.log('调用失败')
+          })
+          request({
+            url:'http://tsf.suipk.cn/home/info/do_info_list',
+            data:{
+              one_class_id:res.data.data[0].id,
+              page:1,
+              uid,
+              two_class_id:1,
+            }
+                }).then(res=>{
+                  console.log('调用招聘信息-招人才成功',res)
+                  that.setData({
+                    findpeople:res.data.data
+                })
+                }).catch(err=>{
+                console.log('调用失败')
+              })
+      // ++++++++++++招聘列表++++++++++++++++++++++
       that.setData({
         one_class_id:res.data.data
       })
@@ -355,6 +715,11 @@ Page({
       }
     })
     // ????????
+
+      // +++++++++++++++++++++获取去信息中心的列表+++++++++++++++++++++
+    
+
+
     // 二级分类
     wx.request({
       url: 'http://tsf.suipk.cn/home/Personal/do_id_type',
@@ -394,14 +759,59 @@ Page({
     //     // }
     //   }
     // })
-
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    var that=this
+    for(var p in that.data.userlists){
+      var pxs='userlists['+p+'].px'
+      if(that.data.userlists[p].px==2){
+        that.setData({
+          [pxs]:'置顶'
+        })
+      }else if(that.data.userlists[p].px==3){
+        that.setData({
+          [pxs]:'十万火急'
+        })
+      }
+      var w='userlists['+p+'].working_condition'
+      if(that.data.userlists[p].working_condition==1){
+        that.setData({
+          [w]:'正在招聘'
+        })
+      }else{
+        that.setData({
+          [w]:'已完成',
+        })
+      }
+    }
 
+    for(var j in that.data.findpeople){
+      var st='findpeople['+j +'].working_condition'
+      if(that.data.findpeople[j].working_condition==1){
+        that.setData({
+          [st]:'离职随时到岗'
+        })
+      }else if(that.data.findpeople[j].working_condition==2){
+        that.setData({
+          [st]:'在职-月内到岗'
+        })
+      }else if(that.data.findpeople[j].working_condition==3){
+        that.setData({
+          [st]:'在职-考虑机会'
+        })
+      }else  if(that.data.findpeople[j].working_condition==4){
+        that.setData({
+          [st]:'在职-暂不考虑'
+        })
+      }
+    }
+    // var that=this
+    
   },
 
   /**
