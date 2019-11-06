@@ -176,8 +176,11 @@ margin-top:33rpx;
 }
 /* 分享评论 */
 .scl{
-  display: flex;justify-content: left;
-  margin-top:28rpx;padding-bottom:23rpx;
+  /* display: flex;justify-content: left; */
+  /* margin-top:28rpx;padding-bottom:23rpx; */
+  display: flex;justify-content:space-between;
+  margin-top:28rpx;padding-bottom:24rpx;margin-right:80rpx;
+  margin-left:78rpx;
 }
 .scl image{
   width:30rpx;height:30rpx;
@@ -192,16 +195,15 @@ font-weight:400;
 color:rgba(102,102,102,1);
 }
 /* 评论 */
-.comment{margin-left:156rpx;}
+/* .comment{margin-left:156rpx;} */
 .comment text{
   margin-left:10rpx;
   font-size:28rpx;
-font-family:PingFang SC;
 font-weight:400;
 color:rgba(102,102,102,1);
 }
 /* 点赞 */
-.like{margin-left:157rpx;}
+/* .like{margin-left:157rpx;} */
 .like text{
   margin:auto;
   margin-left:10rpx;

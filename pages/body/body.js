@@ -117,13 +117,13 @@ Page({
   // ///////////////////////////////////////////
   // 十万火急
   // 跳转
-  goto: function (e) {
-    //console.log("十万火急跳转",e.currentTarget.dataset.id)
-    var id=e.currentTarget.dataset.id
-    wx.navigateTo({
-      url: '/pages/details/details?id='+id,
-    })
-  },
+  // goto: function (e) {
+  //   //console.log("十万火急跳转",e.currentTarget.dataset.id)
+  //   var id=e.currentTarget.dataset.id
+  //   wx.navigateTo({
+  //     url: '/pages/details/details?id='+id,
+  //   })
+  // },
   ////////////////////////////////////////////////
   // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 面板
@@ -693,7 +693,9 @@ Page({
       url:"http://tsf.suipk.cn/home/index/do_Recommend",
       data:{
         type:1,
-        uid
+        uid,
+        page:1,
+        limit:2,
       },
       method: 'POST',
       header: {
@@ -703,17 +705,20 @@ Page({
         //console.log("最新发布调用成功")
         console.log("最新发布调用成功",res)
         that.setData({
-          tabuser:res.data.data
+          tabuser:res.data.list
         })
       }
 
     })
+    var uid=wx.getStorageSync('uid');
     // 优质推荐
     wx.request({
       url:"http://tsf.suipk.cn/home/index/do_Recommend",
       data:{
         type:2,
-        // uid
+        uid,
+        page:1,
+        limit:5,
       },
       method: 'POST',
       header: {
@@ -721,9 +726,9 @@ Page({
       },
       success:function(res){
         //console.log("优质推荐调用成功")
-        console.log("优质推荐调用成功",res)
+        console.log("调用优质推荐调用成功",res)
         that.setData({
-          tabuserjian:res.data.data
+          tabuserjian:res.data.list
         })
       }
 
@@ -761,28 +766,28 @@ Page({
     //console.log("#########")
     //console.log("最新发布数组",that.data.tabuser)
     //console.log("#########")
-    for(var i in this.data.tabuser){
-      //console.log("最新发布数组",that.data.tabuser[i].px)
-      if(that.data.tabuser[i].px==2){
-        // var like = that.data.tabuser[i].px
-        var index = "tabuser[" + i + "].px";
-        that.setData({
-          [index]:"置顶"
-        })
-        continue
-      }
-    }
+    // for(var i in this.data.tabuser){
+    //   //console.log("最新发布数组",that.data.tabuser[i].px)
+    //   if(that.data.tabuser[i].px==2){
+    //     // var like = that.data.tabuser[i].px
+    //     var index = "tabuser[" + i + "].px";
+    //     that.setData({
+    //       [index]:"置顶"
+    //     })
+    //     continue
+    //   }
+    // }
     //console.log("十万火急",that.data.user)
-    for(var m in that.data.user){
-      if(that.data.user[m].lable=1){
-        var index = "user[" + m + "].lable";
-        that.setData({
-          [index]:"十万火急"
-        })
-        //console.log("十万火急，啊")
-        continue
-      }
-    }
+    // for(var m in that.data.user){
+    //   if(that.data.user[m].lable=1){
+    //     var index = "user[" + m + "].lable";
+    //     that.setData({
+    //       [index]:"十万火急"
+    //     })
+    //     //console.log("十万火急，啊")
+    //     continue
+    //   }
+    // }
   },
 
   /**
@@ -822,7 +827,39 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var uid=wx.getStorageSync('uid');
+    console.log('触底了')
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    var page=1
+   page+=1;
+  //  刷新最新发布
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_Recommend",
+      data:{
+        type:1,
+        uid,
+        page,
+        limit:2,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        //console.log("最新发布调用成功")
+        console.log("最新发布刷新调用成功",res)
+        // that.onLoad()
+        that.setData({
+          tabuser:res.data.list
+        })
+        wx.hideLoading();
+      }
+    })
   },
 
   /**

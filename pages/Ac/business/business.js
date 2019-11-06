@@ -18,7 +18,7 @@ chp:function(){
   optionTap(e) {
     let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
     // let compid = e.currentTarget.dataset.id;//获取点击的下拉列表选项的下标
-    console.log("选择的id",compid)
+    // console.log("选择的id",compid)
     console.log(Index)
     // console.log(e)
     this.setData({

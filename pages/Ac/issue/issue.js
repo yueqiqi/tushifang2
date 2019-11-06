@@ -2,7 +2,15 @@
 import request from "../../login.js";
 // var that =this
 var dateTimePicker = require('./date.js');
+var dateTimePicker2 = require('./date2.js');
 Page({
+  op:function(){
+    this.setData({
+      'sssup':true,
+      radio:'2'
+    })
+
+  },
 chp:function(){
   this.setData({
     mz:false
@@ -579,19 +587,19 @@ chp:function(){
     // +++++++++++++++++++++
     // date: '2018-10-01',
     // time: '12:00',
-    dateTimeArray: null,
-    dateTime: null,
-    dateTimeArray1: null,
-    dateTime1: null,
+    dateTimeArray: '',
+    dateTime: '',
+    dateTimeArray1: '',
+    dateTime1: '',
     startYear: 2019,
     endYear: 2020,
     // 
-    dateTimeArray2: null,
-    dateTime2: null,
-    dateTimeArray12: null,
-    dateTime12: null,
+    dateTimeArray2: '',
+    dateTime2: '',
+    dateTimeArray12: '',
+    dateTime12: '',
     startYear2: 2019,
-    endYear2: 2020,
+    endYear2: 2024,
     // +++++++++++++++++++++
     // 开始时间
     stime:"",
@@ -623,6 +631,31 @@ chp:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取当前时间戳  
+var timestamp = Date.parse(new Date());  
+timestamp = timestamp / 1000;  
+console.log("当前时间戳为：" + timestamp); 
+
+//获取当前时间 
+    var n = timestamp * 1000;  
+    var date = new Date(n);  
+    //年  
+    var Y = date.getFullYear();  
+    //月  
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);  
+    //日  
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();  
+    //时  
+    var h = date.getHours();  
+    //分  
+    var m = date.getMinutes();  
+    //秒  
+    var s = date.getSeconds();  
+    console.log("当前时间：" +Y+'-'+M+'-'+D+' '+h+":"+'00'+":"+'00');
+this.setData({
+  stime:Y+'-'+M+'-'+D+' '+h+":"+'00'+":"+'00',
+  etime:Y+'-'+M+'-'+D+' '+(h+1)+":"+'00'+":"+'00'
+})
     var that=this
     var phone=wx.getStorageSync("userphone")
     that.setData({
@@ -668,21 +701,20 @@ chp:function(){
     // ++++++++++++++++++++++++++++++++
     // 获取完整的年月日 时分秒，以及默认显示的数组
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
-    var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+    var obj1 = dateTimePicker2.dateTimePicker(this.data.startYear, this.data.endYear);
     // 精确到分的处理，将数组的秒去掉
     var lastArray = obj1.dateTimeArray.pop();
     var lastTime = obj1.dateTime.pop();
 
     this.setData({
       dateTime: obj.dateTime,
+      dateTime2: obj1.dateTime,
       dateTimeArray: obj.dateTimeArray,
       dateTimeArray1: obj1.dateTimeArray,
-      dateTime1: obj1.dateTime,
-      // 
-      dateTime2: obj.dateTime,
+      dateTime1: obj.dateTime,
+      dateTime12: obj1.dateTime,
       dateTimeArray2: obj.dateTimeArray,
       dateTimeArray12: obj1.dateTimeArray,
-      dateTime12: obj1.dateTime
     });
     // ++++++++++++++++++++++++++++++++
     // /获取二级列表
@@ -743,7 +775,7 @@ chp:function(){
     var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
     
     arr[e.detail.column] = e.detail.value;
-    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+    dateArr[2] = dateTimePicker2.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
     
     this.setData({
       dateTimeArray1: dateArr,
@@ -807,7 +839,7 @@ chp:function(){
     var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;
 
     arr[e.detail.column] = e.detail.value;
-    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+    dateArr[2] = dateTimePicker2.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
 
     this.setData({
       dateTimeArray2: dateArr,
@@ -818,7 +850,7 @@ chp:function(){
     var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
 
     arr[e.detail.column] = e.detail.value;
-    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+    dateArr[2] = dateTimePicker2.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
 
     this.setData({
       dateTimeArray12: dateArr,

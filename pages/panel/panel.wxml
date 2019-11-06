@@ -1,5 +1,5 @@
 <!-- 最新发布和优质推荐 -->
-<view>
+<view style="height:100%;">
   <!-- 选项卡 -->
   <van-tabs sticky bindclick="yz">
     <van-tab name="0" title="最新发布">
@@ -19,7 +19,7 @@
                   <!-- 发布者用户名 -->
                   <view class="tab-userName">{{item.nickname}}</view>
                   <!-- 置顶 -->
-                  <view class="stick" wx-if="{{item.px!=1}}">{{item.px}}</view>
+                  <view class="stick" wx-if="{{item.px!=1}}">{{item.px==2?'置顶':''}}</view>
                   <view class="rec" hidden="{{item.rec=='荐'?false:true}}">{{item.rec}}</view>
                 </view>
                 <!-- 距离 -->
@@ -74,7 +74,7 @@
               <button open-type="share">分享</button>
             </view>
             <!-- 评论 -->
-            <view class="tab-comment d-flex" bindtap="tabComment" data-id="{{index}}">
+            <view class="tab-comment d-flex" bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}">
               <view>
                 <image src="/pages/images/comment.png"></image>
               </view>
@@ -101,7 +101,7 @@
         <view class="bgf">
 
           <view class="bgf mtt">
-            <view bindtap="tabgoto" data-id="{{item.id}}">
+            <view bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}">
               <view class="tab-new d-spb">
                 <view class="d-flex">
                   <!-- 发布者头像 -->
@@ -166,7 +166,7 @@
               <button open-type="share">分享</button>
             </view>
             <!-- 评论 -->
-            <view class="tab-comment d-flex" bindtap="tabCommentjian" data-id="{{index}}">
+            <view class="tab-comment d-flex" bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}">
               <view>
                 <image src="../images/comment.png"></image>
               </view>

@@ -6,12 +6,12 @@
 <!-- 3 -->
   <view class="d-spb sb">
     <view class="sbl ml d-flex">
-      <image src="../../images/carousel/02.jpg"></image>
-      <view class="Name">发布用户名</view>
+      <image src="{{list.head}}"></image>
+      <view class="Name">{{list.nickname}}</view>
     </view>
     <view class="sbr d-flex">
       <view class="title-text">求职</view>
-      <view class="Name">渣车司机</view>
+      <view class="Name">{{list.type_work}}</view>
     </view>
     <!-- 3 -->
   </view>
@@ -19,31 +19,31 @@
     <view class="state bgf d-spb ml">
       <view class="statel d-flex">
         <view class="Title states">招聘状态</view>
-        <view class="Mes job">正在找工作</view>
+        <view class="Mes job">{{list.working_condition==1?'离职随时到岗':(list.working_condition==2?'在职-月内到岗':(list.working_condition==3?'在职-考虑机会':'在职-暂不考虑'))}}</view>
       </view>
       <view class="stater d-flex">
         <view class="money Title">理想薪资</view>
-        <view class="Mes num">3000-5000</view>
+        <view class="Mes num">{{list.salary_range}}</view>
       </view>
     </view>
     <!-- 时间 -->
     <view class="timer ml d-spb">
       <view class="timerl d-flex">
         <view class="Title">发布时间</view>
-        <view class="Mes">2019.08.20</view>
+        <view class="Mes">{{list.create_time}}</view>
       </view>
       <view class="timerr d-flex">
         <view class="Title">工作年限</view>
-        <view class="Mes">10年</view>
+        <view class="Mes">{{list.working_years}}</view>
       </view>
     </view>
     <!-- 个人简介 -->
     <view class="ml intro">
       <view class="title-text ">个人简介</view>
       <view class="list">
-        <view class="l1">从业10年，经验丰富</view>
-        <view class="l2">参加的工作项目有中央公园建设、金科小区施工、龙湖 商场施工。</view>
-        <view class="l3"> 吃苦耐劳，开朗热情好相处，找我没错嘻嘻。</view>
+        <view class="l1">{{list.info}}</view>
+        <!-- <view class="l2">参加的工作项目有中央公园建设、金科小区施工、龙湖 商场施工。</view>
+        <view class="l3"> 吃苦耐劳，开朗热情好相处，找我没错嘻嘻。</view> -->
       </view>
     </view>
 <!-- 2 -->
@@ -54,7 +54,7 @@
     <view class=" linkman1 d-spb">
       <view class="linkmanl d-flex">
         <view class="linkman-sb title-text">联系人</view>
-        <view class="linkmanName Title">张三</view>
+        <view class="linkmanName Title">{{list.contacts}}</view>
       </view>
       <view class="linkmanr">
         <view bindtap="card">查看名片</view>
@@ -65,9 +65,9 @@
   <view class="phone d-spb">
     <view class="phonel d-flex">
       <view class="tel title-text">联系电话</view>
-      <view class="tel-num Title">13500000000</view>
+      <view class="tel-num Title">{{list.tel}}</view>
     </view>
-    <view class="phoner d-flex">
+    <view class="phoner d-flex" bindtap="call">
       <image src="../../images/phone.png"></image>
       <text>一键拨号</text>
     </view>
@@ -92,18 +92,20 @@
   <view class="bgf">
     <view class="likes">
     <!-- 分享 -->
-      <view class="share" bindtap="share">
-      <view>
+      <view class="share d-flex" bindtap="share">
+      <!-- <view> -->
         <image src="../../images/share.png"></image>
-      </view>
-        <view>分享</view>
+      <!-- </view> -->
+        <button open-type="share">分享</button>
       </view>
       <!-- 点赞 -->
-      <view class="like" bindtap="like">
-        <view>
-          <image src="../../images/like.png"></image>
+      <view class="like d-flex" bindtap="like">
+        <view class="">
+          <image src="{{list.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
         </view>
-        <text>{{like}}</text>
+        <view class="">
+          <text  style="{{list.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{list.point_ratio}}</text>
+        </view>
       </view>
       <!-- 举报 -->
       <view class="reports" bindtap="showDialogBtn">

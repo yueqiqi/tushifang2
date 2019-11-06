@@ -46,11 +46,11 @@ btn:function(){
     // 邮箱
     email:"",
     // 公司名称
-    com:"自行车",
+    com:"",
     // 职位
     post:"",
     // 头像
-    head:"../../images/carousel/03.jpg",
+    head:"",
     // 用户昵称
     name:"",
     // //////////////////////////////////////////////////////////////
@@ -60,41 +60,45 @@ btn:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("------------------------------------------")
-console.log(options)
-    var that = this
-    wx.getStorage({
-      key: 'userinfo',
-      success: function (res) {
-        console.log(res.data)
-        that.setData({
-          userinfo: res.data,
-          name: res.data.name,
-          post: res.data.post,
-          email: res.data.email,
-          phone: res.data.phone,
-          com: res.data.com,
-          address: res.data.address,
-        })
-      }
-    })
-    console.log("这是名片界面"+that.data.userinfo)
+//     console.log("------------------------------------------")
+// console.log(options)
+//     var that = this
+//     wx.getStorage({
+//       key: 'userinfo',
+//       success: function (res) {
+//         console.log(res.data)
+//         that.setData({
+//           userinfo: res.data,
+//           name: res.data.name,
+//           post: res.data.post,
+//           email: res.data.email,
+//           phone: res.data.phone,
+//           com: res.data.com,
+//           address: res.data.address,
+//         })
+//       }
+//     })
+//     console.log("这是名片界面"+that.data.userinfo)
+var that=this
     // 我的名片
     var uid=wx.getStorageSync('uid');
     request({
       url:'http://tsf.suipk.cn/home/personal/do_mynamecard',
       data:{
         uid,
+        // page:1,
       }
       }).then(res=>{
       console.log('调用我的名片成功',res)
       that.setData({
+        head:res.data.data.head,
         name:res.data.data.nickname,
-        com:res.data.data.company_position,
+        com:res.data.data.corporate_name,
         post:res.data.data.company_position,
         email:res.data.data.email,
         phone:res.data.data.phone,
-        address:res.data.data.detailed_address
+        address:res.data.data.detailed_address,
+        is_perfect:res.data.data.is_perfect,
       })
       }).catch(err=>{
       console.log('调用失败')

@@ -1,6 +1,7 @@
 // pages/Ac/hiring/hiring.js
 import request from "../../login.js" ;
 var dateTimePicker = require('./date.js');
+var dateTimePicker2 = require('./date2.js');
 var QQMapWX = require('../../../utils/qqmap-wx-jssdk.js');
 
 // 实例化API核心类
@@ -11,6 +12,13 @@ var model = require('../../../model/model.js');
 var ashow = false;
 var item = {};
 Page({
+  op:function(){
+    this.setData({
+      'sssup':true,
+      radio:'2'
+    })
+
+  },
   chp:function(){
     var that=this
     that.setData({
@@ -131,6 +139,7 @@ Page({
         }
         })
     }
+     
   },
   // 单选框
   sonChange(e) {
@@ -138,6 +147,7 @@ Page({
       sradio: e.detail
     });
     console.log(e.detail)
+     
   },
   /* 隐藏弹窗 */
   sssuhide() {
@@ -157,7 +167,7 @@ Page({
     this.setData({
       "sssup": false
     })
-
+    this.onLoad
   },
 // ////////////////////////////////////////////////////////////////////
 
@@ -339,7 +349,7 @@ this.ssushow()
     }
     // 开始时间
     // 结束时间
-    console.log("最后开始结束时间+",start_time,ending_time,lable)
+    console.log("最后开始结束时间+",start_time,ending_time,lable,that.data.stime)
     // 置顶类型
     // that.data.seradio
     if(that.data.issu==false){
@@ -702,7 +712,7 @@ if(that.data.issu==true){
     // 错误提示
     nsup: true,
     // 消耗积分
-    int:100,
+    int:0,
     // 时间分类
     index: 0,
     // dates: '请选择开始时间',
@@ -719,11 +729,11 @@ if(that.data.issu==true){
     // 是否显示下拉图片
     hidden:false,
     // 求职状态
-    selectData3: ['', "1年以下", "1~3年", "3~5年", "5年以上"],//下拉列表的数据
+    selectData3: [],//下拉列表的数据
     selectShow3: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     index3: 0,//选择的下拉列表下标
     // 薪资待遇
-    selectData2: ['', '1000~3000', '3000~5000', "5000~7000", "7000~9000", "9000元及以上"],//下拉列表的数据
+    selectData2: [],//下拉列表的数据
     selectShow2: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     indexs: 0,//选择的下拉列表下标
     // 双击事件
@@ -731,7 +741,7 @@ if(that.data.issu==true){
     // 自定义编辑
     isDisabled: true,
     selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
-    selectData: ['', '职位', '职位', "职位", "职位"],//下拉列表的数据
+    selectData: [],//下拉列表的数据
     index: 0,//选择的下拉列表下标
     //成功 提示框
     sup: true,
@@ -744,17 +754,17 @@ if(that.data.issu==true){
     // +++++++++++++++++++++
     // date: '2018-10-01',
     // time: '12:00',
-    dateTimeArray: null,
-    dateTime: null,
-    dateTimeArray1: null,
-    dateTime1: null,
+    dateTimeArray: '',
+    dateTime: '',
+    dateTimeArray1: '',
+    dateTime1: '',
     startYear: 2019,
     endYear: 2020,
     // 
-    dateTimeArray2: null,
-    dateTime2: null,
-    dateTimeArray12: null,
-    dateTime12: null,
+    dateTimeArray2: '',
+    dateTime2: '',
+    dateTimeArray12: '',
+    dateTime12: '',
     startYear2: 2019,
     endYear2: 2024,
     // 开始时间
@@ -780,6 +790,38 @@ if(that.data.issu==true){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+//获取当前时间戳  
+var timestamp = Date.parse(new Date());  
+timestamp = timestamp / 1000;  
+console.log("当前时间戳为：" + timestamp); 
+
+//获取当前时间  
+
+    var n = timestamp * 1000;  
+    var date = new Date(n);  
+    //年  
+    var Y = date.getFullYear();  
+    //月  
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);  
+    //日  
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();  
+    //时  
+    var h = date.getHours();  
+    //分  
+    var m = date.getMinutes();  
+    //秒  
+    var s = date.getSeconds();  
+    console.log("当前时间：" +Y+'-'+M+'-'+D+' '+h+":"+'00'+":"+'00');
+this.setData({
+  stime:Y+'-'+M+'-'+D+' '+h+":"+'00'+":"+'00',
+  etime:Y+'-'+M+'-'+D+' '+(h+1)+":"+'00'+":"+'00'
+})
+// console.log('结束时间',this.data.etime)
+
+// +++++++++++++++++++积分+++++++++++++++++++++++++++++++
+// +++++++++++++++++++积分+++++++++++++++++++++++++++++++
+
     var that=this
     request({
       url:'http://tsf.suipk.cn/home/info/do_salary_list',
@@ -883,21 +925,22 @@ if(that.data.issu==true){
     // ++++++++++++++++++++++++++++++++
     // 获取完整的年月日 时分秒，以及默认显示的数组
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
-    var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+    var obj1 = dateTimePicker2.dateTimePicker(this.data.startYear, this.data.endYear);
     // 精确到分的处理，将数组的秒去掉
     var lastArray = obj1.dateTimeArray.pop();
-    var lastTime = obj1.dateTime.pop();
-
+    var lastTime = obj1.dateTime.pop(); 
     this.setData({
       dateTime: obj.dateTime,
+      dateTime2: obj1.dateTime,
       dateTimeArray: obj.dateTimeArray,
       dateTimeArray1: obj1.dateTimeArray,
-      dateTime1: obj1.dateTime,
-      // 
-      dateTime2: obj.dateTime,
+      dateTime1: obj.dateTime,
+      dateTime12: obj1.dateTime,
       dateTimeArray2: obj.dateTimeArray,
       dateTimeArray12: obj1.dateTimeArray,
-      dateTime12: obj1.dateTime
+      // 
+      // 
+      // 
     });
   },
     // ++++++++++++++++++++++++++++++++
@@ -930,6 +973,7 @@ if(that.data.issu==true){
       that.setData({
         stime:pList
       })
+       
     },
     changeDateTimeColumn(e) {
       var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;
@@ -946,7 +990,7 @@ if(that.data.issu==true){
       var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
       
       arr[e.detail.column] = e.detail.value;
-      dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+      dateArr[2] = dateTimePicker2.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
       
       this.setData({
         dateTimeArray1: dateArr,
@@ -1006,12 +1050,13 @@ if(that.data.issu==true){
        })
    
        } 
+        
     },
     changeDateTimeColumn2(e) {
       var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;
   
       arr[e.detail.column] = e.detail.value;
-      dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+      dateArr[2] = dateTimePicker2.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
   
       this.setData({
         dateTimeArray2: dateArr,
@@ -1022,15 +1067,15 @@ if(that.data.issu==true){
       var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
   
       arr[e.detail.column] = e.detail.value;
-      dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+      dateArr[2] = dateTimePicker2.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
   
       this.setData({
         dateTimeArray12: dateArr,
         dateTime12: arr
       });
   
-  
-      
+       
+   
   },
 
   /**

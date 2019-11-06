@@ -27,9 +27,18 @@ Page({
   },
 
   formSubmit: function (e) {
+    var that=this
     var e = e.detail.value
     var info_id=this.data.lid
-    var img_url_arr=this.data.img_url_arr
+    if(that.data.tempFilePaths==''){
+      var img_url_arr=''
+    }else{
+      var p=that.data.img_url_arr
+      console.log('文件',that.data.img_url_arr)
+      var z=p.join('|')
+      var img_url_arr=z
+      console.log(z)
+    }
     var content=e.textarea
     var uid=wx.getStorageSync('uid');
     // var info_id=that.data.info_id
@@ -40,23 +49,9 @@ Page({
         duration: 2000
       })
     } else {
-
-      wx.showModal({
-        title: '提交成功',
-        content: "提交成功，我们会在1-3个工作日内进行审核，如果举报属实，会对该用户做出相应惩罚，审核消息会在第一时间发送至您的消息中心，请注意查收。",
-        showCancel: false,
-        icon: 'success',
-        duration: 2000,
-        success: function (res) {
-          if (res.confirm) {
-            console.log("用户点击了确定")
-            console.log(res);
-            console.log(res.confirm)
-          }
-        }
-      })
       // **************************
-      // 举报
+      if(that.data.po=='首页'){
+        // 举报
       wx.request({
         url:"http://tsf.suipk.cn/home/info/do_report",
         data:{
@@ -70,11 +65,29 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success:function(res){
-          console.log("举报调用成功",res)
+          console.log("举报调用首页成功",res)
+          wx.showModal({
+            title: '提交成功',
+            content: "提交成功，我们会在1-3个工作日内进行审核，如果举报属实，会对该用户做出相应惩罚，审核消息会在第一时间发送至您的消息中心，请注意查收。",
+            showCancel: false,
+            icon: 'success',
+            duration: 2000,
+            success: function (res) {
+              if (res.confirm) {
+                console.log("用户点击了确定")
+                console.log(res);
+                console.log(res.confirm)
+              }
+            }
+          })
         },fail:function(){
           console.log("调用举报失败",res)
         }
       })
+      }else if(that.data.po=='信息中心'){
+
+      }
+      
       // **************************
     }
     this.hideModal();
@@ -259,15 +272,17 @@ Page({
     var uid=wx.getStorageSync('uid');
     var that=this
     console.log("点赞")
-    var info_id=that.data.lid
-    console.log('info_id',info_id)
-    like({
-      data:{
+    if(that.data.po=='首页'){
+
+      var info_id=that.data.lid
+      console.log('info_id',info_id)
+      like({
+        data:{
         uid,
         type:1,
         info_id,
       }
-      }).then(res=>{
+    }).then(res=>{
       console.log('调用点赞成功',res)
         // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
         var uid=wx.getStorageSync('uid');
@@ -278,7 +293,7 @@ Page({
           type:that.data.form,
           info_id:that.data.lid
         }
-        }).then(res=>{
+      }).then(res=>{
         console.log('调用信息详情成功',res)
         this.setData({
           title:res.data.data.title,
@@ -294,15 +309,61 @@ Page({
           is_point:res.data.data.is_point,
           mid:res.data.data.id
         })
-        }).catch(err=>{
-          console.log('调用失败')
-        })
-        // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
-
-
       }).catch(err=>{
-      console.log('调用失败')
+        console.log('调用失败')
       })
+      // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
+      
+      
+    }).catch(err=>{
+      console.log('调用失败')
+    })
+  }else if(that.data.po=='信息中心'){
+    var info_id=that.data.lid
+    console.log('info_id',info_id)
+    like({
+      data:{
+      uid,
+      type:1,
+      info_id,
+    }
+  }).then(res=>{
+    console.log('调用点赞成功',res)
+      // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
+      var uid=wx.getStorageSync('uid');
+      request({
+        url:'http://tsf.suipk.cn/home/info/do_info_content',
+        data:{
+        uid,
+        type:3,
+        info_id:that.data.lid
+      }
+    }).then(res=>{
+      console.log('调用信息详情成功',res)
+      this.setData({
+        title:res.data.data.title,
+        type:res.data.data.type_work,
+        time:res.data.data.create_time,
+        rec:res.data.data.info,
+        linkman:res.data.data.contacts,
+        phone:res.data.data.tel,
+        userImg:res.data.data.img_url_arr,
+        video:res.data.data.video,
+        info_id:res.data.data.id,
+        point_ratio:res.data.data.point_ratio,
+        is_point:res.data.data.is_point,
+        mid:res.data.data.id
+      })
+    }).catch(err=>{
+      console.log('调用失败')
+    })
+    // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
+    
+    
+  }).catch(err=>{
+    console.log('调用失败')
+  })
+  }
   },
   // 投诉
   complaint:function(){
@@ -414,19 +475,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("首页传来的id="+options.id)
-    console.log("首页传来的form="+options.form)
-    console.log('首页传来的type',options.type)
-    console.log(options.from,'传来的信息')
+    var that=this
+    console.log(options.from,'传来的信息',options)
     this.setData({
       lid:options.id,
       form:options.form,
       types:options.type
     })
-    // 分享跳转
-    
-
-    
+    console.log(options.from,'传来的',this.data.lid)
+    // 分享跳转    
     if(options.share==1){
       var uid=options.uid
       
@@ -439,7 +496,7 @@ Page({
       }
       }).then(res=>{
       console.log('调用信息详情成功',res)
-      this.setData({
+      that.setData({
         title:res.data.data.title,
         type:res.data.data.type_work,
         time:res.data.data.create_time,
@@ -495,6 +552,13 @@ Page({
       // 首页跳转信息列表
       var uid=wx.getStorageSync('uid');
       if(options.from=='首页'){
+        that.setData({
+          po:'首页'
+        })
+        console.log("首页传来的id="+options.id)
+        console.log("首页传来的form="+options.form)
+        console.log('首页传来的type',options.type)
+        console.log('这是首页传来的信息')
         // 请求信息详情
         request({
         url:'http://tsf.suipk.cn/home/info/do_info_content',
@@ -505,9 +569,9 @@ Page({
       }
       }).then(res=>{
         console.log('调用信息详情成功',res)
-      this.setData({
+      that.setData({
         title:res.data.data.title,
-        type:res.data.data.type_work,
+        type:res.data.data.two_class_title,
         time:res.data.data.create_time,
         rec:res.data.data.info,
         linkman:res.data.data.contacts,
@@ -523,21 +587,6 @@ Page({
       console.log('调用失败')
     })
       // +++++++++++++++点赞+++++++++++++++++++++
-      request({
-        url:'http://tsf.suipk.cn/home/index/do_point',
-        data:{
-          uid,
-          type:options.type,
-          info_id:options.id
-        }
-      }).then(res=>{
-        console.log('调用点赞成功',res)
-        this.setData({
-        
-        })
-        }).catch(err=>{
-          console.log('调用失败')
-        })
       // +++++++++++++++点赞+++++++++++++++++++++
       // // 评论列表
       request({
@@ -556,9 +605,62 @@ Page({
         }).catch(err=>{
           console.log('调用失败')
       })
-    }else if(options.from==''){
+      // +++++++++++++++信息中心跳转详情页++++++++++++++++++++++++
+    }else if(options.from=='信息中心'){
+      var that=this
+      that.setData({
+        po:'信息中心'
+        // info_id:options
+      })
+      console.log('接收信息中心跳转来的信息',options)
+      var uid=wx.getStorageSync('uid');
+      request({
+        url:'http://tsf.suipk.cn/home/info/do_info_content',
+        data:{
+          type:options.type,
+          info_id:options.id,
+          uid,
+        }
+        }).then(res=>{
+        console.log('调用信息中心详情成功',res)
+        // var res=res.data.data
+        that.setData({
+          title:res.data.data.title,
+          type:res.data.data.two_class_title,
+          time:res.data.data.create_time,
+          rec:res.data.data.info,
+          linkman:res.data.data.contacts,
+          phone:res.data.data.tel,
+          userImg:res.data.data.img_url_arr,
+          video:res.data.data.video,
+          info_id:res.data.data.id,
+          point_ratio:res.data.data.point_ratio,
+          is_point:res.data.data.is_point,
+          mid:res.data.data.id
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
 
+      // 评论列表
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_comment_list',
+        data:{
+         type:1,
+         info_id:options.id,
+         page:1,
+         limit:10,
+        }
+      }).then(res=>{
+        console.log('调用评论列表成功',res)
+        this.setData({
+          user:res.data.list
+        })
+        }).catch(err=>{
+          console.log('调用失败')
+      })
     }
+    // +++++++++++++++信息中心跳转详情页++++++++++++++++++++++++
   }
 
     },

@@ -41,5 +41,6 @@
     <view class="bgf mtt radio"  >
       <van-checkbox value="{{ checked }}" checked-color="rgba(118,212,198,1);" bind:change="onChange">设置为默认地址</van-checkbox>
     </view>
-    <button form-type="submit" class="add" bindtap="add">确认添加</button>
+    <button form-type="submit" class="add" bindtap="add">确认修改</button>
+    <van-dialog id="van-dialog" />
   </form>

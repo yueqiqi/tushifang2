@@ -1,13 +1,8 @@
 {
   "pages": [
+    "pages/Ac/stick/stick",
     "pages/body/body",
     "pages/demo/err/err",
-    "pages/AA/image",
-    "pages/AA/Phone",
-    "pages/AA/getphone",
-    "pages/AA/login",
-    "pages/AA/tabs",
-    "pages/aatime/aatime",
     "pages/Ac/issue/issue",
     "pages/self/card/card",
     "pages/demo/sync/sync",
@@ -48,7 +43,6 @@
 
     "pages/interest/interest",   
     "pages/Ac/no/no",
-    "pages/Ac/stick/stick",
     "pages/Ac/hiring/hiring",
     "pages/Ac/post/post",
     "pages/Ac/self/self",

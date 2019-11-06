@@ -89,7 +89,7 @@
 </view>
 </view>
 <!-- ======================================================================================= -->
-<view class="bgf mtt ptt">
+<view class="bgf mtt ptt" wx-if="{{user!=''}}">
 <block wx:for="{{user}}" wx:key="{{index}}">
 <view class="d-flex ml">
   <!-- 头像 -->

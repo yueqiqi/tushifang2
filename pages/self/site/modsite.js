@@ -9,6 +9,7 @@ var model = require('../../../model/model.js')
 var ashow = false;
 var item = {};
 import request from '../../login.js'
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog'
 Page({
   //点击选择城市按钮显示picker-view
   translate: function (e) {
@@ -46,6 +47,63 @@ Page({
   formSubmit: function (e) {
     console.log(e.detail.value)
     console.log(this.data.checked)
+    var that=this
+    var e=e.detail.value
+    console.log(this.data.checked)
+    // ++++++++++++++添加地址++++++++++++++++++++++++++
+    var uid=wx.getStorageSync('uid');
+    var username=e.i1
+    var phone=e.i2
+    // var province_and_city=that.data.province+that.data.city+that.data.county
+    var province_and_city=that.data.province_and_city
+    var info=e.textarea
+    var is_default
+    if(that.data.checked==true){
+      is_default=1
+    }else{
+      is_default=0
+    }
+    var uid=wx.getStorageSync('uid');
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_modify_address',
+      data:{
+        id:that.data.sid,
+        uid,
+        username,
+        phone,
+        province_and_city,
+        info,
+        is_default
+      }
+      }).then(res=>{
+      console.log('调用修改地址成功',res)
+      if(res.data.code==0){
+        wx.showToast({
+          title: '修改成功',
+          icon: 'success',
+          image: '',
+          duration: 3500,
+          mask: true,
+          success: (result)=>{
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1
+              });
+            }, 2000);
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
+      }else if(res.data.code==101){
+        Dialog.alert({
+          message: res.data.msg
+        }).then(() => {
+          // on close
+        });
+      }
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
   // 是否设置默认
   onChange(event) {
@@ -77,6 +135,9 @@ Page({
     // +++++++++++++++++修改地址+++++++++++++++++++++++
     console.log('接受地址兑换来的',options.id)
     var that=this
+    that.setData({
+      sid:options.id
+    })
     request({
       url:'http://tsf.suipk.cn/home/personal/do_modify_addressinfo',
       data:{

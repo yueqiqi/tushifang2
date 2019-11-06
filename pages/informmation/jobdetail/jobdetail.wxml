@@ -5,25 +5,25 @@
   <!-- 2 -->
   <!-- 招聘职位 -->
     <view class="post d-spb ml">
-      <view class="postName">渣土司机</view>
-      <view class="num">招2人</view>
+      <view class="postName">{{list.type_work}}</view>
+      <!-- <view class="num">招2人</view> -->
     </view>
     <!-- 薪资范围 -->
     <view class="money d-flex ml mt">
       <view class="money01">薪资范围</view>
-      <view class="money02">3000-5000</view>
+      <view class="money02">{{list.salary_range}}</view>
     </view>
     <!-- 招聘状态 -->
     <view class="states d-spb ml">
       <view class="stateleft d-flex">
         <view class="state Title">招聘状态</view>
-        <view class="stateing Mes">正在招聘</view>
+        <view class="stateing Mes">{{list.working_condition==1?'正在招聘':'已完成'}}</view>
       </view>
       <!-- 工作区域 -->
       <view class="stateright d-flex ml">
         <view class="site Title">工作地点</view>
-        <view class="province Mes">重庆市</view>
-        <view class="district Mes">江北区</view>
+        <view class="province Mes">{{list.work}}</view>
+        <!-- <view class="district Mes">江北区</view> -->
       </view>
     </view>
     <!-- 发布时间 -->
@@ -31,12 +31,12 @@
     <!-- 发布时间 -->
       <view class="dateleft d-flex">
         <view class="issue Title">发布时间</view>
-        <view class="date Mes">2019.08.20</view>
+        <view class="date Mes">{{list.create_time}}</view>
       </view>
       <!-- 工作年限 -->
       <view class="dateright d-flex">
         <view class="age Title">工作年限</view>
-        <view class="year Mes">10年</view>
+        <view class="year Mes">{{list.working_years}}</view>
       </view>
     </view>
     <!-- 分割线 -->
@@ -44,8 +44,8 @@
     <!-- 职位详情 -->
     <view class="duty ml">
       <view class="detail">职位详情</view>
-      <view class="details" style="margin-top:30rpx;">招聘渣车司机10名</view>
-      <view class="details">主要在渝北江北地区跑，住在渝北两路熟悉渝北路线的 优先，杰斯430.22方，工资7000保底三万开始提10%， 每月工资兑现，新手和找车练手的就不要打扰了。</view>
+      <view class="details" style="margin-top:30rpx;">{{list.info}}</view>
+      <!-- <view class="details">{{list.info}}</view> -->
     </view>
     <!-- 2 -->
   </view>
@@ -55,16 +55,16 @@
       <!-- 联系人 -->
       <view class="d-flex ml names">
         <view class="name title-text">联系人</view>
-        <view class="username Title">张三</view>
+        <view class="username Title">{{list.contacts}}</view>
       </view>
       <view class="cut"></view>
       <!-- 联系电话 -->
       <view class="d-spb ml ph">
       <view class="ph-left d-flex">
         <view class="phone title-text">联系电话</view>
-        <view class="pnum Title">13500000000</view>
+        <view class="pnum Title">{{list.tel}}</view>
       </view>
-        <view class="d-flex ph-right">
+        <view class="d-flex ph-right" bindtap="call">
           <image src="../../images/phone.png"></image>
           <view class="dial">一键拨号</view>
         </view>
@@ -74,7 +74,7 @@
       <view class="d-spb ml ph">
       <view class="ph-left d-flex">
         <view class="phone title-text">企业名称</view>
-        <view class="pnum Title">某某公司</view>
+        <view class="pnum Title">{{list.corporate_name}}</view>
       </view>
         <view class="d-flex company-right">
           <view class="card">查看名片</view>
@@ -84,7 +84,7 @@
       <!-- 公司地址 -->
       <view class="d-flex ml add">
         <view class="address title-text">公司地址</view>
-        <view class="location">公司详细地址</view>
+        <view class="location">{{list.detailed_address}}</view>
       </view>
     <!-- 3 -->
     </view>
@@ -93,13 +93,13 @@
     <!-- 公司图片 -->
     <view class="detail ml iimg">公司图片/视频</view>
     <!-- 图片 -->
-      <view class="d-flex ml">
-        <image src="../../images/carousel/05.jpg"></image>
-        <image src="../../images/carousel/06.jpg"></image>
-        <image src="../../images/carousel/07.jpg"></image>
-      </view>
+        <view class="d-flex ml" style="  flex-wrap: wrap;">
+      <block wx:for="{{list.img_url_arr}}" wx:key="{{index}}">
+          <image src="{{item}}"></image>
+      </block>
+        </view>
       <!-- 视频 -->
-      <video class="ml" controls="true" show-mute-btn="true" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"></video>
+      <video class="ml" controls="true" show-mute-btn="true" src="{{list.video}}"></video>
     <!-- 4 -->
     </view>
     <!-- 5 -->
@@ -125,14 +125,20 @@
     <view class="bgf">
     <view class="likes">
     <!-- 分享 -->
-      <view class="share" bindtap="share">
-        <image src="../../images/share.png"></image>
-        <text>分享</text>
+      <view class="share d-flex" bindtap="share">
+        <!-- <view class="l"> -->
+          <image src="../../images/share.png"></image>
+        <!-- </view> -->
+        <button style="margin-left:-2rpx;" open-type="share">分享</button>
       </view>
     <!-- 点赞 -->
-      <view class="like" bindtap="like">
-        <image src="../../images/like.png"></image>
-        <text>{{like}}</text>
+      <view class="like d-flex" bindtap="like">
+        <view class="z">
+                <image src="{{list.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
+              </view>
+              <view class="z">
+                <text  style="{{list.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{list.point_ratio}}</text>
+              </view>
       </view>
     <!-- 投诉 -->
       <view class="" bindtap="showDialogBtn">

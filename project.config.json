@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 57,
+			"current": 59,
 			"list": [
 				{
 					"id": 0,
@@ -455,6 +455,20 @@
 					"id": -1,
 					"name": "修改地址",
 					"pathName": "pages/self/site/modsite",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "找工作详情",
+					"pathName": "pages/informmation/jobdetail/jobdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "招人才跳转",
+					"pathName": "pages/informmation/peopledetail/peopledetail",
 					"scene": null
 				}
 			]

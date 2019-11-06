@@ -44,7 +44,8 @@ function withData(param){
    mont = withData(newDate.getMonth() + 1),
    date = withData(newDate.getDate()),
    hour = withData(newDate.getHours()),
-   minu = withData(newDate.getMinutes()),
+  //  minu = withData(newDate.getMinutes()),
+   minu = '00',
    seco = withData(newDate.getSeconds());
   
   return [year, mont, date, hour, minu, seco];
@@ -62,7 +63,8 @@ function withData(param){
   dateTimeArray[1] = getLoopArray(1, 12);
   dateTimeArray[2] = getMonthDay(defaultDate[0], defaultDate[1]);
   dateTimeArray[3] = getLoopArray(0, 23);
-  dateTimeArray[4] = getLoopArray(0, 59);
+  // dateTimeArray[4] = getLoopArray(0, 59);
+  dateTimeArray[4] = getLoopArray(0, '00');
   dateTimeArray[5] = getLoopArray(0, 59);
   
   dateTimeArray.forEach((current,index) => {

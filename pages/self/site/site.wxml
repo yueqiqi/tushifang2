@@ -13,7 +13,7 @@
           <view>{{item.phone}}</view>
         </view>
         <view class="right d-flex">
-          <view data-num="{{index}}" catchtap="del">删除</view>
+          <view data-num="{{index}}" catchtap="del" data-id="{{item.id}}">删除</view>
           <view bindtap="mod" data-id="{{item.id}}">编辑</view>
         </view>
       </view>

@@ -1,7 +1,23 @@
 // pages/informmation/jobdetail/jobdetail.js
+import request from '../../login.js'
+import like from '../../like.js'
+
 Page({
   formSubmit: function (e) {
+    var uid=wx.getStorageSync('uid');
+    var that=this
     var e = e.detail.value
+    var info_id=that.data.info_id
+    if(that.data.tempFilePaths==''){
+      var img_url_arr=''
+    }else{
+      var p=that.data.img_url_arr
+      console.log('文件',that.data.img_url_arr)
+      var z=p.join('|')
+      var img_url_arr=z
+      console.log(z)
+    }
+    var content=e.textarea
     if (e.textarea.length < 5) {
       wx.showToast({
         title: '字数在5~100字哟~~~',
@@ -9,20 +25,43 @@ Page({
         duration: 2000
       })
     } else {
-      wx.showModal({
-        title: '提交成功',
-        content: "提交成功，我们会在1-3个工作日内进行审核，如果举报属实，会对该用户做出相应惩罚，审核消息会在第一时间发送至您的消息中心，请注意查收。",
-        showCancel: false,
-        icon: 'success',
-        duration: 2000,
-        success: function (res) {
-          if (res.confirm) {
-            console.log("用户点击了确定")
-            console.log(res);
-            console.log(res.confirm)
+      // **************************
+      // 举报
+      wx.request({
+        url:"http://tsf.suipk.cn/home/info/do_report",
+        data:{
+          uid,
+          info_id,
+          content,
+          img_url_arr
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:function(res){
+          console.log("举报调用成功",res)
+          if(res.data.code==0){
+            wx.showModal({
+              title: '提交成功',
+              content: "提交成功，我们会在1-3个工作日内进行审核，如果举报属实，会对该用户做出相应惩罚，审核消息会在第一时间发送至您的消息中心，请注意查收。",
+              showCancel: false,
+              icon: 'success',
+              duration: 2000,
+              success: function (res) {
+                if (res.confirm) {
+                  console.log("用户点击了确定")
+                  console.log(res);
+                  console.log(res.confirm)
+                }
+              }
+            })
           }
+        },fail:function(){
+          console.log("调用举报失败",res)
         }
       })
+      // **************************
     }
     this.hideModal();
   },
@@ -83,32 +122,45 @@ Page({
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
-          //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
+          var a =[]
+          for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+            //上传文件
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePaths[i],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                img_url_arr:a
+              })
+              console.log('最后a',that.data.a)
+              //如果是最后一张,则隐藏等待中  
+              if (count == tempFilePaths.length) {
                 wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
               }
-            });*/
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          });
+        // }//if
         }
       }
     })
@@ -187,9 +239,35 @@ share:function(){
 },
 // 点赞
 like:function(){
-  var that = this
-  this.setData({ like: that.data.like + 1 });
-  console.log("点赞"); return
+  var uid=wx.getStorageSync('uid');
+    var that=this
+    console.log("点赞")
+    like({
+      data:{
+        uid,
+        type:1,
+        info_id:that.data.info_id,
+      }
+      }).then(res=>{
+      console.log('调用点赞成功',res)
+        // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
+        // var uid=wx.getStorageSync('uid');
+        request({
+          url:'http://tsf.suipk.cn/home/info/do_info_content',
+          data:{
+          uid,
+          type:1,
+          info_id:that.data.info_id
+        }
+        }).then(res=>{
+        console.log('调用信息详情成功',res)
+        this.setData({
+          list:res.data.data
+        })
+        }).catch(err=>{
+          console.log('调用失败')
+        })
+      })
 },
 // 举报
 complaint:function(){
@@ -205,11 +283,45 @@ complaint:function(){
     like:20,
   },
 
+  // 拨打电话
+  call:function(){
+    var that=this
+    wx.makePhoneCall({
+      phoneNumber: that.data.list.tel,
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var uid=wx.getStorageSync('uid');
+    console.log('接受勤勉找工作详情传递过来得值',options.info_id)
+    this.setData({
+      info_id:options.info_id,
+      uid,
+    })
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_info_content',
+      data:{
+        type:1,
+        info_id:options.info_id,
+        uid
+      }
+      }).then(res=>{
+      console.log('调用找工作成功',res)
+      this.setData({
+        list:res.data.data
+        
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    
   },
 
   /**

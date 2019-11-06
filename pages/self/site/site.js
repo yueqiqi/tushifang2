@@ -11,17 +11,41 @@ Page({
   // 删除
   del:function(e){
 var that=this
+var id=e.currentTarget.dataset.id
     wx.showModal({
       title: '提示',
       content: '确定要删除吗？',
       success: function (sm) {
         console.log(sm)
         if (sm.confirm) {
-          asd.splice(e, 1)
-          that.setData({
-            defa: asd
+          // asd.splice(e, 1)
+          // that.setData({
+          //   defa: asd
+          // })
+          request({
+            url:'http://tsf.suipk.cn/home/personal/do_del_adress',
+            data:{
+              id
+            }
+            }).then(res=>{
+            console.log('调用删除地址成功',res)
+            if(res.data.code==0){
+              wx.showToast({
+                title: '删除成功',
+                icon: 'success',
+                image: '',
+                duration: 1500,
+                mask: false,
+                success: (result)=>{
+                  that.onLoad()
+                },
+                fail: ()=>{},
+                complete: ()=>{}
+              });
+            }
+            }).catch(err=>{
+            console.log('调用失败')
           })
-
           // 用户点击了确定 可以调用删除方法了
         } else if (sm.cancel) {
           console.log('用户点击取消')
@@ -116,7 +140,7 @@ wx.navigateTo({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad()
   },
 
   /**

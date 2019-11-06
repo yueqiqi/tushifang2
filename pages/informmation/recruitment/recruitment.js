@@ -4,6 +4,24 @@ var util = require('../../../utils/util.js'); //参数是util.js所在的路径�
 import request from '../../login.js'
 import like from '../../like.js'
 Page({
+
+
+
+  // +++++++++++++++++++++渣场跳转至详情页+++++++++++++++++++++++++++++++++++
+  slag:function(e){
+    var id=e.currentTarget.dataset.id
+    var type=3
+    wx.navigateTo({
+      url: '/pages/details/details?from=信息中心&type='+type+'&id='+id,
+      success: (result)=>{
+      },
+    });
+  },
+  // +++++++++++++++++++++跳转至详情页+++++++++++++++++++++++++++++++++++
+
+
+
+
   scall:function(e){
     console.log('拨打电话')
     wx.makePhoneCall({
@@ -314,15 +332,18 @@ Page({
     console.log(e.detail.errMsg)
   },
   // 招人才跳转
-  gotoPeople: function () {
+  gotoPeople: function (e) {
+    var info_id=e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../peopledetail/peopledetail',
+      url: '../peopledetail/peopledetail?info_id='+info_id,
     })
   },
   // 跳转详情页
-  goto:function(){
+  goto:function(e){
+    var info_id=e.currentTarget.dataset.id
+    console.log(info_id)
     wx.navigateTo({
-      url: '../jobdetail/jobdetail',
+      url: '../jobdetail/jobdetail?info_id='+info_id,
     })
   },
   //获取当前滑块的index

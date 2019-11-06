@@ -9,6 +9,7 @@ var model = require('../../../model/model.js')
 var ashow = false;
 var item = {};
 import request from '../../login.js'
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog'
 Page({
   // /获取地理位置
   getlocation: function () {
@@ -80,17 +81,11 @@ Page({
           complete: ()=>{}
         });
       }else if(res.data.code==101){
-        wx.showToast({
-          title: '手机号不正确',
-          icon: 'err',
-          image: '',
-          duration: 1500,
-          mask: false,
-          success: (result)=>{
-            
-          },
-          fail: ()=>{},
-          complete: ()=>{}
+        console.log('123',res.data.msg)
+        Dialog.alert({
+          message: res.data.msg
+        }).then(() => {
+          // on close
         });
       }
       this.setData({

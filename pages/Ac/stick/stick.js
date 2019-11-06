@@ -53,6 +53,11 @@ Page({
       this.nsushow()
     }
   },
+  op:function(){
+    this.setData({
+      'sssup':true,
+    })
+  },
   /* 显示弹窗 */
   ssushow() {
    console.log("显示弹框")

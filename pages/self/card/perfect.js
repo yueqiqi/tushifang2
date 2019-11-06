@@ -229,7 +229,7 @@ Page({
     var email=e.email
     var detailed_address=e.address
     var info=e.textarea
-    
+    var head=that.data.heads
     var p=that.data.img_url_arr
     console.log(that.data.img_url_arr)
     var z=p.join('|')
@@ -271,10 +271,9 @@ Page({
             })
             // ===================完善名片++++++++++++++++++++++++++++
 
-            wx.redirectTo({
-              // url: '/pages/self/mycard/mycard?name='+name+"&phone="+phone+"&com="+com+"&post="+post+"&email="+email+"&address="+address+"&textarea="+textarea+"&imgs="+imgs+"&head="+head,
-              url:'/pages/self/card/card'
-            })
+            wx.navigateBack({
+              delta: 1
+            });
               // /////////////////////////////////////////////////////////////////////////////////////////
               // 本地储存名片
                 wx.setStorage({
@@ -293,22 +292,67 @@ Page({
       })
     }
   },
-  // 选择头像
-  choose:function(){
-    var that=this
+  choose: function () {
+    let that = this;
     wx.chooseImage({
-      count: 1, // 最多可以选择的图片张数，默认9
-      sizeType: ['compressed'], // original 原图，compressed 压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
-      success: function(res) {
-        console.log(res.tempFilePaths[0])
-        var mm=res.tempFilePaths[0]
-        that.setData({
-          head:mm
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: res => {
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 1000
         })
-      },
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        let tempFilePaths = res.tempFilePaths;
+        that.setData({
+          head: tempFilePaths
+        })
+        /**
+         * 上传完成后把文件上传到服务器
+         */
+        var a=[]
+          wx.uploadFile({
+            url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            filePath: tempFilePaths[0],
+            name: 'image',
+            method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: function (res) {
+              // console.log(that.data.tempFilePaths[1])
+              console.log("检验图片上传",res)
+              // count++;
+              var qwe=res.data
+              var resl=JSON.parse(qwe)
+              a.push(resl.data)
+              console.log("返回值",resl,a)
+              that.setData({
+                heads:a
+              })
+            },
+            fail: function (res) {
+              wx.hideToast();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false,
+                success: function (res) { }
+              })
+            }
+          })
+
+      }
     })
   },
+
+
+  // +++++++++++++++++++上传头像+++++++++++++++++++++++++++++++++++++
+  
+  // +++++++++++++++++++上传头像+++++++++++++++++++++++++++++++++++++
   // 下拉选项框
   selectTap(e) {
     this.setData({
@@ -366,7 +410,7 @@ Page({
     selectData: ['您好，这是我的电子名片，望惠存', '这是我的电子名片，一键保存', "自定义编辑"],//下拉列表的数据
     index: 0,//选择的下拉列表下标
     // 头像
-    head: "/pages/images/carousel/02.jpg",
+    head: "",
     // 
     focus:false
   },

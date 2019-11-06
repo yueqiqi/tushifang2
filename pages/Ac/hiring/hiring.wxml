@@ -256,6 +256,9 @@
 <!-- 消耗积分 -->
 <view class="sint">消耗积分 <text style="color:#F57900">{{int}}</text></view>
     <view class='ssmsg' bindtap='sssuhide'>确定</view>
+    <view style="margin-top:200rpx;display: flex;justify-content: center;">
+    <image bindtap="op" style="width:66rpx;height:66rpx;" src="/pages/images/close.png"></image>
+  </view>
 </view>
  <!-- <include src="/pages/Ac/no/no"/> -->
  <include src="/pages/Ac/no/no"/>

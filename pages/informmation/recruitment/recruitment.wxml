@@ -55,7 +55,7 @@
     <!-- 招聘职位 -->
     <block wx:for="{{userlists}}" wx:key="{{index}}">
 
-    <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;" bindtap="goto">
+    <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;" bindtap="goto" data-id="{{item.id}}">
       <view class="post d-flex"> 
         <view class="post-left ml d-flex">
           <view class="postTitle">{{item.type_work}}</view>
@@ -96,7 +96,7 @@
         </view>
         <!-- 发布者 -->
         <view class="d-flex user ml">
-          <view class="head"><img class="head" src="{{item.head}}" alt=""/></view>
+          <view class="head"><image class="head" src="{{item.head}}" alt=""/></view>
           <view class="userName">{{item.nickname}}</view>
           <view class="company">{{item.corporate_name}}</view>
         </view>
@@ -115,11 +115,11 @@
     <view class='people bg'>
       <block wx:for="{{findpeople}}" wx:key="{{index}}">
         
-        <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;" bindtap="gotoPeople">
+        <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;" bindtap="gotoPeople" data-id="{{item.id}}">
           <view class="header d-flex ml">
       <!-- 发布用户名 -->
         <view class="header-left d-flex">
-          <view class="peopleHead"><img class="peopleHead" src="{{item.head}}" alt=""/></view>
+          <view class="peopleHead"><image class="peopleHead" src="{{item.head}}" alt=""/></view>
           <view class="peopleName">{{item.nickname}}</view>
         </view>
         <view class="header-right d-flex">
@@ -213,10 +213,12 @@
 <block wx:for="{{slag}}" wx:key="{{index}}">
   
   <view class="bgf slag" style="">
-  <view class="musks" style="margin-top:10rpx;">
-    <view class="musk-user d-spb">
+    
+    <view class="musks" style="margin-top:10rpx;">
+      <view class="" bindtap="slag" data-id="{{item.id}}">
+        <view class="musk-user d-spb">
       <view class="musk-user-l d-flex">
-      <!-- 头像 -->
+        <!-- 头像 -->
         <image src="{{item.head}}"></image>
         <!-- 用户名 -->
         <view>发布用户名</view>
@@ -237,6 +239,7 @@
   </view>
 </view>
 <!-- 内容 -->
+    </view>
 <view class="musk-content">{{item.info}}</view>
 <!-- 图片视频 -->
 <!-- <view class="musk-img"> -->
@@ -271,7 +274,7 @@
     <button open-type="share" class="bbb">分享</button>
   </view>
   <!-- 评论 -->
-  <view class="comment d-flex" bindtap="comment">
+  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}">
     <view><image src="../../images/comment.png"></image></view>
     <view>评论</view>
   </view>
@@ -317,11 +320,13 @@
 
   <block wx:for="{{meeting}}" wx:key="{{index}}">
     
-  <view class="bgf slag" style="">
-    <view class="musks" style="margin-top:10rpx;">
-    <view class="musk-user d-spb">
-      <view class="musk-user-l d-flex">
-      <!-- 头像 -->
+    <view class="bgf slag" style="">
+      <view class="musks" style="margin-top:10rpx;">
+        <view class=""  bindtap="slag" data-id="{{item.id}}">
+            
+      <view class="musk-user d-spb">
+        <view class="musk-user-l d-flex">
+          <!-- 头像 -->
         <image src="{{item.head}}"></image>
         <!-- 用户名 -->
         <view>发布用户名</view>
@@ -342,6 +347,7 @@
   </view>
 </view>
 <!-- 内容 -->
+            </view>
 <view class="musk-content">{{item.info}}</view>
 <!-- 图片视频 -->
 <!-- <view class="musk-img"> -->
@@ -376,7 +382,7 @@
     <button open-type="share" class="bbb">分享</button>
   </view>
   <!-- 评论 -->
-  <view class="comment d-flex" bindtap="comment">
+  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}">
     <view><image src="../../images/comment.png"></image></view>
     <view>评论</view>
   </view>
@@ -418,8 +424,10 @@
     
     <view class="bgf slag" style="">
       <view class="musks" style="margin-top:10rpx;">
-    <view class="musk-user d-spb">
-      <view class="musk-user-l d-flex">
+        <view class=""  bindtap="slag" data-id="{{item.id}}">
+
+          <view class="musk-user d-spb">
+            <view class="musk-user-l d-flex">
         <!-- 头像 -->
         <image src="{{item.head}}"></image>
         <!-- 用户名 -->
@@ -441,10 +449,11 @@
   </view>
 </view>
 <!-- 内容 -->
+  </view>
 <view class="musk-content">{{item.info}}</view>
 <!-- 图片视频 -->
 <!-- <view class="musk-img"> -->
- 
+  
   <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
                 <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
@@ -475,7 +484,7 @@
     <button open-type="share" class="bbb">分享</button>
   </view>
   <!-- 评论 -->
-  <view class="comment d-flex" bindtap="comment">
+  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}">
     <view><image src="../../images/comment.png"></image></view>
     <view>评论</view>
   </view>
