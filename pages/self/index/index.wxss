@@ -19,7 +19,7 @@
   /* //弹窗布局宽 */
   width: 460rpx;
   /* //弹窗布局高，与下面弹出距离transform有关 */
-  height: 220rpx;
+  height: 260rpx;
   margin-left: 145rpx;
   background: #fff;
   /* //弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */

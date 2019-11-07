@@ -1,0 +1,16 @@
+<view style="text-align:center;font-weight:bold;font-size:50rpx;">登录注册获取手机号</view>
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >登录</button>
+<!-- 获取手机弹窗 -->
+
+
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+      <view class="zan-dialog__mask"></view>
+      <view class="zan-dialog__container">
+        <view style="display:flex;justify-content: center;"><image style="width:87rpx;height:87rpx;position:relative;top:-43rpx" class="" src="/pages/images/err.png" ></image></view>
+        <view style="font-size:30rpx;color:#333;text-align:center;margin-bottom:20rpx;">是否登录小程序</view>
+        <view class="d-flex">
+          <button style="height:64rpx;line-height:64rpx;color:#489589;background:#EBF9F7;font-size:30rpx;" bindtap="err">拒绝</button>
+          <button style="height:64rpx;line-height:64rpx;color:#fff;background:#76D4C6;font-size:30rpx;" open-type="getUserInfo" bindtap="show">允许</button>
+</view>
+</view>
+</view>

@@ -1,4 +1,4 @@
-<view class='ssshade' hidden='{{sssup}}'bindtap='sssuhide' ></view>
+<view class='ssshade' hidden='{{sssup}}' ></view>
 <view class='ssshade_box sspopup' hidden='{{sssup}}'>
 <!-- 成功图片 -->
     <view class='sstitle'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>

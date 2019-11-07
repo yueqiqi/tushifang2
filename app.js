@@ -39,56 +39,56 @@ App({
 
     // }else{//没有token从新获取
       // console.log("进行了新的登录")
-      this.login()
+      // this.login()
     // }
   },
     /**
      * 微信登录接口
      */
-    login(){
-      console.log("执行了登录操作")
-      wx.login({
-        // code只有5分钟时效
-        success:(res)=>{
-        const code=res.code;
-        // 请求接口
-        wx.request({
-          url: 'http://tsf.suipk.cn/home/Loginwx/get_openid',
-          data: {
-            code,
-          },
-          method: 'POST',
-          header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-          success: (res)=> {
-            console.log("opendi",res)
-            var m=res.data.data
-            // var resb=JSON.parse(m)
-            // console.log("1",resb)
-            // 取出token
-            // const token=res.data.token
-            const openid=m.openid
-            const sessionKey=m.session_key
+    // login(){
+    //   console.log("执行了登录操作")
+    //   wx.login({
+    //     // code只有5分钟时效
+    //     success:(res)=>{
+    //     const code=res.code;
+    //     // 请求接口
+    //     wx.request({
+    //       url: 'http://tsf.suipk.cn/home/Loginwx/get_openid',
+    //       data: {
+    //         code,
+    //       },
+    //       method: 'POST',
+    //       header: {
+    //       'content-type': 'application/x-www-form-urlencoded'
+    //     },
+    //       success: (res)=> {
+    //         console.log("opendi",res)
+    //         var m=res.data.data
+    //         // var resb=JSON.parse(m)
+    //         // console.log("1",resb)
+    //         // 取出token
+    //         // const token=res.data.token
+    //         const openid=m.openid
+    //         const sessionKey=m.session_key
 
-            // 存储到全局global中
-            // this.global.token=token
-            // 储存在stroge中
-            // wx.setStorageSync("token",token)   
-            wx.setStorageSync("openid",openid)  
-            wx.setStorageSync("sessionKey",sessionKey)  
-            this.globalopenid.openid=openid 
-          console.log('调用内存成功', res)
-          console.log("===========================")
-          // console.log(resb.openid)
-          console.log("===========================")
-        }, fail: ()=> {
-          console.log('调用失败')
-          }
-        })
-      }
-    })
-    },
+    //         // 存储到全局global中
+    //         // this.global.token=token
+    //         // 储存在stroge中
+    //         // wx.setStorageSync("token",token)   
+    //         wx.setStorageSync("openid",openid)  
+    //         wx.setStorageSync("sessionKey",sessionKey)  
+    //         this.globalopenid.openid=openid 
+    //       console.log('调用内存成功', res)
+    //       console.log("===========================")
+    //       // console.log(resb.openid)
+    //       console.log("===========================")
+    //     }, fail: ()=> {
+    //       console.log('调用失败')
+    //       }
+    //     })
+    //   }
+    // })
+    // },
   check_token(token){
     // var that=this
     // console.log("执行了验证token操作")

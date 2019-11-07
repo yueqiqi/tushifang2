@@ -15,7 +15,8 @@ Page({
   op:function(){
     this.setData({
       'sssup':true,
-      radio:'2'
+      radio:'2',
+      sq:false
     })
 
   },
@@ -175,6 +176,9 @@ Page({
   // 选择是弹出框
   yes:function(){
 this.ssushow()
+this.setData({
+  sq:true
+})
   },
  
   // /////////////////////////////////////////////////////////////////////////////
@@ -308,11 +312,21 @@ this.ssushow()
     // 联系人
     var contacts=m.i5
     // 联系电话
-    var tel=m.i6
+    var corporate_name
     // 公司名称
-    var corporate_name=m.i7
+    if(m.i7==''){
+      corporate_name=''
+    }else{
+      corporate_name=m.i7
+    }
+    var tel=m.i6
     // 详细地址
-    var detailed_address=m.i8
+    var detailed_address
+    if(m.i8==''){
+      detailed_address=''
+    }else{
+      detailed_address=m.i8
+    }
     // 公司图片
     var p=that.data.img_url_arr
     console.log(that.data.img_url_arr)

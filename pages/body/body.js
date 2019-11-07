@@ -17,10 +17,6 @@ Page({
     let that = this;
     console.log('浏览的图片',)
     console.log(e,index)
-          // tabuser:res.data.data
-    // console.log('图片下标',index,that.data.tabuser.img_url_arr[index])
-    // console.log(that.data.tempFilePaths[index]);
-    // console.log(that.data.tempFilePaths);
     for(var tb in that.data.tabuser){
      if(id==that.data.tabuser[tb].id){
      var previewImgArr = that.data.tabuser[tb].img_url_arr
@@ -89,7 +85,7 @@ Page({
         }).then(res=>{
         //console.log('调用优质推荐兴趣成功',res)
         this.setData({
-          tabuserjian:res.data.data
+          tabuserjian:res.data.list
         })
         }).catch(err=>{
         //console.log('调用失败')
@@ -695,7 +691,7 @@ Page({
         type:1,
         uid,
         page:1,
-        limit:2,
+        // limit:2,
       },
       method: 'POST',
       header: {
@@ -718,7 +714,7 @@ Page({
         type:2,
         uid,
         page:1,
-        limit:5,
+        // limit:5,
       },
       method: 'POST',
       header: {
@@ -730,6 +726,7 @@ Page({
         that.setData({
           tabuserjian:res.data.list
         })
+        console.log('优质推荐里面的内容',that.data.tabuserjian)
       }
 
     })
@@ -794,7 +791,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (e) {
-    
+    this.onLoad()
   },
 
   /**
@@ -827,39 +824,39 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    var uid=wx.getStorageSync('uid');
-    console.log('触底了')
-    var that = this;
-    // 显示加载图标
-    wx.showLoading({
-      title: '玩命加载中',
-    })
-    // 页数+1
-    var page=1
-   page+=1;
-  //  刷新最新发布
-    wx.request({
-      url:"http://tsf.suipk.cn/home/index/do_Recommend",
-      data:{
-        type:1,
-        uid,
-        page,
-        limit:2,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        //console.log("最新发布调用成功")
-        console.log("最新发布刷新调用成功",res)
-        // that.onLoad()
-        that.setData({
-          tabuser:res.data.list
-        })
-        wx.hideLoading();
-      }
-    })
+  //   var uid=wx.getStorageSync('uid');
+  //   console.log('触底了')
+  //   var that = this;
+  //   // 显示加载图标
+  //   wx.showLoading({
+  //     title: '玩命加载中',
+  //   })
+  //   // 页数+1
+  //   var page=1
+  //  page+=1;
+  // //  刷新最新发布
+  //   wx.request({
+  //     url:"http://tsf.suipk.cn/home/index/do_Recommend",
+  //     data:{
+  //       type:1,
+  //       uid,
+  //       page,
+  //       limit:2,
+  //     },
+  //     method: 'POST',
+  //     header: {
+  //       'content-type': 'application/x-www-form-urlencoded'
+  //     },
+  //     success:function(res){
+  //       //console.log("最新发布调用成功")
+  //       console.log("最新发布刷新调用成功",res)
+  //       // that.onLoad()
+  //       that.setData({
+  //         tabuser:res.data.list
+  //       })
+  //       wx.hideLoading();
+  //     }
+  //   })
   },
 
   /**

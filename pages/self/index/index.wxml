@@ -29,7 +29,7 @@
           </view>
         </view>
         <view>
-          <button open-type="getUserInfo" class="login" bindgetuserinfo="getUserInfo">立即登录</button>
+          <button class="login" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">立即登录</button>
           <!-- <button open-type="getPhoneNumber"  class="login" bindgetphonenumber="getPhoneNumber">立即登录</button> -->
         </view>
       </view>
@@ -40,10 +40,10 @@
       <view class="zan-dialog__mask" />
       <view class="zan-dialog__container">
         <view style="display:flex;justify-content: center;"><image style="width:87rpx;height:87rpx;position:relative;top:-43rpx" class="" src="/pages/images/err.png" ></image></view>
-        <view style="font-size:30rpx;color:#333;text-align:center">是否允许小程序获取手机号码</view>
+        <view style="font-size:30rpx;color:#333;text-align:center;margin-bottom:20rpx;">是否允许小程序获取手机号码</view>
         <view class="d-flex">
           <button style="height:64rpx;line-height:64rpx;color:#489589;background:#EBF9F7;font-size:30rpx;" bindtap="toggleDialog">拒绝</button>
-          <button style="height:64rpx;line-height:64rpx;color:#fff;background:#76D4C6;font-size:30rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">允许</button>
+          <button style="height:64rpx;line-height:64rpx;color:#fff;background:#76D4C6;font-size:30rpx;" open-type="getUserInfo" bindtap="show">允许</button>
           <!-- <button style="height:64rpx;line-height:64rpx;color:#fff;background:#76D4C6;font-size:30rpx;" bindgetuserInfo="getUserInfo" open-type="getUserInfo"  >允许</button> -->
         </view>
         <!-- <view style="font-size:40rpx;font-weight:blod;text-align:center;padding-top:100rpx;">

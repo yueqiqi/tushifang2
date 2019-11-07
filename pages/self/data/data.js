@@ -32,8 +32,10 @@ Page({
       res.data.data.role="企业"
     }else if(res.data.data.role==2){
       res.data.data.role="司机"
-    }else{
+    }else if(res.data.data.role==3){
       res.data.data.role="个人"
+    }else {
+      res.data.data.role="未认证"
     }
     this.setData({
       img:res.data.data.head,

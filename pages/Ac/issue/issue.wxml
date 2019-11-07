@@ -76,8 +76,8 @@
       <!-- 项目介绍 -->
       <view class="self">
         <view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">项目介绍</view>
-        <view class="texta">
-          <textarea wx-if="{{sq==true?false:true}}" value="{{h4==false?'':hr4}}" placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请您输入更多介绍详情，越详细越好，这样有助于您更快的完成寻找需求哦~" maxlength="200" name="textarea" />
+        <view class="texta" hidden="{{sq==true?true:false}}">
+          <textarea  value="{{h4==false?'':hr4}}" placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请您输入更多介绍详情，越详细越好，这样有助于您更快的完成寻找需求哦~" maxlength="200" name="textarea" />
         </view>
       </view>
       <!--  -->

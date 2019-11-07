@@ -1,4 +1,4 @@
-// pages/k/k.js
+import request from '../login.js'
 Page({
 x:function(){
   var pages = getCurrentPages();
@@ -18,75 +18,97 @@ x:function(){
    * 页面的初始数据
    */
   data: {
+    info2:[],
+    info:[],
     hidden:false,
     activeIdx:2,
     // 求职招聘
-    arr1: [
-      {
-        name: "我要找工作",
-        link: "/pages/Ac/jobs/jobs"
-      },
-      {
-        name: "我要招人",
-        link: "/pages/Ac/hiring/hiring"
-      },
-    ],
-    // 工地信息
-    arr2: [
-      {
-        name: "劳务分包",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "劳务输出",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "工地找车",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "我要出渣",
-        link: "/pages/Ac/issue/issue"
-      },
-    ],
-    // 渣场信息
-    arr3: [
-      {
-        name: "政府收渣",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "园林收渣",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "房建收渣",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "工地收渣",
-        link: "/pages/Ac/issue/issue"
-      },
-    ],
-    // 买卖信息
-    arr4: [
-      {
-        name: "二手租货",
-        link: "/pages/Ac/issue/issue"
-      },
-      {
-        name: "渣车出售",
-        link: "/pages/Ac/issue/issue"
-      },
-    ],
+    // arr1: [
+    //   {
+    //     name: "我要找工作",
+    //     link: "/pages/Ac/jobs/jobs"
+    //   },
+    //   {
+    //     name: "我要招人",
+    //     link: "/pages/Ac/hiring/hiring"
+    //   },
+    // ],
+    // // 工地信息
+    // arr2: [
+    //   {
+    //     name: "劳务分包",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    //   {
+    //     name: "劳务输出",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    //   {
+    //     name: "工地找车",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    //   {
+    //     name: "我要出渣",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    // ],
+    // // 渣场信息
+    // arr3: [
+    //   {
+    //     name: "政府收渣",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    //   {
+    //     name: "园林收渣",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    //   {
+    //     name: "房建收渣",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    //   {
+    //     name: "工地收渣",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    // ],
+    // // 买卖信息
+    // arr4: [
+    //   {
+    //     name: "二手租货",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    //   {
+    //     name: "渣车出售",
+    //     link: "/pages/Ac/issue/issue"
+    //   },
+    // ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_one_two",
+      data:{
+        code:"",
+        msg:"",
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        console.log("获取菜单列表",res)
+        // for(var q in that.data.info){}
+        that.setData({
+          info:res.data.data
+        })
+},fail:function(){
+        console.log("调用失败")
+      }
+    })
   },
 
   /**

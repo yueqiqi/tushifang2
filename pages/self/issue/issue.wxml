@@ -6,17 +6,15 @@
 <!-- 发布内容标题和正在进行 -->
   <view class="d-spb d1" bindtap="goto"  data-id="{{item.id}}">
     <view class="til">{{item.title}}</view>
-    <view class="ing" style="color:{{item.type=='已完成'?'#F57900':'#76D4C6'}}">{{item.type}}</view>
+    <view class="ing" style="color:{{item.working_condition=='已完成'?'#F57900':'#76D4C6'}}">{{item.working_condition}}</view>
   </view>
 
    <view class="d-flex mybtn">
     <view class="up" bindtap="up" data-form="{{item.form}}" data-id="{{item.id}}">修改</view>
-    <view class="fin"  style="width:{{item.type=='已完成'?240:120}}rpx" bindtap="change" data-id="{{item.id}}" data-index="{{index}}">{{item.type=="已完成"?'改为正在进行':'已完成'}}</view>
-    <view class="ref" data-id="{{item.id}}" bindtap="ref" hidden="{{item.type=='已完成'?true:false}}">刷新</view>
-    <view class="stick" data-id="{{item.id}}" hidden="{{item.type=='已完成'?true:false}}" bindtap="ssushow">申请置顶</view>
+    <view class="fin"  style="width:{{item.working_condition=='已完成'?240:120}}rpx" bindtap="change" data-id="{{item.id}}" data-index="{{index}}">{{item.working_condition=="已完成"?'改为正在进行':'已完成'}}</view>
+    <view class="ref" data-id="{{item.id}}" bindtap="ref" hidden="{{item.working_condition=='已完成'?true:false}}">刷新</view>
+    <view class="stick" data-id="{{item.id}}" hidden="{{item.working_condition=='已完成'?true:false}}" bindtap="ssushow">申请置顶</view>
   </view>
-
-
 
 </block>
 </view>

@@ -7,7 +7,8 @@ Page({
   op:function(){
     this.setData({
       'sssup':true,
-      radio:'2'
+      radio:'2',
+      sq:false
     })
 
   },
@@ -138,6 +139,9 @@ chp:function(){
   // 选择是弹出框
   yes: function () {
     this.ssushow()
+    this.setData({
+      sq:true
+    })
   },
 
   // /////////////////////////////////////////////////////////////////////////////

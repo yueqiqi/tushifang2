@@ -106,31 +106,6 @@ cha:function(){
         })
 
 
-// //////////////////////////////////////////////
-// 获取二级id
-// for( var z in that.data.info){
-  // wx.request({
-  //   url:"http://tsf.suipk.cn/home/Info/do_twoclass_list",
-  //   data:{
-  //     one_class_id:1,
-  //   },
-  //   method: 'POST',
-  //   header: {
-  //     'content-type': 'application/x-www-form-urlencoded'
-  //   },
-  //   success:function(res){
-  //     console.log("调用二级菜单",res)
-  //    that.setData({
-  //      info2:res.data.data
-  //    })
-  //    console.log("索引数组",that.data.info2)
-  //   },fail:function(){
-  //     console.log("调用失败")
-  //   }
-  // })
-// }
-// //////////////////////////////////////////////
-
 },fail:function(){
         console.log("调用失败")
       }

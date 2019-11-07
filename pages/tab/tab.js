@@ -163,6 +163,30 @@ Component({
       //   })
       // }
       if(idx==2){
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++请求弹窗页面++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        var that=this
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_one_two",
+      data:{
+        code:"",
+        msg:"",
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        console.log("获取菜单列表",res)
+        // for(var q in that.data.info){}
+        that.setData({
+          info:res.data.data
+        })
+},fail:function(){
+        console.log("调用失败")
+      }
+    })
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++请求弹窗页面++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         var animation = wx.createAnimation({
           duration: 400,
           timingFunction: "linear",

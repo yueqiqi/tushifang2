@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/Ac/stick/stick",
+    "pages/Aaa/login",
     "pages/body/body",
+    "pages/kindex/kindex",
+    "pages/Ac/stick/stick",
     "pages/demo/err/err",
     "pages/Ac/issue/issue",
     "pages/self/card/card",
@@ -12,7 +14,6 @@
     "pages/site/site",
     "pages/self/card/perfect",
     "pages/demo/rote/rote",
-    "pages/kindex/kindex",
     "pages/demo/x",
     "pages/search/search",
     "pages/informmation/recruitment/recruitment",

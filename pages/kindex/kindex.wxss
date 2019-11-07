@@ -1,4 +1,7 @@
 /* pages/k/k.wxss */
+page{
+  background: #fff!important;
+}
 .d-flex{
   display:flex!important;
   justify-content: left!important;
@@ -36,7 +39,7 @@ margin-top:30rpx;
 /*  */
 .mgt{
   margin-top:10rpx;
-  padding-top:40rpx;
+  padding-top:10rpx;
   padding-bottom:40rpx;
 }
 .ms{

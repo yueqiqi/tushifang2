@@ -5,135 +5,259 @@ import request from "../../login.js"
 // const openid=app.globalopenid.openid
 // const request from 
 Page({
+  show:function(){
+    var that=this
+    
+    // +++++++++++++++++++++++获取
+          console.log("已授权=====")
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            lang: 'zh_CN',
+            success(res) {
+              console.log("获取用户信息成功", res)
+              
+              var u=res.userInfo
+              // ++++++++++++++++++++++登录接口+++++++++++++++++++++++
+              wx.login({
+                timeout:10000,
+                success: (res)=>{
+                  var code=res.code
+                  console.log('获取用户的code',code)
+                  request({
+                  url:'http://tsf.suipk.cn/home/Loginwx/get_openid',
+                  data:{
+                    code,
+                  }
+                  }).then(res=>{
+                  console.log('获取用户的code',res)
+                  var openid=res.data.data.openid
+                  console.log('这是储存在数据的：',openid,'color:red')
+                  wx.setStorageSync('openid', openid);
+                  }).catch(err=>{
+                  console.log('调用失败')
+                  })
+                },
+                fail: ()=>{},
+                complete: ()=>{}
+              });
+              // ++++++++++++++++++++++登录接口+++++++++++++++++++++++
+              // ++++++++++++++++++++调用接口+++++++++++++++++++
+              var openid=wx.getStorageSync('openid');
+              var phone= wx.getStorageSync('userphone');
+              console.log('%c','获取本地手机号码啊啊啊',phone)
+              var pid=1
+              var head=u.avatarUrl
+              var addr=u.province+u.city
+              var sex=u.gender
+              var nickname=u.nickName
+              console.log('这是获取数据中的：',openid,'color:green')
+                request({
+                  url:'http://tsf.suipk.cn/home/Loginwx/register',
+                  data:{
+                    openid,
+                    pid,
+                    head,
+                    addr,
+                    sex,
+                    nickname,
+                    phone
+                  }
+                  }).then(res=>{
+                  console.log('调用注册成功',res)
+                  var uid=res.data.data.id
+                   console.log('获取用户id',uid)
+                  wx.setStorageSync('uid',uid);
+                  that.setData({
+                    showDialog: false,
+                    sh:true
+                  })
+                  }).catch(err=>{
+                  console.log('调用失败')
+                })
+              // ++++++++++++++++++++调用接口+++++++++++++++++++
 
+
+            },
+            fail(res) {
+              console.log("获取用户信息失败", res)
+            }
+          })
+
+
+  },
+  // +++++++++++++++++++++++++++++++++++++获取用户信息+++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++获取手机号+++++++++++++++++++++++++++
+  getPhoneNumber:function(e){
+    var that=this
+    that.setData({
+      showDialog: true
+    });
+    var openid=wx.getStorageSync('openid');
+    console.log('按钮获取的iv',e.detail.iv)
+    console.log('按钮获取的data',e.detail.encryptedData)
+    this.setData({
+      iv:e.detail.iv,
+      encryptedData:e.detail.encryptedData
+    })
+    console.log('最后保存的信息',this.data.iv,this.data.encryptedData)
+    // +++++++++++++++++++++++获取去手机号
+    request({
+    url:'http://tsf.suipk.cn/home/Loginwx/getWechatUserPhone',
+    data:{
+      openid,
+      iv:that.data.iv,
+      encryptedData:that.data.encryptedData
+    }
+    }).then(res=>{
+    console.log('手机号获取',res)
+    wx.setStorageSync('userphone', res.data.phoneNumber);
+    }).catch(err=>{
+    console.log('调用失败')
+    })
+  },
   toggleDialog() {
     this.setData({
       showDialog: !this.data.showDialog
     });
   },
-  getPhoneNumber(e){
-    var that = this
-    var encryptedData = e.detail.encryptedData
-    var iv = e.detail.iv
-    console.log(iv,encryptedData)
-    // this.onShow()
-    // var openid=wx.getStorageSync('openid');
-      // +++++++++++++++++++++++++获取手机号+++++++++++++++++++++++++
-      // request({
-      //   url:'http://tsf.suipk.cn/home/Loginwx/getWechatUserPhone',
-      //   data:{
-      //     encryptedData,
-      //     iv,
-      //     openid
-      //   }
-      //   }).then(res=>{
-      //   console.log('调用手机号成功',res)
-      //   wx.setStorageSync('userphone', res.data.data.phoneNumber);
-      //   this.setData({
+  // getPhoneNumber(e){
+  //   var that = this
+  //   var encryptedData = e.detail.encryptedData
+  //   var iv = e.detail.iv
+  //   console.log(iv,encryptedData)
+  //   // this.onShow()
+  //   // var openid=wx.getStorageSync('openid');
+  //     // +++++++++++++++++++++++++获取手机号+++++++++++++++++++++++++
+  //     // request({
+  //     //   url:'http://tsf.suipk.cn/home/Loginwx/getWechatUserPhone',
+  //     //   data:{
+  //     //     encryptedData,
+  //     //     iv,
+  //     //     openid
+  //     //   }
+  //     //   }).then(res=>{
+  //     //   console.log('调用手机号成功',res)
+  //     //   wx.setStorageSync('userphone', res.data.data.phoneNumber);
+  //     //   this.setData({
         
-      //   })
-      //   }).catch(err=>{
-      //   console.log('调用失败')
-      // })
-      // +++++++++++++++++++++++++获取手机号+++++++++++++++++++++++++
-    
-          that.setData({
-            showDialog:false,
-            iv,
-            encryptedData,
-            close:1,
-          })
-        },
+  //     //   })
+  //     //   }).catch(err=>{
+  //     //   console.log('调用失败')
+  //     // })
+  //     // +++++++++++++++++++++++++获取手机号+++++++++++++++++++++++++
+  //         that.setData({
+  //           showDialog:false,
+  //           iv,
+  //           encryptedData,
+  //           close:1,
+  //         })
+  //         // +++++++++++++++请求祖册+++++++++++++++++++++++++
+  //         var openid=wx.getStorageSync('openid');
+  //         var pid=1
+  //         var head=that.data.head
+  //         var addr=that.data.addr
+  //         var nickname=that.data.nickname
+  //         var sex=that.data.sex
+  //         // var encryptedData=
+  //       request({
+  //         url:'http://tsf.suipk.cn/home/Loginwx/register',
+  //         data:{
+  //           openid,
+  //           // pid,
+  //           head,
+  //           addr,
+  //           sex,
+  //           nickname,
+  //           encryptedData,
+  //           iv,
+  //           phone,
+  //         }
+  //         }).then(res=>{
+  //         console.log('调用用户所有信息成功',res)
+  //         wx.setStorageSync("uid",res.data.data.id)
+  //         wx.setStorageSync("userphone",res.data.data.phone)
+
+  //           // ++++++++++++++++++++++
+  //           // var uid=wx.getStorageSync('uid');
+  //           // request({
+  //           //   url:'http://tsf.suipk.cn/home/personal/do_personal_center',
+  //           //     data:{
+  //           //       uid,
+  //           //     }
+  //           //     }).then(res=>{
+  //           //     console.log('调用储存用户成功',res)
+  //           //     this.setData({
+  //           //       header:res.data.data.head,
+  //           //       wxName:res.data.data.nickname,
+  //           //       score:res.data.data.credit
+  //           //     })
+  //           //     }).catch(err=>{
+  //           //     console.log('调用失败')
+  //           //   })
+  //           // ++++++++++++++++++++++
+
+
+
+  //         that.setData({
+  //           sh:!that.data.sh,
+  //           header:res.data.data.head,
+  //           wxName:res.data.data.nickname
+  //         })
+  //         }).catch(err=>{
+  //         console.log('调用手机注册失败',err)
+  //       })
+  //       },
         
-  getUserInfo:function(e){
-    // console.log(e)
-    var that=this
-    // this.setData({
-    //   showDialog: !this.data.showDialog
-    // });
-    // var encryptedData=e.detail.encryptedData
-    // var iv=e.detail.iv
-    // console.log(iv,encryptedData)
-    // this.userinfo()
-    wx.getUserInfo({
-      withCredentials: 'true',
-      lang: 'zh_CN',
-      timeout:10000,
-      success: function(res) {
-        console.log("获取用户信息",res)
-        var iv=that.data.iv
-        var encryptedData=that.data.encryptedData
-        var userInfo = res.userInfo
-        var openid=that.data.openid
-        var head = userInfo.avatarUrl
-        var province = userInfo.province
-        var city = userInfo.city
-        var addr=province+city
-        var nickname = userInfo.nickName
-        var sex = userInfo.gender //性别 0：未知、1：男、2：女
-        var phone=wx.getStorageSync('userphone');
-        console.log('这是手机号',phone)
-        // console.log("iv +enc",iv,encryptedData)
-        // +++++++++++++++请求祖册+++++++++++++++++++++++++
-        request({
-          url:'http://tsf.suipk.cn/home/Loginwx/register',
-          data:{
-            openid,
-            // pid,
-            head,
-            addr,
-            sex,
-            nickname,
-            encryptedData,
-            iv,
-            // phone,
-          }
-          }).then(res=>{
-          console.log('调用用户所有信息成功',res)
-          wx.setStorageSync("uid",res.data.data.id)
-          wx.setStorageSync("userphone",res.data.data.phone)
+  // getUserInfo:function(e){
+  //   // console.log(e)
+  //   var that=this
+  //   // this.setData({
+  //   //   showDialog: !this.data.showDialog
+  //   // });
+  //   // var encryptedData=e.detail.encryptedData
+  //   // var iv=e.detail.iv
+  //   // console.log(iv,encryptedData)
+  //   // this.userinfo()
+  //   wx.getUserInfo({
+  //     withCredentials: 'true',
+  //     lang: 'zh_CN',
+  //     timeout:10000,
+  //     success: function(res) {
+  //       console.log("获取用户信息",res)
+  //       // var iv=that.data.iv
+  //       // var encryptedData=that.data.encryptedData
+  //       var userInfo = res.userInfo
+  //       var openid=that.data.openid
+  //       var head = userInfo.avatarUrl
+  //       var province = userInfo.province
+  //       var city = userInfo.city
+  //       var addr=province+city
+  //       var nickname = userInfo.nickName
+  //       var sex = userInfo.gender //性别 0：未知、1：男、2：女
+  //       // var phone=wx.getStorageSync('userphone');
+  //       // console.log('这是手机号',phone)
+  //       // console.log("iv +enc",iv,encryptedData)
+  //       that.setData({
+  //         openid,
+  //         head,
+  //         addr,
+  //         nickname,
+  //         sex,
+  //         // phone
+  //       })
+  //       // +++++++++++++++请求祖册+++++++++++++++++++++++++
+  //     }
+  //   })
+  //   console.log("需要的用户信息",that.data.openid,that.data.head,that.data.addr,
+  //   that.data.nickname,that.data.sex)
+  //       that.setData({
+  //         showDialog: true//!that.data.showDialog
+  //       });
 
-            // ++++++++++++++++++++++
-            // var uid=wx.getStorageSync('uid');
-            // request({
-            //   url:'http://tsf.suipk.cn/home/personal/do_personal_center',
-            //     data:{
-            //       uid,
-            //     }
-            //     }).then(res=>{
-            //     console.log('调用储存用户成功',res)
-            //     this.setData({
-            //       header:res.data.data.head,
-            //       wxName:res.data.data.nickname,
-            //       score:res.data.data.credit
-            //     })
-            //     }).catch(err=>{
-            //     console.log('调用失败')
-            //   })
-            // ++++++++++++++++++++++
-
-
-
-          that.setData({
-            sh:!that.data.sh,
-            header:res.data.data.head,
-            wxName:res.data.data.nickname
-          })
-          }).catch(err=>{
-          console.log('调用手机注册失败',err)
-        })
-        // +++++++++++++++请求祖册+++++++++++++++++++++++++
-      }
-    })
-    console.log("电话号码调用结束")
-        that.setData({
-          showDialog: true//!that.data.showDialog
-        });
-
-    // if(that.data.close==1){
+  //   // if(that.data.close==1){
       
-    // }     
-  },
+  //   // }     
+  // },
   
   /**
    * 页面的初始数据
@@ -290,7 +414,95 @@ Page({
   onReady: function () {
 
   },
+/**
+ * 注册接口
+ */
+userlogin(){
+  // 用户的openid
+  var openid=wx.getStorageSync('openid');
+  // 用户的pid
+  var pid=1
+  // 头像地址
+  var head
+  // 地址
+  var addr
+  // 性别
+  var sex
+  // 手机号
+  var phone
+  //encryptedData
+  var encryptedData
+  // iv
+  var iv
+  // 昵称
+  var nickname
+  request({
+  url:'http://tsf.suipk.cn/home/Loginwx/register',
+    data:{
+      openid,
+      pid,
+      head,
+      addr,
+      sex,
+      phone,
+      encryptedData,
+      iv,
+      nickName,
+    }
+    }).then(res=>{
+    console.log('调用用户注册信息成功',res)
+    this.setData({
+    
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+},
 
+
+userlogin(){
+  wx.login({
+    // code只有5分钟时效
+    success:(res)=>{
+    const code=res.code;
+    // 请求接口
+    wx.request({
+      url: 'http://tsf.suipk.cn/home/Loginwx/get_openid',
+      data: {
+        code,
+      },
+      method: 'POST',
+      header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+      success: (res)=> {
+        console.log("opendi",res)
+        var m=res.data.data
+        // var resb=JSON.parse(m)
+        // console.log("1",resb)
+        // 取出token
+        // const token=res.data.token
+        const openid=m.openid
+        const sessionKey=m.session_key
+
+        // 存储到全局global中
+        // this.global.token=token
+        // 储存在stroge中
+        // wx.setStorageSync("token",token)   
+        wx.setStorageSync("openid",openid)  
+        wx.setStorageSync("sessionKey",sessionKey)  
+        this.globalopenid.openid=openid 
+      console.log('调用内存成功', res)
+      console.log("===========================")
+      // console.log(resb.openid)
+      console.log("===========================")
+    }, fail: ()=> {
+      console.log('调用失败')
+      }
+    })
+  }
+})
+},
   /**
    * 生命周期函数--监听页面显示
    */

@@ -319,22 +319,23 @@ change2:function(e){
         ch:1
       })
     }
-
+    var uid=wx.getStorageSync('uid');
     request({
       url:'http://tsf.suipk.cn/home/Personal/do_release_list',
       data:{
-        uid:1,
+        uid,
         page:1,
         limit:10,
       }
       }).then(res=>{
       console.log('调用个人中心我的发布列表成功',res.data.list)
+      console.log('调用个人中心我的发布列表成功',res)
       for(var i in res.data.list){
         // var type="res.data.list["+i+"].type"
-        if(res.data.list[i].type==0){
-          res.data.list[i].type="正在进行"
-        }else{
-          res.data.list[i].type="已完成"
+        if(res.data.list[i].working_condition==1){
+          res.data.list[i].working_condition="正在进行"
+        }else if(res.data.list[i].working_condition==3){
+          res.data.list[i].working_condition="已完成"
           continue
         } 
       }
