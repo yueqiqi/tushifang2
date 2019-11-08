@@ -1,11 +1,23 @@
 // pages/store/order/order.js
 // 调用时间
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
+import request from '../../login'
 Page({
 look:function(){
   wx.navigateTo({
     url: '/pages/store/logistics/logistics?id=1',
   })
+},
+copy:function(){
+  var that=this
+  wx.setClipboardData({
+    data: that.data.order.order_sn,
+    success: (result)=>{
+      console.log('复制成功',result)
+    },
+    fail: ()=>{},
+    complete: ()=>{}
+  });
 },
   /**
    * 页面的初始数据
@@ -35,6 +47,25 @@ look:function(){
     this.setData({
       currenTime: currenTime
     });
+    /**
+     * 调用订单详情
+     */
+    request({
+      url:'http://tsf.suipk.cn/home/Goods/do_order_info',
+      data:{
+        order_id:1,
+      }
+      }).then(res=>{
+      console.log('调用订单详情成功',res)
+      this.setData({
+        order:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+
+
+
     // var money=this.data.money;
     var orderPrice=this.data.orderPrice;
     var freight = this.data.freight;

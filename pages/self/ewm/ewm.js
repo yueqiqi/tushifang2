@@ -1,18 +1,33 @@
-// pages/self/ewm/ewm.js
+import request from '../../login'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    img:'',
   },
-
+ewm(){
+  var uid=wx.getStorageSync('uid');
+  request({
+    url:'http://tsf.suipk.cn',
+    data:{
+      uid,
+    }
+    }).then(res=>{
+    console.log('获取二维码 成功',res)
+    this.setData({
+    
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.ewm()
   },
 
   /**

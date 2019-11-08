@@ -1,4 +1,4 @@
-// pages/store/product/product.js
+import request from '../../login'
 Page({
   now:function(){
     console.log(this.data.ec)
@@ -265,11 +265,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('接收商城跳转的id ',options.id)
     this.setData({
       ec:this.data.color[0],
       es:this.data.size[0]
     })
-    console.log(options)
+    /**
+     * 获取商品详情页banner
+     */
+    // request({
+    //   url:'http://tsf.suipk.cn/home/index/do_banner',
+    //   data:{
+    //     type:0
+    //   }
+    //   }).then(res=>{
+    //   console.log('获取商城详情页banner成功',res)
+    //   this.setData({
+    //     imgUrls:res.data.data
+    //   })
+    //   }).catch(err=>{
+    //   console.log('调用失败')
+    // })
+    /**
+     * 获取商品详情页
+     */
+    request({
+      url:'http://tsf.suipk.cn/home/Goods/do_goods_info',
+      data:{
+        // goods_id:options.id
+        goods_id:5
+      }
+      }).then(res=>{
+      console.log('调用商品详情页成功',res)
+      this.setData({
+        list:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+
+    
   },
 
   /**

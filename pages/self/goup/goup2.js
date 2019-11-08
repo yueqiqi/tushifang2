@@ -77,13 +77,13 @@ Page({
     request({
       url:'http://tsf.suipk.cn/home/personal/do_mypoints',
       data:{
-        type:1,
+        type:2,
         uid,
       }
       }).then(res=>{
       console.log('调用剩余积分成功',res)
       this.setData({
-        score:res.data.data.integral
+        score:res.data.data.credit
       })
       }).catch(err=>{
       console.log('调用失败')
@@ -92,7 +92,7 @@ Page({
     request({
       url:'http://tsf.suipk.cn/home/pay/do_recharge_list',
       data:{
-        type:1,
+        type:2,
       }
       }).then(res=>{
       console.log('调用充值积分成功',res)

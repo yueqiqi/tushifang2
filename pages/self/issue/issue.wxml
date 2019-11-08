@@ -1,8 +1,8 @@
 <!-- 我的发布 -->
 
 <!-- ==================================================== -->
-<view class="bgf mtt">
 <block wx:for="{{usermes}}" wx:key="{{index}}">
+  <view class="bgf mtt">
 <!-- 发布内容标题和正在进行 -->
   <view class="d-spb d1" bindtap="goto"  data-id="{{item.id}}">
     <view class="til">{{item.title}}</view>
@@ -15,9 +15,8 @@
     <view class="ref" data-id="{{item.id}}" bindtap="ref" hidden="{{item.working_condition=='已完成'?true:false}}">刷新</view>
     <view class="stick" data-id="{{item.id}}" hidden="{{item.working_condition=='已完成'?true:false}}" bindtap="ssushow">申请置顶</view>
   </view>
-
-</block>
 </view>
+</block>
 
 
 
@@ -101,6 +100,9 @@
 <!-- 消耗积分 -->
 <view class="sint">消耗积分 <text style="color:#F57900">{{int}}</text></view>
     <view class='ssmsg' bindtap='sssuhide'>确定</view>
+    <view style="margin-top:200rpx;display: flex;justify-content: center;">
+    <image bindtap="op" style="width:66rpx;height:66rpx;" src="/pages/images/close.png"></image>
+  </view>
 </view>
 <!-- ==================================================== -->
 <!-- 我要发布 -->

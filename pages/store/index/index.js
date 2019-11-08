@@ -1,5 +1,44 @@
 // pages/store/index/index.js
+import request from '../../login'
 Page({
+
+  click:function(e){
+    var that=this
+    console.log('点击选项卡',e.detail.index)
+    var index=e.detail.index
+      request({
+        url:'http://tsf.suipk.cn',
+        data:{
+          page:that.data.page,
+          limit:6,
+          shopping_mall_id:that.data.one_class[index].id
+        }
+        }).then(res=>{
+        console.log('调用成功',res)
+        if(index==1){
+          this.setData({
+            product:res.data.list,
+          })
+        }else if(index==2){
+          this.setData({
+            product2:res.data.list,
+          }) 
+        }else if(index==3){
+          this.setData({
+            product3:res.data.list,
+          })
+        }else if(index==4){
+          this.setData({
+            product4:res.data.list,
+          })
+        }
+        
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+  },
+
+
   // 推荐跳转
   tjgoto:function(e){
     var id = e.currentTarget.dataset.id
@@ -114,6 +153,8 @@ Page({
     ],
     // 一级分类
     one_class:[],
+    // 第一个tab
+    page:1,
   },
 
   /**
@@ -121,25 +162,42 @@ Page({
    */
   onLoad: function (options) {
     var that=this
-    wx.request({
-      url: 'http://tsf.suipk.cn/home/Goods/do_shopping_mall',
-      data: {
-        code:"",
-        msg:"",
-      },
-      method: 'POST',
-      header: {
-      'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-      console.log('调用商城信息成功', res.data.data)
-        that.setData({
-          one_class:res.data.data
-        })
-      }, fail: function () {
-      console.log('调用失败')
-      }
+   request({
+    url:'http://tsf.suipk.cn//home/Goods/do_shopping_mall',
+    data:{
+      code:'',
+      msg:'',
+    }
+    }).then(res=>{
+    console.log('调用商城tab成功',res)
+    this.setData({
+      one_class:res.data.data
     })
+  /**
+    * 获取商品详情
+    */
+   request({
+    url:'http://tsf.suipk.cn/home/Goods/do_getgoods',
+    data:{
+      page:that.data.page,
+      limit:6,
+      shopping_mall_id:that.data.one_class[0].id
+    }
+    }).then(res=>{
+    console.log('调用商品列表成功',res)
+    this.setData({
+      tjproduct:res.data.list
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+   })
+  //  ===================
+    }).catch(err=>{
+    console.log('调用失败')
+   })
+ 
+
+
   },
 
   /**
@@ -181,7 +239,44 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that=this
+    var page
+    var page = that.data.page
+    page++
+    that.setData({
+      page,
+    })
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+      })
+    request({
+      url:'http://tsf.suipk.cn/home/Goods/do_getgoods',
+      data:{
+        page:that.data.page,
+        limit:6,
+        shopping_mall_id:that.data.one_class[0].id
+      }
+      }).then(res=>{
+      console.log('调用商品列表成功',res)
+      wx.hideLoading();
+        var count=res.data.count
+        var all=that.data.message.length
+        if (all>count) {
+          console.log(1)
+          wx.showToast({
+            title: '暂无更多',
+            icon: 'none',
+          })
+        }
+        var goods = that.data.message.concat(res.data.list)     //message  为一进入页面请求完数据定义的集合
+        that.setData({
+          tjproduct:goods
+        })
+      }).catch(err=>{
+      console.log('调用失败')
+     })
+    //  ===================
   },
 
   /**

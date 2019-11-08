@@ -151,10 +151,44 @@ Page({
   },
   // 单选框
   sonChange(e) {
+    var that=this
     this.setData({
       sradio: e.detail
     });
-    console.log(e.detail)
+    var lable
+    var start_time 
+    var ending_time 
+    if(that.data.sradio==1){
+       lable=1
+       start_time=that.data.stime
+       ending_time=that.data.etime
+    }else if(that.data.sradio==2){
+      if(that.data.seradio==1){
+        lable=2
+        start_time=that.data.stime
+        ending_time=that.data.etime
+      }else if(that.data.seradio==2){
+        lable=3
+        start_time=that.data.stime
+        ending_time=that.data.time
+      }
+    }
+console.log('选择的方式',lable)
+request({
+  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  data:{
+    lable,
+    start_time,
+    ending_time,
+  }
+  }).then(res=>{
+  console.log('调用获取积分成功',res)
+  that.setData({
+    int:res.data.data
+  })
+  }).catch(err=>{
+  console.log('调用失败')
+  })
      
   },
   /* 隐藏弹窗 */
@@ -479,7 +513,7 @@ this.setData({
          })
        }
        console.log("调用找人成功",res)
-       if(res.data.code==101){
+       if(res.data.msg=='积分不足！'){
          console.log('积分是否',res.mes)
          that.setData({
            pm:false,
@@ -1027,7 +1061,34 @@ this.setData({
       that.setData({
         stime:pList
       })
-       
+       // ++++++++++++++++++++++积分刷新+++++++++++++++++++++
+var lable 
+var start_time=pList
+var ending_time=that.data.etime
+if(that.data.sradio==1){
+  lable=1
+}else if(that.data.sradio==2){
+  if(that.data.seradio==1){
+    lable=2
+  }else if(that.data.seradio==2){
+    lable=3
+  }
+}
+request({
+  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  data:{
+    lable,
+    start_time,
+    ending_time,
+  }
+  }).then(res=>{
+  console.log('调用获取积分成功',res)
+  that.setData({
+    int:res.data.data
+  })
+  }).catch(err=>{
+  console.log('调用失败')
+  })
     },
     changeDateTimeColumn(e) {
       var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;
@@ -1103,7 +1164,51 @@ this.setData({
        }
        })
    
-       } 
+       } else if(this.data.sradio==2){
+         if(this.data.seradio==1){
+           wx.request({
+             url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
+          data: {
+            lable:2,
+            start_time,
+            ending_time,
+          },
+          method: 'POST',
+          header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+          success: function (res) {
+          console.log('调用十万火急成功', res.data.data)
+          that.setData({
+            int:res.data.data
+          })
+          }, fail: function () {
+          console.log('调用失败')
+          }
+          })
+        }else if(this.data.seradio==2){
+          wx.request({
+            url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
+         data: {
+           lable:3,
+           start_time,
+           ending_time,
+         },
+         method: 'POST',
+         header: {
+         'content-type': 'application/x-www-form-urlencoded'
+       },
+         success: function (res) {
+         console.log('调用十万火急成功', res.data.data)
+         that.setData({
+           int:res.data.data
+         })
+         }, fail: function () {
+         console.log('调用失败')
+         }
+         })
+        }
+       }
         
     },
     // ++++++++++++++++++++++++++开始时间+++++++++++++++++++++++++++
@@ -1136,46 +1241,4 @@ this.setData({
     //请求数据
     model.updateAreaData(that, 0, e);
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

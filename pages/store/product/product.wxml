@@ -3,9 +3,9 @@
   <!-- 轮播图 -->
   <view class="bgf">
     <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}" interval="{{interval}}"duration="{{duration}}" indicator-dots="true" indicator-color="" indicator-active-color="" circular="true">
-      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <block wx:for="{{list.img_url_arr}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{item.url}}" class="slide-image"/>
+          <image src="{{item}}" class="slide-image"/>
         </swiper-item>
       </block>
     </swiper>
@@ -14,16 +14,16 @@
   <view class="bgf">
   <!-- 价格 -->
     <view class="price d-flex">
-      <view class="price-l">￥199</view>
-      <view class="price-r">原价<text>￥550</text></view>
+      <view class="price-l">￥{{list.money}}</view>
+      <view class="price-r">原价<text>￥{{list.old_money}}</text></view>
     </view>
     <!-- 详情 -->
-    <view class="detail">304不锈钢石油设备堵盖快速接头DC型快速接头汽车配件DN15-DN200</view>
+    <view class="detail">{{list.title}}</view>
     <!-- 库存 -->
     <view class="d-flex express">
-      <view class="express-l">快递<text style="color:#333;margin-left:10rpx;">￥10.00</text></view>
-      <view class="express-c">库存<text style="color:#333;margin-left:10rpx;">1000</text></view>
-      <view class="express-r">销量<text style="color:#333;margin-left:10rpx;">1000</text></view>
+      <view class="express-l">快递<text style="color:#333;margin-left:10rpx;">{{list.freight==0?'免邮':'￥'+list.freight}}</text></view>
+      <view class="express-c">库存<text style="color:#333;margin-left:10rpx;">{{list.stock}}</text></view>
+      <view class="express-r">销量<text style="color:#333;margin-left:10rpx;">{{list.sales}}</text></view>
     </view>
   </view>
   <!-- 配送 -->

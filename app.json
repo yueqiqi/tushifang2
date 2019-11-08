@@ -13,7 +13,7 @@
     "pages/demo/sync/sync",
     "pages/self/mycard/mycard",
     "pages/demo/sync/getstorage",
-    "pages/demo/new/new",   
+    "pages/demo/new/new",
     "pages/site/site",
     "pages/self/card/perfect",
     "pages/demo/rote/rote",
@@ -44,20 +44,19 @@
     "pages/demo/new/xinqu",
     "pages/demo/new/jifen",
     "pages/self/index/index",
-
-    "pages/interest/interest",   
+    "pages/interest/interest",
     "pages/Ac/no/no",
     "pages/Ac/hiring/hiring",
     "pages/Ac/post/post",
     "pages/Ac/self/self",
     "pages/Ac/jobs/jobs",
-    "pages/demo/getlocation2/getlocation2",   
+    "pages/demo/getlocation2/getlocation2",
     "pages/Ac/business/business",
-    "pages/demo/notice/notice",   
-    "pages/demo/getlocation3/getlocation3",   
-    "pages/demo/getlocation/getlocation",   
-    "pages/demo/like2/like2",   
-    "pages/demo/like/like",   
+    "pages/demo/notice/notice",
+    "pages/demo/getlocation3/getlocation3",
+    "pages/demo/getlocation/getlocation",
+    "pages/demo/like2/like2",
+    "pages/demo/like/like",
     "pages/self/ewm/ewm",
     "pages/self/total/total",
     "pages/self/fincard/fincard",
@@ -69,53 +68,35 @@
     "pages/self/err/err",
     "pages/tabar/tabar",
     "pages/self/ewm2/ewm2",
-
     "pages/store/order/order",
-
     "pages/store/logistics/logistics",
     "pages/store/site/site",
     "pages/store/affirm/affirm",
     "pages/store/product/product",
     "pages/demo/btns/btns",
-
-
-
-    
     "pages/demo/changeimg/changeimg",
     "pages/demo/radio/radio",
-
     "pages/store/success/success",
-
-    
     "pages/Ac/isu/isu",
     "pages/Ac/suc/suc",
-
     "pages/Ac/index/inex",
     "pages/Ac/diver2/diver2",
     "pages/Ac/diver/diver",
     "pages/Ac/business2/business2",
     "pages/Ac/select/select",
-
-
     "pages/informmation/peopledetail/peopledetail",
     "pages/informmation/jobdetail/jobdetail",
     "pages/informmation/global/global",
     "pages/informmation/carousel/carousel",
-  
     "pages/integrity/integrity",
     "pages/inform/inform",
     "pages/title/title",
     "pages/tab/tab",
-
     "pages/demo/zhuanfa/zhuanfa",
     "pages/demo/dblClick/dblClick",
-
     "pages/demo/select/select",
-
-    
     "pages/demo/success/success",
     "pages/demo/demo",
-    
     "pages/demo/alert/alert",
     "pages/index/index",
     "pages/reports/reports",
@@ -141,41 +122,41 @@
     "borderStyle": "white",
     "backgroundColor": "white",
     "list": [
-     {
-      "pagePath": "pages/body/body",
-      "text": "首页",
-      "iconPath": "/pages/images/home1.png",
-      "selectedIconPath": "/pages/images/home2.png",
-      "auth": 0
-    },
-    {
-      "pagePath": "pages/informmation/recruitment/recruitment",
-      "text": "信息中心",
-      "iconPath": "/pages/images/mes1.png",
-      "selectedIconPath": "/pages/images/mes2.png",
-      "auth": 0
-    },
-    {
-      "pagePath": "pages/index/index",
-      "text": "发现",
-      "iconPath": "/pages/images/add1.png",
-      "selectedIconPath": "/pages/images/add2.png",
-      "auth": 0
-    },
-    {
-      "pagePath": "pages/store/index/index",
-      "text": "项目对接",
-      "iconPath": "/pages/images/store1.png",
-      "selectedIconPath": "/pages/images/store2.png",
-      "auth": 0
-    },
-    {
-      "pagePath": "pages/self/index/index",
-      "text": "我的",
-      "iconPath": "/pages/images/self1.png",
-      "selectedIconPath": "/pages/images/self2.png",
-      "auth": 0
-    }
+      {
+        "pagePath": "pages/body/body",
+        "text": "首页",
+        "iconPath": "/pages/images/home1.png",
+        "selectedIconPath": "/pages/images/home2.png",
+        "auth": 0
+      },
+      {
+        "pagePath": "pages/informmation/recruitment/recruitment",
+        "text": "信息中心",
+        "iconPath": "/pages/images/mes1.png",
+        "selectedIconPath": "/pages/images/mes2.png",
+        "auth": 0
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "/pages/images/add1.png",
+        "selectedIconPath": "/pages/images/add2.png",
+        "auth": 0
+      },
+      {
+        "pagePath": "pages/store/index/index",
+        "text": "项目对接",
+        "iconPath": "/pages/images/store1.png",
+        "selectedIconPath": "/pages/images/store2.png",
+        "auth": 0
+      },
+      {
+        "pagePath": "pages/self/index/index",
+        "text": "我的",
+        "iconPath": "/pages/images/self1.png",
+        "selectedIconPath": "/pages/images/self2.png",
+        "auth": 0
+      }
     ]
   }
 }

@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    page:1,
     // 时间
     // date:"2019-08-20",
     // times:"15:30"
@@ -32,8 +33,8 @@ Page({
       url:'http://tsf.suipk.cn/home/index/do_news_list',
       data:{
         uid,
-        page:1,
-        limit:4,
+        page:that.data.page,
+        limit:5,
       }
       }).then(res=>{
       console.log('调用信息列表成功',res)
@@ -45,52 +46,48 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that=this
+    var page
+    var page = that.data.page
+    page++
+    that.setData({
+      page,
+    })
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+      })
+      var uid=wx.getStorageSync('uid');
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_news_list',
+        data:{
+          uid,
+          page:that.data.page,
+          limit:4,
+        }
+        }).then(res=>{
+        console.log('调用刷新信息列表成功',res)
+        var count=res.data.count
+        var all=that.data.message.length
+        if (all>count) {
+          console.log(1)
+          wx.showToast({
+            title: '暂无更多',
+            icon: 'none',
+          })
+        }
+        var goods = that.data.message.concat(res.data.list)     //message  为一进入页面请求完数据定义的集合
+        that.setData({
+          message:goods
+        })
+        wx.hideLoading();
+        }).catch(err=>{
+        console.log('调用失败')
+      })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

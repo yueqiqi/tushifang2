@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 59,
+			"current": 64,
 			"list": [
 				{
 					"id": 0,
@@ -469,6 +469,41 @@
 					"id": -1,
 					"name": "招人才跳转",
 					"pathName": "pages/informmation/peopledetail/peopledetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心-我的二维码",
+					"pathName": "pages/self/ewm/ewm",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息通知",
+					"pathName": "pages/inform/inform",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/store/classify/classify",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/store/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商城详情页",
+					"pathName": "pages/store/product/product",
 					"scene": null
 				}
 			]

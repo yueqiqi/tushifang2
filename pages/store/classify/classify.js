@@ -1,6 +1,7 @@
 // pages/store/classify/classify.js
 // 调用时间
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
+import request from '../../login'
 Page({
   // 查看订单详情
   detail:function(e){
@@ -83,6 +84,8 @@ Page({
     // 商品价钱
     price: "100.00",
     currenDate: "",
+    // 全部订单
+    page:1,
   },
 
   /**
@@ -95,6 +98,32 @@ Page({
     this.setData({
       currenDate: currenDate
     });
+    var that=this
+    var uid=wx.getStorageSync('uid');
+
+    /**
+     * 调用我的订单列表
+     */
+    request({
+      url:'http://tsf.suipk.cn/home/Goods/do_order',
+      data:{
+        uid,
+        type:1,
+        page:that.data.page,
+        limit:10
+      }
+      }).then(res=>{
+      console.log('调用全部订单成功',res)
+
+
+      this.setData({
+      
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+
+
     for(var i in this.data.arr1){
       console.log(i)
       if (this.data.arr1[i].suc=="待发货"){

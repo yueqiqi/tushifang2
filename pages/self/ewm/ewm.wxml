@@ -1,6 +1,6 @@
 <!-- 我的二维码> -->
 <view>
-  <view class="img"><image src="../../images/carousel/06.jpg"></image></view>
+  <view class="img"><image src="{{img}}"></image></view>
   <view class="text top">二维码可进行积分转换</view>
   <view class="text">也可通过二维码邀请好友进入小程序</view>
 </view>

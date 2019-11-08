@@ -4,6 +4,14 @@ import request from "../../login.js";
 var dateTimePicker = require('./date.js');
 var dateTimePicker2 = require('./date2.js');
 Page({
+  op1:function(){
+    this.setData({
+      'sssup':true,
+      radio:'2',
+      sq:false,
+      pm:true
+    })
+  },
   op:function(){
     this.setData({
       'sssup':true,
@@ -110,7 +118,40 @@ chp:function(){
     this.setData({
       sradio: e.detail
     });
-    console.log(e.detail)
+    var lable
+    var start_time 
+    var ending_time 
+    if(that.data.sradio==1){
+       lable=1
+       start_time=that.data.stime
+       ending_time=that.data.etime
+    }else if(that.data.sradio==2){
+      if(that.data.seradio==1){
+        lable=2
+        start_time=that.data.stime
+        ending_time=that.data.etime
+      }else if(that.data.seradio==2){
+        lable=3
+        start_time=that.data.stime
+        ending_time=that.data.time
+      }
+    }
+console.log('选择的方式',lable)
+request({
+  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  data:{
+    lable,
+    start_time,
+    ending_time,
+  }
+  }).then(res=>{
+  console.log('调用获取积分成功',res)
+  that.setData({
+    int:res.data.data
+  })
+  }).catch(err=>{
+  console.log('调用失败')
+  })
   },
   /* 隐藏弹窗 */
   sssuhide() {
@@ -763,6 +804,34 @@ this.setData({
     that.setData({
       stime:pList
     })
+      // ++++++++++++++++++++++积分刷新+++++++++++++++++++++
+      var lable 
+      var start_time=pList
+      var ending_time=that.data.etime
+      if(that.data.sradio==1){
+        lable=1
+      }else if(that.data.sradio==2){
+        if(that.data.seradio==1){
+          lable=2
+        }else if(that.data.seradio==2){
+          lable=3
+        }
+      }
+      request({
+        url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+        data:{
+          lable,
+          start_time,
+          ending_time,
+        }
+        }).then(res=>{
+        console.log('调用获取积分成功',res)
+        that.setData({
+          int:res.data.data
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+        })
   },
   changeDateTimeColumn(e) {
     var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;
@@ -837,7 +906,51 @@ this.setData({
      }
      })
  
-     } 
+     } else if(this.data.sradio==2){
+       if(this.data.seradio==1){
+         wx.request({
+           url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
+        data: {
+          lable:2,
+          start_time,
+          ending_time,
+        },
+        method: 'POST',
+        header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+        success: function (res) {
+        console.log('调用十万火急成功', res.data.data)
+        that.setData({
+          int:res.data.data
+        })
+        }, fail: function () {
+        console.log('调用失败')
+        }
+        })
+      }else if(this.data.seradio==2){
+        wx.request({
+          url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
+       data: {
+         lable:3,
+         start_time,
+         ending_time,
+       },
+       method: 'POST',
+       header: {
+       'content-type': 'application/x-www-form-urlencoded'
+     },
+       success: function (res) {
+       console.log('调用十万火急成功', res.data.data)
+       that.setData({
+         int:res.data.data
+       })
+       }, fail: function () {
+       console.log('调用失败')
+       }
+       })
+      }
+     }
   },
   changeDateTimeColumn2(e) {
     var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;

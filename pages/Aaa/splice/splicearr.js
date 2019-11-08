@@ -1,4 +1,17 @@
 Page({
+
+  fn2(num){
+    num+=2
+    return num
+  },
+
+fn(){
+  var s=1
+  var m=this.fn2(s)
+  console.log(m)
+},
+
+
    // 把一个数组按照一定长度分割成若干数组
   group(array, subGroupLength) {
         let index = 0;
@@ -28,10 +41,7 @@ Page({
         id: 3,
         name: 'tom'
       },
-      {
-        id: 4,
-        name: 'jerry'
-      },
+ 
 
     ]
   }

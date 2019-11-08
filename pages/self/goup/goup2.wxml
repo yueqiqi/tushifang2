@@ -3,7 +3,7 @@
   <!-- 剩余积分 -->
   <view style="margin-left:29rpx;padding-bottom:33rpx;">
   <view class="d-flex">
-   <view class="res tit">剩余积分</view>
+   <view class="res tit">剩余信誉分</view>
    <view class="sco">{{score}}</view>
   </view>
   <!-- 充值金额 -->
@@ -13,8 +13,8 @@
       <view class="sco">{{money}}元</view>
     </view>
     <view class="right d-flex">
-      <view class="res tit">充值积分</view>
-      <view class="sco">{{up}}积分</view>
+      <view class="res tit">充值信誉分</view>
+      <view class="sco">{{up}}信誉分</view>
     </view>
   </view>
   </view>
@@ -28,7 +28,7 @@
     <block wx:for="{{userscore}}" wx:key="{{index}}">
       <view  class='{{num==index?"active":""}} btns' data-num='{{index}}' catchtap="changetotal" style="margin-top:10rpx;;" bindtap="btnscore">
         <view >{{item.money}}元</view>
-        <view>{{item.integral}}积分</view>
+        <view>{{item.integral}}信誉分</view>
       </view>
     </block>
     </view>

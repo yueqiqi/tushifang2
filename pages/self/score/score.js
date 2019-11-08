@@ -5,7 +5,7 @@ Page({
 gup:function(){
   console.log("去充值")
   wx.navigateTo({
-    url: '/pages/self/goup/goup',
+    url: '/pages/self/goup/goup2',
   })
 },
 // 邀请

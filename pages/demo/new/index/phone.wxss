@@ -1,4 +1,7 @@
 @import "/pages/postMessage/postMessage.wxss";
+.car{
+  margin-left:-250rpx;
+}
 .n1{
   /* margin-top:-20rpx; */
   width:100%;height:100%;
@@ -13,16 +16,17 @@
 height: 71rpx;
     background: #fff;
     position:relative;
-    top:888rpx;left:510rpx;
+    top:880rpx;left:510rpx;
     text-align: center;
     border-radius: 20rpx;
   }
   .ppp{
     position:relative;
-    left:-247rpx;top:10rpx
+    top:10rpx;
+    margin-left:10rpx;
   }
   .border{
-    position: relative;top:806rpx;left:497rpx;
+    position: relative;top:800rpx;left:497rpx;
   }
  /* 小× */
  .x{
