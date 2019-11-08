@@ -87,31 +87,6 @@ listenerButtonPreviewImages:function(e){
       }
     })
   },
-
-
-  yz:function(e){
-    // //console.log(e)
-    // //console.log('跳转优质推荐')
-    // var uid=wx.getStorageSync('uid');
-    // var interest=wx.getStorageSync('interest');
-    // if(e.detail.index==1){
-    //   request({
-    //     url:'http://tsf.suipk.cn/home/index/do_Recommend',
-    //     data:{
-    //       type:2,
-    //       uid,
-    //       // interest
-    //     }
-    //     }).then(res=>{
-    //     //console.log('调用优质推荐兴趣成功',res)
-    //     this.setData({
-    //       tabuserjian:res.data.list
-    //     })
-    //     }).catch(err=>{
-    //     //console.log('调用失败')
-    //   })
-    // }
-  },
   // /获取地理位置
   getlocation: function () {
     let that = this
@@ -364,55 +339,55 @@ listenerButtonPreviewImages:function(e){
       icon:[
         {
           link:"/pages/Ac/index/inex",
-          url:"/pages/images/icon/icon1.png",
-          name:"工地找车"
+          img_url:"/pages/images/icon/icon1.png",
+          title:"工地找车"
         },
         {
           link: "/pages/Ac/index/inex",
-          url: "/pages/images/icon/icon2.png",
-          name:"车找工地"
+          img_url: "/pages/images/icon/icon2.png",
+          title:"车找工地"
         },
         {
           link: "/pages/Ac/index/inex",
-          url: "/pages/images/icon/icon3.png",
-          name:"工地除渣"
+          img_url: "/pages/images/icon/icon3.png",
+          title:"工地除渣"
         },
         {
           link: "/pages/Ac/index/inex",
-          url: "/pages/images/icon/icon4.png",
-          name:"求职招聘"
+          img_url: "/pages/images/icon/icon4.png",
+          title:"求职招聘"
         },
         {
           link: "/pages/Ac/index/inex",
-          url: "/pages/images/icon/icon5.png",
-          name:"二手设备"
+          img_url: "/pages/images/icon/icon5.png",
+          title:"二手设备"
         },
       ],
       icon02:[
         {
           link: "/pages/Ac/index/inex",
-          url: "/pages/images/icon/icon6.png",
-          name:"免费认证"
+          img_url: "/pages/images/icon/icon6.png",
+          title:"免费认证"
         },
         {
           link: "/pages/Ac/post/post",
-          url: "/pages/images/icon/icon7.png",
-          name:"发布信息"
+          img_url: "/pages/images/icon/icon7.png",
+          title:"发布信息"
         },
         {
           link: "/pages/site/site",
-          url: "/pages/images/icon/icon8.png",
-          name:"渣场信息"
+          img_url: "/pages/images/icon/icon8.png",
+          title:"渣场信息"
         },
         {
           link: "/pages/self/card/card",
-          url: "/pages/images/icon/icon9.png",
-          name:"我的名片"
+          img_url: "/pages/images/icon/icon9.png",
+          title:"我的名片"
         },
         {
           link: "/pages/integrity/integrity",
-          url: "/pages/images/icon/icon10.png",
-          name:"诚信榜"
+          img_url: "/pages/images/icon/icon10.png",
+          title:"诚信榜"
         }
         ],
       indicatorDots: true, // 是否显示面板指示点
@@ -493,15 +468,18 @@ listenerButtonPreviewImages:function(e){
     console.log('调用失败')
     })
     // }
-    //console.log("这是点赞后的点赞数" + like)
   },
   nav:function(e){
     var that=this
-    console.log(e.currentTarget.dataset.index)
     var index=e.currentTarget.dataset.index
-    // console.log(that.data)
     var uid=wx.getStorageSync('uid');
     if(uid!=''){
+      /**
+       * 渣场信息跳转
+       */
+      // if(index==0){
+
+      // }
       wx.navigateTo({
         url:that.data.icon02[index].link
       })
@@ -540,7 +518,7 @@ listenerButtonPreviewImages:function(e){
         var uid=wx.getStorageSync("uid");
         
   //  获取用户信息
-  // ************************************************************************************************************************
+  // *********************************************************************************
   
   that.setData({
     uid
@@ -608,7 +586,7 @@ listenerButtonPreviewImages:function(e){
       }
     })
 
-  // ************************************************************************************************************************
+  // *********************************************************************************
     // 调用接口
     
     // 隐藏原生的tabbar
@@ -635,7 +613,7 @@ listenerButtonPreviewImages:function(e){
     //console.log(this.data.ftabUserImg.length)
     //console.log(mm)
     // })
-    // *******************************************************************************************************************//
+    // *******************************************************************************
     // 轮播图
     //console.log("body调用后台接口--onLoad")
     wx.request({
@@ -665,7 +643,7 @@ listenerButtonPreviewImages:function(e){
       }
     })
       // //console.log(data)
-    // *******************************************************************************************************************//
+    // *******************************************************************************
     // 首页公告+首页十万火急+首页广告位
     wx.request({
       url: 'http://tsf.suipk.cn/home/index/do_info',
@@ -711,7 +689,7 @@ listenerButtonPreviewImages:function(e){
         type:1,
         uid,
         page:1,
-        // limit:2,
+        limit:99,
       },
       method: 'POST',
       header: {
@@ -734,7 +712,7 @@ listenerButtonPreviewImages:function(e){
         type:2,
         uid,
         page:1,
-        // limit:5,
+        limit:99,
       },
       method: 'POST',
       header: {
@@ -772,7 +750,7 @@ listenerButtonPreviewImages:function(e){
     // *******************************************************************************************************************//
     // var that=this
     // 调用首页导航条
-    this.bodylist()
+    // this.bodylist()
   },
   // +++++++++++++++++++首页导航条+++++++++++++++++++++++++
   bodylist(){

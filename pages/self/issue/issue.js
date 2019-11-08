@@ -180,7 +180,7 @@ Page({
     console.log(e)
     console.log(id)
     wx.navigateTo({
-      url: '/pages/details/details?id='+id,
+      url: '/pages/details/details?id='+id+'&from=首页'+'&form=3',
     })
   },
   // 修改跳转

@@ -521,8 +521,7 @@ Page({
     console.log(options.from,'传来的',this.data.lid)
     // 分享跳转    
     if(options.share==1){
-      var uid=options.uid
-      
+      var uid=options.uid 
       request({
         url:'http://tsf.suipk.cn/home/info/do_info_content',
         data:{
@@ -746,9 +745,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (ops) {
-
-   
+  onShareAppMessage: function (ops) { 
     var uid=wx.getStorageSync('uid');
     var that=this
     var info_id=that.data.lid

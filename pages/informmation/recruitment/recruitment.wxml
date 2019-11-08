@@ -246,7 +246,7 @@
  
   <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
-                <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
+                <image bindtap="listenerButtonPreviewImages" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
               </block>
             </view>
   <view wx-if="{{item.video!=''}}">
@@ -257,7 +257,7 @@
 <view class="musk-phone d-spb">
   <view class="musk-phone-l d-flex">
     <view class="">项目类型</view>
-    <view class="">渣土信息</view>
+    <view class="">{{item.two_class_title}}</view>
   </view>
   <view class="musk-phone-r d-flex" bindtap="scall" data-tel="{{item.tel}}">
     <view>
@@ -316,6 +316,28 @@
 </swiper>
 </view>
 </view>
+ <view class="select ml d-flex" style="margin-top:30rpx;">
+<!-- 分类 -->
+<view class="sectionClass" >  
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+    <view class="picker">  
+      <!-- 分类：{{objectArray[index]}}   -->
+      <view class="select-text">请选择分类</view>
+      <image src="../../images/select.png"></image>
+    </view>  
+  </picker>  
+</view>  
+<!-- 时间 -->
+<view class="sectiontime">  
+  <picker mode="date" value="{{date}}" bindchange="bindDateChange">  
+    <view class="picker">  
+      <!-- 日期: {{dates}}   -->
+      <view class="select-text">请选择时间</view>
+      <image src="../../images/select.png"></image>
+    </view>  
+  </picker>  
+</view> 
+</view>
 <view class="bg">
 
   <block wx:for="{{meeting}}" wx:key="{{index}}">
@@ -354,7 +376,7 @@
  
   <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
-                <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
+                <image bindtap="listenerButtonPreviewImagem" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
               </block>
             </view>
   <view wx-if="{{item.video!=''}}">
@@ -365,7 +387,7 @@
 <view class="musk-phone d-spb">
   <view class="musk-phone-l d-flex">
     <view class="">项目类型</view>
-    <view class="">渣土信息</view>
+    <view class="">{{item.two_class_title}}</view>
   </view>
   <view class="musk-phone-r d-flex" bindtap="scall" data-tel="{{item.tel}}">
     <view>
@@ -418,6 +440,28 @@
 </swiper>
 </view>
 </view>
+ <view class="select ml d-flex" style="margin-top:30rpx;">
+<!-- 分类 -->
+<view class="sectionClass" >  
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+    <view class="picker">  
+      <!-- 分类：{{objectArray[index]}}   -->
+      <view class="select-text">请选择分类</view>
+      <image src="../../images/select.png"></image>
+    </view>  
+  </picker>  
+</view>  
+<!-- 时间 -->
+<view class="sectiontime">  
+  <picker mode="date" value="{{date}}" bindchange="bindDateChange">  
+    <view class="picker">  
+      <!-- 日期: {{dates}}   -->
+      <view class="select-text">请选择时间</view>
+      <image src="../../images/select.png"></image>
+    </view>  
+  </picker>  
+</view> 
+</view>
 <view class="bg">
   
   <block wx:for="{{deal}}" wx:key="{{index}}">
@@ -456,7 +500,7 @@
   
   <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
-                <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
+                <image bindtap="listenerButtonPreviewImaged" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
               </block>
             </view>
   <view wx-if="{{item.video!=''}}">
@@ -467,7 +511,7 @@
 <view class="musk-phone d-spb">
   <view class="musk-phone-l d-flex">
     <view class="">项目类型</view>
-    <view class="">渣土信息</view>
+    <view class="">{{item.two_class_title}}</view>
   </view>
   <view class="musk-phone-r d-flex" bindtap="scall" data-tel="{{item.tel}}">
     <view>

@@ -4,6 +4,73 @@ var util = require('../../../utils/util.js'); //参数是util.js所在的路径�
 import request from '../../login.js'
 import like from '../../like.js'
 Page({
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/**
+ * 渣场浏览图片
+ */
+  listenerButtonPreviewImages:function(e){
+    let index = e.currentTarget.dataset.index;
+    var url=e.currentTarget.dataset.ids
+    var id = e.currentTarget.dataset.id
+    let that = this;
+    for(var tb in that.data.slag){
+     if(id==that.data.slag[tb].id){
+     var previewImgArr = that.data.slag[tb].img_url_arr
+     }
+    }
+    console.log('浏览的数组',previewImgArr)
+    wx.previewImage({
+      current: url, //当前图片地址
+      urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
+    })
+  },
+/**
+ * 工地信息浏览图片
+ */
+listenerButtonPreviewImagem:function(e){
+  let index = e.currentTarget.dataset.index;
+  var url=e.currentTarget.dataset.ids
+  var id = e.currentTarget.dataset.id
+  let that = this;
+  for(var tb in that.data.meeting){
+   if(id==that.data.meeting[tb].id){
+   var previewImgArr = that.data.meeting[tb].img_url_arr
+   }
+  }
+  console.log('浏览的数组',previewImgArr)
+  wx.previewImage({
+    current: url, //当前图片地址
+    urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
+  })
+},
+/**
+ * 买卖信息浏览图片
+ */
+listenerButtonPreviewImaged:function(e){
+  let index = e.currentTarget.dataset.index;
+  var url=e.currentTarget.dataset.ids
+  var id = e.currentTarget.dataset.id
+  let that = this;
+  for(var tb in that.data.deal){
+   if(id==that.data.deal[tb].id){
+   var previewImgArr = that.data.deal[tb].img_url_arr
+   }
+  }
+  console.log('浏览的数组',previewImgArr)
+  wx.previewImage({
+    current: url, //当前图片地址
+    urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
+  })
+},
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
 
 
 
@@ -289,6 +356,9 @@ Page({
       var day=that.data.dates
     }
     var two_class_id=that.data.two_class_id
+    /**
+     * 分类选项
+     */
     wx.request({
       url: 'http://tsf.suipk.cn/home/info/do_info_list',
       data: {
@@ -305,7 +375,7 @@ Page({
       'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-      console.log('工种调用信息列表成功', res.data.data)
+      console.log('工种调用信息列表成功', res)
       that.setData({
         userlists:res.data.data
       })
@@ -313,6 +383,7 @@ Page({
       console.log('调用失败')
       }
     })
+
   },
   // 分享
   share:function(){
