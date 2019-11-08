@@ -38,28 +38,40 @@ Page({
     // 详细地址
     var detailed_address=m.i2
     // 成立时间
-    var established_time=m.i3
+    var established_time
+    if(m.i3==''){
+      established_time=''
+    }else{
+      established_time=m.i3
+    }
+
     var p=that.data.img_url_license
-    console.log(that.data.img_url_license)
-    var z=p.join('|')
-    var img_url_license=z
-    console.log(z)
+    // console.log(p)
+    if(that.data.tempFilePaths==''){
+      console.log(that.data.img_url_license)
+    }else{
+      var z=p.join('|')
+      var img_url_license=z
+      console.log(z)
+    }
     // 营业执照
     // var img_url_license=that.data.img_url_license
     var q=that.data.img_url_certificate
-    console.log(that.data.img_url_license)
-    var w=q.join('|')
-    var img_url_certificate=w
-    console.log(z)
+    if(that.data.tempFilePathss==''){
+      console.log(that.data.img_url_license)
+    }else{
+      var w=q.join('|')
+      var img_url_certificate=w
+      console.log(z)
+    }
     var uid=wx.getStorageSync('uid');
     // 法人证明书
     // var img_url_certificate=that.data.img_url_certificate
     console.log("营业执照和证明书",img_url_license,img_url_certificate)
     console.log(e.detail.value);
-    if (m.i1 == "" || m.i2 == "" || m.i3 == ""  || this.data.tempFilePaths.length == 0) {
+    if (m.i1 == "" || m.i2 == ""|| this.data.tempFilePaths.length == 0) {
       this.hidePopup(false);
     } else {
-      this.suhide(false);
       request({
         url:'http://tsf.suipk.cn/home/Personal/do_enterprise',
         data:{
@@ -74,11 +86,13 @@ Page({
           img_url_license,
           img_url_certificate,
         }
-        }).then(res=>{
+      }).then(res=>{
         console.log('调用企业信息成功',res)
-        this.setData({
-        
-        })
+        if(res.data.code==101&&res.data.code==0){
+          that.suhide(false);
+        }else{
+          that.hidePopup(false)
+        }
         }).catch(err=>{
         console.log('调用失败')
       })
@@ -91,10 +105,6 @@ Page({
       this.setData({
         "sup": flag
       });
-    wx.navigateTo({
-      url: '/pages/index/index',
-    })
-     
   },
 
   
@@ -106,11 +116,25 @@ Page({
   },
 // 上一步
 up:function(){
-wx.navigateBack({
-  
-})
+wx.navigateTo({
+  url: '/pages/Ac/business/business',
+  success: (result)=>{
+    
+  },
+  fail: ()=>{},
+  complete: ()=>{}
+});
 },
-
+backs:function(){
+  wx.redirectTo({
+    url: '/pages/Ac/index/inex',
+    success: (result)=>{
+      
+    },
+    fail: ()=>{},
+    complete: ()=>{}
+  });
+},
 // 法人证明上传图片
   /**
      * 预览图片方法

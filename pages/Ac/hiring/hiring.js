@@ -12,13 +12,20 @@ var model = require('../../../model/model.js');
 var ashow = false;
 var item = {};
 Page({
+  op1:function(){
+    this.setData({
+      'sssup':true,
+      radio:'2',
+      sq:false,
+      pm:true
+    })
+  },
   op:function(){
     this.setData({
       'sssup':true,
       radio:'2',
       sq:false
     })
-
   },
   chp:function(){
     var that=this
@@ -200,6 +207,20 @@ this.setData({
       selectShow: false,
       h4:false
     });
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_work_years_list',
+      data:{
+        code:"",
+        mes:""
+      }
+      }).then(res=>{
+      console.log('调用工作年限成功',res)
+        this.setData({
+          selectData3:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用工作年限失败')
+    })
     // console.log(e)
   },
   // 点击下拉列表
@@ -224,6 +245,23 @@ this.setData({
       selectShow: false,
       h2:false
     });
+    // +++++++++++++++++++++++请求薪资下拉列表++++++++++++++++++++++++++
+    var that=this
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_salary_list',
+      data:{
+        code:"",
+        mes:""
+      }
+      }).then(res=>{
+      console.log('调用薪资成功',res)
+        this.setData({
+          selectData2:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // +++++++++++++++++++++++请求薪资下拉列表++++++++++++++++++++++++++
     // console.log(e)
   },
   // 点击下拉列表
@@ -258,18 +296,42 @@ this.setData({
 
   // 下拉选项框
   selectTap(e) {
+    var that=this
     this.setData({
       selectShow: !this.data.selectShow,
       selectShow3: false,
       selectShow2: false,
       h:false
     });
+
+    // ++++++++++++++++++++++++++请求下拉列表++++++++++++++++++++++++++++++
+    wx.request({
+      url:"http://tsf.suipk.cn/home/Personal/do_id_type",
+     data:{
+      type:1,
+     },
+     method: 'POST',
+     header: {
+       'content-type': 'application/x-www-form-urlencoded'
+     },
+     success:function(res){
+      
+       that.setData({
+         selectData:res.data.data
+       })
+       console.log(that.data.selectData)
+      console.log('工种结果'+that.data.selectData)
+    },fail:function(){
+        console.log("调用工种失败")
+       }
+    })
+    // ++++++++++++++++++++++++++请求下拉列表++++++++++++++++++++++++++++++
     // console.log(e)
   },
   // 点击下拉列表
   optionTap(e) {
     let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
-    // console.log(Index)\
+
     var type_work_id=e.currentTarget.dataset.id
     console.log("公衆id",type_work_id)
     // console.log(e)
@@ -302,6 +364,7 @@ this.setData({
     console.log(e.detail.value);
     // 工种
     var type_work=m.i1
+    console.log(type_work)
     // 薪资范围
     var salary_range=m.i2
     // 工作地点
@@ -329,12 +392,19 @@ this.setData({
     }
     // 公司图片
     var p=that.data.img_url_arr
-    console.log(that.data.img_url_arr)
-    var z=p.join('|')
-    var img_url_arr=z
-    console.log(z)
+    if(this.data.tempFilePaths.length ==0){
+      var img_url_arr=''
+    }else{
+      var z=p.join('|')
+      var img_url_arr=z
+    }
+
     // 公司视频
-    var video=that.data.video_url
+    if(this.data.tempFilePathss == ""){
+      var video=''
+    }else{
+      var video=that.data.video_url
+    }
     // 一级id
     var one_class_id=that.data.one_class
     // 二级id
@@ -363,12 +433,12 @@ this.setData({
     }
     // 开始时间
     // 结束时间
-    console.log("最后开始结束时间+",start_time,ending_time,lable,that.data.stime)
+    console.log("最后开始结束时间+",start_time,ending_time,lable,that.data.stime,that.data.stime)
     // 置顶类型
     // that.data.seradio
     if(that.data.issu==false){
       // 置顶类型
-      if (m.i1 == "" || m.i2 == "" || that.data.city == "" || m.i4 == "" || m.i5 == "" || m.i6 == "" || this.data.tempFilePaths.length ==0 || this.data.tempFilePathss == "" || m.textarea.length==0) {
+      if (m.i1 == "" || m.i2 == "" || that.data.city == "" || m.i4 == "" || m.i5 == "" || m.i6 == "") {
         this.hidePopup(false);
         that.setData({
           sq:true
@@ -718,6 +788,7 @@ if(that.data.issu==true){
    * 页面的初始数据
    */
   data: {
+    // type_work_id
     pm:true,
     item: {
       ashow: ashow
@@ -804,14 +875,13 @@ if(that.data.issu==true){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that=this
 //获取当前时间戳  
 var timestamp = Date.parse(new Date());  
 timestamp = timestamp / 1000;  
 console.log("当前时间戳为：" + timestamp); 
 
 //获取当前时间  
-
     var n = timestamp * 1000;  
     var date = new Date(n);  
     //年  
@@ -835,37 +905,6 @@ this.setData({
 
 // +++++++++++++++++++积分+++++++++++++++++++++++++++++++
 // +++++++++++++++++++积分+++++++++++++++++++++++++++++++
-
-    var that=this
-    request({
-      url:'http://tsf.suipk.cn/home/info/do_salary_list',
-      data:{
-        code:"",
-        mes:""
-      }
-      }).then(res=>{
-      console.log('调用薪资成功',res)
-        this.setData({
-          selectData2:res.data.data
-      })
-      }).catch(err=>{
-      console.log('调用失败')
-    })
-    
-    request({
-      url:'http://tsf.suipk.cn/home/info/do_work_years_list',
-      data:{
-        code:"",
-        mes:""
-      }
-      }).then(res=>{
-      console.log('调用薪资成功',res)
-        this.setData({
-          selectData3:res.data.data
-      })
-      }).catch(err=>{
-      console.log('调用失败')
-    })
     var phone=wx.getStorageSync("userphone")
     that.setData({
       phone,
@@ -889,8 +928,9 @@ this.setData({
      success:function(res){
       
        that.setData({
-         selectData:res.data.data
+        type_work_id:res.data.data[0].id
        })
+       console.log('最开始的工种id',that.data.type_work_id)
        console.log(that.data.selectData)
       console.log('工种结果'+that.data.selectData)
     },fail:function(){
@@ -1066,30 +1106,26 @@ this.setData({
        } 
         
     },
+    // ++++++++++++++++++++++++++开始时间+++++++++++++++++++++++++++
+    // ++++++++++++++++++++++++++开始时间+++++++++++++++++++++++++++
     changeDateTimeColumn2(e) {
       var arr = this.data.dateTime, dateArr = this.data.dateTimeArray;
-  
       arr[e.detail.column] = e.detail.value;
       dateArr[2] = dateTimePicker2.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
-  
       this.setData({
         dateTimeArray2: dateArr,
         dateTime2: arr
       });
     },
+    // +++++++++++++++++++++结束时间++++++++++++++++++++++
     changeDateTimeColumn12(e) {
       var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
-  
       arr[e.detail.column] = e.detail.value;
       dateArr[2] = dateTimePicker2.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
-  
       this.setData({
         dateTimeArray12: dateArr,
         dateTime12: arr
       });
-  
-       
-   
   },
 
   /**

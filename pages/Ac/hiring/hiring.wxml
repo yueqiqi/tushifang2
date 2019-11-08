@@ -9,7 +9,7 @@
  <view class="section d-spb">
     <view class="section-title">选择工种</view>
     <view class="right d-spb">
-      <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位或者双击手动输入" value="{{h==false?selectData[index].title:hr}}"  data-time="{{lastTapTime}}"  />
+      <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位" value="{{h==false?selectData[index].title:hr}}"  data-time="{{lastTapTime}}"  />
       <view catchtap='selectTap'>
         <image class="section-img" hidden="{{hidden}}" src="../../images/position/shape45.png"></image>
       </view>
@@ -29,7 +29,7 @@
  <view class="section2 d-spb">
     <view class="section-title">薪资范围</view>
     <view class="right d-spb mon" catchtap='selectTap2'>
-      <input name="i2" disabled='true' placeholder="请选择薪资范围" value="{{h2==false?selectData2[indexs].salary:hr2}}"/>
+      <input name="i2" style="color:#333;font-size:30rpx;" disabled='true' placeholder="请选择薪资范围" value="{{h2==false?selectData2[indexs].salary:hr2}}"/>
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -39,7 +39,7 @@
       <!-- 下拉选项框 -->
       <!-- 列表项布局 -->
       <view class='select_box'>
-    <view class='option_box' style='height:{{selectShow2?(selectData2.length>5?325:selectData2.length*60):0}}rpx;'>
+    <view class='option_box'  style='height:{{selectShow2?(selectData2.length>5?325:selectData2.length*60):0}}rpx;'>
     <!-- 选择的列表项 -->
         <text class='option' wx:for='{{selectData2}}' wx:key='this' data-index='{{index}}' catchtap='optionTap2' >{{item.salary}}</text>
     </view>
@@ -71,7 +71,7 @@
   <view class="section2 d-spb">
     <view class="section-title">工作年限</view>
     <view class="right d-spb mon" catchtap='selectTap3'>
-      <input name="i4" disabled="true" placeholder="请选择工作年限" value="{{h4==false?selectData3[index3].salary:hr4}}" />
+      <input style="color:#333;font-size:30rpx;" name="i4" disabled="true" placeholder="请选择工作年限" value="{{h4==false?selectData3[index3].salary:hr4}}" />
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>

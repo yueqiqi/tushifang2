@@ -6,38 +6,16 @@ chp:function(){
     mz:false
   })
 },
-// ==================================================
-// 下拉选项框
-  selectTap(e) {
-    this.setData({
-      selectShow: !this.data.selectShow
-    });
-    // console.log(e)
-  },
-  // 点击下拉列表
-  optionTap(e) {
-    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
-    // let compid = e.currentTarget.dataset.id;//获取点击的下拉列表选项的下标
-    // console.log("选择的id",compid)
-    console.log(Index)
-    // console.log(e)
-    this.setData({
-      index: Index,
-      selectShow: !this.data.selectShow,
-      // compid
-    });
-    // 隐藏文字
-    if (Index == 5) {
-      this.setData({
-        isDisabled: false,
-        selectData:"",
-        hidden:true
-      })
-    } return
-    console.log(this.data.isDisabled)
-  }, 
-// ==================================================
-  
+bindPickerChange: function (e) {
+  var that = this
+  var e = e.detail.value
+  this.setData({
+    index: e,
+    class: that.data.objectArray[e].title,
+    hidden:true
+  })
+  console.log("保存的分类", this.data.class)
+},
   next:function(){
     
   },
@@ -46,12 +24,12 @@ chp:function(){
     var m = e.detail.value
     var that=this
     console.log(e.detail.value);
-    var identity_selection=m.i1
+    var identity_selection=that.data.class
     var business_name=m.i2
     var contacts=m.i3
     var tel=m.i4
     // 获取输入框的值
-    if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.i4 == "") {
+    if (that.data.class== "请选择企业类型" || m.i2 == "" || m.i3 == "" || m.i4 == "") {
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
     } else {
@@ -62,14 +40,6 @@ chp:function(){
     }
 
     console.log(e.detail.value)
-    console.log(e.detail.value.i2)
-    // if (e.detail.value.i2==""){
-    //   var that=this
-    //   this.setData({
-    //     err:"err"
-    //   })
-    //   console.log("空")
-    // }
   },
 
   /* 失败函数隐藏弹窗 */
@@ -82,6 +52,8 @@ chp:function(){
    * 页面的初始数据
    */
   data: {
+    objectArray: [],
+    class: "请选择企业类型",
     // /是否隐藏下拉图片
     hidden:false,
     // 自定义编辑
@@ -114,7 +86,7 @@ chp:function(){
       }).then(res=>{
       console.log('调用企业类型成功',res)
       this.setData({
-        selectData:res.data.data
+        objectArray:res.data.data
       })
       }).catch(err=>{
       console.log('调用失败')

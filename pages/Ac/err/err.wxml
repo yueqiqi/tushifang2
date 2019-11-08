@@ -8,8 +8,10 @@
       <view class="t1">积分不足请充值！</view>
     </view>
     <view class='msg' bindtap='hp'>确定</view>
+ <view style="margin-top:80rpx;display: flex;justify-content: center;">
+    <image bindtap="op1" style="width:66rpx;height:66rpx;" src="/pages/images/close.png"></image>
+  </view>
 </view>
- 
 <!-- <view  style='margin:20rpx 50rpx;'>
     <button type='primary' bindtap='showPopup'>打开弹窗</button>
 </view> -->

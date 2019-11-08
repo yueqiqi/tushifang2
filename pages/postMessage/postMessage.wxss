@@ -212,3 +212,50 @@ font-family:PingFang SC;
 font-weight:400;
 color:rgba(118,212,198,1);
 }
+.tabUserImg{
+  /* width:780rpx; */
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;flex-wrap: wrap;
+}
+.tabUserImg image{
+  width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
+}
+.tabUserImga{
+  /* width:100%; */
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;
+  flex-wrap: wrap;
+}
+.tabUserImga image{
+    width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
+}
+
+/* 一张图的样式 */
+.tabUserImgb{
+  width:100%;
+  display:flex;
+  justify-content: left;
+  /* margin-left:30rpx; */
+  flex-wrap: wrap;
+}
+.tabUserImgb image{
+ width:92%;
+height:300rpx;
+ margin-left:30rpx;
+  margin-top:30rpx;
+}
+/* 4张图样式 */
+.tabUserImgc{
+  width:500rpx;
+  display:flex;
+  justify-content: left;
+  margin-left:30rpx;
+  flex-wrap: wrap;
+}
+.tabUserImgc image{
+   width:220rpx;height:220rpx;
+   margin-right:15rpx;
+     margin-top:15rpx;
+}

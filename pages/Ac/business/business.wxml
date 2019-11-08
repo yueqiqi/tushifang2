@@ -8,23 +8,21 @@
 <view class="form">
  <view class="section d-spb">
     <view class="section-title">企业类型</view>
-    <view class="right d-spb"catchtap='selectTap' >
-      <input name="i1" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index].title}}"/>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode="selector" range-key='{{"title"}}'>
+    <view class="right d-spb" >
+  <view class="picker">
+    <!-- 分类：{{objectArray[index]}}   -->
+    <view class="select-text">{{class}}</view>
+  </view>
       <view>
         <image class="section-img" hidden="{{hidden}}" src="../../images/position/shape45.png"></image>
       </view>
     </view>
+</picker>
     
  </view>
  <!-- ================================ -->
-      <!-- 下拉选项框 -->
-      <!-- 列表项布局 -->
-      <view class='select_box'>
-    <view class='option_box' style='height:{{selectShow?(selectData.length>3?325:selectData.length*50):0}}rpx;'>
-    <!-- 选择的列表项 -->
-        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' data-id="{{item.id}}" catchtap='optionTap' >{{item.title}}</text>
-    </view>
-    </view>
+
       <!-- ================================ -->
 <!-- 企业名称 -->
  <view class="section2 d-spb">

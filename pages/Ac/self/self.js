@@ -37,31 +37,26 @@ Page({
       },
     })
   },
-  // 下拉选项框
-  selectTap(e) {
+  bindPickerChange: function (e) {
+    var that = this
+    var e = e.detail.value
     this.setData({
-      selectShow: !this.data.selectShow
-    });
-    // console.log(e)
+      index: e,
+      class: that.data.objectArray[e].title,
+      hiddex:true
+    })
+    console.log("保存的分类", this.data.class)
   },
-  // 点击下拉列表
-  optionTap(e) {
-    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
-    console.log(Index)
-    // console.log(e)
-    this.setData({
-      index: Index,
-      selectShow: !this.data.selectShow,
+  backs:function(){
+    wx.redirectTo({
+      url: '/pages/Ac/index/inex',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
     });
-    if (Index == 4) {
-      this.setData({
-        isDisabled: false,
-        selectData:"",
-        hidden:true
-      })
-    } return
-    console.log(this.data.isDisabled)
-  }, 
+  },
   // 表单提交
   formSubmit: function (e){
     var that=this
@@ -70,7 +65,7 @@ Page({
      * 提交后台
      */
     // 身份选择
-    var identity_selection=m.i1
+    var identity_selection=that.data.class
     // 真实信命
     var real_name=m.i2
     // 联系电话
@@ -83,19 +78,22 @@ Page({
     // 详细地址
     var detailed_address=m.i5
     // 身份证照片
-    var p=that.data.identity_card
-    console.log(that.data.identity_card)
-    var z=p.join('|')
-    var identity_card=z
+    if(this.data.tempFilePaths.length<2){
+      console.log(that.data.identity_card)
+    }else{
+      var p=that.data.identity_card
+      var z=p.join('|')
+      var identity_card=z
+    }
     console.log(e.detail.value, that.data.province);
-    if (m.i1=="" || m.i2 == "" || m.i3 == "" || m.i5 == "" || this.data.tempFilePaths.length<2||this.data.province==""){
+    if (that.data.class== "请选择份类型" || m.i2 == "" || m.i3 == "" || m.i5 == "" || this.data.tempFilePaths.length<2||this.data.province==""){
       this.hidePopup(false);
     }else{
-      this.suhide(false);
+      var uid=wx.getStorageSync('uid');
       request({
-      url:'http://tsf.suipk.cn/home/personal/do_personal',
-      data:{
-        uid:1,
+        url:'http://tsf.suipk.cn/home/personal/do_personal',
+        data:{
+          uid,
         identity_selection,
         real_name,
         tel,
@@ -103,11 +101,13 @@ Page({
         detailed_address,
         identity_card
       }
-      }).then(res=>{
+    }).then(res=>{
       console.log('调用成功',res)
-      this.setData({
-      
-      })
+      if(res.data.code==101&&res.data.code==0){
+          that.suhide(false);
+        }else {
+          that.hidePopup(false);
+        }
       }).catch(err=>{
       console.log('调用失败')
       })
@@ -118,6 +118,11 @@ Page({
   suhide(flag = true) {
     this.setData({
       "sup": flag
+    });
+  },
+  back:function(){
+    wx.navigateBack({
+      delta: 1
     });
   },
   /* 隐藏失败弹窗 */
@@ -250,6 +255,8 @@ Page({
     console.log(e)
   },
   data: {
+    objectArray: [],
+    class: "请选择身份类型",
     mz:true,
     province:"",
     // ///////////////////////////////////////
@@ -316,6 +323,7 @@ Page({
   onReachBottom: function () {
   },
   nono: function () { },
+
   onLoad: function (options) {
     
     var that=this
@@ -323,19 +331,19 @@ Page({
     that.setData({
       phone
     })
-    // request({
-    //   url:'http://tsf.suipk.cn/home/Personal/do_id_type',
-    //   data:{
-    //   type:2,
-    //   }
-    //   }).then(res=>{
-    //   console.log('调用身份选择成功',res)
-    //   that.setData({
-    //     selectData:res.data.data
-    //   })
-    //   }).catch(err=>{
-    //   console.log('调用失败')
-    //   })
+    request({
+      url:'http://tsf.suipk.cn/home/Personal/do_id_type',
+      data:{
+      type:2,
+      }
+      }).then(res=>{
+      console.log('调用身份选择成功',res)
+      that.setData({
+        objectArray:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+      })
   },
 
   /**

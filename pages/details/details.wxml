@@ -115,7 +115,14 @@
 <view class="bgf">
 <!-- 投诉 -->
 <include src="/pages/comment/comment"/>
-<!-- <view class="" style="position:fixed;bottom:0"> -->
+
+
+</view>
+</view>
+<include src="/pages/reports/reports"/>
+<view style="margin-top:10rpx;height:100rpx;">
+</view>
+<view class="" style="position:fixed;bottom:0;width:100%;background:#fff">
 
   <view class="like  d-flex">
     <!-- 分享 -->
@@ -153,8 +160,5 @@
     投诉
   </view>
   </view>
-<!-- </view> -->
 </view>
 </view>
-</view>
-<include src="/pages/reports/reports"/>

@@ -9,16 +9,19 @@
 <view class="form">
  <view class="section d-spb">
     <view class="section-title">司机类型</view>
-    <view class="right d-spb" catchtap='selectTap'>
-      <input name="input" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index].title}}" />
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode="selector" range-key='{{"title"}}'>
+    <view class="right d-spb">
+  <view class="picker">
+    <view class="select-text">{{class}}</view>
+  </view>
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
     </view>
+</picker>
  </view>
  <!-- ===================================== -->
  <!-- 下拉选项框 -->
- <include src="../select/select.wxml"/>
  <!-- ===================================== -->
 <!-- 真实姓名 -->
  <view class="section2 d-spb">

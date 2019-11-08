@@ -6,7 +6,7 @@
   <!-- 轮播图 -->
     <include src="../carousel/carousel"/>
     <!-- 搜索 -->
-    <view class="se">
+    <!-- <view class="se">
     <view class='page_row' bindtap="search">  
       <view class="search">  
         <view class="df search_arr"  style="border:0rpx;">  
@@ -15,9 +15,9 @@
         </view>  
       </view>   
     </view>
-    </view>
+    </view> -->
     <!-- 分类 -->
-    <view class="select ml d-flex">
+    <view class="select ml d-flex mt">
 <!-- 分类 -->
 <view class="sectionClass" >  
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector" range-key='{{"title"}}'>  

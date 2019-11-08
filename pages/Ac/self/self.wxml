@@ -7,14 +7,18 @@
     <view class="form">
       <view class="section d-spb" catchtap='selectTap'>
         <view class="section-title">身份选择</view>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode="selector" range-key='{{"title"}}'>
         <view class="right d-spb">
-          <input name="i1" disabled='{{isDisabled}}' placeholder="" value="{{selectData[index].title}}" />
+  <view class="picker">
+    <!-- 分类：{{objectArray[index]}}   -->
+    <view class="select-text">{{class}}</view>
+  </view>
           <view>
             <image class="section-img1" hidden="{{hidden}}" src="../../images/position/shape45.png"></image>
           </view>
         </view>
+</picker>
       </view>
-      <include src="/pages/Ac/select/select" />
       <!-- 真实姓名 -->
       <view class="section2 d-spb">
         <view class="section-title">真实姓名</view>
@@ -73,7 +77,7 @@
       </view>
     </view>
     <view class="mybtn">
-      <button form-type="submit" class="next" bindtap="bindsubmit">完成</button>
+      <button form-type="submit" class="next">完成</button>
     </view>
     <!-- ====================== -->
     <!-- 错误提示框 -->
@@ -92,7 +96,7 @@
     <!-- ======================= -->
     <!-- ======================= -->
     <!-- 成功提示框 -->
-    <view class='sshade' hidden='{{sup}}' bindtap='suhide'></view>
+    <view class='sshade' hidden='{{sup}}'></view>
     <view class='sshade_box spopup' hidden='{{sup}}'>
       <!-- 成功图片 -->
       <view class='stitle'>
@@ -105,7 +109,7 @@
         <view class="st3">预计1-3个工作日完成</view>
         <view class="st4">请注意消息提醒！</view>
       </view>
-      <view class='smsg' bindtap='suhide'>确定</view>
+      <view class='smsg' bindtap='suhide' catchtap="backs">确定</view>
     </view>
     <!-- ======================= -->
   </form>

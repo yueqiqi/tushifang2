@@ -12,7 +12,6 @@ var that=this
     if (this.data.tempFilePaths.length == 0 || this.data.tempFilePaths2.length == 0 || this.data.tempFilePaths3.length == 0 || this.data.tempFilePaths4.length == 0 || this.data.tempFilePaths5.length == 0 || this.data.tempFilePaths6.length <2) {
       this.hidePopup(false);
     } else {
-      this.suhide(false);
       var identity_selection=that.data.identity_selection
       var real_name=that.data.real_name
       var tel=that.data.tel
@@ -59,13 +58,15 @@ var that=this
           img_url_qualification,
           img_url_card,
         }
-        }).then(res=>{
+      }).then(res=>{
         console.log('调用我是司机成功',res)
-        this.setData({
-        
-        })
+        if(res.data.code==101&&res.data.code==0){
+          that.suhide(false);
+        }else{
+          that.hidePopup(false);
+        }
         }).catch(err=>{
-        console.log('调用失败')
+          console.log('调用失败')
       })
     }
     
@@ -85,7 +86,16 @@ var that=this
    
   },
 
-
+  backs:function(){
+    wx.redirectTo({
+      url: '/pages/Ac/index/inex',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   /* 隐藏失败弹窗 */
   hidePopup(flag = true) {
     this.setData({

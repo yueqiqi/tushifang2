@@ -8,9 +8,9 @@
 <!-- 工种类型 -->
 <view class="form">
  <view class="section d-spb">
-    <view class="section-title">选择工种 <text style="color:red;">*</text></view>
+    <view class="section-title">选择工种</view>
     <view class="right d-spb">
-      <input name="i1"  disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" value="{{myjob==false?selectData[index].title:jobs}}"  data-time="{{lastTapTime}}" placeholder="请选择职位或者双击手动输入"/>
+      <input name="i1"  disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" value="{{myjob==false?selectData[index].title:jobs}}"  data-time="{{lastTapTime}}" placeholder="请选择职位"/>
       <view  catchtap='selectTap'>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -21,7 +21,7 @@
  <view class="section2 d-spb">
     <view class="section-title">理想薪资</view>
     <view class="right d-spb mon" catchtap='selectTap2'>
-      <input name="i2" disabled='true' value="{{myjob2==false?selectData2[index2].salary:job2}}"/>
+      <input name="i2" disabled='true' placeholder="请选择薪资范围" style="color:#333;font-size:30rpx;" value="{{myjob2==false?selectData2[index2].salary:job2}}"/>
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -42,7 +42,7 @@
   <view class="section2 d-spb">
     <view class="section-title">求职状态</view>
     <view class="right d-spb mon" catchtap='selectTap3'>
-      <input name="i3" disabled="true" value="{{myjob3==false?selectData3[index3]:job3}}" />
+      <input name="i3" disabled="true" placeholder="请选择求职状态" style="color:#333;font-size:30rpx;" value="{{myjob3==false?selectData3[index3]:job3}}" />
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -62,7 +62,7 @@
   <view class="section2 d-spb">
     <view class="section-title">工作年限</view>
     <view class="right d-spb mon" catchtap='selectTap4'>
-      <input name="i4" disabled="true" value="{{myjob4==false?selectData4[index4].salary:job4}}"  />
+      <input name="i4" style="color:#333;font-size:30rpx;" placeholder="请选择工作年限" disabled="true" value="{{myjob4==false?selectData4[index4].salary:job4}}"  />
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -80,14 +80,14 @@
       <!-- ================================ -->
  <!-- 联系人 -->
  <view class="section2 d-spb">
-    <view class="section-title">联系人 <text style="color:red">*</text></view>
+    <view class="section-title">联系人</view>
     <view class="right d-spb">
       <input name="i5" value="{{contacts}}" maxlength="11"/>
     </view>
  </view>
  <!-- 联系电话 -->
   <view class="section2 d-spb">
-    <view class="section-title">联系电话 <text style="color:red">*</text></view>
+    <view class="section-title">联系电话</view>
     <view class="right d-spb">
       <input value="{{tel}}" name="i6" maxlength="11" type="number"/>
       <!-- <view class="ch" bindtap="chp">更换</view> -->

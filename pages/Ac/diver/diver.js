@@ -7,32 +7,15 @@ chp:function(){
   })
 },
   // ==================================================
-  // 下拉选项框
-  selectTap(e) {
+  bindPickerChange: function (e) {
+    var that = this
+    var e = e.detail.value
     this.setData({
-      selectShow: !this.data.selectShow
-    });
-    // console.log(e)
-  },
-  // 点击下拉列表
-  optionTap(e) {
-    var that=this
-    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
-    console.log("下拉选项的东西",that.data.selectData[Index])
-    that.setData({
-      type:that.data.selectData[Index].title
+      index: e,
+      class: that.data.objectArray[e].title,
+      hiddex:true
     })
-    // console.log(e)
-    this.setData({
-      index: Index,
-      selectShow: !this.data.selectShow,
-    });
-    if (Index == 4) {
-      this.setData({
-        isDisabled: false
-      })
-    } return
-    console.log(this.data.isDisabled)
+    console.log("保存的分类", this.data.class)
   },
 // ==================================================
   /* 失败函数隐藏弹窗 */
@@ -105,7 +88,7 @@ o1:function(e){
      * 后台提交
      */
     // 司机类型
-    var identity_selection=a.input
+    var identity_selection=that.data.class
     // 真实姓名
     var real_name=a.i2
     // 联系电话
@@ -115,7 +98,7 @@ o1:function(e){
     // 车牌号
     var car_number=a.c1+a.c2+a.c3+a.c4+a.c5+a.c6+a.c7+a.c8
     // 
-    if (a.input == "" || a.i2 == "" || a.i3 == "" || a.i4 == "" || a.c1 == "" || a.c2 == "" || a.c3 == "" || a.c4 == "" || a.c5 == "" || a.c6 == "" || a.c7 == ""){
+    if (that.data.class== "请选择司机类型" || a.i2 == "" || a.i3 == "" || a.i4 == "" || a.c1 == "" || a.c2 == "" || a.c3 == "" || a.c4 == "" || a.c5 == "" || a.c6 == "" || a.c7 == ""){
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
     }else{
@@ -134,6 +117,8 @@ o1:function(e){
    * 页面的初始数据
    */
   data: {
+    objectArray: [],
+    class: "请选择司机类型",
     // 自定义编辑
     isDisabled: true,
     selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
@@ -172,7 +157,7 @@ o1:function(e){
       }).then(res=>{
       console.log('调用司机类型成功',res)
       this.setData({
-        selectData:res.data.data
+        objectArray:res.data.data
       })
       }).catch(err=>{
       console.log('调用失败')

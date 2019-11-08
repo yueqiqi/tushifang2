@@ -19,7 +19,8 @@
     </view>
   </view>
 </view>
-<view class='page_row' bindtap="search">  
+<!-- 搜索框隐藏 -->
+<!-- <view class='page_row' bindtap="search">  
       <view class="search">  
         <view class="df search_arr">  
           <view class="searchcion">
@@ -28,9 +29,9 @@
           <input class="" disabled placeholder="搜索..." value="{{searchValue}}"/>  
         </view>  
       </view>   
-</view>
+</view> -->
   <!--轮播图  -->
-  <view style="width:690rpx;height:359rpx;margin:auto;">
+  <view style="width:690rpx;height:359rpx;margin:auto;margin-top:20rpx;">
   <swiper style="height:350rpx;" indicator-dots="{{indicatorDots}}" indicator-color="rgba(255,255,255,1)"indicator-active-color="rgba(118,212,198,1)"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
   <block wx:for="{{imgUrls}}" wx:key="{{index}}">
@@ -43,10 +44,10 @@
 <!-- 轮播图下方小图标 -->
 <view   class="v1">
 <block wx:for="{{icon}}" wx:key="{{index}}">
-<navigator url="{{item.link}}">
+<navigator url="">
 <view style="margin-right:50rpx;">
-<image class="icon-img" src="{{item.url}}"></image>
-<view class="icon-text">{{item.name}}</view>
+<image class="icon-img" src="{{item.img_url}}"></image>
+<view class="icon-text">{{item.title}}</view>
 </view>
 </navigator>
 </block>
@@ -56,8 +57,8 @@
 <block wx:for="{{icon02}}" wx:key="{{index}}">
 <!-- <navigator url="{{item.link}}"> -->
 <view bindtap="nav" style="margin-right:50rpx;" data-index="{{index}}">
-<image class="icon-img" src="{{item.url}}"></image>
-<view class="icon-text">{{item.name}}</view>
+<image class="icon-img" src="{{item.img_url}}"></image>
+<view class="icon-text">{{item.title}}</view>
 </view>
 <!-- </navigator> -->
 </block>

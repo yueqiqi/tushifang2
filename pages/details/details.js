@@ -27,6 +27,9 @@ Page({
   },
 
   formSubmit: function (e) {
+    this.setData({
+      showInput: false
+    })
     var that=this
     var e = e.detail.value
     var info_id=this.data.lid
@@ -85,7 +88,39 @@ Page({
         }
       })
       }else if(that.data.po=='信息中心'){
-
+         // 举报
+      wx.request({
+        url:"http://tsf.suipk.cn/home/info/do_report",
+        data:{
+          uid,
+          info_id,
+          content,
+          img_url_arr
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:function(res){
+          console.log("举报调用信息中心成功",res)
+          wx.showModal({
+            title: '提交成功',
+            content: "提交成功，我们会在1-3个工作日内进行审核，如果举报属实，会对该用户做出相应惩罚，审核消息会在第一时间发送至您的消息中心，请注意查收。",
+            showCancel: false,
+            icon: 'success',
+            duration: 2000,
+            success: function (res) {
+              if (res.confirm) {
+                console.log("用户点击了确定")
+                console.log(res);
+                console.log(res.confirm)
+              }
+            }
+          })
+        },fail:function(){
+          console.log("调用举报失败",res)
+        }
+      })
       }
       
       // **************************
@@ -395,18 +430,17 @@ Page({
     statusBarHeight: getApp().globalData.statusBarHeight,
     showInput: false, //控制输入栏
     // 项目标题
-    title:"二手车出售，电话联系",
+    title:"",
     // 项目类型
-    type:"车辆出售",
+    type:"",
     // 发布时间
-    time:"2019.05.20 12:30",
+    time:"",
     // 项目介绍
-    rec: "帮朋友急招一个能长期开的老渣娃，主要在渝北江北地区跑，住在渝北两路熟悉渝北路线的优先，杰斯430.22方，工资7000保底三万开始提10% 每月工资兑现，新手和找车练手的就不要打扰了。",
+    rec: "",
     // 联系人
-    linkman:"张三",
+    linkman:"",
     // 联系电话
-    phone:"13500000000",
-
+    phone:"",
     min: 5,//最少字数
     max: 100, //最多字数 (根据自己需求改变)
     tempFilePaths: [],
@@ -419,24 +453,6 @@ Page({
     // 评论
     // 头像
     user:[
-      {
-        head:"",
-    // 用户名
-    username:"用户名",
-    // 时间
-    usertime:"2019.07.22",
-    // 内容
-    usercontent: "唯格Viewgres，集设计、研发、生产、全球贸易于一体的瓷砖企业。为商业建筑和高端住宅提供优质建材产品与应用解决方案。",
-      },
-       {
-        head: "",
-        // 用户名
-        username: "用户名",
-        // 时间
-        usertime: "2019.07.22",
-        // 内容
-        usercontent: "唯格Viewgres，集设计、研发、生产、全球贸易于一体的瓷砖企业。为商业建筑和高端住宅提供优质建材产品与应用解决方案。",
-      }
     ],
     // 接收并保存首页传来的id值
     lid:"",
@@ -465,6 +481,26 @@ Page({
         }
         }).then(res=>{
         console.log('调用发布评论成功',res)
+        // that.onLoad()
+        // +++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++刷新评论列表++++++++++++++++++++++++++
+        request({
+          url:'http://tsf.suipk.cn/home/index/do_comment_list',
+          data:{
+           type:that.data.types,
+           info_id:that.data.lid,
+           page:1,
+           limit:10,
+          }
+        }).then(res=>{
+          console.log('调用评论列表成功',res)
+          this.setData({
+            user:res.data.list
+          })
+          }).catch(err=>{
+            console.log('调用失败')
+        })
+        // +++++++++++++++++++++++++刷新评论列表++++++++++++++++++++++++++
         }).catch(err=>{
         console.log('调用失败')
       })

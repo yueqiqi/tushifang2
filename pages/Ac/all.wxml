@@ -24,6 +24,6 @@
       <view class="st3">预计1-3个工作日完成</view>
       <view class="st4">请注意消息提醒！</view>
     </view>
-    <view class='smsg' bindtap='suhide'>确定</view>
+    <view class='smsg' bindtap='suhide'  catchtap="backs">确定</view>
 </view>
 <!-- ======================= -->

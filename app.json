@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/Aaa/login",
+    "pages/Aaa/splice/splicearr",
     "pages/body/body",
+    "pages/Aaa/stick/stick",
+    "pages/Aaa/picker",
+    "pages/Aaa/login",
     "pages/kindex/kindex",
     "pages/Ac/stick/stick",
     "pages/demo/err/err",

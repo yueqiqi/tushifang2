@@ -16,13 +16,14 @@ color:rgba(102,102,102,1);
     right: 0rpx;
     z-index: 50000000;
     background: #fff;
+    padding-bottom:50rpx;
 }
  
 .input_input {
     background: #fff;
     margin-top: 12rpx;
     z-index: 5000000;
-    width: 560rpx;
+    width: 520rpx;
     height: 70rpx;
     padding-left: 35rpx;
     border:1px solid rgba(217,217,217,1);
@@ -33,22 +34,25 @@ color:rgba(102,102,102,1);
 }
  
 .send_btn {
-    width: 128rpx;
-    height: 74rpx;
+    width: 140rpx;
+    height: 70rpx;
     /* position: absolute;
     top: 24rpx;
     right: 30rpx; */
     background:rgba(118,212,198,1);
     z-index: 550;
     border-radius: 10rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
     margin-bottom:20rpx;
     margin-right:20rpx;
     font-size:36rpx;
-    margin-left:-18rpx;
+    /* margin-left:-18rpx; */
     margin-top:11rpx;
+    text-align: center;
+    line-height: 70rpx;
+    margin-left:10rpx;
 font-weight:bold;
 color:rgba(255,255,255,1);
 }

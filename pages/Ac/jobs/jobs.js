@@ -17,6 +17,20 @@ Page({
       selectShow2: false,
       selectShow: false,
     });
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_work_years_list',
+      data:{
+        code:"",
+        mes:""
+      }
+      }).then(res=>{
+      console.log('调用薪资成功',res)
+        this.setData({
+          selectData4:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
     // console.log(e)
   },
   // 点击下拉列表
@@ -29,6 +43,7 @@ Page({
       index4: Index,
       selectShow4: !this.data.selectShow4,
     });
+    
   },
   // ======================================================
   // ======================================================
@@ -69,6 +84,20 @@ Page({
       selectShow3: false,
       selectShow: false,
     });
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_salary_list',
+      data:{
+        code:"",
+        mes:""
+      }
+      }).then(res=>{
+      console.log('调用薪资成功',res)
+        this.setData({
+          selectData2:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
     // console.log(e)
   },
   // 点击下拉列表
@@ -103,6 +132,7 @@ Page({
  
   // 下拉选项框
   selectTap(e) {
+    var that=this
     console.log("选择",e)
     this.setData({
       selectShow: !this.data.selectShow,
@@ -111,6 +141,28 @@ Page({
       selectShow2: false,
       myjob:false
     });
+         /**
+    * 获取工种类型
+    */
+   wx.request({
+    url:"http://tsf.suipk.cn/home/Personal/do_id_type",
+   data:{
+    type:1,
+   },
+   method: 'POST',
+   header: {
+     'content-type': 'application/x-www-form-urlencoded'
+   },
+   success:function(res){
+     that.setData({
+       selectData:res.data.data
+     })
+     console.log(that.data.selectData)
+    console.log('工种结果'+that.data.selectData)
+  },fail:function(){
+      console.log("调用工种失败")
+     }
+  })
     // console.log(e)
   },
   // 点击下拉列表
@@ -159,7 +211,7 @@ Page({
     // *************************************************
     if(that.data.issu==false){
 
-      if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.i4 == "" || m.i5 == "" || m.i6==""||m.textarea.length==0) {
+      if (m.i1 == "" || m.i2 == "" || m.i3 == "" || m.i4 == "" || m.i5 == "" || m.i6=="") {
         this.hidePopup(false);
     } else {
       this.suhide(false);
@@ -274,15 +326,15 @@ Page({
      * 
      */
     // 工作年限
-    selectData4: ['请选择工作年限', "1年以下", "1~3年", "3~5年", "5年以上"],//下拉列表的数据
+    selectData4: [],//下拉列表的数据
     selectShow4: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     index4: 0,//选择的下拉列表下标
     // 求职状态
-    selectData3: ['请选择求职状态', "离职随时到岗","在职-月内到岗","在职-考虑机会","在职-暂不考虑"],//下拉列表的数据
+    selectData3: ['','离职随时到岗','在职-月内到岗','在职-考虑机会','在职暂不考虑'],//下拉列表的数据
     selectShow3: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     index3: 0,//选择的下拉列表下标
     // 薪资待遇
-    selectData2: ['请选择薪资待遇', '1000~3000', '3000~5000', "5000~7000", "7000~9000","9000元及以上"],//下拉列表的数据
+    selectData2: [],//下拉列表的数据
     selectShow2: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     index2: 0,//选择的下拉列表下标
     // 双击事件
@@ -315,31 +367,6 @@ Page({
         two_class:options.idtwo,
         tel,
    })
-     /**
-    * 获取工种类型
-    */
-   wx.request({
-     url:"http://tsf.suipk.cn/home/Personal/do_id_type",
-    data:{
-     type:1,
-    },
-    method: 'POST',
-    header: {
-      'content-type': 'application/x-www-form-urlencoded'
-    },
-    success:function(res){
-     
-      that.setData({
-        selectData:res.data.data
-      })
-      console.log(that.data.selectData)
-     console.log('工种结果'+that.data.selectData)
-   },fail:function(){
-       console.log("调用工种失败")
-      }
-   })
- 
-
   //  个人中心我的发布跳转
   console.log("我的发布传参",options)
   if(options.pid!=undefined){
@@ -370,87 +397,24 @@ Page({
       console.log('调用失败')
   })
 }
-
-request({
-  url:'http://tsf.suipk.cn/home/info/do_salary_list',
-  data:{
-    code:"",
-    mes:""
-  }
-  }).then(res=>{
-  console.log('调用薪资成功',res)
-    this.setData({
-      selectData2:res.data.data
-  })
-  }).catch(err=>{
-  console.log('调用失败')
-})
-
-request({
-  url:'http://tsf.suipk.cn/home/info/do_work_years_list',
-  data:{
-    code:"",
-    mes:""
-  }
-  }).then(res=>{
-  console.log('调用薪资成功',res)
-    this.setData({
-      selectData4:res.data.data
-  })
-  }).catch(err=>{
-  console.log('调用失败')
+wx.request({
+  url:"http://tsf.suipk.cn/home/Personal/do_id_type",
+ data:{
+  type:1,
+ },
+ method: 'POST',
+ header: {
+   'content-type': 'application/x-www-form-urlencoded'
+ },
+ success:function(res){
+   that.setData({
+    type_work_id:res.data.data[0].id
+   })
+   console.log(that.data.selectData)
+  console.log('工种结果'+that.data.selectData)
+},fail:function(){
+    console.log("调用工种失败")
+   }
 })
   },
-  
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    var that=this
-   
-    that.data.selectData.unshift({id:999,title:"123"})
-    console.log(that.data.selectData)
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-  
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

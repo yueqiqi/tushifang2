@@ -7,22 +7,41 @@ import request from '../login.js'
 import like from '../like.js'
 Page({
 
-
-
+// 点击浏览图片--十万火急
+listenerButtonPreviewImages:function(e){
+  let index = e.currentTarget.dataset.index;
+    var url=e.currentTarget.dataset.ids
+    var id = e.currentTarget.dataset.id
+    let that = this;
+    // console.log('浏览的图片',)
+    // console.log(e,index)
+    // console.log(that.data.tabuser)
+    for(var tb in that.data.user){
+     if(id==that.data.user[tb].id){
+     var previewImgArr = that.data.user[tb].img_url_arr
+     }
+    }
+    console.log('浏览的数组',previewImgArr)
+    wx.previewImage({
+      current: url, //当前图片地址
+      urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
+    })
+},
   // 点击浏览图片-最新发布
   listenerButtonPreviewImage: function (e) {
     let index = e.currentTarget.dataset.index;
     var url=e.currentTarget.dataset.ids
     var id = e.currentTarget.dataset.id
     let that = this;
-    console.log('浏览的图片',)
-    console.log(e,index)
+    // console.log('浏览的图片',)
+    // console.log(e,index)
+    // console.log(that.data.tabuser)
     for(var tb in that.data.tabuser){
      if(id==that.data.tabuser[tb].id){
      var previewImgArr = that.data.tabuser[tb].img_url_arr
      }
     }
-    console.log(id)
+    console.log('浏览的数组',previewImgArr)
     wx.previewImage({
       current: url, //当前图片地址
       urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
@@ -43,20 +62,21 @@ Page({
     var id = e.currentTarget.dataset.id
     let that = this;
     console.log('浏览的图片',)
-    console.log(e,index)
+    console.log(e,index,id)
+    console.log(that.data.tabuserjian)
           // tabuser:res.data.data
     // console.log('图片下标',index,that.data.tabuser.img_url_arr[index])
     // console.log(that.data.tempFilePaths[index]);
     // console.log(that.data.tempFilePaths);
-    for(var tb in that.data.tabuserjian){
-     if(id==that.data.tabuserjian[tb].id){
-     var previewImgArr = that.data.tabuserjian[tb].img_url_arr
+    for(var tbs in that.data.tabuserjian){
+     if(id==that.data.tabuserjian[tbs].id){
+     var previewImgArrs = that.data.tabuserjian[tbs].img_url_arr
      }
     }
-    console.log(id)
+    console.log('浏览的数组',previewImgArrs)
     wx.previewImage({
       current: url, //当前图片地址
-      urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
+      urls: previewImgArrs,//所有要预览的图片的地址集合 数组形式
       //这根本就不走
       success: function (res) {
         //console.log(res);
@@ -70,27 +90,27 @@ Page({
 
 
   yz:function(e){
-    //console.log(e)
-    //console.log('跳转优质推荐')
-    var uid=wx.getStorageSync('uid');
-    var interest=wx.getStorageSync('interest');
-    if(e.detail.index==1){
-      request({
-        url:'http://tsf.suipk.cn/home/index/do_Recommend',
-        data:{
-          type:2,
-          uid,
-          // interest
-        }
-        }).then(res=>{
-        //console.log('调用优质推荐兴趣成功',res)
-        this.setData({
-          tabuserjian:res.data.list
-        })
-        }).catch(err=>{
-        //console.log('调用失败')
-      })
-    }
+    // //console.log(e)
+    // //console.log('跳转优质推荐')
+    // var uid=wx.getStorageSync('uid');
+    // var interest=wx.getStorageSync('interest');
+    // if(e.detail.index==1){
+    //   request({
+    //     url:'http://tsf.suipk.cn/home/index/do_Recommend',
+    //     data:{
+    //       type:2,
+    //       uid,
+    //       // interest
+    //     }
+    //     }).then(res=>{
+    //     //console.log('调用优质推荐兴趣成功',res)
+    //     this.setData({
+    //       tabuserjian:res.data.list
+    //     })
+    //     }).catch(err=>{
+    //     //console.log('调用失败')
+    //   })
+    // }
   },
   // /获取地理位置
   getlocation: function () {
@@ -269,9 +289,9 @@ Page({
     mm: "a",
     // 点赞个数
     index: 0,
-    // 最新发布信息 
     // 优质推荐信息
     tabuserjian:[], 
+    // 最新发布信息 
     tabuser: [],
     // 推荐是否隐藏
     hidden: true,
@@ -751,40 +771,34 @@ Page({
     })
     // *******************************************************************************************************************//
     // var that=this
-    
+    // 调用首页导航条
+    this.bodylist()
   },
-
+  // +++++++++++++++++++首页导航条+++++++++++++++++++++++++
+  bodylist(){
+    var s=[]
+    request({
+      url:'http://tsf.suipk.cn/home/Index/do_index_list',
+      data:{
+        code:"",
+        msg:"",
+      }
+      }).then(res=>{
+      console.log('调用首页头部导航条成功',res)
+       this.setData({
+        icon:res.data.data.slice(0,5),
+        icon02:res.data.data.slice(5,11)
+       }) 
+       console.log('首页第二行导航条',this.data.icon2)
+      }).catch(err=>{
+      console.log('调用首页头部导航条失败')
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that=this
-    //console.log("#########")
-    //console.log("最新发布数组",that.data.tabuser)
-    //console.log("#########")
-    // for(var i in this.data.tabuser){
-    //   //console.log("最新发布数组",that.data.tabuser[i].px)
-    //   if(that.data.tabuser[i].px==2){
-    //     // var like = that.data.tabuser[i].px
-    //     var index = "tabuser[" + i + "].px";
-    //     that.setData({
-    //       [index]:"置顶"
-    //     })
-    //     continue
-    //   }
-    // }
-    //console.log("十万火急",that.data.user)
-    // for(var m in that.data.user){
-    //   if(that.data.user[m].lable=1){
-    //     var index = "user[" + m + "].lable";
-    //     that.setData({
-    //       [index]:"十万火急"
-    //     })
-    //     //console.log("十万火急，啊")
-    //     continue
-    //   }
-    // }
   },
 
   /**

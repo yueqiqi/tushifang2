@@ -33,7 +33,7 @@
 
 <!-- <view class="modal-footer"> -->
   <!-- <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view> -->
-  <button class="btn-confirm" bindtap="onConfirm" form-type="submit" data-status="confirm">提交举报</button>
+  <button class="btn-confirm" form-type="submit" data-status="confirm">提交举报</button>
 <!-- </view> -->
 <view class="close" bindtap="onCancel" data-status="cancel">
   <image class="closes"  src="/pages/images/close.png"></image>
