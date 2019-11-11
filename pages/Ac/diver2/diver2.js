@@ -131,9 +131,14 @@ up:function(){
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         console.log("图片路径",res)
         let tempFilePaths = res.tempFilePaths;
-        // let image=res.tempFiles.path
+        let imgs = that.data.tempFilePaths6.concat(tempFilePaths)
+        if (imgs.length>1){
+          that.setData({
+              showUpload:false
+          })
+      }
         that.setData({
-          tempFilePaths6: tempFilePaths
+          tempFilePaths6: imgs
         })
         /**
          * 上传完成后把文件上传到服务器
@@ -179,24 +184,6 @@ up:function(){
           });
           console.log("最后的",a)
         }
-
-
-
-
-            // request({
-            // url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-            // data:{
-            //   image,
-            // }
-            // }).then(res=>{
-            // console.log('调用第六个图片信息成功',res)
-            // this.setData({
-            
-            // })
-            // }).catch(err=>{
-            // console.log('调用失败')
-            // })
-        // }
       }
     })
   },
@@ -232,6 +219,11 @@ up:function(){
       title: '提示',
       content: '确定要删除此图片吗？',
       success: function (res) {
+         if(that.data.tempFilePaths6.length<=2){
+          that.setData({
+            showUpload:true
+        })
+        }
         if (res.confirm) {
           console.log('点击确定了');
           tempFilePaths6.splice(index, 1);
@@ -498,7 +490,7 @@ up:function(){
   upload3: function () {
     let that = this;
     wx.chooseImage({
-      count: 8, // 默认9
+      count: 9, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -510,26 +502,34 @@ up:function(){
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
-
+        let imgs = that.data.tempFilePaths3.concat(tempFilePaths)
+        // if(imgs.length<4){
+        //   wx.showModal({
+        //     title: '图片上传失败',
+        //     content: '车辆四周照至少4张',
+        //     showCancel: true,
+        //     cancelText: '取消',
+        //     cancelColor: '#000000',
+        //     confirmText: '确定',
+        //     confirmColor: '#3CC51F',
+        //     success: (result) => {
+        //       if(result.confirm){
+                
+        //       }
+        //     },
+        //   });
+        // }
+        if (imgs.length>8){
+          that.setData({
+              showUpload2:false
+          })
+      }
         that.setData({
-          tempFilePaths3: tempFilePaths
+          tempFilePaths3: imgs
         })
         /**
          * 上传完成后把文件上传到服务器
          */
-        request({
-          url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-          data:{
-            image:tempFilePaths
-          }
-          }).then(res=>{
-          console.log('调用成功',res)
-          this.setData({
-          
-          })
-          }).catch(err=>{
-          console.log('调用失败')
-          })
           var count = 0;
           var a =[]
           for (var i = 0, h = tempFilePaths.length; i < h; i++) {
@@ -605,6 +605,11 @@ up:function(){
       title: '提示',
       content: '确定要删除此图片吗？',
       success: function (res) {
+        if (that.data.tempFilePaths3.length<=9){
+          that.setData({
+              showUpload2:true
+          })
+      }
         if (res.confirm) {
           console.log('点击确定了');
           tempFilePaths3.splice(index, 1);
@@ -883,6 +888,9 @@ up:function(){
    * 页面的初始数据
    */
   data: {
+    // 隐藏按钮
+    showUpload2:true,
+    showUpload:true,
     //成功 提示框
     sup: true,
     // 错误提示框
@@ -909,52 +917,5 @@ up:function(){
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+ 
 })

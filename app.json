@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/Aaa/choose/choose",
     "pages/Aaa/splice/splicearr",
     "pages/body/body",
     "pages/Aaa/stick/stick",

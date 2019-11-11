@@ -196,32 +196,32 @@ Page({
       this.hidePopup(false);
     }else{
     var that=this
-    var heads=that.data.head
-    // ？+++++++++++上传头像+++++++++++++++++++++++++++++
-    var head
-    wx.uploadFile({
-      url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-      filePath: heads,
-      name: 'image',
-      method: 'POST',
-    header: {
-      'content-type': 'application/x-www-form-urlencoded'
-    },
-      success: function (res) {
-        console.log("检验头像图片上传",res)
-         head=res.data
-      },
-      fail: function (res) {
-        wx.hideToast();
-        wx.showModal({
-          title: '错误提示',
-          content: '上传图片失败',
-          showCancel: false,
-          success: function (res) { }
-        })
-      }
-    });
-    // ？+++++++++++上传头像+++++++++++++++++++++++++++++
+    // var head1=that.data.heads1
+    // // ？+++++++++++上传头像+++++++++++++++++++++++++++++
+    // var head
+    // wx.uploadFile({
+    //   url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+    //   filePath: heads,
+    //   name: 'image',
+    //   method: 'POST',
+    // header: {
+    //   'content-type': 'application/x-www-form-urlencoded'
+    // },
+    //   success: function (res) {
+    //     console.log("检验头像图片上传",res)
+    //      head=res.data
+    //   },
+    //   fail: function (res) {
+    //     wx.hideToast();
+    //     wx.showModal({
+    //       title: '错误提示',
+    //       content: '上传图片失败',
+    //       showCancel: false,
+    //       success: function (res) { }
+    //     })
+    //   }
+    // });
+    // // ？+++++++++++上传头像+++++++++++++++++++++++++++++
     var nickname=e.name
     var phone=e.phone
     var corporate_name=e.com
@@ -229,7 +229,7 @@ Page({
     var email=e.email
     var detailed_address=e.address
     var info=e.textarea
-    var head=that.data.heads
+    var head1=that.data.heads1
     var p=that.data.img_url_arr
     console.log(that.data.img_url_arr)
     var z=p.join('|')
@@ -242,19 +242,20 @@ Page({
       var uid=wx.getStorageSync('uid');
       // console.log(updata)
     // ////////////////////////////////////////////////////
-
       wx.showModal({
         title: '是否保存',
         content: '确认保存该名片吗？',
         success: function (res) {
           if (res.confirm) {
+            console.log('%','这里是上传的头像','background:lightgreen;color:red;font-size:30rpx;',that.data.heads1)
+            console.log('%c'+'这是文字','background:red;color:red;font-size:20rpx;')
             // ===================完善名片++++++++++++++++++++++++++++
             request({
               url:'http://tsf.suipk.cn/home/personal/do_add_perfect',
               data:{
                 uid,
                 share_id,
-                head,
+                head1,
                 nickname,
                 phone,
                 corporate_name,
@@ -276,17 +277,11 @@ Page({
             });
               // /////////////////////////////////////////////////////////////////////////////////////////
               // 本地储存名片
-                wx.setStorage({
-                key: 'userinfo',
-                data: updata,
-              })
               // /////////////////////////////////////////////////////////////////////////////////////////
           } else {
           //  that.onShow();
            console.log("用户点击了取消")
-
             getCurrentPages()[getCurrentPages().length - 1].route.onLoad
-
           }
         }
       })
@@ -313,7 +308,7 @@ Page({
         /**
          * 上传完成后把文件上传到服务器
          */
-        var a=[]
+        // var a=[]
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
             filePath: tempFilePaths[0],
@@ -324,14 +319,14 @@ Page({
           },
             success: function (res) {
               // console.log(that.data.tempFilePaths[1])
-              console.log("检验图片上传",res)
+              console.log("检验头像图片上传",res)
               // count++;
               var qwe=res.data
               var resl=JSON.parse(qwe)
-              a.push(resl.data)
-              console.log("返回值",resl,a)
+              // a.push(resl.data)
+              console.log("返回头像值",resl.data)
               that.setData({
-                heads:a
+                heads1:resl.data
               })
             },
             fail: function (res) {

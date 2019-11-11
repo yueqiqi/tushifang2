@@ -103,11 +103,9 @@ Page({
       }
     }).then(res=>{
       console.log('调用成功',res)
-      if(res.data.code==101&&res.data.code==0){
+      // if(res.data.code==101&&res.data.code==0){
           that.suhide(false);
-        }else {
-          that.hidePopup(false);
-        }
+        // }
       }).catch(err=>{
       console.log('调用失败')
       })
@@ -153,9 +151,14 @@ Page({
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
-
+        let imgs = that.data.tempFilePaths.concat(tempFilePaths)
+        if (imgs.length>1){
+          that.setData({
+              showupload:false
+          })
+      }
         that.setData({
-          tempFilePaths: tempFilePaths
+          tempFilePaths: imgs
         })
         /**
          * 上传完成后把文件上传到服务器
@@ -235,6 +238,11 @@ Page({
       title: '提示',
       content: '确定要删除此图片吗？',
       success: function (res) {
+        if (tempFilePaths.length<2){
+          that.setData({
+              showupload:true
+          })
+      }
         if (res.confirm) {
           console.log('点击确定了');
           tempFilePaths.splice(index, 1);
@@ -255,6 +263,11 @@ Page({
     console.log(e)
   },
   data: {
+    /**
+     * 隐藏上传按钮
+     */
+    showupload:true,
+
     objectArray: [],
     class: "请选择身份类型",
     mz:true,
@@ -354,46 +367,4 @@ Page({
     //请求数据
     model.updateAreaData(that, 0, e);
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

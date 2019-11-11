@@ -25,7 +25,7 @@ btn:function(){
       {
        id:0,
         // 头像
-        head: "/pages/images/carousel/03.jpg",
+        head: "",
        // 姓名
         cardname:"用户姓名",
       // 职位

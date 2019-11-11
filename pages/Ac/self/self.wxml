@@ -68,7 +68,7 @@
                 <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
                 <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
               </view>
-            <view class="onload" bindtap="upload">
+            <view class="onload" bindtap="upload" wx-if="{{showupload}}">
               <image src="../../images/onload.png"></image>
               <view>上传图片</view>
             </view>

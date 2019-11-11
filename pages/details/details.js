@@ -599,7 +599,7 @@ Page({
         url:'http://tsf.suipk.cn/home/info/do_info_content',
         data:{
         uid,
-        type:options.form,
+        type:3,
         info_id:options.id
       }
       }).then(res=>{

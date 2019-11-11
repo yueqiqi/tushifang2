@@ -88,11 +88,11 @@ Page({
         }
       }).then(res=>{
         console.log('调用企业信息成功',res)
-        if(res.data.code==101&&res.data.code==0){
+        
           that.suhide(false);
-        }else{
+ 
           that.hidePopup(false)
-        }
+        
         }).catch(err=>{
         console.log('调用失败')
       })

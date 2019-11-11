@@ -30,8 +30,8 @@
     <!--  -->
   </view>
   <!-- 按钮 -->
- <button class="bt" bindtap="btn" wx:if="{{is_perfect!=1}}">完善我的名片</button>
- <button class="bt" bindtap="send" wx:if="{{is_perfect==1}}">发名片</button>
+ <button class="bt" bindtap="btn" wx:if="{{is_perfect==1}}">完善我的名片</button>
+ <button class="bt" bindtap="send" wx:if="{{is_perfect!=1}}">发名片</button>
 </view>
 </view>
 

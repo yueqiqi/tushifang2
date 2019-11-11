@@ -150,11 +150,17 @@ Page({
         // 原来价格
         gef: "200",
       },
+      
     ],
     // 一级分类
     one_class:[],
     // 第一个tab
     page:1,
+    autoplay: true,
+    circular: true,
+    interval: 4000,
+    duration: 500,
+
   },
 
   /**
@@ -162,6 +168,26 @@ Page({
    */
   onLoad: function (options) {
     var that=this
+
+    /**
+     * 获取商品详情页banner
+     */
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_banner',
+      data:{
+        type:0
+      }
+      }).then(res=>{
+      console.log('获取商城详情页banner成功',res)
+      this.setData({
+        imgUrls:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+
+
+
    request({
     url:'http://tsf.suipk.cn//home/Goods/do_shopping_mall',
     data:{

@@ -15,7 +15,7 @@
     <view class="select-text">{{class}}</view>
   </view>
       <view>
-        <image class="section-img" hidden="{{hidden}}" src="../../images/position/shape45.png"></image>
+        <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
     </view>
 </picker>

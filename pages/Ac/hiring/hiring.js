@@ -168,9 +168,10 @@ Page({
         start_time=that.data.stime
         ending_time=that.data.etime
       }else if(that.data.seradio==2){
+        console.log('这是业内置顶')
         lable=3
         start_time=that.data.stime
-        ending_time=that.data.time
+        ending_time=that.data.etime
       }
     }
 console.log('选择的方式',lable)
@@ -194,7 +195,8 @@ request({
   /* 隐藏弹窗 */
   sssuhide() {
     this.setData({
-      "sssup": true
+      "sssup": true,
+      sq:false
     });
     console.log("隐藏弹框")
     var zzz = this.data
@@ -202,6 +204,7 @@ request({
     if (zzz.sradio == 0, zzz.dates == "", zzz.edates == "") {
       this.nsushow()
     }
+    
   },
   /* 显示弹窗 */
   ssushow() {

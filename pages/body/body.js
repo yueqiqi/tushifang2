@@ -167,9 +167,22 @@ listenerButtonPreviewImages:function(e){
     }
     }).then(res=>{
     console.log('调用点赞成功',res)
-    that.onLoad();
-    this.setData({
-    
+    // that.onLoad();
+    /**
+     * 刷新点赞状态
+     */
+    request({
+      url:'http://tsf.suipk.cn',
+      data:{
+      
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
+      this.setData({
+      
+      })
+      }).catch(err=>{
+      console.log('调用失败')
     })
     }).catch(err=>{
     console.log('调用失败')
@@ -807,8 +820,8 @@ listenerButtonPreviewImages:function(e){
    */
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    this.onLoad()
-    // this.onReady()
+    // this.onLoad()
+    this.onReady()
     setTimeout(function () {    
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
@@ -900,7 +913,6 @@ listenerButtonPreviewImages:function(e){
       success: function (res) {
         console.log('分享成功',ops)
        }
-
     }
   }
 })

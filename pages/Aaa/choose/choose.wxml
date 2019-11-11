@@ -1,0 +1,7 @@
+<!-- 选择图片 -->
+<button bindtap="choose">上传图片</button>
+<block>
+  <view style="display:flex;justify-content: center" wx:for="{{imgs}}" wx:key="{{index}}">
+    <image style="width:200rpx;height:200rpx;" src="{{item}}"></image>
+  </view>
+</block>

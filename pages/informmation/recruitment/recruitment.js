@@ -413,6 +413,7 @@ listenerButtonPreviewImaged:function(e){
   goto:function(e){
     var info_id=e.currentTarget.dataset.id
     console.log(info_id)
+    var type=2
     wx.navigateTo({
       url: '../jobdetail/jobdetail?info_id='+info_id,
     })

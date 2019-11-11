@@ -52,9 +52,9 @@
     <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths3}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage3" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage3" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage3" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
-    <view class="onload" bindtap="upload3">
+    <view class="onload" bindtap="upload3" wx:if="{{showUpload2}}">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
     </view>
@@ -100,9 +100,9 @@
     <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths6}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage6" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage6" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage6" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
-    <view class="onload" bindtap="upload6">
+    <view class="onload" bindtap="upload6" wx:if="{{showUpload}}">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
     </view>
