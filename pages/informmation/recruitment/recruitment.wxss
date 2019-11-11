@@ -1,5 +1,8 @@
 /* pages/informmation/recruitment/recruitment.wxss */
 @import "../carousel/carousel";
+.i-tab{
+  color:red
+}
 .nav-class{
   color:red!important;
 }

@@ -120,14 +120,14 @@
 <!-- 公司图片 -->
 <view class="img">
   <view>
-    <view class="license">公司图片(最多三张)</view>
+    <view class="license">公司图片(最多九张)</view>
   <view class="d-flex">
   <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image data-index="{{index}}" bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
-    <view class="onload" bindtap="upload">
+    <view class="onload" bindtap="upload" wx:if="{{showUpload}}">
       <image src="../../images/onload.png"></image>
       <view>上传图片</view>
     </view>

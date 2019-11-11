@@ -92,7 +92,7 @@
 <text>评论</text>
 </view>
 <!-- 点赞 -->
-<view class="tab-like d-flex" bindtap="tabLike" data-id="{{item.id}}">
+<view class="tab-like d-flex" bindtap="tabLike" data-id="{{item.id}}" data-index="{{index}}">
                <view class="tlike d-flex">
               <view class="z">
                 <image src="{{item.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>

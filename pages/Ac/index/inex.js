@@ -53,12 +53,91 @@ Page({
       },
     ]
   },
-
+/**
+ * 跳转
+ */
+gg:function(e){
+  var that=this
+  console.log(e)
+  if(that.data.gg==1){
+    var index=e.currentTarget.dataset.index
+    wx.navigateTo({
+      url: that.data.title[index].link,
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  }
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this
+    /**
+     * 验证是否认证
+     */
+    var uid=wx.getStorageSync('uid');
+    request({
+      url:'http://tsf.suipk.cn/home/Personal/do_is_identification',
+      data:{
+        uid,
+      }
+      }).then(res=>{
+      console.log('查看是否认证',res)
+        if(res.data.data[0].status==1){
+          wx.showModal({
+            title: '审核状态',
+            content: '您已经审核通过不必再次审核',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if(result.confirm){
+                that.setData({
+                  gg:0
+                })
+              }else if(result.cancel){
+                wx.navigateBack({
+                  delta: 1
+                });
+              }
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
+        }else if(res.data.data[0].status==2){
+          wx.showModal({
+            title: '审核状态',
+            content: '您已经正在审核',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if(result.confirm){
+                that.setData({
+                  gg:0
+                })
+              }else if(result.cancel){
+                wx.navigateBack({
+                  delta: 1
+                });
+              }
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
+        }
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // 
     request({
       url:"http://tsf.suipk.cn/home/personal/do_check_in",
       data:{

@@ -146,11 +146,11 @@ up:function(){
         // var count = 0;
         var count = 0;
         var a =[]
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+        for (var i = 0, h = imgs; i < h; i++) {
           //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-            filePath: tempFilePaths[i],
+            filePath: imgs[i],
             name: 'image',
             method: 'POST',
           header: {
@@ -168,7 +168,7 @@ up:function(){
                 img_url_card:a
               })
               //如果是最后一张,则隐藏等待中  
-              if (count == tempFilePaths.length) {
+              if (count == imgs.length) {
                 wx.hideToast();
               }
             },
@@ -532,11 +532,11 @@ up:function(){
          */
           var count = 0;
           var a =[]
-          for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+          for (var i = 0, h =imgs; i < h; i++) {
             //上传文件
             wx.uploadFile({
               url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-              filePath: tempFilePaths[i],
+              filePath: imgs[i],
               name: 'image',
               method: 'POST',
             header: {
@@ -554,7 +554,7 @@ up:function(){
                   img_url_surroundings:a
                 })
                 //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
+                if (count == imgs) {
                   wx.hideToast();
                 }
               },

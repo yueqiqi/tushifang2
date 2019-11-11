@@ -456,7 +456,26 @@ listenerButtonPreviewImaged:function(e){
   /**
    * 页面的初始数据
    */
+  handleChange ({ detail }) {
+   var index = detail.key
+    this.setData({
+        current: detail.key
+    });
+    if(index == 1){
+      this.setData({
+        tab1:true,
+        tab2: false
+      })
+    }else if(index == 2){
+      this.setData({
+        tab1: false,
+        tab2:true
+      })
+    }
+},
   data: {
+    tab1:true,
+    current: '1',
     // 二级分类
     two_class_id:1,
     // 顶部导航栏
@@ -861,16 +880,6 @@ listenerButtonPreviewImaged:function(e){
   onReady: function () {
     var that=this
     for(var p in that.data.userlists){
-      var pxs='userlists['+p+'].px'
-      if(that.data.userlists[p].px==2){
-        that.setData({
-          [pxs]:'置顶'
-        })
-      }else if(that.data.userlists[p].px==3){
-        that.setData({
-          [pxs]:'十万火急'
-        })
-      }
       var w='userlists['+p+'].working_condition'
       if(that.data.userlists[p].working_condition==1){
         that.setData({

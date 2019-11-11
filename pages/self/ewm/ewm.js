@@ -8,16 +8,16 @@ Page({
     img:'',
   },
 ewm(){
-  var uid=wx.getStorageSync('uid');
+  var id=wx.getStorageSync('uid');
   request({
-    url:'http://tsf.suipk.cn',
+    url:'http://tsf.suipk.cn/home/Loginwx/do_sendcode',
     data:{
-      uid,
+      id,
     }
     }).then(res=>{
     console.log('获取二维码 成功',res)
     this.setData({
-    
+      img:res.data.data
     })
     }).catch(err=>{
     console.log('调用失败')

@@ -4,7 +4,9 @@
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
     "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
     "van-button": "/miniprogram_npm/vant-weapp/button/index",
-    "tabbar": "/pages/tab/tab"
+    "tabbar": "/pages/tab/tab",
+    "i-tabs": "/miniprogram_npm/iview-weapp-master/dist/tabs/index",
+    "i-tab": "/miniprogram_npm/iview-weapp-master/dist/tab/index"
   },
   "navigationBarTitleText": "信息中心"
 }

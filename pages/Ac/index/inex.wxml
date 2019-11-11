@@ -2,12 +2,14 @@
 <view>
   <view class="title d-spb">
     <block wx:for="{{title}}" wx:key="{{index}}">
-      <navigator url="{{item.link}}">
-        <view style="" class="img">
-          <image src="{{item.url}}"></image>
-          <view>{{item.name}}</view>
-        </view>
-      </navigator>
+      <view bindtap="gg" data-index="{{index}}">
+        <!-- <navigator url="{{item.link}}"> -->
+          <view style="" class="img">
+            <image src="{{item.url}}"></image>
+            <view>{{item.name}}</view>
+         </view>
+        <!-- </navigator> -->
+      </view>
     </block>
   </view>
 </view>

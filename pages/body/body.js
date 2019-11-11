@@ -156,7 +156,7 @@ listenerButtonPreviewImages:function(e){
   tabLike: function (e) {
     var that = this
     var id = e.currentTarget.dataset.id
-    console.log('点赞',id)
+    var index = e.currentTarget.dataset.index
     var uid=wx.getStorageSync('uid');
     like({
     data:{
@@ -170,37 +170,57 @@ listenerButtonPreviewImages:function(e){
       /**
        * 调用点赞列表
        */
-      var uid=wx.getStorageSync('uid');
-      wx.request({
-        url:"http://tsf.suipk.cn/home/index/do_Recommend",
-        data:{
-          type:1,
-          uid,
-          page:that.data.page,
-          limit:5,
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success:function(res){
-          //console.log("最新发布调用成功")
-          console.log("最新发布调用成功",res)
+      console.log('点赞加载',that.data.tabuser)
+      // var jj=tabuser[inedx].is_point
+      // that.setData({
+      //   tabuser
+      // })
+      console.log(res.data.code)
+      if(res.data.code==0){
+        // for(var m in that.data.tabuser){
+          var like='tabuser['+index+'].is_point'
+          var point_ratio=that.data.tabuser[index].point_ratio
+          var point_ratio1='tabuser['+index+'].point_ratio'
+          var p=p+1
           that.setData({
-            tabuser:res.data.list
+            [like]:1,
+            [point_ratio1]:point_ratio+1
           })
-        }
-  
-      })
+          // }
+          console.log('点赞加载数组',that.data.tabuser)
+        }else if(res.data.code==1){
+          // for(var ms in that.data.tabuser){
+            var point_ratios=that.data.tabuser[index].point_ratio
+            var likes='tabuser['+index+'].is_point'
+            var point_ratios1='tabuser['+index+'].point_ratio'
+            var m=m-1
+            that.setData({
+              [likes]:0,
+              [point_ratios1]:point_ratios-1
+          })
+        // }
+      }
+      // else{
+      //   for(var m in tabuser){
+      //     var like='tabuser['+m+'].is_point'
+      //     that.setData({
+      //       [like]:0
+      //     })
+      //   }
+      // }
 
 
     }).catch(err=>{
     console.log('调用失败')
     })
-    // }
-    //console.log("这是点赞后的点赞数" + like)
-  },//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  },
+ 
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 右边大标题
+
+
+
+
   titleRight: function () {
     //console.log("这是右边大标题")
   },
@@ -474,6 +494,7 @@ listenerButtonPreviewImages:function(e){
     var that = this
     //console.log(e)
     var id = e.currentTarget.dataset.id
+    var index = e.currentTarget.dataset.index
     console.log('点赞',id)
     var uid=wx.getStorageSync('uid');
     like({
@@ -484,11 +505,31 @@ listenerButtonPreviewImages:function(e){
     }
     }).then(res=>{
     console.log('调用优质推荐点赞成功',res)
-    that.onLoad();
+    if(res.data.code==0){
+      // for(var m in that.data.tabuser){
+        var like='tabuserjian['+index+'].is_point'
+        var point_ratio=that.data.tabuserjian[index].point_ratio
+        var point_ratio1='tabuserjian['+index+'].point_ratio'
+        var p=p+1
+        that.setData({
+          [like]:1,
+          [point_ratio1]:point_ratio+1
+        })
+        // }
+        console.log('点赞加载数组',that.data.tabuser)
+      }else if(res.data.code==1){
+        // for(var ms in that.data.tabuser){
+          var point_ratios=that.data.tabuserjian[index].point_ratio
+          var likes='tabuserjian['+index+'].is_point'
+          var point_ratios1='tabuserjian['+index+'].point_ratio'
+          var m=m-1
+          that.setData({
+            [likes]:0,
+            [point_ratios1]:point_ratios-1
+        })
+      // }
+    }
     
-    this.setData({
-    
-    })
     }).catch(err=>{
     console.log('调用失败')
     })
@@ -635,8 +676,6 @@ listenerButtonPreviewImages:function(e){
         mm: "a"
       })
     }
-    //console.log(this.data.ftabUserImg.length)
-    //console.log(mm)
     // })
     // *******************************************************************************
     // 轮播图
@@ -651,23 +690,14 @@ listenerButtonPreviewImages:function(e){
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        // that.setData({ goodslist: res.data.data });
-        //console.log("访问成功")
-        //console.log(res, 1111111);
-        // 轮播图片
-        //console.log(res.data.data)
         var res = res.data.data
-        //console.log("轮播图",res)
         that.setData({
           imgUrls: res
         })
-        //console.log("图片"+that.data.imgUrls)
       },
       fail: function () {
-        //console.log("调用失败")
       }
     })
-      // //console.log(data)
     // *******************************************************************************
     // 首页十万火急
     request({
@@ -678,7 +708,7 @@ listenerButtonPreviewImages:function(e){
       }).then(res=>{
       console.log('调用首页十万火急成功',res)
       that.setData({
-        user:res.data.data.info,
+        user:res.data.data,
       })
       }).catch(err=>{
       console.log('调用失败')
@@ -696,11 +726,6 @@ listenerButtonPreviewImages:function(e){
         'content-type': 'application/x-www-form-urlencoded'
       },
       success:function(res){
-        console.log("调用首页成功",res)
-        //console.log("1---------------")
-        //console.log("发布十万火急",res)
-        // 首页广告-advert[0]
-        // var advert=res.data.data.advert[0].img_url
         that.setData({
           // 广告
           advert:res.data.data.advert,
@@ -710,15 +735,7 @@ listenerButtonPreviewImages:function(e){
           advertd:res.data.data.advertd[0].img_url
           
         })
-        //console.log()
-        console.log("大广告图"+that.data.advertd)
-        //console.log("公告",that.data.msgList)
-        //console.log("发布者信息",that.data.user)
-        //console.log("发布十万火急",res.data.data.info)
-        //console.log(res)
-        //console.log("2---------------")
       },fail:function(){
-        //console.log("调用失败")
       }
     })
     // *******************************************************************************************************************//
@@ -742,9 +759,11 @@ listenerButtonPreviewImages:function(e){
           tabuser:res.data.list
         })
       }
-
     })
     var uid=wx.getStorageSync('uid');
+
+
+
     // 优质推荐
     wx.request({
       url:"http://tsf.suipk.cn/home/index/do_Recommend",
@@ -792,6 +811,11 @@ listenerButtonPreviewImages:function(e){
     // 调用首页导航条
     // this.bodylist()
   },
+
+
+
+
+  
   // +++++++++++++++++++首页导航条+++++++++++++++++++++++++
   bodylist(){
     var s=[]
@@ -835,10 +859,10 @@ listenerButtonPreviewImages:function(e){
     var pages = that.data.pages
     page++
     pages++
-    // that.setData({
-    //   page,
-    //   pages
-    // })
+    that.setData({
+      page,
+      pages
+    })
     // 显示加载图标
     wx.showLoading({
       title: '玩命加载中',
@@ -849,7 +873,7 @@ listenerButtonPreviewImages:function(e){
         data:{
           type:1,
           uid,
-          page:page,
+          page:that.data.page,
           limit:5,
         }
         }).then(res=>{
@@ -865,18 +889,21 @@ listenerButtonPreviewImages:function(e){
         }
         var goods = that.data.tabuser.concat(res.data.list)     //message  为一进入页面请求完数据定义的集合
         that.setData({
-          tabuser:goods
+          tabuser:goods,
         })
         wx.hideLoading();
         }).catch(err=>{
         console.log('调用失败')
       })
+
+
+
       request({
         url:'http://tsf.suipk.cn/home/index/do_Recommend',
         data:{
           type:2,
           uid,
-          page:pages,
+          page:that.data.pages,
           limit:5,
         }
         }).then(res=>{

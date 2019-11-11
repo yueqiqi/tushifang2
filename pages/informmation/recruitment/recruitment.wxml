@@ -17,6 +17,7 @@
     </view>
     </view> -->
     <!-- 分类 -->
+
     <view class="select ml d-flex mt">
 <!-- 分类 -->
 <view class="sectionClass" >  
@@ -40,16 +41,12 @@
 </view> 
 </view>
 <!-- 找工作 -->
-<view class="mt">
-<view class='topTabSwiper'>
-    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>找工作</view>
-    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>招人才</view>
-    <!-- <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>关注</view> -->
-</view>
-<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
-<!-- 找工作 -->
-  <swiper-item>
-    <view class='searchJob bg'>
+    <i-tabs current="{{ current }}" bindchange="handleChange" i-class='i-tab'>
+      <i-tab key="1" title="找工作"></i-tab>
+      <i-tab key="2" title="招人才"></i-tab>
+    </i-tabs>
+<view wx:if="{{tab1}}" class='tab1'>
+  <view class='searchJob bg'>
     <!--  -->
     <!-- 第一个招聘职位 -->
     <!-- 招聘职位 -->
@@ -59,7 +56,7 @@
       <view class="post d-flex"> 
         <view class="post-left ml d-flex">
           <view class="postTitle">{{item.type_work}}</view>
-          <view class="stick" style="{{item.px==3?'background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);width:120rpx;height:36rpx;':''}}" wx-if="{{item.px!=1}}">{{item.px}}</view>
+          <view class="stick" style="{{item.px==3?'background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);width:120rpx;height:36rpx;':''}}" wx-if="{{item.px!=1}}">{{item.px==3?'十万火急':(item.px==2?'置顶':'')}}</view>
           <!-- <view class="recommend" hidden="{{item.rec==''?true:false}}">{{item.rec}}</view> -->
         </view>  
       <!-- 薪资 -->
@@ -104,15 +101,12 @@
      </view>
      <!--  -->
 <!-- 第二个招聘职位 -->
-
-      <!--  -->
-
-
     </block>
     </view>
-  </swiper-item> 
-  <swiper-item>
-    <view class='people bg'>
+</view>
+
+<view wx:if="{{tab2}}" class='tab2'>
+<view class='people bg'>
       <block wx:for="{{findpeople}}" wx:key="{{index}}">
         
         <view style="background:#fff;padding-bottom:40rpx;margin-bottom:10rpx;" bindtap="gotoPeople" data-id="{{item.id}}">
@@ -151,17 +145,9 @@
       </view>
       <!--  -->
     </view>
-<!-- 第二个求职 -->
-      <!--  -->
-
-
     </block>
-    </view>
-  </swiper-item>
-  <!-- <swiper-item><view class='swiper_con'>welcome come to 关注</view></swiper-item>   -->
-</swiper>
+    </view>        
 </view>
-
   </van-tab>
   <!-- -------------------------------------------------------------------------------------------------- -->
   <van-tab class="zz" title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(168,139,242,1) 0%,rgba(149,85,236,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" bindtap="activetab2" name="{{one_class_id[1].id}}" title="{{one_class_id[1].title}}">
@@ -551,4 +537,5 @@
 </van-tabs>
 
 </view>
+<view style="height:50rpx;width:100%"></view>
 <tabbar activeIdx="{{activeIdx}}"></tabbar>

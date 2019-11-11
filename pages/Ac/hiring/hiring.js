@@ -63,14 +63,23 @@ Page({
       h3:false
     });
     console.log("最后选择的",this.data.province,this.data.city,this.data.county);
-  }
-  ,
+  },
 
 
    /* 隐藏弹窗 */
    nsuhide(flag = true) {
     this.setData({
       "nsup": flag
+    });
+  },
+  suhide(flag = true) {
+    this.setData({
+      "sup": flag
+    });
+  },
+  con:function(){
+    wx.navigateBack({
+      delta: 1
     });
   },
   /* 显示弹窗 */
@@ -714,20 +723,25 @@ if(that.data.issu==true){
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
-
+        let imgs = that.data.tempFilePaths.concat(tempFilePaths)
+        if (imgs.length>8){
+          that.setData({
+              showUpload:false
+          })
+      }
         that.setData({
-          tempFilePaths: tempFilePaths
+          tempFilePaths: imgs
         })
         /**
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
         var a =[]
-        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+        for (var i = 0, h = imgs.length; i < h; i++) {
           //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-            filePath: tempFilePaths[i],
+            filePath: imgs[i],
             name: 'image',
             method: 'POST',
           header: {
@@ -745,7 +759,7 @@ if(that.data.issu==true){
                 img_url_arr:a
               })
               //如果是最后一张,则隐藏等待中  
-              if (count == tempFilePaths.length) {
+              if (count == imgs.length) {
                 wx.hideToast();
               }
             },
@@ -796,6 +810,11 @@ if(that.data.issu==true){
       title: '提示',
       content: '确定要删除此图片吗？',
       success: function (res) {
+        if(that.data.tempFilePaths.length<=9){
+          that.setData({
+            showUpload:true
+        })
+        }
         if (res.confirm) {
           console.log('点击确定了');
           tempFilePaths.splice(index, 1);
@@ -813,6 +832,10 @@ if(that.data.issu==true){
    * 页面的初始数据
    */
   data: {
+    /**
+     * 是否显示上传按钮
+     */
+    showUpload:true,
     // type_work_id
     pm:true,
     item: {
