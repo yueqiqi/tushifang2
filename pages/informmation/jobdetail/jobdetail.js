@@ -299,6 +299,29 @@ complaint:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var that=this
+    /**
+     * 获取的信息详情的广告图
+     */
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_get_advert',
+        data:{
+          type:3
+        }
+        }).then(res=>{
+          console.log('调用找工作广告图成功',res.data.data)
+        console.log('调用找工作广告图成功',res.data.data.img_url)
+        that.setData({
+          ads:res.data.data.img_url
+        })
+        console.log('广告图的信息',that.data.ads)
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+
+
+
     var uid=wx.getStorageSync('uid');
     console.log('接受勤勉找工作详情传递过来得值',options.info_id)
     this.setData({

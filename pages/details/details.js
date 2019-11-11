@@ -519,6 +519,30 @@ Page({
       types:options.type
     })
     console.log(options.from,'传来的',this.data.lid)
+
+
+
+        /**
+         * 获取的信息详情的广告图
+         */
+        request({
+          url:'http://tsf.suipk.cn/home/info/do_get_advert',
+            data:{
+              type:4
+            }
+            }).then(res=>{
+              console.log('调用首页广告图成功',res.data.data)
+            console.log('调用首页广告图成功',res.data.data.img_url)
+            that.setData({
+              ads:res.data.data.img_url
+            })
+            console.log('广告图的信息',that.data.ads)
+            }).catch(err=>{
+            console.log('调用失败')
+          })
+
+
+
     // 分享跳转    
     if(options.share==1){
       var uid=options.uid 
@@ -594,6 +618,7 @@ Page({
         console.log("首页传来的form="+options.form)
         console.log('首页传来的type',options.type)
         console.log('这是首页传来的信息')
+        
         // 请求信息详情
         request({
         url:'http://tsf.suipk.cn/home/info/do_info_content',

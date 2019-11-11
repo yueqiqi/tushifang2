@@ -272,8 +272,7 @@ request({
       that.setData({
         sq:true
       })
-    } else {
-      
+    } else { 
       // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
       wx.request({
         url: "http://tsf.suipk.cn/home/info/do_addinfo",
@@ -304,6 +303,7 @@ request({
           }
           if(res.data.code==101){
             that.setData({
+              model:res.data.msg,
               pm:false,
               sq:true
             })
@@ -589,14 +589,23 @@ request({
       pm:true,
       sq:false
     })
-    wx.navigateTo({
-      url: '/pages/self/goup/goup',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
+    if(this.data.model=='你的信誉分不足'){
+      wx.navigateTo({
+        url: '/pages/self/goup/goup2',
+        success: (result)=>{  
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    }else{
+      wx.navigateTo({
+        url: '/pages/self/goup/goup',
+        success: (result)=>{  
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    }
   },
   /**
    * 页面的初始数据

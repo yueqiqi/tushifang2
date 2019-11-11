@@ -155,7 +155,6 @@ listenerButtonPreviewImages:function(e){
   // 点赞
   tabLike: function (e) {
     var that = this
-    //console.log(e)
     var id = e.currentTarget.dataset.id
     console.log('点赞',id)
     var uid=wx.getStorageSync('uid');
@@ -168,22 +167,33 @@ listenerButtonPreviewImages:function(e){
     }).then(res=>{
     console.log('调用点赞成功',res)
     // that.onLoad();
-    /**
-     * 刷新点赞状态
-     */
-    request({
-      url:'http://tsf.suipk.cn',
-      data:{
-      
-      }
-      }).then(res=>{
-      console.log('调用成功',res)
-      this.setData({
-      
+      /**
+       * 调用点赞列表
+       */
+      var uid=wx.getStorageSync('uid');
+      wx.request({
+        url:"http://tsf.suipk.cn/home/index/do_Recommend",
+        data:{
+          type:1,
+          uid,
+          page:that.data.page,
+          limit:5,
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:function(res){
+          //console.log("最新发布调用成功")
+          console.log("最新发布调用成功",res)
+          that.setData({
+            tabuser:res.data.list
+          })
+        }
+  
       })
-      }).catch(err=>{
-      console.log('调用失败')
-    })
+
+
     }).catch(err=>{
     console.log('调用失败')
     })
@@ -659,11 +669,27 @@ listenerButtonPreviewImages:function(e){
     })
       // //console.log(data)
     // *******************************************************************************
+    // 首页十万火急
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_hot',
+      data:{
+        uid,
+      }
+      }).then(res=>{
+      console.log('调用首页十万火急成功',res)
+      that.setData({
+        user:res.data.data.info,
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    // *******************************************************************************
     // 首页公告+首页十万火急+首页广告位
     wx.request({
       url: 'http://tsf.suipk.cn/home/index/do_info',
       data:{
-        uid
+        code:'',
+        msg:'',
       },
       method: 'POST',
       header: {
@@ -681,7 +707,6 @@ listenerButtonPreviewImages:function(e){
           // 公告
           msgList:res.data.data.notice,
           // 首页发布者信息
-          user:res.data.data.info,
           advertd:res.data.data.advertd[0].img_url
           
         })
@@ -787,60 +812,33 @@ listenerButtonPreviewImages:function(e){
       console.log('调用首页头部导航条失败')
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function (e) {
-    // this.onLoad()
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    // this.onLoad()
-    this.onReady()
+    // this.onReady()
+    var that=this
     setTimeout(function () {    
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1500);},
+    that.onLoad()
+    }, 1500)
+  },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
     var that=this
-    var page
     var page = that.data.page
     var pages = that.data.pages
     page++
     pages++
-    that.setData({
-      page,
-      pages
-    })
+    // that.setData({
+    //   page,
+    //   pages
+    // })
     // 显示加载图标
     wx.showLoading({
       title: '玩命加载中',
@@ -851,7 +849,7 @@ listenerButtonPreviewImages:function(e){
         data:{
           type:1,
           uid,
-          page:that.data.page,
+          page:page,
           limit:5,
         }
         }).then(res=>{
@@ -878,7 +876,7 @@ listenerButtonPreviewImages:function(e){
         data:{
           type:2,
           uid,
-          page:that.data.page,
+          page:pages,
           limit:5,
         }
         }).then(res=>{

@@ -117,7 +117,7 @@
     <!-- 6 -->
     <view class="bgf adv">
     <view class="ad ml">
-      <image src="../../images/carousel/04.jpg"></image>
+      <image src="{{ads}}"></image>
     </view>
     <!-- 6 -->
     </view>

@@ -516,9 +516,9 @@ this.setData({
          })
        }
        console.log("调用找人成功",res)
-       if(res.data.msg=='积分不足！'){
-         console.log('积分是否',res.mes)
+       if(res.data.code==101){
          that.setData({
+           model:res.data.msg,
            pm:false,
            sq:true,
          })
@@ -565,38 +565,26 @@ if(that.data.issu==true){
   },
   hp(){
     this.setData({
-      pm:true,sq:false
+      pm:true,
+      sq:false
     })
-    wx.navigateTo({
-      url: '/pages/self/goup/goup',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
-  },
-  /* 隐藏成功弹窗 */
-  suhide(flag = true) {
-    this.setData({
-      "sup": flag,
-      sq:false,
-    });
-  },
-  
-  con:function(){
-    wx.navigateBack({
-      delta: 1
-    });
-  },
-  /* 隐藏失败弹窗 */
-  hidePopup(flag = true) {
-    this.setData({
-      "popup": flag,sq:false,
-    });
-  },
-  next: function () {
-
+    if(this.data.model=='你的信誉分不足'){
+      wx.navigateTo({
+        url: '/pages/self/goup/goup2',
+        success: (result)=>{  
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    }else{
+      wx.navigateTo({
+        url: '/pages/self/goup/goup',
+        success: (result)=>{  
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    }
   },
   // ====================================================================
   /**

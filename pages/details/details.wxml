@@ -85,7 +85,7 @@
 <!-- 广告图 -->
 <view class="bgf mtt ptt">
 <view class="ml mtt pbb">
-<image class="ad" src="../images/carousel/02.jpg"></image>
+<image class="ad" src="{{ads}}"></image>
 </view>
 </view>
 <!-- ======================================================================================= -->

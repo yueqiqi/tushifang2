@@ -5,7 +5,7 @@
     <view class='title'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
     <!-- 文字 -->
     <view class='content'>
-      <view class="t1">积分不足请充值！</view>
+      <view class="t1">{{model}}请充值！</view>
     </view>
     <view class='msg' bindtap='hp'>确定</view>
  <view style="margin-top:80rpx;display: flex;justify-content: center;">

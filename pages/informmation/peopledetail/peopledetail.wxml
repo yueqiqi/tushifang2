@@ -85,7 +85,7 @@
 <!-- 广告图 -->
 <view class="bgf bottom">
   <view class="ad">
-    <image src="../../images/carousel/03.jpg"></image>
+    <image src="{{ads}}"></image>
   </view>
 </view>
 <!-- 分享 -->

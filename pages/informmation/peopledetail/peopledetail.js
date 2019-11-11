@@ -291,6 +291,27 @@ card:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var that=this
+    /**
+     * 获取的信息详情的广告图
+     */
+    request({
+      url:'http://tsf.suipk.cn/home/info/do_get_advert',
+        data:{
+          type:2
+        }
+        }).then(res=>{
+          console.log('调用找人才广告图成功',res.data.data)
+        console.log('调用招人才广告图成功',res.data.data.img_url)
+        that.setData({
+          ads:res.data.data.img_url
+        })
+        console.log('广告图的信息',that.data.ads)
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+
     console.log('招人才跳转',options.info_id)
     this.setData({
       info_id:options.info_id
@@ -315,6 +336,7 @@ card:function(){
   },
 call:function(){
   var that=this
+
   wx.makePhoneCall({
     phoneNumber: that.data.list.tel,
     success: (result)=>{
