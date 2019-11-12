@@ -5,6 +5,22 @@ import request from '../../login.js'
 import like from '../../like.js'
 Page({
   // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+/**
+ * 渣场信息的分类
+ */
+bindPickerChange2:function(){},
+bindDateChange2:function(){},
+/**
+ * 工地信息分类
+ */
+bindPickerChange3:function(){},
+bindDateChange3:function(){},
+/**
+ * 买卖信息分类
+ */
+bindPickerChange4:function(){},
+bindDateChange4:function(){},
 /**
  * 渣场浏览图片
  */
@@ -290,29 +306,24 @@ listenerButtonPreviewImaged:function(e){
     // ++++++++++
       // ???
     // 找工作
-    var one_class_id=that.data.activetab
+    var one_class_id=that.data.one_id
     var page=1
-    var limit=8
-    var uid=1
-    if(that.data.class=="请选择分类"){
-      var type_work_id=0
-    }else if(that.data.class!=''){
-      var type_work_id=that.data.class
-    }
+    var limit=99
+    var uid=wx.getStorageSync('uid');
     if(that.data.dates=="请选择时间"){
-      var day=0
+      var day=''
     }else if(that.data.dates!=''){
       var day=that.data.dates
     }
     var two_class_id=that.data.two_class_id
-    wx.request({
-      url: 'http://tsf.suipk.cn/home/info/do_info_list',
+    if(that.data.two_class_id==2){
+      wx.request({
+        url: 'http://tsf.suipk.cn/home/info/do_info_list',
       data: {
         one_class_id,
         page,
         limit,
         uid,
-        type_work_id,
         two_class_id,
         day
       },
@@ -321,68 +332,117 @@ listenerButtonPreviewImaged:function(e){
       'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-      console.log('时间调用信息列表成功', res.data.data)
-      }, fail: function () {
+        that.setData({
+          userlists:res.data.data
+        })
+    }, fail: function () {
       console.log('调用失败')
       }
     })
     // ++++++++++
+  }else if(that.data.two_class_id==1){
+    wx.request({
+      url: 'http://tsf.suipk.cn/home/info/do_info_list',
+    data: {
+      one_class_id,
+      page,
+      limit,
+      uid,
+      two_class_id,
+      day
+    },
+    method: 'POST',
+    header: {
+    'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      that.setData({
+        findpeople:res.data.data
+      })
+  }, fail: function () {
+    console.log('调用失败')
+    }
+  })
+  }
   },
+  
+
+
   // 分类组件
   bindPickerChange: function (e) {
     var that=this
     var e = e.detail.value
-    console.log(e)
-    console.log(this.data.objectArray[e])
     this.setData({
       index: e,
       class: that.data.objectArray[e].title
     })
-    console.log("保存的分类",this.data.class)
       // ???
     // 找工作
-    var one_class_id=that.data.activetab
+    var one_class_id=that.data.one_id
     var page=1
-    var limit=8
-    var uid=1
+    var limit=99
+    var uid=wx.getStorageSync('uid');
     if(that.data.class=="请选择分类"){
-      var type_work_id=0
+      var type_work_id=''
     }else if(that.data.class!=''){
-      var type_work_id=that.data.class
-    }
-    if(that.data.dates=="请选择时间"){
-      var day=0
-    }else if(that.data.dates!=''){
-      var day=that.data.dates
+      var type_work_id=that.data.objectArray[e].id
     }
     var two_class_id=that.data.two_class_id
     /**
      * 分类选项
      */
-    wx.request({
-      url: 'http://tsf.suipk.cn/home/info/do_info_list',
-      data: {
+    if(that.data.two_class_id==2){
+
+      wx.request({
+        url: 'http://tsf.suipk.cn/home/info/do_info_list',
+        data: {
         one_class_id,
         page,
         limit,
         uid,
         type_work_id,
         two_class_id,
-        day
+        // day
       },
       method: 'POST',
       header: {
       'content-type': 'application/x-www-form-urlencoded'
-      },
+    },
       success: function (res) {
-      console.log('工种调用信息列表成功', res)
+        console.log('工种调用信息列表成功', res)
       that.setData({
         userlists:res.data.data
       })
       }, fail: function () {
       console.log('调用失败')
-      }
-    })
+    }
+  })
+}else if(that.data.two_class_id==1){
+  wx.request({
+    url: 'http://tsf.suipk.cn/home/info/do_info_list',
+    data: {
+    one_class_id,
+    page,
+    limit,
+    uid,
+    type_work_id,
+    two_class_id,
+    // day
+  },
+  method: 'POST',
+  header: {
+  'content-type': 'application/x-www-form-urlencoded'
+},
+  success: function (res) {
+    console.log('工种调用信息列表成功', res)
+  that.setData({
+    findpeople:res.data.data
+  })
+  }, fail: function () {
+  console.log('调用失败')
+}
+})
+}
 
   },
   // 分享
@@ -464,12 +524,12 @@ listenerButtonPreviewImaged:function(e){
     if(index == 1){
       this.setData({
         tab1:true,
-        tab2: false
+        tab2: false,two_class_id:2,
       })
     }else if(index == 2){
       this.setData({
         tab1: false,
-        tab2:true
+        tab2:true,two_class_id:1,
       })
     }
 },
@@ -485,7 +545,7 @@ listenerButtonPreviewImaged:function(e){
     tab1:true,
     current: '1',
     // 二级分类
-    two_class_id:1,
+    two_class_id:2,
     // 顶部导航栏
     activetab:1,
     // 底部导航条
@@ -766,7 +826,11 @@ listenerButtonPreviewImaged:function(e){
       success: function (res) {
       console.log('调用信息中心导航条成功', res.data.data)
         that.setData({
-          pid:res.data.data[0].id
+          pid:res.data.data[0].id,
+          one_id:res.data.data[0].id,
+          two_id:res.data.data[1].id,
+          three_id:res.data.data[2].id,
+          four_id:res.data.data[3].id
         })
 
       // ++++++++++++招聘列表++++++++++++++++++++++
@@ -833,7 +897,7 @@ listenerButtonPreviewImaged:function(e){
     
 
 
-    // 二级分类
+    //招聘信息 ————二级分类工种详情
     wx.request({
       url: 'http://tsf.suipk.cn/home/Personal/do_id_type',
       data: {

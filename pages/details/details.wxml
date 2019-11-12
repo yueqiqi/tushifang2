@@ -21,8 +21,8 @@
   <view class="title-text">发布时间</view>
   <view class="time d-text">{{time}}</view>
 </view>
-  <view class="uline"  wx-if="{{rec==undefined}}"></view>
-<view class="d-mt ml" wx-if="{{rec==undefined}}">
+  <view class="uline"  wx-if="{{rec!=''}}"></view>
+<view class="d-mt ml" wx-if="{{rec!=''}}">
   <view class="title-text">项目介绍</view>
   <view class="content">{{rec}}</view>
 </view>

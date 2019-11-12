@@ -782,10 +782,10 @@ wx.reLaunch({
         })
       }
     })
+    
+    
+    
     var uid=wx.getStorageSync('uid');
-
-
-
     // 优质推荐
     wx.request({
       url:"http://tsf.suipk.cn/home/index/do_Recommend",
@@ -812,7 +812,8 @@ wx.reLaunch({
     /**
      * 未读消息
      */
-    if(uid!=undefined){
+    console.log('uid 是都等',uid)
+    if(uid!=''){
       wx.request({
         url:"http://tsf.suipk.cn/home/index/do_is_news",
         data:{

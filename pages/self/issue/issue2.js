@@ -122,7 +122,7 @@ chp:function(){
     if(that.data.tempFilePathss==''){
       var video=''
     }else{
-      if(that.data.have==0){
+      if(that.data.have1==0){
         var video=that.data.video_url
       }else{
         var video=that.data.tempFilePathss.slice(19)
@@ -194,7 +194,7 @@ chp:function(){
   uploads: function () {
     let that = this;
     that.setData({
-      have:0
+      have1:0
     })
     wx.chooseVideo({
       sourceType: ['album', 'camera'],
@@ -348,7 +348,7 @@ chp:function(){
           });
         // }//if
         }
-
+        
       }
     })
   },
@@ -425,7 +425,8 @@ chp:function(){
     // 图片路径
     tempFilePaths: [],
     tempFilePathss: "",
-    have:0
+    have:0,
+    have1:0
   },
 
   /**
@@ -465,7 +466,7 @@ chp:function(){
       }
       if(res.data.data.video!=''){
         that.setData({
-          have:1
+          have1:1
         })
       }
       }).catch(err=>{

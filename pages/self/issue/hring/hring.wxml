@@ -9,7 +9,7 @@
  <view class="section d-spb">
     <view class="section-title">选择工种</view>
     <view class="right d-spb">
-      <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位" value="{{h==false?selectData[index].title:hr}}"  data-time="{{lastTapTime}}"  />
+      <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位" value="{{h==false?selectData[index].title:hr}}"   />
       <view catchtap='selectTap'>
         <image class="section-img" hidden="{{hidden}}" src="/pages/images/position/shape45.png"></image>
       </view>
@@ -59,7 +59,7 @@
           <!--  -->
           <import src="../../../../model/model" />
           <view class="infoText">{{province}} {{city}} {{county}}</view>
-          <view class="infoText" wx-if="{{h3==true}}">{{hr3}}</view>
+          <view class="infoText" style="margin-left:-500rpx" wx-if="{{h3==true}}">{{hr3}}</view>
           <template is="areaData" data="{{...item}}" />
           <!--  -->
           <view>

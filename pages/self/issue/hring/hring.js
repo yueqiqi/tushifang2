@@ -33,6 +33,10 @@ Page({
   },
    //点击选择城市按钮显示picker-view
    translate: function (e) {
+     var that=this
+     that.setData({
+       have2:0
+     })
     model.animationEvents(this, 0, true, 400);
   },
   //隐藏picker-view
@@ -412,7 +416,11 @@ this.setData({
     // 薪资范围
     var salary_range=m.i2
     // 工作地点
-    var work=that.data.province+that.data.city+that.data.county
+    if(that.data.have2==0){
+      var work=that.data.province+that.data.city+that.data.county
+    }else if(that.data.have2==1){
+      var work=that.data.hr3
+    }
     
     // 工作年限
     var working_years=m.i4
@@ -438,11 +446,11 @@ this.setData({
 
 
     // 公司图片
-    var p=that.data.img_url_arr
     if(this.data.tempFilePaths.length ==0){
       var img_url_arr=''
     }else{
       if(that.data.have==0){
+        var p=that.data.img_url_arr
         var z=p.join('|')
         var img_url_arr=z
       }else{
@@ -462,7 +470,7 @@ this.setData({
     if(this.data.tempFilePathss == ""){
       var video=''
     }else{
-      if(that.data.have==0){
+      if(that.data.have1==0){
         var video=that.data.video_url
       }else{
         var video=that.data.tempFilePathss.slice(19)
@@ -534,7 +542,7 @@ this.setData({
   uploads: function () {
     let that = this;
     that.setData({
-      have:0
+      have1:0
     })
     wx.chooseVideo({
         sourceType: ['album', 'camera'],
@@ -627,10 +635,9 @@ this.setData({
        * 上传图片方法
        */
   upload: function () {
-    
     let that = this;
-    that.data({
-      have:0
+    that.setData({
+      have:0,
     })
     wx.chooseImage({
       count: 3, // 默认9
@@ -644,23 +651,20 @@ this.setData({
           duration: 1000
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        let tempFilePaths = res.tempFilePaths;
-        let imgs = that.data.tempFilePaths.concat(tempFilePaths)
-        if (imgs.length>8){
-          that.setData({
-              showUpload:false
-          })
-      }
+        let tempFilePaths1 = res.tempFilePaths;
+        let imgs = that.data.tempFilePaths.concat(tempFilePaths1);
         that.setData({
           tempFilePaths: imgs
         })
         /**
          * 上传完成后把文件上传到服务器
          */
-        var count = 0;
-        var a =[]
-        for (var i = 0, h = imgs.length; i < h; i++) {
-          //上传文件
+        // if(){
+
+          var count = 0;
+          var a =[]
+          for (var i = 0, h = imgs.length; i < h; i++) {
+            //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
             filePath: imgs[i],
@@ -680,8 +684,9 @@ this.setData({
               that.setData({
                 img_url_arr:a
               })
+              console.log('最后a',that.data.a)
               //如果是最后一张,则隐藏等待中  
-              if (count == imgs.length) {
+              if (count == tempFilePaths.length) {
                 wx.hideToast();
               }
             },
@@ -695,8 +700,9 @@ this.setData({
               })
             }
           });
-          console.log("最后的",a)
+        // }//if
         }
+        
       }
     })
   },
@@ -755,6 +761,8 @@ this.setData({
    */
   data: {
     have:0,
+    have1:0,
+    have2:0,
     /**
      * 是否显示上传按钮
      */
@@ -835,7 +843,7 @@ this.setData({
     }
         }).then(res=>{
         console.log('调用修改信息详情成功',res)
-        this.setData({
+        that.setData({
           info_id:options.pid,
           hr:res.data.data.type_work,
           hr2:res.data.data.salary_range,
@@ -866,7 +874,12 @@ this.setData({
         }
         if(res.data.data.video!=''){
           that.setData({
-            have:1
+            have1:1
+          })
+        }
+        if(res.data.data.hr3!=''){
+          that.setData({
+            have2:1
           })
         }
         }).catch(err=>{
@@ -882,4 +895,5 @@ this.setData({
     //请求数据
     model.updateAreaData(that, 0, e);
   },
+
 })

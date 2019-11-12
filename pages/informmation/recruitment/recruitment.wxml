@@ -23,12 +23,12 @@
 <view class="sectionClass" >  
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector" range-key='{{"title"}}'>  
     <view class="picker">  
-      <!-- 分类：{{objectArray[index]}}   -->
       <view class="select-text">{{class}}</view>
       <image src="../../images/select.png"></image>
     </view>  
   </picker>  
 </view>  
+
 <!-- 时间 -->
 <view class="sectiontime">  
   <picker mode="date" value="{{date}}" bindchange="bindDateChange">  
@@ -171,20 +171,20 @@
     <view class="select ml d-flex" style="margin-top:30rpx;">
 <!-- 分类 -->
 <view class="sectionClass" >  
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+  <picker bindchange="bindPickerChange2" value="{{index}}" range="{{objectArray2}}" mode = "selector">  
     <view class="picker">  
       <!-- 分类：{{objectArray[index]}}   -->
-      <view class="select-text">请选择分类</view>
+      <view class="select-text">{{class2}}</view>
       <image src="../../images/select.png"></image>
     </view>  
   </picker>  
 </view>  
 <!-- 时间 -->
 <view class="sectiontime">  
-  <picker mode="date" value="{{date}}" bindchange="bindDateChange">  
+  <picker mode="date" value="{{date2}}" bindchange="bindDateChange2">  
     <view class="picker">  
       <!-- 日期: {{dates}}   -->
-      <view class="select-text">请选择时间</view>
+      <view class="select-text">{{dates2}}</view>
       <image src="../../images/select.png"></image>
     </view>  
   </picker>  
