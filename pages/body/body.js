@@ -296,6 +296,23 @@ listenerButtonPreviewImages:function(e){
     })
   },
   
+
+
+// 第一排导航条跳转
+navto:function(e){
+  var that=this
+  var index=e.currentTarget.dataset.index
+wx.reLaunch({
+  url: that.data.icon[index].link+'?active='+that.data.icon[index].active,
+  success: (result)=>{
+    
+  },
+  fail: ()=>{},
+  complete: ()=>{}
+});
+},
+
+
   data: {
     page:1,
     pages:1,
@@ -383,29 +400,34 @@ listenerButtonPreviewImages:function(e){
       // 图标跳转
       icon:[
         {
-          link:"/pages/Ac/index/inex",
+          link:"/pages/informmation/recruitment/recruitment",
           img_url:"/pages/images/icon/icon1.png",
-          title:"工地找车"
+          title:"工地找车",
+          active:2
         },
         {
-          link: "/pages/Ac/index/inex",
+          link: "/pages/informmation/recruitment/recruitment",
           img_url: "/pages/images/icon/icon2.png",
-          title:"车找工地"
+          title:"车找工地",
+          active:2
         },
         {
-          link: "/pages/Ac/index/inex",
+          link: "/pages/informmation/recruitment/recruitment",
           img_url: "/pages/images/icon/icon3.png",
-          title:"工地除渣"
+          title:"工地除渣",
+          active:1
         },
         {
-          link: "/pages/Ac/index/inex",
+          link: "/pages/informmation/recruitment/recruitment",
           img_url: "/pages/images/icon/icon4.png",
-          title:"求职招聘"
+          title:"求职招聘",
+          active:0
         },
         {
-          link: "/pages/Ac/index/inex",
+          link: "/pages/informmation/recruitment/recruitment",
           img_url: "/pages/images/icon/icon5.png",
-          title:"二手设备"
+          title:"二手设备",
+          active:3
         },
       ],
       icon02:[
@@ -420,7 +442,7 @@ listenerButtonPreviewImages:function(e){
           title:"发布信息"
         },
         {
-          link: "/pages/site/site",
+          link: "/pages/informmation/recruitment/recruitment",
           img_url: "/pages/images/icon/icon8.png",
           title:"渣场信息"
         },
@@ -543,9 +565,11 @@ listenerButtonPreviewImages:function(e){
       /**
        * 渣场信息跳转
        */
-      // if(index==0){
-
-      // }
+      if(index==2){
+        wx.reLaunch({
+          url: that.data.icon02[2].link+'?active=1',
+        });
+      }
       wx.navigateTo({
         url:that.data.icon02[index].link
       })
@@ -566,8 +590,6 @@ listenerButtonPreviewImages:function(e){
                 
               }
             },
-            fail: ()=>{},
-            complete: ()=>{}
           });
         }
       });
@@ -865,14 +887,12 @@ listenerButtonPreviewImages:function(e){
         //console.log("最新发布调用成功")
         console.log("最新发布调用成功",res)
         that.setData({
-          tabuser:res.data.list
+          tabuser:res.data.list,
+          page:1,
         })
       }
     })
     var uid=wx.getStorageSync('uid');
-
-
-
     // 优质推荐
     wx.request({
       url:"http://tsf.suipk.cn/home/index/do_Recommend",
@@ -890,7 +910,8 @@ listenerButtonPreviewImages:function(e){
         //console.log("优质推荐调用成功")
         console.log("调用优质推荐调用成功",res)
         that.setData({
-          tabuserjian:res.data.list
+          tabuserjian:res.data.list,
+          pages:1
         })
         console.log('优质推荐里面的内容',that.data.tabuserjian)
       }

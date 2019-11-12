@@ -44,12 +44,14 @@
 <!-- 轮播图下方小图标 -->
 <view   class="v1">
 <block wx:for="{{icon}}" wx:key="{{index}}">
-<navigator url="">
-<view style="margin-right:50rpx;">
-<image class="icon-img" src="{{item.img_url}}"></image>
+<view bindtap='navto' data-index="{{index}}">
+  <!-- <navigator url="{{item.link}}"> -->
+    <view style="margin-right:50rpx;">
+      <image class="icon-img" src="{{item.img_url}}"></image>
 <view class="icon-text">{{item.title}}</view>
 </view>
-</navigator>
+<!-- </navigator> -->
+</view>
 </block>
 </view>
 

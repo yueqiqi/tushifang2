@@ -18,21 +18,21 @@
     <view class="section2 d-spb">
       <view class="section-title">发布标题<text style="color:#f00">*</text></view>
       <view class="right">
-        <input value="{{h==false?'':hr}}" name="i1" />
+        <input value="{{title}}" name="i1" />
       </view>
     </view>
     <!-- 联系人 -->
     <view class="section2 d-spb">
       <view class="section-title">联系人<text style="color:#f00">*</text></view>
       <view class="right">
-        <input value="{{h2==false?'':hr2}}" name="i2" />
+        <input value="{{contacts}}" name="i2" />
       </view>
     </view>
     <!-- 联系电话 -->
     <view class="section2 d-spb">
       <view class="section-title">联系电话<text style="color:#f00">*</text></view>
       <view class="right d-spb">
-        <input value="{{h3==false?phone:hr3}}" name="i3" maxlength="11" type="number" />
+        <input value="{{tel}}" name="i3" maxlength="11" type="number" />
         <!-- <view class="ch" bindtap="chp">更换</view>  disabled="{{mz}}" -->
       </view>
     </view>
@@ -77,12 +77,12 @@
       <view class="self">
         <view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">项目介绍</view>
         <view class="texta" hidden="{{sq==true?true:false}}">
-          <textarea  value="{{h4==false?'':hr4}}" placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请您输入更多介绍详情，越详细越好，这样有助于您更快的完成寻找需求哦~" maxlength="200" name="textarea" />
+          <textarea  value="{{text}}" placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请您输入更多介绍详情，越详细越好，这样有助于您更快的完成寻找需求哦~" maxlength="200" name="textarea" />
         </view>
       </view>
       <!--  -->
       <!-- 是否置顶 -->
-      <view>
+      <!-- <view>
         <view class="stick">是否置顶</view>
         <view>
           <van-radio-group value="{{ radio }}" bind:change="onChange" class="d-flex" style="margin-top:40rpx;">
@@ -90,14 +90,16 @@
             <van-radio checked-color="#76D4C6" style="margin-left:100rpx;" name="2">否</van-radio>
           </van-radio-group>
         </view>
-      </view>
+      </view> -->
       <!--  -->
     </view>
 
 
     <view class="mybtn">
-      <button form-type="submit" class="next" bindtap="bindsubmit">确认发布</button>
+      <button form-type="submit" class="next">确认修改</button>
     </view>
+
+
     <!-- ====================== -->
     <!-- 错误提示框 -->
     <view class='shade' hidden='{{popup}}' bindtap='hidePopup'></view>
@@ -117,28 +119,28 @@
     <!-- 成功提示框 -->
     <!-- 成功 -->
     <!-- 成功提示框 -->
-    <view class='sshade' hidden='{{sup}}' bindtap='suhide'></view>
-    <view class='sshade_box spopup' hidden='{{sup}}'>
+    <!-- <view class='sshade' hidden='{{sup}}' bindtap='suhide'></view>
+    <view class='sshade_box spopup' hidden='{{sup}}'> -->
       <!-- 成功图片 -->
-      <view class="br">
+      <!-- <view class="br">
         <view class='stitle'>
           <image style="width:87rpx;height:87rpx;" src="../../images/success.png"></image>
-        </view>
+        </view> -->
         <!-- 文字 -->
-        <view class='scontent'>
+        <!-- <view class='scontent'>
           <view class="st1">提交成功</view>
           <view class="st2">小包正在努力为您审核中</view>
           <view class="st4">请注意消息提醒！</view>
         </view>
         <view class='smsg' bindtap='suhide' catchtap="con">确定</view>
       </view>
-    </view>
+    </view> -->
     <!-- ======================= -->
     <!-- <cover-view class="" style="z-index:999999999"> -->
-    <include src="../stick/stick" />
+    <!-- <include src="/pages/Ac/stick/stick" /> -->
     <!-- </cover-view> -->
   </form>
 </view>
 <!-- <cover-view style="z-index:999999"> -->
-    <include src="../err/err" />
+    <include src="/pages/self/issue/err/err" />
 <!-- </cover-view> -->

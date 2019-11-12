@@ -1,0 +1,107 @@
+<!-- 我要找工作 -->
+<!-- 我是企业 -->
+<view class="bus">
+<!-- 标题 -->
+<view class="mes">请完善求职信息</view>
+<!-- form表单 -->
+<form bindsubmit="formSubmit">
+<!-- 工种类型 -->
+<view class="form">
+ <view class="section d-spb">
+    <view class="section-title">选择工种</view>
+    <view class="right d-spb">
+      <input name="i1"  disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" value="{{myjob==false?selectData[index].title:jobs}}"  data-time="{{lastTapTime}}" placeholder="请选择职位"/>
+      <view  catchtap='selectTap'>
+        <image class="section-img" src="/pages/images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <include src="/pages/Ac/select/select"/>
+<!-- 理想薪资 -->
+ <view class="section2 d-spb">
+    <view class="section-title">理想薪资</view>
+    <view class="right d-spb mon" catchtap='selectTap2'>
+      <input name="i2" disabled='true' placeholder="请选择薪资范围" style="color:#333;font-size:30rpx;" value="{{myjob2==false?selectData2[index2].salary:job2}}"/>
+      <view>
+        <image class="section-img" src="/pages/images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- <include src="/pages/Ac/select/select"/> -->
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow2?(selectData2.length>5?325:selectData2.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData2}}' wx:key='this' data-index='{{index}}' catchtap='optionTap2' >{{item.salary}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
+ <!-- 求职状态 -->
+  <view class="section2 d-spb">
+    <view class="section-title">求职状态</view>
+    <view class="right d-spb mon" catchtap='selectTap3'>
+      <input name="i3" disabled="true" placeholder="请选择求职状态" style="color:#333;font-size:30rpx;" value="{{myjob3==false?selectData3[index3]:selectData3[job3]}}" />
+      <view>
+        <image class="section-img" src="/pages/images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+<!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow3?(selectData3.length>5?325:selectData3.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData3}}' wx:key='this' data-index='{{index}}' catchtap='optionTap3' >{{item}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
+  <!-- 工作年限 -->
+  <view class="section2 d-spb">
+    <view class="section-title">工作年限</view>
+    <view class="right d-spb mon" catchtap='selectTap4'>
+      <input name="i4" style="color:#333;font-size:30rpx;" placeholder="请选择工作年限" disabled="true" value="{{myjob4==false?selectData4[index4].salary:job4}}"  />
+      <view>
+        <image class="section-img" src="/pages/images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow4?(selectData4.length>5?325:selectData4.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData4}}' wx:key='this' data-index='{{index}}' catchtap='optionTap4' >{{item.salary}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
+ <!-- 联系人 -->
+ <view class="section2 d-spb">
+    <view class="section-title">联系人</view>
+    <view class="right d-spb">
+      <input name="i5" value="{{contacts}}" maxlength="11"/>
+    </view>
+ </view>
+ <!-- 联系电话 -->
+  <view class="section2 d-spb">
+    <view class="section-title">联系电话</view>
+    <view class="right d-spb">
+      <input value="{{tel}}" name="i6" maxlength="11" type="number"/>
+      <!-- <view class="ch" bindtap="chp">更换</view> -->
+    </view>
+ </view>
+<!-- 个人简介 -->
+<view class="self">
+<view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">个人简介</view>
+<view class="texta">
+<textarea wx:if="{{ popup&&sup }}" value="{{text}}" placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请填写个人简介，200字以内" maxlength="200" name="textarea"/>
+</view>
+</view>
+</view>
+<button form-type="submit" class="next">确认修改</button>
+<include src="/pages/self/issue/err/err"/>
+</form>
+</view>

@@ -230,6 +230,8 @@ request({
       url: '/pages/details/details?id='+id+'&from=首页'+'&form=3'+'&type=1',
     })
   },
+
+
   // 修改跳转
   up:function(e){
     var id = e.currentTarget.dataset.id
@@ -238,19 +240,21 @@ request({
     console.log("修改的",id,form)
     if(form==1){
       wx.navigateTo({
-        url: '/pages/Ac/hiring/hiring?pid='+id+"&form="+form,
+        url: '/pages/self/issue/hring/hring?pid='+id+"&form="+form,
       })
     }else if(form==2){
       wx.navigateTo({
-        url: '/pages/Ac/jobs/jobs?pid='+id+"&form="+form,
+        url: '/pages/self/issue/job/job?pid='+id+"&form="+form,
       })
     }else {
       wx.navigateTo({
-        url: '/pages/Ac/issue/issue?pid='+id+"&form="+form,
+        url: '/pages/self/issue/issue2?pid='+id+"&form="+form,
       })
     }
-    
   },
+
+
+
 //  修改type
 change:function(e){
   var that=this

@@ -1,6 +1,9 @@
 {
   "pages": [
+    "pages/self/issue/hring/hring",
     "pages/body/body",
+    "pages/self/issue/job/job",
+    "pages/self/issue/issue2",
     "pages/Aaa/choose/choose",
     "pages/Aaa/splice/splicearr",
     "pages/Aaa/stick/stick",

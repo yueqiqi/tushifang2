@@ -1,0 +1,169 @@
+<!-- 我要找人 -->
+<view class="bus">
+<!-- 标题 -->
+<view class="mes">请完善招聘信息</view>
+<!-- form表单 -->
+<form bindsubmit="formSubmit">
+<!-- 工种类型 -->
+<view class="form">
+ <view class="section d-spb">
+    <view class="section-title">选择工种</view>
+    <view class="right d-spb">
+      <input name="i1" disabled='{{isDisabled}}' placeholder-style="font-size:26rpx;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择职位" value="{{h==false?selectData[index].title:hr}}"  data-time="{{lastTapTime}}"  />
+      <view catchtap='selectTap'>
+        <image class="section-img" hidden="{{hidden}}" src="/pages/images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box gz'>
+    <view class='option_box mm' style='height:{{selectShow?(selectData.length>5?325:selectData.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' data-id='{{item.id}}' catchtap='optionTap' >{{item.title}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
+<!-- 薪资范围 -->
+ <view class="section2 d-spb">
+    <view class="section-title">薪资范围</view>
+    <view class="right d-spb mon" catchtap='selectTap2'>
+      <input name="i2" style="color:#333;font-size:30rpx;" disabled='true' placeholder="请选择薪资范围" value="{{h2==false?selectData2[indexs].salary:hr2}}"/>
+      <view>
+        <image class="section-img" src="/pages/images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box'  style='height:{{selectShow2?(selectData2.length>5?325:selectData2.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData2}}' wx:key='this' data-index='{{index}}' catchtap='optionTap2' >{{item.salary}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
+ <!-- 工作地点 -->
+  <view class="section2 d-spb">
+    <view class="section-title">工作地点</view>
+    <!-- <view class="right d-spb">
+      <input name="i3" placeholder-class="holder{{err}}" placeholder="" />
+      <view>
+        <image class="section-img" src="../../images/position/shape45.png"></image>
+      </view>
+    </view> -->
+    <view class="right d-spb" bindtap="translate">
+          <!-- <input class="i4" name="i4" disabled="true" value="{{location}}"/> -->
+          <!--  -->
+          <import src="../../../../model/model" />
+          <view class="infoText">{{province}} {{city}} {{county}}</view>
+          <view class="infoText" wx-if="{{h3==true}}">{{hr3}}</view>
+          <template is="areaData" data="{{...item}}" />
+          <!--  -->
+          <view>
+            <image class="section-img" style="width:17rpx;height:29rpx;" src="/pages/images/right.png"></image>
+          </view>
+    </view>
+ </view>
+  <!-- 工作年限 -->
+  <view class="section2 d-spb">
+    <view class="section-title">工作年限</view>
+    <view class="right d-spb mon" catchtap='selectTap3'>
+      <input style="color:#333;font-size:30rpx;" name="i4" disabled="true" placeholder="请选择工作年限" value="{{h4==false?selectData3[index3].salary:hr4}}" />
+      <view>
+        <image class="section-img" src="/pages/images/position/shape45.png"></image>
+      </view>
+    </view>
+ </view>
+ <!-- ================================ -->
+      <!-- 下拉选项框 -->
+      <!-- 列表项布局 -->
+      <view class='select_box'>
+    <view class='option_box' style='height:{{selectShow3?(selectData3.length>5?325:selectData3.length*60):0}}rpx;'>
+    <!-- 选择的列表项 -->
+        <text class='option' wx:for='{{selectData3}}' wx:key='this' data-index='{{index}}' catchtap='optionTap3' >{{item.salary}}</text>
+    </view>
+    </view>
+      <!-- ================================ -->
+ <!-- 联系人 -->
+ <view class="section2 d-spb">
+    <view class="section-title">联系人</view>
+    <view class="right d-spb">
+      <input name="i5" value="{{h5==false?'':hr5}}" maxlength="11"/>
+    </view>
+ </view>
+ <!-- 联系电话 -->
+  <view class="section2 d-spb">
+    <view class="section-title">联系电话</view>
+    <view class="right d-spb">
+      <input name="i6" value="{{h6==false?phone:hr6}}" maxlength="11" type="number"/>
+      <!-- <view class="ch" bindtap="chp">更换</view> disabled="{{mz}}" -->
+    </view>
+ </view>
+ <!-- 公司名称 -->
+ <view class="section2 d-spb">
+    <view class="section-title">公司名称</view>
+    <view class="right d-spb">
+      <input value="{{h7==false?'':hr7}}" name="i7" placeholder="选填"/>
+    </view>
+ </view>
+ <!-- 详细地址 -->
+ <view class="section2 d-spb">
+    <view class="section-title">详细地址</view>
+    <view class="right d-spb">
+      <input value="{{h8==false?'':hr8}}" name="i8" placeholder="选填" />
+    </view>
+ </view>
+<!-- 公司图片 -->
+<!-- 公司图片 -->
+<view class="img">
+  <view>
+    <view class="license">公司图片(最多九张)</view>
+  <view class="d-flex">
+  <!-- 上传图片预览 -->
+  <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
+    <view style="position:relative;top:-3rpx;left:-16rpx;"><image data-index="{{index}}" bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+  </view>
+    <view class="onload" bindtap="upload" wx:if="{{showUpload}}">
+      <image src="/pages/images/onload.png"></image>
+      <view>上传图片</view>
+    </view>
+  </view>
+  </view>
+  </view>
+  <!--  -->
+  <!-- 公司视频 -->
+<view class="img">
+<view class="license">公司视频</view>
+  <view>
+  <view class="d-flex">
+  <!-- 上传图片预览 -->
+  <view class="imgs"hidden="{{tempFilePathss==''}}" >
+    <video style="width:400rpx;height:200rpx;margin-top:20rpx;margin-right:10rpx;" src='{{tempFilePathss}}' bindlongpress="deleteVideo"  bindfullscreenchange="bindVideoScreenChange" data-index="{{index}}"></video>
+  </view>
+    <view class="onload" bindtap="uploads">
+      <image src="/pages/images/onload.png"></image>
+      <view>上传视频</view>
+    </view>
+  </view>
+  </view>
+  </view>
+<!--  -->
+<!-- 职位详情 -->
+<view class="self">
+<view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">职位详情</view>
+<view class="texta">
+<textarea hidden="{{sq==true?true:false}}" placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" value="{{h9==false?'':hr9}}" placeholder="请填写职位详情，200字以内" maxlength="200" name="textarea"/>
+</view>
+</view>
+</view>
+
+<button form-type="submit" class="next">确认修改</button>
+
+</form>
+</view>
+ <include src="/pages/self/issue/err/err" />
+

@@ -1,6 +1,6 @@
 <!-- 信息中心招聘信息 -->
 <view class="bgf">
-<van-tabs stick bindclick='vm'> 
+<van-tabs stick bindclick='vm' active='{{active}}'> 
 <!-- 招聘信息 -->
   <van-tab title-style-="width:165rpx;height:70rpx;background:linear-gradient(45deg,rgba(0,152,239,1) 0%,rgba(119,213,244,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:400;line-height:70rpx;z-index:9"  bindtap="activetab1" name="{{one_class_id[0].id}}" title="{{one_class_id[0].title}}">
   <!-- 轮播图 -->

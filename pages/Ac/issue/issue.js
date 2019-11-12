@@ -314,7 +314,10 @@ request({
         }
       })
     }
-      // +++++++++++个人中心重新发布++++++++++++++++++++++++++++++++
+      
+    
+    
+    // +++++++++++个人中心重新发布++++++++++++++++++++++++++++++++
       if(that.data.issu==true){
         request({
           url:'http://tsf.suipk.cn/home/Personal/do_modify_info',

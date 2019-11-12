@@ -159,7 +159,34 @@ Page({
    
   },
   
-  
+  /**
+   * 未登录不能点击按钮
+   */
+  nav:function(e){
+    var that=this
+    console.log(e)
+    var index=e.currentTarget.dataset.index
+    var uid=wx.getStorageSync('uid');
+    if(uid!=''){
+      wx.navigateTo({
+        url: that.data.self[index].link,
+      });
+    }else if(uid==''){
+      wx.showModal({
+        title: '登录提示',
+        content: '请登录',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (result) => {
+          if(result.confirm){
+          }
+        },
+      });
+    }
+  },
   /**
    * 页面的初始数据
    */

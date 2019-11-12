@@ -3,7 +3,7 @@
 <view>
   <van-tabs sticky line-width="123" dot="true">
     <!-- 诚信红榜 -->
-    <van-tab title="诚信红榜">
+    <van-tab title="诚信榜">
       <view class="red">
         <block wx:for="{{integrity}}" wx:key="{{index}}">
           <view class="d-flex user">
@@ -22,7 +22,7 @@
       </view>
     </van-tab>
     <!-- 诚信灰榜 -->
-    <van-tab title="诚信灰榜">
+    <van-tab title="黑名单">
       <view class="red">
         <block wx:for="{{integritys}}" wx:key="{{index}}">
           <view class="d-flex user">

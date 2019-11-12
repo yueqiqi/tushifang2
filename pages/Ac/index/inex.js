@@ -51,23 +51,19 @@ Page({
         link: "/pages/Ac/self/self",
         name:"我是个人",
       },
-    ]
+    ],
+    gg:1
   },
 /**
  * 跳转
  */
 gg:function(e){
   var that=this
-  console.log(e)
+
   if(that.data.gg==1){
     var index=e.currentTarget.dataset.index
     wx.navigateTo({
       url: that.data.title[index].link,
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
     });
   }
 },
@@ -130,8 +126,6 @@ gg:function(e){
                 });
               }
             },
-            fail: ()=>{},
-            complete: ()=>{}
           });
         }
       }).catch(err=>{

@@ -1,0 +1,15 @@
+<!-- 错误提示框 -->
+<view class='shade' hidden='{{pm}}'></view>
+<view class='shade_box popup' hidden='{{pm}}'>
+<!-- 成功图片 -->
+    <view class='title'><image style="width:87rpx;height:87rpx;" src="/pages/images/err.png"></image></view>
+    <!-- 文字 -->
+    <view class='content'>
+      <view class="t1">{{model}}</view>
+    </view>
+    <view class='msg' bindtap='hp'>确定</view>
+ <view style="margin-top:80rpx;display: flex;justify-content: center;">
+    <image bindtap="op1" style="width:66rpx;height:66rpx;" src="/pages/images/close.png"></image>
+  </view>
+</view>
+

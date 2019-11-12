@@ -67,11 +67,13 @@
 <view class="bgf mtt d-flex ico">
   <block wx:for="{{self}}" wx:key="{{index}}">
     <view class="icos">
-      <navigator url="{{item.link}}">
-        <view>
-          <image class="ico-img" src="{{item.img}}"></image>
+      <view bindtap="nav" data-index="{{index}}">
+        <!-- <navigator url="{{item.link}}"> -->
+          <view>
+            <image class="ico-img" src="{{item.img}}"></image>
         </view>
-      </navigator>
+      <!-- </navigator> -->
+      </view>
       <view class="til">{{item.til}}</view>
     </view>
   </block>

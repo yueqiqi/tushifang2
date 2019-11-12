@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "integral":"/component/integarl-report/integral-report"
+  }
+}
