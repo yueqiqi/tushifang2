@@ -14,7 +14,7 @@
     <view  bindtap="message">
       <view class="d-flex" >
         <image class="message" style="{{icons==0?'margin-right:30rpx;':''}}" src="../images/position/shape48.png"></image>
-    <text  class="iconsm" wx-if="{{icons!=0}}">{{icons}}</text>
+        <text  class="iconsm" wx-if="{{icons!=0}}">{{icons}}</text>
       </view>
     </view>
   </view>

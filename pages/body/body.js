@@ -790,22 +790,24 @@ listenerButtonPreviewImages:function(e){
     /**
      * 未读消息
      */
-    wx.request({
-      url:"http://tsf.suipk.cn/home/index/do_is_news",
-      data:{
-        uid,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        console.log("未读消息",res)
-        that.setData({
-          icons:res.data.data
-        })
-      }
-    })
+    if(uid!=undefined){
+      wx.request({
+        url:"http://tsf.suipk.cn/home/index/do_is_news",
+        data:{
+          uid,
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:function(res){
+          console.log("未读消息",res)
+          that.setData({
+            icons:res.data.data
+          })
+        }
+      })
+    }
     // *******************************************************************************************************************//
     // var that=this
     // 调用首页导航条
@@ -846,7 +848,57 @@ listenerButtonPreviewImages:function(e){
     setTimeout(function () {    
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
-    that.onLoad()
+    // that.onLoad()
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_Recommend",
+      data:{
+        type:1,
+        uid,
+        page:1,
+        limit:5,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        //console.log("最新发布调用成功")
+        console.log("最新发布调用成功",res)
+        that.setData({
+          tabuser:res.data.list
+        })
+      }
+    })
+    var uid=wx.getStorageSync('uid');
+
+
+
+    // 优质推荐
+    wx.request({
+      url:"http://tsf.suipk.cn/home/index/do_Recommend",
+      data:{
+        type:2,
+        uid,
+        page:1,
+        limit:5,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:function(res){
+        //console.log("优质推荐调用成功")
+        console.log("调用优质推荐调用成功",res)
+        that.setData({
+          tabuserjian:res.data.list
+        })
+        console.log('优质推荐里面的内容',that.data.tabuserjian)
+      }
+
+    })
+
+
+
     }, 1500)
   },
 

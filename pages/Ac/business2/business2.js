@@ -48,7 +48,7 @@ Page({
     var p=that.data.img_url_license
     // console.log(p)
     if(that.data.tempFilePaths==''){
-      console.log(that.data.img_url_license)
+      var img_url_license=''
     }else{
       var z=p.join('|')
       var img_url_license=z
@@ -58,7 +58,7 @@ Page({
     // var img_url_license=that.data.img_url_license
     var q=that.data.img_url_certificate
     if(that.data.tempFilePathss==''){
-      console.log(that.data.img_url_license)
+      var img_url_certificate=''
     }else{
       var w=q.join('|')
       var img_url_certificate=w

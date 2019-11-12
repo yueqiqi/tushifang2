@@ -89,17 +89,17 @@
     <!-- 3 -->
     </view>
     <!-- 4 -->
-    <view class="iimages bgf">
+    <view class="iimages bgf" wx-if="{{list.img_url_arr!=''||list.video!=''}}">
     <!-- 公司图片 -->
     <view class="detail ml iimg">公司图片/视频</view>
     <!-- 图片 -->
-        <view class="d-flex ml" style="  flex-wrap: wrap;">
+        <view class="d-flex ml" style="flex-wrap: wrap;" wx-if="{{list.img_url_arr!=''}}">
       <block wx:for="{{list.img_url_arr}}" wx:key="{{index}}">
           <image src="{{item}}"></image>
       </block>
         </view>
       <!-- 视频 -->
-      <video class="ml" controls="true" show-mute-btn="true" src="{{list.video}}"></video>
+      <video wx-if="{{list.video!=''}}" class="ml" controls="true" show-mute-btn="true" src="{{list.video}}"></video>
     <!-- 4 -->
     </view>
     <!-- 5 -->

@@ -41,8 +41,8 @@
 </view> 
 </view>
 <!-- 找工作 -->
-    <i-tabs current="{{ current }}" bindchange="handleChange" i-class='i-tab'>
-      <i-tab key="1" title="找工作"></i-tab>
+    <i-tabs current="{{ current }}" bindchange="handleChange" color='#76D4C6' i-class='m-tabs'>
+      <i-tab key="1" title="找工作" i-class='mtab'></i-tab>
       <i-tab key="2" title="招人才"></i-tab>
     </i-tabs>
 <view wx:if="{{tab1}}" class='tab1'>
@@ -207,11 +207,11 @@
         <!-- 头像 -->
         <image src="{{item.head}}"></image>
         <!-- 用户名 -->
-        <view>发布用户名</view>
-        <view wx-if="{{item.px==1?false:true}}" class="{{item.px=='置顶'?'zd':(item.px=='十万火急'?'hj':'')}}">{{item.px}}</view>
+        <view>{{item.nickname}}</view>
+        <view wx-if="{{item.px==1?false:true}}" class="{{item.px==2?'zd':(item.px==3?'hj':'')}}">{{item.px==2?'置顶':(item.px==3?'十万火急':'')}}</view>
       </view>
       <view class="musk-user-r">
-        <view>{{item.distance}}</view>
+        <view>{{item.distance}}km</view>
       </view>    
     </view>
   <!-- 发布需求 -->
@@ -337,11 +337,11 @@
           <!-- 头像 -->
         <image src="{{item.head}}"></image>
         <!-- 用户名 -->
-        <view>发布用户名</view>
-        <view wx-if="{{item.px==1?false:true}}" class="{{item.px=='置顶'?'zd':(item.px=='十万火急'?'hj':'')}}">{{item.px}}</view>
+        <view>{{item.nickname}}</view>
+        <view wx-if="{{item.px==1?false:true}}" class="{{item.px==2?'zd':(item.px==3?'hj':'')}}">{{item.px==2?'置顶':(item.px==3?'十万火急':'')}}</view>
       </view>
       <view class="musk-user-r">
-        <view>{{item.distance}}</view>
+        <view>{{item.distance}}km</view>
       </view>    
     </view>
   <!-- 发布需求 -->
@@ -461,11 +461,11 @@
         <!-- 头像 -->
         <image src="{{item.head}}"></image>
         <!-- 用户名 -->
-        <view>发布用户名</view>
-        <view wx-if="{{item.px==1?false:true}}" class="{{item.px=='置顶'?'zd':(item.px=='十万火急'?'hj':'')}}">{{item.px}}</view>
+        <view>{{item.nickname}}</view>
+        <view wx-if="{{item.px==1?false:true}}" class="{{item.px==2?'zd':(item.px==3?'hj':'')}}">{{item.px==2?'置顶':(item.px==3?'十万火急':'')}}</view>
       </view>
       <view class="musk-user-r">
-        <view>{{item.distance}}</view>
+        <view>{{item.distance}}km</view>
       </view>    
     </view>
   <!-- 发布需求 -->

@@ -1,7 +1,12 @@
 /* pages/informmation/recruitment/recruitment.wxss */
 @import "../carousel/carousel";
-.i-tab{
-  color:red
+.m-tabs{
+  color:greenyellow!important;
+  font-size:40rpx;
+}
+.mtab .i-tabs-tab-bar{
+  position: static!important;
+  width:400%!important;
 }
 .nav-class{
   color:red!important;

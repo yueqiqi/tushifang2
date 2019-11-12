@@ -26,6 +26,7 @@ Page({
       })
     } else {
       // **************************
+      console.log('举报的图片',img_url_arr)
       // 举报
       wx.request({
         url:"http://tsf.suipk.cn/home/info/do_report",
