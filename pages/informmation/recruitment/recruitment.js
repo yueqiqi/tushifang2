@@ -9,18 +9,250 @@ Page({
 /**
  * 渣场信息的分类
  */
-bindPickerChange2:function(){},
-bindDateChange2:function(){},
+bindPickerChange2:function(e){
+  var that=this
+  var e = e.detail.value
+  this.setData({
+    index: e,
+    class2: that.data.objectArray2[e].title,
+    class2_id:that.data.objectArray2[e].id
+  })
+    // ???
+  // 找工作
+  var one_class_id=that.data.two_id
+  var page=1
+  var limit=99
+  var uid=wx.getStorageSync('uid');
+  var two_class_id=that.data.objectArray2[e].id
+  
+  if(that.data.dates2=='请选择时间'){
+    var day=''
+  }else{
+    var day=that.data.dates2
+  }
+  console.log('这是二级分类',two_class_id)
+  request({
+    url:'http://tsf.suipk.cn/home/info/do_info_list',
+    data:{
+      one_class_id,
+      page,
+      limit,
+      uid,
+      two_class_id,
+      day
+    }
+    }).then(res=>{
+    console.log('调用渣场信息分类成功',res)
+    that.setData({
+      slag:res.data.data
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+},
+
+bindDateChange2:function(e){
+  var that=this
+  var e = e.detail.value
+  this.setData({
+    dates2: e
+  })
+  console.log("保存的日期",this.data.dates2)
+  // ++++++++++
+    // ???
+  var one_class_id=that.data.two_id
+  var page=1
+  var limit=99
+  var uid=wx.getStorageSync('uid');
+  if(that.data.dates2=="请选择时间"){
+    var day=''
+  }else if(that.data.dates2!=''){
+    var day=that.data.dates2
+  }
+  var two_class_id=that.data.class2_id
+  request({
+    url:'http://tsf.suipk.cn/home/info/do_info_list',
+    data:{
+      one_class_id,
+      page,
+      limit,
+      uid,
+      two_class_id,
+      day
+    }
+    }).then(res=>{
+    console.log('调用渣场信息分类成功',res)
+    that.setData({
+      slag:res.data.data
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+},
 /**
  * 工地信息分类
  */
-bindPickerChange3:function(){},
-bindDateChange3:function(){},
+bindPickerChange3:function(e){
+  var that=this
+  var e = e.detail.value
+  this.setData({
+    index: e,
+    class3: that.data.objectArray3[e].title,
+    class3_id:that.data.objectArray3[e].id
+  })
+    // ???
+  // 找工作
+  var one_class_id=that.data.three_id
+  var page=1
+  var limit=99
+  var uid=wx.getStorageSync('uid');
+  var two_class_id=that.data.objectArray3[e].id
+  
+  if(that.data.dates3=='请选择时间'){
+    var day=''
+  }else{
+    var day=that.data.dates3
+  }
+  console.log('这是二级分类',two_class_id)
+  request({
+    url:'http://tsf.suipk.cn/home/info/do_info_list',
+    data:{
+      one_class_id,
+      page,
+      limit,
+      uid,
+      two_class_id,
+      day
+    }
+    }).then(res=>{
+    console.log('调用工地信息分类成功',res)
+    that.setData({
+      meeting:res.data.data
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+},
+bindDateChange3:function(e){
+  var that=this
+  var e = e.detail.value
+  this.setData({
+    dates3: e
+  })
+  console.log("保存的日期",this.data.dates3)
+  // ++++++++++
+    // ???
+  var one_class_id=that.data.three_id
+  var page=1
+  var limit=99
+  var uid=wx.getStorageSync('uid');
+  if(that.data.dates3=="请选择时间"){
+    var day=''
+  }else if(that.data.dates3!=''){
+    var day=that.data.dates3
+  }
+  var two_class_id=that.data.class3_id
+  request({
+    url:'http://tsf.suipk.cn/home/info/do_info_list',
+    data:{
+      one_class_id,
+      page,
+      limit,
+      uid,
+      two_class_id,
+      day
+    }
+    }).then(res=>{
+    console.log('调用工地信息分类成功',res)
+    that.setData({
+      meeting:res.data.data
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+},
 /**
  * 买卖信息分类
  */
-bindPickerChange4:function(){},
-bindDateChange4:function(){},
+bindPickerChange4:function(e){
+  var that=this
+  var e = e.detail.value
+  this.setData({
+    index: e,
+    class4: that.data.objectArray4[e].title,
+    class4_id:that.data.objectArray4[e].id
+  })
+    // ???
+  // 找工作
+  var one_class_id=that.data.four_id
+  var page=1
+  var limit=99
+  var uid=wx.getStorageSync('uid');
+  var two_class_id=that.data.objectArray4[e].id
+  
+  if(that.data.dates4=='请选择时间'){
+    var day=''
+  }else{
+    var day=that.data.dates4
+  }
+  console.log('这是二级分类',two_class_id)
+  request({
+    url:'http://tsf.suipk.cn/home/info/do_info_list',
+    data:{
+      one_class_id,
+      page,
+      limit,
+      uid,
+      two_class_id,
+      day
+    }
+    }).then(res=>{
+    console.log('调用工地信息分类成功',res)
+    that.setData({
+      deal:res.data.data
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+},
+bindDateChange4:function(e){
+  var that=this
+  var e = e.detail.value
+  this.setData({
+    dates4: e
+  })
+  console.log("保存的日期",this.data.dates4)
+  // ++++++++++
+    // ???
+  var one_class_id=that.data.four_id
+  var page=1
+  var limit=99
+  var uid=wx.getStorageSync('uid');
+  if(that.data.dates4=="请选择时间"){
+    var day=''
+  }else if(that.data.dates4!=''){
+    var day=that.data.dates4
+  }
+  var two_class_id=that.data.class4_id
+  request({
+    url:'http://tsf.suipk.cn/home/info/do_info_list',
+    data:{
+      one_class_id,
+      page,
+      limit,
+      uid,
+      two_class_id,
+      day
+    }
+    }).then(res=>{
+    console.log('调用买卖信息分类成功',res)
+    that.setData({
+      deal:res.data.data
+    })
+    }).catch(err=>{
+    console.log('调用失败')
+  })
+},
 /**
  * 渣场浏览图片
  */
@@ -145,18 +377,6 @@ listenerButtonPreviewImaged:function(e){
       this.setData({
         slag:res.data.data
       })
-      for(var q in that.data.slag){
-        var spxs='slag['+q+'].px'
-        if(that.data.slag[q].px==2){
-          that.setData({
-            [spxs]:'置顶'
-          })
-        }else if(that.data.slag[q].px==3){
-          that.setData({
-            [spxs]:'十万火急'
-          })
-        }
-      }
       }).catch(err=>{
       console.log('调用失败')
     })
@@ -198,18 +418,6 @@ listenerButtonPreviewImaged:function(e){
       this.setData({
         meeting:res.data.data
       })
-      for(var v in that.data.meeting){
-        var spxs='meeting['+v+'].px'
-        if(that.data.meeting[v].px==2){
-          that.setData({
-            [spxs]:'置顶'
-          })
-        }else if(that.data.meeting[v].px==3){
-          that.setData({
-            [spxs]:'十万火急'
-          })
-        }
-      }
       }).catch(err=>{
       console.log('调用失败')
     })
@@ -249,18 +457,6 @@ listenerButtonPreviewImaged:function(e){
       this.setData({
         deal:res.data.data
       })
-      for(var r in that.data.deal){
-        var spxs='deal['+r+'].px'
-        if(that.data.deal[r].px==2){
-          that.setData({
-            [spxs]:'置顶'
-          })
-        }else if(that.data.deal[r].px==3){
-          that.setData({
-            [spxs]:'十万火急'
-          })
-        }
-      }
       }).catch(err=>{
       console.log('调用失败')
     })
@@ -534,6 +730,19 @@ listenerButtonPreviewImaged:function(e){
     }
 },
   data: {
+    // 买卖分类
+    class4:'请选择分类',
+    dates4:'请选择时间',
+    objectArray4:[],
+    // 工地分类
+    class3:'请选择分类',
+    dates3:'请选择时间',
+    objectArray3:[],
+    // 渣场信息分类
+    class2:'请选择分类',
+    dates2:'请选择时间',
+    objectArray2:[],
+
     // 上拉加载更多
     titleid:0,
     page4:1,
@@ -917,26 +1126,6 @@ listenerButtonPreviewImaged:function(e){
       console.log('调用失败')
       }
     })
-
-  
-    // ++++++++++++++++++++++++++++++++++++
-    // wx.login({
-    //   success (res) {
-    //     console.log("用户登录信息",res)
-    //     // if (res.code) {
-    //     //   //发起网络请求
-    //     //   wx.request({
-    //     //     url: 'https://test.com/onLogin',
-    //     //     data: {
-    //     //       code: res.code
-    //     //     }
-    //     //   })
-    //     // } else {
-    //     //   console.log('登录失败！' + res.errMsg)
-    //     // }
-    //   }
-    // })
-   
   },
 
   /**
@@ -1076,7 +1265,48 @@ listenerButtonPreviewImaged:function(e){
     console.log('调用失败')
   })
   // +++++++++++++++++买卖信息++++++++++++++++++++++++
-    
+    //渣场分类--分类详情
+    request({
+      url:'http://tsf.suipk.cn/home/Info/do_twoclass_list',
+      data:{
+        one_class_id:that.data.two_id
+      }
+      }).then(res=>{
+      console.log('调用渣场信息分类成功',res)
+      that.setData({
+        objectArray2:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+     //工地分类--分类详情
+     request({
+      url:'http://tsf.suipk.cn/home/Info/do_twoclass_list',
+      data:{
+        one_class_id:that.data.three_id
+      }
+      }).then(res=>{
+      console.log('调用工地信息分类成功',res)
+      that.setData({
+        objectArray3:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+     //买卖分类--分类详情
+     request({
+      url:'http://tsf.suipk.cn/home/Info/do_twoclass_list',
+      data:{
+        one_class_id:that.data.four_id
+      }
+      }).then(res=>{
+      console.log('调用买卖信息分类成功',res)
+      that.setData({
+        objectArray4:res.data.data
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

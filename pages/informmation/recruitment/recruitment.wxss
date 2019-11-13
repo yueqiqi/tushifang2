@@ -597,7 +597,7 @@ border-radius:10px;
 /* 电话图标 */
 .musk-phone-r image{
   width:26rpx;height:26rpx;
-  margin-top:12rpx;margin-left:25rpx
+  margin-top:12rpx;margin-left:25rpx;
 }
 .musk-phone-r :nth-child(2){
   font-size:28rpx;
@@ -618,7 +618,7 @@ margin-left:14rpx;line-height: 50rpx;
   font-size:28rpx;
 font-family:PingFang SC;
 font-weight:400;
-color:rgba(102,102,102,1);
+/* color:rgba(102,102,102,1); */
 line-height:40rpx;
 }
 .share{

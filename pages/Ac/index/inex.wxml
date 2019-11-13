@@ -1,7 +1,7 @@
 <!-- 免费认证 -->
-<view>
-  <view class="title d-spb">
+<view style="margin-top:250rpx;">
     <block wx:for="{{title}}" wx:key="{{index}}">
+  <view class="title d-spb" style="justify-content: center;">
       <view bindtap="gg" data-index="{{index}}">
         <!-- <navigator url="{{item.link}}"> -->
           <view style="" class="img">
@@ -10,8 +10,8 @@
          </view>
         <!-- </navigator> -->
       </view>
-    </block>
   </view>
+    </block>
 </view>
 <!-- 入驻商 -->
 <!-- <view>

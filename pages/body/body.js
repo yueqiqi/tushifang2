@@ -214,7 +214,55 @@ listenerButtonPreviewImages:function(e){
     console.log('调用失败')
     })
   },
- 
+  swLike: function (e) {
+    var that = this
+    var id = e.currentTarget.dataset.id
+    var index = e.currentTarget.dataset.index
+    var uid=wx.getStorageSync('uid');
+    like({
+    data:{
+      uid,
+      type:1,
+      info_id:id
+    }
+    }).then(res=>{
+      /**
+       * 调用点赞列表
+       */
+      console.log(res.data.code)
+      if(res.data.code==0){
+          var like='user['+index+'].is_point'
+          var point_ratio=that.data.user[index].point_ratio
+          var point_ratio1='user['+index+'].point_ratio'
+          var p=p+1
+          that.setData({
+            [like]:1,
+            [point_ratio1]:point_ratio+1
+          })
+        }else if(res.data.code==1){
+            var point_ratios=that.data.user[index].point_ratio
+            var likes='user['+index+'].is_point'
+            var point_ratios1='user['+index+'].point_ratio'
+            var m=m-1
+            that.setData({
+              [likes]:0,
+              [point_ratios1]:point_ratios-1
+          })
+      }
+      // else{
+      //   for(var m in tabuser){
+      //     var like='tabuser['+m+'].is_point'
+      //     that.setData({
+      //       [like]:0
+      //     })
+      //   }
+      // }
+
+
+    }).catch(err=>{
+    console.log('调用失败')
+    })
+  },
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 右边大标题
 
@@ -762,6 +810,14 @@ wx.reLaunch({
     })
     // *******************************************************************************************************************//
     // 三个标题下的优质发布和最新推荐
+    
+    var interest=wx.getStorageSync('int');
+    if(interest){
+      var interest=wx.getStorageSync('int');
+      }else {
+        var interest=''
+      }
+      console.log('获取选择兴趣的id',interest)
     wx.request({
       url:"http://tsf.suipk.cn/home/index/do_Recommend",
       data:{
@@ -769,13 +825,13 @@ wx.reLaunch({
         uid,
         page:that.data.page,
         limit:5,
+        interest,
       },
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       success:function(res){
-        //console.log("最新发布调用成功")
         console.log("最新发布调用成功",res)
         that.setData({
           tabuser:res.data.list
@@ -794,6 +850,7 @@ wx.reLaunch({
         uid,
         page:that.data.pages,
         limit:5,
+        interest,
       },
       method: 'POST',
       header: {
@@ -868,6 +925,12 @@ wx.reLaunch({
     wx.showNavigationBarLoading() //在标题栏中显示加载
     // this.onReady()
     var that=this
+    var interest=wx.getStorageSync('int');
+    if(interest){
+      var interest=wx.getStorageSync('int');
+      }else {
+        var interest=''
+      }
     setTimeout(function () {    
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
@@ -879,6 +942,7 @@ wx.reLaunch({
         uid,
         page:1,
         limit:5,
+        interest
       },
       method: 'POST',
       header: {
@@ -902,6 +966,7 @@ wx.reLaunch({
         uid,
         page:1,
         limit:5,
+        interest,
       },
       method: 'POST',
       header: {
@@ -937,6 +1002,12 @@ wx.reLaunch({
       page,
       pages
     })
+    var interest=wx.getStorageSync('int');
+    if(interest){
+      var interest=wx.getStorageSync('int');
+      }else {
+        var interest=''
+      }
     // 显示加载图标
     wx.showLoading({
       title: '玩命加载中',
@@ -949,6 +1020,7 @@ wx.reLaunch({
           uid,
           page:that.data.page,
           limit:5,
+          interest
         }
         }).then(res=>{
         console.log('调用刷新最新发布成功',res)
@@ -979,6 +1051,7 @@ wx.reLaunch({
           uid,
           page:that.data.pages,
           limit:5,
+          interest
         }
         }).then(res=>{
         console.log('调用刷新最新发布成功',res)

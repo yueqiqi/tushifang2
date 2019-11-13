@@ -307,6 +307,12 @@ request({
               pm:false,
               sq:true
             })
+          }else if(res.data.code==200){
+            that.setData({
+              modelb:res.data.msg,
+              pmb:false,
+              sq:true,
+            })
           }
           console.log("其他发布调用成功", res)
         }, fail: function () {
@@ -488,9 +494,14 @@ request({
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
-
+        let imgs = that.data.tempFilePaths.concat(tempFilePaths)
+        if (imgs.length>8){
+          that.setData({
+              showUpload:false
+          })
+      }
         that.setData({
-          tempFilePaths: tempFilePaths
+          tempFilePaths: imgs
         })
         /**
          * 上传完成后把文件上传到服务器
@@ -499,11 +510,11 @@ request({
 
           var count = 0;
           var a =[]
-          for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+          for (var i = 0, h = imgs.length; i < h; i++) {
             //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-            filePath: tempFilePaths[i],
+            filePath: imgs[i],
             name: 'image',
             method: 'POST',
           header: {
@@ -522,7 +533,7 @@ request({
               })
               console.log('最后a',that.data.a)
               //如果是最后一张,则隐藏等待中  
-              if (count == tempFilePaths.length) {
+              if (count == imgs.length) {
                 wx.hideToast();
               }
             },
@@ -574,6 +585,11 @@ request({
       title: '提示',
       content: '确定要删除此图片吗？',
       success: function (res) {
+        if(that.data.tempFilePaths.length<=9){
+          that.setData({
+            showUpload:true
+        })
+      }
         if (res.confirm) {
           console.log('点击确定了');
           tempFilePaths.splice(index, 1);
@@ -585,6 +601,11 @@ request({
           tempFilePaths
         });
       }
+    })
+  },
+  hpb(){
+    this.setData({
+      pmb:true,
     })
   },
   hp(){
@@ -614,6 +635,8 @@ request({
    * 页面的初始数据
    */
   data: {
+    showUpload:true,
+    pmb:true,
     pm:true,
     // 一级列表
     one_class:"",

@@ -171,7 +171,7 @@
     <view class="select ml d-flex" style="margin-top:30rpx;">
 <!-- 分类 -->
 <view class="sectionClass" >  
-  <picker bindchange="bindPickerChange2" value="{{index}}" range="{{objectArray2}}" mode = "selector">  
+  <picker bindchange="bindPickerChange2" value="{{index}}" range="{{objectArray2}}" mode = "selector" range-key='{{"title"}}'>  
     <view class="picker">  
       <!-- 分类：{{objectArray[index]}}   -->
       <view class="select-text">{{class2}}</view>
@@ -305,20 +305,20 @@
  <view class="select ml d-flex" style="margin-top:30rpx;">
 <!-- 分类 -->
 <view class="sectionClass" >  
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+  <picker bindchange="bindPickerChange3" value="{{index}}" range="{{objectArray3}}" mode = "selector" range-key='{{"title"}}'>  
     <view class="picker">  
       <!-- 分类：{{objectArray[index]}}   -->
-      <view class="select-text">请选择分类</view>
+      <view class="select-text">{{class3}}</view>
       <image src="../../images/select.png"></image>
     </view>  
   </picker>  
 </view>  
 <!-- 时间 -->
 <view class="sectiontime">  
-  <picker mode="date" value="{{date}}" bindchange="bindDateChange">  
+  <picker mode="date" value="{{date3}}" bindchange="bindDateChange3">  
     <view class="picker">  
       <!-- 日期: {{dates}}   -->
-      <view class="select-text">请选择时间</view>
+      <view class="select-text">{{dates3}}</view>
       <image src="../../images/select.png"></image>
     </view>  
   </picker>  
@@ -429,20 +429,20 @@
  <view class="select ml d-flex" style="margin-top:30rpx;">
 <!-- 分类 -->
 <view class="sectionClass" >  
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+  <picker bindchange="bindPickerChange4" value="{{index}}" range="{{objectArray4}}" mode = "selector" range-key='{{"title"}}'>  
     <view class="picker">  
       <!-- 分类：{{objectArray[index]}}   -->
-      <view class="select-text">请选择分类</view>
+      <view class="select-text">{{class4}}</view>
       <image src="../../images/select.png"></image>
     </view>  
   </picker>  
 </view>  
 <!-- 时间 -->
 <view class="sectiontime">  
-  <picker mode="date" value="{{date}}" bindchange="bindDateChange">  
+  <picker mode="date" value="{{date4}}" bindchange="bindDateChange4">  
     <view class="picker">  
       <!-- 日期: {{dates}}   -->
-      <view class="select-text">请选择时间</view>
+      <view class="select-text">{{dates4}}</view>
       <image src="../../images/select.png"></image>
     </view>  
   </picker>  

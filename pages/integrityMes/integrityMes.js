@@ -41,6 +41,24 @@ console.log('发布的评论',content,that.data.info_id)
       }
       }).then(res=>{
       console.log('调用发布评论成功',res)
+      request({
+        url:'http://tsf.suipk.cn/home/index/do_comment_list',
+        data:{
+         type:2,
+         info_id:that.data.info_id,
+         page:1,
+         limit:10,
+        }
+      }).then(res=>{
+        console.log('调用评论列表成功',res)
+        this.setData({
+          cons:res.data.list
+        })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+
+
       }).catch(err=>{
       console.log('调用失败')
     })

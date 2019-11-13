@@ -1,4 +1,4 @@
-/* pages/self/score/score.wxss */
+@import './alert.wxss';
 .bor{
   width:690rpx;
 height:140rpx;

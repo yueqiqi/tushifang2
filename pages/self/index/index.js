@@ -70,6 +70,30 @@ Page({
                   var uids=wx.getStorageSync('uid');
                   console.log('这是用户的uids',uids)
                   if(uids!=''){
+                    /**
+                     * 设置兴趣
+                     */
+                    var interest=wx.getStorageSync('int');
+                    var int=interest.toString()
+                    console.log('兴趣格式',int)
+                    request({
+                      url:'http://tsf.suipk.cn/home/personal/do_addmy_Interest',
+                      data:{
+                        uid,
+                        two_class_id_str:int
+                      }
+                      }).then(res=>{
+                      console.log('调用保存兴趣成功',res)
+                      this.setData({
+                      
+                      })
+                      }).catch(err=>{
+                      console.log('调用失败')
+                    })
+                    // ？++++++++++++++++++++++++++++++++++++++++++++++
+                    /**
+                     * 
+                     */
                     that.setData({
                       sh:true,
                     })
@@ -256,7 +280,7 @@ Page({
       },
       {
         img: "../../images/ico/i11.png",
-        link: "/pages/interest/interest",
+        link: "/pages/interest/interest2",
         til: "我的兴趣"
       },
     ]

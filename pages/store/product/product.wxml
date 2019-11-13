@@ -29,7 +29,7 @@
   <!-- 配送 -->
   <view class="dcs">
   <!-- 配送区域 -->
-   <van-cell is-link>
+   <van-cell is-link bind:click="goto">
      <view slot="title" class="d-flex dc">
       <view class="dc-l">配送区域</view>
       <view class="dc-r">请选择配送区域</view>
@@ -49,7 +49,9 @@
   <!-- 商品详情 -->
   <view class="details bgf">
     <view class="details-title">商品详情</view>
-    <view class="details-img"><image src="../../images/carousel/03.jpg"></image></view>
+    <view class="details-img">
+      <rich-text nodes="{{list.goods_info}}"></rich-text>
+    </view>
   </view>
   <!-- 购买 -->
   <view class="pay" bindtap="pay" >立即购买</view>

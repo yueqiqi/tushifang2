@@ -40,20 +40,22 @@
     </view>
     <!-- 去邀请 -->
     <view>
-    <view class="ginv" catchtap='selectTap'>
-        {{selectData[index]}}
+     <!-- /*catchtap='selectTap'*/ -->
+    <view class="ginv" bindtap="out">
+        转出积分
       <!-- <view  class="{{img}}" style="margin-right:20rpx;">
         <image style="width:29rpx;height:17rpx;" src="../../images/position/shape45.png"></image>
       </view> -->
     </view>
+    <include src="./alert.wxml"/>
     <!-- ==================================== -->
-    <view class='select_box'>
+    <!-- <view class='select_box'> -->
     <!-- 列表项布局 -->
-    <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*71.999):0}}rpx;'>
+    <!-- <view class='option_box' style='height:{{selectShow?(selectData.length>5?325:selectData.length*71.999):0}}rpx;'> -->
     <!-- 选择的列表项 -->
-        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
+   <!-- <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' >{{item}}</text>
     </view>
-</view>
+</view> -->
     <!-- ==================================== -->
     </view>
     

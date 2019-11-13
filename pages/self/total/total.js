@@ -1,6 +1,40 @@
 // pages/self/score/score.js
 import request from '../../login.js'
 Page({
+/**
+ * 获取用户输入的值
+ */
+setValue:function(e){
+  console.log('用户输入得值',e)
+  this.setData({
+    phone:e.detail.value
+  })
+},
+/**
+ * 点击取消
+ */
+cancel:function(){
+  this.setData({
+    alert:false
+  })
+},
+/**
+ * 点击确定
+ */
+confirm:function(){
+  console.log(this.data.phone)
+},
+/**
+ * 输入电话号码转出积分
+ */
+out:function(){
+  console.log('转出积分')
+  this.setData({
+    alert:true
+  })
+},
+
+
   // 下拉
   // 点击下拉显示框
 
@@ -49,6 +83,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    alert:false,
+    phone:"",
     // img:"",
     // 自定义编辑
     isDisabled: true,

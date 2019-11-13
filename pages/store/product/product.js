@@ -52,8 +52,28 @@ Page({
   },
   // 颜色
   choose(e) {
-    // console.log(index)
-    // let index = e.currentTarget.dataset.index
+    var that=this
+    console.log(e)
+    var id=e.currentTarget.dataset.id
+    let index = e.currentTarget.dataset.idx
+    let index2 = e.currentTarget.dataset.im
+    console.log('大数组的下标',index2)
+    var q=that.data.model
+    console.log('循环的数组',q)
+    for(var z in q){
+      for(var ps in q[z].val){
+        if(id==q[z].val[ps].id){
+            q[z].val[ps].checked = true
+        }else{
+          if(z==index2){
+            q[z].val[ps].checked = false
+          }
+        }
+      }
+    }
+    that.setData({
+      model:q
+    })
     // var bool = this.data.color[index].checked
     // var f = this.data.color[index].disabled
     // this.setData({
@@ -64,25 +84,24 @@ Page({
     // //   console.log(123)
     // // }
     // console.log(index, bool, ['color[' + index + '].checked'], f)
-    for (var m in this.data.color) {
-      if (e.currentTarget.dataset.index == m) {
-        this.data.color[m].checked = true
-      }
-      else {
-        this.data.color[m].checked = false
-      }
-    }
-    this.setData(this.data)
+    // for (var m in this.data.color) {
+    //   if (e.currentTarget.dataset.index == m) {
+    //     this.data.color[m].checked = true
+    //   }
+    //   else {
+    //     this.data.color[m].checked = false
+    //   }
+    // }
+    // this.setData(this.data)
       // console.log(this.data.color[m])
     // console.log(e.currentTarget.dataset.index)
-    console.log()
-    var img = this.data.color[e.currentTarget.dataset.index].img
-    var np = this.data.color[e.currentTarget.dataset.index]
-    console.log(img)
-    this.setData({
-      img:img,
-      ec:np
-    })
+    // var img = this.data.color[e.currentTarget.dataset.index].img
+    // var np = this.data.color[e.currentTarget.dataset.index]
+    // console.log(img)
+    // this.setData({
+    //   img:img,
+    //   ec:np
+    // })
   },
 
   //点击我显示底部弹出框
@@ -262,6 +281,19 @@ Page({
   },
 
   /**
+   * 地址选择
+   */
+  goto:function(){
+    wx.navigateTo({
+      url: '/pages/self/site/site',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -270,7 +302,10 @@ Page({
       ec:this.data.color[0],
       es:this.data.size[0]
     })
-
+    this.setData({
+      // goods_id:options.id
+      goods_id:9
+    })
     /**
      * 获取商品详情页
      */
@@ -278,7 +313,7 @@ Page({
       url:'http://tsf.suipk.cn/home/Goods/do_goods_info',
       data:{
         // goods_id:options.id
-        goods_id:5
+        goods_id:9
       }
       }).then(res=>{
       console.log('调用商品详情页成功',res)
@@ -287,23 +322,36 @@ Page({
       })
       }).catch(err=>{
       console.log('调用失败')
-    })
-
-    
+    })    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that=this
+    request({
+      url:'http://tsf.suipk.cn/home/goods/do_goods_specification',
+      data:{
+        // goods_id:that.data.goods_id
+        goods_id:9
+      }
+      }).then(res=>{
+      console.log('调用商品规格成功',res)
+      this.setData({
+        model:res.data.data.specification,
+        sku:res.data.data.sku
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

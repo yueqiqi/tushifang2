@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 64,
+			"current": 65,
 			"list": [
 				{
 					"id": 0,
@@ -504,6 +504,13 @@
 					"id": -1,
 					"name": "商城详情页",
 					"pathName": "pages/store/product/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "兴趣修改",
+					"pathName": "pages/interest/interest2",
 					"scene": null
 				}
 			]

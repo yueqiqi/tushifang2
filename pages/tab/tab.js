@@ -162,10 +162,12 @@ Component({
       //     ani: animation.export()
       //   })
       // }
+      var uid=wx.getStorageSync('uid')
       if(idx==2){
+        if(uid){
 
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++请求弹窗页面++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        var that=this
+          // ++++++++++++++++++++++++++++++++++++++++++++++++++请求弹窗页面++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+          var that=this
     wx.request({
       url:"http://tsf.suipk.cn/home/index/do_one_two",
       data:{
@@ -183,10 +185,10 @@ Component({
           info:res.data.data
         })
 },fail:function(){
-        console.log("调用失败")
+  console.log("调用失败")
       }
     })
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++请求弹窗页面++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++请求弹窗页面++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         var animation = wx.createAnimation({
           duration: 400,
           timingFunction: "linear",
@@ -218,6 +220,26 @@ Component({
         this.setData({
           hidden:false,
         })
+        }else{
+          wx.showModal({
+            title: '登录中心',
+            content: '请登录',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if(result.confirm){
+                wx.switchTab({
+                  url: '/pages/self/index/index',
+                })
+              }
+            },
+          });
+          
+
+        }
       }
       // //////////////////////////////////////////////////////////////////////////////////
       wx.switchTab({

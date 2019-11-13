@@ -4,46 +4,7 @@ Page({
   data: {
     // 按钮是否禁用
     disabled:true,
-    checkboxArr: [
-    //   {
-    //   name: '兴趣',
-    //   checked: false
-    // }, {
-    //   name: '兴趣',
-    //   checked: false
-    // }, {
-    //   name: '兴趣',
-    //   checked: false
-    // }, {
-    //   name: '兴趣',
-    //   checked: false
-    // }, {
-    //   name: '兴趣',
-    //   checked: false
-    // }, {
-    //   name: '兴趣',
-    //   checked: false
-    //   },{
-    //     name: '兴趣',
-    //     checked: false
-    //   }, {
-    //     name: '兴趣',
-    //     checked: false
-    //   }, {
-    //     name: '兴趣',
-    //     checked: false
-    //   }, 
-    //   {
-    //   name: '兴趣',
-    //   checked: false
-    // }, {
-    //   name: '兴趣',
-    //   checked: false
-    // }, {
-    //   name: '兴趣',
-    //   checked: false
-    // }, 
-  ],
+    checkboxArr: [],
   },
   checkbox: function (e) {
     var index = e.currentTarget.dataset.index;//获取当前点击的下标
@@ -77,27 +38,56 @@ Page({
   },
 
   confirm: function () {// 提交
-    wx.setStorageSync('int', this.data.checkValue)
     var uid=wx.getStorageSync('uid');
-    // ++++++++++++++++++++++选择兴趣接口+++++++++++++++++++++ 
-    if(uid){
-      wx.switchTab({
-        url: '/pages/body/body',
-        success: (result)=>{
-          
-        },
-        fail: ()=>{},
-        complete: ()=>{}
-      });
-    } else {
-      wx.navigateTo({
-        url: '/pages/demo/new/index/renzhen',
-      })
-    } 
-    // ++++++++++++++++++++++选择兴趣接口+++++++++++++++++++++
- 
-  console.log(this.data.checkValue)//所有选中的项的value
-    console.log("跳转")
+    console.log(this.data.checkValue)
+    var int=this.data.checkValue
+    var qo=int.toString()
+    request({
+      url:'http://tsf.suipk.cn/home/personal/do_addmy_Interest',
+      data:{
+        uid,
+        two_class_id_str:qo,
+      }
+      }).then(res=>{
+        if(res.data.code==0){
+          wx.setStorageSync('int',int);
+         wx.showToast({
+           title: '修改成功',
+           icon: 'success',
+           duration: 3500,
+           mask: false,
+           success: (result)=>{
+             setTimeout(()=>{
+               wx.navigateBack({
+                 delta: 1
+               });
+             },2000)
+
+           },
+           fail: ()=>{},
+           complete: ()=>{}
+         });
+        }else{
+          wx.showModal({
+            title: '修改状态',
+            content: '修改失败请重试',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if(result.confirm){
+                
+              }
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
+        }
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
   // data: {
   //   text: "请选择",
@@ -171,6 +161,7 @@ Page({
    */
   onLoad: function (options) {
     var uid=wx.getStorageSync('uid');
+    var that=this
     request({
       url:'http://tsf.suipk.cn/home/Info/do_twoclass_list',
       data:{
@@ -178,11 +169,66 @@ Page({
       }
       }).then(res=>{
       console.log('调用我的兴趣成功',res)
+        var op =res.data.data
+        console.log(op)
+      request({
+        url:'http://tsf.suipk.cn/home/personal/do_my_Interest',
+          data:{
+            uid
+          }
+          }).then(res=>{
+          console.log('调用已保存兴趣成功',res)
+          console.log('循环',op)
+          /**
+           * 
+           */
+          var indexs=[]  
+          for(var i in op){
+          for(var m in res.data.data){
+              if(res.data.data[m].id==op[i].id){
+                console.log('查找的数据',op[i],i)
+                indexs.push(i)
+                
+              }
+              // console.log('保存的数组1.1',indexs)
+            }
+            // console.log('保存的数组1',indexs)
+          }
+          that.setData({
+            indexss:indexs
+          })
+          console.log('保存的数组2',indexs)
+          console.log('保存的数组3',that.data.indexss)
+
+          var indexsm=that.data.indexss
+          for(var j in that.data.checkboxArr){ 
+          for(var h in indexsm){
+              if(j==indexsm[h]){
+                var checked='checkboxArr['+ j +'].checked'
+                that.setData({
+                  [checked]:true
+                })
+              }
+            }
+          }
+          /**
+           * 
+           */
+          }).catch(err=>{
+          console.log('调用失败')
+        })
+
       this.setData({
         checkboxArr:res.data.data
       })
+
+   
+    console.log('最后的数组',that.data.checkboxArr)
       }).catch(err=>{
       console.log('调用失败')
     })
+  },
+  onReady:function(){
+
   },
 })

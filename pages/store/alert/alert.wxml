@@ -19,29 +19,27 @@
     </view>
       <view style="margin-right:30rpx;margin-top:-10rpx;" bindtap="hideModal" wx:if="{{showModalStatus}}"><image style="width:22rpx;height:22rpx;" src="../../images/del.png"></image></view>
     </view>
-    <view class="color">
-    <!-- 颜色 -->
-      <view class="ml">颜色</view>
-    <!-- 颜色选项 -->
-      <view  class="d-spb color-btn">
-        <block wx:for="{{color}}" wx:key="{{index}}">
-        <!-- <van-button class="color-btn">{{item.color}}</van-button> -->
-          <button bindtap='choose' class='btns{{item.checked?"actives":""}}'  data-index="{{index}}" disabled="{{item.disabled}}">{{item.color}}</button>
-        </block>
-      </view>
-    </view>
-    <!-- 型号 -->
-    <view class="size">
-    <view>型号</view>
-    <!-- 型号选项 -->
-      <view class="d-flex size-btn">
-        <block wx:for="{{size}}" wx:key="{{index}}">
-          <button bindtap="size" class='sizes{{item.checked?"actives":""}}'  data-index="{{index}}" disabled="{{item.disabled}}">{{item.size}}</button>
-        </block>
-      </view>
-    </view>
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<view class="color">
+<block wx:for="{{model}}" wx:key="{{index}}" wx:for-index="qm">
+  <!-- 颜色 -->
+    <view class="ml mt">{{item.title}}</view>
+  <!-- 颜色选项 -->
+    <view  class="d-flex color-btn">
+      <block wx:for="{{item.val}}" wx:key="idxa" wx:for-item="vm">
+        <view bindtap='choose' class='btns{{vm.checked?"actives":""}}' data-idx="{{index}}"  data-id="{{vm.id}}" data-im="{{qm}}" disabled="{{vm.disabled}}">{{vm.title}}</view>
+      </block>
+     </view>
+</block>
+  </view>
+
+
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- 步进器 -->
-    <view style="margin-top:229rpx;margin-left:490rpx;">
+    <view style="position:absolute;bottom:130rpx;right:30rpx;">
       <van-stepper max="10" value="{{ 1 }}" bind:change="onChange"  integer="true"/>
     </view>
   <button class="pay" bindtap="now">立即购买</button>

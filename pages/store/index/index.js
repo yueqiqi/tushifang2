@@ -1,4 +1,4 @@
-// pages/store/index/index.js
+  // pages/store/index/index.js
 import request from '../../login'
 Page({
 

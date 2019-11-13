@@ -109,12 +109,10 @@ padding-top:27rpx;
 /* 商品图片 */
 .details-img{
   width:100%;
-height:738rpx;
+  margin-left:30rpx;
+  margin-right: 30rpx;
+height:100%;
 margin-top:25rpx;margin-bottom:99rpx;
-}
-.details-img image{
-  width:100%;
-height:738rpx;
 }
 /* 立即购买 */
 .pay{

@@ -3,22 +3,22 @@
   <van-tabs sticky>
   <van-tab title="全部">
     <!-- 全部内容 -->
-    <block wx:for="{{arr1}}" wx:key="{{index}}">
+    <block wx:for="{{list}}" wx:key="{{index}}">
     <view class="bgf mtt">
     <view  bindtap="detail" data-id="{{item.id}}">
     <view class="con">
     <!-- 交易时间 -->
     <view class="tim d-spb">    
-      <view class="til">订单日期\t{{currenDate}}</view>
-      <view class="suc">{{item.suc}}</view>
+      <view class="til">订单日期\t{{item.create_time}}</view>
+      <view class="suc">{{item.status==1?'未支付':(item.status==2?'未发货':(item.status==3?'已发货':(item.status==4?'确认收货':(item.status==5?'申请退款':(item.status==6?'已退款':'')))))}}</view>
     </view>
     <!-- 商品详情 -->
     <!-- 2 -->
   <view class="details d-spb">
-    <view><image class="img" src="{{item.img}}"></image></view>
+    <view><image class="img" src="{{item.img_url}}"></image></view>
     <view>
       <!-- 标题 -->
-      <view class="detail-title">{{item.tit}}</view>
+      <view class="detail-title">{{item.goods_title}}</view>
       <view class="d-spb">
         <view class="d-spb classify">
           <view class="classify-l">分类</view>
@@ -26,11 +26,11 @@
         </view>
         <view class="num">
           数量x
-          <text>{{num}}</text>
+          <text>{{item.number}}</text>
         </view>
       </view>
 <!-- 价钱 -->
-        <view class="price">￥{{price}}</view>
+        <view class="price">￥{{item.payment_money}}</view>
     </view>
     <!-- 2 -->
   </view>
@@ -48,10 +48,9 @@
   <view class="my-btn" hidden="{{item.suc=='待发货'||item.suc=='交易成功'?true:false}}" style="background:rgba(118,212,198,1);color:#fff;" catchtap="affirm">确认收货</view>
   </view>
   </view>
-
-
 <!--  -->
     </view>
+    
 </block>
   </van-tab>
   <!-- ======================================================================== -->

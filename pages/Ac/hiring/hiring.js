@@ -531,7 +531,13 @@ this.setData({
            pm:false,
            sq:true,
          })
-       }
+       }else if(res.data.code==200){
+        that.setData({
+          modelb:res.data.msg,
+          pmb:false,
+          sq:true,
+        })
+      }
        
       },fail:function(){
        console.log("调用失败")
@@ -571,6 +577,11 @@ if(that.data.issu==true){
 // =======================个人中心跳转++++++++++++++++++++++++++++++====
 
     console.log(this.data.tempFilePaths.length)
+  },
+  hpb(){
+    this.setData({
+      pmb:true,
+    })
   },
   hp(){
     this.setData({
@@ -837,6 +848,7 @@ if(that.data.issu==true){
      */
     showUpload:true,
     // type_work_id
+    pmb:true,
     pm:true,
     item: {
       ashow: ashow

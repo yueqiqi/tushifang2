@@ -1,7 +1,13 @@
 {
   "pages": [
-    "pages/self/issue/hring/hring",
+    "pages/Aaa/sku/sku",
+    "pages/Aaa/radio/radio",
+    "pages/interest/interest",
     "pages/body/body",
+    "pages/interest/interest2",
+    "pages/self/total/alert",
+    "pages/Aaa/choose/rich",
+    "pages/self/issue/hring/hring",
     "pages/self/issue/job/job",
     "pages/self/issue/issue2",
     "pages/Aaa/choose/choose",
@@ -48,7 +54,6 @@
     "pages/demo/new/xinqu",
     "pages/demo/new/jifen",
     "pages/self/index/index",
-    "pages/interest/interest",
     "pages/Ac/no/no",
     "pages/Ac/hiring/hiring",
     "pages/Ac/post/post",

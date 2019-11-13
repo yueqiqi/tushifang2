@@ -60,24 +60,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    arr1:[
-      { id:0,
-        suc:"交易成功",
-        tit:"日本车载眼镜架多功能创意汽车用眼睛支架",
-        img:"../../images/carousel/06.jpg",
-      },
+    // arr1:[
+    //   { id:0,
+    //     suc:"交易成功",
+    //     tit:"日本车载眼镜架多功能创意汽车用眼睛支架",
+    //     img:"../../images/carousel/06.jpg",
+    //   },
 
-      { id:1,
-        suc: "待发货",
-        tit: "日本车载眼镜架多功能创意汽车用眼睛支架",
-        img: "../../images/carousel/06.jpg",
-      },
-      { id:2,
-        suc: "待收货",
-        tit: "日本车载眼镜架多功能创意汽车用眼睛支架",
-        img: "../../images/carousel/06.jpg",
-      }
-    ],
+    //   { id:1,
+    //     suc: "待发货",
+    //     tit: "日本车载眼镜架多功能创意汽车用眼睛支架",
+    //     img: "../../images/carousel/06.jpg",
+    //   },
+    //   { id:2,
+    //     suc: "待收货",
+    //     tit: "日本车载眼镜架多功能创意汽车用眼睛支架",
+    //     img: "../../images/carousel/06.jpg",
+    //   }
+    // ],
     su: "mm",
     // 数量
     num:1,
@@ -99,7 +99,7 @@ Page({
       currenDate: currenDate
     });
     var that=this
-    var uid=wx.getStorageSync('uid');
+    // var uid=wx.getStorageSync('uid');
 
     /**
      * 调用我的订单列表
@@ -107,30 +107,19 @@ Page({
     request({
       url:'http://tsf.suipk.cn/home/Goods/do_order',
       data:{
-        uid,
+        uid:1,
         type:1,
-        page:that.data.page,
+        page:1,
         limit:10
       }
       }).then(res=>{
       console.log('调用全部订单成功',res)
-
-
-      this.setData({
-      
+      that.setData({
+        list:res.data.list
       })
       }).catch(err=>{
       console.log('调用失败')
     })
-
-
-    for(var i in this.data.arr1){
-      console.log(i)
-      if (this.data.arr1[i].suc=="待发货"){
-        console.log("待发货")
-      }
-    }
-    console.log(this.data.arr1[1].btn)
   },
 
   /**

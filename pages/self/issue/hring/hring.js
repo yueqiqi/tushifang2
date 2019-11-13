@@ -453,6 +453,7 @@ this.setData({
         var p=that.data.img_url_arr
         var z=p.join('|')
         var img_url_arr=z
+        console.log('提交后的图片信息',that.data.img_url_arr)
       }else{
         var q=[]
         var o=that.data.tempFilePaths
@@ -635,7 +636,7 @@ this.setData({
        * 上传图片方法
        */
   upload: function () {
-    let that = this;
+    var that = this;
     that.setData({
       have:0,
     })
@@ -651,23 +652,22 @@ this.setData({
           duration: 1000
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        let tempFilePaths1 = res.tempFilePaths;
-        let imgs = that.data.tempFilePaths.concat(tempFilePaths1);
+        var tempFilePaths1 = res.tempFilePaths;
+        var imgs = that.data.tempFilePaths.concat(tempFilePaths1);
         that.setData({
           tempFilePaths: imgs
         })
         /**
          * 上传完成后把文件上传到服务器
          */
-        // if(){
-
-          var count = 0;
-          var a =[]
-          for (var i = 0, h = imgs.length; i < h; i++) {
+        var count = 0;
+        var a =[]
+        console.log('这是',imgs)
+          for (var iq in imgs) {
             //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-            filePath: imgs[i],
+            filePath: imgs[iq],
             name: 'image',
             method: 'POST',
           header: {
@@ -684,23 +684,23 @@ this.setData({
               that.setData({
                 img_url_arr:a
               })
-              console.log('最后a',that.data.a)
               //如果是最后一张,则隐藏等待中  
-              if (count == tempFilePaths.length) {
+              if (count == imgs.length) {
                 wx.hideToast();
               }
             },
             fail: function (res) {
               wx.hideToast();
-              wx.showModal({
-                title: '错误提示',
-                content: '上传图片失败',
-                showCancel: false,
-                success: function (res) { }
-              })
+              // wx.showModal({
+              //   title: '错误提示',
+              //   content: '上传图片失败',
+              //   showCancel: false,
+              //   success: function (res) { }
+              // })
             }
           });
         // }//if
+        console.log('最后的数字',a,that.img_url_arr)
         }
         
       }
@@ -799,7 +799,7 @@ this.setData({
     // 错误提示框
     popup: true,
     // 图片路径
-    tempFilePaths: [],
+    tempFilePaths: [], 
     tempFilePathss:"",
     // 
     h:false,

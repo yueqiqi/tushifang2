@@ -49,7 +49,7 @@
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
     <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
-          <view class="onload" bindtap="upload">
+          <view class="onload" bindtap="upload" wx:if="{{showUpload}}">
             <image src="../../images/onload.png"></image>
             <view>上传图片</view>
           </view>
@@ -141,4 +141,5 @@
 </view>
 <!-- <cover-view style="z-index:999999"> -->
     <include src="../err/err" />
+    <include src="../err/err2" />
 <!-- </cover-view> -->

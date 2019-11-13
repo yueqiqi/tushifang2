@@ -1,0 +1,6 @@
+.checked_parameter{
+  background: rebeccapurple;
+  padding: 3px;
+  border-radius: 5px;
+  color: #fff;
+}
