@@ -97,6 +97,8 @@ margin-right:10rpx;
 /* 商品详情 */
 .details{
 margin-top:10rpx;
+padding-right:30rpx;
+padding-bottom:60rpx;
 }
 .details-title{
   font-size:28rpx;

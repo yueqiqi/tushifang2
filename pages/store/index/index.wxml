@@ -115,7 +115,7 @@
   <van-tab name='{{one_class[0].id}}' wx-if="{{one_class[3].title!=undefined}}" title="{{one_class[3].title}}">
    <view class="bg">
         <view class=" pp">
-      <block wx:for="{{produc3}}" wx:key="{{index}}">
+      <block wx:for="{{product3}}" wx:key="{{index}}">
       <view class="pz" bindtap="goto" data-id="{{item.id}}">
         <view class="left2">
         <!-- 商品图片 -->

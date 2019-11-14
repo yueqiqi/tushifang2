@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/Aaa/sku/sku",
-    "pages/Aaa/radio/radio",
     "pages/interest/interest",
     "pages/body/body",
+    "pages/Aaa/sku/sku",
+    "pages/Aaa/radio/radio",
     "pages/interest/interest2",
     "pages/self/total/alert",
     "pages/Aaa/choose/rich",

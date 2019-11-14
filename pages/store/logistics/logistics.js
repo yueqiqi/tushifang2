@@ -1,5 +1,6 @@
 // pages/store/logistics/logistics.js
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
+import request from '../../login.js'; 
 Page({
 
   /**
@@ -41,13 +42,8 @@ Page({
    */
   onLoad: function (options) {
     // 接收我的订单发来的参数
-    console.log(options,options.id)
+    console.log(options,options.order_id)
     // 向数组中添加数据
-    // var self = this;
-    // var obj = { text: "4", desc: "four" }
-    // var arrayT = self.data.steps;
-    // arrayT.push(obj);
-    // self.setData({ steps: arrayT });
     var DATE = util.formatTime(new Date());
     var that = this;
     var steps=this.data.steps
@@ -56,9 +52,23 @@ Page({
   that.setData({
     [up]: DATE
     })
-
     }
-
+    /**
+     * 物流接口
+     */
+    request({
+      url:'http://tsf.suipk.cn/home/index/do_get_logistics',
+      data:{
+        order_id:options.order_id,
+      }
+      }).then(res=>{
+      console.log('调用物流接口成功',res)
+      this.setData({
+      
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 
   /**

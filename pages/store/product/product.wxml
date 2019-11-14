@@ -36,12 +36,15 @@
      </view>
    </van-cell>
   <!-- 规格 -->
-   <van-cell is-link>
+   <van-cell is-link bindtap="pay">
      <view slot="title" class="d-flex spec">
       <view class="dc-l">规格选择</view>
       <view class="spec-r d-flex">
-        <view class="mybtn">规格</view>
-        <view class="mybtn">型号</view>
+      <block wx:for="{{arrs}}">
+        <view class="mybtn">{{item.title}}</view>
+      </block>
+        <!-- <view class="mybtn">{{ a_norms}}</view>
+        <view class="mybtn">{{a_models}}</view> -->
       </view>
      </view>
    </van-cell>

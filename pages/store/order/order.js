@@ -47,13 +47,14 @@ copy:function(){
     this.setData({
       currenTime: currenTime
     });
+    
     /**
      * 调用订单详情
      */
     request({
       url:'http://tsf.suipk.cn/home/Goods/do_order_info',
       data:{
-        order_id:1,
+        order_id:options.order_id,
       }
       }).then(res=>{
       console.log('调用订单详情成功',res)

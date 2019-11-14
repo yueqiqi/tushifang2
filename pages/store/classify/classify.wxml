@@ -1,6 +1,6 @@
 <!-- 订单分类 -->
 <view>
-  <van-tabs sticky>
+  <van-tabs sticky bind:click='change'>
   <van-tab title="全部">
     <!-- 全部内容 -->
     <block wx:for="{{list}}" wx:key="{{index}}">
@@ -41,11 +41,11 @@
   <!-- <block wx:for="{{item.btns}}" wx:key="{{index}}">
     <view class="my-btn {{su}}{{index}}" data-num="{{index}}" bindtap="{{item.bind}}">{{item.btn}}</view>
   </block> -->
-  <view class="my-btn" hidden="{{item.suc=='待收货'||item.suc=='交易成功'?true:false}}" catchtap="remind">提醒发货</view>
-  <view class="my-btn" hidden="{{item.suc=='待发货'||item.suc=='待收货'?true:false}}" catchtap="del">删除订单</view>
-  <view class="my-btn" hidden="{{item.suc==''?true:false}}" catchtap="look">查看物流</view>
-  <view class="my-btn" hidden="{{item.suc=='交易成功'||item.suc=='待收货'?true:false}}" catchtap="cancel">取消订单</view>
-  <view class="my-btn" hidden="{{item.suc=='待发货'||item.suc=='交易成功'?true:false}}" style="background:rgba(118,212,198,1);color:#fff;" catchtap="affirm">确认收货</view>
+  <view class="my-btn" wx-if="{{item.status==2}}" catchtap="remind" data-id="{{item.id}}">提醒发货</view>
+  <view class="my-btn" wx-if="{{item.status==4}}" catchtap="del" data-id="{{item.id}}">删除订单</view>
+  <view class="my-btn" wx-if="{{item.status==3||item.status==4}}" catchtap="look" data-id="{{item.id}}">查看物流</view>
+  <!-- <view class="my-btn" wx-if="{{item.status==2}}" catchtap="cancel" data-id="{{item.id}}">取消订单</view> -->
+  <view class="my-btn" wx-if="{{item.status==3}}" style="background:rgba(118,212,198,1);color:#fff;" catchtap="affirm" data-id="{{item.id}}">确认收货</view>
   </view>
   </view>
 <!--  -->
@@ -54,8 +54,159 @@
 </block>
   </van-tab>
   <!-- ======================================================================== -->
-  <van-tab title="待发货">内容 2</van-tab>
-  <van-tab title="待收货">内容 3</van-tab>
-  <van-tab title="已完成">内容 4</van-tab>
+  <van-tab title="待发货">    <!-- 全部内容 -->
+    <block wx:for="{{list2}}" wx:key="{{index}}">
+    <view class="bgf mtt">
+    <view  bindtap="detail" data-id="{{item.id}}">
+    <view class="con">
+    <!-- 交易时间 -->
+    <view class="tim d-spb">    
+      <view class="til">订单日期\t{{item.create_time}}</view>
+      <view class="suc">{{item.status==1?'未支付':(item.status==2?'未发货':(item.status==3?'已发货':(item.status==4?'确认收货':(item.status==5?'申请退款':(item.status==6?'已退款':'')))))}}</view>
+    </view>
+    <!-- 商品详情 -->
+    <!-- 2 -->
+  <view class="details d-spb">
+    <view><image class="img" src="{{item.img_url}}"></image></view>
+    <view>
+      <!-- 标题 -->
+      <view class="detail-title">{{item.goods_title}}</view>
+      <view class="d-spb">
+        <view class="d-spb classify">
+          <view class="classify-l">分类</view>
+          <view class="classify-r">型号</view>
+        </view>
+        <view class="num">
+          数量x
+          <text>{{item.number}}</text>
+        </view>
+      </view>
+<!-- 价钱 -->
+        <view class="price">￥{{item.payment_money}}</view>
+    </view>
+    <!-- 2 -->
+  </view>
+    </view>
+    <!-- 按钮 -->
+
+  <view class="d-flex bt">
+  <!-- <block wx:for="{{item.btns}}" wx:key="{{index}}">
+    <view class="my-btn {{su}}{{index}}" data-num="{{index}}" bindtap="{{item.bind}}">{{item.btn}}</view>
+  </block> -->
+  <view class="my-btn" wx-if="{{item.status==2}}" catchtap="remind" data-id="{{item.id}}">提醒发货</view>
+  <view class="my-btn" wx-if="{{item.status==4}}" catchtap="del" data-id="{{item.id}}">删除订单</view>
+  <view class="my-btn" wx-if="{{item.status==3||item.status==4}}" catchtap="look" data-id="{{item.id}}">查看物流</view>
+  <!-- <view class="my-btn" wx-if="{{item.status==2}}" catchtap="cancel" data-id="{{item.id}}">取消订单</view> -->
+  <view class="my-btn" wx-if="{{item.status==3}}" style="background:rgba(118,212,198,1);color:#fff;" catchtap="affirm" data-id="{{item.id}}">确认收货</view>
+  </view>
+  </view>
+<!--  -->
+    </view>
+    
+</block></van-tab>
+  <van-tab title="待收货">
+        <!-- 全部内容 -->
+    <block wx:for="{{list3}}" wx:key="{{index}}">
+    <view class="bgf mtt">
+    <view  bindtap="detail" data-id="{{item.id}}">
+    <view class="con">
+    <!-- 交易时间 -->
+    <view class="tim d-spb">    
+      <view class="til">订单日期\t{{item.create_time}}</view>
+      <view class="suc">{{item.status==1?'未支付':(item.status==2?'未发货':(item.status==3?'已发货':(item.status==4?'确认收货':(item.status==5?'申请退款':(item.status==6?'已退款':'')))))}}</view>
+    </view>
+    <!-- 商品详情 -->
+    <!-- 2 -->
+  <view class="details d-spb">
+    <view><image class="img" src="{{item.img_url}}"></image></view>
+    <view>
+      <!-- 标题 -->
+      <view class="detail-title">{{item.goods_title}}</view>
+      <view class="d-spb">
+        <view class="d-spb classify">
+          <view class="classify-l">分类</view>
+          <view class="classify-r">型号</view>
+        </view>
+        <view class="num">
+          数量x
+          <text>{{item.number}}</text>
+        </view>
+      </view>
+<!-- 价钱 -->
+        <view class="price">￥{{item.payment_money}}</view>
+    </view>
+    <!-- 2 -->
+  </view>
+    </view>
+    <!-- 按钮 -->
+
+  <view class="d-flex bt">
+  <!-- <block wx:for="{{item.btns}}" wx:key="{{index}}">
+    <view class="my-btn {{su}}{{index}}" data-num="{{index}}" bindtap="{{item.bind}}">{{item.btn}}</view>
+  </block> -->
+  <view class="my-btn" wx-if="{{item.status==2}}" catchtap="remind" data-id="{{item.id}}">提醒发货</view>
+  <view class="my-btn" wx-if="{{item.status==4}}" catchtap="del" data-id="{{item.id}}">删除订单</view>
+  <view class="my-btn" wx-if="{{item.status==3||item.status==4}}" catchtap="look" data-id="{{item.id}}">查看物流</view>
+  <!-- <view class="my-btn" wx-if="{{item.status==2}}" catchtap="cancel" data-id="{{item.id}}">取消订单</view> -->
+  <view class="my-btn" wx-if="{{item.status==3}}" style="background:rgba(118,212,198,1);color:#fff;" catchtap="affirm" data-id="{{item.id}}">确认收货</view>
+  </view>
+  </view>
+<!--  -->
+    </view>
+    
+</block>
+  </van-tab>
+  <van-tab title="已完成">
+        <!-- 全部内容 -->
+    <block wx:for="{{list4}}" wx:key="{{index}}">
+    <view class="bgf mtt">
+    <view  bindtap="detail" data-id="{{item.id}}">
+    <view class="con">
+    <!-- 交易时间 -->
+    <view class="tim d-spb">    
+      <view class="til">订单日期\t{{item.create_time}}</view>
+      <view class="suc">{{item.status==1?'未支付':(item.status==2?'未发货':(item.status==3?'已发货':(item.status==4?'确认收货':(item.status==5?'申请退款':(item.status==6?'已退款':'')))))}}</view>
+    </view>
+    <!-- 商品详情 -->
+    <!-- 2 -->
+  <view class="details d-spb">
+    <view><image class="img" src="{{item.img_url}}"></image></view>
+    <view>
+      <!-- 标题 -->
+      <view class="detail-title">{{item.goods_title}}</view>
+      <view class="d-spb">
+        <view class="d-spb classify">
+          <view class="classify-l">分类</view>
+          <view class="classify-r">型号</view>
+        </view>
+        <view class="num">
+          数量x
+          <text>{{item.number}}</text>
+        </view>
+      </view>
+<!-- 价钱 -->
+        <view class="price">￥{{item.payment_money}}</view>
+    </view>
+    <!-- 2 -->
+  </view>
+    </view>
+    <!-- 按钮 -->
+
+  <view class="d-flex bt">
+  <!-- <block wx:for="{{item.btns}}" wx:key="{{index}}">
+    <view class="my-btn {{su}}{{index}}" data-num="{{index}}" bindtap="{{item.bind}}">{{item.btn}}</view>
+  </block> -->
+  <view class="my-btn" wx-if="{{item.status==2}}" catchtap="remind" data-id="{{item.id}}">提醒发货</view>
+  <view class="my-btn" wx-if="{{item.status==4}}" catchtap="del" data-id="{{item.id}}">删除订单</view>
+  <view class="my-btn" wx-if="{{item.status==3||item.status==4}}" catchtap="look" data-id="{{item.id}}">查看物流</view>
+  <!-- <view class="my-btn" wx-if="{{item.status==2}}" catchtap="cancel" data-id="{{item.id}}">取消订单</view> -->
+  <view class="my-btn" wx-if="{{item.status==3}}" style="background:rgba(118,212,198,1);color:#fff;" catchtap="affirm" data-id="{{item.id}}">确认收货</view>
+  </view>
+  </view>
+<!--  -->
+    </view>
+    
+</block>
+  </van-tab>
 </van-tabs>
 </view>

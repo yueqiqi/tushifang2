@@ -1026,7 +1026,7 @@ wx.reLaunch({
         console.log('调用刷新最新发布成功',res)
         var count=res.data.count
         var all=that.data.tabuser.length
-        if (all>count) {
+        if (all==count) {
           console.log(1)
           wx.showToast({
             title: '暂无更多',
@@ -1057,7 +1057,7 @@ wx.reLaunch({
         console.log('调用刷新最新发布成功',res)
         var count=res.data.count
         var all=that.data.tabuserjian.length
-        if (all>count) {
+        if (all==count) {
           console.log(1)
           wx.showToast({
             title: '暂无更多',

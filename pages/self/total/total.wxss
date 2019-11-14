@@ -1,4 +1,7 @@
 @import './alert.wxss';
+button::after{
+  border:0
+}
 .bor{
   width:690rpx;
 height:140rpx;

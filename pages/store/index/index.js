@@ -6,29 +6,30 @@ Page({
     var that=this
     console.log('点击选项卡',e.detail.index)
     var index=e.detail.index
+    console.log(that.data.one_class[index].id)
       request({
-        url:'http://tsf.suipk.cn',
+        url:'http://tsf.suipk.cn/home/Goods/do_getgoods',
         data:{
-          page:that.data.page,
-          limit:6,
+          page:1,
+          limit:10,
           shopping_mall_id:that.data.one_class[index].id
         }
         }).then(res=>{
-        console.log('调用成功',res)
+        console.log('调用商品列表 成功',res)
         if(index==1){
-          this.setData({
+          that.setData({
             product:res.data.list,
           })
         }else if(index==2){
-          this.setData({
+          that.setData({
             product2:res.data.list,
           }) 
         }else if(index==3){
-          this.setData({
+          that.setData({
             product3:res.data.list,
           })
         }else if(index==4){
-          this.setData({
+          that.setData({
             product4:res.data.list,
           })
         }
@@ -116,42 +117,7 @@ Page({
       },
     ],
     // 汽车用品
-    product:[
-      {
-        id:0,
-     //  商品图片
-        img:"../../images/carousel/02.jpg",
-     //商品标题
-        title:"日本车载眼镜架多功能创意汽车用眼睛支架",
-        // 商品价格
-        price: "99.00",
-        // 原来价格
-        gef:"200",
-      },
-      {
-        id:1,
-        //  商品图片
-        img: "../../images/carousel/03.jpg",
-        //商品标题
-        title: "日本车载眼镜架多功能创意汽车用眼睛支架",
-        // 商品价格
-        price: "99.00",
-        // 原来价格
-        gef: "200",
-      },
-      {
-        id:2,
-        //  商品图片
-        img: "../../images/carousel/04.jpg",
-        //商品标题
-        title: "日本车载眼镜架多功能创意汽车用眼睛支架",
-        // 商品价格
-        price: "99.00",
-        // 原来价格
-        gef: "200",
-      },
-      
-    ],
+    product:[],
     // 一级分类
     one_class:[],
     // 第一个tab
@@ -288,7 +254,7 @@ Page({
       wx.hideLoading();
         var count=res.data.count
         var all=that.data.message.length
-        if (all>count) {
+        if (all==count) {
           console.log(1)
           wx.showToast({
             title: '暂无更多',

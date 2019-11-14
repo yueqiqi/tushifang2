@@ -11,10 +11,10 @@
     <!-- 图片和价格 -->
     <view class="product d-spb">
     <view class="d-flex">
-      <image class="product-img" src="{{img}}"></image>
+      <image class="product-img" bindtap="prev" src="{{img}}"></image>
       <view class="cart-price">
         <view>￥{{price}}</view>
-        <view>库存 <text>10000</text> 件</view>
+        <view>库存 <text>{{stock}}</text> 件</view>
       </view>
     </view>
       <view style="margin-right:30rpx;margin-top:-10rpx;" bindtap="hideModal" wx:if="{{showModalStatus}}"><image style="width:22rpx;height:22rpx;" src="../../images/del.png"></image></view>
@@ -25,22 +25,19 @@
 <view class="color">
 <block wx:for="{{model}}" wx:key="{{index}}" wx:for-index="qm">
   <!-- 颜色 -->
-    <view class="ml mt">{{item.title}}</view>
+    <view class="ml mt" data-id="{{item.id}}">{{item.title}}</view>
   <!-- 颜色选项 -->
     <view  class="d-flex color-btn">
       <block wx:for="{{item.val}}" wx:key="idxa" wx:for-item="vm">
-        <view bindtap='choose' class='btns{{vm.checked?"actives":""}}' data-idx="{{index}}"  data-id="{{vm.id}}" data-im="{{qm}}" disabled="{{vm.disabled}}">{{vm.title}}</view>
+        <view bindtap='choose' class='btns{{vm.checked?"actives":""}}' data-idx="{{index}}" data-title="{{vm.title}}"  data-id="{{vm.id}}" data-im="{{qm}}" disabled="{{vm.disabled}}">{{vm.title}}</view>
       </block>
      </view>
 </block>
   </view>
-
-
-
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- ++++++++++++++++++++++max="{{stock}}"+++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- 步进器 -->
     <view style="position:absolute;bottom:130rpx;right:30rpx;">
-      <van-stepper max="10" value="{{ 1 }}" bind:change="onChange"  integer="true"/>
+      <van-stepper max="10" value="{{ chv }}" min="{{stock==0?0:1}}"  bind:change="onChange"  integer="true"/>
     </view>
   <button class="pay" bindtap="now">立即购买</button>
   </view>
