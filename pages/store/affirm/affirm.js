@@ -33,6 +33,7 @@ close:function(){
   
   var that=this
   var user_addres_id=that.data.user_addres_id
+  console.log('地址id',user_addres_id)
   var order_id=that.data.list.id
   request({
     url:'http://tsf.suipk.cn/home/pay/do_wxpay_goods',
