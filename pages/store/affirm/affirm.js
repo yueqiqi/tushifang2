@@ -41,10 +41,11 @@ close:function(){
       order_id
     }
     }).then(res=>{
-      console.log('支付成功',res)
-      var timeStamp=res.data.data.timeStamp.toString()
-      var nonceStr=res.data.data.nonceStr.toString()
-    if(res.data.code==0){
+      console.log('支付成功1',res)
+      var timeStamp=res.data.data.timestamp
+      var nonceStr=res.data.data.noncestr
+      console.log('传递的值',nonceStr,timeStamp)
+    // if(res.data.code==0){
       wx.requestPayment({
     timeStamp,
     nonceStr,
@@ -52,18 +53,20 @@ close:function(){
     signType: res.data.data.signType,
     paySign: res.data.data.paySign,
     success: (result)=>{
-      console.log('支付成功')
+      console.log('支付成功2')
       wx.navigateTo({
         url: '/pages/store/success/success',
       })
     },
-    fail: ()=>{},
+    fail: (err)=>{
+      console.log('微信支付接口',err)
+    },
     complete: ()=>{}
   });
-    }
+    // }
 
     }).catch(err=>{
-    console.log('调用支付失败')
+    console.log('调用支付失败',err)
   })
 
 
@@ -100,6 +103,7 @@ close:function(){
   onLoad: function (options) {
     var that=this
     console.log('接受商城传来的',options)
+    console.log('接受地址',options)
     // var DATE = util.formatDate(new Date());
     // this.setData({
     //   date: DATE,
@@ -107,7 +111,7 @@ close:function(){
     // var price=this.data.price
     // var money=this.data.money
     // this.setData({
-    //   all:price+money
+      //   all:price+money
     // })
     this.setData({
       radios:options.radios
@@ -129,7 +133,7 @@ close:function(){
         sku_id:options.sku_id,
         number:options.number
       }
-      }).then(res=>{
+    }).then(res=>{
       console.log('调用创建订单成功',res)
         /**
          * 确认订单
@@ -156,6 +160,9 @@ close:function(){
       }).catch(err=>{
       console.log('调用失败')
     })
+    setTimeout(()=>{
+      console.log('地址id',this.data.user_addres_id)
+    },4000)
   },
 
   /**
@@ -164,7 +171,7 @@ close:function(){
   onReady: function () {
 
   },
-
+  
   /**
    * 生命周期函数--监听页面显示
    */
@@ -176,9 +183,9 @@ close:function(){
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
-
+  
   /**
    * 生命周期函数--监听页面卸载
    */

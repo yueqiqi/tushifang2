@@ -23,7 +23,7 @@
     </van-panel>
 </block> -->
   <block wx:for="{{defa}}" wx:key="{{index}}">
-      <van-radio-group value="{{ radio }}" data-id="{{item.id}}" bind:change="onChange">
+      <van-radio-group value="{{ radio }}" data-id="{{item.id}}" bind:change="onChange" data-name="{{item.username}}" data-phone="{{item.phone}}" data-loca="{{item.province_and_city}}" data-locas="{{item.info}}">
     <view data-index="{{index}}" >
         <view class="d-spb mes">
           <view class="left d-flex">
