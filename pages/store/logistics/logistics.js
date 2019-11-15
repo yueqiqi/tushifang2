@@ -7,9 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    num:123456789,
-    list:123456789,
-    state:"已签收",
+    num:'',
+    list:'',
+    state:"",
     active:3,
     date:"",
     steps: [
@@ -44,15 +44,15 @@ Page({
     // 接收我的订单发来的参数
     console.log(options,options.order_id)
     // 向数组中添加数据
-    var DATE = util.formatTime(new Date());
+    // var DATE = util.formatTime(new Date());
     var that = this;
-    var steps=this.data.steps
-    for(var z in steps){
-  var up = "steps[" + z + "].desc";//先用一个变量，把(info[0].gMoney)用字符串拼接起来
-  that.setData({
-    [up]: DATE
-    })
-    }
+    // var steps=this.data.steps
+    // for(var z in steps){
+  // var up = "steps[" + z + "].desc";//先用一个变量，把(info[0].gMoney)用字符串拼接起来
+  // that.setData({
+  //   [up]: DATE
+  //   })
+  //   }
     /**
      * 物流接口
      */
@@ -60,12 +60,33 @@ Page({
       url:'http://tsf.suipk.cn/home/index/do_get_logistics',
       data:{
         order_id:options.order_id,
+        // order_id:16,
       }
       }).then(res=>{
       console.log('调用物流接口成功',res)
-      this.setData({
-      
-      })
+      var res=res.data.data
+        that.setData({
+          // 快递图片
+          img_url:res.img_url,
+          // 订单号
+          num:res.order_sn,
+          // 物流编号
+          list:res.LogisticCode,
+          // 订单状态
+          state:res.State,
+          // 快递公司
+          ShipperCode:res.ShipperCode,
+          // 快递跟踪
+          // steps:res.Traces
+        })
+      var ppp = res.Traces.map((item) => {
+        return { text: item.AcceptStation, desc: item.AcceptTime }
+        })
+        that.setData({
+          steps:ppp,
+          active:ppp.length
+        })
+        console.log(ppp)
       }).catch(err=>{
       console.log('调用失败')
     })

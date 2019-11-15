@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 66,
+			"current": 68,
 			"list": [
 				{
 					"id": 0,
@@ -518,6 +518,20 @@
 					"id": -1,
 					"name": "查看物流",
 					"pathName": "pages/store/logistics/logistics",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "创建订单",
+					"pathName": "pages/store/affirm/affirm",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商城收货地址的选择",
+					"pathName": "pages/store/site/site",
 					"scene": null
 				}
 			]

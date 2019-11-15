@@ -1,2 +1,0 @@
-<button bindtap="splice">拆分</button>
-<button bindtap="fn">获取形参</button>

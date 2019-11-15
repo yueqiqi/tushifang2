@@ -1,17 +1,17 @@
 <!-- 确认订单 -->
 <view class="position bgf">
-  <van-cell is-link link-type="navigateTo"url="/pages/store/site/site?id=1" center="true">
+  <van-cell is-link bindtap='addr' center="true">
   <view slot="title">
     <view class="d-flex">
       <image class="img" src="../../images/position/position-sm.png"></image>
       <view>
       <!-- 用户名 -->
         <view class="d-flex user">
-          <view>{{name}}</view>
-          <view>{{phone}}</view>
+          <view>{{list.username}}</view>
+          <view>{{list.phone}}</view>
         </view>
         <!-- 地址 -->
-        <view class="site">{{ad}}</view>
+        <view class="site">{{list.address}}</view>
       </view>
     </view>
   </view>
@@ -21,12 +21,12 @@
 <view class="bgf">
 <view class="bgf detail">
   <!-- 时间 -->
-  <view class="date">{{date}}</view>
+  <view class="date">{{list.create_time}}</view>
   <view class="d-spb details">
-    <view><image class="detail-img" src="../../images/carousel/05.jpg"></image></view>
+    <view><image class="detail-img" src="{{list.img_url}}"></image></view>
     <view>
       <!-- 商品标题 -->
-      <view class="detail-title">{{title}}</view>
+      <view class="detail-title">{{list.goods_title}}</view>
       <!-- 分类型号 -->
       <view class="d-spb model">
         <view>分类</view>
@@ -34,8 +34,8 @@
       </view> 
       <!-- 价格 -->
       <view class="d-spb pr">
-        <view class="price">￥{{price}}.00</view>
-        <view class="num">x{{num}}</view>
+        <view class="price">￥{{list.one_money}}</view>
+        <view class="num">x{{list.number}}</view>
       </view>
     </view>
   </view>
@@ -45,7 +45,7 @@
 <!-- 、运费 -->
   <view class="d-spb money">
     <view>运费</view>
-    <view>￥{{money}}.00</view>
+    <view>￥{{list.freight_money}}</view>
   </view>
   <!-- 支付方式 -->
   <view class="d-spb pay">
@@ -58,7 +58,7 @@
   <!-- 商品总额 -->
   <view class="allmoney d-spb">
     <view>商品总额</view>
-    <view>￥{{all}}.00</view>
+    <view>￥{{list.payment_money}}</view>
   </view>
 </view>
 </view>

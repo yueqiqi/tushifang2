@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "van-panel": "/miniprogram_npm/vant-weapp/panel/index"
+    "van-radio": "/miniprogram_npm/vant-weapp/radio/index",
+    "van-radio-group": "/miniprogram_npm/vant-weapp/radio-group/index"
   },
-  "navigationBarTitleText": "选择收货地址"
+    "navigationBarTitleText": "选择收货地址"
 }

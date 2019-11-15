@@ -1,32 +1,88 @@
 import request from '../../login'
 Page({
+  /**
+   * 未选择规格
+   */
+  alert:function(){
+    console.log('提示')
+    if(this.data.user_addres_id==''){
+      wx.showModal({
+        title: '地址提示',
+        content: '请选择收货地址',
+        showCancel: true,
+        cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if(result.confirm){
+          
+        }
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  }else{
+    wx.showModal({
+      title: '规格提示',
+      content: '请选择规格',
+      showCancel: true,
+      cancelText: '取消',
+    cancelColor: '#000000',
+    confirmText: '确定',
+    confirmColor: '#3CC51F',
+    success: (result) => {
+      if(result.confirm){
+        
+      }
+    },
+    fail: ()=>{},
+    complete: ()=>{}
+  });
+  }
+  /**
+   * 创建订单
+   */
+  },
   now:function(){
-    console.log(this.data.ec)
-    console.log(this.data.es)
+    var that=this
+    console.log('跳转')
+    var user_addres_id=that.data.user_addres_id
+    var goods_id=that.data.list.id
+    var sku_id=that.data.sku_id
+    var number =that.data.chv
+    var radios=that.data.radios
     wx.navigateTo({
-      url: '/pages/store/affirm/affirm',
+      url: '/pages/store/affirm/affirm?user_addres_id='+user_addres_id+'&goods_id='+goods_id+'&sku_id='+sku_id+'&number='+number+'&radios='+radios,
     })
   },
-  // 价格变化
+/**
+ * 价格变化
+ */
   onChange: function (e) {
-    // 获取输入框的值
-    console.log(e.detail)
-    var num = e.detail
-    var lp = this.data.lp
-    this.setData({
-      price: lp * num
-    })
+    var igg=this.data.list.is_dgg
+    console.log(e)
+    if(igg==1){
+      // 获取输入框的值
+      console.log(e.detail)
+      var num = e.detail
+      var lp = this.data.lp
+      this.setData({
+        price: lp * num,
+        chv:num
+      })
+    }else if(igg==0){
+      var num = e.detail
+      var lp = this.data.lp
+      this.setData({
+        price: lp * num,
+        chv:num
+      })
+    }
+    console.log(this.data.chv)
 
   },
-  // minus:function(e){
-  //   // 获取输入框的值
-  //   console.log(e.detail)
-  //   var num = e.detail
-  //   var p = this.data.price
-  //   this.setData({
-  //     price: p * num
-  //   })
-  // },
+
   
   // // 型号
   // size(e) {
@@ -94,22 +150,6 @@ console.log(e)
 /**
  * 规格型号的改变
  */
-
-for(var ip in arrs){
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
     console.log('标题',q[index2].id,id)
     console.log('全局',that.data.arrs)
     for(var z in q){
@@ -134,7 +174,7 @@ for(var ip in arrs){
       // var ui=[]
       var arr2
       var str
-      if(arrs.length>1){
+      if(arrs.length>=1){
          arr2=arrs.map(o => o.id)
         arr2.sort(function(a, b){return a - b})
         for(var sk in sku){
@@ -147,7 +187,8 @@ for(var ip in arrs){
               img:sku[sk].img_url,
               price:sku[sk].money,
               lp:sku[sk].money,
-              stock:sku[sk].stock
+              stock:sku[sk].stock,
+              sku_id:sku[sk].id
             })
           }
         }
@@ -227,6 +268,7 @@ console.log('查看的图片2',img)
    * 页面的初始数据
    */
   data: {
+    user_addres_id:'',
     //
     a_norms:'规格',
     //型号
@@ -363,7 +405,7 @@ console.log('查看的图片2',img)
    */
   goto:function(){
     wx.navigateTo({
-      url: '/pages/self/site/site',
+      url: '/pages/store/site/site',
       success: (result)=>{
         
       },
@@ -371,10 +413,14 @@ console.log('查看的图片2',img)
       complete: ()=>{}
     });
   },
+  lo:function(){
+    console.log('保存的地址id',this.data.user_addres_id)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+ 
     console.log('接收商城跳转的id ',options.id)
     this.setData({
       ec:this.data.color[0],
@@ -394,7 +440,11 @@ console.log('查看的图片2',img)
       }).then(res=>{
       console.log('调用商品详情页成功',res)
       this.setData({
-        list:res.data.data
+        list:res.data.data,
+        img:res.data.data.img_url,
+        price:res.data.data.money,
+        lp:res.data.data.money,
+        stock:res.data.data.stock
       })
       }).catch(err=>{
       console.log('调用失败')

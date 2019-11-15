@@ -1,2 +1,0 @@
-<!-- 解析富文本 -->
-<rich-text nodes="{{nodes}}"></rich-text>

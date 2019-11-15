@@ -2,14 +2,14 @@
 <view class="bgf">
   <view class="d-flex ex">
     <view>
-      <image class="img" src="../../images/carousel/06.jpg"></image>
+      <image class="img" src="{{img_url}}"></image>
     </view>
     <view class="company">
-      <view class="express">快递公司</view>
+      <view class="express">{{ShipperCode=='ZTO'?'中通快递':(ShipperCode=='STO'?'申通快递':(ShipperCode=='YTO'?'圆通快递':'其他快递'))}}</view>
       <view class="num">
         <view>订单编号 <text>{{num}}</text></view>
         <view>物流编号 <text>{{list}}</text></view>
-        <view>物流状态 <text>{{state}}</text></view>
+        <view>物流状态 <text>{{state==2?'在途中':(state==3?'已签收':(state==4?'问题件':''))}}</text></view>
       </view>
     </view>
   </view>

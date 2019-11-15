@@ -3,9 +3,11 @@
 var util = require('../../../utils/util.js'); //参数是util.js所在的路径，参照自个儿的
 import request from '../../login'
 Page({
-look:function(){
+look:function(e){
+  console.log(e)
+  var order_id=e.currentTarget.dataset.id
   wx.navigateTo({
-    url: '/pages/store/logistics/logistics?id=1',
+    url: '/pages/store/logistics/logistics?order_id='+order_id,
   })
 },
 copy:function(){

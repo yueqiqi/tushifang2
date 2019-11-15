@@ -1,8 +1,0 @@
-<!-- 下拉选项框 -->
-<picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode="selector" range-key='{{"title"}}'>
-  <view class="picker">
-    <!-- 分类：{{objectArray[index]}}   -->
-    <view class="select-text">{{class}}</view>
-    <image src="../../images/select.png"></image>
-  </view>
-</picker>

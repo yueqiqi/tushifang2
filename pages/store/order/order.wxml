@@ -7,7 +7,7 @@
 
 <view class="bgf">  
   <!-- 订单签收 -->
-  <van-cell value="查看物流信息" label="{{currenTime}}" is-link  bindtap="look">
+  <van-cell value="查看物流信息" label="{{order.create_time}}" is-link data-id="{{order.id}}" bindtap="look">
     <view slot="title">
       <view class="d-flex">
         <view><image class="cart" src="../../images/cart.png"></image></view>

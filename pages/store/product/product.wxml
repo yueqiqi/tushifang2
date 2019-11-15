@@ -32,7 +32,7 @@
    <van-cell is-link bind:click="goto">
      <view slot="title" class="d-flex dc">
       <view class="dc-l">配送区域</view>
-      <view class="dc-r">请选择配送区域</view>
+      <view class="dc-r">{{user_addres_id!=''?'已选择配送区域':'请选择配送区域'}}</view>
      </view>
    </van-cell>
   <!-- 规格 -->
@@ -40,7 +40,7 @@
      <view slot="title" class="d-flex spec">
       <view class="dc-l">规格选择</view>
       <view class="spec-r d-flex">
-      <block wx:for="{{arrs}}">
+      <block wx:for="{{arrs}}" wx:key="{{index}}">
         <view class="mybtn">{{item.title}}</view>
       </block>
         <!-- <view class="mybtn">{{ a_norms}}</view>
