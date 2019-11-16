@@ -5,11 +5,14 @@ Page({
     console.log('绑定',e)
     var that=this
     var zz = e.currentTarget.dataset.num;
+    var recharge_id=e.currentTarget.dataset.id
+    console.log('选择的id',recharge_id)
     var s=that.data.userscore
     that.setData({
       num: zz,
       money:s[zz].money,
-      up:s[zz].integral
+      up:s[zz].integral,
+      recharge_id,
     })
   },
   // changeOil: function (e) {
@@ -47,6 +50,27 @@ Page({
   // 充值
   next:function(){
     console.log(this.data.money+"元",this.data.up+"积分")
+
+    /**
+     * 充值信誉分
+     */
+    var that=this
+    var recharge_id=that.data.recharge_id
+    var uid=wx.getStorageSync('uid');
+    var recharge_id
+    request({
+      url:'http://tsf.suipk.cn/home/pay/do_wxpay_recharge',
+      data:{
+        type:2,
+        uid,
+        recharge_id
+      }
+      }).then(res=>{
+      console.log('调用充值信誉分成功',res)
+
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 // 点击金额变化
   
@@ -97,7 +121,8 @@ Page({
       }).then(res=>{
       console.log('调用充值积分成功',res)
       this.setData({
-        userscore:res.data.data
+        userscore:res.data.data,
+        recharge_id:res.data.data[0].id
       })
       }).catch(err=>{
       console.log('调用失败')

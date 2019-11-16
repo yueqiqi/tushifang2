@@ -58,6 +58,9 @@ font-family:PingFang SC;
 font-weight:400;
 color:rgba(72,149,137,1);
 }
+button::after{
+  border:0
+}
 .inv{
   padding-bottom:40rpx;
 }

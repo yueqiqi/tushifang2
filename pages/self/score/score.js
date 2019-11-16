@@ -86,7 +86,15 @@ ginv:function(){
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+    }
+    return {
+      title: '包程项',
+      path: '/pages/interest/interest',
+      success: function (res) {
+        console.log('成功', res)
+      }
+    }
   }
 })

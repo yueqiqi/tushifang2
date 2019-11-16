@@ -14,6 +14,7 @@ font-family:PingFang SC;
 font-weight:bold;
 color:rgba(51,51,51,1);
 margin-left:31rpx;
+margin-right:-30rpx;
 }
 .right{
   margin-left:133rpx;

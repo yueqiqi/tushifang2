@@ -26,16 +26,13 @@
     <!-- +++++++++++++++++++++++++++++++++++积分充值++++++++++++++++++++++ -->
     <view class="d-spb in" style="margin-right:30rpx;">
     <block wx:for="{{userscore}}" wx:key="{{index}}">
-      <view  class='{{num==index?"active":""}} btns' data-num='{{index}}' catchtap="changetotal" style="margin-top:10rpx;;" bindtap="btnscore">
+      <view  class='{{num==index?"active":""}} btns' data-num='{{index}}' data-id="{{item.id}}" catchtap="changetotal" style="margin-top:10rpx;;" bindtap="btnscore">
         <view >{{item.money}}元</view>
         <view>{{item.integral}}信誉分</view>
       </view>
     </block>
     </view>
     <!-- +++++++++++++++++++++++++++++++++++积分充值++++++++++++++++++++++ -->
-
-
-
   </view>
     <button class="next" bindtap="next">立即充值</button>
 </view>

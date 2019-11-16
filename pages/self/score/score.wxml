@@ -17,7 +17,7 @@
       <view class="i2">每成功邀请一位好友进入，可获得1-3信誉分哦！</view>
     </view>
     <!-- 去邀请 -->
-    <view class="ginv" bindtap="ginv">去邀请</view>
+    <button class="ginv" open-type="share" bindtap="ginv" style="margin-right:0rpx;">去邀请</button>
   </view>
 
   <!-- 充值 -->
