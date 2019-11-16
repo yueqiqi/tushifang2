@@ -6,10 +6,12 @@ Page({
     var that=this
     var zz = e.currentTarget.dataset.num;
     var s=that.data.userscore
+    var recharge_id=e.currentTarget.dataset.id
     that.setData({
       num: zz,
       money:s[zz].money,
-      up:s[zz].integral
+      up:s[zz].integral,
+      recharge_id,
     })
   },
   // changeOil: function (e) {
@@ -47,6 +49,47 @@ Page({
   // 充值
   next:function(){
     console.log(this.data.money+"元",this.data.up+"积分")
+    /**
+     * 充值积分
+     */
+    var that=this
+    var recharge_id=that.data.recharge_id
+    var uid=wx.getStorageSync('uid');
+    var recharge_id
+    request({
+      url:'http://tsf.suipk.cn/home/pay/do_wxpay_recharge',
+      data:{
+        type:1,
+        uid,
+        recharge_id
+      }
+      }).then(res=>{
+      console.log('调用充值积分成功',res)
+      console.log('支付成功1',res)
+      var timeStamp=res.data.data.timestamp
+      var nonceStr=res.data.data.noncestr
+      console.log('传递的值',nonceStr,timeStamp)
+    // if(res.data.code==0){
+      wx.requestPayment({
+    timeStamp,
+    nonceStr,
+    package: res.data.data.package,
+    signType: res.data.data.signType,
+    paySign: res.data.data.paySign,
+    success: (result)=>{
+      console.log('支付成功2')
+      wx.navigateTo({
+        url: '/pages/self/success/success',
+      })
+    },
+    fail: (err)=>{
+      console.log('微信支付接口',err)
+    },
+    complete: ()=>{}
+  });
+      }).catch(err=>{
+      console.log('调用失败')
+    })
   },
 // 点击金额变化
   
@@ -97,7 +140,10 @@ Page({
       }).then(res=>{
       console.log('调用充值积分成功',res)
       this.setData({
-        userscore:res.data.data
+        userscore:res.data.data,
+        recharge_id:res.data.data[0].id,
+        money:res.data.data[0].money,
+        up:res.data.data[0].integral
       })
       }).catch(err=>{
       console.log('调用失败')

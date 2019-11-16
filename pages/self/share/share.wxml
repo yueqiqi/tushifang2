@@ -1,0 +1,21 @@
+<view class="">
+  <block wx:for="{{users}}" wx:key="{{index}}">   
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <view class="d-spb user">
+        <view class="left d-flex">
+          <view class="z" style="width:70rpx;height:70rpx;margin:auto 0;display: flex;align-items: center;">
+            <van-radio name="{{index}}"></van-radio>
+          </view>
+        <view class="head">
+          <image style="width:70rpx;height:70rpx;border-radius:50%;" src="{{item.head}}"></image>
+        </view>
+        <view class="userName">{{item.nickname}}</view>
+      </view>
+      <view class="right d-flex">
+        <view class="credit">用户信誉分</view>
+        <view class="score">{{item.integral}}</view>
+      </view>
+    </view>
+    </van-radio-group>
+  </block>
+</view>

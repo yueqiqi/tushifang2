@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/self/share/share",
     "pages/interest/interest",
     "pages/body/body",
     "pages/interest/interest2",

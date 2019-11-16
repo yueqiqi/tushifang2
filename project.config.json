@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 68,
+			"current": 69,
 			"list": [
 				{
 					"id": 0,
@@ -532,6 +532,13 @@
 					"id": -1,
 					"name": "商城收货地址的选择",
 					"pathName": "pages/store/site/site",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "信誉分充值",
+					"pathName": "pages/self/goup/goup2",
 					"scene": null
 				}
 			]

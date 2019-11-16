@@ -83,7 +83,8 @@ Page({
                         }
                         }).then(res=>{
                         console.log('调用待发货列表成功',res)
-                        this.setData({
+                        that,onLoad()
+                        that.setData({
                           list3:res.data.list,
                         })
                         })

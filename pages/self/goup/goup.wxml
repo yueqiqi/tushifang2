@@ -26,7 +26,7 @@
     <!-- +++++++++++++++++++++++++++++++++++积分充值++++++++++++++++++++++ -->
     <view class="d-spb in" style="margin-right:30rpx;">
     <block wx:for="{{userscore}}" wx:key="{{index}}">
-      <view  class='{{num==index?"active":""}} btns' data-num='{{index}}' catchtap="changetotal" style="margin-top:10rpx;;" bindtap="btnscore">
+      <view  class='{{num==index?"active":""}} btns' data-num='{{index}}' catchtap="changetotal" style="margin-top:10rpx;;" data-id="{{item.id}}" bindtap="btnscore">
         <view >{{item.money}}元</view>
         <view>{{item.integral}}积分</view>
       </view>

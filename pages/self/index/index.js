@@ -260,7 +260,7 @@ Page({
       },
       {
         img: "../../images/ico/i7.png",
-        link: "/pages/index/index",
+        link: "/pages/share/share",
         til: "分享好友"
       },
       {
