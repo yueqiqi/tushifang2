@@ -1,6 +1,18 @@
 // pages/self/card/card.js
 import request from '../../login.js'
 Page({
+
+
+  upset:function(){
+    console.log('修改名片')
+    wx.navigateTo({
+      url: '/pages/self/card/perfect2',
+    })
+
+  },
+
+
+
   // 查看名片夹
   mycard:function(e){
     console.log(e)
@@ -91,7 +103,7 @@ var that=this
       }).then(res=>{
       console.log('调用我的名片成功',res)
       that.setData({
-        head:res.data.data.head,
+        head:res.data.data.head1,
         name:res.data.data.nickname,
         com:res.data.data.corporate_name,
         post:res.data.data.company_position,
@@ -131,7 +143,7 @@ var that=this
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad();
   },
 
   /**
@@ -165,7 +177,16 @@ var that=this
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    if(res.from=='button'){
+      return {
+        title: '包程项',//弹出分享时显示的分享标题
+        path: '/pages/body/body',//'/page/user?id=123' // 路径，传递参数到指定页面。
+        desc: '土石方首页',
+        success: function (res) {
+          console.log('分享成功',res)
+         }
+    }
+  }
   }
 })

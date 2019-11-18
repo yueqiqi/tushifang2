@@ -1004,6 +1004,7 @@ listenerButtonPreviewImaged:function(e){
   onLoad: function (options) {
     // 调用函数时，传入new Date()参数，返回值是日期和时间
     var that=this
+    wx.hideTabBar();
     // 接受首页传开的跳转信息
     console.log('首页的跳转',options)
     if(options.active!=undefined){
@@ -1132,6 +1133,7 @@ listenerButtonPreviewImaged:function(e){
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    wx.hideTabBar();
     var that=this
     for(var p in that.data.userlists){
       var w='userlists['+p+'].working_condition'

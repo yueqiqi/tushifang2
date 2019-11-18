@@ -72,7 +72,7 @@ Page({
         let tempFilePaths = res.tempFilePaths;
 
         that.setData({
-          tempFilePaths: tempFilePaths
+          tempFilePaths: tempFilePaths,set2:false
         })
         /**
          * 上传完成后把文件上传到服务器
@@ -190,37 +190,11 @@ Page({
   mes:function(e){
     var e=e.detail.value
     console.log(e)
-    if (e.name == "" || e.phone == "" || e.com == "" || e.post == "" || e.email == "" || e.address == "" || e.textarea == "" || this.data.tempFilePaths.length==0){
-      console.log("有空")
+    if (e.name == "" || e.phone == "" || e.com == "" || e.post == "" || e.email == "" || e.address == "" ){
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
     }else{
       var that=this
-    // var head1=that.data.heads1
-    // // ？+++++++++++上传头像+++++++++++++++++++++++++++++
-    // var head
-    // wx.uploadFile({
-    //   url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-    //   filePath: heads,
-    //   name: 'image',
-    //   method: 'POST',
-    // header: {
-    //   'content-type': 'application/x-www-form-urlencoded'
-    // },
-    //   success: function (res) {
-    //     console.log("检验头像图片上传",res)
-    //      head=res.data
-    //   },
-    //   fail: function (res) {
-    //     wx.hideToast();
-    //     wx.showModal({
-    //       title: '错误提示',
-    //       content: '上传图片失败',
-    //       showCancel: false,
-    //       success: function (res) { }
-    //     })
-    //   }
-    // });
     // // ？+++++++++++上传头像+++++++++++++++++++++++++++++
     var nickname=e.name
     var phone=e.phone
@@ -229,6 +203,11 @@ Page({
     var email=e.email
     var detailed_address=e.address
     var info=e.textarea
+    if(that.data.set==true){
+      var head1=that.data.head
+    }else{
+      
+    }
     var head1=that.data.heads1
     var p=that.data.img_url_arr
     console.log(that.data.img_url_arr)
@@ -310,7 +289,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
         that.setData({
-          head: tempFilePaths
+          head: tempFilePaths,set:false
         })
         /**
          * 上传完成后把文件上传到服务器
@@ -405,7 +384,7 @@ Page({
     // 聚焦
     focus:false,
     // 电话号码
-    phone:13500000000,
+    phone:'',
     // input禁用  
     sisDisabled: true,
     isDisabled: true,
@@ -422,12 +401,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
     // ++++++++++++++++++完善我的名片++++++++++++++++++++++++++
-    var phone=wx.getStorageSync('userphone')
-    this.setData({
-      phone,
+    // ++++++++++++++++++完善我的名片++++++++++++++++++++++++++
+    /**
+     * 修改我的名片
+     */
+    var uid=wx.getStorageSync('uid');
+    request({
+    url:'http://tsf.suipk.cn/home/personal/do_perfect',
+      data:{
+        uid,
+      }
+      }).then(res=>{
+      console.log('调用修改成功',res)
+      that.setData({
+        set:true,
+        com:res.data.data.corporate_name,
+        post:res.data.data.company_position,
+        address:res.data.data.detailed_address,
+        email:res.data.data.detailed_address,
+        head:res.data.data.head1,
+        name:res.data.data.nickname,
+        phone:res.data.data.phone,
+        info:res.data.data.info,
+        tempFilePaths:res.data.data.img_url_arr
+      })
+      }).catch(err=>{
+      console.log('调用失败')
     })
-    // ++++++++++++++++++完善我的名片++++++++++++++++++++++++++
   },
 
   /**

@@ -1,6 +1,7 @@
 /* pages/self/issue/issue.wxss */
 /* @import "/pages/Ac/stick/stick"; */
 @import "/pages/Ac/stick/stick.wxss";
+@import "/pages/self/err/err.wxss";
 /* 搜索框样式 */
  .search{  
       width: 95%;  

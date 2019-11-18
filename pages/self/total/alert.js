@@ -16,8 +16,8 @@ cancel:function(){
 /**
  * 点击确定
  */
-confirm:function(){
-  console.log(this.data.phone)
+formsubmit:function(e){
+  console.log(e)
 },
 /**
  * 获取用户输入的值
@@ -34,6 +34,7 @@ setValue:function(e){
   data: {
     alert:false,
     phone:"",
+    num:'',
   },
 
 })

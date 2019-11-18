@@ -14,6 +14,8 @@ App({
   onLoad:function(){
     // 隐藏原生的tabbar
     wx.hideTabBar();
+     // 免费认证
+    
   },
   onReady:function(){
     // 隐藏原生的tabbar
@@ -26,7 +28,22 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    /**
+     * 判断用户是否是第一次进入
+     */
+    var uid=wx.getStorageSync("uid");
+    // console.log('进入打印',uid)
+    
+    if(uid==''){
+      wx.redirectTo({
+        url: '/pages/interest/interest',
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    }
     /**
      * 从缓存中取出token
      */

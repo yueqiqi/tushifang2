@@ -16,7 +16,12 @@ Page({
   next: function () {
     wx.navigateTo({
       url: '/pages/demo/new/mes/find2',
-    })
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
   /**
    * 页面的初始数据

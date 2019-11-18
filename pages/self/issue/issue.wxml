@@ -109,3 +109,4 @@
 <view class="pos" bindtap="iss">
   <image src="../../images/iss.png"></image>
 </view>
+<include src="./err"/>

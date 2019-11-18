@@ -2,7 +2,7 @@
 <view style="padding-top:29rpx;padding-bottom:30rpx;"> 
   <view class="card">
     <view class="me d-flex">
-      <view><image class="head" src="{{head}}" ></image></view>
+      <view><image class="head" src="{{set==true?'http://tsf.suipk.cn'+head:head}}" ></image></view>
       <view class="rights">
         <view class="name">{{name==''?"用户昵称":name}}</view>      
         <view class="me1">{{post==''?"暂未填写职位信息":post}}</view>      
@@ -56,7 +56,7 @@
     <view class="section-title">头像</view>
     <view class="right d-spb" bindtap="choose">
     <view>
-    <image class="header" src="{{head}}"></image>
+    <image class="header" src="{{set==true?'http://tsf.suipk.cn'+head:head}}"></image>
     </view>
       <!-- <input name="i1"/> -->
       <view>
@@ -68,7 +68,7 @@
  <view class="section2 d-spb">
     <view class="section-title">姓名</view>
     <view class="right">
-      <input name="name" bindblur="name"/>
+      <input name="name" value="{{name}}" bindblur="name"/>
     </view>
  </view>
  <!-- 联系电话 -->
@@ -87,7 +87,7 @@
  <view class="s1 d-spb">
     <view class="section-title">公司名称</view>
     <view class="right">
-      <input name="com" bindblur="com"/>
+      <input name="com" value="{{com}}" bindblur="com"/>
     </view>
  </view>
  <!-- 公司职务 -->
@@ -95,7 +95,7 @@
  <view class="section2 d-spb">
     <view class="section-title">公司职务</view>
     <view class="right">
-      <input name="post" bindblur="post"/>
+      <input name="post" value="{{post}}" bindblur="post"/>
     </view>
  </view>
  <!--  -->
@@ -107,14 +107,14 @@
  <view class="s1 d-spb">
     <view class="section-title">邮箱</view>
     <view class="right">
-      <input name="email" bindblur="email"/>
+      <input name="email" value="{{email}}" bindblur="email"/>
     </view>
  </view>
  <!-- 详细地址 -->
  <view class="section2 d-spb">
     <view class="section-title">详细地址</view>
     <view class="right">
-      <input name="address" bindblur="address"/>
+      <input name="address" value="{{address}}" bindblur="address"/>
     </view>
  </view>
  <!--  -->
@@ -123,7 +123,7 @@
   <view class="self">
 <view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(118,212,198,1);">图文介绍</view>
 <view class="texta">
-<textarea placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请输入图文介绍，200字以内" maxlength="200" name="textarea"/>
+<textarea placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请输入图文介绍，200字以内" maxlength="200" value="{{info}}" name="textarea"/>
 </view>
 </view>
 <!--  -->

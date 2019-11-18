@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/self/share/share",
-    "pages/interest/interest",
     "pages/body/body",
+    "pages/self/card/perfect2",
+    "pages/self/card/perfect",
+    "pages/interest/interest",
+    "pages/self/share/share",
     "pages/interest/interest2",
     "pages/self/total/alert",
     "pages/self/issue/hring/hring",
@@ -18,7 +20,6 @@
     "pages/demo/sync/getstorage",
     "pages/demo/new/new",
     "pages/site/site",
-    "pages/self/card/perfect",
     "pages/demo/rote/rote",
     "pages/demo/x",
     "pages/search/search",

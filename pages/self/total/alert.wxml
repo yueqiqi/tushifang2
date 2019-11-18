@@ -1,23 +1,29 @@
 <!-- 转出积分 -->
 <view class='toast-box' wx:if='{{alert}}'>
         <view class='toastbg'></view>
-        <view class='showToast'>
-            <view class='toast-title'>
-                <text>请输入手机号码</text>
-            </view>
-            <view class='toast-main'>
-                <view class='toast-input'>
-                    <input placeholder='请输入转账的手机号码' type="number" maxlength='11' bindinput='setValue' data-name='stuEidtName'></input>
+        <form bindsubmit="formsubmit" bindreset="">            
+            <view class='showToast'>
+                <view class='toast-title'>
+                    <text>请输入手机号码</text>
+                </view>
+                <view class='toast-main'>
+                    <view class='toast-input'>
+                    <!-- bindinput='setValue' -->
+                        <input placeholder='请输入转出的手机号码' type="number" maxlength='11' name="phone"  data-name='stuEidtName'></input>
+                    </view>
+                    <view class='toast-input' style="margin-top:10rpx;">
+                        <input placeholder='请输入转出的积分' type="number" name="num" maxlength='5'  data-name='stuEidtName'></input>
+                    </view>
+                </view>
+                <view class='toast-button'>
+                    <view class='button1'>
+                        <button catchtap='cancel'>取消</button>
+                    </view>
+                    <view class='button2'>
+                        <button form-type="submit">确定</button>
+                    </view>
                 </view>
             </view>
-            <view class='toast-button'>
-                <view class='button1'>
-                    <button catchtap='cancel'>取消</button>
-                </view>
-                <view class='button2'>
-                    <button catchtap='confirm'>确定</button>
-                </view>
-            </view>
-        </view>
+        </form>
 </view>
 <!-- <button bindtap="show">显示输入框</button> -->

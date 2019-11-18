@@ -260,7 +260,7 @@ Page({
       },
       {
         img: "../../images/ico/i7.png",
-        link: "/pages/share/share",
+        link: "/pages/self/share/share",
         til: "分享好友"
       },
       {
@@ -318,7 +318,7 @@ Page({
     const that=this;
     that.login()
     var uid=wx.getStorageSync("uid")
-    if(uid!=""){
+    if(uid!=""||uid!=undefined){
       that.setData({
         sh:true
       })
@@ -460,7 +460,7 @@ userlogin(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad()
   },
 
   /**

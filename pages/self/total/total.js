@@ -1,15 +1,51 @@
-// pages/self/score/score.js
 import request from '../../login.js'
 Page({
 /**
  * 获取用户输入的值
  */
-setValue:function(e){
-  console.log('用户输入得值',e)
-  this.setData({
-    phone:e.detail.value
+ formsubmit:function(e){
+   var that=this
+   var e=e.detail.value
+  console.log('输入的电话号码',e.phone,'输入的积分',e.num)
+  var uid = wx.getStorageSync('uid');
+  request({
+    url:'http://tsf.suipk.cn/home/personal/do_phone_transfer',
+    data:{
+      uid,
+      phone:e.phone,
+      integral:e.num,
+    }
+    }).then(res=>{
+    console.log('调用转出积分成功',res)
+      if(res.data.code==0){
+        wx.showToast({
+          title: '转出成功',
+          icon: 'success',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result)=>{
+            setTimeout(() => {
+              that.setData({
+                alert:false,
+              })
+              that.onLoad()
+            }, 2000);
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
+      }
+    }).catch(err=>{
+    console.log('调用失败')
   })
 },
+// setValue:function(e){
+//   console.log('用户输入得值',e)
+//   this.setData({
+//     phone:e.detail.value
+//   })
+// },
 /**
  * 点击取消
  */
@@ -34,40 +70,6 @@ out:function(){
   })
 },
 
-
-  // 下拉
-  // 点击下拉显示框
-
-  selectTap(e) {
-    this.setData({
-      selectShow: !this.data.selectShow
-    });
-    // console.log(e)
-  },
-  // 点击下拉列表
-  optionTap(e) {
-    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
-    console.log(Index)
-    // console.log(e)
-    this.setData({
-      index: Index,
-      selectShow: !this.data.selectShow,
-    })
-    // if(Index!=0){
-    //   this.setData({
-    //     img:"img"
-    //   })
-    // }
-    if(Index==1){
-      // 转出积分调用微信扫一扫二维码
-        var _this = this;
-        wx.scanCode({
-          success: (res) => {
-          }
-        })
-    }
-    console.log(this.data.isDisabled)
-  }, 
   // 去充值
   gup: function () {
     console.log("去充值")

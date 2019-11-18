@@ -3,8 +3,14 @@ import request from "../../login.js"
 var dateTimePicker = require('./date.js');
 var dateTimePicker2 = require('./date2.js');
 Page({
-
-
+  /**
+   * 申请置顶显示弹窗
+   */
+  hp(){
+    this.setData({
+      pms:true,
+    })
+  },
   /**
    * 小叉关闭置顶弹窗
    */
@@ -157,6 +163,7 @@ request({
   console.log('调用失败')
   })
   },
+
   /* 隐藏弹窗 */
   sssuhide() {
     var that=this
@@ -188,16 +195,19 @@ request({
       }
       }).then(res=>{
       console.log('调用申请置顶成功',res)
-      that.onLoad()
-      this.setData({
-      
-      })
+      // if(res.data.code==0){
+        that.setData({
+          models:res.data.msg
+        })
+        // }
+        // that.onLoad()
       }).catch(err=>{
       console.log('调用失败')
     })
 
     this.setData({
-      "sssup": true
+      "sssup": true,
+      pms:false,
     });
     console.log("隐藏弹框")
     var zzz = this.data
@@ -303,6 +313,8 @@ change2:function(e){
    * 页面的初始数据
    */
   data: {
+    models:'',
+    pms:true,
     // +++++++++++++++++++++
     // date: '2018-10-01',
     // time: '12:00',

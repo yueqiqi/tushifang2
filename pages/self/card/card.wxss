@@ -34,6 +34,15 @@ font-family:PingFang SC;
 font-weight:400;
 color:rgba(51,51,51,1);
 }
+/**
+* 去修改
+*/
+.upset{
+  color:rgba(118,212,198,1);
+  font-size:28rpx;
+  margin:auto 0;
+  margin-left:210rpx;
+}
 /*  */
 .ico{
   width:39rpx;height:31rpx;
