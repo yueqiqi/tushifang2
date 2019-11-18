@@ -35,6 +35,20 @@ Page({
           fail: ()=>{},
           complete: ()=>{}
         });
+      }else if(res.data.code==101){
+        console.log('123')
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result)=>{
+            
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
       }
     }).catch(err=>{
     console.log('调用失败')
@@ -161,11 +175,12 @@ out:function(){
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-    }
+    // if (res.from === 'button') {
+    // }
+    var parentid=wx.getStorageSync('uid');
     return {
       title: '包程项',
-      path: '/pages/interest/interest',
+      path: '/pages/body/body?parentid='+parentid,
       success: function (res) {
         console.log('成功', res)
       }

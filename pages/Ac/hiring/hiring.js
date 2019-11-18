@@ -530,12 +530,14 @@ this.setData({
            model:res.data.msg,
            pm:false,
            sq:true,
+           radio:'2',
          })
        }else if(res.data.code==200){
         that.setData({
           modelb:res.data.msg,
           pmb:false,
           sq:true,
+          radio:'2',
         })
       }
        

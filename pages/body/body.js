@@ -646,11 +646,15 @@ wx.reLaunch({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
         var that=this
         
         // 禁止跳转
-       
+        if(options.parentid){
+          console.log('分享的id',options.parentid)
+          wx.setStorageSync('parentid', options.parentid);
+        }
+        
        // console.log('进入打印',uid)
        
 

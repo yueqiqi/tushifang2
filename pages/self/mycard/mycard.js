@@ -87,27 +87,7 @@ Page({
    */
   onLoad: function (options) {
     let that=this
-    // console.log("options",options)
-    // let id=options.jsonStr
-    // console.log("id",id)
-    // console.log(options)
-    // var head=options.head
-    // var name=options.name
-    // var post=options.post
-    // var com=options.com
-    // var email=options.email
-    // var phone=options.phone
-    // var address=options.address
-    // var textarea=options.textarea
-    // var img=options.imgs
-    // var imgs=img.split('-')
-    // console.log(img)
-    // that.setData({
-    //   head,
-    //   name,
-    //   post,
-    //   com,email,phone,address,textarea,img:imgs
-    // })
+
     // ++++++++++++++++++++++调用名片详情+++++++++++++++++++++++++++++++
     var uid=wx.getStorageSync('uid');
     request({
