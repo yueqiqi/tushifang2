@@ -80,9 +80,14 @@ Page({
     paySign: res.data.data.paySign,
     success: (result)=>{
       console.log('支付成功2')
+      if(that.data.go){
       wx.navigateTo({
-        url: '/pages/self/success/success',
-      })
+        url: '/pages/self/success/success?go='+go,
+      })}else{
+        wx.navigateTo({
+          url: '/pages/self/success/success',
+        })
+      }
     },
     fail: (err)=>{
       console.log('微信支付接口',err)
@@ -118,6 +123,10 @@ Page({
    */
   onLoad: function (options) {
     // 剩余积分
+    var go =options.go
+    this.setData({
+      go,
+    })
     var uid=wx.getStorageSync('uid');
     request({
       url:'http://tsf.suipk.cn/home/personal/do_mypoints',

@@ -1,5 +1,6 @@
 
 //app.js
+
 App({
   // 全局对象
   /*
@@ -32,18 +33,17 @@ App({
      * 判断用户是否是第一次进入
      */
     var uid=wx.getStorageSync("uid");
-    // console.log('进入打印',uid)
-    
-    if(uid==''){
-      wx.redirectTo({
-        url: '/pages/interest/interest',
-        success: (result)=>{
-          
-        },
-        fail: ()=>{},
-        complete: ()=>{}
-      });
-    }
+       if(uid==''){
+         wx.redirectTo({
+           url: '/pages/interest/interest',
+           success: (result)=>{
+             
+           },
+           fail: ()=>{},
+           complete: ()=>{}
+         });
+       }
+        
     /**
      * 从缓存中取出token
      */

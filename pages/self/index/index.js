@@ -318,7 +318,7 @@ Page({
     const that=this;
     that.login()
     var uid=wx.getStorageSync("uid")
-    if(uid!=""||uid!=undefined){
+    if(uid!=""){
       that.setData({
         sh:true
       })

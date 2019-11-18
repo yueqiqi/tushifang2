@@ -485,7 +485,7 @@ this.setData({
     if(that.data.issu==false){
       // 置顶类型
       if (m.i1 == "" || m.i2 == "" || that.data.city == "" || m.i4 == "" || m.i5 == "" || m.i6 == "") {
-        this.hidePopup(false);
+        this.nsuhide(false);
         that.setData({
           sq:true
         })
@@ -590,7 +590,7 @@ if(that.data.issu==true){
     })
     if(this.data.model=='你的信誉分不足'){
       wx.navigateTo({
-        url: '/pages/self/goup/goup2',
+        url: '/pages/self/goup/goup2?go=1',
         success: (result)=>{  
         },
         fail: ()=>{},
@@ -598,7 +598,7 @@ if(that.data.issu==true){
       });
     }else{
       wx.navigateTo({
-        url: '/pages/self/goup/goup',
+        url: '/pages/self/goup/goup?go=1',
         success: (result)=>{  
         },
         fail: ()=>{},

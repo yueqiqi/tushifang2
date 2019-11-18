@@ -12,7 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  this.setData({
+    go:options.go
+  })
   },
 
   /**
@@ -40,6 +42,13 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    if(this.data.go){
+      wx.navigateBack({
+        delta:2
+      })
+    }else{
+      
+    
     wx.switchTab({
       url: '/pages/self/index/index',
       success: (result)=>{
@@ -48,6 +57,7 @@ Page({
       fail: ()=>{},
       complete: ()=>{}
     });
+    }
   },
 
   /**

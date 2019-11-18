@@ -651,7 +651,9 @@ wx.reLaunch({
         
         // 禁止跳转
        
-        
+       // console.log('进入打印',uid)
+       
+
   //  获取用户信息
   // *********************************************************************************
   
@@ -759,6 +761,7 @@ wx.reLaunch({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log('首页轮播图',res)
         var res = res.data.data
         that.setData({
           imgUrls: res
@@ -983,8 +986,6 @@ wx.reLaunch({
       }
 
     })
-
-
 
     }, 1500)
   },

@@ -14,12 +14,15 @@ Page({
   },
   // 下一步
   next: function () {
+    console.log(123)
     wx.navigateTo({
       url: '/pages/demo/new/mes/find2',
       success: (result)=>{
-        
+      
       },
-      fail: ()=>{},
+      fail: (err)=>{
+        console.log(err)
+      },
       complete: ()=>{}
     });
   },

@@ -7,8 +7,7 @@
     <view class='nstitle'><image style="width:87rpx;height:87rpx;" src="../../images/err.png"></image></view>
     <!-- 文字 -->
     <view class='nscontent'>
-      <view class="nst2">请选择开始/结束时间</view>
-      <view class="nst4">请选择置顶方式</view>
+      <view class="nst2">请完善信息</view>
     </view>
     <view class='nsmsg' bindtap='nsuhide'>确定</view>
 </view>
