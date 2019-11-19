@@ -11,7 +11,9 @@
         </view>
       </view>
       <!-- 内容 -->
-      <view class="content ml">内容</view>
+      <view class="content ml">
+        <rich-text nodes="{{list.content}}"></rich-text>
+      </view>
   </view>
 
   <!-- 评论 -->

@@ -443,7 +443,7 @@ chp:function(){
      * 调用详情
      */
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_modify_details',
+      url:'/home/Personal/do_modify_details',
       data:{
         form:options.form,
         info_id:options.pid

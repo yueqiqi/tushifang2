@@ -38,7 +38,7 @@
       </view>
     </view>
     <!-- 个人简介 -->
-    <view class="ml intro">
+    <view class="ml intro" wx-if="{{list.info!=''}}">
       <view class="title-text ">个人简介</view>
       <view class="list">
         <view class="l1">{{list.info}}</view>
@@ -89,9 +89,13 @@
   </view>
 </view>
 <!-- 分享 -->
+<view style="margin-top:10rpx;height:100rpx;">
+</view>
+<view class="" style="position:fixed;bottom:0;width:100%;background:#fff">
+
   <view class="bgf">
     <view class="likes">
-    <!-- 分享 -->
+      <!-- 分享 -->
       <view class="share d-flex" bindtap="share">
       <!-- <view> -->
         <image src="../../images/share.png"></image>
@@ -116,6 +120,7 @@
       </view>
     </view>
   </view>
+</view>
 
   <!-- 1 -->
 </view>

@@ -54,7 +54,7 @@ Page({
     }
     // if(username==''&&phone==''&&province_and_city==''&&)
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_add_address',
+      url:'/home/personal/do_add_address',
       data:{
         uid,
         username,

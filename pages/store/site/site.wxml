@@ -42,7 +42,9 @@
     </van-radio-group>
   </block>
   <!-- 添加收货地址 -->
-  <!-- <view class="add" bindtap="add">添加收货地址</view> -->
+  <view class="add" bindtap="add">
+    <image class="add" src="/pages/images/add2.png"></image>
+  </view>
   <button bindtap="back" class="back">确定选择</button>
   <!--  -->
 </view>

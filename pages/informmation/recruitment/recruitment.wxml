@@ -69,7 +69,7 @@
         <!-- 招聘状态左边 -->
           <view class="state-left d-flex">
             <view class="stateTitle">招聘状态</view>
-            <view class="stateing ml">{{item.working_condition}}</view>
+            <view class="stateing ml">{{item.working_condition==1?'正在招聘':'已完成'}}</view>
           </view>
         <!-- 招聘状态右边 -->
           <view class="state-right d-flex">
@@ -125,7 +125,7 @@
       <view class="peoplestate d-spb ml">
         <view class="peoplestate-left d-flex">
         <view class="peoplestateing Title">求职状态</view>
-        <view class="Msg">{{item.working_condition}}</view>
+        <view class="Msg">{{item.working_condition==1?'离职随时到岗':(item.working_condition==2?'在职-月内到岗':(item.working_condition==3?'在职-考虑机会':'在职-暂不考虑'))}}</view>
       </view>
       <view class="peoplestate-right d-flex ">
         <view class="p-want Title">理想薪资</view>
@@ -230,7 +230,7 @@
 <!-- 图片视频 -->
 <!-- <view class="musk-img"> -->
  
-  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>=5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
                 <image bindtap="listenerButtonPreviewImages" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
               </block>
@@ -360,7 +360,7 @@
 <!-- 图片视频 -->
 <!-- <view class="musk-img"> -->
  
-  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>=5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
                 <image bindtap="listenerButtonPreviewImagem" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
               </block>
@@ -484,7 +484,7 @@
 <!-- 图片视频 -->
 <!-- <view class="musk-img"> -->
   
-  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+  <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>=5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
                 <image bindtap="listenerButtonPreviewImaged" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
               </block>
@@ -535,7 +535,5 @@
   </van-tab>
 <!-- ===================================================================================================================== -->
 </van-tabs>
-
 </view>
-<view style="height:50rpx;width:100%"></view>
 <tabbar activeIdx="{{activeIdx}}"></tabbar>

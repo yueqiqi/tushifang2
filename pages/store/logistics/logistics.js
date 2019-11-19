@@ -57,7 +57,7 @@ Page({
      * 物流接口
      */
     request({
-      url:'http://tsf.suipk.cn/home/index/do_get_logistics',
+      url:'/home/index/do_get_logistics',
       data:{
         order_id:options.order_id,
         // order_id:16,

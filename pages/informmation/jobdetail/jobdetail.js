@@ -254,7 +254,7 @@ like:function(){
         // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
         // var uid=wx.getStorageSync('uid');
         request({
-          url:'http://tsf.suipk.cn/home/info/do_info_content',
+          url:'/home/info/do_info_content',
           data:{
           uid,
           type:1,
@@ -306,7 +306,7 @@ complaint:function(){
      * 获取的信息详情的广告图
      */
     request({
-      url:'http://tsf.suipk.cn/home/info/do_get_advert',
+      url:'/home/info/do_get_advert',
         data:{
           type:3
         }
@@ -327,10 +327,14 @@ complaint:function(){
     console.log('接受勤勉找工作详情传递过来得值',options.info_id)
     this.setData({
       info_id:options.info_id,
-      uid,
     })
+    if(options.share){
+      var uid=options.uid
+    }else{
+      var uid=wx.getStorageSync('uid');
+    }
     request({
-      url:'http://tsf.suipk.cn/home/info/do_info_content',
+      url:'/home/info/do_info_content',
       data:{
         type:1,
         info_id:options.info_id,
@@ -394,6 +398,13 @@ complaint:function(){
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var uid=wx.getStorageSync('uid');
+    return {
+      title: '包程项',
+      path: '/pages/informmation/jobdetail/jobdetail?info_id='+this.data.info_id+'&uid='+uid+'&share=1',
+      success: function (res) {
+        console.log('成功', res)
+      }
+    }
   }
 })

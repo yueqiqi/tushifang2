@@ -1,0 +1,257 @@
+<!-- 新手指引页 -->
+<!-- 首页免费认证  -->
+<view style="height:100%" wx-if="{{img1}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/1.jpg" style="height:100%;width:100%"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next1">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<!-- 首页发布信息 -->
+<view style="height:100%" wx-if="{{img2}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/2.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up2" bindtap="up2">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next2" bindtap="next2">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img3}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/3.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up2" bindtap="up3">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next2" bindtap="next3">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img4}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/4.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up2" bindtap="up4">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next2" bindtap="next4">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img5}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/5.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up2" bindtap="up5">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next2" bindtap="next5">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img6}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/6.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up" bindtap="up6">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next6">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img7}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/7.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up" bindtap="up7">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next7">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img8}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/8.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up" bindtap="up8">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next8">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img9}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/9.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up" bindtap="up9">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next9">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img10}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/10.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up" bindtap="up10">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next10">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img11}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/11.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up" bindtap="up11">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next11">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img12}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/12.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up" bindtap="up12">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next12">
+    <view>下一步</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>
+
+<view style="height:100%" wx-if="{{img13}}">
+  <view style="height:100%">
+    <image src="http://tsf.suipk.cn/home/13.jpg" style="height:100%;width:100%"></image>
+  </view>
+    <!-- 上一步按钮 -->
+  <view class="up" bindtap="up13">
+    <view>上一步</view>
+      <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 下一步按钮 -->
+  <view class="next" bindtap="next13">
+    <view>我知道了</view>
+    <image style="width:292rpx;height:92rpx;" src="/pages/images/self/next.png"></image>
+  </view>
+  <!-- 小叉 -->
+  <view class="x" bindtap="close">
+    <image style="width:60rpx;height:60rpx;" src="/pages/images/self/x.png"></image>
+  </view>
+</view>

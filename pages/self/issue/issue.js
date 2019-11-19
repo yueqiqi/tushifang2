@@ -28,7 +28,7 @@ Page({
     var id = e.currentTarget.dataset.id
     console.log("刷新的id",id)
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_refresh',
+      url:'/home/Personal/do_refresh',
       data:{
         info_id:id
       }
@@ -148,7 +148,7 @@ Page({
     }
 console.log('选择的方式',lable)
 request({
-  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  url:'/home/info/do_all_inintegral',
   data:{
     lable,
     start_time,
@@ -185,7 +185,7 @@ request({
     var uid= wx.getStorageSync('uid');
     var info_id=that.data.info_id
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_top',
+      url:'/home/Personal/do_top',
       data:{
         info_id,
         uid,
@@ -195,11 +195,15 @@ request({
       }
       }).then(res=>{
       console.log('调用申请置顶成功',res)
-      // if(res.data.code==0){
+      if(res.data.code==0){
         that.setData({
           models:res.data.msg
         })
-        // }
+        }else{
+          that.setData({
+            models:res.data.msg
+          })
+        }
         // that.onLoad()
       }).catch(err=>{
       console.log('调用失败')
@@ -277,7 +281,7 @@ change:function(e){
     [index]:"正在进行"
   })
   request({
-    url:'http://tsf.suipk.cn/home/Personal/do_completed',
+    url:'/home/Personal/do_completed',
     data:{
       info_id:id
     }
@@ -349,17 +353,12 @@ change2:function(e){
     // 单选框
     sradio: '0',
     seradio: '1',
+    /**
+     * 上拉加载
+     */
+    page:1,
     // 
     usermes:[
-      {
-        id:0,
-        // 标题
-        til:"发布内容标题",
-        // 状态
-        type:"已完成",
-        // 
-        
-      }
       ],
     fin: "改为正在进行",
     // // 改为正在进行
@@ -410,7 +409,7 @@ this.setData({
     }
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_release_list',
+      url:'/home/Personal/do_release_list',
       data:{
         uid,
         page:1,
@@ -501,7 +500,7 @@ if(that.data.sradio==1){
   }
 }
 request({
-  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  url:'/home/info/do_all_inintegral',
   data:{
     lable,
     start_time,
@@ -630,7 +629,7 @@ changeDateTimeColumn12(e) {
  */
 int(){
   request({
-  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  url:'/home/info/do_all_inintegral',
   data:{
     lable,
     start_time,
@@ -676,7 +675,53 @@ int(){
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that=this
+    var uid=wx.getStorageSync('uid');
+    var page = that.data.page
+    page++
+    that.setData({
+      page,
+    })
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+      })
+      var uid=wx.getStorageSync('uid');
+      request({
+        url:'/home/Personal/do_release_list',
+        data:{
+          uid,
+          page:that.data.page,
+          limit:10,
+        }
+        }).then(res=>{
+        console.log('调用刷新发布列表成功',res)
+        for(var i in res.data.list){
+          // var type="res.data.list["+i+"].type"
+          if(res.data.list[i].working_condition==1){
+            res.data.list[i].working_condition="正在进行"
+          }else if(res.data.list[i].working_condition==3){
+            res.data.list[i].working_condition="已完成"
+            continue
+          } 
+        }
+        var count=res.data.count
+        var all=that.data.usermes.length
+        if (all==count) {
+          console.log(1)
+          wx.showToast({
+            title: '暂无更多',
+            icon: 'none',
+          })
+        }
+        var goods = that.data.usermes.concat(res.data.list)     //message  为一进入页面请求完数据定义的集合
+        that.setData({
+          usermes:goods,
+        })
+        wx.hideLoading();
+        }).catch(err=>{
+        console.log('调用失败')
+      })
   },
 
   /**

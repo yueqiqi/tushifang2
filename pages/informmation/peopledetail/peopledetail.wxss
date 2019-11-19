@@ -61,6 +61,7 @@ color:rgba(51,51,51,1);line-height: 73rpx;
 .timerr{
   /* margin-right: 180rpx; */
   /* margin-left: 75rpx; */
+  width:373rpx;
 }
 /* 日期 */
 .timerl .Title{

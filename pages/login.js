@@ -1,7 +1,8 @@
+const baseUrl='http://tsf.suipk.cn'
 export default function request(options){
   return new Promise((resolve,reject) => {
     wx.request({
-    url: options.url,
+    url:baseUrl+options.url,
     data: options.data,
     method: 'POST',
     header: {

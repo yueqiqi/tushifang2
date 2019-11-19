@@ -87,7 +87,7 @@ wx.navigateTo({
       var uid=wx.getStorageSync('uid');
       // +++++++++++++++++++收货地址列表+++++++++++++++++++++++
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_my_addres',
+      url:'/home/personal/do_my_addres',
     data:{
       uid,
       page:1,

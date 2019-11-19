@@ -43,7 +43,7 @@ var that=this
       var img_url_card=z5
       var uid=wx.getStorageSync('uid');
       request({
-        url:'http://tsf.suipk.cn/home/Personal/do_driver',
+        url:'/home/Personal/do_driver',
         data:{
           uid,
           identity_selection,
@@ -381,7 +381,7 @@ up:function(){
          * 上传完成后把文件上传到服务器
          */
         request({
-          url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+          url:'/home/Personal/do_uplod_img',
           data:{
             image:tempFilePaths
           }
@@ -651,7 +651,7 @@ up:function(){
          * 上传完成后把文件上传到服务器
          */
         request({
-          url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+          url:'/home/Personal/do_uplod_img',
           data:{
             image:tempFilePaths
           }
@@ -781,7 +781,7 @@ up:function(){
          * 上传完成后把文件上传到服务器
          */
          request({
-            url:'http://tsf.suipk.cn/home/Personal/do_uplod_img',
+            url:'/home/Personal/do_uplod_img',
             data:{
               image:tempFilePaths
             }

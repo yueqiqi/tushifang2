@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     var uid=wx.getStorageSync('uid');
     request({
-    url:'http://tsf.suipk.cn/home/Personal/do_my_information',
+    url:'/home/Personal/do_my_information',
     data:{
       uid,
     }

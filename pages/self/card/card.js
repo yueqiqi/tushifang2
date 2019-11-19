@@ -11,14 +11,12 @@ Page({
 
   },
 
-
-
   // 查看名片夹
   mycard:function(e){
     console.log(e)
     var id=e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/self/mycard/mycard?id='+id,
+      url: '/pages/self/mycard/mycard?uid='+id,
     })
   },
   // 完善我的名片
@@ -95,7 +93,7 @@ var that=this
     // 我的名片
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_mynamecard',
+      url:'/home/personal/do_mynamecard',
       data:{
         uid,
         // page:1,
@@ -117,10 +115,11 @@ var that=this
     })
     // +++++++++++++++++我的名片夹+++++++++++++++++++++++++++++++
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_my_nameCardHolder',
+      url:'/home/personal/do_my_nameCardHolder',
       data:{
         uid,
         page:1,
+        limit:999,
       }
       }).then(res=>{
       console.log('调用我的名片夹成功',res)
@@ -178,15 +177,18 @@ var that=this
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
+    console.log(res.from)
+    var uid=wx.getStorageSync('uid');
     if(res.from=='button'){
       return {
         title: '包程项',//弹出分享时显示的分享标题
-        path: '/pages/body/body',//'/page/user?id=123' // 路径，传递参数到指定页面。
-        desc: '土石方首页',
+        path: '/pages/self/mycard/mycard?uid='+uid,//'/page/user?id=123' // 路径，传递参数到指定页面。
+        desc: '个人名片',
         success: function (res) {
-          console.log('分享成功',res)
+          console.log('分享成功',ops)
          }
-    }
+      }
+    
   }
   }
 })

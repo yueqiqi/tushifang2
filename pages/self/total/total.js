@@ -9,7 +9,7 @@ Page({
   console.log('输入的电话号码',e.phone,'输入的积分',e.num)
   var uid = wx.getStorageSync('uid');
   request({
-    url:'http://tsf.suipk.cn/home/personal/do_phone_transfer',
+    url:'/home/personal/do_phone_transfer',
     data:{
       uid,
       phone:e.phone,
@@ -114,7 +114,7 @@ out:function(){
     var that=this
     var uid=wx.getStorageSync("uid");
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_mypoints',
+      url:'/home/personal/do_mypoints',
       data:{
         type:1,
         uid
@@ -177,10 +177,11 @@ out:function(){
   onShareAppMessage: function (res) {
     // if (res.from === 'button') {
     // }
-    var parentid=wx.getStorageSync('uid');
+    var parent_id=wx.getStorageSync('uid');
+    console.log('邀请',parent_id)
     return {
       title: '包程项',
-      path: '/pages/body/body?parentid='+parentid,
+      path: '/pages/body/body?parent_id='+parent_id,
       success: function (res) {
         console.log('成功', res)
       }

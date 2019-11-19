@@ -1,4 +1,4 @@
-// pages/Ac/post/post.js
+import request from '../../login'
 Page({
 
   /**
@@ -88,31 +88,43 @@ cha:function(){
 
 
     var that=this
-    wx.request({
-      url:"http://tsf.suipk.cn/home/index/do_one_two",
-      data:{
+    request({
+    url:'/home/index/do_one_two',
+    data:{
         code:"",
         msg:"",
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        console.log("获取菜单列表",res)
-        // for(var q in that.data.info){}
+    }
+    }).then(res=>{
+    console.log('调用成功',res)
         that.setData({
           info:res.data.data
         })
-
-
-},fail:function(){
-        console.log("调用失败")
-      }
+    }).catch(err=>{
+    console.log('调用失败')
     })
-    
-    
+//     wx.request({
+//       url:"/home/index/do_one_two",
+//       data:{
+//         code:"",
+//         msg:"",
+//       },
+//       method: 'POST',
+//       header: {
+//         'content-type': 'application/x-www-form-urlencoded'
+//       },
+//       success:function(res){
+//         console.log("获取菜单列表",res)
+//         // for(var q in that.data.info){}
+//         that.setData({
+//           info:res.data.data
+//         })
 
+
+// },fail:function(){
+//         console.log("调用失败")
+//       }
+//     })
+  
     
   },
 

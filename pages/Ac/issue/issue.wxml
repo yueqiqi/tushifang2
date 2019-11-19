@@ -42,11 +42,11 @@
     <!-- 公司图片 -->
     <view class="img">
       <view>
-        <view class="license">图片(最多三张)</view>
-        <view class="d-flex">
+        <view class="license">图片(最多九张)</view>
+        <view class="d-flex" style="width:100%;flex-wrap:wrap">
           <!-- 上传图片预览 -->
           <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
-    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
+    <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" />
     <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
           <view class="onload" bindtap="upload" wx:if="{{showUpload}}">
@@ -127,8 +127,8 @@
         <!-- 文字 -->
         <view class='scontent'>
           <view class="st1">提交成功</view>
-          <view class="st2">小包正在努力为您审核中</view>
-          <view class="st4">请注意消息提醒！</view>
+          <view class="st2">消息发布成功</view>
+          <view class="st4">可在首页刷新进行查看</view>
         </view>
         <view class='smsg' bindtap='suhide' catchtap="con">确定</view>
       </view>

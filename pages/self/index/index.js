@@ -9,7 +9,7 @@ Page({
     var that=this
     
     // +++++++++++++++++++++++获取
-          console.log("已授权=====")
+          // console.log("已授权=====")     
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             lang: 'zh_CN',
@@ -24,7 +24,7 @@ Page({
                   var code=res.code
                   console.log('获取用户的code',code)
                   request({
-                  url:'http://tsf.suipk.cn/home/Loginwx/get_openid',
+                  url:'/home/Loginwx/get_openid',
                   data:{
                     code,
                   }
@@ -50,9 +50,11 @@ Page({
               var addr=u.province+u.city
               var sex=u.gender
               var nickname=u.nickName
+              var parent_id=wx.getStorageSync('parent_id');
+              console.log('电泳邀请parent——id',parent_id)
               console.log('这是获取数据中的：',openid,'color:green')
                 request({
-                  url:'http://tsf.suipk.cn/home/Loginwx/register',
+                  url:'/home/Loginwx/register',
                   data:{
                     openid,
                     pid,
@@ -60,7 +62,8 @@ Page({
                     addr,
                     sex,
                     nickname,
-                    phone
+                    phone,
+                    parent_id
                   }
                   }).then(res=>{
                   console.log('调用注册成功',res)
@@ -77,7 +80,7 @@ Page({
                     var int=interest.toString()
                     console.log('兴趣格式',int)
                     request({
-                      url:'http://tsf.suipk.cn/home/personal/do_addmy_Interest',
+                      url:'/home/personal/do_addmy_Interest',
                       data:{
                         uid,
                         two_class_id_str:int
@@ -153,7 +156,7 @@ Page({
           wx.setStorageSync("sessionKey",sessionKey)  
           // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
           request({
-            url:'http://tsf.suipk.cn/home/Loginwx/getWechatUserPhone',
+            url:'/home/Loginwx/getWechatUserPhone',
             data:{
               openid:m.openid,
               iv:e.detail.iv,
@@ -291,7 +294,7 @@ Page({
         console.log("获取用户code",res)
         const code =res.code
         request({
-        url:'http://tsf.suipk.cn/home/Loginwx/get_openid',
+        url:'/home/Loginwx/get_openid',
           data:{
             code
           }
@@ -323,7 +326,7 @@ Page({
         sh:true
       })
       request({
-      url:'http://tsf.suipk.cn/home/personal/do_personal_center',
+      url:'/home/personal/do_personal_center',
         data:{
           uid,
         }
@@ -390,7 +393,7 @@ userlogin(){
   // 昵称
   var nickname
   request({
-  url:'http://tsf.suipk.cn/home/Loginwx/register',
+  url:'/home/Loginwx/register',
     data:{
       openid,
       pid,

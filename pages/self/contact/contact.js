@@ -6,7 +6,7 @@ Page({
     console.log(e.textarea)
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_contact_us',
+      url:'/home/personal/do_contact_us',
       data:{
         uid,
       }
@@ -21,7 +21,7 @@ Page({
   },
   call:function(){
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_service_tel',
+      url:'/home/personal/do_service_tel',
       data:{
       
       }

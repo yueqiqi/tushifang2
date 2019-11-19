@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "tabbar": "/pages/tab/tab"
-  },
-  "navigationBarTitleText": "个人中心"
-}

@@ -73,7 +73,7 @@ Page({
       this.hidePopup(false);
     } else {
       request({
-        url:'http://tsf.suipk.cn/home/Personal/do_enterprise',
+        url:'/home/Personal/do_enterprise',
         data:{
           uid,
           identity_selection,

@@ -52,7 +52,7 @@
 <!-- 下方按钮 -->
 <view class="d-flex btns">
   <button class="mybtn" bindtap="addPhone">存入通讯录</button>
-  <button class="mybtn" open-type="share">分享名片</button>
+  <button class="mybtn" open-type="share" id="share1">分享名片</button>
   <button class="mybtn" bindtap="back">回递名片</button>
 </view>
 <include src="../err/err"/>

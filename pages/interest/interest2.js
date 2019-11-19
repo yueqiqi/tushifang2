@@ -43,7 +43,7 @@ Page({
     var int=this.data.checkValue
     var qo=int.toString()
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_addmy_Interest',
+      url:'/home/personal/do_addmy_Interest',
       data:{
         uid,
         two_class_id_str:qo,
@@ -163,7 +163,7 @@ Page({
     var uid=wx.getStorageSync('uid');
     var that=this
     request({
-      url:'http://tsf.suipk.cn/home/Info/do_twoclass_list',
+      url:'/home/Info/do_twoclass_list',
       data:{
         one_class_id:'',
       }
@@ -172,7 +172,7 @@ Page({
         var op =res.data.data
         console.log(op)
       request({
-        url:'http://tsf.suipk.cn/home/personal/do_my_Interest',
+        url:'/home/personal/do_my_Interest',
           data:{
             uid
           }

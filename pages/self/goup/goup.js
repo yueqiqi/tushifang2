@@ -57,7 +57,7 @@ Page({
     var uid=wx.getStorageSync('uid');
     var recharge_id
     request({
-      url:'http://tsf.suipk.cn/home/pay/do_wxpay_recharge',
+      url:'/home/pay/do_wxpay_recharge',
       data:{
         type:1,
         uid,
@@ -79,8 +79,6 @@ Page({
     success: (result)=>{
       console.log('支付成功2')
       if(that.data.go){
-        
-      
       wx.navigateTo({
         url: '/pages/self/success/success?go='+go,
       })}else{
@@ -132,7 +130,7 @@ Page({
     // 剩余积分
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_mypoints',
+      url:'/home/personal/do_mypoints',
       data:{
         type:1,
         uid,
@@ -147,7 +145,7 @@ Page({
     })
     // 充值积分
     request({
-      url:'http://tsf.suipk.cn/home/pay/do_recharge_list',
+      url:'/home/pay/do_recharge_list',
       data:{
         type:1,
       }

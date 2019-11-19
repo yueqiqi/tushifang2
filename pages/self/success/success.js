@@ -44,18 +44,11 @@ Page({
   onUnload: function () {
     if(this.data.go){
       wx.navigateBack({
-        delta:2
+        delta:3
       })
     }else{
-      
-    
     wx.switchTab({
       url: '/pages/self/index/index',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
     });
     }
   },

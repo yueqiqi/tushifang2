@@ -30,7 +30,7 @@ Page({
     });
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/index/do_news_list',
+      url:'/home/index/do_news_list',
       data:{
         uid,
         page:that.data.page,
@@ -64,7 +64,7 @@ Page({
       })
       var uid=wx.getStorageSync('uid');
       request({
-        url:'http://tsf.suipk.cn/home/index/do_news_list',
+        url:'/home/index/do_news_list',
         data:{
           uid,
           page:that.data.page,

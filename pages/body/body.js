@@ -650,9 +650,10 @@ wx.reLaunch({
         var that=this
         
         // 禁止跳转
-        if(options.parentid){
-          console.log('分享的id',options.parentid)
-          wx.setStorageSync('parentid', options.parentid);
+        if(options.parent_id){
+          console.log('邀请',options.parent_id)
+          console.log('分享的id',options.parent_id)
+          wx.setStorageSync('parent_id', options.parent_id);
         }
         
        // console.log('进入打印',uid)
@@ -691,25 +692,41 @@ wx.reLaunch({
                 if (code) {
                   //2、调用获取用户信息接口
                   //...
-                  wx.request({
-                    url: 'http://tsf.suipk.cn/home/index/do_getLocation',
-                    data: {
-                      uid,
-                      city,
-                      longitude,
-                      latitude,
-                    },
-                    method: 'POST',
-                    header: {
-                      'content-type': 'application/x-www-form-urlencoded'
-                    },
-                    success: function (res) {
-                      console.log("地址信息",res)
-                    },
-                    fail: function () {
-                      //console.log("调用失败")
+                  request({
+                    url:'/home/index/do_getLocation',
+                    data:{
+                    uid,
+                    city,
+                    longitude,
+                    latitude
                     }
+                    }).then(res=>{
+                    console.log('调用成功',res)
+                    this.setData({
+                    
+                    })
+                    }).catch(err=>{
+                    console.log('调用失败')
                   })
+                  // wx.request({
+                  //   url: '/home/index/do_getLocation',
+                  //   data: {
+                  //     uid,
+                  //     city,
+                  //     longitude,
+                  //     latitude,
+                  //   },
+                  //   method: 'POST',
+                  //   header: {
+                  //     'content-type': 'application/x-www-form-urlencoded'
+                  //   },
+                  //   success: function (res) {
+                  //     console.log("地址信息",res)
+                  //   },
+                  //   fail: function () {
+                  //     //console.log("调用失败")
+                  //   }
+                  // })
                 } 
 
               },
@@ -755,29 +772,44 @@ wx.reLaunch({
     // *******************************************************************************
     // 轮播图
     //console.log("body调用后台接口--onLoad")
-    wx.request({
-      url: 'http://tsf.suipk.cn/home/index/do_banner',
-      data: {
-        type: 0
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log('首页轮播图',res)
-        var res = res.data.data
-        that.setData({
-          imgUrls: res
-        })
-      },
-      fail: function () {
+    request({
+      url:'/home/index/do_banner',
+      data:{
+        type:0
       }
+      }).then(res=>{
+      console.log('调用成功',res)
+      var res = res.data.data
+          that.setData({
+            imgUrls: res
+          })
+      }).catch(err=>{
+      console.log('调用失败')
     })
+    // wx.request({
+    //   url: '/home/index/do_banner',
+    //   data: {
+    //     type: 0
+    //   },
+    //   method: 'POST',
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success: function (res) {
+    //     console.log('首页轮播图',res)
+    //     var res = res.data.data
+    //     that.setData({
+    //       imgUrls: res
+    //     })
+    //   },
+    //   fail: function () {
+    //   }
+    // })
     // *******************************************************************************
+    var uid=wx.getStorageSync('uid');
     // 首页十万火急
     request({
-      url:'http://tsf.suipk.cn/home/index/do_hot',
+      url:'/home/index/do_hot',
       data:{
         uid,
       }
@@ -791,17 +823,37 @@ wx.reLaunch({
     })
     // *******************************************************************************
     // 首页公告+首页十万火急+首页广告位
-    wx.request({
-      url: 'http://tsf.suipk.cn/home/index/do_info',
+    // wx.request({
+    //   url: '/home/index/do_info',
+    //   data:{
+    //     code:'',
+    //     msg:'',
+    //   },
+    //   method: 'POST',
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success:function(res){
+    //     that.setData({
+    //       // 广告
+    //       advert:res.data.data.advert,
+    //       // 公告
+    //       msgList:res.data.data.notice,
+    //       // 首页发布者信息
+    //       advertd:res.data.data.advertd[0].img_url
+          
+    //     })
+    //   },fail:function(){
+    //   }
+    // })
+    request({
+      url:'/home/index/do_info',
       data:{
         code:'',
         msg:'',
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
         that.setData({
           // 广告
           advert:res.data.data.advert,
@@ -811,12 +863,17 @@ wx.reLaunch({
           advertd:res.data.data.advertd[0].img_url
           
         })
-      },fail:function(){
-      }
+      }).catch(err=>{
+      console.log('调用失败')
     })
     // *******************************************************************************************************************//
     // 三个标题下的优质发布和最新推荐
-    
+    var uid=wx.getStorageSync('uid');
+    if(uid){
+      var uid=wx.getStorageSync('uid');
+    }else{
+      var uid=''
+    }
     var interest=wx.getStorageSync('int');
     if(interest){
       var interest=wx.getStorageSync('int');
@@ -824,74 +881,121 @@ wx.reLaunch({
         var interest=''
       }
       console.log('获取选择兴趣的id',interest)
-    wx.request({
-      url:"http://tsf.suipk.cn/home/index/do_Recommend",
-      data:{
-        type:1,
-        uid,
-        page:that.data.page,
-        limit:5,
-        interest,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        console.log("最新发布调用成功",res)
+      request({
+        url:'/home/index/do_Recommend',
+        data:{
+          type:1,
+          uid,
+          page:that.data.page,
+          limit:5,
+          interest,
+        }
+        }).then(res=>{
+        console.log('调用成功',res)
         that.setData({
-          tabuser:res.data.list
-        })
-      }
-    })
+        tabuser:res.data.list
+      })
+        }).catch(err=>{
+        console.log('调用失败')
+      })
+    // wx.request({
+    //   url:"/home/index/do_Recommend",
+    //   data:{
+    //     type:1,
+    //     uid,
+    //     page:that.data.page,
+    //     limit:5,
+    //     interest,
+    //   },
+    //   method: 'POST',
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success:function(res){
+    //     console.log("最新发布调用成功",res)
+    //     that.setData({
+    //       tabuser:res.data.list
+    //     })
+    //   }
+    // })
     
     
     
     var uid=wx.getStorageSync('uid');
     // 优质推荐
-    wx.request({
-      url:"http://tsf.suipk.cn/home/index/do_Recommend",
+    request({
+      url:'/home/index/do_Recommend',
       data:{
         type:2,
         uid,
         page:that.data.pages,
         limit:5,
-        interest,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        //console.log("优质推荐调用成功")
-        console.log("调用优质推荐调用成功",res)
-        that.setData({
+        interest,      
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
+      that.setData({
           tabuserjian:res.data.list
         })
-        console.log('优质推荐里面的内容',that.data.tabuserjian)
-      }
-
+      }).catch(err=>{
+      console.log('调用失败')
     })
+    // wx.request({
+    //   url:"/home/index/do_Recommend",
+    //   data:{
+    //     type:2,
+    //     uid,
+    //     page:that.data.pages,
+    //     limit:5,
+    //     interest,
+    //   },
+    //   method: 'POST',
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success:function(res){
+    //     //console.log("优质推荐调用成功")
+    //     console.log("调用优质推荐调用成功",res)
+    //     that.setData({
+    //       tabuserjian:res.data.list
+    //     })
+    //     console.log('优质推荐里面的内容',that.data.tabuserjian)
+    //   }
+
+    // })
     /**
      * 未读消息
      */
     console.log('uid 是都等',uid)
     if(uid!=''){
-      wx.request({
-        url:"http://tsf.suipk.cn/home/index/do_is_news",
+      // wx.request({
+      //   url:"/home/index/do_is_news",
+      //   data:{
+      //     uid,
+      //   },
+      //   method: 'POST',
+      //   header: {
+      //     'content-type': 'application/x-www-form-urlencoded'
+      //   },
+      //   success:function(res){
+      //     console.log("未读消息",res)
+      //     that.setData({
+      //       icons:res.data.data
+      //     })
+      //   }
+      // })'
+      request({
+        url:'/home/index/do_is_news',
         data:{
           uid,
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success:function(res){
-          console.log("未读消息",res)
+        }
+        }).then(res=>{
+        console.log('调用成功',res)
           that.setData({
             icons:res.data.data
           })
-        }
+        }).catch(err=>{
+        console.log('调用失败')
       })
     }
     // *******************************************************************************************************************//
@@ -909,7 +1013,7 @@ wx.reLaunch({
   bodylist(){
     var s=[]
     request({
-      url:'http://tsf.suipk.cn/home/Index/do_index_list',
+      url:'/home/Index/do_index_list',
       data:{
         code:"",
         msg:"",
@@ -929,6 +1033,23 @@ wx.reLaunch({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+
+var uid=wx.getStorageSync('uid');
+    request({
+      url:'/home/index/do_is_news',
+      data:{
+        uid,
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
+        that.setData({
+          icons:res.data.data
+        })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+
+    
     wx.showNavigationBarLoading() //在标题栏中显示加载
     // this.onReady()
     var that=this
@@ -942,53 +1063,89 @@ wx.reLaunch({
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
     // that.onLoad()
-    wx.request({
-      url:"http://tsf.suipk.cn/home/index/do_Recommend",
+    request({
+      url:'/home/index/do_Recommend',
       data:{
         type:1,
         uid,
         page:1,
         limit:5,
         interest
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        //console.log("最新发布调用成功")
-        console.log("最新发布调用成功",res)
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
         that.setData({
           tabuser:res.data.list,
           page:1,
         })
-      }
+      }).catch(err=>{
+      console.log('调用失败')
     })
+    // wx.request({
+    //   url:"/home/index/do_Recommend",
+    //   data:{
+    //     type:1,
+    //     uid,
+    //     page:1,
+    //     limit:5,
+    //     interest
+    //   },
+    //   method: 'POST',
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success:function(res){
+    //     //console.log("最新发布调用成功")
+    //     console.log("最新发布调用成功",res)
+    //     that.setData({
+    //       tabuser:res.data.list,
+    //       page:1,
+    //     })
+    //   }
+    // })
     var uid=wx.getStorageSync('uid');
     // 优质推荐
-    wx.request({
-      url:"http://tsf.suipk.cn/home/index/do_Recommend",
+    // wx.request({
+    //   url:"/home/index/do_Recommend",
+    //   data:{
+    //     type:2,
+    //     uid,
+    //     page:1,
+    //     limit:5,
+    //     interest,
+    //   },
+    //   method: 'POST',
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success:function(res){
+    //     //console.log("优质推荐调用成功")
+    //     console.log("调用优质推荐调用成功",res)
+    //     that.setData({
+    //       tabuserjian:res.data.list,
+    //       pages:1
+    //     })
+    //     console.log('优质推荐里面的内容',that.data.tabuserjian)
+    //   }
+
+    // })
+    request({
+      url:'/home/index/do_Recommend',
       data:{
         type:2,
         uid,
         page:1,
         limit:5,
         interest,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        //console.log("优质推荐调用成功")
-        console.log("调用优质推荐调用成功",res)
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
         that.setData({
           tabuserjian:res.data.list,
           pages:1
         })
-        console.log('优质推荐里面的内容',that.data.tabuserjian)
-      }
-
+      }).catch(err=>{
+      console.log('调用失败')
     })
 
     }, 1500)
@@ -1019,7 +1176,7 @@ wx.reLaunch({
       })
       var uid=wx.getStorageSync('uid');
       request({
-        url:'http://tsf.suipk.cn/home/index/do_Recommend',
+        url:'/home/index/do_Recommend',
         data:{
           type:1,
           uid,
@@ -1050,7 +1207,7 @@ wx.reLaunch({
 
 
       request({
-        url:'http://tsf.suipk.cn/home/index/do_Recommend',
+        url:'/home/index/do_Recommend',
         data:{
           type:2,
           uid,

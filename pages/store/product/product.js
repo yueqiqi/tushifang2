@@ -433,7 +433,7 @@ console.log('查看的图片2',img)
      * 获取商品详情页
      */
     request({
-      url:'http://tsf.suipk.cn/home/Goods/do_goods_info',
+      url:'/home/Goods/do_goods_info',
       data:{
         goods_id:options.id
       }
@@ -457,7 +457,7 @@ console.log('查看的图片2',img)
   onReady: function () {
     var that=this
     request({
-      url:'http://tsf.suipk.cn/home/goods/do_goods_specification',
+      url:'/home/goods/do_goods_specification',
       data:{
         goods_id:that.data.goods_id
       }

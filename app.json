@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/body/body",
+    "pages/a-new/a-new",
     "pages/self/card/perfect2",
     "pages/self/card/perfect",
     "pages/interest/interest",
@@ -18,7 +19,7 @@
     "pages/demo/sync/sync",
     "pages/self/mycard/mycard",
     "pages/demo/sync/getstorage",
-    "pages/demo/new/new",
+   
     "pages/site/site",
     "pages/demo/rote/rote",
     "pages/demo/x",
@@ -34,19 +35,7 @@
     "pages/details/details",
     "pages/panel/panel",
     "pages/postMessage/postMessage",
-    "pages/demo/new/mes/find1",
-    "pages/demo/new/mes/find2",
-    "pages/demo/new/mes/class2",
-    "pages/demo/new/mes/class1",
-    "pages/demo/new/mes/search",
-    "pages/demo/new/index/cehngxin",
-    "pages/demo/new/index/card",
-    "pages/demo/new/index/fabu",
-    "pages/demo/new/index/phone",
-    "pages/demo/new/index/renzhen",
-    "pages/demo/new/xinyufen",
-    "pages/demo/new/xinqu",
-    "pages/demo/new/jifen",
+  
     "pages/self/index/index",
     "pages/Ac/no/no",
     "pages/Ac/hiring/hiring",

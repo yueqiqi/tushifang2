@@ -36,7 +36,7 @@ close:function(){
   console.log('地址id',user_addres_id)
   var order_id=that.data.list.id
   request({
-    url:'http://tsf.suipk.cn/home/pay/do_wxpay_goods',
+    url:'/home/pay/do_wxpay_goods',
     data:{
       user_addres_id,
       order_id
@@ -126,7 +126,7 @@ close:function(){
     })
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/goods/do_add_order',
+      url:'/home/goods/do_add_order',
       data:{
         uid,
         goods_id:options.goods_id,
@@ -144,7 +144,7 @@ close:function(){
           order_id:order_id
         })
         request({
-          url:'http://tsf.suipk.cn/home/goods/do_confirm_order',
+          url:'/home/goods/do_confirm_order',
           data:{
             order_id:res.data.data
           }

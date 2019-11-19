@@ -18,7 +18,7 @@ Page({
       selectShow: false,
     });
     request({
-      url:'http://tsf.suipk.cn/home/info/do_work_years_list',
+      url:'/home/info/do_work_years_list',
       data:{
         code:"",
         mes:""
@@ -85,7 +85,7 @@ Page({
       selectShow: false,
     });
     request({
-      url:'http://tsf.suipk.cn/home/info/do_salary_list',
+      url:'/home/info/do_salary_list',
       data:{
         code:"",
         mes:""
@@ -144,25 +144,38 @@ Page({
          /**
     * 获取工种类型
     */
-   wx.request({
-    url:"http://tsf.suipk.cn/home/Personal/do_id_type",
-   data:{
-    type:1,
-   },
-   method: 'POST',
-   header: {
-     'content-type': 'application/x-www-form-urlencoded'
-   },
-   success:function(res){
+   request({
+    url:'/home/Personal/do_id_type',
+    data:{
+      type:1,
+    }
+    }).then(res=>{
+    console.log('调用成功',res)
      that.setData({
        selectData:res.data.data
      })
-     console.log(that.data.selectData)
-    console.log('工种结果'+that.data.selectData)
-  },fail:function(){
-      console.log("调用工种失败")
-     }
-  })
+    }).catch(err=>{
+    console.log('调用失败')
+   })
+  //  wx.request({
+  //   url:"/home/Personal/do_id_type",
+  //  data:{
+  //   type:1,
+  //  },
+  //  method: 'POST',
+  //  header: {
+  //    'content-type': 'application/x-www-form-urlencoded'
+  //  },
+  //  success:function(res){
+  //    that.setData({
+  //      selectData:res.data.data
+  //    })
+  //    console.log(that.data.selectData)
+  //   console.log('工种结果'+that.data.selectData)
+  // },fail:function(){
+  //     console.log("调用工种失败")
+  //    }
+  // })
     // console.log(e)
   },
   // 点击下拉列表
@@ -216,8 +229,8 @@ Page({
     } else {
       this.suhide(false);
       var uid=wx.getStorageSync('uid');
-      wx.request({
-        url:"http://tsf.suipk.cn/home/info/do_addjob",
+      request({
+        url:'/home/info/do_addjob',
         data:{
           // 用户名
           uid,
@@ -240,22 +253,55 @@ Page({
           tel,
           // 详情
           info,
-        },
-        method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        console.log("找工作发布请求",res)
-      },fail:function(){
-        console.log("请求失败")
-      }
+        }
+        }).then(res=>{
+        console.log('调用成功',res)
+        this.setData({
+        
+        })
+        }).catch(err=>{
+        console.log('调用失败')
       })
+      // wx.request({
+      //   url:"/home/info/do_addjob",
+      //   data:{
+      //     // 用户名
+      //     uid,
+      //     // 一级分类
+      //     one_class_id,
+      //     // 二级分类
+      //     two_class_id,
+      //     type_work_id,
+      //     // 工种
+      //     type_work,
+      //     // 薪资范围
+      //     salary_range,
+      //     // 求职状态
+      //     find_work,
+      //     // 工作年限
+      //     working_years,
+      //     // 联系人
+      //     contacts,
+      //     // 联系电话
+      //     tel,
+      //     // 详情
+      //     info,
+      //   },
+      //   method: 'POST',
+      // header: {
+      //   'content-type': 'application/x-www-form-urlencoded'
+      // },
+      // success:function(res){
+      //   console.log("找工作发布请求",res)
+      // },fail:function(){
+      //   console.log("请求失败")
+      // }
+      // })
     }
   }else if(that.data.issu==true){
     console.log("信息id",that.data.info_id)
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_modify_info',
+      url:'/home/Personal/do_modify_info',
       data:{
         form:2,
         info_id:that.data.info_id,
@@ -371,7 +417,7 @@ Page({
   console.log("我的发布传参",options)
   if(options.pid!=undefined){
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_modify_details',
+      url:'/home/Personal/do_modify_details',
       data:{
       info_id:options.pid,
       form:options.form
@@ -397,24 +443,37 @@ Page({
       console.log('调用失败')
   })
 }
-wx.request({
-  url:"http://tsf.suipk.cn/home/Personal/do_id_type",
- data:{
+// wx.request({
+//   url:"/home/Personal/do_id_type",
+//  data:{
+//   type:1,
+//  },
+//  method: 'POST',
+//  header: {
+//    'content-type': 'application/x-www-form-urlencoded'
+//  },
+//  success:function(res){
+//    that.setData({
+//     type_work_id:res.data.data[0].id
+//    })
+//    console.log(that.data.selectData)
+//   console.log('工种结果'+that.data.selectData)
+// },fail:function(){
+//     console.log("调用工种失败")
+//    }
+// })
+request({
+url:'/home/Personal/do_id_type',
+data:{
   type:1,
- },
- method: 'POST',
- header: {
-   'content-type': 'application/x-www-form-urlencoded'
- },
- success:function(res){
+}
+}).then(res=>{
+console.log('调用成功',res)
    that.setData({
     type_work_id:res.data.data[0].id
    })
-   console.log(that.data.selectData)
-  console.log('工种结果'+that.data.selectData)
-},fail:function(){
-    console.log("调用工种失败")
-   }
+}).catch(err=>{
+console.log('调用失败')
 })
   },
 })

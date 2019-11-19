@@ -11,7 +11,7 @@ Page({
     })
     console.log('show+++++++++++')
   },
-  //隐藏输入框
+  // 隐藏输入框
   onHideInput: function () {
     this.setData({
       showInput: false
@@ -27,9 +27,6 @@ Page({
   },
 
   formSubmit: function (e) {
-    this.setData({
-      showInput: false
-    })
     var that=this
     var e = e.detail.value
     var info_id=this.data.lid
@@ -322,7 +319,7 @@ Page({
         // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
         var uid=wx.getStorageSync('uid');
         request({
-          url:'http://tsf.suipk.cn/home/info/do_info_content',
+          url:'/home/info/do_info_content',
           data:{
           uid,
           type:that.data.form,
@@ -367,7 +364,7 @@ Page({
       // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
       var uid=wx.getStorageSync('uid');
       request({
-        url:'http://tsf.suipk.cn/home/info/do_info_content',
+        url:'/home/info/do_info_content',
         data:{
         uid,
         type:3,
@@ -460,8 +457,9 @@ Page({
     // inputMessage:'',
   },
   // 发布评论
-  send_btn:function(e){
-    this.setData({
+  sendBtn:function(e){
+    var that=this
+    that.setData({
       showInput: false
     })
     console.log('发布',e)
@@ -472,7 +470,7 @@ Page({
   console.log('发布的评论',content)
   // ++++++++++++发布评论++++++++++++++++++++++
       request({
-        url:'http://tsf.suipk.cn/home/index/do_addcommemt',
+        url:'/home/index/do_addcommemt',
         data:{
           type:that.data.types,
           info_id:that.data.lid,
@@ -481,11 +479,14 @@ Page({
         }
         }).then(res=>{
         console.log('调用发布评论成功',res)
+        that.setData({
+          showInput:false
+        })
         // that.onLoad()
         // +++++++++++++++++++++++++++
         // +++++++++++++++++++++++++刷新评论列表++++++++++++++++++++++++++
         request({
-          url:'http://tsf.suipk.cn/home/index/do_comment_list',
+          url:'/home/index/do_comment_list',
           data:{
            type:that.data.types,
            info_id:that.data.lid,
@@ -494,9 +495,11 @@ Page({
           }
         }).then(res=>{
           console.log('调用评论列表成功',res)
-          this.setData({
-            user:res.data.list
+          that.setData({
+            user:res.data.list,
+            showInput: true
           })
+
           }).catch(err=>{
             console.log('调用失败')
         })
@@ -526,7 +529,7 @@ Page({
          * 获取的信息详情的广告图
          */
         request({
-          url:'http://tsf.suipk.cn/home/info/do_get_advert',
+          url:'/home/info/do_get_advert',
             data:{
               type:4
             }
@@ -547,7 +550,7 @@ Page({
     if(options.share==1){
       var uid=options.uid 
       request({
-        url:'http://tsf.suipk.cn/home/info/do_info_content',
+        url:'/home/info/do_info_content',
         data:{
         uid,
         type:options.type,
@@ -574,7 +577,7 @@ Page({
     })
       // +++++++++++++++点赞+++++++++++++++++++++
       request({
-        url:'http://tsf.suipk.cn/home/index/do_point',
+        url:'/home/index/do_point',
         data:{
           uid,
           type:options.type,
@@ -591,7 +594,7 @@ Page({
       // +++++++++++++++点赞+++++++++++++++++++++
       // // 评论列表
       request({
-        url:'http://tsf.suipk.cn/home/index/do_comment_list',
+        url:'/home/index/do_comment_list',
         data:{
          type:options.type,
          info_id:options.info_id,
@@ -621,7 +624,7 @@ Page({
         
         // 请求信息详情
         request({
-        url:'http://tsf.suipk.cn/home/info/do_info_content',
+        url:'/home/info/do_info_content',
         data:{
         uid,
         type:3,
@@ -650,7 +653,7 @@ Page({
       // +++++++++++++++点赞+++++++++++++++++++++
       // // 评论列表
       request({
-        url:'http://tsf.suipk.cn/home/index/do_comment_list',
+        url:'/home/index/do_comment_list',
         data:{
          type:options.type,
          info_id:options.id,
@@ -675,7 +678,7 @@ Page({
       console.log('接收信息中心跳转来的信息',options)
       var uid=wx.getStorageSync('uid');
       request({
-        url:'http://tsf.suipk.cn/home/info/do_info_content',
+        url:'/home/info/do_info_content',
         data:{
           type:options.type,
           info_id:options.id,
@@ -704,7 +707,7 @@ Page({
 
       // 评论列表
       request({
-        url:'http://tsf.suipk.cn/home/index/do_comment_list',
+        url:'/home/index/do_comment_list',
         data:{
          type:1,
          info_id:options.id,

@@ -8,7 +8,7 @@
       <block wx:for="{{tabuser}}" wx:key="{{index}}">
         <view class="bgf">
 
-          <view class="bgf mtt">
+          <view class="bgf">
             <view bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}">
               <view class="tab-new d-spb">
                 <view class="d-flex">
@@ -42,7 +42,7 @@
               <view class="tab-content">{{item.content}}</view>
             </view>
             <!-- 图片 -->
-            <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+            <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>=5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asd' wx:key="{{index}}">
                 <image bindtap="listenerButtonPreviewImage" data-index="{{index}}" data-ids="{{asd}}" data-id='{{item.id}}' src="{{asd}}"></image>
               </block>
@@ -134,7 +134,7 @@
               <view class="tab-content">{{item.content}}</view>
             </view>
             <!-- 图片 -->
-            <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
+            <view class="tabUserImg{{item.img_url_arr.length==1?'b':(item.img_url_arr.length==4?'c':(item.img_url_arr.length>=5||item.img_url_arr.length>1&&item.img_url_arr.length<4?'a':'0')) }}">
               <block wx:for="{{item.img_url_arr}}" wx:for-item='asdj' wx:key="{{index}}">
                 <image bindtap="listenerButtonPreviewImagej" data-index="{{index}}" data-ids="{{asdj}}" data-id='{{item.id}}' src="{{asdj}}"></image>
               </block>

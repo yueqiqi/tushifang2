@@ -1,6 +1,9 @@
 
 /* pages/panel/panel.wxss */
 /* 选项卡 */
+.van-tab__pane{
+  background:#f2f2f2
+}
 .van-tabs__line{
   width:400rpx!important;
   margin-left:-94rpx;

@@ -50,7 +50,7 @@
    </van-cell>
   </view>
   <!-- 商品详情 -->
-  <view class="details bgf">
+  <view class="details bgf" wx-if="{{list.goods_info!=''}}">
     <view class="details-title">商品详情</view>
     <view class="details-img">
       <rich-text nodes="{{list.goods_info}}"></rich-text>

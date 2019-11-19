@@ -112,49 +112,79 @@ Page({
     if(e.detail==1){
       var start_time=this.data.stime
   var ending_time=this.data.etime
-  wx.request({
-    url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
-    data: {
+  // wx.request({
+  //   url: '/home/info/do_all_inintegral',
+  //   data: {
+  //     lable:2,
+  //     start_time,
+  //     ending_time,
+  //   },
+  //   method: 'POST',
+  //   header: {
+  //   'content-type': 'application/x-www-form-urlencoded'
+  //   },
+  //   success: function (res) {
+  //   console.log('调用十万火急成功', res.data.data)
+  //   that.setData({
+  //     int:res.data.data
+  //   })
+  //   }, fail: function () {
+  //   console.log('调用失败')
+  //   }
+  //   })
+  request({
+    url:'/home/info/do_all_inintegral',
+    data:{
       lable:2,
       start_time,
       ending_time,
-    },
-    method: 'POST',
-    header: {
-    'content-type': 'application/x-www-form-urlencoded'
-    },
-    success: function (res) {
-    console.log('调用十万火急成功', res.data.data)
+    }
+    }).then(res=>{
+    console.log('调用成功',res)
     that.setData({
       int:res.data.data
     })
-    }, fail: function () {
+    }).catch(err=>{
     console.log('调用失败')
-    }
-    })
+  })
     }else if(e.detail==2){
       var start_time=this.data.stime
       var ending_time=this.data.etime
-      wx.request({
-        url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
-        data: {
+      // wx.request({
+      //   url: '/home/info/do_all_inintegral',
+      //   data: {
+      //     lable:3,
+      //     start_time,
+      //     ending_time,
+      //   },
+      //   method: 'POST',
+      //   header: {
+      //   'content-type': 'application/x-www-form-urlencoded'
+      //   },
+      //   success: function (res) {
+      //   console.log('调用十万火急成功', res.data.data)
+      //   that.setData({
+      //     int:res.data.data
+      //   })
+      //   }, fail: function () {
+      //   console.log('调用失败')
+      //   }
+      //   })
+      request({
+        url:'/home/info/do_all_inintegral',
+        data:{
           lable:3,
           start_time,
           ending_time,
-        },
-        method: 'POST',
-        header: {
-        'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: function (res) {
-        console.log('调用十万火急成功', res.data.data)
+        }
+        }).then(res=>{
+        console.log('调用成功',res)
         that.setData({
           int:res.data.data
         })
-        }, fail: function () {
+        }).catch(err=>{
         console.log('调用失败')
-        }
-        })
+      })
     }
      
   },
@@ -185,7 +215,7 @@ Page({
     }
 console.log('选择的方式',lable)
 request({
-  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  url:'/home/info/do_all_inintegral',
   data:{
     lable,
     start_time,
@@ -254,7 +284,7 @@ this.setData({
       h4:false
     });
     request({
-      url:'http://tsf.suipk.cn/home/info/do_work_years_list',
+      url:'/home/info/do_work_years_list',
       data:{
         code:"",
         mes:""
@@ -294,7 +324,7 @@ this.setData({
     // +++++++++++++++++++++++请求薪资下拉列表++++++++++++++++++++++++++
     var that=this
     request({
-      url:'http://tsf.suipk.cn/home/info/do_salary_list',
+      url:'/home/info/do_salary_list',
       data:{
         code:"",
         mes:""
@@ -351,26 +381,39 @@ this.setData({
     });
 
     // ++++++++++++++++++++++++++请求下拉列表++++++++++++++++++++++++++++++
-    wx.request({
-      url:"http://tsf.suipk.cn/home/Personal/do_id_type",
-     data:{
-      type:1,
-     },
-     method: 'POST',
-     header: {
-       'content-type': 'application/x-www-form-urlencoded'
-     },
-     success:function(res){
+    // wx.request({
+    //   url:"/home/Personal/do_id_type",
+    //  data:{
+    //   type:1,
+    //  },
+    //  method: 'POST',
+    //  header: {
+    //    'content-type': 'application/x-www-form-urlencoded'
+    //  },
+    //  success:function(res){
       
+    //    that.setData({
+    //      selectData:res.data.data
+    //    })
+    //    console.log(that.data.selectData)
+    //   console.log('工种结果'+that.data.selectData)
+    // },fail:function(){
+    //     console.log("调用工种失败")
+    //    }
+    // })
+    request({
+      url:'/home/Personal/do_id_type',
+      data:{
+        type:1
+      }
+      }).then(res=>{
+      console.log('调用成功',res)
        that.setData({
          selectData:res.data.data
        })
-       console.log(that.data.selectData)
-      console.log('工种结果'+that.data.selectData)
-    },fail:function(){
-        console.log("调用工种失败")
-       }
-    })
+      }).catch(err=>{
+      console.log('调用失败')
+      })
     // ++++++++++++++++++++++++++请求下拉列表++++++++++++++++++++++++++++++
     // console.log(e)
   },
@@ -491,8 +534,8 @@ this.setData({
         })
     } else {
       console.log('工作地点',work)
-      wx.request({
-        url:"http://tsf.suipk.cn/home/info/do_addrecruit",
+      request({
+        url:'/home/info/do_addrecruit',
         data:{
           uid,
           type_work,
@@ -511,13 +554,9 @@ this.setData({
           info,
           start_time,
           ending_time,
-          lable
-        },
-        method: 'POST',
-     header: {
-       'content-type': 'application/x-www-form-urlencoded'
-     },
-     success:function(res){
+          lable        
+        }
+        }).then(res=>{
        if(res.data.code==0){
          that.suhide(false)
          that.setData({
@@ -540,18 +579,70 @@ this.setData({
           radio:'2',
         })
       }
-       
-      },fail:function(){
-       console.log("调用失败")
-      }
+        }).catch(err=>{
+        console.log('调用失败')
       })
+    //   wx.request({
+    //     url:"/home/info/do_addrecruit",
+    //     data:{
+    //       uid,
+    //       type_work,
+    //       type_work_id,
+    //       salary_range,
+    //       work,
+    //       working_years,
+    //       contacts,
+    //       tel,
+    //       corporate_name,
+    //       detailed_address,
+    //       img_url_arr,
+    //       video,
+    //       one_class_id,
+    //       two_class_id,
+    //       info,
+    //       start_time,
+    //       ending_time,
+    //       lable
+    //     },
+    //     method: 'POST',
+    //  header: {
+    //    'content-type': 'application/x-www-form-urlencoded'
+    //  },
+    //  success:function(res){
+    //    if(res.data.code==0){
+    //      that.suhide(false)
+    //      that.setData({
+    //        sq:true
+    //      })
+    //    }
+    //    console.log("调用找人成功",res)
+    //    if(res.data.code==101){
+    //      that.setData({
+    //        model:res.data.msg,
+    //        pm:false,
+    //        sq:true,
+    //        radio:'2',
+    //      })
+    //    }else if(res.data.code==200){
+    //     that.setData({
+    //       modelb:res.data.msg,
+    //       pmb:false,
+    //       sq:true,
+    //       radio:'2',
+    //     })
+    //   }
+       
+    //   },fail:function(){
+    //    console.log("调用失败")
+    //   }
+    //   })
     }
   }
 
 // =======================个人中心跳转++++++++++++++++++++++++++++++====
 if(that.data.issu==true){
   request({
-    url:'http://tsf.suipk.cn/home/Personal/do_modify_info',
+    url:'/home/Personal/do_modify_info',
     data:{
       form:1,
       info_id:that.data.info_id,
@@ -724,7 +815,7 @@ if(that.data.issu==true){
   upload: function () {
     let that = this;
     wx.chooseImage({
-      count: 3, // 默认9
+      count: 9, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -978,31 +1069,44 @@ this.setData({
         one_class:options.id,
         two_class:options.idtwo,
    })
-    wx.request({
-      url:"http://tsf.suipk.cn/home/Personal/do_id_type",
-     data:{
-      type:1,
-     },
-     method: 'POST',
-     header: {
-       'content-type': 'application/x-www-form-urlencoded'
-     },
-     success:function(res){
-      
+   request({
+    url:'/home/Personal/do_id_type',
+    data:{
+      type:1
+    }
+    }).then(res=>{
+    console.log('调用成功',res)
        that.setData({
         type_work_id:res.data.data[0].id
        })
-       console.log('最开始的工种id',that.data.type_work_id)
-       console.log(that.data.selectData)
-      console.log('工种结果'+that.data.selectData)
-    },fail:function(){
-        console.log("调用工种失败")
-       }
-    })
+    }).catch(err=>{
+    console.log('调用失败')
+   })
+    // wx.request({
+    //   url:"/home/Personal/do_id_type",
+    //  data:{
+    //   type:1,
+    //  },
+    //  method: 'POST',
+    //  header: {
+    //    'content-type': 'application/x-www-form-urlencoded'
+    //  },
+    //  success:function(res){
+      
+    //    that.setData({
+    //     type_work_id:res.data.data[0].id
+    //    })
+    //    console.log('最开始的工种id',that.data.type_work_id)
+    //    console.log(that.data.selectData)
+    //   console.log('工种结果'+that.data.selectData)
+    // },fail:function(){
+    //     console.log("调用工种失败")
+    //    }
+    // })
     console.log(options)
     if(options.pid!=undefined){
       request({
-        url:'http://tsf.suipk.cn/home/Personal/do_modify_details',
+        url:'/home/Personal/do_modify_details',
       data:{
       info_id:options.pid,
       form:options.form
@@ -1103,7 +1207,7 @@ if(that.data.sradio==1){
   }
 }
 request({
-  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  url:'/home/info/do_all_inintegral',
   data:{
     lable,
     start_time,
@@ -1171,70 +1275,114 @@ request({
       var ending_time=this.data.etime
     if (this.data.sradio == 1) {
         //  消耗积分
-     wx.request({
-       url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
-       data: {
+    //  wx.request({
+    //    url: '/home/info/do_all_inintegral',
+    //    data: {
+    //      lable:1,
+    //      start_time,
+    //      ending_time,
+    //    },
+    //    method: 'POST',
+    //    header: {
+    //    'content-type': 'application/x-www-form-urlencoded'
+    //    },
+    //    success: function (res) {
+    //    console.log('调用十万火急成功', res.data.data)
+    //    that.setData({
+    //      int:res.data.data
+    //    })
+    //    }, fail: function () {
+    //    console.log('调用失败')
+    //    }
+    //    })
+   request({
+    url:'/home/info/do_all_inintegral',
+    data:{
          lable:1,
          start_time,
-         ending_time,
-       },
-       method: 'POST',
-       header: {
-       'content-type': 'application/x-www-form-urlencoded'
-       },
-       success: function (res) {
-       console.log('调用十万火急成功', res.data.data)
+         ending_time,    
+    }
+    }).then(res=>{
+    console.log('调用成功',res)
        that.setData({
          int:res.data.data
        })
-       }, fail: function () {
-       console.log('调用失败')
-       }
-       })
-   
+    }).catch(err=>{
+    console.log('调用失败')
+   })
        } else if(this.data.sradio==2){
          if(this.data.seradio==1){
-           wx.request({
-             url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
-          data: {
+        //    wx.request({
+        //      url: '/home/info/do_all_inintegral',
+        //   data: {
+        //     lable:2,
+        //     start_time,
+        //     ending_time,
+        //   },
+        //   method: 'POST',
+        //   header: {
+        //   'content-type': 'application/x-www-form-urlencoded'
+        // },
+        //   success: function (res) {
+        //   console.log('调用十万火急成功', res.data.data)
+        //   that.setData({
+        //     int:res.data.data
+        //   })
+        //   }, fail: function () {
+        //   console.log('调用失败')
+        //   }
+        //   })
+        request({
+          url:'/home/info/do_all_inintegral',
+          data:{
             lable:2,
             start_time,
             ending_time,
-          },
-          method: 'POST',
-          header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-          success: function (res) {
-          console.log('调用十万火急成功', res.data.data)
+          }
+          }).then(res=>{
+          console.log('调用成功',res)
           that.setData({
             int:res.data.data
           })
-          }, fail: function () {
+          }).catch(err=>{
           console.log('调用失败')
-          }
-          })
+        })
         }else if(this.data.seradio==2){
-          wx.request({
-            url: 'http://tsf.suipk.cn/home/info/do_all_inintegral',
-         data: {
-           lable:3,
-           start_time,
-           ending_time,
-         },
-         method: 'POST',
-         header: {
-         'content-type': 'application/x-www-form-urlencoded'
-       },
-         success: function (res) {
-         console.log('调用十万火急成功', res.data.data)
-         that.setData({
-           int:res.data.data
-         })
-         }, fail: function () {
-         console.log('调用失败')
-         }
-         })
+          request({
+            url:'/home/info/do_all_inintegral',
+            data:{
+              lable:3,
+              start_time,
+              ending_time,
+            }
+            }).then(res=>{
+            console.log('调用成功',res)
+              that.setData({
+                int:res.data.data
+              })
+            }).catch(err=>{
+            console.log('调用失败')
+          })
+      //     wx.request({
+      //       url: '/home/info/do_all_inintegral',
+      //    data: {
+      //      lable:3,
+      //      start_time,
+      //      ending_time,
+      //    },
+      //    method: 'POST',
+      //    header: {
+      //    'content-type': 'application/x-www-form-urlencoded'
+      //  },
+      //    success: function (res) {
+      //    console.log('调用十万火急成功', res.data.data)
+      //    that.setData({
+      //      int:res.data.data
+      //    })
+      //    }, fail: function () {
+      //    console.log('调用失败')
+      //    }
+      //    })
         }
        }
         

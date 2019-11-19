@@ -187,7 +187,7 @@ Page({
     }
 console.log('选择的方式',lable)
 request({
-  url:'http://tsf.suipk.cn/home/info/do_all_inintegral',
+  url:'/home/info/do_all_inintegral',
   data:{
     lable,
     start_time,
@@ -256,7 +256,7 @@ this.setData({
       h4:false
     });
     request({
-      url:'http://tsf.suipk.cn/home/info/do_work_years_list',
+      url:'/home/info/do_work_years_list',
       data:{
         code:"",
         mes:""
@@ -296,7 +296,7 @@ this.setData({
     // +++++++++++++++++++++++请求薪资下拉列表++++++++++++++++++++++++++
     var that=this
     request({
-      url:'http://tsf.suipk.cn/home/info/do_salary_list',
+      url:'/home/info/do_salary_list',
       data:{
         code:"",
         mes:""
@@ -493,7 +493,7 @@ this.setData({
       console.log('工作地点',work)
       // =======================个人中心跳转++++++++++++++++++++++++++++++====
       request({
-        url:'http://tsf.suipk.cn/home/Personal/do_modify_info',
+        url:'/home/Personal/do_modify_info',
         data:{
           form:1,
           info_id:that.data.info_id,
@@ -836,7 +836,7 @@ this.setData({
     }
     })
       request({
-        url:'http://tsf.suipk.cn/home/Personal/do_modify_details',
+        url:'/home/Personal/do_modify_details',
       data:{
       info_id:options.pid,
       form:options.form

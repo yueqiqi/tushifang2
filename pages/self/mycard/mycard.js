@@ -24,11 +24,39 @@ Page({
   //   this.hidePopup(false);
   // },
   back:function(){
+    var that=this
     var e=this.data
-    console.log(e.name,e.post,e.company,e.email,e.phone,e.add,e.title,e.titleText,e.img.length)
-    if (e.name == "" || e.post == "" || e.company == "" || e.email == "" || e.phone == "" || e.add == "" || e.title == "" || e. titleText == "" ||e.img.length==0){
+    if (e.name == "" || e.post == "" || e.company == "" || e.email == "" || e.phone == "" || e.add == "" || e.title == ""){
       this.hidePopup(false);
-    }
+
+    }else{
+
+      var uid=wx.getStorageSync('uid');
+      var touid=that.data.uid
+      request({
+        url:'/home/personal/do_business_card',
+        data:{
+          uid,
+          touid
+      }
+    }).then(res=>{
+      console.log('调用回递名片成功',res)
+      if(res.data.code==0){
+        wx.showToast({
+          title: '回递成功',
+          icon: 'success',
+          duration: 1500,
+        })
+      }else{
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+        });
+      }       
+    }).catch(err=>{
+      console.log('调用失败')
+    })
+  }
   },
   // =============================================================================
   // 加入参数
@@ -87,11 +115,13 @@ Page({
    */
   onLoad: function (options) {
     let that=this
-
     // ++++++++++++++++++++++调用名片详情+++++++++++++++++++++++++++++++
-    var uid=wx.getStorageSync('uid');
+    var uid=options.uid
+    this.setData({
+      uid,
+    })
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_card_info',
+      url:'/home/personal/do_card_info',
       data:{
        uid 
       }
@@ -159,7 +189,17 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    var that=this
+      var uid=that.data.uid
+    console.log('分享',res)
+    return {
+      title: '包程项',//弹出分享时显示的分享标题
+      path: '/pages/self/mycard/mycard?uid='+uid,//'/page/user?id=123' // 路径，传递参数到指定页面。
+      desc: '个人名片',
+      success: function (res) {
+        console.log('分享成功',ops)
+       }
+    }
   }
 })

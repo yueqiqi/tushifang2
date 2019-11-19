@@ -29,7 +29,7 @@ Page({
       selectShow: false,
     });
     request({
-      url:'http://tsf.suipk.cn/home/info/do_work_years_list',
+      url:'/home/info/do_work_years_list',
       data:{
         code:"",
         mes:""
@@ -96,7 +96,7 @@ Page({
       selectShow: false,
     });
     request({
-      url:'http://tsf.suipk.cn/home/info/do_salary_list',
+      url:'/home/info/do_salary_list',
       data:{
         code:"",
         mes:""
@@ -222,7 +222,7 @@ Page({
       var uid=wx.getStorageSync('uid');
     console.log("信息id",that.data.info_id)
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_modify_info',
+      url:'/home/Personal/do_modify_info',
       data:{
         form:2,
         info_id:that.data.info_id,
@@ -332,7 +332,7 @@ Page({
   //  个人中心我的发布跳转
   console.log("我的发布传参",options)
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_modify_details',
+      url:'/home/Personal/do_modify_details',
       data:{
       info_id:options.pid,
       form:options.form

@@ -1,7 +1,7 @@
 <!-- 我的名片 -->
 <view class="bgf">
 <view style="padding-top:29rpx;padding-bottom:30rpx;"> 
-  <view class="card">
+  <view class="card" bindtap="upset">
     <view class="me d-flex">
       <view><image class="head" src="{{head}}"></image></view>
       <view class="right">
@@ -9,7 +9,6 @@
         <view class="me1">{{post==''?"暂未填写职位信息":post}}</view>      
         <view class="me1">{{com==''?"暂未填写公司信息":com}}</view>      
       </view>
-      <view class="upset" bindtap="upset">去修改>></view>
     </view>
     <!-- 信息 -->
     <view style="margin-top:49rpx;margin-left:29rpx;">
@@ -32,7 +31,7 @@
   </view>
   <!-- 按钮 -->
  <button class="bt" bindtap="btn" wx:if="{{is_perfect==0}}">完善我的名片</button>
- <button class="bt" open-type="share" bindtap="send" wx:if="{{is_perfect==1}}">发名片</button>
+ <button class="bt" open-type="share" wx:if="{{is_perfect==1}}">发名片</button>
 </view>
 </view>
 

@@ -54,7 +54,7 @@ copy:function(){
      * 调用订单详情
      */
     request({
-      url:'http://tsf.suipk.cn/home/Goods/do_order_info',
+      url:'/home/Goods/do_order_info',
       data:{
         order_id:options.order_id,
       }

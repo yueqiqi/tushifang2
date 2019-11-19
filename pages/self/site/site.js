@@ -23,7 +23,7 @@ var id=e.currentTarget.dataset.id
           //   defa: asd
           // })
           request({
-            url:'http://tsf.suipk.cn/home/personal/do_del_adress',
+            url:'/home/personal/do_del_adress',
             data:{
               id
             }
@@ -91,7 +91,7 @@ wx.navigateTo({
     var uid=wx.getStorageSync('uid');
     // +++++++++++++++++++收货地址列表+++++++++++++++++++++++
     request({
-    url:'http://tsf.suipk.cn/home/personal/do_my_addres',
+    url:'/home/personal/do_my_addres',
     data:{
       uid,
       page:1,

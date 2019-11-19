@@ -26,7 +26,7 @@ ginv:function(){
     var that=this
     var uid=wx.getStorageSync("uid");
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_mypoints',
+      url:'/home/personal/do_mypoints',
       data:{
         type:2,
         uid
@@ -87,11 +87,11 @@ ginv:function(){
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-    }
+    var parent_id=wx.getStorageSync('uid');
+    console.log('邀请',parent_id)
     return {
       title: '包程项',
-      path: '/pages/interest/interest',
+      path: '/pages/body/body?parent_id='+parent_id,
       success: function (res) {
         console.log('成功', res)
       }

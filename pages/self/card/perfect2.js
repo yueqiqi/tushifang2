@@ -206,14 +206,25 @@ Page({
     if(that.data.set==true){
       var head1=that.data.head
     }else{
-      
+      var head1=that.data.heads1
     }
-    var head1=that.data.heads1
-    var p=that.data.img_url_arr
-    console.log(that.data.img_url_arr)
-    var z=p.join('|')
-    var img_url_arr=z
-    console.log(z)
+    if(that.data.set2==true){
+      var q=[]
+      var o=that.data.tempFilePaths
+      for(var w in o){
+        var j=that.data.tempFilePaths[w].slice(19)
+        q.push(j)
+      }
+    console.log('循环后的数组',q)
+    var h=q.join('|')
+    var img_url_arr=h
+    }else{
+      var p=that.data.img_url_arr
+      console.log(that.data.img_url_arr)
+      var z=p.join('|')
+      var img_url_arr=z
+      console.log(z)
+    }
     var share_id=1
     // ////////////////////////////////////////////////////
       var updata = that.data.userinfo
@@ -230,7 +241,7 @@ Page({
             console.log('%c'+'这是文字','background:red;color:red;font-size:20rpx;')
             // ===================完善名片++++++++++++++++++++++++++++
             request({
-              url:'http://tsf.suipk.cn/home/personal/do_add_perfect',
+              url:'/home/personal/do_add_perfect',
               data:{
                 uid,
                 share_id,
@@ -245,7 +256,7 @@ Page({
                 img_url_arr
               }
               }).then(res=>{
-              console.log('调用完善名片成功',res)
+              console.log('调用修改名片成功',res)
               if(res.data.code==0){
                 wx.navigateBack({
                   delta: 1
@@ -409,7 +420,7 @@ Page({
      */
     var uid=wx.getStorageSync('uid');
     request({
-    url:'http://tsf.suipk.cn/home/personal/do_perfect',
+    url:'/home/personal/do_perfect',
       data:{
         uid,
       }
@@ -417,10 +428,11 @@ Page({
       console.log('调用修改成功',res)
       that.setData({
         set:true,
+        set2:true,
         com:res.data.data.corporate_name,
         post:res.data.data.company_position,
         address:res.data.data.detailed_address,
-        email:res.data.data.detailed_address,
+        email:res.data.data.email,
         head:res.data.data.head1,
         name:res.data.data.nickname,
         phone:res.data.data.phone,

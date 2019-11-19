@@ -7,7 +7,7 @@
  <!--  -->
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
  <!--  -->
-<view class="modal-dialog" wx:if="{{showModal}}">
+<view class="modal-dialog" wx:if="{{showModal}}" style="">
      <!--  -->
   <view class="modal-content">
     <view class="">
@@ -21,11 +21,10 @@
   <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
     <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" style="width:168rpx;height:168rpx;" />
   </view>
-  <view class="imgs">
-    <view class="images" bindtap="upload">
-      <image src='/pages/images/add.png' />
-    </view>
-  </view>
+ <view class="onload" bindtap="upload" wx-if="{{tempFilePaths.length<3}}">
+            <image src="/pages/images/onload.png"></image>
+            <view>上传视频</view>
+          </view>
 </view>
     </view>
 </view>
@@ -33,11 +32,14 @@
 
 <!-- <view class="modal-footer"> -->
   <!-- <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view> -->
-  <button class="btn-confirm" form-type="submit" data-status="confirm">提交举报</button>
+  <view class="" style="position:absolute;top:630rpx;left:174rpx;">
+    <button class="btn-confirm" form-type="submit" data-status="confirm">提交举报</button>
+  </view>
 <!-- </view> -->
-<view class="close" bindtap="onCancel" data-status="cancel">
+<view class="close" bindtap="onCancel" data-status="cancel" style="position:absolute;top:730rpx;left:230rpx;">
   <image class="closes"  src="/pages/images/close.png"></image>
 </view>
+
 </view>
 </form>
 

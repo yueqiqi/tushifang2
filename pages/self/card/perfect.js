@@ -190,7 +190,7 @@ Page({
   mes:function(e){
     var e=e.detail.value
     console.log(e)
-    if (e.name == "" || e.phone == "" || e.com == "" || e.post == "" || e.email == "" || e.address == "" || e.textarea == "" || this.data.tempFilePaths.length==0){
+    if (e.name == "" || e.phone == "" || e.com == "" || e.post == "" || e.email == "" || e.address == ""){
       console.log("有空")
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
@@ -251,7 +251,7 @@ Page({
             console.log('%c'+'这是文字','background:red;color:red;font-size:20rpx;')
             // ===================完善名片++++++++++++++++++++++++++++
             request({
-              url:'http://tsf.suipk.cn/home/personal/do_add_perfect',
+              url:'/home/personal/do_add_perfect',
               data:{
                 uid,
                 share_id,

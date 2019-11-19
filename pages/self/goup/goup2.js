@@ -59,7 +59,7 @@ Page({
     var uid=wx.getStorageSync('uid');
     var recharge_id
     request({
-      url:'http://tsf.suipk.cn/home/pay/do_wxpay_recharge',
+      url:'/home/pay/do_wxpay_recharge',
       data:{
         type:2,
         uid,
@@ -129,7 +129,7 @@ Page({
     })
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_mypoints',
+      url:'/home/personal/do_mypoints',
       data:{
         type:2,
         uid,
@@ -144,7 +144,7 @@ Page({
     })
     // 充值积分
     request({
-      url:'http://tsf.suipk.cn/home/pay/do_recharge_list',
+      url:'/home/pay/do_recharge_list',
       data:{
         type:2,
       }

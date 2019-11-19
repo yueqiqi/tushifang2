@@ -10,7 +10,7 @@ Page({
 ewm(){
   var id=wx.getStorageSync('uid');
   request({
-    url:'http://tsf.suipk.cn/home/Loginwx/do_sendcode',
+    url:'/home/Loginwx/do_sendcode',
     data:{
       id,
     }

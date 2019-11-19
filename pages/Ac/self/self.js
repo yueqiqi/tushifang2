@@ -91,7 +91,7 @@ Page({
     }else{
       var uid=wx.getStorageSync('uid');
       request({
-        url:'http://tsf.suipk.cn/home/personal/do_personal',
+        url:'/home/personal/do_personal',
         data:{
           uid,
         identity_selection,
@@ -345,7 +345,7 @@ Page({
       phone
     })
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_id_type',
+      url:'/home/Personal/do_id_type',
       data:{
       type:2,
       }

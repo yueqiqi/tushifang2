@@ -32,7 +32,7 @@ console.log('评论',content,)
 console.log('发布的评论',content,that.data.info_id)
 // ++++++++++++发布评论++++++++++++++++++++++
     request({
-      url:'http://tsf.suipk.cn/home/index/do_addcommemt',
+      url:'/home/index/do_addcommemt',
       data:{
         type:2,
         info_id:that.data.info_id,
@@ -42,7 +42,7 @@ console.log('发布的评论',content,that.data.info_id)
       }).then(res=>{
       console.log('调用发布评论成功',res)
       request({
-        url:'http://tsf.suipk.cn/home/index/do_comment_list',
+        url:'/home/index/do_comment_list',
         data:{
          type:2,
          info_id:that.data.info_id,
@@ -84,7 +84,7 @@ console.log('发布的评论',content,that.data.info_id)
       }).then(res=>{
       console.log('调用点赞成功',res)
       request({
-        url:'http://tsf.suipk.cn/home/index/do_DishonestyList_info',
+        url:'/home/index/do_DishonestyList_info',
         data:{
           uid,
           info_id:that.data.info_id
@@ -122,7 +122,7 @@ console.log('发布的评论',content,that.data.info_id)
     })
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/index/do_DishonestyList_info',
+      url:'/home/index/do_DishonestyList_info',
       data:{
         uid,
         info_id:that.data.info_id
@@ -137,7 +137,7 @@ console.log('发布的评论',content,that.data.info_id)
     })
     // 评论列表
     request({
-      url:'http://tsf.suipk.cn/home/index/do_comment_list',
+      url:'/home/index/do_comment_list',
       data:{
        type:2,
        info_id:that.data.info_id,

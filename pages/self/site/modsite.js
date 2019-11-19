@@ -65,7 +65,7 @@ Page({
     }
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_modify_address',
+      url:'/home/personal/do_modify_address',
       data:{
         id:that.data.sid,
         uid,
@@ -139,7 +139,7 @@ Page({
       sid:options.id
     })
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_modify_addressinfo',
+      url:'/home/personal/do_modify_addressinfo',
       data:{
         id:options.id
       }

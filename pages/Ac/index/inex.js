@@ -77,7 +77,7 @@ gg:function(e){
      */
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_is_identification',
+      url:'/home/Personal/do_is_identification',
       data:{
         uid,
       }
@@ -133,7 +133,7 @@ gg:function(e){
     })
     // 
     request({
-      url:"http://tsf.suipk.cn/home/personal/do_check_in",
+      url:"/home/personal/do_check_in",
       data:{
         code:"",
         msg:"",

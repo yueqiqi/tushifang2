@@ -10,7 +10,7 @@ Page({
     var that=this
     var index = e.detail.index
       request({
-        url:'http://tsf.suipk.cn/home/Goods/do_order',
+        url:'/home/Goods/do_order',
         data:{
           uid,
           type:index+1,
@@ -59,7 +59,7 @@ Page({
         success: (result) => {
           if(result.confirm){
             request({
-              url:'http://tsf.suipk.cn/home/Goods/do_confirm_receipt',
+              url:'/home/Goods/do_confirm_receipt',
               data:{
                 order_id,
               }
@@ -74,7 +74,7 @@ Page({
                     mask: false,
                     success: (result)=>{
                       request({
-                        url:'http://tsf.suipk.cn/home/Goods/do_order',
+                        url:'/home/Goods/do_order',
                         data:{
                           uid,
                           type:3,
@@ -108,7 +108,7 @@ Page({
     // var order_id=e.currentTarget.dataset.id
     // var that=this
     // request({
-    //   url:'http://tsf.suipk.cn/home/goods/do_cancel_order',
+    //   url:'/home/goods/do_cancel_order',
     //   data:{
     //     order_id,
     //   }
@@ -127,7 +127,7 @@ Page({
     var order_id=e.currentTarget.dataset.id
     var that=this
     request({
-      url:'http://tsf.suipk.cn/home/goods/do_OrderRemind',
+      url:'/home/goods/do_OrderRemind',
       data:{
         uid,
         order_id
@@ -167,7 +167,7 @@ Page({
         if (sm.confirm) {
           console.log('用户点击了确定')
           request({
-            url:'http://tsf.suipk.cn/home/Goods/do_del_order',
+            url:'/home/Goods/do_del_order',
             data:{
               order_id,
             }
@@ -183,7 +183,7 @@ Page({
                 success: (result)=>{
                   that.onLoad()
                   request({
-                    url:'http://tsf.suipk.cn/home/Goods/do_order',
+                    url:'/home/Goods/do_order',
                     data:{
                       uid,
                       type:4,
@@ -236,7 +236,7 @@ Page({
      */
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/Goods/do_order',
+      url:'/home/Goods/do_order',
       data:{
         uid,
         type:1,
@@ -277,7 +277,7 @@ Page({
       title: '玩命加载中',
       })
     request({
-      url:'http://tsf.suipk.cn/home/Goods/do_order',
+      url:'/home/Goods/do_order',
       data:{
         uid,
         type:1,
@@ -305,7 +305,7 @@ Page({
     })
     if(that.data.indexs==1){
       request({
-        url:'http://tsf.suipk.cn/home/Goods/do_order',
+        url:'/home/Goods/do_order',
         data:{
           uid,
           type:2,
@@ -333,7 +333,7 @@ Page({
       })
     }else if(that.data.indexs==2){
       request({
-        url:'http://tsf.suipk.cn/home/Goods/do_order',
+        url:'/home/Goods/do_order',
         data:{
           uid,
           type:3,
@@ -361,7 +361,7 @@ Page({
       })
     }else if(that.data.indexs==3){
       request({
-        url:'http://tsf.suipk.cn/home/Goods/do_order',
+        url:'/home/Goods/do_order',
         data:{
           uid,
           type:4,

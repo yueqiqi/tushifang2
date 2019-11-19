@@ -8,7 +8,7 @@ Page({
     var index=e.detail.index
     console.log(that.data.one_class[index].id)
       request({
-        url:'http://tsf.suipk.cn/home/Goods/do_getgoods',
+        url:'/home/Goods/do_getgoods',
         data:{
           page:1,
           limit:10,
@@ -139,7 +139,7 @@ Page({
      * 获取商品详情页banner
      */
     request({
-      url:'http://tsf.suipk.cn/home/index/do_banner',
+      url:'/home/index/do_banner',
       data:{
         type:0
       }
@@ -155,7 +155,7 @@ Page({
 
 
    request({
-    url:'http://tsf.suipk.cn//home/Goods/do_shopping_mall',
+    url:'//home/Goods/do_shopping_mall',
     data:{
       code:'',
       msg:'',
@@ -169,7 +169,7 @@ Page({
     * 获取商品详情
     */
    request({
-    url:'http://tsf.suipk.cn/home/Goods/do_getgoods',
+    url:'/home/Goods/do_getgoods',
     data:{
       page:that.data.page,
       limit:6,
@@ -243,7 +243,7 @@ Page({
       title: '玩命加载中',
       })
     request({
-      url:'http://tsf.suipk.cn/home/Goods/do_getgoods',
+      url:'/home/Goods/do_getgoods',
       data:{
         page:that.data.page,
         limit:6,

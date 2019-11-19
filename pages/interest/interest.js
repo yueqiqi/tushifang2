@@ -91,7 +91,7 @@ Page({
       });
     } else {
       wx.navigateTo({
-        url: '/pages/demo/new/index/renzhen',
+        url: '/pages/a-new/a-new',
       })
     } 
     // ++++++++++++++++++++++选择兴趣接口+++++++++++++++++++++
@@ -172,7 +172,7 @@ Page({
   onLoad: function (options) {
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/Info/do_twoclass_list',
+      url:'/home/Info/do_twoclass_list',
       data:{
         one_class_id:'',
       }

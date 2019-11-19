@@ -25,7 +25,7 @@ Page({
     var info_id=e.currentTarget.dataset.id
     // +++++++++++++点赞功能++++++++++++++++++++
     request({
-      url:'http://tsf.suipk.cn/home/index/do_point',
+      url:'/home/index/do_point',
       data:{
         uid,
         type:2,
@@ -64,7 +64,7 @@ Page({
     var uid=wx.getStorageSync('uid');
     // +++++++++++++诚信红榜请求++++++++++++++++++++++
       request({
-        url:'http://tsf.suipk.cn/home/index/do_Honesty_list',
+        url:'/home/index/do_Honesty_list',
         data:{
           uid,
           type:1,
@@ -82,7 +82,7 @@ Page({
     // +++++++++++++诚信红榜请求++++++++++++++++++++++
     // +++++++++++++诚信灰榜请求++++++++++++++++++++++
     request({
-      url:'http://tsf.suipk.cn/home/index/do_Honesty_list',
+      url:'/home/index/do_Honesty_list',
       data:{
         uid,
         type:2,
@@ -100,7 +100,7 @@ Page({
     // +++++++++++++诚信灰榜请求++++++++++++++++++++++
     // +++++++++++++诚信失信名单请求++++++++++++++++++++++
     request({
-      url:'http://tsf.suipk.cn/home/index/do_Honesty_list',
+      url:'/home/index/do_Honesty_list',
       data:{
         uid,
         type:3,

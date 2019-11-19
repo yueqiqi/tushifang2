@@ -1,0 +1,60 @@
+page{
+  height: 100%;
+  box-sizing: border-box;
+}
+.next{
+  font-size:30rpx;
+font-weight:bold;
+color:rgba(255,255,255,1);
+position:absolute;
+bottom:80rpx;right:50rpx;
+}
+ /* 下一步文字 */
+ .next>view{
+  position: relative;
+  top:65rpx;left:97rpx;
+}
+.x{
+  position: fixed;
+  right:50rpx;top:50rpx;
+}
+  /* 上一步 */
+  .up{
+    font-size:30rpx;
+ font-weight:bold;
+ color:rgba(255,255,255,1);
+ position:absolute;
+ bottom:80rpx;left:50rpx;
+  }
+  /* 上一步文字 */
+  .up>view{
+    position: relative;
+    top:65rpx;left:97rpx;
+  }
+
+
+  .next2{
+    font-size:30rpx;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  position:absolute;
+  top:400rpx;right:50rpx;
+  }
+   /* 下一步文字 */
+   .next2>view{
+    position: relative;
+    top:65rpx;left:97rpx;
+  }
+    /* 上一步 */
+    .up2{
+      font-size:30rpx;
+   font-weight:bold;
+   color:rgba(255,255,255,1);
+   position:absolute;
+   top:400rpx;left:50rpx;
+    }
+    /* 上一步文字 */
+    .up2>view{
+      position: relative;
+      top:65rpx;left:97rpx;
+    }

@@ -79,7 +79,7 @@ bindPickerChange: function (e) {
       phone,
     })
     request({
-      url:'http://tsf.suipk.cn/home/Personal/do_id_type',
+      url:'/home/Personal/do_id_type',
       data:{
         type:4
       }

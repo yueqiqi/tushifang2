@@ -252,7 +252,7 @@ Page({
         // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
         // var uid=wx.getStorageSync('uid');
         request({
-          url:'http://tsf.suipk.cn/home/info/do_info_content',
+          url:'/home/info/do_info_content',
           data:{
           uid,
           type:2,
@@ -297,7 +297,7 @@ card:function(){
      * 获取的信息详情的广告图
      */
     request({
-      url:'http://tsf.suipk.cn/home/info/do_get_advert',
+      url:'/home/info/do_get_advert',
         data:{
           type:2
         }
@@ -316,9 +316,14 @@ card:function(){
     this.setData({
       info_id:options.info_id
     })
-    var uid=wx.getStorageSync('uid');
+    
+    if(options.share){
+      var uid=options.uid
+    }else{
+      var uid=wx.getStorageSync('uid');
+    }
     request({
-      url:'http://tsf.suipk.cn/home/info/do_info_content',
+      url:'/home/info/do_info_content',
       data:{
         type:2,
         info_id:options.info_id,
@@ -391,7 +396,14 @@ call:function(){
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    var uid=wx.getStorageSync('uid');
+    return {
+      title: '包程项',
+      path: '/pages/informmation/peopledetail/peopledetail?info_id='+this.data.info_id+'&uid='+uid+'&share=1',
+      success: function (res) {
+        console.log('成功', res)
+      }
+    }
   }
 })

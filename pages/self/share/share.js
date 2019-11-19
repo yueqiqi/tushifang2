@@ -22,7 +22,7 @@ Page({
      */
     var uid=wx.getStorageSync('uid');
     request({
-      url:'http://tsf.suipk.cn/home/personal/do_user_integral',
+      url:'/home/personal/do_user_integral',
       data:{
         uid,
         page:1,
@@ -77,7 +77,43 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var uid=wx.getStorageSync('uid');
+    var that=this
+    var page = that.data.page
+    page++
+    that.setData({
+      page,
+    })
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+      })
+      var uid=wx.getStorageSync('uid');
+      request({
+        url:'/home/personal/do_user_integral',
+        data:{
+          uid,
+          page:that.data.page,
+          limit:10
+        }
+        }).then(res=>{
+        console.log('调用刷新最新发布成功',res)
+        var count=res.data.count
+        var all=that.data.users.length
+        if (all==count) {
+          wx.showToast({
+            title: '暂无更多',
+            icon: 'none',
+          })
+        }
+        var goods = that.data.users.concat(res.data.list)     //message  为一进入页面请求完数据定义的集合
+        that.setData({
+          users:goods,
+        })
+        wx.hideLoading();
+        }).catch(err=>{
+        console.log('调用失败')
+      })
   },
 
   /**

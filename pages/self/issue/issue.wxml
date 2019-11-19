@@ -1,6 +1,7 @@
 <!-- 我的发布 -->
 
 <!-- ==================================================== -->
+<view class="" wx-if="{{usermes!=''}}">
 <block wx:for="{{usermes}}" wx:key="{{index}}">
   <view class="bgf mtt">
 <!-- 发布内容标题和正在进行 -->
@@ -110,3 +111,13 @@
   <image src="../../images/iss.png"></image>
 </view>
 <include src="./err"/>
+</view>
+<view wx-if="{{usermes==''}}" class="n-mm">
+  <view class="n-qq">
+    <view class="n-no">
+      <image class="n-img" src="/pages/images/noissue.png"></image>
+    </view>
+    <view class="n-font">亲，您当前还未发布信息哟~</view>
+    <button bindtap="iss" class="n-btn">立即发布</button>
+  </view>
+</view>
