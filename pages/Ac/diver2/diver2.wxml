@@ -14,7 +14,7 @@
   <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
 
 
@@ -35,7 +35,7 @@
     <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths2}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage2" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage2" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImage2" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload2">
       <image src="../../images/onload.png"></image>
@@ -47,12 +47,12 @@
 
 <!-- 车辆四周照 -->
   <view class="prove">
-    <view class="license">车辆四周照</view>
+    <view class="license">车辆四周照(最少四张)</view>
     <view class="d-flex" style="width:100%;flex-wrap: wrap;">
     <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths3}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage3" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage3" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImage3" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload3" wx:if="{{showUpload2}}">
       <image src="../../images/onload.png"></image>
@@ -68,7 +68,7 @@
     <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths4}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage4" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage4" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImage4" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload4">
       <image src="../../images/onload.png"></image>
@@ -84,7 +84,7 @@
     <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths5}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage5" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage5" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImage5" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload5">
       <image src="../../images/onload.png"></image>
@@ -100,7 +100,7 @@
     <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths6}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage6" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage6" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImage6" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload6" wx:if="{{showUpload}}">
       <image src="../../images/onload.png"></image>

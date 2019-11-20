@@ -32,18 +32,40 @@ App({
     /**
      * 判断用户是否是第一次进入
      */
-    var uid=wx.getStorageSync("uid");
-       if(uid==''){
-         wx.redirectTo({
-           url: '/pages/interest/interest',
-           success: (result)=>{
-             
-           },
-           fail: ()=>{},
-           complete: ()=>{}
-         });
-       }
-        
+
+/**
+ * 利用openid判断用户是否是第一次登陆
+ */
+       wx.login({
+        timeout:10000,
+        success: (res)=>{
+          const code=res.code;
+          wx.request({
+            url: 'http://tsf.suipk.cn/home/Loginwx/get_openid',
+            data: {
+              code,
+            },
+            method: 'POST',
+            header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+            success: (res)=> {
+              console.log("判断是否进入小程序",res)
+              if(res.data.data.is_user==0){
+                wx.redirectTo({
+                  url: '/pages/interest/interest',
+                  success: (result)=>{
+                  },
+                });
+              }
+          }, fail: ()=> {
+            console.log('调用失败')
+            }
+          })
+        }
+      })
+
+
     /**
      * 从缓存中取出token
      */

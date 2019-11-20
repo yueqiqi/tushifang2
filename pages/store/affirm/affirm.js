@@ -151,8 +151,12 @@ close:function(){
           }).then(res=>{
           console.log('调用商品界面成功',res)
           // var res=res.datat.data
+          var arr=res.data.data.specifications
+          var arrs=arr.split(',')
+          console.log('商品的过个',arrs)
           that.setData({
-            list:res.data.data
+            list:res.data.data,
+            arrs
           })
           }).catch(err=>{
           console.log('调用失败')

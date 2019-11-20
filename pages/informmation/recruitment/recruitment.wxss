@@ -1,5 +1,8 @@
 /* pages/informmation/recruitment/recruitment.wxss */
 @import "../carousel/carousel";
+.idxac{
+  background: red!important;
+}
 .m-tabs{
   color:greenyellow!important;
   font-size:40rpx;
@@ -32,22 +35,22 @@
 /* 第一个激活 */
 .van-tab--active:nth-child(2){
   font-weight: 700!important;
-  color:#4E85A4!important;
+  color:#fff!important;
 }
 /* 第二个激活 */
 .van-tab--active:nth-child(3){
-  color:#8B70B1!important;
+  /* color:#8B70B1!important; */
   font-weight:700important;
 }
 /* 第三个激活 */
 .van-tab--active:nth-child(4){
   font-weight:700!important;
-color:#C56F81!important;
+/* color:#C56F81!important; */
 }
 /* 第四个激活 */
 .van-tab--active:nth-child(5){
   font-weight:700!important;
-color:rgba(194,154,76,1)!important;
+/* color:rgba(194,154,76,1)!important; */
 }
 /* 点击时背景颜色 */
  .van-tab--active>.van-tab__title:nth-child(1){
@@ -616,7 +619,6 @@ margin-left:14rpx;line-height: 50rpx;
 /* 文字 */
 .share :nth-child(2),.comment :nth-child(2),.like :nth-child(2){
   font-size:28rpx;
-font-family:PingFang SC;
 font-weight:400;
 /* color:rgba(102,102,102,1); */
 line-height:40rpx;
@@ -674,4 +676,7 @@ line-height: 21rpx!important;
 overflow: visible!important;
 margin-left: 10rpx;
 
+}
+page{
+  background:#F2F2F2
 }

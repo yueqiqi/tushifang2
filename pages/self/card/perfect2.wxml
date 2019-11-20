@@ -135,6 +135,7 @@
   <!-- 上传图片预览 -->
   <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
     <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" style="width:130rpx;height:130rpx;"/>
+    <view style="position:relative;left:-36rpx;width:30rpx;"><image data-index="{{index}}" bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload">
       <image src="../../images/onload.png"></image>

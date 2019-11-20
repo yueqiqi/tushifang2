@@ -28,10 +28,13 @@
       <!-- 商品标题 -->
       <view class="detail-title">{{list.goods_title}}</view>
       <!-- 分类型号 -->
-      <view class="d-spb model">
-        <view>分类</view>
-        <view>型号</view>
+      <view class="d-flex">
+        <block wx:for="{{arrs}}" wx:key="{{index}}">
+      <view class="model">
+          <view class="mybtn">{{item}}</view>
       </view> 
+        </block>
+      </view>
       <!-- 价格 -->
       <view class="d-spb pr">
         <view class="price">￥{{list.one_money}}</view>

@@ -47,7 +47,7 @@
           <!-- 上传图片预览 -->
           <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" />
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImage" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
           <view class="onload" bindtap="upload" wx:if="{{showUpload}}">
             <image src="../../images/onload.png"></image>

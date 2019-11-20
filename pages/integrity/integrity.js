@@ -4,19 +4,29 @@ Page({
   // 跳转详情页
   Mes:function(e){
     var info_id=e.currentTarget.dataset.id
+    var idx=e.currentTarget.dataset.idx
+    var point=e.currentTarget.dataset.point
     wx.navigateTo({
-      url: '/pages/integrityMes/integrityMes?info_id='+info_id,
+      url: '/pages/integrityMes/integrityMes?info_id='+info_id+'&idx='+idx+'&point='+point,
     })
     console.log("跳转至详情页")
   },
   // 分享
+
+
   share: function () {
-    console.log("分享")
+    var info_id=e.currentTarget.dataset.id
+    this.setData({
+      info_id
+    })
   },
   // 评论
   comment: function () {
     console.log("评论")
   },
+
+
+
   // 点赞
   like: function (e) {
     console.log(e)
@@ -34,9 +44,6 @@ Page({
       }).then(res=>{
       console.log('调用成功',res)
       that.onLoad()//重点   重新执行下onLoad去获取当前的数据
-      this.setData({
-      
-      })
       }).catch(err=>{
       console.log('调用失败')
     })
@@ -69,7 +76,7 @@ Page({
           uid,
           type:1,
           page:1,
-          limit:10,
+          limit:99,
         }
         }).then(res=>{
         console.log('调用诚信红榜成功',res)
@@ -87,7 +94,7 @@ Page({
         uid,
         type:2,
         page:1,
-        limit:10,
+        limit:99,
       }
       }).then(res=>{
       console.log('调用诚信灰榜成功',res)
@@ -105,7 +112,7 @@ Page({
         uid,
         type:3,
         page:1,
-        limit:10,
+        limit:99,
       }
       }).then(res=>{
       console.log('调用失信名单成功',res)
@@ -164,7 +171,22 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    console.log(res)
+    var info_id=that.data.info_id
+    if(res.from=='button'){
+      return {
+        title: '包程项',//弹出分享时显示的分享标题
+        path: '/pages/integrityMes/integrityMes?info_id='+info_id,
+        //'/page/user?id=123' // 路径，传递参数到指定页面。
+        desc: '分享页面的内容',
+        success: function (res) { 
+          console.log('分享成功',res)
+        },
+        fail:function(err){
+          console.log('分享失败',err)
+        }
+      }
+    }
   }
 })

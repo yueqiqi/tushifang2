@@ -1,7 +1,7 @@
 <!-- 我的订单 -->
 <view class="order">
   <view class="state">
-    订单状态 : <text style="margin-left:10rpx;">代发货/待收货/已完成</text>
+    订单状态 : <text style="margin-left:10rpx;">{{order.status==2?'待发货':(order.status==3?'待收货':(order.status==4?'已完成':'问题件'))}}</text>
   </view>
 </view>
 
@@ -11,7 +11,7 @@
     <view slot="title">
       <view class="d-flex">
         <view><image class="cart" src="../../images/cart.png"></image></view>
-        <view class="van-cell-text">订单已签收</view>
+        <view class="van-cell-text">{{order.status==2?'待发货':(order.status==3?'待收货':(order.status==4?'已完成':'问题件'))}}</view>
       </view>
     </view>
   </van-cell>
@@ -57,7 +57,7 @@
     <view class="copy" bindtap="copy">复制</view>
   </view>
   <view class="order-time">下单时间： <text>{{order.create_time}}</text></view>
-  <view class="order-pay">支付方式： <text>微信支付</text></view>
+  <view class="order-pay" style="padding-bottom:20rpx;">支付方式： <text>微信支付</text></view>
 </view>
   <!-- 1 -->
 </view>

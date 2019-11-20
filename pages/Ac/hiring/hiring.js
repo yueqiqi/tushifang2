@@ -681,7 +681,7 @@ if(that.data.issu==true){
       pm:true,
       sq:false
     })
-    if(this.data.model=='你的信誉分不足'){
+    if(this.data.model=='你的信誉分不足!请充值'){
       wx.navigateTo({
         url: '/pages/self/goup/goup2?go=1',
         success: (result)=>{  

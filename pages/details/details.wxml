@@ -36,11 +36,13 @@
   <view class="text d-name">{{linkman}}</view>
 </view>
 <!-- 联系电话 -->
-<view class="d-flex ml">
+<view class="d-spb ml">
+<view class="d-flex">
   <view class="title-text">联系电话</view>
   <view class="text d-text">{{phone}}</view>
+</view>
   <!-- 电话样式 -->
-<view class="phone" bindtap="callphone">
+<view class="phone" bindtap="callphone" style="margin-right:30rpx;">
   <image src="../images/phone.png"></image>
   <text class="phone-text">一键拨号</text>
 </view>
@@ -51,11 +53,11 @@
 <!-- 图片视频 -->
 <view class="video" style="padding-top:30rpx;">
   <view class="title-text ml">图片/视频</view>
-  <view class="userImg">
+  <view class="userImg" style="width:100%;display:flex;flex-wrap:wrap">
 <!-- 发布图片 -->
 <block wx:for="{{userImg}}" wx:key="{{index}}">
   <view>
-  <image bindtap="listenerButtonPreviewImage" data-index='{{index}}' class="userImg{{index}}" src="{{item}}"></image> 
+  <image style="margin-bottom:10rpx;" bindtap="listenerButtonPreviewImage" data-index='{{index}}' class="userImg{{index}}" src="{{item}}"></image> 
   </view>
 </block>
 </view>

@@ -45,7 +45,7 @@ Page({
               var openid=wx.getStorageSync('openid');
               var phone= wx.getStorageSync('userphone');
               console.log('%c','获取本地手机号码啊啊啊',phone)
-              var pid=1
+              // var pid=1
               var head=u.avatarUrl
               var addr=u.province+u.city
               var sex=u.gender
@@ -57,7 +57,7 @@ Page({
                   url:'/home/Loginwx/register',
                   data:{
                     openid,
-                    pid,
+                    // pid,
                     head,
                     addr,
                     sex,
@@ -123,16 +123,23 @@ Page({
   // +++++++++++++++++++++++++++++++++++++获取手机号+++++++++++++++++++++++++++
   getPhoneNumber:function(e){
     var that=this
-    that.setData({
-      showDialog: true
-    });
+
     // var openid=wx.getStorageSync('openid');
     this.setData({
       iv:e.detail.iv,
       encryptedData:e.detail.encryptedData
     })
     // +++++++++++++++++++++++获取去手机号+++++++++++++++++++++++++++++
-    
+    console.log('iv的值:',e.detail.iv)
+    if(e.detail.iv==undefined){
+      that.setData({
+        showDialog: false
+      });
+    }else{
+      that.setData({
+        showDialog: true
+      });
+    }
     wx.login({
       // code只有5分钟时效
       success:(res)=>{
@@ -148,12 +155,12 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
         success: (res)=> {
-          console.log("opendi",res)
-          var m=res.data.data
-          const openid=m.openid
-          const sessionKey=m.session_key 
-          wx.setStorageSync("openid",openid)  
-          wx.setStorageSync("sessionKey",sessionKey)  
+            console.log("opendi",res)
+            var m=res.data.data
+            const openid=m.openid
+            const sessionKey=m.session_key 
+            wx.setStorageSync("openid",openid)  
+            wx.setStorageSync("sessionKey",sessionKey)            
           // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
           request({
             url:'/home/Loginwx/getWechatUserPhone',
@@ -165,6 +172,7 @@ Page({
             }).then(res=>{
             console.log('手机号获取',res)
             wx.setStorageSync('userphone', res.data.phoneNumber);
+
             }).catch(err=>{
             console.log('手机号获取失败')
             })
@@ -264,7 +272,7 @@ Page({
       {
         img: "../../images/ico/i7.png",
         link: "/pages/self/share/share",
-        til: "分享好友"
+        til: "好友列表"
       },
       {
         img: "../../images/ico/i8.png",

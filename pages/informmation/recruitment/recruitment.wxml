@@ -1,8 +1,8 @@
 <!-- 信息中心招聘信息 -->
 <view class="bgf">
 <van-tabs stick bindclick='vm' active='{{active}}'> 
-<!-- 招聘信息 -->
-  <van-tab title-style-="width:165rpx;height:70rpx;background:linear-gradient(45deg,rgba(0,152,239,1) 0%,rgba(119,213,244,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:400;line-height:70rpx;z-index:9"  bindtap="activetab1" name="{{one_class_id[0].id}}" title="{{one_class_id[0].title}}">
+<!-- 招聘信息 linear-gradient(45deg,rgba(0,152,239,1) 0%,rgba(119,213,244,1) 100%)-->
+  <van-tab title-style-="width:165rpx;height:70rpx;background:#808080;border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:400;line-height:70rpx;z-index:9;{{idxs==0?'background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%)':'background:#c9c9c9;color:#000000'}};"  bindtap="activetab1" name="{{one_class_id[0].id}}" title="{{one_class_id[0].title}}">
   <!-- 轮播图 -->
     <include src="../carousel/carousel"/>
     <!-- 搜索 -->
@@ -150,7 +150,7 @@
 </view>
   </van-tab>
   <!-- -------------------------------------------------------------------------------------------------- -->
-  <van-tab class="zz" title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(168,139,242,1) 0%,rgba(149,85,236,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" bindtap="activetab2" name="{{one_class_id[1].id}}" title="{{one_class_id[1].title}}">
+  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(168,139,242,1) 0%,rgba(149,85,236,1) 100%);border-radius:10rpx; font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;{{idxs==1?'background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%)':'background:#c9c9c9;color:#000000'}};" class="{{idxs==1?'idxac':''}}" bindtap="activetab2" name="{{one_class_id[1].id}}" title="{{one_class_id[1].title}}">
     <!-- <include src="../carousel/carousel"/> -->
  <!-- 轮播图 -->
 <view class="carousel ">
@@ -287,7 +287,7 @@
 </view>
   </van-tab>
   <!-- ================================================================================================= -->
-  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(45deg,rgba(255,57,99,1) 0%,rgba(255,129,153,1) 100%);border-radius:10rpx;font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" bindtap="activetab3" name="{{one_class_id[2].id}}" title="{{one_class_id[2].title}}">
+  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(45deg,rgba(255,57,99,1) 0%,rgba(255,129,153,1) 100%);border-radius:10rpx;font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;{{idxs==2?'background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%)':'background:#c9c9c9;color:#000000'}};"  bindtap="activetab3" name="{{one_class_id[2].id}}" title="{{one_class_id[2].title}}">
     <!-- 轮播图 -->
 <view class="carousel ">
 <view class="carouselImg">
@@ -411,7 +411,7 @@
 
   </van-tab>
   <!-- =================================================================================================== -->
-  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);border-radius:10rpx;font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;" title="{{one_class_id[3].title}}" name="{{one_class_id[3].id}}" bindtap="activetab4" tab-active-class="zzz">
+  <van-tab title-style="width:165rpx;height:70rpx;background:linear-gradient(-45deg,rgba(255,186,0,1) 0%,rgba(255,162,0,1) 100%);border-radius:10rpx;font-size:30rpx;font-family:PingFang SC;font-weight:500;line-height:70rpx;{{idxs==3?'background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%)':'background:#c9c9c9;color:#000000'}};" title="{{one_class_id[3].title}}" name="{{one_class_id[3].id}}" bindtap="activetab4" tab-active-class="zzz">
 <!-- 轮播图 -->
 <view class="carousel ">
   <view class="carouselImg">

@@ -80,7 +80,7 @@
     <view class='ssmsg' bindtap='sssuhide'>确定</view>
 
   <view style="margin-top:200rpx;display: flex;justify-content: center;">
-    <image bindtap="op" style="width:66rpx;height:66rpx;" src="/pages/images/close.png"></image>
+    <image bindtap="op" style="width:66rpx;height:66rpx;" src="/pages/images/close2.png"></image>
   </view>
 
 

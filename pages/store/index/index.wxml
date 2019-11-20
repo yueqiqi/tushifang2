@@ -34,10 +34,10 @@
 <!-- 选项卡 -->
 <view class="card">
 <!-- 推荐 -->
-<van-tabs sticky swipe-threshold="5" swipeable="true" line-width="60" bindclick="click">
+<van-tabs sticky swipe-threshold="5" line-width="60" bindclick="click">
   <van-tab name='{{one_class[0].id}}' title="{{one_class[0].title}}">
-  <view class="bg">
-        <view class=" pp">
+  <view class="bg" >
+        <view class=" pp" wx-if="{{tjproduct!=''}}">
       <block wx:for="{{tjproduct}}" wx:key="{{index}}">
       <view class="pz" bindtap="tjgoto" data-id="{{item.id}}">
         <view class="left2">
@@ -57,13 +57,22 @@
       </block>
        </view>
       <!--  -->
+
+
+      <!-- 没有商品 -->
+<view class="" wx-if="{{tjproduct==''}}" class="n-mm">
+<view class="n-qq">
+  <view class="n-no"><image class="n-img" src="/pages/images/nostore.png"></image></view>
+  <view class="n-font">暂时没有商品上架</view>
+</view>
+</view>
     </view>
   </van-tab>
   <!-- ======================================================================================= -->
   <!-- 汽车用品 -->
   <van-tab name='{{one_class[0].id}}' title="{{one_class[1].title}}">
     <view class="bg">
-        <view class=" pp">
+        <view class=" pp" wx-if="{{product!=''}}">
       <block wx:for="{{product}}" wx:key="{{index}}">
       <view class="pz" bindtap="goto" data-id="{{item.id}}">
         <view class="left2">
@@ -83,13 +92,22 @@
       </block>
        </view>
       <!--  -->
+
+
+      <!-- 没有商品 -->
+<view class="" wx-if="{{product==''}}" class="n-mm">
+<view class="n-qq">
+  <view class="n-no"><image class="n-img" src="/pages/images/nostore.png"></image></view>
+  <view class="n-font">暂时没有商品上架</view>
+</view>
+</view>
     </view>
   </van-tab>
   <!-- ======================================================================================= -->
   <!-- 油卡出售 -->
   <van-tab title="{{one_class[2].title}}" name='{{one_class[0].id}}' wx-if="{{one_class[2].title!=undefined}}" title-style="margin-left:10rpx;">
    <view class="bg">
-        <view class=" pp">
+        <view class=" pp" wx-if="{{product2!=''}}">
       <block wx:for="{{product2}}" wx:key="{{index}}">
       <view class="pz" bindtap="goto" data-id="{{item.id}}">
         <view class="left2">
@@ -109,12 +127,21 @@
       </block>
        </view>
       <!--  -->
-    </view></van-tab>
+            <!-- 没有商品 -->
+<view class="" wx-if="{{product2==''}}" class="n-mm">
+<view class="n-qq">
+  <view class="n-no"><image class="n-img" src="/pages/images/nostore.png"></image></view>
+  <view class="n-font">暂时没有商品上架</view>
+</view>
+</view>
+    </view>
+    
+    </van-tab>
   <!-- ======================================================================================= -->
   <!-- 工具 -->
   <van-tab name='{{one_class[0].id}}' wx-if="{{one_class[3].title!=undefined}}" title="{{one_class[3].title}}">
    <view class="bg">
-        <view class=" pp">
+        <view class=" pp" wx-if="{{product3!=''}}">
       <block wx:for="{{product3}}" wx:key="{{index}}">
       <view class="pz" bindtap="goto" data-id="{{item.id}}">
         <view class="left2">
@@ -134,13 +161,20 @@
       </block>
        </view>
       <!--  -->
+            <!-- 没有商品 -->
+<view class="" wx-if="{{product3==''}}" class="n-mm">
+<view class="n-qq">
+  <view class="n-no"><image class="n-img" src="/pages/images/nostore.png"></image></view>
+  <view class="n-font">暂时没有商品上架</view>
+</view>
+</view>
     </view>
   </van-tab>
   <!-- ========================================================================================== -->
   <!-- 生活 -->
   <van-tab name='{{one_class[0].id}}' title="{{one_class[4].title}}" wx-if="{{one_class[4].title!=undefined}}" title-style="margin-left:-10rpx;">
    <view class="bg">
-        <view class=" pp">
+        <view class=" pp" wx-if="{{product4!=''}}">
       <block wx:for="{{product4}}" wx:key="{{index}}">
       <view class="pz" bindtap="goto" data-id="{{item.id}}">
         <view class="left2">
@@ -160,6 +194,13 @@
       </block>
        </view>
       <!--  -->
+            <!-- 没有商品 -->
+<view class="" wx-if="{{product4==''}}" class="n-mm">
+<view class="n-qq">
+  <view class="n-no"><image class="n-img" src="/pages/images/nostore.png"></image></view>
+  <view class="n-font">暂时没有商品上架</view>
+</view>
+</view>
     </view>
   </van-tab>
 </van-tabs>

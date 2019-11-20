@@ -735,6 +735,8 @@ listenerButtonPreviewImaged:function(e){
     }
 },
   data: {
+    // 导航栏
+    idxs:0,
     // 买卖分类
     class4:'请选择分类',
     dates4:'请选择时间',
@@ -891,7 +893,9 @@ listenerButtonPreviewImaged:function(e){
     console.log('选择的标题',e)
     var index=e.detail.index
     console.log('选中的额',that.data.active,index)
-    
+    this.setData({
+      idxs:index
+    })
        // +++++++++++++++++渣场-轮播图++++++++++++++++++++++++
       request({
         url:'/home/index/do_banner',
@@ -1325,7 +1329,46 @@ listenerButtonPreviewImaged:function(e){
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    var that=this
+    var uid=wx.getStorageSync('uid');
+      wx.showNavigationBarLoading();
+      setTimeout(()=>{
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
 
+        request({
+          url:'/home/info/do_info_list',
+          data:{
+            one_class_id:that.data.one_class_id[0].id,
+            page:that.data.page,
+            uid,
+            two_class_id:2,
+          }
+              }).then(res=>{
+                console.log('调用招聘信息-找工作成功',res)
+                that.setData({
+                  userlists:res.data.data
+              })
+              }).catch(err=>{
+              console.log('调用失败')
+            })
+            request({
+              url:'/home/info/do_info_list',
+              data:{
+                one_class_id:that.data.one_class_id[0].id,
+                page:that.data.page,
+                uid,
+                two_class_id:1,
+              }
+                  }).then(res=>{
+                    console.log('调用招聘信息-招人才成功',res)
+                    that.setData({
+                      findpeople:res.data.data
+                  })
+                  }).catch(err=>{
+                  console.log('调用失败')
+                })
+      },1500)
   },
 
   /**

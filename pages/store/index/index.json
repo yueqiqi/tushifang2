@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "component": true,
   "usingComponents": {
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",

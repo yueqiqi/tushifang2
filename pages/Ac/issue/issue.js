@@ -686,7 +686,7 @@ request({
       pm:true,
       sq:false
     })
-    if(this.data.model=='你的信誉分不足'){
+    if(this.data.model=='信誉分不足!请充值'){
       wx.navigateTo({
         url: '/pages/self/goup/goup2?go=1',
         success: (result)=>{  
@@ -694,7 +694,7 @@ request({
         fail: ()=>{},
         complete: ()=>{}
       });
-    }else{
+    }else if(this.data.model=='积分不足！请充值'){
       wx.navigateTo({
         url: '/pages/self/goup/goup?go=1',
         success: (result)=>{  

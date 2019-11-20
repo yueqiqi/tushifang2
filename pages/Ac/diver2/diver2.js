@@ -9,7 +9,7 @@ Page({
   formSubmit:function(){
     // 打印输入的内容
 var that=this
-    if (this.data.tempFilePaths.length == 0 || this.data.tempFilePaths2.length == 0 || this.data.tempFilePaths3.length == 0 || this.data.tempFilePaths4.length == 0 || this.data.tempFilePaths5.length == 0 || this.data.tempFilePaths6.length <2) {
+    if (this.data.tempFilePaths.length == 0 || this.data.tempFilePaths2.length == 0 || this.data.tempFilePaths3.length <4  || this.data.tempFilePaths4.length == 0 || this.data.tempFilePaths5.length == 0 || this.data.tempFilePaths6.length <2) {
       this.hidePopup(false);
     } else {
       var identity_selection=that.data.identity_selection
@@ -18,28 +18,23 @@ var that=this
       var vehicle_id=that.data.vehicle_id
       var car_number=that.data.car_number
       // 驾驶证件照
-      var p=that.data.img_url_driving
-      var z=p.join('|')
-      var img_url_driving=z
+      var img_url_driving=that.data.img_url_driving
       // 行驶证件照
-      var p1=that.data.img_url_certificate
-      var z1=p1.join('|')
-      var img_url_certificate=z1
+      var img_url_certificate=that.data.img_url_certificate
       // 车辆四周照片
       var p2=that.data.img_url_surroundings
+      console.log('chelian',p2)
       var z2=p2.join('|')
       var img_url_surroundings=z2
       // 运营证件照
-      var p3=that.data.img_url_operating
-      var z3=p3.join('|')
-      var img_url_operating=z3
+      var img_url_operating=that.data.img_url_operating
       // 从业资格证
-      var p4=that.data.img_url_qualification
-      var z4=p4.join('|')
-      var img_url_qualification=z4
+      var img_url_qualification=that.data.img_url_qualification
       // 手持身份照
       var p5=that.data.img_url_card
+        console.log('身份',p5)
       var z5=p5.join('|')
+
       var img_url_card=z5
       var uid=wx.getStorageSync('uid');
       request({
@@ -60,7 +55,7 @@ var that=this
         }
       }).then(res=>{
         console.log('调用我是司机成功',res)
-        if(res.data.code==101&&res.data.code==0){
+        if(res.data.code==0){
           that.suhide(false);
         }else{
           that.hidePopup(false);
@@ -87,14 +82,22 @@ var that=this
   },
 
   backs:function(){
-    wx.redirectTo({
-      url: '/pages/Ac/index/inex',
+    wx.switchTab({
+      url: '/pages/body/body',
       success: (result)=>{
         
       },
       fail: ()=>{},
       complete: ()=>{}
     });
+    // wx.redirectTo({
+    //   url: '/pages/Ac/index/inex',
+    //   success: (result)=>{
+        
+    //   },
+    //   fail: ()=>{},
+    //   complete: ()=>{}
+    // });
   },
   /* 隐藏失败弹窗 */
   hidePopup(flag = true) {
@@ -129,7 +132,7 @@ up:function(){
           duration: 1000
         })
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        console.log("图片路径",res)
+        // console.log("图片路径",res)
         let tempFilePaths = res.tempFilePaths;
         let imgs = that.data.tempFilePaths6.concat(tempFilePaths)
         if (imgs.length>1){
@@ -146,7 +149,7 @@ up:function(){
         // var count = 0;
         var count = 0;
         var a =[]
-        for (var i = 0, h = imgs; i < h; i++) {
+        for (var i = 0, h = imgs.length; i < h; i++) {
           //上传文件
           wx.uploadFile({
             url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
@@ -380,19 +383,6 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
-        request({
-          url:'/home/Personal/do_uplod_img',
-          data:{
-            image:tempFilePaths
-          }
-          }).then(res=>{
-          console.log('调用成功',res)
-          this.setData({
-          
-          })
-          }).catch(err=>{
-          console.log('调用失败')
-          })
           var count = 0;
           var a =[]
           // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
@@ -490,7 +480,7 @@ up:function(){
   upload3: function () {
     let that = this;
     wx.chooseImage({
-      count: 9, // 默认9
+      count: 8, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: res => {
@@ -503,23 +493,7 @@ up:function(){
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
         let imgs = that.data.tempFilePaths3.concat(tempFilePaths)
-        // if(imgs.length<4){
-        //   wx.showModal({
-        //     title: '图片上传失败',
-        //     content: '车辆四周照至少4张',
-        //     showCancel: true,
-        //     cancelText: '取消',
-        //     cancelColor: '#000000',
-        //     confirmText: '确定',
-        //     confirmColor: '#3CC51F',
-        //     success: (result) => {
-        //       if(result.confirm){
-                
-        //       }
-        //     },
-        //   });
-        // }
-        if (imgs.length>8){
+        if (imgs.length>=8){
           that.setData({
               showUpload2:false
           })
@@ -532,7 +506,7 @@ up:function(){
          */
           var count = 0;
           var a =[]
-          for (var i = 0, h =imgs; i < h; i++) {
+          for (var i = 0, h =imgs.length; i < h; i++) {
             //上传文件
             wx.uploadFile({
               url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
@@ -544,12 +518,12 @@ up:function(){
             },
               success: function (res) {
                 // console.log(that.data.tempFilePaths[1])
-                console.log("检验图片上传",res)
+                console.log("检验车辆图片上传",res)
                 count++;
                 var qwe=res.data
                 var resl=JSON.parse(qwe)
                 a.push(resl.data)
-                console.log("返回值",resl,a)
+                console.log("返回值车辆",resl,a)
                 that.setData({
                   img_url_surroundings:a
                 })
@@ -650,19 +624,7 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
-        request({
-          url:'/home/Personal/do_uplod_img',
-          data:{
-            image:tempFilePaths
-          }
-          }).then(res=>{
-          console.log('调用成功',res)
-          this.setData({
-          
-          })
-          }).catch(err=>{
-          console.log('调用失败')
-          })
+
           var count = 0;
           var a =[]
           // for (var i = 0, h = tempFilePaths.length; i < h; i++) {
@@ -780,19 +742,6 @@ up:function(){
         /**
          * 上传完成后把文件上传到服务器
          */
-         request({
-            url:'/home/Personal/do_uplod_img',
-            data:{
-              image:tempFilePaths
-            }
-            }).then(res=>{
-            console.log('调用成功',res)
-            this.setData({
-            
-            })
-            }).catch(err=>{
-            console.log('调用失败')
-            })
             var count = 0;
             var a =[]
             // for (var i = 0, h = tempFilePaths.length; i < h; i++) {

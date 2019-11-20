@@ -125,10 +125,12 @@ listenerButtonPreviewImages:function(e){
     var form=e.currentTarget.dataset.type
     var type=1
     var from='首页'
+    var idx=e.currentTarget.dataset.idx
+    var point=e.currentTarget.dataset.point
     console.log(e,form)
     // var id=that.data.tabuser.id
     wx.navigateTo({
-      url: '/pages/details/details?id=' + id+'&form='+form+'&type='+type+'&from='+from
+      url: '/pages/details/details?id=' + id+'&form='+form+'&type='+type+'&from='+from+'&idx='+idx+'&point='+point
     })
   },
   // 拨打电话
@@ -1130,6 +1132,19 @@ var uid=wx.getStorageSync('uid');
 
     // })
     request({
+      url:'/home/index/do_hot',
+      data:{
+        uid,
+      }
+      }).then(res=>{
+      console.log('调用首页十万火急成功',res)
+      that.setData({
+        user:res.data.data,
+      })
+      }).catch(err=>{
+      console.log('调用失败')
+    })
+    request({
       url:'/home/index/do_Recommend',
       data:{
         type:2,
@@ -1231,11 +1246,27 @@ var uid=wx.getStorageSync('uid');
           tabuserjian:goods
         })
         wx.hideLoading();
+      }).catch(err=>{
+        console.log('调用失败')
+      })
+    },
+    onShow:function(){
+      // this.onLoad()
+      var uid=wx.getStorageSync('uid');
+      request({
+        url:'/home/index/do_hot',
+        data:{
+          uid,
+        }
+        }).then(res=>{
+        console.log('调用首页十万火急成功',res)
+        that.setData({
+          user:res.data.data,
+        })
         }).catch(err=>{
         console.log('调用失败')
       })
-  },
-
+   },
   /**
    * 用户点击右上角分享
    */

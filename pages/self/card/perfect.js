@@ -196,31 +196,6 @@ Page({
       this.hidePopup(false);
     }else{
       var that=this
-    // var head1=that.data.heads1
-    // // ？+++++++++++上传头像+++++++++++++++++++++++++++++
-    // var head
-    // wx.uploadFile({
-    //   url: 'http://tsf.suipk.cn/home/Personal/do_uplod_img',
-    //   filePath: heads,
-    //   name: 'image',
-    //   method: 'POST',
-    // header: {
-    //   'content-type': 'application/x-www-form-urlencoded'
-    // },
-    //   success: function (res) {
-    //     console.log("检验头像图片上传",res)
-    //      head=res.data
-    //   },
-    //   fail: function (res) {
-    //     wx.hideToast();
-    //     wx.showModal({
-    //       title: '错误提示',
-    //       content: '上传图片失败',
-    //       showCancel: false,
-    //       success: function (res) { }
-    //     })
-    //   }
-    // });
     // // ？+++++++++++上传头像+++++++++++++++++++++++++++++
     var nickname=e.name
     var phone=e.phone
@@ -231,10 +206,14 @@ Page({
     var info=e.textarea
     var head1=that.data.heads1
     var p=that.data.img_url_arr
-    console.log(that.data.img_url_arr)
-    var z=p.join('|')
-    var img_url_arr=z
-    console.log(z)
+    if(p==undefined){
+      var img_url_arr=""
+    }else {
+      // console.log(that.data.img_url_arr)
+      var z=p.join('|')
+      var img_url_arr=z
+      console.log(z)
+    }
     var share_id=1
     // ////////////////////////////////////////////////////
       var updata = that.data.userinfo
@@ -247,8 +226,6 @@ Page({
         content: '确认保存该名片吗？',
         success: function (res) {
           if (res.confirm) {
-            console.log('%','这里是上传的头像','background:lightgreen;color:red;font-size:30rpx;',that.data.heads1)
-            console.log('%c'+'这是文字','background:red;color:red;font-size:20rpx;')
             // ===================完善名片++++++++++++++++++++++++++++
             request({
               url:'/home/personal/do_add_perfect',

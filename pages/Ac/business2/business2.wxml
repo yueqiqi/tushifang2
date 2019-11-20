@@ -38,7 +38,7 @@
   <!-- 上传图片预览 -->
   <view class="imgsz" wx:for="{{tempFilePaths}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImage" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="upload">
       <image src="../../images/onload.png"></image>
@@ -53,7 +53,7 @@
     <!-- 上传图片预览 -->
       <view class="imgsz" wx:for="{{tempFilePathss}}" wx:key="index">
     <image class="im" src='{{item}}' bindtap="listenerButtonPreviewImages" data-index="{{index}}" mode=''/>
-    <view style="position:relative;top:-3rpx;left:-16rpx;"><image bindtap="deleteImages" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
+    <view style="position:relative;top:12rpx;left:-26rpx;"><image bindtap="deleteImages" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>
   </view>
     <view class="onload" bindtap="uploads">
       <image src="../../images/onload.png"></image>

@@ -126,14 +126,15 @@ wx.navigateTo({
 });
 },
 backs:function(){
-  wx.redirectTo({
-    url: '/pages/Ac/index/inex',
+  wx.switchTab({
+    url: '/pages/body/body',
     success: (result)=>{
       
     },
     fail: ()=>{},
     complete: ()=>{}
   });
+ 
 },
 // 法人证明上传图片
   /**

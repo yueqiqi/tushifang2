@@ -30,14 +30,14 @@
   width:28rpx;height:35rpx;
 }
 .position-text{
-  width:160rpx;
+  /* width:160rpx; */
  /* //超出部分隐藏 */
   overflow: hidden;
    /* //文本不换行 */
   white-space: nowrap;
   /* // 不完全显示的末尾加上省略号 */
   text-overflow: ellipsis; 
-font-size:20rpx;
+font-size:24rpx;
 font-family: "微软雅黑", -apple-system-font, "Helvetica Neue", sans-serif;
 font-weight:bold;
 color:rgba(51,51,51,1);

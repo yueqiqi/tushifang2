@@ -12,12 +12,12 @@ Page({
     console.log('show+++++++++++')
   },
   // 隐藏输入框
-  onHideInput: function () {
-    this.setData({
-      showInput: false
-    })
-    console.log('hide+++++++++++')
-  },
+  // onHideInput: function () {
+  //   this.setData({
+  //     showInput: false
+  //   })
+  //   console.log('hide+++++++++++')
+  // },
 
   //拨打电话 
   callphone:function(){
@@ -315,6 +315,45 @@ Page({
         info_id,
       }
     }).then(res=>{
+
+      var pages = getCurrentPages();
+      var currPage = pages[pages.length - 1];   //当前页面
+      var prevPage = pages[pages.length - 2];  //上一个页面
+      var idx=that.data.idx
+
+      var tabuser='tabuser['+idx+'].is_point'
+      var point_ratio1='tabuser['+idx+'].point_ratio'
+      var jian='tabuserjian['+idx+'].is_point'
+      var point_ratio2='tabuserjian['+idx+'].point_ratio'
+      var user='user['+idx+'].is_point'
+      var point_ratio3='user['+idx+'].point_ratio'
+
+        var point=that.data.point
+        var point1=Number(point)+1
+
+        var point2=that.data.point
+        var point3=Number(point2)-1
+        console.log('首页点赞个数',point1,point3)
+        if(res.data.code==0){
+          prevPage.setData({
+            [point_ratio1]:point1,
+            [tabuser]:1,
+            [point_ratio2]:point1,
+            [jian]:1,
+            [point_ratio3]:point1,
+            [user]:1,
+          })
+        }else if(res.data.code==1){
+            prevPage.setData({
+              [point_ratio1]:point3,
+              [tabuser]:0,
+              [point_ratio2]:point3,
+              [jian]:0,
+              [point_ratio3]:point3,
+              [user]:0,
+            })
+        }
+
       console.log('调用点赞成功',res)
         // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
         var uid=wx.getStorageSync('uid');
@@ -329,7 +368,7 @@ Page({
         console.log('调用信息详情成功',res)
         this.setData({
           title:res.data.data.title,
-          type:res.data.data.type_work,
+          type:res.data.data.two_class_title,
           time:res.data.data.create_time,
           rec:res.data.data.info,
           linkman:res.data.data.contacts,
@@ -374,7 +413,7 @@ Page({
       console.log('调用信息详情成功',res)
       this.setData({
         title:res.data.data.title,
-        type:res.data.data.type_work,
+        type:res.data.data.two_class_title,
         time:res.data.data.create_time,
         rec:res.data.data.info,
         linkman:res.data.data.contacts,
@@ -453,20 +492,26 @@ Page({
     ],
     // 接收并保存首页传来的id值
     lid:"",
+    fo:true,
     // 评论信息
     // inputMessage:'',
   },
   // 发布评论
+  bindKeyInput:function(e){
+    this.setData({
+      inputMessage:e.detail.value,
+      fo:true
+    })
+  },
   sendBtn:function(e){
     var that=this
     that.setData({
-      showInput: false
+      showInput: false,
+      fo:false
     })
     console.log('发布',e)
   var uid=wx.getStorageSync('uid');
-  var m = e.detail.value
-  var that=this
-  var content=m.inputMessage
+  var content=that.data.inputMessage
   console.log('发布的评论',content)
   // ++++++++++++发布评论++++++++++++++++++++++
       request({
@@ -479,9 +524,6 @@ Page({
         }
         }).then(res=>{
         console.log('调用发布评论成功',res)
-        that.setData({
-          showInput:false
-        })
         // that.onLoad()
         // +++++++++++++++++++++++++++
         // +++++++++++++++++++++++++刷新评论列表++++++++++++++++++++++++++
@@ -497,7 +539,7 @@ Page({
           console.log('调用评论列表成功',res)
           that.setData({
             user:res.data.list,
-            showInput: true
+            showInput: false
           })
 
           }).catch(err=>{
@@ -519,12 +561,12 @@ Page({
     this.setData({
       lid:options.id,
       form:options.form,
-      types:options.type
+      types:options.type,
+      idx:options.idx,
+      point:options.point,
+      from:options.from
     })
     console.log(options.from,'传来的',this.data.lid)
-
-
-
         /**
          * 获取的信息详情的广告图
          */
@@ -543,73 +585,6 @@ Page({
             }).catch(err=>{
             console.log('调用失败')
           })
-
-
-
-    // 分享跳转    
-    if(options.share==1){
-      var uid=options.uid 
-      request({
-        url:'/home/info/do_info_content',
-        data:{
-        uid,
-        type:options.type,
-        info_id:options.info_id
-      }
-      }).then(res=>{
-      console.log('调用信息详情成功',res)
-      that.setData({
-        title:res.data.data.title,
-        type:res.data.data.type_work,
-        time:res.data.data.create_time,
-        rec:res.data.data.info,
-        linkman:res.data.data.contacts,
-        phone:res.data.data.tel,
-        userImg:res.data.data.img_url_arr,
-        video:res.data.data.video,
-        info_id:res.data.data.id,
-        point_ratio:res.data.data.point_ratio,
-        is_point:res.data.data.is_point,
-        mid:res.data.data.id
-      })
-    }).catch(err=>{
-      console.log('调用失败')
-    })
-      // +++++++++++++++点赞+++++++++++++++++++++
-      request({
-        url:'/home/index/do_point',
-        data:{
-          uid,
-          type:options.type,
-          info_id:options.info_id
-        }
-      }).then(res=>{
-        console.log('调用点赞成功',res)
-        this.setData({
-          
-        })
-      }).catch(err=>{
-        console.log('调用失败')
-        })
-      // +++++++++++++++点赞+++++++++++++++++++++
-      // // 评论列表
-      request({
-        url:'/home/index/do_comment_list',
-        data:{
-         type:options.type,
-         info_id:options.info_id,
-         page:1,
-         limit:10,
-        }
-      }).then(res=>{
-        console.log('调用评论列表成功',res)
-        this.setData({
-          user:res.data.list
-        })
-        }).catch(err=>{
-          console.log('调用失败')
-      })
-    }else{
 
       // 首页跳转信息列表
       var uid=wx.getStorageSync('uid');
@@ -724,7 +699,7 @@ Page({
       })
     }
     // +++++++++++++++信息中心跳转详情页++++++++++++++++++++++++
-  }
+  
 
     },
     
@@ -753,7 +728,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    // wx.navigateBack({delta: 1})
   },
 
   /**
@@ -778,11 +753,12 @@ Page({
     var that=this
     var info_id=that.data.lid
     var form=that.data.form
-    // var type=1
+    var type=that.data.types
+    var from=that.data.from
     // var 
     return {
       title: '包程项',//弹出分享时显示的分享标题
-      path: '/pages/details/details?from=首页&info_id='+info_id+'&type=1&form='+form+'&uid='+uid+'&share=1',
+      path: '/pages/details/details?from=首页&id='+info_id+'&form='+form+'&uid='+uid+'&type='+type+'&from='+from,
       //'/page/user?id=123' // 路径，传递参数到指定页面。
       desc: '分享页面的内容',
       success: function (res) { 

@@ -1,89 +1,89 @@
 <!-- 失信文章详情页 -->
 <view class="bg">
   <view class="mesbg">
-  <!-- 失信 -->
-     <view class="mestext ml">{{list.create_time}}</view>
-     <!-- 转载至 -->
-     <view class="from ml d-flex mt">
-        <view class="from-left">转载自 <text>{{list.reprint}}</text> </view>
-        <view class="from-right">
-          <text>{{list.create_time}}</text>
-        </view>
+    <!-- 失信 -->
+    <view class="mestext ml">{{list.create_time}}</view>
+    <!-- 转载至 -->
+    <view class="from ml d-flex mt">
+      <view class="from-left">
+        转载自
+        <text>{{list.reprint}}</text>
       </view>
-      <!-- 内容 -->
-      <view class="content ml">
-        <rich-text nodes="{{list.content}}"></rich-text>
+      <view class="from-right">
+        <text>{{list.create_time}}</text>
       </view>
+    </view>
+    <!-- 内容 -->
+    <view class="content ml" style="margin-right:30rpx;margin-top:20rpx">
+      <rich-text nodes="{{list.content}}"></rich-text>
+    </view>
   </view>
-
   <!-- 评论 -->
   <view class="mesbg mt">
-
-<!-- 评论 -->
-<block wx:for="{{cons}}" wx:key="{{index}}">
-<view class="d-flex ml mt mesuser">
-  <!-- 头像 -->
-  <view class="head">
-    <image style="width:80rpx;height:80rpx;border-radius:50%;" src="{{item.head}}"></image>
-  </view>
-  <!-- 用户名、时间 -->
-  <view class="ml">
-    <view class="userName">{{item.nickname}}</view>
-    <view class="times">{{item.create_time}}</view>
-  </view>
-</view>
-<!-- 用户消息 -->
-<view class="msg">
-{{item.content}}
-</view>
-<view class="hr" hidden="{{user.length>1?false:true}}"></view>
-</block>
-
-<!-- <view class="hr"></view> -->
-<!-- 投诉 -->
-<view class="like mt d-spb"  wx:if="{{!showInput}}">
-<!-- 分享 -->
-<view class="share d-flex" bindtap="share" style="margin-left:90rpx;">
-    <view class="tab-share d-flex" bindtap="tabShare" data-id="{{index}}">
-    <view>
-      <image src="../images/share.png"></image>
-    </view>
-    <button open-type="share">分享</button>
-  </view>
-</view>
-  <!-- 评论 -->
-  <view class="d-flex"  bindtap="showInput"> 
-  <image src="../images/comment.png"></image>
-  <!--  -->
-  <!-- <text>
+    <!-- 评论 -->
+    <block wx:for="{{cons}}" wx:key="{{index}}">
+      <view class="d-flex ml mt mesuser">
+        <!-- 头像 -->
+        <view class="head">
+          <image style="width:80rpx;height:80rpx;border-radius:50%;" src="{{item.head}}"></image>
+        </view>
+        <!-- 用户名、时间 -->
+        <view class="ml">
+          <view class="userName">{{item.nickname}}</view>
+          <view class="times">{{item.create_time}}</view>
+        </view>
+      </view>
+      <!-- 用户消息 -->
+      <view class="msg">{{item.content}}</view>
+      <view class="hr" hidden="{{user.length>1?false:true}}"></view>
+    </block>
+    <!-- <view class="hr"></view> -->
+    <!-- 投诉 -->
+    <view class="like mt d-spb" wx:if="{{showInput==false}}">
+      <!-- 分享 -->
+      <view class="share d-flex" bindtap="share" style="margin-left:60rpx;">
+        <view class="tab-share d-flex" bindtap="tabShare" data-id="{{index}}">
+          <view>
+            <image src="../images/share.png"></image>
+          </view>
+          <button open-type="share">分享</button>
+        </view>
+      </view>
+      <!-- 评论 -->
+      <view class="d-flex" bindtap="showInput">
+        <image src="../images/comment.png"></image>
+        <!--  -->
+        <!-- <text>
   评论
   </text> -->
-  <view>
-    <view class="comment" >评论</view> 
+        <view>
+          <view class="comment">评论</view>
+        </view>
+        <!--  -->
+      </view>
+      <!-- 点赞 -->
+      <view class="likes d-flex" bindtap="like" data-id="{{list.id}}" style="margin-right:60rpx;">
+        <view class="z">
+          <image src="{{list.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
+        </view>
+        <!-- <view class="z"> -->
+          <view style="{{list.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}};line-height:100rpx;margin-left:10rpx;">
+            {{list.point_ratio}}
+          </view>
+        <!-- </view> -->
+      </view>
+    </view>
+    <!-- 键盘 -->
+    <view class="input-section" wx:if="{{showInput}}">
+      <!-- <form action="" bindsubmit="send_btn"> -->
+      <view class='d-flex'>
+        <!-- <input class='input_input' name="inputMessage" focus="auto" bindinput='bindInputMsg' bindconfirm="sendTextMsg" adjust-position="true" hold-keyboard="true"/> -->
+        <input class='input_input' placeholder="请发表您的看法!" focus="{{fo}}" bindinput="bindKeyInput" adjust-position="false" hold-keyboard="true" />
+        <button class="send_btn" bindtap="send_btn">发送</button>
+      </view>
+      <!-- </form> -->
+    </view>
+    <!--  -->
   </view>
   <!--  -->
-  </view>
-  <!-- 点赞 -->
-   <view class="likes d-flex" bindtap="like" data-id="{{item.id}}">
-              <view class="z">
-                <image src="{{list.is_point==0?'/pages/images/unlike.png':'/pages/images/like.png'}}"></image>
-              </view>
-              <view class="z">
-                <text  style="{{list.is_point==0?'color:#666666':'color:rgba(118,212,198,1);'}}">{{list.point_ratio}}</text>
-              </view>
-            </view>
-  </view>
-<!-- 键盘 -->
-<view class="input-section" wx:if="{{showInput}}">
-  <form action="" bindsubmit="send_btn">  
-    <view class='d-flex'>
-      <input class='input_input' name="inputMessage" focus="auto" bindinput='bindInputMsg' bindconfirm="sendTextMsg" adjust-position="true" hold-keyboard="true"/>
-      <button class="send_btn" form-type="submit">发送</button>
-    </view>
-    </form>
-</view>
-
-<!--  -->
-</view>
-<!--  -->
 </view>

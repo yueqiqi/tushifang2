@@ -55,7 +55,7 @@
         </view>
         <!-- 失信名单 -->
         <block wx:for="{{break}}" wx:key="{{index}}">
-           <view bindtap="Mes" data-id="{{item.id}}">
+           <view bindtap="Mes" data-idx="{{index}}" data-point="{{item.point_ratio}}" data-id="{{item.id}}">
             <view class="breakText ml">{{item.title}}</view>
             <!-- 图片 -->
             <!-- <block wx:for="{{breakImg}}" wx:key="{{index}}"> -->

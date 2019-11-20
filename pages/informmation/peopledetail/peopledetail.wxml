@@ -16,23 +16,23 @@
     <!-- 3 -->
   </view>
   <!-- 状态 -->
-    <view class="state bgf d-spb ml">
+    <view class="state bgf ml">
       <view class="statel d-flex">
         <view class="Title states">招聘状态</view>
         <view class="Mes job">{{list.working_condition==1?'离职随时到岗':(list.working_condition==2?'在职-月内到岗':(list.working_condition==3?'在职-考虑机会':'在职-暂不考虑'))}}</view>
       </view>
-      <view class="stater d-flex">
+      <view class="stater d-flex" style="margin-top:10rpx;">
         <view class="money Title">理想薪资</view>
         <view class="Mes num">{{list.salary_range}}</view>
       </view>
     </view>
     <!-- 时间 -->
-    <view class="timer ml d-spb">
+    <view class="timer ml">
       <view class="timerl d-flex">
         <view class="Title">发布时间</view>
         <view class="Mes">{{list.create_time}}</view>
       </view>
-      <view class="timerr d-flex">
+      <view class="timerr d-flex" style="margi-top:10rpx">
         <view class="Title">工作年限</view>
         <view class="Mes">{{list.working_years}}</view>
       </view>

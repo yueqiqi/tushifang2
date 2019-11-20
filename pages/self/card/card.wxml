@@ -40,7 +40,7 @@
   <view class="name ml">我的名片夹</view>
   <!-- ========================================================= -->
   <block wx:for="{{mycard}}" wx:key="{{index}}">
-      <view class="ncard" bindtap="mycard" data-id="{{item.id}}">
+      <view class="ncard" bindtap="mycard" data-id="{{item.touid}}">
       <view class="d-spb cc">
       <view class="d-flex c-i">
         <view><image class="c-img" src="{{item.head}}"></image></view>

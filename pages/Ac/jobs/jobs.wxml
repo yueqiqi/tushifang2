@@ -21,7 +21,7 @@
  <view class="section2 d-spb">
     <view class="section-title">理想薪资</view>
     <view class="right d-spb mon" catchtap='selectTap2'>
-      <input name="i2" disabled='true' placeholder="请选择薪资范围" style="color:#333;font-size:30rpx;" value="{{myjob2==false?selectData2[index2].salary:job2}}"/>
+      <input name="i2" disabled='true' placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" placeholder="请选择薪资范围" style="color:#333;font-size:30rpx;" value="{{myjob2==false?selectData2[index2].salary:job2}}"/>
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -42,7 +42,7 @@
   <view class="section2 d-spb">
     <view class="section-title">求职状态</view>
     <view class="right d-spb mon" catchtap='selectTap3'>
-      <input name="i3" disabled="true" placeholder="请选择求职状态" style="color:#333;font-size:30rpx;" value="{{myjob3==false?selectData3[index3]:job3}}" />
+      <input placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" name="i3" disabled="true" placeholder="请选择求职状态" style="color:#333;font-size:30rpx;" value="{{myjob3==false?selectData3[index3]:job3}}" />
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>
@@ -62,7 +62,7 @@
   <view class="section2 d-spb">
     <view class="section-title">工作年限</view>
     <view class="right d-spb mon" catchtap='selectTap4'>
-      <input name="i4" style="color:#333;font-size:30rpx;" placeholder="请选择工作年限" disabled="true" value="{{myjob4==false?selectData4[index4].salary:job4}}"  />
+      <input placeholder-style="font-size:26rpx;font-family:PingFang SC;font-weight:400;color:rgba(153,153,153,1);" name="i4" style="color:#333;font-size:30rpx;" placeholder="请选择工作年限" disabled="true" value="{{myjob4==false?selectData4[index4].salary:job4}}"  />
       <view>
         <image class="section-img" src="../../images/position/shape45.png"></image>
       </view>

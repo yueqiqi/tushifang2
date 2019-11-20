@@ -30,7 +30,6 @@ Page({
       this.hidePopup(false);
 
     }else{
-
       var uid=wx.getStorageSync('uid');
       var touid=that.data.uid
       request({
@@ -128,7 +127,7 @@ Page({
       }).then(res=>{
       console.log('调用名片详情成功',res)
       this.setData({
-        head:res.data.data.head,
+        head:res.data.data.head1,
         name:res.data.data.nickname,
         post:res.data.data.company_position,
         com:res.data.data.corporate_name,

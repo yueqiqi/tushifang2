@@ -29,7 +29,7 @@ margin-right:29rpx;
 }
 /* 内容 */
 .content{
-  width:100%;
+  /* width:100%; */
   /* font-size:94rpx; */
 /* font-weight:bold; */
 /* color:rgba(51,51,51,1); */

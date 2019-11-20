@@ -48,8 +48,8 @@ Page({
     console.log("保存的分类", this.data.class)
   },
   backs:function(){
-    wx.redirectTo({
-      url: '/pages/Ac/index/inex',
+    wx.switchTab({
+      url: '/pages/body/body',
       success: (result)=>{
         
       },

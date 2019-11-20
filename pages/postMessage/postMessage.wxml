@@ -7,7 +7,7 @@
   <view class="bgf">
 
     <view class="bgf mtt">
-      <view data-id="{{item.id}}" bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}">
+      <view data-id="{{item.id}}" bindtap="tabgoto" data-idx="{{index}}" data-id="{{item.id}}" data-point="{{item.point_ratio}}"  data-id="{{item.id}}" data-type="{{item.form}}">
         <!-- 发布者信息 -->
   <view class="postMessage d-spb">
   <view class="d-flex">
@@ -85,7 +85,7 @@
               <button open-type="share">分享</button>
 </view>
 <!-- 评论 -->
-<view class="comment d-flex" bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}">
+<view class="comment d-flex" bindtap="tabgoto" data-idx="{{index}}" data-id="{{item.id}}" data-point="{{item.point_ratio}}" data-id="{{item.id}}" data-type="{{item.form}}">
   <view>
 <image src="../images/comment.png"></image>
 </view>

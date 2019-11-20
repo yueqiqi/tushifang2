@@ -18,18 +18,26 @@ Page({
     console.log("分享")
   },
   // 评论
+
+  // 发布评论
+  bindKeyInput:function(e){
+    this.setData({
+      inputMessage:e.detail.value,
+      fo:true
+    })
+  },
+
+
 // 发布评论
 send_btn:function(e){
-  this.setData({
-    showInput: false
+  var that=this
+  that.setData({
+    showInput: false,
+    fo:false
   })
   console.log('发布',e)
 var uid=wx.getStorageSync('uid');
-var m = e.detail.value
-var that=this
-var content=m.inputMessage
-console.log('评论',content,)
-console.log('发布的评论',content,that.data.info_id)
+var content=that.data.inputMessage
 // ++++++++++++发布评论++++++++++++++++++++++
     request({
       url:'/home/index/do_addcommemt',
@@ -47,7 +55,7 @@ console.log('发布的评论',content,that.data.info_id)
          type:2,
          info_id:that.data.info_id,
          page:1,
-         limit:10,
+         limit:99,
         }
       }).then(res=>{
         console.log('调用评论列表成功',res)
@@ -83,6 +91,28 @@ console.log('发布的评论',content,that.data.info_id)
       }
       }).then(res=>{
       console.log('调用点赞成功',res)
+      var pages = getCurrentPages();
+      var currPage = pages[pages.length - 1];   //当前页面
+      var prevPage = pages[pages.length - 2];  //上一个页面
+      var idx=that.data.idx
+      var breaks='break['+idx+'].is_point'
+      var point_ratio1='break['+idx+'].point_ratio'
+      var point=that.data.point
+      var point1=Number(point)+1
+      var point2=that.data.point
+      var point3=Number(point2)-1
+      if(res.data.code==0){
+        prevPage.setData({
+          [point_ratio1]:point1,
+          [breaks]:1,
+        })
+      }else if(res.data.code==1){
+        prevPage.setData({
+          [point_ratio1]:point3,
+          [breaks]:0,
+        })        
+      }
+
       request({
         url:'/home/index/do_DishonestyList_info',
         data:{
@@ -118,7 +148,9 @@ console.log('发布的评论',content,that.data.info_id)
     var that=this
     console.log('接收失信名单传递过来的info_id',options.info_id)
     this.setData({
-      info_id:options.info_id
+      info_id:options.info_id,
+      point:options.point,
+      idx:options.idx
     })
     var uid=wx.getStorageSync('uid');
     request({
@@ -142,7 +174,7 @@ console.log('发布的评论',content,that.data.info_id)
        type:2,
        info_id:that.data.info_id,
        page:1,
-       limit:10,
+       limit:99,
       }
     }).then(res=>{
       console.log('调用评论列表成功',res)
