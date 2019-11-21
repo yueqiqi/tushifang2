@@ -331,8 +331,12 @@ listenerButtonPreviewImaged:function(e){
   slag:function(e){
     var id=e.currentTarget.dataset.id
     var type=3
+    var idx=e.currentTarget.dataset.idx
+    var point=e.currentTarget.dataset.point
+    var fm=e.currentTarget.dataset.fm
+    console.log('携带的参数',idx,point,fm)
     wx.navigateTo({
-      url: '/pages/details/details?from=信息中心&type='+type+'&id='+id,
+      url: '/pages/details/details?from=信息中心&type='+type+'&id='+id+'&idx='+idx+'&point='+point+'&fm='+fm,
       success: (result)=>{
       },
     });

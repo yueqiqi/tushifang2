@@ -1,6 +1,6 @@
 <!-- 我的订单 -->
 <!-- 1 -->
-<view class="bg" style="min-height:1100rpx;">
+<view class="bg" style="height:100%">
 <!-- 背景 -->
 <view class="bgf">
 <!-- 搜索 -->

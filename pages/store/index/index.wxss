@@ -83,14 +83,12 @@ flex: 0 0 20%!important;
     } 
 /* 图片 */
 .img{
-  width:100%;margin-top: 40rpx;
+  width:100%;padding-top: 40rpx;
+  background: #fff;
 }
 
 
 /* 推荐 */
-page{
-  background:rgba(242,242,242,1)!important;
-}
 .left{
  width:345rpx;
 height:500rpx;
@@ -157,9 +155,7 @@ line-height:40rpx;
   justify-content:space-between;
   flex-wrap: wrap;
 }
-page{
-  background:rgba(242,242,242,1);
-}
+
 
 /* //奇数行 */
 .pz:nth-child(2n-1){
@@ -255,4 +251,8 @@ text-align: center;
   font-weight:bold;
   color:rgba(255,255,255,1);
   line-height: 70rpx;
+}
+page{
+  background:rgba(242,242,242,1)!important;
+  height: 100%!important;
 }

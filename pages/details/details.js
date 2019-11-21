@@ -320,38 +320,72 @@ Page({
       var currPage = pages[pages.length - 1];   //当前页面
       var prevPage = pages[pages.length - 2];  //上一个页面
       var idx=that.data.idx
-
+      var fm=that.data.fm
+      // 最新发布点赞
       var tabuser='tabuser['+idx+'].is_point'
       var point_ratio1='tabuser['+idx+'].point_ratio'
+      // 优质推荐发布
       var jian='tabuserjian['+idx+'].is_point'
       var point_ratio2='tabuserjian['+idx+'].point_ratio'
+      // 十万火急发布
       var user='user['+idx+'].is_point'
       var point_ratio3='user['+idx+'].point_ratio'
+      // 信息中心-渣场信息
+      var slag='slag['+idx+'].is_point'
+      var point_ratio4='slag['+idx+'].point_ratio'
 
+      console.log('点赞的地址',fm)
+
+        // 点赞个数加一
         var point=that.data.point
         var point1=Number(point)+1
-
+        // 点赞个数减一
         var point2=that.data.point
         var point3=Number(point2)-1
+
         console.log('首页点赞个数',point1,point3)
         if(res.data.code==0){
-          prevPage.setData({
-            [point_ratio1]:point1,
-            [tabuser]:1,
-            [point_ratio2]:point1,
-            [jian]:1,
-            [point_ratio3]:point1,
-            [user]:1,
-          })
-        }else if(res.data.code==1){
+          // 十万火急
+          if(fm=='user'){
             prevPage.setData({
-              [point_ratio1]:point3,
-              [tabuser]:0,
-              [point_ratio2]:point3,
-              [jian]:0,
+              [point_ratio3]:point1,
+              [user]:1,
+            })
+            // 最新发布
+          }else if(fm=='tabuser'){
+            prevPage.setData({
+              [point_ratio1]:point1,
+              [tabuser]:1,
+            })
+            // 优质推荐
+          }else if(fm=='tabuserjian'){
+            prevPage.setData({
+              [point_ratio2]:point1,
+              [jian]:1,
+            })
+          }
+
+        }else if(res.data.code==1){
+          // 十万火急 
+          if(fm=='user'){
+            prevPage.setData({
               [point_ratio3]:point3,
               [user]:0,
             })
+            // 最新发布
+          }else if(fm=='tabuser'){
+            prevPage.setData({
+              [point_ratio1]:point3,
+              [tabuser]:0,
+            })
+            // 优质推荐
+          }else if(fm=='tabuserjian'){
+            prevPage.setData({
+              [point_ratio2]:point3,
+              [jian]:0,
+            })
+            // 渣场信息
+          }
         }
 
       console.log('调用点赞成功',res)
@@ -399,6 +433,68 @@ Page({
       info_id,
     }
   }).then(res=>{
+
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    var idx=that.data.idx
+    var fm=that.data.fm
+    // 信息中心-渣场信息
+    var slag='slag['+idx+'].is_point'    
+    var point_ratio4='slag['+idx+'].point_ratio'
+    // 信息中心-工地信息
+    var meeting='meeting['+idx+'].is_point'    
+    var point_ratio5='meeting['+idx+'].point_ratio'
+    // 信息中西-买卖信息
+    var deal='deal['+idx+'].is_point'    
+    var point_ratio6='deal['+idx+'].point_ratio'
+
+
+    // 点赞个数加一
+    var point=that.data.point
+    var point1=Number(point)+1
+    // 点赞个数减一
+    var point2=that.data.point
+    var point3=Number(point2)-1
+    if(res.data.code==0){
+      // 渣场信息点赞
+       if(fm=='slag'){
+        prevPage.setData({
+          [point_ratio4]:point1,
+          [slag]:1,
+        })
+        // 工地信息点赞
+      }else if(fm=='meeting'){
+        prevPage.setData({
+          [point_ratio5]:point1,
+          [meeting]:1,
+        }) 
+        // 买卖信息点赞
+      }else if(fm=='deal'){
+        prevPage.setData({
+          [point_ratio6]:point1,
+          [deal]:1,
+        })
+      }
+    }else if(res.data.code==1){
+      // 渣场信息取消点赞
+       if(fm=='slag'){
+        prevPage.setData({
+          [point_ratio4]:point3,
+          [slag]:0,
+        })
+      }else if(fm=='meeting'){
+        prevPage.setData({
+          [point_ratio5]:point3,
+          [meeting]:0,
+        })        
+      }else if(fm=='deal'){
+        prevPage.setData({
+          [point_ratio6]:point3,
+          [deal]:0,
+        })        
+      }
+    }
     console.log('调用点赞成功',res)
       // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
       var uid=wx.getStorageSync('uid');
@@ -410,6 +506,11 @@ Page({
         info_id:that.data.lid
       }
     }).then(res=>{
+
+
+
+
+      
       console.log('调用信息详情成功',res)
       this.setData({
         title:res.data.data.title,
@@ -564,7 +665,8 @@ Page({
       types:options.type,
       idx:options.idx,
       point:options.point,
-      from:options.from
+      from:options.from,
+      fm:options.fm
     })
     console.log(options.from,'传来的',this.data.lid)
         /**

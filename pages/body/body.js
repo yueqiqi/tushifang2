@@ -127,10 +127,11 @@ listenerButtonPreviewImages:function(e){
     var from='首页'
     var idx=e.currentTarget.dataset.idx
     var point=e.currentTarget.dataset.point
-    console.log(e,form)
+    var fm=e.currentTarget.dataset.fm
+    console.log('携带参数',e,form,fm)
     // var id=that.data.tabuser.id
     wx.navigateTo({
-      url: '/pages/details/details?id=' + id+'&form='+form+'&type='+type+'&from='+from+'&idx='+idx+'&point='+point
+      url: '/pages/details/details?id=' + id+'&form='+form+'&type='+type+'&from='+from+'&idx='+idx+'&point='+point+'&fm='+fm
     })
   },
   // 拨打电话

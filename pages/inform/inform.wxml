@@ -1,6 +1,6 @@
 <!-- 消息通知 -->
 <view class="bg">
-  <view class="inform bg">
+  <view class="inform bg" wx-if="{{message!=''}}">
     <!-- <view class="date">
       <text>{{currenTime}}</text>
     </view> -->
@@ -38,4 +38,11 @@
         </loading>  
     </view> -->
   </view>
+
+<view class="" wx-if="{{message==''}}" class="n-mm">
+<view class="n-qq">
+  <view class="n-no"><image class="n-img" src="/pages/images/noissue.png"></image></view>
+  <view class="n-font">亲，当前还没有消息通知哟~</view>
+</view>
+</view>  
 </view>

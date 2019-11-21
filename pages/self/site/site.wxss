@@ -90,3 +90,35 @@ line-height:98rpx;
 position:fixed;
 bottom:0;left:0
 }
+
+
+/**
+*没有列表展示
+*/
+.n-no{
+  display: flex;
+  align-items: center;
+}
+
+.n-font{
+font-size:28rpx;
+font-weight:400;
+color:rgba(51,51,51,1);
+margin-top:56rpx;
+text-align: center;
+}
+.n-no .n-img{
+  width:274rpx;height:243rpx;
+  margin:auto;
+  margin-top:198rpx;
+}
+ .n-btn{
+   margin-top:86rpx;
+  width:240rpx;height:70rpx;
+  background:rgba(118,212,198,1);
+  border-radius:10rpx;
+  font-size:30rpx;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  line-height: 70rpx;
+}

@@ -4,6 +4,7 @@
 <!-- <block wx:for="{{defa}}" wx:key="{{index}}"> -->
 
 
+<view class="" wx-if="{{defa!=''}}">
 <block wx:for="{{defa}}" wx:key="{{index}}">
   <van-panel  data-index="{{index}}" bindtap="mm">
     <!-- 用户名 -->
@@ -24,9 +25,18 @@
       </view>
     </van-panel>
 </block>
+</view>
 <!-- 添加收货地址 -->
 <view class="add" bindtap="add">
   添加收货地址
+</view>
+
+
+<view class="" wx-if="{{defa==''}}" class="n-mm">
+<view class="n-qq">
+  <view class="n-no"><image class="n-img" src="/pages/images/noaddr.png"></image></view>
+  <view class="n-font">亲，当前还没有添加地址哟~</view>
+</view>
 </view>
   <!--  -->
 </view>

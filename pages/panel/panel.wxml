@@ -9,7 +9,7 @@
         <view class="bgf">
 
           <view class="bgf">
-            <view bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}" data-idx="{{index}}" data-point="{{item.point_ratio}}">
+            <view bindtap="tabgoto" data-id="{{item.id}}" data-type="{{item.form}}" data-fm="tabuser" data-idx="{{index}}" data-point="{{item.point_ratio}}">
               <view class="tab-new d-spb">
                 <view class="d-flex">
                   <!-- 发布者头像 -->
@@ -74,7 +74,7 @@
               <button open-type="share">分享</button>
             </view>
             <!-- 评论 --> 
-            <view class="tab-comment d-flex" bindtap="tabgoto" data-idx="{{index}}" data-id="{{item.id}}" data-type="{{item.form}}" data-point="{{item.point_ratio}}">
+            <view class="tab-comment d-flex" bindtap="tabgoto" data-idx="{{index}}" data-fm='tabuser' data-id="{{item.id}}" data-type="{{item.form}}" data-point="{{item.point_ratio}}">
               <view>
                 <image src="/pages/images/comment.png"></image>
               </view>
@@ -101,7 +101,7 @@
         <view class="bgf">
 
           <view class="bgf mtt">
-            <view bindtap="tabgoto" data-point="{{item.point_ratio}}" data-id="{{item.id}}" data-idx="{{index}}" data-type="{{item.form}}">
+            <view bindtap="tabgoto" data-point="{{item.point_ratio}}" data-fm="tabuserjian" data-id="{{item.id}}" data-idx="{{index}}" data-type="{{item.form}}">
               <view class="tab-new d-spb">
                 <view class="d-flex">
                   <!-- 发布者头像 -->
@@ -166,7 +166,7 @@
               <button open-type="share">分享</button>
             </view>
             <!-- 评论 -->
-            <view class="tab-comment d-flex" bindtap="tabgoto" data-idx="{{index}}" data-id="{{item.id}}" data-point="{{item.point_ratio}}" data-type="{{item.form}}">
+            <view class="tab-comment d-flex" bindtap="tabgoto" data-idx="{{index}}" data-fm="tabuserjian" data-id="{{item.id}}" data-point="{{item.point_ratio}}" data-type="{{item.form}}">
               <view>
                 <image src="../images/comment.png"></image>
               </view>
