@@ -1,24 +1,6 @@
 <!-- 消息通知 -->
 <view class="bg">
   <view class="inform bg" wx-if="{{message!=''}}">
-    <!-- <view class="date">
-      <text>{{currenTime}}</text>
-    </view> -->
-    <!-- 消息 -->
-    <!-- <view class="mes">
-      <view class="title">消息通知标题</view>
-      <view class="content">您的举报已经通过审核，我们已对被举报用户做出了相应 惩罚，感谢您对包程项的关注与支持！</view>
-    </view> -->
-    <!-- 第二个信息 -->
-    <!-- <view class="date">
-      <text>{{currenTime}}</text>
-    </view> -->
-    <!-- 消息 -->
-    <!-- <view class="mes">
-      <view class="title">消息通知标题</view>
-      <view class="content">您的举报已经通过审核，我们已对被举报用户做出了相应 惩罚，感谢您对包程项的关注与支持！</view>
-    </view> -->
-
     <!-- +++++++++++++++++++++++++++++消息通知++++++++++++++++++++ -->
     <block wx:for="{{message}}" wx:key="{{index}}">
       <!-- 第二个信息 -->
@@ -32,11 +14,6 @@
       </view>
     </block>
     <!-- +++++++++++++++++++++++++++++消息通知++++++++++++++++++++ -->
-      <!-- <view class="body-view">  
-        <loading hidden="{{hidden}}" bindchange="loadingChange">  
-            加载中...  
-        </loading>  
-    </view> -->
   </view>
 
 <view class="" wx-if="{{message==''}}" class="n-mm">

@@ -35,7 +35,7 @@ bindPickerChange2:function(e){
   }else{
     var day=that.data.dates2
   }
-  console.log('这是二级分类',two_class_id)
+  //console.log('这是二级分类',two_class_id)
   request({
     url:'/home/info/do_info_list',
     data:{
@@ -47,12 +47,12 @@ bindPickerChange2:function(e){
       day
     }
     }).then(res=>{
-    console.log('调用渣场信息分类成功',res)
+    //console.log('调用渣场信息分类成功',res)
     that.setData({
       slag:res.data.data
     })
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
   })
 },
 
@@ -62,7 +62,7 @@ bindDateChange2:function(e){
   this.setData({
     dates2: e
   })
-  console.log("保存的日期",this.data.dates2)
+  //console.log("保存的日期",this.data.dates2)
   // ++++++++++
     // ???
   var one_class_id=that.data.two_id
@@ -86,12 +86,12 @@ bindDateChange2:function(e){
       day
     }
     }).then(res=>{
-    console.log('调用渣场信息分类成功',res)
+    //console.log('调用渣场信息分类成功',res)
     that.setData({
       slag:res.data.data
     })
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
   })
 },
 /**
@@ -118,7 +118,7 @@ bindPickerChange3:function(e){
   }else{
     var day=that.data.dates3
   }
-  console.log('这是二级分类',two_class_id)
+  //console.log('这是二级分类',two_class_id)
   request({
     url:'/home/info/do_info_list',
     data:{
@@ -130,12 +130,12 @@ bindPickerChange3:function(e){
       day
     }
     }).then(res=>{
-    console.log('调用工地信息分类成功',res)
+    //console.log('调用工地信息分类成功',res)
     that.setData({
       meeting:res.data.data
     })
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
   })
 },
 bindDateChange3:function(e){
@@ -144,7 +144,7 @@ bindDateChange3:function(e){
   this.setData({
     dates3: e
   })
-  console.log("保存的日期",this.data.dates3)
+  //console.log("保存的日期",this.data.dates3)
   // ++++++++++
     // ???
   var one_class_id=that.data.three_id
@@ -168,12 +168,12 @@ bindDateChange3:function(e){
       day
     }
     }).then(res=>{
-    console.log('调用工地信息分类成功',res)
+    //console.log('调用工地信息分类成功',res)
     that.setData({
       meeting:res.data.data
     })
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
   })
 },
 /**
@@ -200,7 +200,7 @@ bindPickerChange4:function(e){
   }else{
     var day=that.data.dates4
   }
-  console.log('这是二级分类',two_class_id)
+  //console.log('这是二级分类',two_class_id)
   request({
     url:'/home/info/do_info_list',
     data:{
@@ -212,12 +212,12 @@ bindPickerChange4:function(e){
       day
     }
     }).then(res=>{
-    console.log('调用工地信息分类成功',res)
+    //console.log('调用工地信息分类成功',res)
     that.setData({
       deal:res.data.data
     })
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
   })
 },
 bindDateChange4:function(e){
@@ -226,7 +226,7 @@ bindDateChange4:function(e){
   this.setData({
     dates4: e
   })
-  console.log("保存的日期",this.data.dates4)
+  //console.log("保存的日期",this.data.dates4)
   // ++++++++++
     // ???
   var one_class_id=that.data.four_id
@@ -250,12 +250,12 @@ bindDateChange4:function(e){
       day
     }
     }).then(res=>{
-    console.log('调用买卖信息分类成功',res)
+    //console.log('调用买卖信息分类成功',res)
     that.setData({
       deal:res.data.data
     })
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
   })
 },
 /**
@@ -271,7 +271,7 @@ bindDateChange4:function(e){
      var previewImgArr = that.data.slag[tb].img_url_arr
      }
     }
-    console.log('浏览的数组',previewImgArr)
+    //console.log('浏览的数组',previewImgArr)
     wx.previewImage({
       current: url, //当前图片地址
       urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
@@ -290,7 +290,7 @@ listenerButtonPreviewImagem:function(e){
    var previewImgArr = that.data.meeting[tb].img_url_arr
    }
   }
-  console.log('浏览的数组',previewImgArr)
+  //console.log('浏览的数组',previewImgArr)
   wx.previewImage({
     current: url, //当前图片地址
     urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
@@ -309,7 +309,7 @@ listenerButtonPreviewImaged:function(e){
    var previewImgArr = that.data.deal[tb].img_url_arr
    }
   }
-  console.log('浏览的数组',previewImgArr)
+  //console.log('浏览的数组',previewImgArr)
   wx.previewImage({
     current: url, //当前图片地址
     urls: previewImgArr,//所有要预览的图片的地址集合 数组形式
@@ -320,23 +320,17 @@ listenerButtonPreviewImaged:function(e){
 
 
 
-
-
-
-
-
-
-
   // +++++++++++++++++++++渣场跳转至详情页+++++++++++++++++++++++++++++++++++
   slag:function(e){
     var id=e.currentTarget.dataset.id
+    var form=e.currentTarget.dataset.type
     var type=3
     var idx=e.currentTarget.dataset.idx
     var point=e.currentTarget.dataset.point
     var fm=e.currentTarget.dataset.fm
-    console.log('携带的参数',idx,point,fm)
+    //console.log('携带的参数',idx,point,fm)
     wx.navigateTo({
-      url: '/pages/details/details?from=信息中心&type='+type+'&id='+id+'&idx='+idx+'&point='+point+'&fm='+fm,
+      url: '/pages/details/details?from=信息中心&type='+type+'&id='+id+'&idx='+idx+'&point='+point+'&fm='+fm+'&form='+form,
       success: (result)=>{
       },
     });
@@ -347,7 +341,7 @@ listenerButtonPreviewImaged:function(e){
 
 
   scall:function(e){
-    console.log('拨打电话')
+    //console.log('拨打电话')
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.tel,
       success: (result)=>{
@@ -361,9 +355,9 @@ listenerButtonPreviewImaged:function(e){
   slike:function(e){
     var uid=wx.getStorageSync('uid');
     var that = this
-    //console.log(e)
+    ////console.log(e)
     var id = e.currentTarget.dataset.id
-    console.log('点赞',id)
+    //console.log('点赞',id)
     var uid=wx.getStorageSync('uid');
 
     like({
@@ -373,7 +367,7 @@ listenerButtonPreviewImaged:function(e){
       info_id:id
     }
     }).then(res=>{
-    console.log('调用点赞成功',res)
+    //console.log('调用点赞成功',res)
     request({
       url:'/home/info/do_info_list',
       data:{
@@ -382,27 +376,27 @@ listenerButtonPreviewImaged:function(e){
         uid
       }
       }).then(res=>{
-      console.log('调用渣场信息成功',res)
+      //console.log('调用渣场信息成功',res)
       this.setData({
         slag:res.data.data
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
     this.setData({
     
     })
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
     })
   },
   // 工地信息
   mlike:function(e){
     var uid=wx.getStorageSync('uid');
     var that = this
-    //console.log(e)
+    ////console.log(e)
     var id = e.currentTarget.dataset.id
-    console.log('点赞',id)
+    //console.log('点赞',id)
     var uid=wx.getStorageSync('uid');
     like({
     data:{
@@ -411,7 +405,7 @@ listenerButtonPreviewImaged:function(e){
       info_id:id
     }
     }).then(res=>{
-    console.log('调用工地信息点赞成功',res)
+    //console.log('调用工地信息点赞成功',res)
 
       
     request({
@@ -422,29 +416,29 @@ listenerButtonPreviewImaged:function(e){
         uid
       }
       }).then(res=>{
-      console.log('调用工地信息成功',res)
+      //console.log('调用工地信息成功',res)
       // that.vm()
       this.setData({
         meeting:res.data.data
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
     this.setData({
     
     })
     
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
     })
   },
   // 买卖信息
   dlike:function(e){
     var uid=wx.getStorageSync('uid');
     var that = this
-    //console.log(e)
+    ////console.log(e)
     var id = e.currentTarget.dataset.id
-    console.log('点赞',id)
+    //console.log('点赞',id)
     var uid=wx.getStorageSync('uid');
     like({
     data:{
@@ -453,7 +447,7 @@ listenerButtonPreviewImaged:function(e){
       info_id:id
     }
     }).then(res=>{
-    console.log('调用买卖信息点赞成功',res)
+    //console.log('调用买卖信息点赞成功',res)
     request({
       url:'/home/info/do_info_list',
       data:{
@@ -462,18 +456,18 @@ listenerButtonPreviewImaged:function(e){
         uid
       }
       }).then(res=>{
-      console.log('调用买卖信息成功',res)
+      //console.log('调用买卖信息成功',res)
       this.setData({
         deal:res.data.data
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
     this.setData({
     
     })
     }).catch(err=>{
-    console.log('调用失败')
+    //console.log('调用失败')
     })
   },
   // 顶部导航条跳转
@@ -503,11 +497,11 @@ listenerButtonPreviewImaged:function(e){
   bindDateChange: function (e) {
     var that=this
     var e = e.detail.value
-    console.log(e)
+    //console.log(e)
     this.setData({
       dates: e
     })
-    console.log("保存的日期",this.data.dates)
+    //console.log("保存的日期",this.data.dates)
     // ++++++++++
       // ???
     // 找工作
@@ -541,7 +535,7 @@ listenerButtonPreviewImaged:function(e){
           userlists:res.data.data
         })
     }, fail: function () {
-      console.log('调用失败')
+      //console.log('调用失败')
       }
     })
     // ++++++++++
@@ -565,7 +559,7 @@ listenerButtonPreviewImaged:function(e){
         findpeople:res.data.data
       })
   }, fail: function () {
-    console.log('调用失败')
+    //console.log('调用失败')
     }
   })
   }
@@ -614,12 +608,12 @@ listenerButtonPreviewImaged:function(e){
       'content-type': 'application/x-www-form-urlencoded'
     },
       success: function (res) {
-        console.log('工种调用信息列表成功', res)
+        //console.log('工种调用信息列表成功', res)
       that.setData({
         userlists:res.data.data
       })
       }, fail: function () {
-      console.log('调用失败')
+      //console.log('调用失败')
     }
   })
 }else if(that.data.two_class_id==1){
@@ -639,12 +633,12 @@ listenerButtonPreviewImaged:function(e){
   'content-type': 'application/x-www-form-urlencoded'
 },
   success: function (res) {
-    console.log('工种调用信息列表成功', res)
+    //console.log('工种调用信息列表成功', res)
   that.setData({
     findpeople:res.data.data
   })
   }, fail: function () {
-  console.log('调用失败')
+  //console.log('调用失败')
 }
 })
 }
@@ -652,20 +646,20 @@ listenerButtonPreviewImaged:function(e){
   },
   // 分享
   share:function(){
-    console.log("分享")
+    //console.log("分享")
   },
   comment:function(){
-    console.log("评论")
+    //console.log("评论")
   },
   like:function(){
     var that = this
     this.setData({ like: that.data.like + 1 });
-    console.log("点赞");return
+    //console.log("点赞");return
   },
   // 视频播放错误
   videoErrorCallback: function (e) {
-    console.log('视频错误信息:')
-    console.log(e.detail.errMsg)
+    //console.log('视频错误信息:')
+    //console.log(e.detail.errMsg)
   },
   // 招人才跳转
   gotoPeople: function (e) {
@@ -677,7 +671,7 @@ listenerButtonPreviewImaged:function(e){
   // 跳转详情页
   goto:function(e){
     var info_id=e.currentTarget.dataset.id
-    console.log(info_id)
+    //console.log(info_id)
     var type=2
     wx.navigateTo({
       url: '../jobdetail/jobdetail?info_id='+info_id,
@@ -686,12 +680,12 @@ listenerButtonPreviewImaged:function(e){
   //获取当前滑块的index
   bindchange: function (e) {
     const that = this;
-    console.log("滑动的滑块2",e.detail.current+1)
+    //console.log("滑动的滑块2",e.detail.current+1)
     that.setData({
       currentData: e.detail.current
     })
     var p=parseInt(e.currentTarget.dataset.current)+1
-    console.log("点击的滑块1",parseInt(e.currentTarget.dataset.current)+1)
+    //console.log("点击的滑块1",parseInt(e.currentTarget.dataset.current)+1)
       that.setData({
         two_class_id:p
       })
@@ -700,7 +694,7 @@ listenerButtonPreviewImaged:function(e){
   checkCurrent: function (e) {
     const that = this;
     var p=parseInt(e.currentTarget.dataset.current)+1
-    console.log("点击的滑块1",parseInt(e.currentTarget.dataset.current)+1)
+    //console.log("点击的滑块1",parseInt(e.currentTarget.dataset.current)+1)
       that.setData({
         two_class_id:p
       })
@@ -774,15 +768,7 @@ listenerButtonPreviewImaged:function(e){
     like:20,
     // 发布图片
     muskImg:[
-      {
-        url:"../../images/carousel/02.jpg"
-      },
-      {
-        url:"../../images/carousel/03.jpg",
-      },
-      {
-        url:"../../images/carousel/04.jpg",
-      }
+
     ],
     // 时间
     currenTime: "",
@@ -796,18 +782,6 @@ listenerButtonPreviewImaged:function(e){
     objectArray: ['重庆', '成都', '上海', '浙江', '深圳'],
     // 轮播图片
     imgUrls: [
-      {
-        link: "../../index/index",
-        url: '../../images/carousel/02.jpg',
-      },
-      {
-        link: "../../body/body",
-        url: '../../images/carousel/03.jpg',
-      },
-      {
-        link: "../../demo/demo",
-        url: '../../images/carousel/04.jpg'
-      }
     ],
     indicatorDots: true,
     autoplay: true,
@@ -821,66 +795,9 @@ listenerButtonPreviewImaged:function(e){
     // +++++++++++++++++++++++++++++++++++
     // 招聘信息-找工作
     userlists:[
-      {
-        title:"招聘职位",
-        stick:"置顶",
-        rec:"荐",
-        money:"3000-5000",
-        // 招聘状态
-        statu:"正在招聘",
-        // /工作地点
-        province:"重庆市",
-        // 区域
-        dist:"江北区",
-        // 发布时间
-        time:"2019.08.20",
-        // /工作年限
-        num:"10",
-        // 
-        username:"发布者用户名",
-        comp:"发布公司的名称",
-        img:"/pages/images/carousel/02.jpg"
-      },
-      {
-        title:"招聘职位",
-        stick:"置顶",
-        rec:"",
-        money:"3000-5000",
-        // 招聘状态
-        statu:"正在招聘",
-        // /工作地点
-        province:"重庆市",
-        // 区域
-        dist:"江北区",
-        // 发布时间
-        time:"2019.08.20",
-        // /工作年限
-        num:"10",
-        // 
-        username:"发布者用户名",
-        comp:"发布公司的名称",
-      }
     ],
     // 招人才
     findpeople:[
-      {
-        header:"/pages/images/carousel/02.jpg",
-        name:"发布者用户名",
-        job:"渣土司机",
-        statu:"正在找工作",
-        money:"3000-5000",
-        time:"2019.08.20",
-        num:"10",
-      },
-      {
-        header:"/pages/images/carousel/02.jpg",
-        name:"发布者用户名",
-        job:"渣土司机",
-        statu:"正在找工作",
-        money:"3000-5000",
-        time:"2019.08.20",
-        num:"10",
-      }
     ],
     // 一级列表
     one_class_id:"",
@@ -894,29 +811,13 @@ listenerButtonPreviewImaged:function(e){
   vm:function(e){
     var that=this
     var uid=wx.getStorageSync('uid');
-    console.log('选择的标题',e)
+    //console.log('选择的标题',e)
     var index=e.detail.index
-    console.log('选中的额',that.data.active,index)
+    //console.log('选中的额',that.data.active,index)
     this.setData({
       idxs:index
     })
-       // +++++++++++++++++渣场-轮播图++++++++++++++++++++++++
-      request({
-        url:'/home/index/do_banner',
-        data:{
-          type:that.data.one_class_id[index].id
-        }
-        }).then(res=>{
-        console.log('调用信息中心渣场中心banner成功',res)
-        this.setData({
-          imgUrls2:res.data.data,
-          imgUrls3:res.data.data,
-          imgUrls4:res.data.data
-        })
-        }).catch(err=>{
-        console.log('调用失败')
-      })
-    // +++++++++++++++++轮播图++++++++++++++++++++++++
+
     // +++++++++++++++++渣场信息+++++++++++++++++++++
       request({
         url:'/home/info/do_info_list',
@@ -926,14 +827,14 @@ listenerButtonPreviewImaged:function(e){
           uid
         }
         }).then(res=>{
-        console.log('调用渣场信息成功',res)
+        //console.log('调用渣场信息成功',res)
         this.setData({
           slag:res.data.data,
           deal:res.data.data,
           meeting:res.data.data
         })
         }).catch(err=>{
-        console.log('调用失败')
+        //console.log('调用失败')
       })
     
     
@@ -952,76 +853,17 @@ listenerButtonPreviewImaged:function(e){
 
   onLoad: function (options) {
     
-    // wx.login({
-    //   success: function (r) {
-    //     wx.getLocation({
-    //       type: 'wgs84',
-    //       success: function (res) {
-    //         var latitude = res.latitude//纬度
-    //         var longitude = res.longitude//经度
-    //         demo.reverseGeocoder({
-    //           location: {
-    //             latitude: latitude,
-    //             longitude: longitude
-    //           },
-    //           success: function (res) {
-    //             //console.log(res);
-    //             let province = res.result.address_component.province;//省份
-    //             let city = res.result.address_component.city;//城市
-    //             let address = res.result.address
-    //             that.setData({
-    //               location: address
-    //             })
-    //             console.log('用户地址的信息',uid,city,longitude,latitude)
-    //             var code = r.code;//登录凭证
-    //             if (code) {
-    //               //2、调用获取用户信息接口
-    //               //...
-    //               wx.request({
-    //                 url: '/home/index/do_getLocation',
-    //                 data: {
-    //                   uid,
-    //                   city,
-    //                   longitude,
-    //                   latitude,
-    //                 },
-    //                 method: 'POST',
-    //                 header: {
-    //                   'content-type': 'application/x-www-form-urlencoded'
-    //                 },
-    //                 success: function (res) {
-    //                   console.log("地址信息",res)
-    //                 },
-    //                 fail: function () {
-    //                   //console.log("调用失败")
-    //                 }
-    //               })
-    //             } 
-    //           },
-    //           fail: function (res) {
-    //             //console.log(res);
-    //           }
-    //         });
-    //       }
-    //     })
-
-        
-    //   },
-    //   fail: function () {
-    //     callback(false)
-    //   }
-    // })
     // 调用函数时，传入new Date()参数，返回值是日期和时间
     var that=this
     wx.hideTabBar();
     // 接受首页传开的跳转信息
     console.log('首页的跳转',options)
-    if(options.active!=undefined){
+    if(options.active){
       var active=options.active
       that.setData({
-        active
+        idxs:active
       })
-      console.log(that.data.active)
+      //console.log(that.data.active)
     }
     // 
 
@@ -1043,7 +885,7 @@ listenerButtonPreviewImaged:function(e){
       'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-      console.log('调用信息中心导航条成功', res.data.data)
+      //console.log('调用信息中心导航条成功', res.data.data)
         that.setData({
           pid:res.data.data[0].id,
           one_id:res.data.data[0].id,
@@ -1062,12 +904,12 @@ listenerButtonPreviewImaged:function(e){
           two_class_id:2,
         }
             }).then(res=>{
-              console.log('调用招聘信息-找工作成功',res)
+              //console.log('调用招聘信息-找工作成功',res)
               that.setData({
                 userlists:res.data.data
             })
             }).catch(err=>{
-            console.log('调用失败')
+            //console.log('调用失败')
           })
 
 
@@ -1078,12 +920,12 @@ listenerButtonPreviewImaged:function(e){
               type:1
             }
             }).then(res=>{
-            console.log('调用信息中心招聘banner成功',res)
+            //console.log('调用信息中心招聘banner成功',res)
             that.setData({
               imgUrls:res.data.data
             })
             }).catch(err=>{
-            console.log('调用失败')
+            //console.log('调用失败')
           })
           request({
             url:'/home/info/do_info_list',
@@ -1094,12 +936,12 @@ listenerButtonPreviewImaged:function(e){
               two_class_id:1,
             }
                 }).then(res=>{
-                  console.log('调用招聘信息-招人才成功',res)
+                  //console.log('调用招聘信息-招人才成功',res)
                   that.setData({
                     findpeople:res.data.data
                 })
                 }).catch(err=>{
-                console.log('调用失败')
+                //console.log('调用失败')
               })
       // ++++++++++++招聘列表++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
       that.setData({
@@ -1113,12 +955,12 @@ listenerButtonPreviewImaged:function(e){
               type:that.data.one_class_id[1].id
             }
             }).then(res=>{
-            console.log('调用信息中心渣场中心banner成功',res)
+            //console.log('调用信息中心渣场中心banner成功',res)
             that.setData({
               imgUrls2:res.data.data
             })
             }).catch(err=>{
-            console.log('调用失败')
+            //console.log('调用失败')
           })
         // +++++++++++++++++轮播图++++++++++++++++++++++++
         // +++++++++++++++++渣场信息+++++++++++++++++++++
@@ -1130,12 +972,12 @@ listenerButtonPreviewImaged:function(e){
               uid
             }
             }).then(res=>{
-            console.log('调用渣场信息成功',res)
+            //console.log('调用渣场信息成功',res)
             that.setData({
               slag:res.data.data
             })
             }).catch(err=>{
-            console.log('调用失败')
+            //console.log('调用失败')
           })
         
                 // +++++++++++++++++工地轮播图++++++++++++++++++++++++
@@ -1145,12 +987,12 @@ listenerButtonPreviewImaged:function(e){
                     type:that.data.one_class_id[2].id
                   }
                   }).then(res=>{
-                  console.log('调用信息中心工地中心banner成功',res)
+                  //console.log('调用信息中心工地中心banner成功',res)
                   that.setData({
                     imgUrls3:res.data.data
                   })
                   }).catch(err=>{
-                  console.log('调用失败')
+                  //console.log('调用失败')
                 })
               // +++++++++++++++++轮播图++++++++++++++++++++++++
               // +++++++++++++++++工地信息++++++++++++++++++++++++
@@ -1162,12 +1004,12 @@ listenerButtonPreviewImaged:function(e){
                   uid
                 }
                 }).then(res=>{
-                console.log('调用工地信息成功',res)
+                //console.log('调用工地信息成功',res)
                 that.setData({
                   meeting:res.data.data
                 })
                 }).catch(err=>{
-                console.log('调用失败')
+                //console.log('调用失败')
               })
               // +++++++++++++++++工地信息++++++++++++++++++++++++
                     // +++++++++++++++++轮播图++++++++++++++++++++++++
@@ -1177,12 +1019,12 @@ listenerButtonPreviewImaged:function(e){
               type:that.data.one_class_id[3].id
             }
             }).then(res=>{
-            console.log('调用信息中心买卖中心banner成功',res)
+            //console.log('调用信息中心买卖中心banner成功',res)
             that.setData({
               imgUrls4:res.data.data
             })
             }).catch(err=>{
-            console.log('调用失败')
+            //console.log('调用失败')
           })
         // +++++++++++++++++轮播图++++++++++++++++++++++++
         // +++++++++++++++++买卖信息++++++++++++++++++++++++
@@ -1194,22 +1036,22 @@ listenerButtonPreviewImaged:function(e){
             uid
           }
           }).then(res=>{
-          console.log('调用买卖信息成功',res)
+          //console.log('调用买卖信息成功',res)
           
           that.setData({
             deal:res.data.data
           })
           }).catch(err=>{
-          console.log('调用失败')
+          //console.log('调用失败')
         })
       }, 1000);
       
    
       //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
      
-      console.log(that.data.one_class_id)
+      //console.log(that.data.one_class_id)
       }, fail: function () {
-      console.log('调用失败')
+      //console.log('调用失败')
       }
     })
     // ????????
@@ -1229,13 +1071,13 @@ listenerButtonPreviewImaged:function(e){
       'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-      console.log('调用工种成功', res.data.data)
+      //console.log('调用工种成功', res.data.data)
       that.setData({
         objectArray:res.data.data
       })
-      console.log()
+      //console.log()
       }, fail: function () {
-      console.log('调用失败')
+      //console.log('调用失败')
       }
     })
   },
@@ -1245,40 +1087,6 @@ listenerButtonPreviewImaged:function(e){
    */
   onReady: function () {
     wx.hideTabBar();
-    // var that=this
-    // for(var p in that.data.userlists){
-    //   var w='userlists['+p+'].working_condition'
-    //   if(that.data.userlists[p].working_condition==1){
-    //     that.setData({
-    //       [w]:'正在招聘'
-    //     })
-    //   }else{
-    //     that.setData({
-    //       [w]:'已完成',
-    //     })
-    //   }
-    // }
-
-    // for(var j in that.data.findpeople){
-    //   var st='findpeople['+j +'].working_condition'
-    //   if(that.data.findpeople[j].working_condition==1){
-    //     that.setData({
-    //       [st]:'离职随时到岗'
-    //     })
-    //   }else if(that.data.findpeople[j].working_condition==2){
-    //     that.setData({
-    //       [st]:'在职-月内到岗'
-    //     })
-    //   }else if(that.data.findpeople[j].working_condition==3){
-    //     that.setData({
-    //       [st]:'在职-考虑机会'
-    //     })
-    //   }else  if(that.data.findpeople[j].working_condition==4){
-    //     that.setData({
-    //       [st]:'在职-暂不考虑'
-    //     })
-    //   }
-    // }
     var that=this
     var uid=wx.getStorageSync('uid');
 
@@ -1290,12 +1098,12 @@ listenerButtonPreviewImaged:function(e){
         one_class_id:that.data.two_id
       }
       }).then(res=>{
-      console.log('调用渣场信息分类成功',res)
+      //console.log('调用渣场信息分类成功',res)
       that.setData({
         objectArray2:res.data.data
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
      //工地分类--分类详情
      request({
@@ -1304,12 +1112,12 @@ listenerButtonPreviewImaged:function(e){
         one_class_id:that.data.three_id
       }
       }).then(res=>{
-      console.log('调用工地信息分类成功',res)
+      //console.log('调用工地信息分类成功',res)
       that.setData({
         objectArray3:res.data.data
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
      //买卖分类--分类详情
      request({
@@ -1318,12 +1126,12 @@ listenerButtonPreviewImaged:function(e){
         one_class_id:that.data.four_id
       }
       }).then(res=>{
-      console.log('调用买卖信息分类成功',res)
+      //console.log('调用买卖信息分类成功',res)
       that.setData({
         objectArray4:res.data.data
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
   },
   onShow:function(){
@@ -1349,12 +1157,12 @@ listenerButtonPreviewImaged:function(e){
             two_class_id:2,
           }
               }).then(res=>{
-                console.log('调用招聘信息-找工作成功',res)
+                //console.log('调用招聘信息-找工作成功',res)
                 that.setData({
                   userlists:res.data.data
               })
               }).catch(err=>{
-              console.log('调用失败')
+              //console.log('调用失败')
             })
             request({
               url:'/home/info/do_info_list',
@@ -1365,12 +1173,12 @@ listenerButtonPreviewImaged:function(e){
                 two_class_id:1,
               }
                   }).then(res=>{
-                    console.log('调用招聘信息-招人才成功',res)
+                    //console.log('调用招聘信息-招人才成功',res)
                     that.setData({
                       findpeople:res.data.data
                   })
                   }).catch(err=>{
-                  console.log('调用失败')
+                  //console.log('调用失败')
                 })
       },1500)
   },
@@ -1390,9 +1198,6 @@ listenerButtonPreviewImaged:function(e){
     page3++
     page4++
     pages++
-    // that.setData({
-    //   page,pages,page2,page3,page4
-    // })
     //显示加载的图标
     wx.showLoading({
       title: '加载中请稍后',
@@ -1411,7 +1216,7 @@ listenerButtonPreviewImaged:function(e){
         two_class_id:2,
       }
     }).then(res=>{
-            console.log('调用加载更多招聘信息-找工作成功',res)
+            //console.log('调用加载更多招聘信息-找工作成功',res)
             var count=res.data.count
             var all=that.data.userlists.length
             if(all>count){
@@ -1427,7 +1232,7 @@ listenerButtonPreviewImaged:function(e){
           })
           wx.hideLoading();
         }).catch(err=>{
-          console.log('调用失败')
+          //console.log('调用失败')
         })
         
         
@@ -1441,7 +1246,7 @@ listenerButtonPreviewImaged:function(e){
         two_class_id:1,
       }
           }).then(res=>{
-            console.log('调用加载更多招聘信息-找工作成功',res)
+            //console.log('调用加载更多招聘信息-找工作成功',res)
             var count=res.data.count
             var all=that.data.findpeople.length
             if(all>count){
@@ -1457,11 +1262,9 @@ listenerButtonPreviewImaged:function(e){
             })
             wx.hideLoading();
           }).catch(err=>{
-            console.log('调用失败')
+            //console.log('调用失败')
           })
 
-
-        // }else if(that.data.titleid==1){
           // 渣场信息
           request({
             url:'/home/info/do_info_list',
@@ -1486,9 +1289,8 @@ listenerButtonPreviewImaged:function(e){
               })
               wx.hideLoading();
             }).catch(err=>{
-            console.log('调用失败')
+            //console.log('调用失败')
           })
-        // }else if(that.data.titleid==2){
           // 工地信息
           request({
             url:'/home/info/do_info_list',
@@ -1513,9 +1315,8 @@ listenerButtonPreviewImaged:function(e){
               })
               wx.hideLoading();
             }).catch(err=>{
-            console.log('调用失败')
+            //console.log('调用失败')
           })
-        // }else if(that.data.titleid==3){
           request({
             url:'/home/info/do_info_list',
             data:{
@@ -1539,9 +1340,7 @@ listenerButtonPreviewImaged:function(e){
               })
               wx.hideLoading();
             }).catch(err=>{
-            console.log('调用失败')
           })
-        // }
   },
   /**
    * 用户点击右上角分享

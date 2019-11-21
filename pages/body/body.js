@@ -106,15 +106,7 @@ listenerButtonPreviewImages:function(e){
     })
   },
   // ///////////////////////////////////////////
-  // 十万火急
-  // 跳转
-  // goto: function (e) {
-  //   //console.log("十万火急跳转",e.currentTarget.dataset.id)
-  //   var id=e.currentTarget.dataset.id
-  //   wx.navigateTo({
-  //     url: '/pages/details/details?id='+id,
-  //   })
-  // },
+
   ////////////////////////////////////////////////
   // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 面板
@@ -158,33 +150,29 @@ listenerButtonPreviewImages:function(e){
   // 点赞
   tabLike: function (e) {
     var that = this
-    var id = e.currentTarget.dataset.id
-    var index = e.currentTarget.dataset.index
     var uid=wx.getStorageSync('uid');
-    like({
+if(uid){
+  var id = e.currentTarget.dataset.id
+  var index = e.currentTarget.dataset.index
+  like({
     data:{
       uid,
       type:1,
       info_id:id
     }
-    }).then(res=>{
+  }).then(res=>{
     console.log('调用点赞成功',res)
     // that.onLoad();
       /**
        * 调用点赞列表
        */
       console.log('点赞加载',that.data.tabuser)
-      // var jj=tabuser[inedx].is_point
-      // that.setData({
-      //   tabuser
-      // })
       console.log(res.data.code)
       if(res.data.code==0){
         // for(var m in that.data.tabuser){
           var like='tabuser['+index+'].is_point'
           var point_ratio=that.data.tabuser[index].point_ratio
           var point_ratio1='tabuser['+index+'].point_ratio'
-          var p=p+1
           that.setData({
             [like]:1,
             [point_ratio1]:point_ratio+1
@@ -192,50 +180,64 @@ listenerButtonPreviewImages:function(e){
           // }
           console.log('点赞加载数组',that.data.tabuser)
         }else if(res.data.code==1){
-          // for(var ms in that.data.tabuser){
             var point_ratios=that.data.tabuser[index].point_ratio
             var likes='tabuser['+index+'].is_point'
             var point_ratios1='tabuser['+index+'].point_ratio'
-            var m=m-1
             that.setData({
               [likes]:0,
               [point_ratios1]:point_ratios-1
-          })
+            })
         // }
       }
-      // else{
-      //   for(var m in tabuser){
-      //     var like='tabuser['+m+'].is_point'
-      //     that.setData({
-      //       [like]:0
-      //     })
-      //   }
-      // }
-
+      
 
     }).catch(err=>{
-    console.log('调用失败')
+      console.log('调用失败')
     })
+  }else{
+    wx.switchTab({
+      url: '/pages/self/index/index',
+      success:function(){
+        wx.showModal({
+          title: '登录中心',
+          content: '请登录',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#000000',
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+          success: (result) => {
+            if(result.confirm){
+              
+            }
+          },
+        });
+      }
+    });
+  }
+
   },
   swLike: function (e) {
     var that = this
-    var id = e.currentTarget.dataset.id
-    var index = e.currentTarget.dataset.index
     var uid=wx.getStorageSync('uid');
+    if(uid){
+      
+      var id = e.currentTarget.dataset.id
+    var index = e.currentTarget.dataset.index
     like({
-    data:{
-      uid,
-      type:1,
-      info_id:id
-    }
+      data:{
+        uid,
+        type:1,
+        info_id:id
+      }
     }).then(res=>{
       /**
        * 调用点赞列表
        */
       console.log(res.data.code)
       if(res.data.code==0){
-          var like='user['+index+'].is_point'
-          var point_ratio=that.data.user[index].point_ratio
+        var like='user['+index+'].is_point'
+        var point_ratio=that.data.user[index].point_ratio
           var point_ratio1='user['+index+'].point_ratio'
           var p=p+1
           that.setData({
@@ -243,34 +245,47 @@ listenerButtonPreviewImages:function(e){
             [point_ratio1]:point_ratio+1
           })
         }else if(res.data.code==1){
-            var point_ratios=that.data.user[index].point_ratio
+          var point_ratios=that.data.user[index].point_ratio
             var likes='user['+index+'].is_point'
             var point_ratios1='user['+index+'].point_ratio'
             var m=m-1
             that.setData({
               [likes]:0,
               [point_ratios1]:point_ratios-1
-          })
+            })
       }
-      // else{
-      //   for(var m in tabuser){
-      //     var like='tabuser['+m+'].is_point'
-      //     that.setData({
-      //       [like]:0
-      //     })
-      //   }
-      // }
 
-
+      
     }).catch(err=>{
-    console.log('调用失败')
+      console.log('调用失败')
     })
+  }else {
+    wx.switchTab({
+      url: '/pages/self/index/index',
+      success:function(){
+        wx.showModal({
+          title: '登录中心',
+          content: '请登录',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#000000',
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+          success: (result) => {
+            if(result.confirm){
+              
+            }
+          },
+        });
+      }
+    });
+  }
   },
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 右边大标题
 
 
-
+  
 
   titleRight: function () {
     //console.log("这是右边大标题")
@@ -395,56 +410,23 @@ wx.reLaunch({
     index: 0,
     // 第一个发布者图片
     tabUserImg: [
-      { src: "../images/carousel/05.jpg" },
-      { src: "../images/carousel/06.jpg" },
-      { src: "../images/carousel/07.jpg" },
     ],
     // 第二个发布者图片
     stabUserImg: [
-      { src: "../images/carousel/07.jpg" },
     ],
     //第三个发布者信息
     ttabUserImg: [
-      { src: "../images/carousel/05.jpg" },
-      { src: "../images/carousel/06.jpg" },
-      { src: "../images/carousel/07.jpg" },
-      { src: "../images/carousel/05.jpg" },
-      { src: "../images/carousel/06.jpg" },
-      { src: "../images/carousel/07.jpg" },
-      { src: "../images/carousel/05.jpg" },
-      { src: "../images/carousel/06.jpg" },
-      { src: "../images/carousel/07.jpg" },
     ],
     // 第四个发布者信息 
     ftabUserImg: [
-      { src: "../images/carousel/05.jpg" },
-      // { src: "../images/carousel/06.jpg" },
-      // { src: "../images/carousel/07.jpg" },
-      // { src: "../images/carousel/05.jpg" },
-      // { src: "../images/carousel/06.jpg" },
-      // { src: "../images/carousel/07.jpg" },
-      // { src: "../images/carousel/05.jpg" },
-      // { src: "../images/carousel/06.jpg" },
-      // { src: "../images/carousel/07.jpg" },
     ],
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     index: 0,
     // 第二个发布者信息
     userImg2: [
-      { url: "../images/carousel/05.JPg", },
-      { url: "../images/carousel/06.JPg", }
     ],
     // 第一发布者信息
     userImg: [
-      {
-        url: "../images/carousel/05.JPg",
-      },
-      {
-        url: "../images/carousel/06.JPg",
-      },
-      {
-        url: "../images/carousel/07.JPg"
-      }
     ],
     // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // 轮播图图片路径
@@ -649,6 +631,46 @@ wx.reLaunch({
   /**
    * 生命周期函数--监听页面加载
    */
+
+  yz:function(e){
+    var that=this
+    var e=e.detail.index
+    console.log('最新发布选项卡点击',e)
+
+    var uid=wx.getStorageSync('uid');
+    if(uid){
+      var uid=wx.getStorageSync('uid');
+    }else{
+      var uid=''
+    }
+    var interest=wx.getStorageSync('int');
+    if(interest){
+      var interest=wx.getStorageSync('int');
+      }else {
+        var interest=''
+      }
+      console.log('获取选择兴趣的id',interest)
+      request({
+        url:'/home/index/do_Recommend',
+        data:{
+          type:e+1,
+          uid,
+          page:1,
+          limit:999,
+          interest,
+        }
+        }).then(res=>{
+        console.log('调用点击最新发布成功',res)
+        that.setData({
+        tabuser:res.data.list,
+        tabuserjian:res.data.list,
+      })
+        }).catch(err=>{
+        console.log('调用失败')
+      }) 
+  },
+
+
   onLoad: function (options) {
         var that=this
         
@@ -711,25 +733,6 @@ wx.reLaunch({
                     }).catch(err=>{
                     console.log('调用失败')
                   })
-                  // wx.request({
-                  //   url: '/home/index/do_getLocation',
-                  //   data: {
-                  //     uid,
-                  //     city,
-                  //     longitude,
-                  //     latitude,
-                  //   },
-                  //   method: 'POST',
-                  //   header: {
-                  //     'content-type': 'application/x-www-form-urlencoded'
-                  //   },
-                  //   success: function (res) {
-                  //     console.log("地址信息",res)
-                  //   },
-                  //   fail: function () {
-                  //     //console.log("调用失败")
-                  //   }
-                  // })
                 } 
 
               },
@@ -789,25 +792,6 @@ wx.reLaunch({
       }).catch(err=>{
       console.log('调用失败')
     })
-    // wx.request({
-    //   url: '/home/index/do_banner',
-    //   data: {
-    //     type: 0
-    //   },
-    //   method: 'POST',
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success: function (res) {
-    //     console.log('首页轮播图',res)
-    //     var res = res.data.data
-    //     that.setData({
-    //       imgUrls: res
-    //     })
-    //   },
-    //   fail: function () {
-    //   }
-    // })
     // *******************************************************************************
     var uid=wx.getStorageSync('uid');
     // 首页十万火急
@@ -825,30 +809,6 @@ wx.reLaunch({
       console.log('调用失败')
     })
     // *******************************************************************************
-    // 首页公告+首页十万火急+首页广告位
-    // wx.request({
-    //   url: '/home/index/do_info',
-    //   data:{
-    //     code:'',
-    //     msg:'',
-    //   },
-    //   method: 'POST',
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success:function(res){
-    //     that.setData({
-    //       // 广告
-    //       advert:res.data.data.advert,
-    //       // 公告
-    //       msgList:res.data.data.notice,
-    //       // 首页发布者信息
-    //       advertd:res.data.data.advertd[0].img_url
-          
-    //     })
-    //   },fail:function(){
-    //   }
-    // })
     request({
       url:'/home/index/do_info',
       data:{
@@ -894,36 +854,13 @@ wx.reLaunch({
           interest,
         }
         }).then(res=>{
-        console.log('调用成功',res)
+        console.log('调用最新发布成功',res)
         that.setData({
         tabuser:res.data.list
       })
         }).catch(err=>{
         console.log('调用失败')
-      })
-    // wx.request({
-    //   url:"/home/index/do_Recommend",
-    //   data:{
-    //     type:1,
-    //     uid,
-    //     page:that.data.page,
-    //     limit:5,
-    //     interest,
-    //   },
-    //   method: 'POST',
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success:function(res){
-    //     console.log("最新发布调用成功",res)
-    //     that.setData({
-    //       tabuser:res.data.list
-    //     })
-    //   }
-    // })
-    
-    
-    
+      }) 
     var uid=wx.getStorageSync('uid');
     // 优质推荐
     request({
@@ -943,50 +880,12 @@ wx.reLaunch({
       }).catch(err=>{
       console.log('调用失败')
     })
-    // wx.request({
-    //   url:"/home/index/do_Recommend",
-    //   data:{
-    //     type:2,
-    //     uid,
-    //     page:that.data.pages,
-    //     limit:5,
-    //     interest,
-    //   },
-    //   method: 'POST',
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success:function(res){
-    //     //console.log("优质推荐调用成功")
-    //     console.log("调用优质推荐调用成功",res)
-    //     that.setData({
-    //       tabuserjian:res.data.list
-    //     })
-    //     console.log('优质推荐里面的内容',that.data.tabuserjian)
-    //   }
-
-    // })
     /**
      * 未读消息
      */
     console.log('uid 是都等',uid)
-    if(uid!=''){
-      // wx.request({
-      //   url:"/home/index/do_is_news",
-      //   data:{
-      //     uid,
-      //   },
-      //   method: 'POST',
-      //   header: {
-      //     'content-type': 'application/x-www-form-urlencoded'
-      //   },
-      //   success:function(res){
-      //     console.log("未读消息",res)
-      //     that.setData({
-      //       icons:res.data.data
-      //     })
-      //   }
-      // })'
+    if(uid){
+
       request({
         url:'/home/index/do_is_news',
         data:{
@@ -1002,9 +901,6 @@ wx.reLaunch({
       })
     }
     // *******************************************************************************************************************//
-    // var that=this
-    // 调用首页导航条
-    // this.bodylist()
   },
     /**
    * 生命周期函数--监听页面卸载
@@ -1084,54 +980,7 @@ var uid=wx.getStorageSync('uid');
       }).catch(err=>{
       console.log('调用失败')
     })
-    // wx.request({
-    //   url:"/home/index/do_Recommend",
-    //   data:{
-    //     type:1,
-    //     uid,
-    //     page:1,
-    //     limit:5,
-    //     interest
-    //   },
-    //   method: 'POST',
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success:function(res){
-    //     //console.log("最新发布调用成功")
-    //     console.log("最新发布调用成功",res)
-    //     that.setData({
-    //       tabuser:res.data.list,
-    //       page:1,
-    //     })
-    //   }
-    // })
     var uid=wx.getStorageSync('uid');
-    // 优质推荐
-    // wx.request({
-    //   url:"/home/index/do_Recommend",
-    //   data:{
-    //     type:2,
-    //     uid,
-    //     page:1,
-    //     limit:5,
-    //     interest,
-    //   },
-    //   method: 'POST',
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success:function(res){
-    //     //console.log("优质推荐调用成功")
-    //     console.log("调用优质推荐调用成功",res)
-    //     that.setData({
-    //       tabuserjian:res.data.list,
-    //       pages:1
-    //     })
-    //     console.log('优质推荐里面的内容',that.data.tabuserjian)
-    //   }
-
-    // })
     request({
       url:'/home/index/do_hot',
       data:{

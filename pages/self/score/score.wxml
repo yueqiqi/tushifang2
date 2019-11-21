@@ -13,7 +13,7 @@
   <view class="d-spb">
   <!-- 邀请好友 -->
     <view class="">
-      <view class="tit">邀请好友获取积分</view>
+      <view class="tit">邀请好友获取信誉分</view>
       <view class="i2">每成功邀请一位好友进入，可获得1-3信誉分哦！</view>
     </view>
     <!-- 去邀请 -->

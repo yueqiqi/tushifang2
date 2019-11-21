@@ -4,8 +4,8 @@
 <!-- 项目标题 -->
 <view class="bgf " style="padding-top:30rpx;">
 <view class="d-flex ml">
-  <view class="title-text">项目标题</view>
-  <view class="text d-text">{{title}}</view>
+  <view class="title-text" style="">项目标题</view>
+  <view class="text d-text" style="width:530rpx;">{{title}}</view>
 </view>
   <!-- 下划线 -->
   <view class="uline"></view>

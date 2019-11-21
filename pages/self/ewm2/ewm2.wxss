@@ -51,20 +51,14 @@ border:2rpx solid rgba(118,212,198,1);
 border-radius:10rpx;
 }
 .popup .title{
-    /* padding: 0 20rpx; */
-    /* border-bottom: #e5e5e5 solid 1px; */
-    /* height: 70rpx;
-    line-height: 70rpx; */
-    /* font-size: 32rpx; */
+
     width:80rpx;height:80rpx;
     border-radius: 50%;
     background-color: white;
-    /* text-align: center; */
     margin:0 auto;
     margin-top:-43rpx;z-index:5555
 }
 .popup .content{
-    /* margin: 100rpx; */
     margin-top:31rpx;
     text-align: center;
     font-size:30rpx;

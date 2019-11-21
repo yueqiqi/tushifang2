@@ -45,7 +45,6 @@
     <view class="duty ml" wx-if="{{list.info!=''}}">
       <view class="detail">职位详情</view>
       <view class="details" style="margin-top:30rpx;">{{list.info}}</view>
-      <!-- <view class="details">{{list.info}}</view> -->
     </view>
     <!-- 2 -->
   </view>

@@ -4,7 +4,7 @@ Page({
   // 地址
   address: function (e) {
     var value = e.detail.value
-    console.log(value)
+    //console.log(value)
     this.setData({
       address: value
     })
@@ -39,7 +39,7 @@ Page({
   },
   // 名字更改
   name:function(e){
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     var value = e.detail.value
     this.setData({
       name:value
@@ -89,13 +89,13 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
             success: function (res) {
-              // console.log(that.data.tempFilePaths[1])
-              console.log("检验图片上传",res)
+              // //console.log(that.data.tempFilePaths[1])
+              //console.log("检验图片上传",res)
               count++;
               var qwe=res.data
               var resl=JSON.parse(qwe)
               a.push(resl.data)
-              console.log("返回值",resl,a)
+              //console.log("返回值",resl,a)
               that.setData({
                 img_url_arr:a
               })
@@ -125,18 +125,18 @@ Page({
   listenerButtonPreviewImage: function (e) {
     let index = e.target.dataset.index;
     let that = this;
-    console.log(that.data.tempFilePaths[index]);
-    console.log(that.data.tempFilePaths);
+    //console.log(that.data.tempFilePaths[index]);
+    //console.log(that.data.tempFilePaths);
     wx.previewImage({
       current: that.data.tempFilePaths[index],
       urls: that.data.tempFilePaths,
       //这根本就不走
       success: function (res) {
-        //console.log(res);
+        ////console.log(res);
       },
       //也根本不走
       fail: function () {
-        //console.log('fail')
+        ////console.log('fail')
       }
     })
   },
@@ -152,10 +152,10 @@ Page({
       content: '确定要删除此图片吗？',
       success: function (res) {
         if (res.confirm) {
-          console.log('点击确定了');
+          //console.log('点击确定了');
           tempFilePaths.splice(index, 1);
         } else if (res.cancel) {
-          console.log('点击取消了');
+          //console.log('点击取消了');
           return false;
         }
         that.setData({
@@ -189,7 +189,7 @@ Page({
   // 表单提交数据
   mes:function(e){
     var e=e.detail.value
-    console.log(e)
+    //console.log(e)
     if (e.name == "" || e.phone == "" || e.com == "" || e.post == "" || e.email == "" || e.address == "" ){
       // 判断其中一个输入框的值 如果有一个为空就调用错误函数
       this.hidePopup(false);
@@ -215,30 +215,30 @@ Page({
         var j=that.data.tempFilePaths[w].slice(19)
         q.push(j)
       }
-    console.log('循环后的数组',q)
+    //console.log('循环后的数组',q)
     var h=q.join('|')
     var img_url_arr=h
     }else{
       var p=that.data.img_url_arr
-      console.log(that.data.img_url_arr)
+      //console.log(that.data.img_url_arr)
       var z=p.join('|')
       var img_url_arr=z
-      console.log(z)
+      //console.log(z)
     }
     var share_id=1
     // ////////////////////////////////////////////////////
       var updata = that.data.userinfo
       that.data.userinfo.push(e);
       var uid=wx.getStorageSync('uid');
-      // console.log(updata)
+      // //console.log(updata)
       // ////////////////////////////////////////////////////
       wx.showModal({
         title: '是否保存',
         content: '确认保存该名片吗？',
         success: function (res) {
           if (res.confirm) {
-            console.log('%','这里是上传的头像','background:lightgreen;color:red;font-size:30rpx;',that.data.heads1)
-            console.log('%c'+'这是文字','background:red;color:red;font-size:20rpx;')
+            //console.log('%','这里是上传的头像','background:lightgreen;color:red;font-size:30rpx;',that.data.heads1)
+            //console.log('%c'+'这是文字','background:red;color:red;font-size:20rpx;')
             // ===================完善名片++++++++++++++++++++++++++++
             request({
               url:'/home/personal/do_add_perfect',
@@ -256,7 +256,7 @@ Page({
                 img_url_arr
               }
               }).then(res=>{
-              console.log('调用修改名片成功',res)
+              //console.log('调用修改名片成功',res)
               if(res.data.code==0){
                 wx.navigateBack({
                   delta: 1
@@ -268,7 +268,7 @@ Page({
                 })
               }
               }).catch(err=>{
-              console.log('调用失败')
+              //console.log('调用失败')
             })
             // ===================完善名片++++++++++++++++++++++++++++
 
@@ -277,7 +277,7 @@ Page({
               // /////////////////////////////////////////////////////////////////////////////////////////
           } else {
             //  that.onShow();
-           console.log("用户点击了取消")
+           //console.log("用户点击了取消")
             getCurrentPages()[getCurrentPages().length - 1].route.onLoad
           }
         }
@@ -315,13 +315,13 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
             success: function (res) {
-              // console.log(that.data.tempFilePaths[1])
-              console.log("检验头像图片上传",res)
+              // //console.log(that.data.tempFilePaths[1])
+              //console.log("检验头像图片上传",res)
               // count++;
               var qwe=res.data
               var resl=JSON.parse(qwe)
               // a.push(resl.data)
-              console.log("返回头像值",resl.data)
+              //console.log("返回头像值",resl.data)
               that.setData({
                 heads1:resl.data
               })
@@ -350,13 +350,13 @@ Page({
     this.setData({
       selectShow: !this.data.selectShow
     });
-    // console.log(e)
+    // //console.log(e)
   },
   // 点击下拉列表
   optionTap(e) {
     let Index = e.currentTarget.dataset.index;//获取点击的下拉列表选项的下标
-    console.log(Index)
-    // console.log(e)
+    //console.log(Index)
+    // //console.log(e)
     this.setData({
       index: Index,
       selectShow: !this.data.selectShow,
@@ -369,7 +369,7 @@ Page({
         focus:true
       })
     }
-    console.log(this.data.isDisabled)
+    //console.log(this.data.isDisabled)
   }, 
   /**
    * 页面的初始数据
@@ -425,7 +425,7 @@ Page({
         uid,
       }
       }).then(res=>{
-      console.log('调用修改成功',res)
+      //console.log('调用修改成功',res)
       that.setData({
         set:true,
         set2:true,
@@ -440,60 +440,7 @@ Page({
         tempFilePaths:res.data.data.img_url_arr
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    console.log(this.data.tempFilePaths)
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    var that=this
-    var e=that.data
-    console.log("用户昵称："+e.name,"职位信息："+e.post,"公司信息："+e.com,"邮箱："+e.email,"电话号码："+e.phone,"地址："+e.address)
-    var that=this
-    console.log("这是储存数据"+that.data.userinfo)
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

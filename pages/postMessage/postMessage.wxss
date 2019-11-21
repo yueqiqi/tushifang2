@@ -8,7 +8,6 @@
 .headPortrait{
   width:70rpx;
 height:70rpx;
-/* background-color:rgba(229,229,229,1); */
 border-radius:50%;
 margin:auto 0;
 margin-left:30rpx;
@@ -16,7 +15,6 @@ margin-left:30rpx;
 .headPortrait2{
   width:70rpx;
 height:70rpx;
-/* background-color:rgba(229,229,229,1); */
 border-radius:50%;
 margin:auto 0;
 }
@@ -176,8 +174,6 @@ margin-top:33rpx;
 }
 /* 分享评论 */
 .scl{
-  /* display: flex;justify-content: left; */
-  /* margin-top:28rpx;padding-bottom:23rpx; */
   display: flex;justify-content:space-between;
   margin-top:28rpx;padding-bottom:24rpx;margin-right:80rpx;
   margin-left:78rpx;
@@ -195,7 +191,6 @@ font-weight:400;
 color:rgba(102,102,102,1);
 }
 /* 评论 */
-/* .comment{margin-left:156rpx;} */
 .comment text{
   margin-left:10rpx;
   font-size:28rpx;
@@ -203,7 +198,6 @@ font-weight:400;
 color:rgba(102,102,102,1);
 }
 /* 点赞 */
-/* .like{margin-left:157rpx;} */
 .like text{
   margin:auto;
   margin-left:10rpx;
@@ -213,7 +207,6 @@ font-weight:400;
 color:rgba(118,212,198,1);
 }
 .tabUserImg{
-  /* width:780rpx; */
   display:flex;
   justify-content: left;
   margin-left:30rpx;flex-wrap: wrap;
@@ -222,7 +215,6 @@ color:rgba(118,212,198,1);
   width:220rpx;height:220rpx;margin-right:15rpx;  margin-top:15rpx;
 }
 .tabUserImga{
-  /* width:100%; */
   display:flex;
   justify-content: left;
   margin-left:30rpx;
@@ -237,7 +229,6 @@ color:rgba(118,212,198,1);
   width:100%;
   display:flex;
   justify-content: left;
-  /* margin-left:30rpx; */
   flex-wrap: wrap;
 }
 .tabUserImgb image{

@@ -4,7 +4,7 @@ Page({
 
 
   upset:function(){
-    console.log('修改名片')
+    //console.log('修改名片')
     wx.navigateTo({
       url: '/pages/self/card/perfect2',
     })
@@ -13,7 +13,7 @@ Page({
 
   // 查看名片夹
   mycard:function(e){
-    console.log(e)
+    //console.log(e)
     var id=e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/self/mycard/mycard?uid='+id,
@@ -70,25 +70,7 @@ btn:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-//     console.log("------------------------------------------")
-// console.log(options)
-//     var that = this
-//     wx.getStorage({
-//       key: 'userinfo',
-//       success: function (res) {
-//         console.log(res.data)
-//         that.setData({
-//           userinfo: res.data,
-//           name: res.data.name,
-//           post: res.data.post,
-//           email: res.data.email,
-//           phone: res.data.phone,
-//           com: res.data.com,
-//           address: res.data.address,
-//         })
-//       }
-//     })
-//     console.log("这是名片界面"+that.data.userinfo)
+
 var that=this
     // 我的名片
     var uid=wx.getStorageSync('uid');
@@ -99,7 +81,7 @@ var that=this
         // page:1,
       }
       }).then(res=>{
-      console.log('调用我的名片成功',res)
+      //console.log('调用我的名片成功',res)
       that.setData({
         head:res.data.data.head1,
         name:res.data.data.nickname,
@@ -111,7 +93,7 @@ var that=this
         is_perfect:res.data.data.is_perfect,
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
     // +++++++++++++++++我的名片夹+++++++++++++++++++++++++++++++
     request({
@@ -122,12 +104,12 @@ var that=this
         limit:999,
       }
       }).then(res=>{
-      console.log('调用我的名片夹成功',res)
+      //console.log('调用我的名片夹成功',res)
       that.setData({
         mycard:res.data.list
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
   },
 
@@ -145,39 +127,13 @@ var that=this
     this.onLoad();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    console.log(res.from)
+    //console.log(res.from)
     var uid=wx.getStorageSync('uid');
     if(res.from=='button'){
       return {
@@ -185,7 +141,7 @@ var that=this
         path: '/pages/self/mycard/mycard?uid='+uid,//'/page/user?id=123' // 路径，传递参数到指定页面。
         desc: '个人名片',
         success: function (res) {
-          console.log('分享成功',ops)
+          //console.log('分享成功',ops)
          }
       }
     

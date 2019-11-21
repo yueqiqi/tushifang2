@@ -22,53 +22,6 @@
         </view>
     </view>
       </block>  
-<!-- <view class="left">
-  <view class="title">求职招聘</view>
-
-  <view class="d-flex ms">
-  <block wx:for="{{arr1}}" wx:key="{{index}}">
-  <view class="bgf">
-    <navigator url="{{item.link}}">
-  <view class="bgf">
-     <view class="border">{{item.name}}</view>
-  </view>
-    </navigator>
-  </view>
-  </block>
-  </view>
-</view>
-</view>
-
-<view class="bgf mgt">
-<view class="left">
-  <view class="title">工地信息</view>
-  
-  <view class="d-flex ms">
-    <block wx:for="{{arr2}}" wx:key="{{index}}">
-    <view class="bgf">
-    <navigator url="{{item.link}}">
-    <view class="bgf">
-     <view class="border">{{item.name}}</view>
-    </view>
-    </navigator>
-    </view>
-  </block>
-  </view>
-</view>
-</view>
-
-<view class="bgf mgt">
-<view class="left">
-  <view class="title">渣场信息</view>
-  
-  <view class="d-flex ms">
-    <block wx:for="{{arr3}}" wx:key="{{index}}">
-    <navigator url="{{item.link}}">
-     <view class="border">{{item.name}}</view>
-    </navigator>
-  </block>
-  </view>-->
-<!-- </view> -->
 </view>
 </view>
 

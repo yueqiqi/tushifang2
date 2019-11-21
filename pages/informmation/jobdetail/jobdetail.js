@@ -12,10 +12,10 @@ Page({
       var img_url_arr=''
     }else{
       var p=that.data.img_url_arr
-      console.log('文件',that.data.img_url_arr)
+      //console.log('文件',that.data.img_url_arr)
       var z=p.join('|')
       var img_url_arr=z
-      console.log(z)
+      //console.log(z)
     }
     var content=e.textarea
     if (e.textarea.length < 5) {
@@ -26,7 +26,7 @@ Page({
       })
     } else {
       // **************************
-      console.log('举报的图片',img_url_arr)
+      //console.log('举报的图片',img_url_arr)
       // 举报
       wx.request({
         url:"http://tsf.suipk.cn/home/info/do_report",
@@ -41,7 +41,7 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success:function(res){
-          console.log("举报调用成功",res)
+          //console.log("举报调用成功",res)
           if(res.data.code==0){
             wx.showModal({
               title: '提交成功',
@@ -51,15 +51,15 @@ Page({
               duration: 2000,
               success: function (res) {
                 if (res.confirm) {
-                  console.log("用户点击了确定")
-                  console.log(res);
-                  console.log(res.confirm)
+                  //console.log("用户点击了确定")
+                  //console.log(res);
+                  //console.log(res.confirm)
                 }
               }
             })
           }
         },fail:function(){
-          console.log("调用举报失败",res)
+          //console.log("调用举报失败",res)
         }
       })
       // **************************
@@ -75,21 +75,6 @@ Page({
     var value = e.detail.value;
     // 获取输入框内容的长度
     var len = parseInt(value.length);
-    // //最少字数限制
-    // if (len < this.data.min) {
-    //   wx.showToast({
-    //     title:"建议内容要5-100字哟",
-    //     image:"../../images/like.png"
-    //   })
-    //   // this.setData({
-    //   //   texts: "请至少要输入5个字哦"
-    //   // })
-    // } 
-    // else if (len >= this.data.min) {
-    //   this.setData({
-    //     texts: " "
-    //   })
-    // }
     //最多字数限制
     if (len > this.data.max) return;
     // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
@@ -135,17 +120,17 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
             success: function (res) {
-              // console.log(that.data.tempFilePaths[1])
-              console.log("检验图片上传",res)
+              // //console.log(that.data.tempFilePaths[1])
+              //console.log("检验图片上传",res)
               count++;
               var qwe=res.data
               var resl=JSON.parse(qwe)
               a.push(resl.data)
-              console.log("返回值",resl,a)
+              //console.log("返回值",resl,a)
               that.setData({
                 img_url_arr:a
               })
-              console.log('最后a',that.data.a)
+              //console.log('最后a',that.data.a)
               //如果是最后一张,则隐藏等待中  
               if (count == tempFilePaths.length) {
                 wx.hideToast();
@@ -172,18 +157,18 @@ Page({
   listenerButtonPreviewImage: function (e) {
     let index = e.target.dataset.index;
     let that = this;
-    console.log(that.data.tempFilePaths[index]);
-    console.log(that.data.tempFilePaths);
+    //console.log(that.data.tempFilePaths[index]);
+    //console.log(that.data.tempFilePaths);
     wx.previewImage({
       current: that.data.tempFilePaths[index],
       urls: that.data.tempFilePaths,
       //这根本就不走
       success: function (res) {
-        //console.log(res);
+        ////console.log(res);
       },
       //也根本不走
       fail: function () {
-        //console.log('fail')
+        ////console.log('fail')
       }
     })
   },
@@ -199,10 +184,10 @@ Page({
       content: '确定要删除此图片吗？',
       success: function (res) {
         if (res.confirm) {
-          console.log('点击确定了');
+          //console.log('点击确定了');
           tempFilePaths.splice(index, 1);
         } else if (res.cancel) {
-          console.log('点击取消了');
+          //console.log('点击取消了');
           return false;
         }
         that.setData({
@@ -215,9 +200,32 @@ Page({
   * 弹窗
   */
   showDialogBtn: function () {
-    this.setData({
-      showModal: true
-    })
+    var uid=wx.getStorageSync('uid')
+    if(uid){
+
+      this.setData({
+        showModal: true
+      })
+    }else{
+      wx.showModal({
+        title: '登录中心',
+        content: '请登录',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (result) => {
+          if (result.confirm) {
+            wx.switchTab({
+              url: '/pages/self/index/index',
+              success: function () {
+              }
+            });
+          }
+        }
+      });
+    }
 
   },
   /**
@@ -236,54 +244,76 @@ Page({
   },
 // 分享
 share:function(){
-  console.log("分享")
+  //console.log("分享")
 },
 // 点赞
 like:function(){
   var uid=wx.getStorageSync('uid');
+  if(uid){
+
     var that=this
-    console.log("点赞")
+    //console.log("点赞")
     like({
       data:{
         uid,
         type:1,
         info_id:that.data.info_id,
       }
-      }).then(res=>{
-      console.log('调用点赞成功',res)
-        // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
-        // var uid=wx.getStorageSync('uid');
-        request({
-          url:'/home/info/do_info_content',
-          data:{
+    }).then(res=>{
+      //console.log('调用点赞成功',res)
+      // ++++++++++++++++++++++++++刷新页面++++++++++++++++++
+      // var uid=wx.getStorageSync('uid');
+      request({
+        url:'/home/info/do_info_content',
+        data:{
           uid,
           type:1,
           info_id:that.data.info_id
         }
-        }).then(res=>{
-        console.log('调用信息详情成功',res)
+      }).then(res=>{
+        //console.log('调用信息详情成功',res)
         this.setData({
           list:res.data.data
         })
-        }).catch(err=>{
-          console.log('调用失败')
+      }).catch(err=>{
+        //console.log('调用失败')
         })
       })
-},
+    }else {
+      wx.showModal({
+        title: '登录中心',
+        content: '请登录',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (result) => {
+          if (result.confirm) {
+            wx.switchTab({
+              url: '/pages/self/index/index',
+              success: function () {
+              }
+            });
+          }
+        }
+      });
+    }
+    },
 // 举报
 complaint:function(){
-  console.log("投诉")
+  //console.log("投诉")
 },
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    min: 5,//最少字数
-    max: 100, //最多字数 (根据自己需求改变)
-    tempFilePaths: [],
+/**
+ * 页面的初始数据
+ */
+data: {
+  min: 5,//最少字数
+  max: 100, //最多字数 (根据自己需求改变)
+  tempFilePaths: [],
     like:20,
   },
-
+  
   // 拨打电话
   call:function(){
     var that=this
@@ -311,20 +341,20 @@ complaint:function(){
           type:3
         }
         }).then(res=>{
-          console.log('调用找工作广告图成功',res.data.data)
-        console.log('调用找工作广告图成功',res.data.data.img_url)
+          //console.log('调用找工作广告图成功',res.data.data)
+        //console.log('调用找工作广告图成功',res.data.data.img_url)
         that.setData({
           ads:res.data.data.img_url
         })
-        console.log('广告图的信息',that.data.ads)
+        //console.log('广告图的信息',that.data.ads)
         }).catch(err=>{
-        console.log('调用失败')
+        //console.log('调用失败')
       })
 
 
 
     var uid=wx.getStorageSync('uid');
-    console.log('接受勤勉找工作详情传递过来得值',options.info_id)
+    //console.log('接受勤勉找工作详情传递过来得值',options.info_id)
     this.setData({
       info_id:options.info_id,
     })
@@ -341,70 +371,33 @@ complaint:function(){
         uid
       }
       }).then(res=>{
-      console.log('调用找工作成功',res)
+      //console.log('调用找工作成功',res)
       this.setData({
         list:res.data.data
         
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
     
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
     var uid=wx.getStorageSync('uid');
-    return {
-      title: '包程项',
-      path: '/pages/informmation/jobdetail/jobdetail?info_id='+this.data.info_id+'&uid='+uid+'&share=1',
-      success: function (res) {
-        console.log('成功', res)
-      }
-    }
+    console.log(uid,res.from)
+    if(res.from=='button'){
+        return {
+          title: '包程项',
+          path: '/pages/informmation/jobdetail/jobdetail?info_id='+this.data.info_id+'&uid='+uid+'&share=1',
+          success: function (res) {
+            //console.log('成功', res)
+          }
+        }
+    
+}
   }
 })

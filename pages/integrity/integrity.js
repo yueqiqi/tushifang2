@@ -9,7 +9,7 @@ Page({
     wx.navigateTo({
       url: '/pages/integrityMes/integrityMes?info_id='+info_id+'&idx='+idx+'&point='+point,
     })
-    console.log("跳转至详情页")
+    //console.log("跳转至详情页")
   },
   // 分享
 
@@ -22,14 +22,14 @@ Page({
   },
   // 评论
   comment: function () {
-    console.log("评论")
+    //console.log("评论")
   },
 
 
 
   // 点赞
   like: function (e) {
-    console.log(e)
+    //console.log(e)
     var that = this
     var uid=wx.getStorageSync('uid');
     var info_id=e.currentTarget.dataset.id
@@ -42,13 +42,13 @@ Page({
         info_id
       }
       }).then(res=>{
-      console.log('调用成功',res)
+      //console.log('调用成功',res)
       that.onLoad()//重点   重新执行下onLoad去获取当前的数据
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
     // +++++++++++++点赞功能++++++++++++++++++++
-    console.log("点赞"); return
+    //console.log("点赞"); return
   },
   /**
    * 页面的初始数据
@@ -79,12 +79,12 @@ Page({
           limit:99,
         }
         }).then(res=>{
-        console.log('调用诚信红榜成功',res)
+        //console.log('调用诚信红榜成功',res)
         this.setData({
           integrity:res.data.list,
         })
         }).catch(err=>{
-        console.log('调用失败')
+        //console.log('调用失败')
       })
     // +++++++++++++诚信红榜请求++++++++++++++++++++++
     // +++++++++++++诚信灰榜请求++++++++++++++++++++++
@@ -97,12 +97,12 @@ Page({
         limit:99,
       }
       }).then(res=>{
-      console.log('调用诚信灰榜成功',res)
+      //console.log('调用诚信灰榜成功',res)
       this.setData({
         integritys:res.data.list,
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
     // +++++++++++++诚信灰榜请求++++++++++++++++++++++
     // +++++++++++++诚信失信名单请求++++++++++++++++++++++
@@ -115,64 +115,22 @@ Page({
         limit:99,
       }
       }).then(res=>{
-      console.log('调用失信名单成功',res)
+      //console.log('调用失信名单成功',res)
       this.setData({
         break:res.data.list,
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
     // +++++++++++++诚信失信名单请求++++++++++++++++++++++
    
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    console.log(res)
+    //console.log(res)
     var info_id=that.data.info_id
     if(res.from=='button'){
       return {
@@ -181,10 +139,10 @@ Page({
         //'/page/user?id=123' // 路径，传递参数到指定页面。
         desc: '分享页面的内容',
         success: function (res) { 
-          console.log('分享成功',res)
+          //console.log('分享成功',res)
         },
         fail:function(err){
-          console.log('分享失败',err)
+          //console.log('分享失败',err)
         }
       }
     }

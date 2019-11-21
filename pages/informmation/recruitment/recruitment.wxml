@@ -74,10 +74,7 @@
         <!-- 招聘状态右边 -->
           <view class="state-right d-flex">
             <view class="state-site">工作地点</view>
-            <!-- <view style="width:200rpx;"> -->
               <view class="site-province">{{item.work}}</view>
-              <!-- <view class="site-district">{{item.dist}}</view> -->
-            <!-- </view> -->
           </view>
         </view>
         <!-- 发布时间 -->
@@ -201,7 +198,7 @@
   <view class="bgf slag" style="">
     
     <view class="musks" style="margin-top:10rpx;">
-      <view class="" bindtap="slag" data-id="{{item.id}}"  data-idx="{{index}}" data-fm='slag' data-point="{{item.point_ratio}}">
+      <view class="" bindtap="slag" data-id="{{item.id}}" data-type="{{item.form}}"  data-idx="{{index}}" data-fm='slag' data-point="{{item.point_ratio}}">
         <view class="musk-user d-spb">
       <view class="musk-user-l d-flex">
         <!-- 头像 -->
@@ -260,7 +257,7 @@
     <button open-type="share" class="bbb">分享</button>
   </view>
   <!-- 评论 -->
-  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}" data-idx="{{index}}" data-fm='slag' data-point="{{item.point_ratio}}">
+  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}" data-type="{{item.form}}" data-idx="{{index}}" data-fm='slag' data-point="{{item.point_ratio}}">
     <view><image src="../../images/comment.png"></image></view>
     <view>评论</view>
   </view>
@@ -330,7 +327,7 @@
     
     <view class="bgf slag" style="">
       <view class="musks" style="margin-top:10rpx;">
-        <view class=""  bindtap="slag" data-id="{{item.id}}" data-idx="{{index}}" data-fm='meeting' data-point="{{item.point_ratio}}">
+        <view class=""  bindtap="slag" data-id="{{item.id}}" data-type="{{item.form}}" data-idx="{{index}}" data-fm='meeting' data-point="{{item.point_ratio}}">
             
       <view class="musk-user d-spb">
         <view class="musk-user-l d-flex">
@@ -390,7 +387,7 @@
     <button open-type="share" class="bbb">分享</button>
   </view>
   <!-- 评论 -->
-  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}" data-idx="{{index}}" data-fm='meeting' data-point="{{item.point_ratio}}">
+  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}" data-type="{{item.form}}" data-idx="{{index}}" data-fm='meeting' data-point="{{item.point_ratio}}">
     <view><image src="../../images/comment.png"></image></view>
     <view>评论</view>
   </view>
@@ -454,7 +451,7 @@
     
     <view class="bgf slag" style="">
       <view class="musks" style="margin-top:10rpx;">
-        <view class=""  bindtap="slag"  data-id="{{item.id}}" data-idx="{{index}}" data-fm='deal' data-point="{{item.point_ratio}}">
+        <view class=""  bindtap="slag"  data-id="{{item.id}}" data-type="{{item.form}}" data-idx="{{index}}" data-fm='deal' data-point="{{item.point_ratio}}">
 
           <view class="musk-user d-spb">
             <view class="musk-user-l d-flex">
@@ -514,7 +511,7 @@
     <button open-type="share" class="bbb">分享</button>
   </view>
   <!-- 评论 -->
-  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}" data-idx="{{index}}" data-fm='deal' data-point="{{item.point_ratio}}">
+  <view class="comment d-flex"  bindtap="slag" data-id="{{item.id}}" data-type="{{item.form}}" data-idx="{{index}}" data-fm='deal' data-point="{{item.point_ratio}}">
     <view><image src="../../images/comment.png"></image></view>
     <view>评论</view>
   </view>

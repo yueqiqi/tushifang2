@@ -19,7 +19,7 @@
                   <!-- 发布者用户名 -->
                   <view class="tab-userName">{{item.nickname}}</view>
                   <!-- 置顶 -->
-                  <view class="stick" wx-if="{{item.px!=1}}">{{item.px==2?'置顶':''}}</view>
+                  <view class="{{item.px==2?'stick':''}}" wx-if="{{item.px!=1}}">{{item.px==2?'置顶':''}}</view>
                   <view class="rec" hidden="{{item.rec=='荐'?false:true}}">{{item.rec}}</view>
                 </view>
                 <!-- 距离 -->

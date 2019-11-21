@@ -19,9 +19,7 @@
 </view>
 <view class="img_box bgf">
   <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
-  <!-- <view class="z"> -->
     <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" style="width:168rpx;height:168rpx;" />
-  <!-- </view> -->
     <view style="position:relative;top:0rpx;left:-38rpx;width:30rpx;"><image bindtap="deleteImage" data-index="{{index}}" style="width:25rpx;height:25rpx;" src="/pages/images/close.png"></image></view>    
   </view>
  <view class="onload" bindtap="upload" wx-if="{{tempFilePaths.length<3}}">
@@ -33,12 +31,9 @@
 </view>
 
 
-<!-- <view class="modal-footer"> -->
-  <!-- <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view> -->
   <view class="" style="position:absolute;top:630rpx;left:174rpx;">
     <button class="btn-confirm" form-type="submit" data-status="confirm">提交举报</button>
   </view>
-<!-- </view> -->
 <view class="close" bindtap="onCancel" data-status="cancel" style="position:absolute;top:730rpx;left:230rpx;">
   <image class="closes"  src="/pages/images/close2.png"></image>
 </view>

@@ -42,8 +42,6 @@
       <view class="title-text ">个人简介</view>
       <view class="list">
         <view class="l1">{{list.info}}</view>
-        <!-- <view class="l2">参加的工作项目有中央公园建设、金科小区施工、龙湖 商场施工。</view>
-        <view class="l3"> 吃苦耐劳，开朗热情好相处，找我没错嘻嘻。</view> -->
       </view>
     </view>
 <!-- 2 -->

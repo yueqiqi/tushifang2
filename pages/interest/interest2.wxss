@@ -31,9 +31,6 @@ color:rgba(118,212,198,1);
   
 color:rgba(255,255,255,1);
   background:linear-gradient(45deg,rgba(92,233,212,1) 0%,rgba(109,219,226,1) 100%);
-  /* color: #1A92EC;
-  background: rgba(49,165,253,0.08);
-  border: 1rpx solid #31A5FD; */
 }
 .checkbox checkbox{
   display: none

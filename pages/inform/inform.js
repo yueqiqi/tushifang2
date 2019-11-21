@@ -9,10 +9,6 @@ Page({
    */
   data: {
     page:1,
-    // 时间
-    // date:"2019-08-20",
-    // times:"15:30"
-    // 调用until中的时间
     currenTime:"",
     message:[],
   },
@@ -37,12 +33,12 @@ Page({
         limit:5,
       }
       }).then(res=>{
-      console.log('调用信息列表成功',res)
+      //console.log('调用信息列表成功',res)
       that.setData({
         message:res.data.list
       })
       }).catch(err=>{
-      console.log('调用失败')
+      //console.log('调用失败')
     })
   },
 
@@ -71,11 +67,11 @@ Page({
           limit:4,
         }
         }).then(res=>{
-        console.log('调用刷新信息列表成功',res)
+        //console.log('调用刷新信息列表成功',res)
         var count=res.data.count
         var all=that.data.message.length
         if (all>count) {
-          console.log(1)
+          //console.log(1)
           wx.showToast({
             title: '暂无更多',
             icon: 'none',
@@ -87,7 +83,7 @@ Page({
         })
         wx.hideLoading();
         }).catch(err=>{
-        console.log('调用失败')
+        //console.log('调用失败')
       })
   },
 })

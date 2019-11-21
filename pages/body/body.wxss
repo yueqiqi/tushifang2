@@ -30,7 +30,6 @@
   width:28rpx;height:35rpx;
 }
 .position-text{
-  /* width:160rpx; */
  /* //超出部分隐藏 */
   overflow: hidden;
    /* //文本不换行 */
@@ -90,8 +89,6 @@ line-height:45rpx;
       position: absolute;  
       left:20rpx;  
       z-index: 2;  
-      /* width: 20px;  
-      height: 20px;   */
       text-align: center;  
     } 
     /* 搜索图片样式 */

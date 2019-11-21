@@ -77,7 +77,6 @@
     <view class="input-section" wx:if="{{showInput}}">
       <!-- <form action="" bindsubmit="send_btn"> -->
       <view class='d-flex'>
-        <!-- <input class='input_input' name="inputMessage" focus="auto" bindinput='bindInputMsg' bindconfirm="sendTextMsg" adjust-position="true" hold-keyboard="true"/> -->
         <input class='input_input' placeholder="请发表您的看法!" focus="{{fo}}" bindinput="bindKeyInput" adjust-position="false" hold-keyboard="true" />
         <button class="send_btn" bindtap="send_btn">发送</button>
       </view>

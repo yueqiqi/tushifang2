@@ -35,24 +35,8 @@ Page({
     var value = e.detail.value;
     // 获取输入框内容的长度
     var len = parseInt(value.length);
-    // //最少字数限制
-    // if (len < this.data.min) {
-    //   wx.showToast({
-    //     title:"建议内容要5-100字哟",
-    //     image:"../../images/like.png"
-    //   })
-    //   // this.setData({
-    //   //   texts: "请至少要输入5个字哦"
-    //   // })
-    // } 
-    // else if (len >= this.data.min) {
-    //   this.setData({
-    //     texts: " "
-    //   })
-    // }
     //最多字数限制
     if (len > this.data.max) return;
-    // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
     this.setData({
       currentWordNumber: len //当前字数  
     });
@@ -85,30 +69,6 @@ Page({
         var count = 0;
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
-          /*  wx.uploadFile({
-              url: HOST + '地址路径',
-              filePath: tempFilePaths[i],
-              name: 'uploadfile_ant',
-              header: {
-                "Content-Type": "multipart/form-data"
-              },
-              success: function (res) {
-                count++;
-                //如果是最后一张,则隐藏等待中  
-                if (count == tempFilePaths.length) {
-                  wx.hideToast();
-                }
-              },
-              fail: function (res) {
-                wx.hideToast();
-                wx.showModal({
-                  title: '错误提示',
-                  content: '上传图片失败',
-                  showCancel: false,
-                  success: function (res) { }
-                })
-              }
-            });*/
         }
 
       }
@@ -232,52 +192,4 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -32,7 +32,7 @@
     <!-- 祥细地址 -->
     <view class="til" style="margin-top:29rpx;">详细地址</view>
     <view style="height:150rpx;">
-      <textarea name="textarea" style="height:150rpx;" placeholder="道路、门牌号等" maxlength="50"></textarea>
+      <textarea hidden="{{thidden}}" name="textarea" style="height:150rpx;" placeholder="道路、门牌号等" maxlength="50"></textarea>
     </view>
     
     <!--  -->

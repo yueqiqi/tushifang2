@@ -107,6 +107,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    thidden:false,
     item: {
       ashow: ashow
     },
@@ -124,6 +125,9 @@ Page({
   //点击选择城市按钮显示picker-view
   translate: function (e) {
     model.animationEvents(this, 0, true, 400);
+    this.setData({
+      thidden:true
+    })
   },
   //隐藏picker-view
   hiddenFloatView: function (e) {
@@ -133,6 +137,9 @@ Page({
     if (e.target.dataset.id == 666) {
       this.updateShowData()
     }
+    this.setData({
+      thidden:false
+    })
   },
   //滑动事件
   bindChange: function (e) {
@@ -150,6 +157,9 @@ Page({
       county: item.countys[item.value[2]].name
     });
     console.log(this.data.province, this.data.city, this.data.county);
+    this.setData({
+      thidden:false
+    })
   }
   ,
   onReachBottom: function () {

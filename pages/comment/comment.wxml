@@ -1,11 +1,7 @@
 
-<!-- bindblur="onHideInput"键盘失去焦点 -->
 <view class="input-section" wx:if="{{showInput}}">
-  <!-- <form action="" bindsubmit="sendBtn">   -->
     <view class='d-flex'>
-      <!-- <input class='input_input' name="inputMessage" focus="{{fo}}"  bindinput='bindInputMsg' bindconfirm="sendTextMsg" adjust-position="false" hold-keyboard="true"/> -->
       <input class='input_input' placeholder="请发表您的看法!" focus="{{fo}}" bindinput="bindKeyInput" adjust-position="false" hold-keyboard="true"/>
       <button class="send_btn"  bindtap="sendBtn">发表</button>
     </view>
-    <!-- </form> -->
 </view>

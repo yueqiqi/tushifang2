@@ -43,10 +43,6 @@
     <!-- 失信名单 -->
     <van-tab title="失信名单">
       <view class="break">
-        <!-- 温馨提示 -->
-        <!-- <view class="notice">
-        <van-notice-bar mode="closeable"text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"/>
-      </view> -->
         <view class="gg">
           <view class="gonggao ml">温馨提示</view>
           <view class='scroll_view_border'>
@@ -58,15 +54,12 @@
            <view bindtap="Mes" data-idx="{{index}}" data-point="{{item.point_ratio}}" data-id="{{item.id}}">
             <view class="breakText ml">{{item.title}}</view>
             <!-- 图片 -->
-            <!-- <block wx:for="{{breakImg}}" wx:key="{{index}}"> -->
               <image src="{{item.img_url}}" class="breakImg ml"></image>
-            <!-- </block> -->
             <!-- 转自 -->
             <view class="from ml d-flex mt">
               <view class="from-left">转载自 <text>{{item.reprint}}</text></view>
               <view class="from-right">
                 <text>{{item.create_time}}</text>
-                <!-- <text style="margin-left:10rpx">18:36</text> -->
               </view>
             </view>
           </view>
