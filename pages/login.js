@@ -1,4 +1,4 @@
-const baseUrl='http://tsf.suipk.cn'
+const baseUrl='https://tsf.suipk.cn'
 export default function request(options){
   return new Promise((resolve,reject) => {
     wx.request({
